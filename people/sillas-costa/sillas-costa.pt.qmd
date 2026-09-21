@@ -8,7 +8,6 @@ education: "Graduando em Ciência de Dados e IA, FGV EMAp"
 image: avatar.jpeg
 page-layout: full
 toc: false
-
 about:
   id: perfil
   template: trestles

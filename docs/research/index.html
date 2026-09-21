@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="icon" type="image/png" href="../icon/favicon-light.png">
 
 
-<link rel="stylesheet" href="../styles.css?v=ad60fb90">
+<link rel="stylesheet" href="../styles.css?v=0b209f99">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -328,30 +328,96 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="page-shell page-columns page-full">
 <div class="page-main">
-<p class="rsec-lead reveal">Lorem ipsum dolor sit amet, consectetur adipiscing
-elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+<p class="rsec-lead reveal">Três frentes de pesquisa, um mesmo método: transformar
+imagem de satélite e série climática em informação que pode ser conferida contra
+dado oficial. Cada frente tem um explorador, os números que a sustentam e o que
+ainda não funciona.</p>
 
 <section id="agricultura" class="rsec">
   <div class="rsec-head reveal">
     <div class="rsec-num">01</div>
     <div>
-      <span class="rsec-kicker">Área de pesquisa</span>
+      <span class="rsec-kicker">Frente de pesquisa</span>
       <h2 class="anchored">Agricultura</h2>
     </div>
   </div>
-  <p class="rsec-lead reveal">Lorem ipsum dolor sit amet, consectetur
-  adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-  aliqua ut enim ad minim veniam.</p>
+  <p class="rsec-lead reveal">Classificação de culturas e séries de índices de
+  vegetação em escala de talhão. A base própria cobre 359,6 mil talhões em 897
+  municípios de cinco estados, com dados de 2020 a 2025.</p>
+
+  <div class="rsec-block">
+    <h3 class="rsec-sub reveal anchored">Séries de índices de vegetação</h3>
+    <p class="reveal">17 índices, 23 datas por ano e 499.720 séries por talhão,
+    num total de 11,5 milhões de linhas. Troque a camada para ver o mesmo dado por
+    outro ângulo.</p>
+
+    <div class="explorer reveal" data-explorer="" data-captions="Sazonalidade média dos índices de vegetação nos cinco estados, por data de passagem do satélite.|Mapa de calor do NDVI, por município e data.|Distribuição bimodal do índice de cobertura de nuvem. O filtro CLEAROB igual ou maior que 0,5 remove 5,55 % das linhas cegas.">
+      <div class="explorer-stage">
+        <img class="is-active" src="images/agro/iv-sazonalidade.webp" alt="Sazonalidade média dos índices de vegetação nos cinco estados">
+        <img data-src="images/agro/iv-heatmap.webp" alt="Mapa de calor do NDVI por município e data">
+        <img data-src="images/agro/iv-clearob.webp" alt="Distribuição do índice de cobertura de nuvem">
+      </div>
+      <div class="explorer-tabs" role="tablist" aria-label="Camadas das séries de índices">
+        <button class="explorer-tab" type="button" role="tab" aria-selected="true">Sazonalidade por estado</button>
+        <button class="explorer-tab" type="button" role="tab" aria-selected="false">Mapa de calor do NDVI</button>
+        <button class="explorer-tab" type="button" role="tab" aria-selected="false">Filtro de nuvem</button>
+      </div>
+      <p class="explorer-caption">Sazonalidade média dos índices de vegetação nos cinco estados, por data de passagem do satélite.</p>
+    </div>
+
+    <div class="fig-grid reveal">
+      <figure class="fig-card figure">
+        <img src="images/agro/iv-tres-fases.webp" alt="Da série bruta à série pronta, em três etapas" loading="lazy" class="figure-img">
+        <figcaption>Da série bruta à série pronta: observação original, interpolação e suavização.</figcaption>
+      </figure>
+      <figure class="fig-card figure">
+        <img src="images/agro/iv-cobertura.webp" alt="Cobertura de observações válidas após o filtro de nuvem" loading="lazy" class="figure-img">
+        <figcaption>Cobertura de observações válidas por talhão depois do filtro de nuvem.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="rsec-block">
+    <h3 class="rsec-sub reveal anchored">Início de safra contra a janela oficial</h3>
+    <p class="reveal">Detectamos o início da safra pelo satélite e comparamos com a
+    janela de plantio do ZARC, em Campo Verde, Mato Grosso. A janela oficial
+    descreve bem a soja e quase não cobre o resto do calendário da fazenda.</p>
+
+    <div class="janela reveal">
+      <div class="janela-row">
+        <div class="janela-name">Soja</div>
+        <div class="janela-track"><div class="janela-fill" style="width: 65.5%"></div></div>
+        <div class="janela-pct">65,5 %</div>
+      </div>
+      <div class="janela-row">
+        <div class="janela-name">Algodão</div>
+        <div class="janela-track"><div class="janela-fill" style="width: 7.6%"></div></div>
+        <div class="janela-pct">7,6 %</div>
+      </div>
+      <div class="janela-row">
+        <div class="janela-name">Milho safrinha</div>
+        <div class="janela-track"><div class="janela-fill" style="width: 3.3%"></div></div>
+        <div class="janela-pct">3,3 %</div>
+      </div>
+    </div>
+    <p class="explorer-caption reveal">Parcela dos talhões cujo início de safra detectado cai dentro da janela oficial, em Campo Verde, Mato Grosso. A soja soma 2.971 de 4.539 talhões. Em outros municípios analisados, a soja fica entre 72,7 % e 84,5 %.</p>
+  </div>
+
+  <div class="metrics reveal">
+    <div><div class="m-val">359.596</div><div class="m-lab">Talhões mapeados</div></div>
+    <div><div class="m-val">897</div><div class="m-lab">Municípios</div></div>
+    <div><div class="m-val">17</div><div class="m-lab">Índices de vegetação</div></div>
+    <div><div class="m-val">11,5 mi</div><div class="m-lab">Linhas de séries</div></div>
+  </div>
 
   <div class="hscroll-wrap reveal">
     <button class="hscroll-btn prev" aria-label="Projetos anteriores"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 5l-7 7 7 7"></path></svg></button>
     <div class="hscroll">
-      <article class="hs-card"><div class="hs-kicker">Projeto 01</div><div class="hs-title">Lorem ipsum hiperespectral</div><div class="hs-text">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</div></article>
-      <article class="hs-card"><div class="hs-kicker">Projeto 02</div><div class="hs-title">Dolor sit solo e safra</div><div class="hs-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</div></article>
-      <article class="hs-card"><div class="hs-kicker">Projeto 03</div><div class="hs-title">Amet consectetur pastagens</div><div class="hs-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</div></article>
-      <article class="hs-card"><div class="hs-kicker">Projeto 04</div><div class="hs-title">Tempor incididunt irrigação</div><div class="hs-text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</div></article>
-      <article class="hs-card"><div class="hs-kicker">Projeto 05</div><div class="hs-title">Magna aliqua fenologia</div><div class="hs-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Projeto 01</div><div class="hs-title">Classificação de culturas por talhão</div><div class="hs-text">Soja, milho e algodão identificados talhão por talhão e safra por safra. Contra os dados de campo do INPE em Campo Verde, a acurácia média foi 98,7 % na soja, 91,5 % no milho e 90,0 % no algodão. A referência pública marca 99,3 %, 82,4 % e 64,4 %.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Projeto 02</div><div class="hs-title">Base própria de talhões</div><div class="hs-text">Base gerada a cada safra, reprocessada a cada ciclo e extensível a novos estados: 359,6 mil talhões em 897 municípios de Bahia, Maranhão, Mato Grosso, Tocantins e Paraná.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Projeto 03</div><div class="hs-title">Séries temporais de índices</div><div class="hs-text">17 índices, 23 datas por ano e 499.720 séries, com filtro de nuvem e interpolação documentados, num total de 11,5 milhões de linhas.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Projeto 04</div><div class="hs-title">Agrupamento por comportamento</div><div class="hs-text">Cada talhão e safra reúne 1.670 valores entre índices, séries diárias e séries climáticas. O agrupamento por semelhança revela perfis de comportamento dentro da carteira.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Projeto 05</div><div class="hs-title">Produtividade e risco</div><div class="hs-text">Um dos grupos, com 1.240 talhões, aparece com produtividade 18 % abaixo da média, solos arenosos e 3,1 vezes mais ocorrência de sinistro. O grupo é classificado como risco alto.</div></article>
     </div>
     <button class="hscroll-btn next" aria-label="Próximos projetos"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 5 7 7-7 7"></path></svg></button>
   </div>
@@ -361,31 +427,113 @@ enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
   <div class="rsec-head reveal">
     <div class="rsec-num">02</div>
     <div>
-      <span class="rsec-kicker">Área de pesquisa</span>
+      <span class="rsec-kicker">Frente de pesquisa</span>
       <h2 class="anchored">Floresta</h2>
     </div>
   </div>
-  <p class="rsec-lead reveal">Lorem ipsum dolor sit amet, consectetur
-  adipiscing elit. Arraste o divisor para comparar a mesma cena em dois
-  momentos — sed do eiusmod tempor incididunt.</p>
+  <p class="rsec-lead reveal">Segmentação de floresta em escala de imóvel, com
+  validação contra dados oficiais do INPE. O modelo chega a 0,85 de IoU em
+  trimestres que não estavam no treino.</p>
 
-  <div class="compare reveal">
-    <img class="compare-under" src="images/floresta-antes.svg" alt="Cena simulada de floresta preservada">
-    <img class="compare-over" src="images/floresta-depois.svg" alt="Mesma cena com áreas desmatadas">
-    <div class="compare-handle"></div>
-    <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois">
-    <span class="compare-label left">2019</span>
-    <span class="compare-label right">2025</span>
+  <div class="rsec-block">
+    <h3 class="rsec-sub reveal anchored">A mesma cena, seis anos depois</h3>
+    <div class="compare reveal">
+      <img class="compare-under" src="images/floresta/comparar-2020q1.webp" alt="Predição de floresta no primeiro trimestre de 2020">
+      <img class="compare-over" src="images/floresta/comparar-2026q2.webp" alt="Predição de floresta no segundo trimestre de 2026">
+      <div class="compare-handle"></div>
+      <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Comparar os dois trimestres">
+      <span class="compare-label left">2020 Q1</span>
+      <span class="compare-label right">2026 Q2</span>
+    </div>
+    <p class="compare-caption reveal">Predição do modelo na mesma cena, em 2020 Q1 e 2026 Q2. Arraste o divisor para comparar.</p>
   </div>
-  <p class="compare-caption reveal">Simulação ilustrativa — lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+  <div class="rsec-block">
+    <h3 class="rsec-sub reveal anchored">Seis anos de floresta, trimestre por trimestre</h3>
+    <p class="reveal">26 mapas trimestrais, de 2020 Q1 a 2026 Q2, percorridos por
+    um controle deslizante.</p>
+
+    <div class="scrub reveal" data-scrub="" data-base="images/floresta/trim-" data-ext=".webp" data-play-label="Percorrer os trimestres" data-pause-label="Pausar" data-quarters="2020q1,2020q2,2020q3,2020q4,2021q1,2021q2,2021q3,2021q4,2022q1,2022q2,2022q3,2022q4,2023q1,2023q2,2023q3,2023q4,2024q1,2024q2,2024q3,2024q4,2025q1,2025q2,2025q3,2025q4,2026q1,2026q2">
+      <div class="scrub-stage">
+        <img class="scrub-img" alt="Mapa de floresta do trimestre selecionado">
+        <span class="scrub-badge">2026 Q2</span>
+      </div>
+      <div class="scrub-controls">
+        <input class="scrub-range" type="range" min="0" max="25" step="1" value="25" aria-label="Trimestre do mapa">
+        <span class="scrub-label">2026 Q2</span>
+      </div>
+    </div>
+    <p class="explorer-caption reveal">Predição de floresta por trimestre. As imagens carregam sob demanda, um trimestre por vez.</p>
+  </div>
+
+  <div class="rsec-block">
+    <h3 class="rsec-sub reveal anchored">O que o modelo vê e com que confiança</h3>
+    <div class="explorer reveal" data-explorer="" data-captions="Predição do modelo para o trimestre 2023 Q3, cobrindo a área completa de análise.|Predição restrita às áreas de Cadastro Ambiental Rural, onde o imóvel é a unidade de análise.|Referência de floresta de 2023, usada na avaliação do modelo.">
+      <div class="explorer-stage">
+        <img class="is-active" src="images/floresta/camada-predicao.webp" alt="Predição de floresta do modelo">
+        <img data-src="images/floresta/camada-car.webp" alt="Predição restrita às áreas de Cadastro Ambiental Rural">
+        <img data-src="images/floresta/camada-referencia.webp" alt="Referência de floresta de 2023">
+      </div>
+      <div class="explorer-tabs" role="tablist" aria-label="Camadas do mapa de floresta">
+        <button class="explorer-tab" type="button" role="tab" aria-selected="true">Predição do modelo</button>
+        <button class="explorer-tab" type="button" role="tab" aria-selected="false">Áreas de CAR</button>
+        <button class="explorer-tab" type="button" role="tab" aria-selected="false">Referência 2023</button>
+      </div>
+      <p class="explorer-caption">Predição do modelo para o trimestre 2023 Q3, cobrindo a área completa de análise.</p>
+    </div>
+
+    <figure class="fig-card reveal figure">
+      <img src="images/floresta/mapa-incerteza.webp" alt="Mapa de confiança do modelo em seis classes" loading="lazy" class="figure-img">
+      <figcaption>Confiança do modelo pixel a pixel, em seis classes, no trimestre 2023 Q3. Cada cor indica o quanto a decisão daquele pixel é estável.</figcaption>
+    </figure>
+
+    <div class="nota reveal">
+      <strong>Onde o modelo erra.</strong> Na validação contra os alertas DETER e os
+      polígonos PRODES, o recall da classe de floresta fica em 0,28 e 0,26, e a área
+      prevista é maior que a área alertada, 165,3 km² contra 27,1 km² do DETER e
+      44,5 km² do PRODES. Parte disso é diferença de critério: o alerta oficial marca
+      o corte recente, o modelo marca a ausência de dossel. Publicamos o número
+      porque ele define o uso correto do produto.
+    </div>
+  </div>
+
+  <div class="rsec-block">
+    <h3 class="rsec-sub reveal anchored">Resultados por trimestre e por célula</h3>
+    <div class="fig-grid reveal">
+      <figure class="fig-card figure">
+        <img src="images/floresta/fig-temporal.webp" alt="Desempenho do modelo por trimestre" loading="lazy" class="figure-img">
+        <figcaption>Desempenho por trimestre no experimento de contexto temporal, que usa o trimestre anterior como informação adicional.</figcaption>
+      </figure>
+      <figure class="fig-card figure">
+        <img src="images/floresta/fig-celulas.webp" alt="Desempenho do modelo por célula do recorte" loading="lazy" class="figure-img">
+        <figcaption>Desempenho por célula do recorte, mostrando onde o modelo é mais ou menos estável dentro da mesma área.</figcaption>
+      </figure>
+      <figure class="fig-card figure">
+        <img src="images/floresta/fig-confusao.webp" alt="Matriz de confusão do modelo com a banda infravermelha" loading="lazy" class="figure-img">
+        <figcaption>Matriz de confusão do modelo trimestral. A banda infravermelha próxima leva o IoU de 0,72 para 0,74.</figcaption>
+      </figure>
+      <figure class="fig-card figure">
+        <img src="images/floresta/fig-deter.webp" alt="Área por ano segundo o modelo, o DETER e o PRODES" loading="lazy" class="figure-img">
+        <figcaption>Área por ano segundo o modelo e segundo os dois sistemas oficiais, DETER e PRODES.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="metrics reveal">
+    <div><div class="m-val">0,85</div><div class="m-lab">IoU no melhor modelo</div></div>
+    <div><div class="m-val">26</div><div class="m-lab">Trimestres mapeados</div></div>
+    <div><div class="m-val">180</div><div class="m-lab">GeoTIFF entregues</div></div>
+    <div><div class="m-val">203</div><div class="m-lab">Alertas DETER avaliados</div></div>
+  </div>
 
   <div class="hscroll-wrap reveal">
     <button class="hscroll-btn prev" aria-label="Projetos anteriores"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 5l-7 7 7 7"></path></svg></button>
     <div class="hscroll">
-      <article class="hs-card"><div class="hs-kicker">Projeto 01</div><div class="hs-title">Lorem ipsum desmatamento</div><div class="hs-text">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</div></article>
-      <article class="hs-card"><div class="hs-kicker">Projeto 02</div><div class="hs-title">Dolor sit espécies arbóreas</div><div class="hs-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</div></article>
-      <article class="hs-card"><div class="hs-kicker">Projeto 03</div><div class="hs-title">Amet consectetur reflorestamento</div><div class="hs-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</div></article>
-      <article class="hs-card"><div class="hs-kicker">Projeto 04</div><div class="hs-title">Tempor incididunt biodiversidade</div><div class="hs-text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Projeto 01</div><div class="hs-title">Segmentação de floresta por satélite</div><div class="hs-text">Modelo SegFormer com imagens Sentinel-2 do Brazil Data Cube: 0,74 de IoU na versão trimestral com a banda infravermelha e 0,85 com contexto temporal. A grade de análise tem 9.712 por 11.110 pixels, em cerca de 10 metros por pixel.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Projeto 02</div><div class="hs-title">Generalização espacial</div><div class="hs-text">Treino em uma região e teste em outra, para medir o que o modelo aprende de floresta e o que aprende de lugar: 0,79 de oeste para leste e 0,76 de sul para norte.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Projeto 03</div><div class="hs-title">Floresta dentro das áreas de CAR</div><div class="hs-text">Avaliação com o imóvel rural como unidade: 0,797 de IoU. A floresta ocupa 24 % da área de CAR, contra 37 % do retângulo que envolve a cena.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Projeto 04</div><div class="hs-title">Validação contra DETER e PRODES</div><div class="hs-text">203 alertas do DETER e 9.105 polígonos do PRODES comparados com a predição, com os limites publicados junto com o resultado.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Projeto 05</div><div class="hs-title">Entregas trimestrais</div><div class="hs-text">180 arquivos GeoTIFF entregues, um por trimestre e por recorte, de 2020 a 2026, prontos para uso em sistema de informação geográfica.</div></article>
     </div>
     <button class="hscroll-btn next" aria-label="Próximos projetos"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 5 7 7-7 7"></path></svg></button>
   </div>
@@ -395,21 +543,86 @@ enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
   <div class="rsec-head reveal">
     <div class="rsec-num">03</div>
     <div>
-      <span class="rsec-kicker">Área de pesquisa</span>
+      <span class="rsec-kicker">Frente de pesquisa</span>
       <h2 class="anchored">Clima</h2>
     </div>
   </div>
-  <p class="rsec-lead reveal">Lorem ipsum dolor sit amet, consectetur
-  adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-  aliqua.</p>
+  <p class="rsec-lead reveal">Tendências climáticas e risco agrícola em janelas de
+  15 anos, município por município, ligando a série do clima ao comportamento da
+  lavoura.</p>
+
+  <div class="rsec-block">
+    <h3 class="rsec-sub reveal anchored">15 anos de clima em Nova Mutum, Mato Grosso</h3>
+    <p class="reveal">Seis indicadores de tendência entre 2011 e 2025, comparados com
+    a média de 1985 a 2010 quando existe série de referência.</p>
+
+    <div class="trend-grid reveal">
+      <div class="trend-card">
+        <div class="trend-name">Temperatura máxima</div>
+        <div class="trend-value" data-count="1.1" data-decimals="1" data-prefix="+" data-suffix=" °C">0</div>
+        <div class="trend-note">aumento em 15 anos, cerca de 0,076 °C por ano</div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-name">Temperatura média</div>
+        <div class="trend-value" data-count="0.9" data-decimals="1" data-prefix="+" data-suffix=" °C">0</div>
+        <div class="trend-note">aumento em 15 anos, cerca de 0,066 °C por ano</div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-name">Temperatura mínima</div>
+        <div class="trend-value" data-count="0.8" data-decimals="1" data-prefix="+" data-suffix=" °C">0</div>
+        <div class="trend-note">aumento em 15 anos, cerca de 0,056 °C por ano</div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-name">Noites quentes</div>
+        <div class="trend-value" data-count="108" data-prefix="+" data-suffix=" dias">0</div>
+        <div class="trend-note">noites com mínima acima de 22 °C, 7,7 dias a mais por ano</div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-name">Chuva acumulada no ano</div>
+        <div class="trend-value">1.631 mm</div>
+        <div class="trend-note">média do período, 7,7 % abaixo dos 1.767 mm de 1985 a 2010</div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-name">Dias secos na estação chuvosa</div>
+        <div class="trend-value">24,5 dias</div>
+        <div class="trend-note">média do período, 5,3 dias a mais que os 19,2 dias de 1985 a 2010</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rsec-block">
+    <h3 class="rsec-sub reveal anchored">Risco operacional e risco sistêmico</h3>
+    <p class="reveal">A leitura é sempre em relação à vizinhança, para separar o que
+    é problema da fazenda do que é problema da região.</p>
+
+    <div class="risco-pair reveal">
+      <div class="risco-card">
+        <div class="risco-kicker">Risco operacional</div>
+        <h4 class="anchored">Manejo, praga, condição e contexto do produtor</h4>
+        <p>O que diferencia um talhão dos vizinhos próximos, com o mesmo clima e o mesmo solo.</p>
+      </div>
+      <div class="risco-card">
+        <div class="risco-kicker">Risco sistêmico</div>
+        <h4 class="anchored">Seca, geada e veranico regional</h4>
+        <p>O que atinge a região inteira, e por isso não se resolve com decisão de manejo isolada.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="metrics reveal">
+    <div><div class="m-val">15</div><div class="m-lab">Anos de série</div></div>
+    <div><div class="m-val">6</div><div class="m-lab">Indicadores de tendência</div></div>
+    <div><div class="m-val">+108</div><div class="m-lab">Noites quentes</div></div>
+    <div><div class="m-val">2011 a 2025</div><div class="m-lab">Período analisado</div></div>
+  </div>
 
   <div class="hscroll-wrap reveal">
     <button class="hscroll-btn prev" aria-label="Projetos anteriores"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 5l-7 7 7 7"></path></svg></button>
     <div class="hscroll">
-      <article class="hs-card"><div class="hs-kicker">Projeto 01</div><div class="hs-title">Lorem ipsum eventos extremos</div><div class="hs-text">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</div></article>
-      <article class="hs-card"><div class="hs-kicker">Projeto 02</div><div class="hs-title">Dolor sit séries climáticas</div><div class="hs-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</div></article>
-      <article class="hs-card"><div class="hs-kicker">Projeto 03</div><div class="hs-title">Amet consectetur emissões</div><div class="hs-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</div></article>
-      <article class="hs-card"><div class="hs-kicker">Projeto 04</div><div class="hs-title">Tempor incididunt previsão</div><div class="hs-text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Projeto 01</div><div class="hs-title">Tendência climática municipal</div><div class="hs-text">Janelas de 15 anos com seis indicadores por município, para separar tendência de variação de ano a ano.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Projeto 02</div><div class="hs-title">Noites quentes e estresse térmico</div><div class="hs-text">A mínima acima de 22 °C acumulou 108 noites a mais em 15 anos. É o indicador que mais conversa com perda de produtividade.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Projeto 03</div><div class="hs-title">Chuva e veranico</div><div class="hs-text">Chuva acumulada e dias secos na estação chuvosa, comparados com a referência de 1985 a 2010.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Projeto 04</div><div class="hs-title">Índices de vegetação como sensor de seca</div><div class="hs-text">A resposta da lavoura à falta de água aparece na série de índices antes de aparecer na produtividade, o que liga esta frente à de Agricultura.</div></article>
     </div>
     <button class="hscroll-btn next" aria-label="Próximos projetos"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 5 7 7-7 7"></path></svg></button>
   </div>
@@ -587,48 +800,115 @@ enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
       return d.innerHTML;
     }
 
+    function formatar(valor, decimais, milhares, decimal) {
+      var partes = valor.toFixed(decimais).split(".");
+      if (milhares) {
+        partes[0] = partes[0].replace(/\B(?=(\d{3})+(?!\d))/g, milhares);
+      }
+      return partes.join(decimal);
+    }
+  
     function contar(el) {
-      var alvo = parseInt(el.getAttribute("data-count"), 10);
+      var decimais = parseInt(el.getAttribute("data-decimals") || "0", 10);
+      var milhares = el.getAttribute("data-thousands") || "";
+      var decimal = el.getAttribute("data-decimal") || ",";
+      var alvo = parseFloat(el.getAttribute("data-count"));
+      var prefixo = el.getAttribute("data-prefix") || "";
       var sufixo = el.getAttribute("data-suffix") || "";
       if (reduzido) {
-        el.textContent = alvo + sufixo;
+        el.textContent = prefixo + formatar(alvo, decimais, milhares, decimal) + sufixo;
         return;
       }
       var inicio = null;
       function passo(agora) {
         if (!inicio) inicio = agora;
         var fracao = Math.min((agora - inicio) / 1200, 1);
-        el.textContent = Math.round(alvo * (1 - Math.pow(1 - fracao, 3))) + sufixo;
+        var suave = 1 - Math.pow(1 - fracao, 3);
+        el.textContent = prefixo + formatar(alvo * suave, decimais, milhares, decimal) + sufixo;
         if (fracao < 1) requestAnimationFrame(passo);
       }
       requestAnimationFrame(passo);
     }
 
+    var reveais = document.querySelectorAll(".reveal");
+
+    // Revela um elemento e dispara os contadores que estiverem dentro dele
+    function revelar(el) {
+      if (el.classList.contains("revealed")) return;
+      el.classList.add("revealed");
+      var numeros = el.querySelectorAll("[data-count]");
+      for (var n = 0; n < numeros.length; n++) contar(numeros[n]);
+    }
+
+    // Revela tudo que já está na tela, usado pela rede de segurança abaixo
+    function revelarVisiveis() {
+      for (var r = 0; r < reveais.length; r++) {
+        if (reveais[r].classList.contains("revealed")) continue;
+        var caixa = reveais[r].getBoundingClientRect();
+        if (caixa.top < window.innerHeight && caixa.bottom > 0) revelar(reveais[r]);
+      }
+    }
+
     var observador = new IntersectionObserver(function (entradas) {
       for (var i = 0; i < entradas.length; i++) {
         if (!entradas[i].isIntersecting) continue;
-        var el = entradas[i].target;
-        el.classList.add("revealed");
-        var numeros = el.querySelectorAll("[data-count]");
-        for (var j = 0; j < numeros.length; j++) contar(numeros[j]);
-        observador.unobserve(el);
+        revelar(entradas[i].target);
+        observador.unobserve(entradas[i].target);
       }
     }, { threshold: 0.15 });
 
-    var reveais = document.querySelectorAll(".reveal");
     for (var i = 0; i < reveais.length; i++) observador.observe(reveais[i]);
 
     // Rede de segurança: se o observador não disparar (navegadores antigos ou
     // situações excepcionais), o que já está na tela aparece mesmo assim
-    setTimeout(function () {
-      for (var r = 0; r < reveais.length; r++) {
-        if (reveais[r].classList.contains("revealed")) continue;
-        var caixa = reveais[r].getBoundingClientRect();
-        if (caixa.top < window.innerHeight && caixa.bottom > 0) {
-          reveais[r].classList.add("revealed");
-        }
+    setTimeout(revelarVisiveis, 1500);
+
+    // Quem participa da entrada: os blocos e os realces (.mark) dentro deles,
+    // que voltam a ser preenchidos junto (o contador se reinicia sozinho, por
+    // estar dentro do bloco que ganha a classe de novo)
+    var entradas = [];
+    for (var r = 0; r < reveais.length; r++) {
+      entradas.push(reveais[r]);
+      var marcas = reveais[r].querySelectorAll(".mark");
+      for (var j = 0; j < marcas.length; j++) entradas.push(marcas[j]);
+    }
+
+    // Recomeça a entrada dos blocos: tira a classe, devolve cada um ao
+    // observador e revela o que está na tela
+    function reiniciarReveais() {
+      var n;
+      for (n = 0; n < reveais.length; n++) {
+        reveais[n].classList.remove("revealed");
+        observador.observe(reveais[n]);
       }
-    }, 1500);
+      // sem transição enquanto o estado escondido é aplicado: se ela animasse
+      // aqui, a revelação logo abaixo encontraria tudo já no lugar e nada
+      // apareceria. A leitura de layout aplica esse estado antes de revelar
+      for (n = 0; n < entradas.length; n++) entradas[n].style.transition = "none";
+      void document.body.offsetHeight;
+      for (n = 0; n < entradas.length; n++) entradas[n].style.transition = "";
+      revelarVisiveis();
+    }
+
+    // O Quarto guarda o tema como classe no <body> (quarto-light/quarto-dark)
+    function temaAgora() {
+      if (document.documentElement.getAttribute("data-bs-theme") === "dark") return "dark";
+      return document.body.classList.contains("quarto-dark") ? "dark" : "light";
+    }
+
+    var temaAnterior = temaAgora();
+
+    // A troca de tema não move nada, então o observador de tela não dispara e
+    // os blocos ficariam revelados de uma vez só. Este vigia reanima quando o
+    // tema muda de fato, e ignora as outras classes que o <body> recebe
+    var vigiaTema = new MutationObserver(function () {
+      var agora = temaAgora();
+      if (agora === temaAnterior) return;
+      temaAnterior = agora;
+      if (!reduzido) reiniciarReveais();
+    });
+    vigiaTema.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+    vigiaTema.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "data-bs-theme"] });
 
     var carrosseis = document.querySelectorAll(".hscroll-wrap");
     for (var k = 0; k < carrosseis.length; k++) {
@@ -947,6 +1227,195 @@ enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
           obterLightbox().abrir(lista, i);
         });
       });
+    });
+  });
+</script>
+<script>
+  // Exploradores das paginas de pesquisa, sempre sobre imagens ja renderizadas no
+  // repositorio: nada e calculado nem buscado no navegador, e as imagens carregam
+  // sob demanda. [data-scrub] percorre uma sequencia (trimestres) com um slider;
+  // [data-explorer] troca entre as camadas da mesma cena.
+  document.addEventListener("DOMContentLoaded", function () {
+    var reduzido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function preCarregar(url) {
+      if (url) { var im = new Image(); im.src = url; }
+    }
+
+    // ---------------------------------------------------------------- scrubber
+    var scrubbers = document.querySelectorAll("[data-scrub]");
+    for (var s = 0; s < scrubbers.length; s++) {
+      (function (raiz) {
+        var base = raiz.getAttribute("data-base") || "";
+        var extensao = raiz.getAttribute("data-ext") || ".webp";
+        var quadros = (raiz.getAttribute("data-quarters") || "").split(",").filter(Boolean);
+        if (!quadros.length) return;
+
+        var img = raiz.querySelector(".scrub-img");
+        var faixa = raiz.querySelector(".scrub-range");
+        var selo = raiz.querySelector(".scrub-badge");
+        var rotulo = raiz.querySelector(".scrub-label");
+        var botao = raiz.querySelector(".scrub-play");
+        var atual = quadros.length - 1;
+        var temporizador = null;
+
+        function url(i) { return base + quadros[i] + extensao; }
+
+        function mostrar(i) {
+          atual = (i + quadros.length) % quadros.length;
+          img.src = url(atual);
+          if (selo) selo.textContent = quadros[atual].replace("q", " Q");
+          if (rotulo) rotulo.textContent = quadros[atual].replace("q", " Q");
+          if (faixa && faixa.value !== String(atual)) faixa.value = String(atual);
+          preCarregar(url((atual + 1) % quadros.length));
+          preCarregar(url((atual - 1 + quadros.length) % quadros.length));
+        }
+
+        function parar() {
+          if (temporizador) { clearInterval(temporizador); temporizador = null; }
+          if (botao) {
+            botao.textContent = "▶";
+            botao.setAttribute("aria-label", raiz.getAttribute("data-play-label") || "Reproduzir");
+          }
+        }
+
+        function tocar() {
+          if (temporizador) { parar(); return; }
+          if (botao) {
+            botao.textContent = "❙❙";
+            botao.setAttribute("aria-label", raiz.getAttribute("data-pause-label") || "Pausar");
+          }
+          temporizador = setInterval(function () { mostrar(atual + 1); }, 900);
+        }
+
+        if (faixa) {
+          faixa.addEventListener("input", function () { parar(); mostrar(parseInt(faixa.value, 10)); });
+        }
+        if (botao) {
+          if (reduzido) { botao.style.display = "none"; } else { botao.addEventListener("click", tocar); }
+        }
+        raiz.addEventListener("mouseleave", parar);
+
+        img.src = url(atual);
+        if (selo) selo.textContent = quadros[atual].replace("q", " Q");
+        if (rotulo) rotulo.textContent = quadros[atual].replace("q", " Q");
+        preCarregar(url(atual - 1 < 0 ? atual : atual - 1));
+      })(scrubbers[s]);
+    }
+
+    // --------------------------------------------------------------- camadas
+    var exploradores = document.querySelectorAll("[data-explorer]");
+    for (var e = 0; e < exploradores.length; e++) {
+      (function (raiz) {
+        var abas = raiz.querySelectorAll(".explorer-tab");
+        var camadas = raiz.querySelectorAll(".explorer-stage img");
+        var legenda = raiz.querySelector(".explorer-caption");
+        var legendas = (raiz.getAttribute("data-captions") || "").split("|");
+
+        function ativar(indice) {
+          for (var i = 0; i < camadas.length; i++) {
+            var ativa = i === indice;
+            camadas[i].classList.toggle("is-active", ativa);
+            if (ativa && !camadas[i].getAttribute("src")) {
+              camadas[i].setAttribute("src", camadas[i].getAttribute("data-src"));
+            }
+          }
+          for (var j = 0; j < abas.length; j++) {
+            abas[j].setAttribute("aria-selected", j === indice ? "true" : "false");
+          }
+          if (legenda && legendas[indice]) legenda.textContent = legendas[indice];
+          var proxima = camadas[(indice + 1) % camadas.length];
+          if (proxima) preCarregar(proxima.getAttribute("data-src") || proxima.getAttribute("src"));
+        }
+
+        for (var k = 0; k < abas.length; k++) {
+          (function (indice) {
+            abas[k].addEventListener("click", function () { ativar(indice); });
+          })(k);
+        }
+        ativar(0);
+      })(exploradores[e]);
+    }
+  });
+</script>
+<script>
+  // Envio do formulário "Junte-se a nós".
+  //
+  // O site é estático, então quem recebe o POST é o aplicativo da web do Apps
+  // Script (ver ferramentas/apps-script/), apontado em data-endpoint no próprio
+  // formulário. Enquanto o endereço estiver vazio, o envio cai no caminho antigo
+  // de abrir o e-mail do visitante, para a página nunca ficar sem função.
+  //
+  // O Apps Script não devolve resposta legível por CORS, então o envio é feito
+  // com mode: no-cors e a confirmação na tela é "saiu", não "chegou". Quem
+  // garante a chegada é o e-mail que o script manda para o coordenador.
+  document.addEventListener("DOMContentLoaded", function () {
+    var form = document.getElementById("join-form");
+    if (!form) return;
+
+    var status = form.querySelector(".join-status");
+    var botao = form.querySelector(".join-submit");
+    var honeypot = form.querySelector(".join-honeypot");
+    var abertoEm = Date.now();
+
+    function mostrar(mensagem, tipo) {
+      if (!status) return;
+      status.textContent = mensagem;
+      status.className = "join-status " + (tipo || "");
+    }
+
+    function texto(chave, padrao) {
+      return form.getAttribute("data-" + chave) || padrao;
+    }
+
+    function abrirEmail() {
+      var corpo = texto("msg-assunto", "Interesse em ingressar no GAIA Lab") + " - " +
+        form.querySelector("#join-nome").value.trim() + "\n\n" +
+        form.querySelector("#join-msg").value.trim() + "\n\n" +
+        form.querySelector("#join-email").value.trim();
+      var destino = (form.getAttribute("data-email") || "").trim();
+      if (!destino) return false;
+      window.location.href = "mailto:" + destino +
+        "?subject=" + encodeURIComponent(form.getAttribute("data-msg-assunto") || "GAIA Lab") +
+        "&body=" + encodeURIComponent(corpo);
+      return true;
+    }
+
+    form.addEventListener("submit", function (evento) {
+      evento.preventDefault();
+      if (honeypot && honeypot.value) return;                       // robô
+      if (Date.now() - abertoEm < 3000) {                            // preenchido rápido demais
+        mostrar(texto("msg-rapido", "Confira os dados e envie de novo."), "erro");
+        return;
+      }
+
+      var endpoint = (form.getAttribute("data-endpoint") || "").trim();
+      var dados = new FormData(form);
+      dados.append("pagina", location.pathname);
+      dados.append("idioma", form.getAttribute("data-idioma") || "pt");
+
+      if (!endpoint) {                                              // sem backend configurado
+        abrirEmail();
+        return;
+      }
+
+      botao.disabled = true;
+      mostrar(texto("msg-enviando", "Enviando..."), "enviando");
+      var parametros = new URLSearchParams();
+      dados.forEach(function (valor, chave) { parametros.append(chave, valor); });
+
+      fetch(endpoint, { method: "POST", mode: "no-cors", body: parametros })
+        .then(function () {
+          mostrar(texto("msg-ok", "Inscrição enviada. Responderemos por e-mail."), "ok");
+          form.querySelectorAll("input, select, textarea, button").forEach(function (campo) {
+            if (!campo.classList.contains("join-honeypot")) campo.disabled = true;
+          });
+        })
+        .catch(function () {
+          // aqui sim dá para saber que não saiu: sem rede o fetch rejeita
+          botao.disabled = false;
+          mostrar(texto("msg-erro", "Não foi possível enviar. Escreva direto para o e-mail ao lado."), "erro");
+        });
     });
   });
 </script>
@@ -1565,7 +2034,7 @@ enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
 GAIA Lab
 </div>
 <address class="footer-address">
-FGV EMAp — Escola de Matemática Aplicada<br> Praia de Botafogo, 190 — 5º andar<br> Botafogo, Rio de Janeiro — RJ<br> CEP 22250-900, Brasil
+FGV EMAp, Escola de Matemática Aplicada<br> Praia de Botafogo, 190, 5º andar<br> Botafogo, Rio de Janeiro, RJ<br> CEP 22250-900, Brasil
 </address>
 </div>
 <div class="footer-col">

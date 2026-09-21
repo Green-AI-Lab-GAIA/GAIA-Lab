@@ -1,0 +1,81 @@
+<script>
+  // Envio do formulário "Junte-se a nós".
+  //
+  // O site é estático, então quem recebe o POST é o aplicativo da web do Apps
+  // Script (ver ferramentas/apps-script/), apontado em data-endpoint no próprio
+  // formulário. Enquanto o endereço estiver vazio, o envio cai no caminho antigo
+  // de abrir o e-mail do visitante, para a página nunca ficar sem função.
+  //
+  // O Apps Script não devolve resposta legível por CORS, então o envio é feito
+  // com mode: no-cors e a confirmação na tela é "saiu", não "chegou". Quem
+  // garante a chegada é o e-mail que o script manda para o coordenador.
+  document.addEventListener("DOMContentLoaded", function () {
+    var form = document.getElementById("join-form");
+    if (!form) return;
+
+    var status = form.querySelector(".join-status");
+    var botao = form.querySelector(".join-submit");
+    var honeypot = form.querySelector(".join-honeypot");
+    var abertoEm = Date.now();
+
+    function mostrar(mensagem, tipo) {
+      if (!status) return;
+      status.textContent = mensagem;
+      status.className = "join-status " + (tipo || "");
+    }
+
+    function texto(chave, padrao) {
+      return form.getAttribute("data-" + chave) || padrao;
+    }
+
+    function abrirEmail() {
+      var corpo = texto("msg-assunto", "Interesse em ingressar no GAIA Lab") + " - " +
+        form.querySelector("#join-nome").value.trim() + "\n\n" +
+        form.querySelector("#join-msg").value.trim() + "\n\n" +
+        form.querySelector("#join-email").value.trim();
+      var destino = (form.getAttribute("data-email") || "").trim();
+      if (!destino) return false;
+      window.location.href = "mailto:" + destino +
+        "?subject=" + encodeURIComponent(form.getAttribute("data-msg-assunto") || "GAIA Lab") +
+        "&body=" + encodeURIComponent(corpo);
+      return true;
+    }
+
+    form.addEventListener("submit", function (evento) {
+      evento.preventDefault();
+      if (honeypot && honeypot.value) return;                       // robô
+      if (Date.now() - abertoEm < 3000) {                            // preenchido rápido demais
+        mostrar(texto("msg-rapido", "Confira os dados e envie de novo."), "erro");
+        return;
+      }
+
+      var endpoint = (form.getAttribute("data-endpoint") || "").trim();
+      var dados = new FormData(form);
+      dados.append("pagina", location.pathname);
+      dados.append("idioma", form.getAttribute("data-idioma") || "pt");
+
+      if (!endpoint) {                                              // sem backend configurado
+        abrirEmail();
+        return;
+      }
+
+      botao.disabled = true;
+      mostrar(texto("msg-enviando", "Enviando..."), "enviando");
+      var parametros = new URLSearchParams();
+      dados.forEach(function (valor, chave) { parametros.append(chave, valor); });
+
+      fetch(endpoint, { method: "POST", mode: "no-cors", body: parametros })
+        .then(function () {
+          mostrar(texto("msg-ok", "Inscrição enviada. Responderemos por e-mail."), "ok");
+          form.querySelectorAll("input, select, textarea, button").forEach(function (campo) {
+            if (!campo.classList.contains("join-honeypot")) campo.disabled = true;
+          });
+        })
+        .catch(function () {
+          // aqui sim dá para saber que não saiu: sem rede o fetch rejeita
+          botao.disabled = false;
+          mostrar(texto("msg-erro", "Não foi possível enviar. Escreva direto para o e-mail ao lado."), "erro");
+        });
+    });
+  });
+</script>

@@ -16,48 +16,115 @@
       return d.innerHTML;
     }
 
+    function formatar(valor, decimais, milhares, decimal) {
+      var partes = valor.toFixed(decimais).split(".");
+      if (milhares) {
+        partes[0] = partes[0].replace(/\B(?=(\d{3})+(?!\d))/g, milhares);
+      }
+      return partes.join(decimal);
+    }
+  
     function contar(el) {
-      var alvo = parseInt(el.getAttribute("data-count"), 10);
+      var decimais = parseInt(el.getAttribute("data-decimals") || "0", 10);
+      var milhares = el.getAttribute("data-thousands") || "";
+      var decimal = el.getAttribute("data-decimal") || ",";
+      var alvo = parseFloat(el.getAttribute("data-count"));
+      var prefixo = el.getAttribute("data-prefix") || "";
       var sufixo = el.getAttribute("data-suffix") || "";
       if (reduzido) {
-        el.textContent = alvo + sufixo;
+        el.textContent = prefixo + formatar(alvo, decimais, milhares, decimal) + sufixo;
         return;
       }
       var inicio = null;
       function passo(agora) {
         if (!inicio) inicio = agora;
         var fracao = Math.min((agora - inicio) / 1200, 1);
-        el.textContent = Math.round(alvo * (1 - Math.pow(1 - fracao, 3))) + sufixo;
+        var suave = 1 - Math.pow(1 - fracao, 3);
+        el.textContent = prefixo + formatar(alvo * suave, decimais, milhares, decimal) + sufixo;
         if (fracao < 1) requestAnimationFrame(passo);
       }
       requestAnimationFrame(passo);
     }
 
+    var reveais = document.querySelectorAll(".reveal");
+
+    // Revela um elemento e dispara os contadores que estiverem dentro dele
+    function revelar(el) {
+      if (el.classList.contains("revealed")) return;
+      el.classList.add("revealed");
+      var numeros = el.querySelectorAll("[data-count]");
+      for (var n = 0; n < numeros.length; n++) contar(numeros[n]);
+    }
+
+    // Revela tudo que já está na tela, usado pela rede de segurança abaixo
+    function revelarVisiveis() {
+      for (var r = 0; r < reveais.length; r++) {
+        if (reveais[r].classList.contains("revealed")) continue;
+        var caixa = reveais[r].getBoundingClientRect();
+        if (caixa.top < window.innerHeight && caixa.bottom > 0) revelar(reveais[r]);
+      }
+    }
+
     var observador = new IntersectionObserver(function (entradas) {
       for (var i = 0; i < entradas.length; i++) {
         if (!entradas[i].isIntersecting) continue;
-        var el = entradas[i].target;
-        el.classList.add("revealed");
-        var numeros = el.querySelectorAll("[data-count]");
-        for (var j = 0; j < numeros.length; j++) contar(numeros[j]);
-        observador.unobserve(el);
+        revelar(entradas[i].target);
+        observador.unobserve(entradas[i].target);
       }
     }, { threshold: 0.15 });
 
-    var reveais = document.querySelectorAll(".reveal");
     for (var i = 0; i < reveais.length; i++) observador.observe(reveais[i]);
 
     // Rede de segurança: se o observador não disparar (navegadores antigos ou
     // situações excepcionais), o que já está na tela aparece mesmo assim
-    setTimeout(function () {
-      for (var r = 0; r < reveais.length; r++) {
-        if (reveais[r].classList.contains("revealed")) continue;
-        var caixa = reveais[r].getBoundingClientRect();
-        if (caixa.top < window.innerHeight && caixa.bottom > 0) {
-          reveais[r].classList.add("revealed");
-        }
+    setTimeout(revelarVisiveis, 1500);
+
+    // Quem participa da entrada: os blocos e os realces (.mark) dentro deles,
+    // que voltam a ser preenchidos junto (o contador se reinicia sozinho, por
+    // estar dentro do bloco que ganha a classe de novo)
+    var entradas = [];
+    for (var r = 0; r < reveais.length; r++) {
+      entradas.push(reveais[r]);
+      var marcas = reveais[r].querySelectorAll(".mark");
+      for (var j = 0; j < marcas.length; j++) entradas.push(marcas[j]);
+    }
+
+    // Recomeça a entrada dos blocos: tira a classe, devolve cada um ao
+    // observador e revela o que está na tela
+    function reiniciarReveais() {
+      var n;
+      for (n = 0; n < reveais.length; n++) {
+        reveais[n].classList.remove("revealed");
+        observador.observe(reveais[n]);
       }
-    }, 1500);
+      // sem transição enquanto o estado escondido é aplicado: se ela animasse
+      // aqui, a revelação logo abaixo encontraria tudo já no lugar e nada
+      // apareceria. A leitura de layout aplica esse estado antes de revelar
+      for (n = 0; n < entradas.length; n++) entradas[n].style.transition = "none";
+      void document.body.offsetHeight;
+      for (n = 0; n < entradas.length; n++) entradas[n].style.transition = "";
+      revelarVisiveis();
+    }
+
+    // O Quarto guarda o tema como classe no <body> (quarto-light/quarto-dark)
+    function temaAgora() {
+      if (document.documentElement.getAttribute("data-bs-theme") === "dark") return "dark";
+      return document.body.classList.contains("quarto-dark") ? "dark" : "light";
+    }
+
+    var temaAnterior = temaAgora();
+
+    // A troca de tema não move nada, então o observador de tela não dispara e
+    // os blocos ficariam revelados de uma vez só. Este vigia reanima quando o
+    // tema muda de fato, e ignora as outras classes que o <body> recebe
+    var vigiaTema = new MutationObserver(function () {
+      var agora = temaAgora();
+      if (agora === temaAnterior) return;
+      temaAnterior = agora;
+      if (!reduzido) reiniciarReveais();
+    });
+    vigiaTema.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+    vigiaTema.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "data-bs-theme"] });
 
     var carrosseis = document.querySelectorAll(".hscroll-wrap");
     for (var k = 0; k < carrosseis.length; k++) {

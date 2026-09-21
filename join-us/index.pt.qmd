@@ -11,19 +11,28 @@ toc: false
 
 O GAIA Lab está sempre aberto a estudantes e pesquisadores interessados em
 inteligência artificial aplicada a sensoriamento remoto, clima, florestas e
-agricultura. Preencha o formulário abaixo: ele monta um e-mail de apresentação
-para o coordenador do laboratório — revise e envie do seu próprio e-mail.
+agricultura. Preencha o formulário abaixo: a inscrição chega direto ao
+coordenador do laboratório.
 
 ```{=html}
-<form id="join-form" class="join-form">
+<form id="join-form" class="join-form"
+      data-idioma="pt"
+      data-email="dario.oliveira@fgv.br"
+      data-endpoint=""
+      data-token="troque-por-um-texto-aleatorio"
+      data-msg-enviando="Enviando..."
+      data-msg-ok="Inscrição enviada. Responderemos por e-mail."
+      data-msg-erro="Não foi possível enviar. Escreva direto para o e-mail ao lado."
+      data-msg-rapido="Confira os dados e envie de novo."
+      data-msg-assunto="Interesse em ingressar no GAIA Lab">
   <label for="join-nome">Nome</label>
-  <input id="join-nome" type="text" required>
+  <input id="join-nome" name="nome" type="text" autocomplete="name" required>
 
   <label for="join-email">Seu e-mail</label>
-  <input id="join-email" type="email" required>
+  <input id="join-email" name="email" type="email" autocomplete="email" required>
 
   <label for="join-nivel">Nível pretendido</label>
-  <select id="join-nivel">
+  <select id="join-nivel" name="nivel">
     <option>Iniciação Científica</option>
     <option>Mestrado</option>
     <option>Doutorado</option>
@@ -32,10 +41,14 @@ para o coordenador do laboratório — revise e envie do seu próprio e-mail.
   </select>
 
   <label for="join-msg">Mensagem</label>
-  <textarea id="join-msg" rows="6" required
+  <textarea id="join-msg" name="mensagem" rows="6" required
             placeholder="Conte brevemente sua formação e seus interesses de pesquisa"></textarea>
 
-  <button type="submit" class="join-submit">Preparar e-mail</button>
+  <input class="join-honeypot" name="website" type="text" tabindex="-1"
+         autocomplete="off" aria-hidden="true">
+
+  <button type="submit" class="join-submit">Enviar inscrição</button>
+  <p class="join-status" role="status" aria-live="polite"></p>
 </form>
 
 <p class="join-alt">Ou escreva diretamente para
@@ -46,28 +59,6 @@ para o coordenador do laboratório — revise e envie do seu próprio e-mail.
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
   <span>Voltar para o início</span>
 </a>
-
-<script>
-  // Monta um e-mail pré-preenchido com os dados do formulário e abre o
-  // cliente de e-mail do visitante; o envio em si fica com o visitante.
-  document.getElementById("join-form").addEventListener("submit", function (evento) {
-    evento.preventDefault();
-    var nome = document.getElementById("join-nome").value.trim();
-    var email = document.getElementById("join-email").value.trim();
-    var nivel = document.getElementById("join-nivel").value;
-    var mensagem = document.getElementById("join-msg").value.trim();
-
-    var assunto = "Interesse em ingressar no GAIA Lab — " + nome;
-    var corpo = "Nome: " + nome + "\nE-mail: " + email +
-                "\nNível pretendido: " + nivel + "\n\n" + mensagem;
-
-    // endereço montado em partes para não ficar exposto a robôs de spam
-    var destino = ["dario", "oliveira"].join(".") + "@" + "fgv.br";
-    window.location.href = "mailto:" + destino +
-      "?subject=" + encodeURIComponent(assunto) +
-      "&body=" + encodeURIComponent(corpo);
-  });
-</script>
 ```
 
 ```{=html}

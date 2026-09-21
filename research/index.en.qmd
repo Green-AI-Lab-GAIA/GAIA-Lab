@@ -1,7 +1,7 @@
 ---
 title: "Research"
-# Textos em lorem ipsum até os projetos reais serem cadastrados;
-# as texturas de images/ simulam cenas de satélite para o comparador
+# One section per front, in the same order: layer explorer, figures, metrics and
+# projects. The files come from tools/make_website_assets.py, already in WebP.
 resources:
   - "images/"
 page-layout: full
@@ -11,30 +11,97 @@ toc: false
 ```{=html}
 <div class="page-shell">
 <div class="page-main">
-<p class="rsec-lead reveal">Lorem ipsum dolor sit amet, consectetur adipiscing
-elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+<p class="rsec-lead reveal">Three research fronts, one method: turn satellite
+imagery and climate series into information that can be checked against official
+data. Each front has an explorer, the numbers behind it and what still does not
+work.</p>
 
 <section id="agriculture" class="rsec">
   <div class="rsec-head reveal">
     <div class="rsec-num">01</div>
     <div>
-      <span class="rsec-kicker">Research area</span>
+      <span class="rsec-kicker">Research front</span>
       <h2>Agriculture</h2>
     </div>
   </div>
-  <p class="rsec-lead reveal">Lorem ipsum dolor sit amet, consectetur
-  adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-  aliqua ut enim ad minim veniam.</p>
+  <p class="rsec-lead reveal">Crop classification and vegetation index series at
+  plot scale. Our own base covers 359,600 plots across 897 municipalities in five
+  states, with data from 2020 to 2025.</p>
+
+  <div class="rsec-block">
+    <h3 class="rsec-sub reveal">Vegetation index series</h3>
+    <p class="reveal">17 indices, 23 dates per year and 499,720 series per plot,
+    11.5 million rows in total. Switch the layer to see the same data from another
+    angle.</p>
+
+    <div class="explorer reveal" data-explorer data-captions="Average seasonality of the vegetation indices in the five states, by satellite overpass date.|NDVI heatmap, by municipality and date.|Bimodal distribution of the cloud cover index. The CLEAROB filter at 0.5 or above removes 5.55% of blind rows.">
+      <div class="explorer-stage">
+        <img class="is-active" src="images/agro/iv-sazonalidade.webp" alt="Average seasonality of vegetation indices in the five states">
+        <img data-src="images/agro/iv-heatmap.webp" alt="NDVI heatmap by municipality and date">
+        <img data-src="images/agro/iv-clearob.webp" alt="Cloud cover index distribution">
+      </div>
+      <div class="explorer-tabs" role="tablist" aria-label="Layers of the index series">
+        <button class="explorer-tab" type="button" role="tab" aria-selected="true">Seasonality by state</button>
+        <button class="explorer-tab" type="button" role="tab" aria-selected="false">NDVI heatmap</button>
+        <button class="explorer-tab" type="button" role="tab" aria-selected="false">Cloud filter</button>
+      </div>
+      <p class="explorer-caption">Average seasonality of the vegetation indices in the five states, by satellite overpass date.</p>
+    </div>
+
+    <div class="fig-grid reveal">
+      <figure class="fig-card">
+        <img src="images/agro/iv-tres-fases.webp" alt="From raw series to ready series, in three stages" loading="lazy">
+        <figcaption>From raw series to ready series: original observation, interpolation and smoothing.</figcaption>
+      </figure>
+      <figure class="fig-card">
+        <img src="images/agro/iv-cobertura.webp" alt="Valid observations per plot after the cloud filter" loading="lazy">
+        <figcaption>Valid observations per plot after the cloud filter.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="rsec-block">
+    <h3 class="rsec-sub reveal">Season start against the official window</h3>
+    <p class="reveal">We detect the start of the season from satellite and compare
+    it with the ZARC planting window in Campo Verde, Mato Grosso. The official
+    window describes soybean well and barely covers the rest of the farm
+    calendar.</p>
+
+    <div class="janela reveal">
+      <div class="janela-row">
+        <div class="janela-name">Soybean</div>
+        <div class="janela-track"><div class="janela-fill" style="width: 65.5%"></div></div>
+        <div class="janela-pct">65.5%</div>
+      </div>
+      <div class="janela-row">
+        <div class="janela-name">Cotton</div>
+        <div class="janela-track"><div class="janela-fill" style="width: 7.6%"></div></div>
+        <div class="janela-pct">7.6%</div>
+      </div>
+      <div class="janela-row">
+        <div class="janela-name">Second crop maize</div>
+        <div class="janela-track"><div class="janela-fill" style="width: 3.3%"></div></div>
+        <div class="janela-pct">3.3%</div>
+      </div>
+    </div>
+    <p class="explorer-caption reveal">Share of plots whose detected season start falls inside the official window, in Campo Verde, Mato Grosso. Soybean accounts for 2,971 of 4,539 plots. In the other municipalities analysed, soybean ranges from 72.7% to 84.5%.</p>
+  </div>
+
+  <div class="metrics reveal">
+    <div><div class="m-val">359,596</div><div class="m-lab">Plots mapped</div></div>
+    <div><div class="m-val">897</div><div class="m-lab">Municipalities</div></div>
+    <div><div class="m-val">17</div><div class="m-lab">Vegetation indices</div></div>
+    <div><div class="m-val">11.5M</div><div class="m-lab">Series rows</div></div>
+  </div>
 
   <div class="hscroll-wrap reveal">
     <button class="hscroll-btn prev" aria-label="Previous projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
     <div class="hscroll">
-      <article class="hs-card"><div class="hs-kicker">Project 01</div><div class="hs-title">Lorem ipsum hyperspectral</div><div class="hs-text">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</div></article>
-      <article class="hs-card"><div class="hs-kicker">Project 02</div><div class="hs-title">Dolor sit soil and yield</div><div class="hs-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</div></article>
-      <article class="hs-card"><div class="hs-kicker">Project 03</div><div class="hs-title">Amet consectetur pastures</div><div class="hs-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</div></article>
-      <article class="hs-card"><div class="hs-kicker">Project 04</div><div class="hs-title">Tempor incididunt irrigation</div><div class="hs-text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</div></article>
-      <article class="hs-card"><div class="hs-kicker">Project 05</div><div class="hs-title">Magna aliqua phenology</div><div class="hs-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Project 01</div><div class="hs-title">Crop classification by plot</div><div class="hs-text">Soybean, maize and cotton identified plot by plot and season by season. Against INPE field data in Campo Verde, mean accuracy was 98.7% for soybean, 91.5% for maize and 90.0% for cotton. The public reference scores 99.3%, 82.4% and 64.4%.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Project 02</div><div class="hs-title">Our own plot level base</div><div class="hs-text">A base generated every season, reprocessed every cycle and extensible to new states: 359,600 plots across 897 municipalities in Bahia, Maranhão, Mato Grosso, Tocantins and Paraná.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Project 03</div><div class="hs-title">Time series of indices</div><div class="hs-text">17 indices, 23 dates per year and 499,720 series, with a documented cloud filter and interpolation, 11.5 million rows in total.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Project 04</div><div class="hs-title">Grouping by behaviour</div><div class="hs-text">Each plot and season holds 1,670 values across indices, daily series and climate series. Grouping by similarity reveals behaviour profiles inside a portfolio.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Project 05</div><div class="hs-title">Productivity and risk</div><div class="hs-text">One of the groups, with 1,240 plots, shows productivity 18% below average, sandy soils and 3.1 times more claim occurrence. The group is classified as high risk.</div></article>
     </div>
     <button class="hscroll-btn next" aria-label="Next projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 5 7 7-7 7"/></svg></button>
   </div>
@@ -44,31 +111,114 @@ enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
   <div class="rsec-head reveal">
     <div class="rsec-num">02</div>
     <div>
-      <span class="rsec-kicker">Research area</span>
+      <span class="rsec-kicker">Research front</span>
       <h2>Forests</h2>
     </div>
   </div>
-  <p class="rsec-lead reveal">Lorem ipsum dolor sit amet, consectetur
-  adipiscing elit. Drag the divider to compare the same scene at two points in
-  time — sed do eiusmod tempor incididunt.</p>
+  <p class="rsec-lead reveal">Forest segmentation at property scale, validated
+  against official data from INPE. The model reaches 0.85 IoU in quarters that
+  were not part of training.</p>
 
-  <div class="compare reveal">
-    <img class="compare-under" src="images/floresta-antes.svg" alt="Simulated scene of preserved forest">
-    <img class="compare-over" src="images/floresta-depois.svg" alt="Same scene with deforested areas">
-    <div class="compare-handle"></div>
-    <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare before and after">
-    <span class="compare-label left">2019</span>
-    <span class="compare-label right">2025</span>
+  <div class="rsec-block">
+    <h3 class="rsec-sub reveal">The same scene, six years later</h3>
+    <div class="compare reveal">
+      <img class="compare-under" src="images/floresta/comparar-2020q1.webp" alt="Forest prediction in the first quarter of 2020">
+      <img class="compare-over" src="images/floresta/comparar-2026q2.webp" alt="Forest prediction in the second quarter of 2026">
+      <div class="compare-handle"></div>
+      <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare the two quarters">
+      <span class="compare-label left">2020 Q1</span>
+      <span class="compare-label right">2026 Q2</span>
+    </div>
+    <p class="compare-caption reveal">Model prediction for the same scene, in 2020 Q1 and 2026 Q2. Drag the divider to compare.</p>
   </div>
-  <p class="compare-caption reveal">Illustrative simulation — lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+  <div class="rsec-block">
+    <h3 class="rsec-sub reveal">Six years of forest, quarter by quarter</h3>
+    <p class="reveal">26 quarterly maps, from 2020 Q1 to 2026 Q2, walked through
+    with a slider.</p>
+
+    <div class="scrub reveal" data-scrub data-base="images/floresta/trim-" data-ext=".webp" data-play-label="Walk through the quarters" data-pause-label="Pause" data-quarters="2020q1,2020q2,2020q3,2020q4,2021q1,2021q2,2021q3,2021q4,2022q1,2022q2,2022q3,2022q4,2023q1,2023q2,2023q3,2023q4,2024q1,2024q2,2024q3,2024q4,2025q1,2025q2,2025q3,2025q4,2026q1,2026q2">
+      <div class="scrub-stage">
+        <img class="scrub-img" alt="Forest map of the selected quarter">
+        <span class="scrub-badge">2026 Q2</span>
+      </div>
+      <div class="scrub-controls">
+        <input class="scrub-range" type="range" min="0" max="25" step="1" value="25" aria-label="Map quarter">
+        <span class="scrub-label">2026 Q2</span>
+      </div>
+    </div>
+    <p class="explorer-caption reveal">Forest prediction by quarter. Images load on demand, one quarter at a time.</p>
+  </div>
+
+  <div class="rsec-block">
+    <h3 class="rsec-sub reveal">What the model sees and how confident it is</h3>
+    <div class="explorer reveal" data-explorer data-captions="Model prediction for the 2023 Q3 quarter, covering the full analysis area.|Prediction restricted to Rural Environmental Registry areas, where the property is the unit of analysis.|2023 forest reference used in the model evaluation.">
+      <div class="explorer-stage">
+        <img class="is-active" src="images/floresta/camada-predicao.webp" alt="Forest prediction from the model">
+        <img data-src="images/floresta/camada-car.webp" alt="Prediction restricted to Rural Environmental Registry areas">
+        <img data-src="images/floresta/camada-referencia.webp" alt="2023 forest reference">
+      </div>
+      <div class="explorer-tabs" role="tablist" aria-label="Layers of the forest map">
+        <button class="explorer-tab" type="button" role="tab" aria-selected="true">Model prediction</button>
+        <button class="explorer-tab" type="button" role="tab" aria-selected="false">Registry areas</button>
+        <button class="explorer-tab" type="button" role="tab" aria-selected="false">2023 reference</button>
+      </div>
+      <p class="explorer-caption">Model prediction for the 2023 Q3 quarter, covering the full analysis area.</p>
+    </div>
+
+    <figure class="fig-card reveal">
+      <img src="images/floresta/mapa-incerteza.webp" alt="Model confidence map in six classes" loading="lazy">
+      <figcaption>Model confidence pixel by pixel, in six classes, in the 2023 Q3 quarter. Each colour shows how stable that pixel decision is.</figcaption>
+    </figure>
+
+    <div class="nota reveal">
+      <strong>Where the model fails.</strong> Validated against DETER alerts and
+      PRODES polygons, recall for the forest class sits at 0.28 and 0.26, and the
+      predicted area is larger than the alerted area, 165.3 km² against 27.1 km²
+      from DETER and 44.5 km² from PRODES. Part of that is a difference of
+      criteria: the official alert marks recent clearing, the model marks absence
+      of canopy. We publish the number because it defines the correct use of the
+      product.
+    </div>
+  </div>
+
+  <div class="rsec-block">
+    <h3 class="rsec-sub reveal">Results by quarter and by cell</h3>
+    <div class="fig-grid reveal">
+      <figure class="fig-card">
+        <img src="images/floresta/fig-temporal.webp" alt="Model performance by quarter" loading="lazy">
+        <figcaption>Performance by quarter in the temporal context experiment, which uses the previous quarter as extra information.</figcaption>
+      </figure>
+      <figure class="fig-card">
+        <img src="images/floresta/fig-celulas.webp" alt="Model performance by cell of the scene" loading="lazy">
+        <figcaption>Performance by cell of the scene, showing where the model is more or less stable inside the same area.</figcaption>
+      </figure>
+      <figure class="fig-card">
+        <img src="images/floresta/fig-confusao.webp" alt="Confusion matrix of the model with the infrared band" loading="lazy">
+        <figcaption>Confusion matrix of the quarterly model. The near infrared band takes IoU from 0.72 to 0.74.</figcaption>
+      </figure>
+      <figure class="fig-card">
+        <img src="images/floresta/fig-deter.webp" alt="Area per year according to the model, DETER and PRODES" loading="lazy">
+        <figcaption>Area per year according to the model and according to the two official systems, DETER and PRODES.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="metrics reveal">
+    <div><div class="m-val">0.85</div><div class="m-lab">IoU in the best model</div></div>
+    <div><div class="m-val">26</div><div class="m-lab">Quarters mapped</div></div>
+    <div><div class="m-val">180</div><div class="m-lab">GeoTIFF delivered</div></div>
+    <div><div class="m-val">203</div><div class="m-lab">DETER alerts assessed</div></div>
+  </div>
 
   <div class="hscroll-wrap reveal">
     <button class="hscroll-btn prev" aria-label="Previous projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
     <div class="hscroll">
-      <article class="hs-card"><div class="hs-kicker">Project 01</div><div class="hs-title">Lorem ipsum deforestation</div><div class="hs-text">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</div></article>
-      <article class="hs-card"><div class="hs-kicker">Project 02</div><div class="hs-title">Dolor sit tree species</div><div class="hs-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</div></article>
-      <article class="hs-card"><div class="hs-kicker">Project 03</div><div class="hs-title">Amet consectetur reforestation</div><div class="hs-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</div></article>
-      <article class="hs-card"><div class="hs-kicker">Project 04</div><div class="hs-title">Tempor incididunt biodiversity</div><div class="hs-text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Project 01</div><div class="hs-title">Satellite forest segmentation</div><div class="hs-text">A SegFormer model with Sentinel-2 imagery from the Brazil Data Cube: 0.74 IoU in the quarterly version with the near infrared band and 0.85 with temporal context. The analysis grid is 9,712 by 11,110 pixels, at about 10 metres per pixel.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Project 02</div><div class="hs-title">Spatial generalisation</div><div class="hs-text">Trained in one region and tested in another, to measure what the model learns about forest and what it learns about place: 0.79 from west to east and 0.76 from south to north.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Project 03</div><div class="hs-title">Forest inside registry areas</div><div class="hs-text">Evaluation with the rural property as the unit: 0.797 IoU. Forest covers 24% of the registry area, against 37% of the bounding box around the scene.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Project 04</div><div class="hs-title">Validation against DETER and PRODES</div><div class="hs-text">203 DETER alerts and 9,105 PRODES polygons compared with the prediction, with the limits published alongside the result.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Project 05</div><div class="hs-title">Quarterly deliveries</div><div class="hs-text">180 GeoTIFF files delivered, one per quarter and per extent, from 2020 to 2026, ready for use in a geographic information system.</div></article>
     </div>
     <button class="hscroll-btn next" aria-label="Next projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 5 7 7-7 7"/></svg></button>
   </div>
@@ -78,21 +228,86 @@ enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
   <div class="rsec-head reveal">
     <div class="rsec-num">03</div>
     <div>
-      <span class="rsec-kicker">Research area</span>
+      <span class="rsec-kicker">Research front</span>
       <h2>Climate</h2>
     </div>
   </div>
-  <p class="rsec-lead reveal">Lorem ipsum dolor sit amet, consectetur
-  adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-  aliqua.</p>
+  <p class="rsec-lead reveal">Climate trends and agricultural risk in 15-year
+  windows, municipality by municipality, linking the climate series to crop
+  behaviour.</p>
+
+  <div class="rsec-block">
+    <h3 class="rsec-sub reveal">15 years of climate in Nova Mutum, Mato Grosso</h3>
+    <p class="reveal">Six trend indicators between 2011 and 2025, compared with the
+    1985 to 2010 average where a reference series exists.</p>
+
+    <div class="trend-grid reveal">
+      <div class="trend-card">
+        <div class="trend-name">Maximum temperature</div>
+        <div class="trend-value" data-count="1.1" data-decimals="1" data-decimal="." data-prefix="+" data-suffix=" °C">0</div>
+        <div class="trend-note">increase over 15 years, about 0.076 °C per year</div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-name">Mean temperature</div>
+        <div class="trend-value" data-count="0.9" data-decimals="1" data-decimal="." data-prefix="+" data-suffix=" °C">0</div>
+        <div class="trend-note">increase over 15 years, about 0.066 °C per year</div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-name">Minimum temperature</div>
+        <div class="trend-value" data-count="0.8" data-decimals="1" data-decimal="." data-prefix="+" data-suffix=" °C">0</div>
+        <div class="trend-note">increase over 15 years, about 0.056 °C per year</div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-name">Warm nights</div>
+        <div class="trend-value" data-count="108" data-prefix="+" data-suffix=" nights">0</div>
+        <div class="trend-note">nights with minimum above 22 °C, 7.7 more nights per year</div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-name">Annual rainfall</div>
+        <div class="trend-value">1,631 mm</div>
+        <div class="trend-note">period average, 7.7% below the 1,767 mm of 1985 to 2010</div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-name">Dry days in the rainy season</div>
+        <div class="trend-value">24.5 days</div>
+        <div class="trend-note">period average, 5.3 days more than the 19.2 days of 1985 to 2010</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rsec-block">
+    <h3 class="rsec-sub reveal">Operational risk and systemic risk</h3>
+    <p class="reveal">The reading is always relative to the neighbourhood, to
+    separate what is a farm problem from what is a regional problem.</p>
+
+    <div class="risco-pair reveal">
+      <div class="risco-card">
+        <div class="risco-kicker">Operational risk</div>
+        <h4>Management, pest, condition and grower context</h4>
+        <p>What sets one plot apart from its close neighbours, under the same climate and the same soil.</p>
+      </div>
+      <div class="risco-card">
+        <div class="risco-kicker">Systemic risk</div>
+        <h4>Drought, frost and regional dry spells</h4>
+        <p>What hits the whole region, and therefore cannot be solved by an isolated management decision.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="metrics reveal">
+    <div><div class="m-val">15</div><div class="m-lab">Years of series</div></div>
+    <div><div class="m-val">6</div><div class="m-lab">Trend indicators</div></div>
+    <div><div class="m-val">+108</div><div class="m-lab">Warm nights</div></div>
+    <div><div class="m-val">2011 to 2025</div><div class="m-lab">Period analysed</div></div>
+  </div>
 
   <div class="hscroll-wrap reveal">
     <button class="hscroll-btn prev" aria-label="Previous projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
     <div class="hscroll">
-      <article class="hs-card"><div class="hs-kicker">Project 01</div><div class="hs-title">Lorem ipsum extreme events</div><div class="hs-text">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</div></article>
-      <article class="hs-card"><div class="hs-kicker">Project 02</div><div class="hs-title">Dolor sit climate series</div><div class="hs-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</div></article>
-      <article class="hs-card"><div class="hs-kicker">Project 03</div><div class="hs-title">Amet consectetur emissions</div><div class="hs-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</div></article>
-      <article class="hs-card"><div class="hs-kicker">Project 04</div><div class="hs-title">Tempor incididunt forecasting</div><div class="hs-text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Project 01</div><div class="hs-title">Municipal climate trend</div><div class="hs-text">15-year windows with six indicators per municipality, to separate trend from year to year variation.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Project 02</div><div class="hs-title">Warm nights and heat stress</div><div class="hs-text">Minimum temperature above 22 °C accumulated 108 extra nights in 15 years. It is the indicator that talks most directly to yield loss.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Project 03</div><div class="hs-title">Rainfall and dry spells</div><div class="hs-text">Accumulated rainfall and dry days in the rainy season, compared with the 1985 to 2010 reference.</div></article>
+      <article class="hs-card"><div class="hs-kicker">Project 04</div><div class="hs-title">Vegetation indices as a drought sensor</div><div class="hs-text">The crop response to water shortage shows up in the index series before it shows up in productivity, which links this front to Agriculture.</div></article>
     </div>
     <button class="hscroll-btn next" aria-label="Next projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 5 7 7-7 7"/></svg></button>
   </div>

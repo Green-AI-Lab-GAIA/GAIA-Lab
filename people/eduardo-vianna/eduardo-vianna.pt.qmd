@@ -8,7 +8,6 @@ education: "Bacharel em Matemática Aplicada, FGV EMAp"
 image: avatar.jpeg
 page-layout: full
 toc: false
-
 about:
   id: perfil
   template: trestles

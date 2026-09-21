@@ -1,9 +1,11 @@
 ---
 title: "GAIA Lab"
 # A logo é servida localmente (icon/) para carregar junto com o resto da
-# página; as imagens padrão são os fallbacks de fotos quebradas no site todo
+# página; as imagens padrão são os fallbacks de fotos quebradas no site todo.
+# images/hero/ traz os quadros do mapa usados no fundo do hero e a foto base.
 resources:
   - "icon/"
+  - "images/hero/"
   - "images/avatar-default.svg"
   - "images/paper-default.svg"
 page-layout: custom
@@ -13,15 +15,22 @@ toc: false
 
 ```{=html}
 <div class="home-hero">
+  <div class="hero-map" aria-hidden="true">
+    <img src="images/hero/mapa-1.webp" alt="">
+    <img src="images/hero/mapa-2.webp" alt="">
+    <img src="images/hero/mapa-3.webp" alt="">
+    <img src="images/hero/mapa-4.webp" alt="">
+    <img src="images/hero/mapa-5.webp" alt="">
+  </div>
   <div class="hero-lockup">
     <img class="logo" src="icon/icon.png" alt="Logo do GAIA Lab">
     <span class="hero-name">GAIA Lab</span>
   </div>
   <p class="hero-tagline">
-    Aprendizado de máquina e aprendizado profundo aplicados ao monitoramento
-    do clima e da Terra — desde 2023.
+    Aprendizado de máquina e sensoriamento remoto para floresta, agricultura e
+    clima, na FGV EMAp, desde 2024.
   </p>
-  <a class="hero-cta" href="/about/">Saiba mais sobre nós</a>
+  <a class="hero-cta" href="/research/">Ver a pesquisa</a>
   <a class="hero-scroll" href="#home-areas" aria-label="Rolar para as áreas de pesquisa">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
       <path d="m5 9 7 7 7-7"/>
@@ -29,6 +38,7 @@ toc: false
   </a>
 </div>
 
+<div class="home-body">
 <div id="home-areas" class="home-areas">
   <a class="area-card reveal" href="/research/#agricultura">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round">
@@ -36,7 +46,8 @@ toc: false
       <path d="M4 20C9 15 13 11 17 7"/>
     </svg>
     <div class="area-title">Agricultura</div>
-    <div class="area-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.</div>
+    <div class="area-text">Classificação de culturas e séries de índices de vegetação em escala de talhão.</div>
+    <div class="area-kpi">359,6 mil talhões<span>em 5 estados, de 2020 a 2025</span></div>
   </a>
   <a class="area-card reveal" href="/research/#floresta">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -44,7 +55,8 @@ toc: false
       <path d="M12 17v5"/>
     </svg>
     <div class="area-title">Floresta</div>
-    <div class="area-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.</div>
+    <div class="area-text">Segmentação de floresta por satélite, validada contra dados oficiais do INPE.</div>
+    <div class="area-kpi">0,85 de IoU<span>em 26 trimestres, de 2020 a 2026</span></div>
   </a>
   <a class="area-card reveal" href="/research/#clima">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -53,7 +65,44 @@ toc: false
       <path d="M13 17.5a4 4 0 0 1 7.6-1.2A3 3 0 0 1 20 22h-6a3 3 0 0 1-1-4.5Z"/>
     </svg>
     <div class="area-title">Clima</div>
-    <div class="area-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.</div>
+    <div class="area-text">Tendências climáticas e risco agrícola em janelas de 15 anos.</div>
+    <div class="area-kpi">+1,1 °C na máxima<span>Nova Mutum, MT, de 2011 a 2025</span></div>
   </a>
+</div>
+```
+
+## O laboratório em números
+
+```{=html}
+<div class="stats reveal">
+  <div><div class="stat-num" data-count="359596" data-thousands=".">0</div><div class="stat-label">Talhões mapeados</div></div>
+  <div><div class="stat-num" data-count="897">0</div><div class="stat-label">Municípios</div></div>
+  <div><div class="stat-num" data-count="5">0</div><div class="stat-label">Estados</div></div>
+  <div><div class="stat-num">2020 a 2025</div><div class="stat-label">Período dos dados</div></div>
+</div>
+```
+
+## Como fazemos
+
+```{=html}
+<div class="hscroll-wrap reveal">
+  <button class="hscroll-btn prev" aria-label="Etapa anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <div class="hscroll">
+    <article class="hs-card"><div class="hs-step">01</div><div class="hs-kicker">Etapa</div><div class="hs-title">Segmentação de talhões</div><div class="hs-text">Delimitação de cada área produtiva a partir de imagens de satélite.</div></article>
+    <article class="hs-card"><div class="hs-step">02</div><div class="hs-kicker">Etapa</div><div class="hs-title">Classificação de culturas</div><div class="hs-text">Soja, milho e algodão identificados talhão por talhão, safra por safra.</div></article>
+    <article class="hs-card"><div class="hs-step">03</div><div class="hs-kicker">Etapa</div><div class="hs-title">Séries de satélite e clima</div><div class="hs-text">17 índices de vegetação e 10 séries climáticas somam 1.670 valores por talhão e safra.</div></article>
+    <article class="hs-card"><div class="hs-step">04</div><div class="hs-kicker">Etapa</div><div class="hs-title">Agrupamento por semelhança</div><div class="hs-text">Talhões reunidos por comportamento espectral e climático.</div></article>
+    <article class="hs-card"><div class="hs-step">05</div><div class="hs-kicker">Etapa</div><div class="hs-title">Caracterização de risco</div><div class="hs-text">Cada grupo é descrito por manejo, produtividade e ocorrência de sinistro.</div></article>
+  </div>
+  <button class="hscroll-btn next" aria-label="Próxima etapa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 5 7 7-7 7"/></svg></button>
+</div>
+```
+
+```{=html}
+<p class="reveal" style="margin: 2.5rem 0 3rem;">
+  <a class="pub-btn" href="/publications/">Ver as publicações</a>
+  <a class="pub-btn" href="/about/">Sobre o laboratório</a>
+  <a class="pub-btn" href="/join-us/">Junte-se a nós</a>
+</p>
 </div>
 ```

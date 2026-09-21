@@ -1,8 +1,8 @@
 ---
 title: "Exploring EnMAP hyperspectral images and ensemble deep learning for classifying forest land-cover types in Brazil"
 paper-authors: "Matheus Pinheiro Ferreira, Matheus Santos Fuza, José M. S. M. Viveiros, Tomás Ferranti, Dário Oliveira, Giulio Brossi Santoro, Paulo Guilherme Molin, Catherine Torres de Almeida, Angélica F. Resende, Danilo R. A. de Almeida, Yelu Zeng, Ricardo Ribeiro Rodrigues, Pedro H. S. Brancalion"
-pub-date: "Abril de 2026"
 venue: "International Journal of Remote Sensing"
+pub-date: "Abril de 2026"
 date: 2026-04-03
 image: thumbnail.png
 snippet: "Ensemble de deep learning com imagens hiperespectrais do satélite EnMAP para classificar tipos de cobertura florestal em São Paulo."
@@ -28,7 +28,6 @@ toc: false
 
 [Ver publicação](https://www.tandfonline.com/doi/figure/10.1080/01431161.2026.2628300?scroll=top&needAccess=true){.pub-btn}
 [Baixar PDF](https://www.tandfonline.com/doi/epdf/10.1080/01431161.2026.2628300?needAccess=true){.pub-btn}
-
 :::
 
 ::::

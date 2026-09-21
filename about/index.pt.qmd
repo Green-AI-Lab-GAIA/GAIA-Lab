@@ -1,6 +1,6 @@
 ---
 title: "Sobre"
-# Textos em lorem ipsum até a história e os números reais serem fornecidos
+# A galeria fica em _galeria.pt.qmd, com as legendas das fotos.
 resources:
   - "images/"
 page-layout: full
@@ -13,17 +13,18 @@ toc: false
 ```
 
 ```{=html}
-<p class="mission reveal">Lorem ipsum dolor sit amet, aplicando
-<em class="mark">aprendizado profundo</em> ao monitoramento do
-<em class="mark">clima</em>, das <em class="mark">florestas</em> e da
-<em class="mark">agricultura</em> — consectetur adipiscing elit, sed do
-eiusmod tempor incididunt.</p>
+<p class="mission reveal">O GAIA Lab desenvolve métodos de
+<em class="mark">aprendizado de máquina</em> que transformam imagens de satélite e
+dados climáticos em informação verificável sobre <em class="mark">florestas</em>,
+<em class="mark">agricultura</em> e <em class="mark">clima</em>. Criado em 2024 na
+FGV EMAp, o laboratório trabalha em escala territorial, em cinco estados
+brasileiros, e confere cada resultado contra referências oficiais.</p>
 
 <div class="stats reveal">
-  <div><div class="stat-num" data-count="15">0</div><div class="stat-label">Pesquisadores</div></div>
-  <div><div class="stat-num" data-count="12">0</div><div class="stat-label">Projetos</div></div>
-  <div><div class="stat-num" data-count="30" data-suffix="+">0</div><div class="stat-label">Publicações</div></div>
-  <div><div class="stat-num" data-count="2023">0</div><div class="stat-label">Fundação</div></div>
+  <div><div class="stat-num" data-count="22">0</div><div class="stat-label">Pesquisadores</div></div>
+  <div><div class="stat-num" data-count="3">0</div><div class="stat-label">Frentes de pesquisa</div></div>
+  <div><div class="stat-num" data-count="3">0</div><div class="stat-label">Publicações</div></div>
+  <div><div class="stat-num" data-count="2024">0</div><div class="stat-label">Fundação</div></div>
 </div>
 ```
 
@@ -32,20 +33,20 @@ eiusmod tempor incididunt.</p>
 ```{=html}
 <div class="timeline">
   <div class="tl-item reveal">
-    <div class="tl-year">2023</div>
-    <div class="tl-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit — fundação do laboratório na FGV EMAp, sed do eiusmod tempor incididunt.</div>
-  </div>
-  <div class="tl-item reveal">
     <div class="tl-year">2024</div>
-    <div class="tl-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+    <div class="tl-text">Criação do laboratório na FGV EMAp, no Rio de Janeiro, reunindo pesquisa em aprendizado de máquina aplicada ao monitoramento da Terra.</div>
   </div>
   <div class="tl-item reveal">
     <div class="tl-year">2025</div>
-    <div class="tl-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
+    <div class="tl-text">Construção da base própria de talhões e das séries de índices de vegetação: 359,6 mil talhões em 897 municípios de cinco estados, com dados de 2020 a 2025.</div>
+  </div>
+  <div class="tl-item reveal">
+    <div class="tl-year">2025</div>
+    <div class="tl-text">Equipe na 14ª Conferência Internacional de Informática Climática, em abril, e primeiros modelos de segmentação de floresta com imagens Sentinel-2 do Brazil Data Cube.</div>
   </div>
   <div class="tl-item reveal">
     <div class="tl-year">2026</div>
-    <div class="tl-text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+    <div class="tl-text">Produto de floresta em escala, com 26 mapas trimestrais entregues de 2020 a 2026 e validação contra os alertas DETER e os polígonos PRODES, do INPE.</div>
   </div>
 </div>
 ```
@@ -79,17 +80,31 @@ eiusmod tempor incididunt.</p>
 <div class="hscroll-wrap reveal">
   <button class="hscroll-btn prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
   <div class="hscroll">
-    <article class="hs-card"><div class="hs-kicker">Princípio 01</div><div class="hs-title">Lorem ipsum ciência aberta</div><div class="hs-text">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</div></article>
-    <article class="hs-card"><div class="hs-kicker">Princípio 02</div><div class="hs-title">Dolor sit colaboração</div><div class="hs-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div></article>
-    <article class="hs-card"><div class="hs-kicker">Princípio 03</div><div class="hs-title">Amet consectetur impacto real</div><div class="hs-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</div></article>
-    <article class="hs-card"><div class="hs-kicker">Princípio 04</div><div class="hs-title">Tempor incididunt formação</div><div class="hs-text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</div></article>
+    <article class="hs-card"><div class="hs-kicker">Princípio 01</div><div class="hs-title">Ciência reprodutível</div><div class="hs-text">A mesma execução, repetida, varia até ±0,0076 de IoU. Todo resultado sai com essa margem declarada.</div></article>
+    <article class="hs-card"><div class="hs-kicker">Princípio 02</div><div class="hs-title">Validação contra referências oficiais</div><div class="hs-text">Cada produto é comparado com DETER, PRODES, ZARC, MapBiomas e o Cadastro Ambiental Rural.</div></article>
+    <article class="hs-card"><div class="hs-kicker">Princípio 03</div><div class="hs-title">Escala territorial</div><div class="hs-text">359,6 mil talhões, 897 municípios e cinco estados, com séries de 2020 a 2025.</div></article>
+    <article class="hs-card"><div class="hs-kicker">Princípio 04</div><div class="hs-title">Transparência sobre os limites</div><div class="hs-text">Publicamos onde o modelo erra. Na validação contra alertas do DETER, o recall da classe de floresta é 0,28.</div></article>
   </div>
   <button class="hscroll-btn next" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 5 7 7-7 7"/></svg></button>
 </div>
+```
+
+## Capacidade computacional
+
+```{=html}
+<p class="reveal">Treinamento em GPU dedicada e inferência em escala territorial, com estrutura própria do laboratório.</p>
+
+<div class="metrics reveal">
+  <div><div class="m-val">14</div><div class="m-lab">Estações de trabalho</div></div>
+  <div><div class="m-val">15</div><div class="m-lab">GPUs</div></div>
+  <div><div class="m-val">312 GB</div><div class="m-lab">VRAM, capacidade nominal</div></div>
+  <div><div class="m-val">1,6 TB</div><div class="m-lab">Memória RAM</div></div>
+</div>
 
 <p class="reveal" style="margin: 2rem 0 3rem;">
-  <a class="pub-btn" href="/join-us/">Junte-se a nós</a>
   <a class="pub-btn" href="/people/">Conheça a equipe</a>
+  <a class="pub-btn" href="/publications/">Ver as publicações</a>
+  <a class="pub-btn" href="/join-us/">Junte-se a nós</a>
 </p>
 ```
 

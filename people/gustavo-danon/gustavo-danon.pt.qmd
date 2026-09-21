@@ -8,7 +8,6 @@ education: "Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp"
 image: avatar.jpg
 page-layout: full
 toc: false
-
 about:
   id: perfil
   template: trestles

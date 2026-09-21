@@ -20,7 +20,7 @@ toc: false
     <img class="course-image" src="images/redes-neurais.svg"
          alt="Illustration of a neural network with layers of connected nodes">
     <div class="course-info">
-      <span class="course-level">Graduate Program — EMAp</span>
+      <span class="course-level">Graduate program in Applied Mathematics and Data Science, EMAp</span>
       <div class="course-title">Neural Networks and Deep Learning</div>
       <ul class="course-details">
         <li><strong>Professor:</strong> Dário Oliveira</li>
@@ -36,7 +36,7 @@ toc: false
     <img class="course-image" src="images/aprendizado-profundo.svg"
          alt="Illustration of stacked layer blocks of a deep model">
     <div class="course-info">
-      <span class="course-level">Undergraduate — Data Science and AI, EMAp</span>
+      <span class="course-level">Undergraduate program in Data Science and AI, EMAp</span>
       <div class="course-title">Deep Learning</div>
       <ul class="course-details">
         <li><strong>Professor:</strong> Dário Oliveira</li>

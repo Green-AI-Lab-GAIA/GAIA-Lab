@@ -1,8 +1,8 @@
 ---
 title: "Deep Clustering for Climate: Analyzing Teleconnections through Learned Categorical States"
 paper-authors: "Lívia Meinhardt, Dário Oliveira"
-pub-date: "April 2026"
 venue: "arXiv preprint"
+pub-date: "April 2026"
 date: 2026-04-24
 image: thumbnail.png
 snippet: "Masked Siamese Networks discretize climate time series into semantically rich clusters, with statistical associations to El Niño events."

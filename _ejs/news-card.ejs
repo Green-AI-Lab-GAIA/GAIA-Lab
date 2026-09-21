@@ -1,7 +1,7 @@
 ```{=html}
 <div class="news-list">
   <% for (const item of items) { %>
-    <a class="news-card" href="<%- item.path %>" data-date="<%= item.date %>">
+    <a class="news-card" href="<%- item['news-url'] || item.path %>" data-date="<%= item.date %>">
       <% if (item.image) { %>
         <img class="news-image" src="<%= item.image %>" alt="" loading="lazy">
       <% } %>

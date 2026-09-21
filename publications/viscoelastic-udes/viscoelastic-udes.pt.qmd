@@ -1,8 +1,8 @@
 ---
 title: "Finding the underlying viscoelastic constitutive equation via universal differential equations and differentiable physics"
 paper-authors: "Elias C. Rodrigues, Roney L. Thompson, Dário A. B. Oliveira, Roberto F. Ausas"
-pub-date: "Novembro de 2025"
 venue: "Engineering Applications of Artificial Intelligence"
+pub-date: "Novembro de 2025"
 date: 2025-11-15
 image: thumbnail.png
 snippet: "Equações diferenciais universais e física diferenciável reconstroem termos ausentes em modelos constitutivos de fluidos viscoelásticos."

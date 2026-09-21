@@ -8,7 +8,6 @@ education: "MSc in Applied Mathematics and Data Science, FGV EMAp"
 image: avatar.jpeg
 page-layout: full
 toc: false
-
 about:
   id: perfil
   template: trestles

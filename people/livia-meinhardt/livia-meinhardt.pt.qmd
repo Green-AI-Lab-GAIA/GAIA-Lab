@@ -8,7 +8,6 @@ education: "Doutoranda, FGV EMAp"
 image: avatar.jpg
 page-layout: full
 toc: false
-
 about:
   id: perfil
   template: trestles

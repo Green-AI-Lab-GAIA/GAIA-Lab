@@ -8,7 +8,6 @@ education: "Doutorando, FGV EMAp"
 image: avatar.jpeg
 page-layout: full
 toc: false
-
 about:
   id: perfil
   template: trestles
@@ -31,7 +30,7 @@ Pesquisador do GAIA Lab. Doutorando na FGV EMAp, mestre em Modelagem Matemática
 
 ## Formação
 
-- Doutorando,, FGV EMAp.
+- Doutorando, FGV EMAp.
 - Mestrado em Modelagem Matemática, FGV EMAp.
 - Graduação em Matemática Aplicada, FGV EMAp.
 - Técnico em Eletrônica, COLTEC/UFMG.

@@ -6,8 +6,8 @@ people_group: "undergrad"
 subtitle: "Iniciação Científica"
 education: "Graduação em Ciência de Dados e IA, FGV EMAp"
 image: avatar.jpeg
+page-layout: full
 toc: false
-
 about:
   id: perfil
   template: trestles
@@ -47,4 +47,9 @@ Deep learning robusto, processamento de linguagem natural e estatística robusta
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
   <span>Voltar para a equipe</span>
 </a>
+```
+
+```{=html}
+</div>
+</div>
 ```

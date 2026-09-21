@@ -1,0 +1,238 @@
+slug,data,imagem,titulo,titulo_en,autores,veiculo,local_pt,local_en,publicado_pt,publicado_en,resumo_pt,resumo_en,botao1_pt,botao1_en,botao1_url,botao2_pt,botao2_en,botao2_url,texto_pt,texto_en
+deep-clustering-climate,2026-04-24,thumbnail.png,Deep Clustering for Climate: Analyzing Teleconnections through Learned Categorical States,Deep Clustering for Climate: Analyzing Teleconnections through Learned Categorical States,"Lívia Meinhardt, Dário Oliveira",arXiv preprint,arXiv preprint arXiv:2604.22909,arXiv preprint arXiv:2604.22909,Abril de 2026,April 2026,"Redes siamesas mascaradas discretizam séries temporais climáticas em clusters semanticamente ricos, com associações estatísticas a eventos de El Niño.","Masked Siamese Networks discretize climate time series into semantically rich clusters, with statistical associations to El Niño events.",Ver no arXiv,View on arXiv,https://arxiv.org/abs/2604.22909,Baixar PDF,Download PDF,https://arxiv.org/pdf/2604.22909,"Compreender e representar a complexa variabilidade climática é essencial tanto para a análise científica quanto para a modelagem 
+preditiva. Contudo, identificar regimes climáticos relevantes a partir de variáveis brutas representa um desafio, uma vez que 
+estas apresentam elevado nível de ruído e dependências não lineares. Neste trabalho, investigamos o uso de Redes Siamesas Mascaradas 
+(Masked Siamese Networks) para discretizar séries temporais climáticas em agrupamentos (clusters) semanticamente ricos. Com foco 
+nas temperaturas diárias mínima e máxima, demonstramos que as representações obtidas: (i) geram clusters que refletem estados 
+climáticos consistentes sob as premissas do nosso modelo, oferecendo uma representação simplificada para aplicações futuras; 
+(ii) viabilizam a amostragem e a análise de cenários climáticos específicos; e (iii) apresentam associações estatísticas com eventos 
+do fenômeno El Niño, reforçando sua relevância científica. Os resultados alcançados destacam o potencial da discretização autossupervisionada 
+como ferramenta para a análise de dados climáticos, além de abrir caminhos para a incorporação de indicadores climáticos mais abrangentes em 
+trabalhos futuros.
+
+
+:::: {.pub-figures}
+![Extensão espacial da região de estudo selecionada (Cerrado brasileiro) utilizada para o treinamento e a avaliação do modelo.](fig1.png)
+
+![Análise de probabilidade com defasagem que demonstra a sensibilidade dos regimes aprendidos em defasagens $\tau \in \left[ −12, +12 \right]$ meses em relação ao Índice 
+Niño Oceânico. Defasagens negativas indicam comportamento precursor antes do El Niño, enquanto defasagens positivas indicam respostas postergadas após 
+o pico do ENOS.](fig2.png)
+::::
+
+## Como citar
+
+```bibtex
+@misc{meinhardt2026deepclustering,
+  title         = {Deep Clustering for Climate: Analyzing Teleconnections
+                   through Learned Categorical States},
+  author        = {Meinhardt, Lívia and Oliveira, Dário},
+  year          = {2026},
+  eprint        = {2604.22909},
+  archivePrefix = {arXiv}
+}
+```","Understanding and representing complex climate variability is essential for
+both scientific analysis and predictive modeling. However, identifying
+meaningful climate regimes from raw variables is challenging, as they exhibit
+high noise and nonlinear dependencies. In this work, we explore the use of
+Masked Siamese Networks to discretize climate time series into semantically
+rich clusters. Focusing on daily minimum and maximum temperature, we show that
+the resulting representations: (i) yield clusters that reflect meaningful
+climate states under our modeling assumptions, offering a simplified
+representation for downstream use; (ii) enable sampling and analysis of
+specific climate scenarios; and (iii) exhibit statistical associations with
+El Niño events, underscoring their scientific relevance. Our findings
+highlight the potential of self-supervised discretization as a tool for
+climate data analysis and open avenues for incorporating richer climate
+indicators in future work.
+
+
+:::: {.pub-figures}
+![Spatial extent of the selected study region (Brazilian Cerrado) used for model training and evaluation.](fig1.png)
+
+![Lagged probability analysis showing the sensitivity of the learned regimes at lags $\tau \in \left[ −12, +12 \right]$ months relative to the Oceanic Nino Index. 
+Negative lags indicate precursor behavior before El Nino, while positive lags indicate delayed responses after the ENSO peak.](fig2.png)
+::::
+
+
+## Cite this publication
+
+```bibtex
+@misc{meinhardt2026deepclustering,
+  title         = {Deep Clustering for Climate: Analyzing Teleconnections
+                   through Learned Categorical States},
+  author        = {Meinhardt, Lívia and Oliveira, Dário},
+  year          = {2026},
+  eprint        = {2604.22909},
+  archivePrefix = {arXiv}
+}
+```"
+enmap-forest-classification,2026-04-03,thumbnail.png,Exploring EnMAP hyperspectral images and ensemble deep learning for classifying forest land-cover types in Brazil,Exploring EnMAP hyperspectral images and ensemble deep learning for classifying forest land-cover types in Brazil,"Matheus Pinheiro Ferreira, Matheus Santos Fuza, José M. S. M. Viveiros, Tomás Ferranti, Dário Oliveira, Giulio Brossi Santoro, Paulo Guilherme Molin, Catherine Torres de Almeida, Angélica F. Resende, Danilo R. A. de Almeida, Yelu Zeng, Ricardo Ribeiro Rodrigues, Pedro H. S. Brancalion",International Journal of Remote Sensing,"International Journal of Remote Sensing, v. 47, n. 7, p. 3213–3238 (Taylor & Francis)","International Journal of Remote Sensing, vol. 47, no. 7, pp. 3213–3238 (Taylor & Francis)",Abril de 2026,April 2026,Ensemble de deep learning com imagens hiperespectrais do satélite EnMAP para classificar tipos de cobertura florestal em São Paulo.,"Ensemble deep learning with EnMAP hyperspectral satellite imagery to classify tropical forest land-cover types in São Paulo, Brazil.",Ver publicação,View publication,https://www.tandfonline.com/doi/figure/10.1080/01431161.2026.2628300?scroll=top&needAccess=true,Baixar PDF,Download PDF,https://www.tandfonline.com/doi/epdf/10.1080/01431161.2026.2628300?needAccess=true,"Informações espacialmente explícitas sobre tipos de cobertura florestal são fundamentais para o manejo e a conservação 
+eficazes de ecossistemas florestais e para o monitoramento de iniciativas de restauração. Este estudo investiga o 
+potencial do satélite hiperespectral EnMAP (Environmental Mapping and Analysis Program) para distinguir entre tipos 
+de cobertura florestal tropical em São Paulo, Brasil. Desenvolvemos e avaliamos uma abordagem inovadora de ensemble 
+baseada em aprendizado profundo (deep learning), integrando uma Rede Neural Convolucional (CNN) 1D, um autoencoder e 
+uma Rede Neural Recorrente (RNN) para classificação em nível de pixel. Também avaliamos o impacto da resolução espectral 
+comparando dados do EnMAP com dados simulados do Landsat 8 e do Sentinel-2A, e investigamos a influência da seleção de 
+bandas na acurácia da classificação. O estudo concentrou-se no mapeamento de tipos de cobertura florestal, incluindo 
+remanescentes conservados, regeneração natural, plantios de restauração e monoculturas. Nossos resultados revelam distinções 
+significativas nas respostas espectrais entre esses tipos de cobertura florestal. O modelo de ensemble de aprendizado 
+profundo superou significativamente os modelos individuais de aprendizado profundo e os classificadores tradicionais de 
+Máquina de Vetores de Suporte (SVM), alcançando o maior F1-Score ponderado (0,700). Os dados do EnMAP também apresentaram 
+F1-scores significativamente superiores aos do Sentinel-2A e do Landsat-8 (p < 0,05), com os maiores ganhos observados para 
+regeneração natural e plantios de restauração. Curiosamente, a seleção de bandas não melhorou universalmente o desempenho da 
+classificação para os modelos de aprendizado profundo e, em alguns casos, levou a uma redução na acurácia. Embora as monoculturas 
+tenham sido classificadas com alta acurácia, foram observadas classificações incorretas entre regeneração natural e plantios 
+de restauração, bem como entre remanescentes conservados e regeneração natural, refletindo suas semelhanças espectrais. Este 
+estudo fornece insights valiosos sobre o uso eficaz de imagens hiperespectrais espaciais e de ensemble de aprendizado profundo 
+para o mapeamento robusto de tipos de cobertura florestal em regiões tropicais, enfatizando o papel crucial da alta resolução espectral.
+
+:::: {.pub-figures}
+![Localização da área de estudo no estado de São Paulo, Brasil. São apresentadas composições em cores reais de dezesseis cenas 
+do satélite hiperespectral EnMAP abrangendo o estado de São Paulo. Um detalhe no canto inferior esquerdo destaca a distribuição 
+espacial das parcelas de campo estabelecidas em quatro tipos de cobertura florestal.](fig1.jpg)
+
+![Abordagem de ensemble baseada em aprendizado profundo. Três modelos distintos de aprendizado profundo foram treinados de forma 
+independente: uma rede neural recorrente (RNN), um autoencoder e uma rede neural convolucional 1D (1D-CNN). Cada modelo gerou saídas 
+de probabilidade de classe, as quais foram posteriormente combinadas utilizando um mecanismo de votação rígida (hard voting) para 
+gerar a previsão final do ensemble.](fig2.jpg)
+::::
+
+## Como citar
+
+```bibtex
+@article{ferreira2026enmap,
+  title     = {Exploring EnMAP hyperspectral images and ensemble deep learning
+               for classifying forest land-cover types in Brazil},
+  author    = {Pinheiro Ferreira, Matheus and Fuza, Matheus Santos and
+               Viveiros, José M. S. M. and Ferranti, Tomás and
+               Oliveira, Dário and Santoro, Giulio Brossi and
+               Molin, Paulo Guilherme and de Almeida, Catherine Torres and
+               Resende, Angélica F. and de Almeida, Danilo R. A. and
+               Zeng, Yelu and Rodrigues, Ricardo Ribeiro and
+               Brancalion, Pedro H. S.},
+  journal   = {International Journal of Remote Sensing},
+  volume    = {47},
+  number    = {7},
+  pages     = {3213--3238},
+  year      = {2026},
+  publisher = {Taylor \& Francis}
+}
+```","Spatially explicit information on forest land-cover types is critical foreffectively managing and conserving 
+forest ecosystems and mon-itoring restoration initiatives. This study delves into the potential ofthe Environmental 
+Mapping and Analysis Program (EnMAP) hyper-spectral satellite for distinguishing between tropical forest 
+land-cover types in São Paulo, Brazil. We developed and evaluateda novel ensemble deep learning approach, 
+integrating a 1DConvolutional Neural Network (CNN), an autoencoder, anda Recurrent Neural Network (RNN), for 
+pixel-wise classification. Wealso assessed the impact of spectral resolution by comparingEnMAP data with simulated 
+Landsat 8 and Sentinel-2A data, andinvestigated the influence of band selection on classification accu-racy. 
+The study focused on mapping forest land-cover types, includ-ing conserved remnants, natural regeneration, 
+restorationplantations, and monocultures. Our findings reveal significant dis-tinctions in spectral responses 
+across these forest land-cover types.The ensemble deep learning model significantly outperformedindividual deep 
+learning models and traditional Support VectorMachine (SVM) classifiers, achieving the highest weighted F1-Score 
+of 0.700. EnMAP data further achieved significantly higher F1-scores than Sentinel-2A and Landsat-8 (p < 0.05), 
+with the greatestgains observed for natural regeneration and restoration planta-tions. Interestingly, band 
+selection did not universally improveclassification performance for the deep learning models, and insome cases, 
+led to a decrease in accuracy. While monocultureswere classified with high accuracy, misclassifications were 
+observedbetween natural regeneration and restoration plantations, andbetween conserved remnants and natural 
+regeneration, reflecting their spectral similarities. This study provides valuable insights intothe effective 
+use of space-borne hyperspectral imagery and ensem-ble deep learning for robust forest land-cover type mapping 
+intropical regions, emphasizing the critical role of high spectral resolution.
+
+:::: {.pub-figures}
+![Location of the study area in the São Paulo state, Brazil. True color compositions of sixteen EnMAP hyperspectral 
+satellite scenes are shown across the São Paulo state. An inset in the lower left corner highlights the spatial 
+distribution of field plots established in four forest land-cover types.](fig1.jpg)
+
+![Deep learning-based ensemble approach. Three distinct deep learning models were trained independently: a recurrent 
+Neural network (RNN), an autoencoder, and a 1D convolutional Neural network (1D-CNN). Each model produced class 
+probability outputs, which were then combined using a hard voting mechanism to generate the final ensemble prediction.](fig2.jpg)
+::::
+
+## Cite this publication
+
+```bibtex
+@article{ferreira2026enmap,
+  title     = {Exploring EnMAP hyperspectral images and ensemble deep learning
+               for classifying forest land-cover types in Brazil},
+  author    = {Pinheiro Ferreira, Matheus and Fuza, Matheus Santos and
+               Viveiros, José M. S. M. and Ferranti, Tomáss and
+               Oliveira, Dário and Santoro, Giulio Brossi and
+               Molin, Paulo Guilherme and de Almeida, Catherine Torres and
+               Resende, Angélica F. and de Almeida, Danilo R. A. and
+               Zeng, Yelu and Rodrigues, Ricardo Ribeiro and
+               Brancalion, Pedro H. S.},
+  journal   = {International Journal of Remote Sensing},
+  volume    = {47},
+  number    = {7},
+  pages     = {3213--3238},
+  year      = {2026},
+  publisher = {Taylor \& Francis}
+}
+```"
+viscoelastic-udes,2025-11-15,thumbnail.png,Finding the underlying viscoelastic constitutive equation via universal differential equations and differentiable physics,Finding the underlying viscoelastic constitutive equation via universal differential equations and differentiable physics,"Elias C. Rodrigues, Roney L. Thompson, Dário A. B. Oliveira, Roberto F. Ausas",Engineering Applications of Artificial Intelligence,"Engineering Applications of Artificial Intelligence, v. 160, 111788 (Pergamon)","Engineering Applications of Artificial Intelligence, vol. 160, 111788 (Pergamon)",Novembro de 2025,November 2025,Equações diferenciais universais e física diferenciável reconstroem termos ausentes em modelos constitutivos de fluidos viscoelásticos.,Universal Differential Equations and differentiable physics reconstruct missing terms in constitutive models of viscoelastic fluids.,Ver publicação,View publication,https://www.sciencedirect.com/science/article/pii/S0952197625017907,Baixar PDF,Download PDF,https://pdf.sciencedirectassets.com/271095/1-s2.0-S0952197625X00245/1-s2.0-S0952197625017907/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEAoaCXVzLWVhc3QtMSJHMEUCIQC8%2FmUf5qd0N2o7YtkYCkBDAlQyeok7Wx8w4Ub9w1%2FELwIgYvJe6qovUQJsq84dZhFJczH0Ot21ML76AoMedVdr324quwUI0%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAFGgwwNTkwMDM1NDY4NjUiDMwun%2BBnNujD3%2F8THyqPBSNA2RRjjI1ns%2Beu%2F4ClpuzJXqKXXcdfCCJYP3IbMSZc%2BtJiLN65vAKPkX9P6mvtKU1XB7wBX0FXh9ukUEBHiVLMpR6RolNcX1culAYQVuJ0eZBm%2BHD4hc5g%2F92CYAJeoUCXhpDKrEpd4u1OodO2nRI9qXQkacFQ28wHRDc6YpktOvWPSjoHYVISm6xmquUk0ERwmIzqY45fYqH5BhbZq5ChTXeo6yzE5L%2FglD7soNM4T78n1wIO4JRYk3g6hInQ6TJHUJVF3DIri51%2BjjCCEP8zhG2DxReOIp5hScQMYujg0ltBSCRv%2FJEO90vscgAuzRCPZmuaYIWOYPvWfxGWM2l0anukAQRW4qveDy%2FDjseXf0MLrmBdGY2MXqomxBnj8Tf%2FfOtlZefaCHgYGYgMfSHy8dA0QkQ1NKzhfleMaZaKmwfmhnMURk3TTeeBiw9L7WWKo29U4GCek44iZ7LdRMpyBD5IPBOE%2FAPDgZ8SDLZWQez9%2BDUlmgeP1LfnEJwp4z4uruIMv2QIz2jkdILxHhwp1YCkqFtwe5R34nMphWzTDBAH8SMPE8WF5B%2FeliX5ay3mF4b2q%2FqmLtTSvaaXKLqQ7QT2q9qaRQHdTxoO6g0gkLDGVI2XyoqUP9rdh0%2BhynM3nNhq8N6aI4dJLaCAsp3xIT3VQuYdQYDWVkJWPLoa%2BuFhHAlgXaxyzIM0wtwbKZxYSubhpYA3n0X2YCO7JBN3vFCFzPywU4oNLZd6%2F0yZX%2Bf7%2FSpcVDCVeONYgmKStg2bogCVkuj%2F6zHmtY9ZoHpXSqN9w7DlcPzQRj6Lpz59QufjeiGRK7%2B7rFXsQCuOTsMOZqsqEE9gd3lwKWK6CaZUgjd8eKuXN3MKBvhnIFMw%2FNvy0wY6sQFtu1ZkMv%2FvzYUKB9OhRuuNmCPiQ3RxVt4g97ZQiAG9cwI%2BpEg6Iy%2BEd8IpCurtjX5zjmEsq0HWn3W51caCaF58UsPrMpRVXZqj77m0XQJhUQMALXcOS%2BDkM97bF43g50Al4hJ%2FfN4tnUzEc7zAJW17YZkmiZpvIMBC41e8TK7%2FBbBFdEFm1KTxmMbo5IC%2F4k6FwraH4dRtHJs0CaxbLNXebGr2skoDpPBBHbeCVjCskdA%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20260812T184932Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTYRORML2PG%2F20260812%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=c56ec7e8072ff76638a53335a0736346fda8f4ba99df944f389665b8f34eb618&hash=e8d55726392f391c04d90addaf4d6618f6ef9968d1727c461943ce27cf9f1112&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S0952197625017907&tid=spdf-95db9fd9-6cdd-4386-914d-6b1305b0b981&sid=e27b8cea54ba854f1f5a9824f87fc8b28f08gxrqa&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&rh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=1817075507510e5b5e0501&rr=a2a1a91befe66e83&cc=br,"Determinar o modelo constitutivo adequado para descrever o comportamento de um determinado material é um 
+aspecto fundamental, porém desafiador, da reologia. Embora os métodos baseados em dados apresentem um caminho 
+promissor para o refinamento desses modelos, é necessária uma investigação mais aprofundada sobre as capacidades 
+e limitações das técnicas emergentes. Esta pesquisa aborda essa lacuna utilizando Equações Diferenciais Universais 
+(UDEs) e física diferenciável para modelar fluidos viscoelásticos, combinando equações diferenciais convencionais 
+com redes neurais para reconstruir termos ausentes nos modelos constitutivos. O estudo concentra-se na análise de 
+quatro modelos viscoelásticos — Maxwell Convectivo Superior (UCM), Johnson–Segalman, Giesekus e Phan–Thien–Tanner 
+Exponencial (ePTT) — utilizando conjuntos de dados sintéticos. A metodologia foi testada sob diferentes condições 
+experimentais, incluindo fluxos oscilatórios e de partida (startup). Análises de erro relativo revelaram que a 
+estrutura das UDEs mantém erros baixos e estáveis ​​(abaixo de 0,3%) para os modelos UCM, Johnson–Segalman e Giesekus 
+em diversas condições, ao mesmo tempo que apresenta erros mais elevados, porém consistentes (4%), para o modelo 
+ePTT, devido à sua forte não linearidade. Esses resultados destacam o potencial das UDEs na mecânica dos fluidos, 
+identificando também áreas críticas para o aprimoramento metodológico. Além disso, foi empregada uma abordagem de 
+destilação de modelos para extrair modelos simplificados a partir de modelos complexos, ressaltando a versatilidade 
+e a robustez das UDEs na modelagem reológica.
+
+:::: {.pub-figures}
+![**Fig. 4.** Avaliação da extrapolação dos modelos UDE para a tensão de cisalhamento $(\sigma_{12}^*, t^*)$ com entrada $\dot{\gamma}^*(t^*) = 3\cos(1.5\,t^*)$. Os pontos destacados em verde correspondem aos pontos de treinamento, $t^* \in [0, 20]$. A curva azul ilustra a solução numérica da equação diferencial, chamada de solução de referência (""ground truth""). A curva preta representa o modelo UDE antes do treinamento, enquanto a curva vermelha ilustra o modelo UDE após o treinamento. Os seguintes parâmetros foram utilizados: $\xi = 0.4$ (Johnson–Segalman), $\alpha = 0.2$ (Giesekus) e $(\xi, \epsilon) = (0, 0.4)$ para (ePTT).](fig1.png)
+::::
+
+## Como citar
+
+```bibtex
+@article{rodrigues2025viscoelastic,
+  title     = {Finding the underlying viscoelastic constitutive equation via
+               universal differential equations and differentiable physics},
+  author    = {Rodrigues, Elias C. and Thompson, Roney L. and
+               Oliveira, Dário A. B. and Ausas, Roberto F.},
+  journal   = {Engineering Applications of Artificial Intelligence},
+  volume    = {160},
+  pages     = {111788},
+  year      = {2025},
+  publisher = {Pergamon}
+}
+```","Determining the appropriate constitutive model to describe the behavior of a given material is a fundamental, 
+yet challenging, aspect of rheology. While data-driven methods present a promising path for refining these 
+models, a more in-depth investigation into the capabilities and limitations of emerging techniques is required. 
+This research addresses this gap by employing Universal Differential Equations (UDEs) and differentiable physics 
+to model viscoelastic fluids, merging conventional differential equations with neural networks to reconstruct 
+missing terms in constitutive models. This study focuses on analyzing four viscoelastic models, Upper Convected 
+Maxwell (UCM), Johnson–Segalman, Giesekus, and Exponential Phan–Thien–Tanner (ePTT) using synthetic datasets. 
+The methodology was tested across different experimental conditions, including oscillatory and startup flows. 
+Relative error analyses revealed that the UDEs framework maintains low and stable errors (below 0.3%) for the 
+UCM, Johnson–Segalman, and Giesekus models under various conditions, while exhibiting higher but consistent 
+errors (4%) for the ePTT model due to its strong nonlinearity. These findings highlight the potential of UDEs 
+in fluid mechanics while also identifying critical areas for methodological improvement. Additionally, a model 
+distillation approach was employed to extract simplified models from complex ones, emphasizing the versatility 
+and robustness of UDEs in rheological modeling.
+
+:::: {.pub-figures}
+![**Fig. 4.** Evaluation for the extrapolation of UDE models for shear stress $(\sigma_{12}^*, t^*)$ with input $\dot{\gamma}^*(t^*) = 3\cos(1.5\,t^*)$. The points highlighted in green correspond to training points, $t^* \in [0, 20]$. The blue curve illustrates the numerical solution of the differential equation, referred to as the ""ground truth"" solution. The black curve depicts the UDE model pre-training, while the red curve illustrates the UDE model post-training. The following parameters were used: $\xi = 0.4$ (Johnson–Segalman), $\alpha = 0.2$ (Giesekus) and $(\xi, \epsilon) = (0, 0.4)$ for (ePTT).](fig1.png)
+::::
+
+## Cite this publication
+
+```bibtex
+@article{rodrigues2025viscoelastic,
+  title     = {Finding the underlying viscoelastic constitutive equation via
+               universal differential equations and differentiable physics},
+  author    = {Rodrigues, Elias C. and Thompson, Roney L. and
+               Oliveira, Dário A. B. and Ausas, Roberto F.},
+  journal   = {Engineering Applications of Artificial Intelligence},
+  volume    = {160},
+  pages     = {111788},
+  year      = {2025},
+  publisher = {Pergamon}
+}
+```"

@@ -1,0 +1,34 @@
+---
+title: "Estudo monitora desmatamento e identifica espécies vegetais com uso de inteligência artificial"
+date: 2025-03-20
+news-source: "FGV"
+news-date: "20 de março de 2025"
+news-url: "https://portal.fgv.br/noticias/estudo-monitora-desmatamento-e-identifica-especies-vegetais-com-uso-de-inteligencia"
+image: "images/news-desmatamento.jpg"
+summary: "O método LLP-Co aprende padrões visuais e agrupa grandes volumes de dados automaticamente, aplicado à identificação de áreas desmatadas e da biodiversidade vegetal da Floresta Amazônica."
+---
+
+```{=html}
+<div class="page-shell">
+<div class="page-main">
+```
+
+::: {#noticia}
+
+O método LLP-Co aprende padrões visuais e agrupa grandes volumes de dados automaticamente, aplicado à identificação de áreas desmatadas e da biodiversidade vegetal da Floresta Amazônica.
+
+[Ler a notícia na íntegra](https://portal.fgv.br/noticias/estudo-monitora-desmatamento-e-identifica-especies-vegetais-com-uso-de-inteligencia){.pub-btn}
+
+:::
+
+```{=html}
+<a class="back-link" href="/publications/#news">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+  <span>Voltar para as notícias</span>
+</a>
+```
+
+```{=html}
+</div>
+</div>
+```

@@ -20,7 +20,7 @@ toc: false
     <img class="course-image" src="images/redes-neurais.svg"
          alt="Ilustração de uma rede neural com camadas de nós conectados">
     <div class="course-info">
-      <span class="course-level">Pós-Graduação — EMAp</span>
+      <span class="course-level">Pós-graduação em Matemática Aplicada e Ciência de Dados, EMAp</span>
       <div class="course-title">Redes Neurais e Aprendizado Profundo</div>
       <ul class="course-details">
         <li><strong>Professor:</strong> Dário Oliveira</li>
@@ -36,7 +36,7 @@ toc: false
     <img class="course-image" src="images/aprendizado-profundo.svg"
          alt="Ilustração de blocos de camadas de um modelo profundo">
     <div class="course-info">
-      <span class="course-level">Graduação — Ciência de Dados e IA, EMAp</span>
+      <span class="course-level">Graduação em Ciência de Dados e IA, EMAp</span>
       <div class="course-title">Aprendizado Profundo</div>
       <ul class="course-details">
         <li><strong>Professor:</strong> Dário Oliveira</li>

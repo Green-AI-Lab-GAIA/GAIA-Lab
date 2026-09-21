@@ -8,7 +8,6 @@ education: "BSc Student in Data Science and AI, FGV EMAp"
 image: avatar.jpeg
 page-layout: full
 toc: false
-
 about:
   id: perfil
   template: trestles

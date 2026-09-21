@@ -1,0 +1,108 @@
+<script>
+  // Exploradores das paginas de pesquisa, sempre sobre imagens ja renderizadas no
+  // repositorio: nada e calculado nem buscado no navegador, e as imagens carregam
+  // sob demanda. [data-scrub] percorre uma sequencia (trimestres) com um slider;
+  // [data-explorer] troca entre as camadas da mesma cena.
+  document.addEventListener("DOMContentLoaded", function () {
+    var reduzido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function preCarregar(url) {
+      if (url) { var im = new Image(); im.src = url; }
+    }
+
+    // ---------------------------------------------------------------- scrubber
+    var scrubbers = document.querySelectorAll("[data-scrub]");
+    for (var s = 0; s < scrubbers.length; s++) {
+      (function (raiz) {
+        var base = raiz.getAttribute("data-base") || "";
+        var extensao = raiz.getAttribute("data-ext") || ".webp";
+        var quadros = (raiz.getAttribute("data-quarters") || "").split(",").filter(Boolean);
+        if (!quadros.length) return;
+
+        var img = raiz.querySelector(".scrub-img");
+        var faixa = raiz.querySelector(".scrub-range");
+        var selo = raiz.querySelector(".scrub-badge");
+        var rotulo = raiz.querySelector(".scrub-label");
+        var botao = raiz.querySelector(".scrub-play");
+        var atual = quadros.length - 1;
+        var temporizador = null;
+
+        function url(i) { return base + quadros[i] + extensao; }
+
+        function mostrar(i) {
+          atual = (i + quadros.length) % quadros.length;
+          img.src = url(atual);
+          if (selo) selo.textContent = quadros[atual].replace("q", " Q");
+          if (rotulo) rotulo.textContent = quadros[atual].replace("q", " Q");
+          if (faixa && faixa.value !== String(atual)) faixa.value = String(atual);
+          preCarregar(url((atual + 1) % quadros.length));
+          preCarregar(url((atual - 1 + quadros.length) % quadros.length));
+        }
+
+        function parar() {
+          if (temporizador) { clearInterval(temporizador); temporizador = null; }
+          if (botao) {
+            botao.textContent = "▶";
+            botao.setAttribute("aria-label", raiz.getAttribute("data-play-label") || "Reproduzir");
+          }
+        }
+
+        function tocar() {
+          if (temporizador) { parar(); return; }
+          if (botao) {
+            botao.textContent = "❙❙";
+            botao.setAttribute("aria-label", raiz.getAttribute("data-pause-label") || "Pausar");
+          }
+          temporizador = setInterval(function () { mostrar(atual + 1); }, 900);
+        }
+
+        if (faixa) {
+          faixa.addEventListener("input", function () { parar(); mostrar(parseInt(faixa.value, 10)); });
+        }
+        if (botao) {
+          if (reduzido) { botao.style.display = "none"; } else { botao.addEventListener("click", tocar); }
+        }
+        raiz.addEventListener("mouseleave", parar);
+
+        img.src = url(atual);
+        if (selo) selo.textContent = quadros[atual].replace("q", " Q");
+        if (rotulo) rotulo.textContent = quadros[atual].replace("q", " Q");
+        preCarregar(url(atual - 1 < 0 ? atual : atual - 1));
+      })(scrubbers[s]);
+    }
+
+    // --------------------------------------------------------------- camadas
+    var exploradores = document.querySelectorAll("[data-explorer]");
+    for (var e = 0; e < exploradores.length; e++) {
+      (function (raiz) {
+        var abas = raiz.querySelectorAll(".explorer-tab");
+        var camadas = raiz.querySelectorAll(".explorer-stage img");
+        var legenda = raiz.querySelector(".explorer-caption");
+        var legendas = (raiz.getAttribute("data-captions") || "").split("|");
+
+        function ativar(indice) {
+          for (var i = 0; i < camadas.length; i++) {
+            var ativa = i === indice;
+            camadas[i].classList.toggle("is-active", ativa);
+            if (ativa && !camadas[i].getAttribute("src")) {
+              camadas[i].setAttribute("src", camadas[i].getAttribute("data-src"));
+            }
+          }
+          for (var j = 0; j < abas.length; j++) {
+            abas[j].setAttribute("aria-selected", j === indice ? "true" : "false");
+          }
+          if (legenda && legendas[indice]) legenda.textContent = legendas[indice];
+          var proxima = camadas[(indice + 1) % camadas.length];
+          if (proxima) preCarregar(proxima.getAttribute("data-src") || proxima.getAttribute("src"));
+        }
+
+        for (var k = 0; k < abas.length; k++) {
+          (function (indice) {
+            abas[k].addEventListener("click", function () { ativar(indice); });
+          })(k);
+        }
+        ativar(0);
+      })(exploradores[e]);
+    }
+  });
+</script>

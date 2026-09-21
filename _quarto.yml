@@ -36,10 +36,12 @@ format:
     include-in-header: _includes/favicon.html
     # Scripts de comportamento: troca de idioma por página, links externos em
     # nova aba, cópia de e-mail e efeitos de rolagem (reveal, carrossel,
-    # contadores e comparador de imagens)
+    # contadores, comparador de imagens, exploradores e envio da inscrição)
     include-after-body:
       - _includes/language-switch.html
       - _includes/link-behavior.html
       - _includes/scroll-effects.html
+      - _includes/explorers.html
+      - _includes/form-inscricao.html
       - _includes/image-fallback.html
       - _includes/publication-filters.html

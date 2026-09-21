@@ -8,7 +8,6 @@ education: "Doutor em Engenharia Mecânica, PUC-Rio"
 image: avatar.png
 page-layout: full
 toc: false
-
 about:
   id: perfil
   template: trestles

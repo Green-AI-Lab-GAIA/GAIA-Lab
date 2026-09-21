@@ -78,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="icon" type="image/png" href="../../icon/favicon-light.png">
 
 
-<link rel="stylesheet" href="../../styles.css?v=ad60fb90">
+<link rel="stylesheet" href="../../styles.css?v=0b209f99">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -514,48 +514,115 @@ ul.task-list li input[type="checkbox"] {
       return d.innerHTML;
     }
 
+    function formatar(valor, decimais, milhares, decimal) {
+      var partes = valor.toFixed(decimais).split(".");
+      if (milhares) {
+        partes[0] = partes[0].replace(/\B(?=(\d{3})+(?!\d))/g, milhares);
+      }
+      return partes.join(decimal);
+    }
+  
     function contar(el) {
-      var alvo = parseInt(el.getAttribute("data-count"), 10);
+      var decimais = parseInt(el.getAttribute("data-decimals") || "0", 10);
+      var milhares = el.getAttribute("data-thousands") || "";
+      var decimal = el.getAttribute("data-decimal") || ",";
+      var alvo = parseFloat(el.getAttribute("data-count"));
+      var prefixo = el.getAttribute("data-prefix") || "";
       var sufixo = el.getAttribute("data-suffix") || "";
       if (reduzido) {
-        el.textContent = alvo + sufixo;
+        el.textContent = prefixo + formatar(alvo, decimais, milhares, decimal) + sufixo;
         return;
       }
       var inicio = null;
       function passo(agora) {
         if (!inicio) inicio = agora;
         var fracao = Math.min((agora - inicio) / 1200, 1);
-        el.textContent = Math.round(alvo * (1 - Math.pow(1 - fracao, 3))) + sufixo;
+        var suave = 1 - Math.pow(1 - fracao, 3);
+        el.textContent = prefixo + formatar(alvo * suave, decimais, milhares, decimal) + sufixo;
         if (fracao < 1) requestAnimationFrame(passo);
       }
       requestAnimationFrame(passo);
     }
 
+    var reveais = document.querySelectorAll(".reveal");
+
+    // Revela um elemento e dispara os contadores que estiverem dentro dele
+    function revelar(el) {
+      if (el.classList.contains("revealed")) return;
+      el.classList.add("revealed");
+      var numeros = el.querySelectorAll("[data-count]");
+      for (var n = 0; n < numeros.length; n++) contar(numeros[n]);
+    }
+
+    // Revela tudo que já está na tela, usado pela rede de segurança abaixo
+    function revelarVisiveis() {
+      for (var r = 0; r < reveais.length; r++) {
+        if (reveais[r].classList.contains("revealed")) continue;
+        var caixa = reveais[r].getBoundingClientRect();
+        if (caixa.top < window.innerHeight && caixa.bottom > 0) revelar(reveais[r]);
+      }
+    }
+
     var observador = new IntersectionObserver(function (entradas) {
       for (var i = 0; i < entradas.length; i++) {
         if (!entradas[i].isIntersecting) continue;
-        var el = entradas[i].target;
-        el.classList.add("revealed");
-        var numeros = el.querySelectorAll("[data-count]");
-        for (var j = 0; j < numeros.length; j++) contar(numeros[j]);
-        observador.unobserve(el);
+        revelar(entradas[i].target);
+        observador.unobserve(entradas[i].target);
       }
     }, { threshold: 0.15 });
 
-    var reveais = document.querySelectorAll(".reveal");
     for (var i = 0; i < reveais.length; i++) observador.observe(reveais[i]);
 
     // Rede de segurança: se o observador não disparar (navegadores antigos ou
     // situações excepcionais), o que já está na tela aparece mesmo assim
-    setTimeout(function () {
-      for (var r = 0; r < reveais.length; r++) {
-        if (reveais[r].classList.contains("revealed")) continue;
-        var caixa = reveais[r].getBoundingClientRect();
-        if (caixa.top < window.innerHeight && caixa.bottom > 0) {
-          reveais[r].classList.add("revealed");
-        }
+    setTimeout(revelarVisiveis, 1500);
+
+    // Quem participa da entrada: os blocos e os realces (.mark) dentro deles,
+    // que voltam a ser preenchidos junto (o contador se reinicia sozinho, por
+    // estar dentro do bloco que ganha a classe de novo)
+    var entradas = [];
+    for (var r = 0; r < reveais.length; r++) {
+      entradas.push(reveais[r]);
+      var marcas = reveais[r].querySelectorAll(".mark");
+      for (var j = 0; j < marcas.length; j++) entradas.push(marcas[j]);
+    }
+
+    // Recomeça a entrada dos blocos: tira a classe, devolve cada um ao
+    // observador e revela o que está na tela
+    function reiniciarReveais() {
+      var n;
+      for (n = 0; n < reveais.length; n++) {
+        reveais[n].classList.remove("revealed");
+        observador.observe(reveais[n]);
       }
-    }, 1500);
+      // sem transição enquanto o estado escondido é aplicado: se ela animasse
+      // aqui, a revelação logo abaixo encontraria tudo já no lugar e nada
+      // apareceria. A leitura de layout aplica esse estado antes de revelar
+      for (n = 0; n < entradas.length; n++) entradas[n].style.transition = "none";
+      void document.body.offsetHeight;
+      for (n = 0; n < entradas.length; n++) entradas[n].style.transition = "";
+      revelarVisiveis();
+    }
+
+    // O Quarto guarda o tema como classe no <body> (quarto-light/quarto-dark)
+    function temaAgora() {
+      if (document.documentElement.getAttribute("data-bs-theme") === "dark") return "dark";
+      return document.body.classList.contains("quarto-dark") ? "dark" : "light";
+    }
+
+    var temaAnterior = temaAgora();
+
+    // A troca de tema não move nada, então o observador de tela não dispara e
+    // os blocos ficariam revelados de uma vez só. Este vigia reanima quando o
+    // tema muda de fato, e ignora as outras classes que o <body> recebe
+    var vigiaTema = new MutationObserver(function () {
+      var agora = temaAgora();
+      if (agora === temaAnterior) return;
+      temaAnterior = agora;
+      if (!reduzido) reiniciarReveais();
+    });
+    vigiaTema.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+    vigiaTema.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "data-bs-theme"] });
 
     var carrosseis = document.querySelectorAll(".hscroll-wrap");
     for (var k = 0; k < carrosseis.length; k++) {
@@ -874,6 +941,195 @@ ul.task-list li input[type="checkbox"] {
           obterLightbox().abrir(lista, i);
         });
       });
+    });
+  });
+</script>
+<script>
+  // Exploradores das paginas de pesquisa, sempre sobre imagens ja renderizadas no
+  // repositorio: nada e calculado nem buscado no navegador, e as imagens carregam
+  // sob demanda. [data-scrub] percorre uma sequencia (trimestres) com um slider;
+  // [data-explorer] troca entre as camadas da mesma cena.
+  document.addEventListener("DOMContentLoaded", function () {
+    var reduzido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function preCarregar(url) {
+      if (url) { var im = new Image(); im.src = url; }
+    }
+
+    // ---------------------------------------------------------------- scrubber
+    var scrubbers = document.querySelectorAll("[data-scrub]");
+    for (var s = 0; s < scrubbers.length; s++) {
+      (function (raiz) {
+        var base = raiz.getAttribute("data-base") || "";
+        var extensao = raiz.getAttribute("data-ext") || ".webp";
+        var quadros = (raiz.getAttribute("data-quarters") || "").split(",").filter(Boolean);
+        if (!quadros.length) return;
+
+        var img = raiz.querySelector(".scrub-img");
+        var faixa = raiz.querySelector(".scrub-range");
+        var selo = raiz.querySelector(".scrub-badge");
+        var rotulo = raiz.querySelector(".scrub-label");
+        var botao = raiz.querySelector(".scrub-play");
+        var atual = quadros.length - 1;
+        var temporizador = null;
+
+        function url(i) { return base + quadros[i] + extensao; }
+
+        function mostrar(i) {
+          atual = (i + quadros.length) % quadros.length;
+          img.src = url(atual);
+          if (selo) selo.textContent = quadros[atual].replace("q", " Q");
+          if (rotulo) rotulo.textContent = quadros[atual].replace("q", " Q");
+          if (faixa && faixa.value !== String(atual)) faixa.value = String(atual);
+          preCarregar(url((atual + 1) % quadros.length));
+          preCarregar(url((atual - 1 + quadros.length) % quadros.length));
+        }
+
+        function parar() {
+          if (temporizador) { clearInterval(temporizador); temporizador = null; }
+          if (botao) {
+            botao.textContent = "▶";
+            botao.setAttribute("aria-label", raiz.getAttribute("data-play-label") || "Reproduzir");
+          }
+        }
+
+        function tocar() {
+          if (temporizador) { parar(); return; }
+          if (botao) {
+            botao.textContent = "❙❙";
+            botao.setAttribute("aria-label", raiz.getAttribute("data-pause-label") || "Pausar");
+          }
+          temporizador = setInterval(function () { mostrar(atual + 1); }, 900);
+        }
+
+        if (faixa) {
+          faixa.addEventListener("input", function () { parar(); mostrar(parseInt(faixa.value, 10)); });
+        }
+        if (botao) {
+          if (reduzido) { botao.style.display = "none"; } else { botao.addEventListener("click", tocar); }
+        }
+        raiz.addEventListener("mouseleave", parar);
+
+        img.src = url(atual);
+        if (selo) selo.textContent = quadros[atual].replace("q", " Q");
+        if (rotulo) rotulo.textContent = quadros[atual].replace("q", " Q");
+        preCarregar(url(atual - 1 < 0 ? atual : atual - 1));
+      })(scrubbers[s]);
+    }
+
+    // --------------------------------------------------------------- camadas
+    var exploradores = document.querySelectorAll("[data-explorer]");
+    for (var e = 0; e < exploradores.length; e++) {
+      (function (raiz) {
+        var abas = raiz.querySelectorAll(".explorer-tab");
+        var camadas = raiz.querySelectorAll(".explorer-stage img");
+        var legenda = raiz.querySelector(".explorer-caption");
+        var legendas = (raiz.getAttribute("data-captions") || "").split("|");
+
+        function ativar(indice) {
+          for (var i = 0; i < camadas.length; i++) {
+            var ativa = i === indice;
+            camadas[i].classList.toggle("is-active", ativa);
+            if (ativa && !camadas[i].getAttribute("src")) {
+              camadas[i].setAttribute("src", camadas[i].getAttribute("data-src"));
+            }
+          }
+          for (var j = 0; j < abas.length; j++) {
+            abas[j].setAttribute("aria-selected", j === indice ? "true" : "false");
+          }
+          if (legenda && legendas[indice]) legenda.textContent = legendas[indice];
+          var proxima = camadas[(indice + 1) % camadas.length];
+          if (proxima) preCarregar(proxima.getAttribute("data-src") || proxima.getAttribute("src"));
+        }
+
+        for (var k = 0; k < abas.length; k++) {
+          (function (indice) {
+            abas[k].addEventListener("click", function () { ativar(indice); });
+          })(k);
+        }
+        ativar(0);
+      })(exploradores[e]);
+    }
+  });
+</script>
+<script>
+  // Envio do formulário "Junte-se a nós".
+  //
+  // O site é estático, então quem recebe o POST é o aplicativo da web do Apps
+  // Script (ver ferramentas/apps-script/), apontado em data-endpoint no próprio
+  // formulário. Enquanto o endereço estiver vazio, o envio cai no caminho antigo
+  // de abrir o e-mail do visitante, para a página nunca ficar sem função.
+  //
+  // O Apps Script não devolve resposta legível por CORS, então o envio é feito
+  // com mode: no-cors e a confirmação na tela é "saiu", não "chegou". Quem
+  // garante a chegada é o e-mail que o script manda para o coordenador.
+  document.addEventListener("DOMContentLoaded", function () {
+    var form = document.getElementById("join-form");
+    if (!form) return;
+
+    var status = form.querySelector(".join-status");
+    var botao = form.querySelector(".join-submit");
+    var honeypot = form.querySelector(".join-honeypot");
+    var abertoEm = Date.now();
+
+    function mostrar(mensagem, tipo) {
+      if (!status) return;
+      status.textContent = mensagem;
+      status.className = "join-status " + (tipo || "");
+    }
+
+    function texto(chave, padrao) {
+      return form.getAttribute("data-" + chave) || padrao;
+    }
+
+    function abrirEmail() {
+      var corpo = texto("msg-assunto", "Interesse em ingressar no GAIA Lab") + " - " +
+        form.querySelector("#join-nome").value.trim() + "\n\n" +
+        form.querySelector("#join-msg").value.trim() + "\n\n" +
+        form.querySelector("#join-email").value.trim();
+      var destino = (form.getAttribute("data-email") || "").trim();
+      if (!destino) return false;
+      window.location.href = "mailto:" + destino +
+        "?subject=" + encodeURIComponent(form.getAttribute("data-msg-assunto") || "GAIA Lab") +
+        "&body=" + encodeURIComponent(corpo);
+      return true;
+    }
+
+    form.addEventListener("submit", function (evento) {
+      evento.preventDefault();
+      if (honeypot && honeypot.value) return;                       // robô
+      if (Date.now() - abertoEm < 3000) {                            // preenchido rápido demais
+        mostrar(texto("msg-rapido", "Confira os dados e envie de novo."), "erro");
+        return;
+      }
+
+      var endpoint = (form.getAttribute("data-endpoint") || "").trim();
+      var dados = new FormData(form);
+      dados.append("pagina", location.pathname);
+      dados.append("idioma", form.getAttribute("data-idioma") || "pt");
+
+      if (!endpoint) {                                              // sem backend configurado
+        abrirEmail();
+        return;
+      }
+
+      botao.disabled = true;
+      mostrar(texto("msg-enviando", "Enviando..."), "enviando");
+      var parametros = new URLSearchParams();
+      dados.forEach(function (valor, chave) { parametros.append(chave, valor); });
+
+      fetch(endpoint, { method: "POST", mode: "no-cors", body: parametros })
+        .then(function () {
+          mostrar(texto("msg-ok", "Inscrição enviada. Responderemos por e-mail."), "ok");
+          form.querySelectorAll("input, select, textarea, button").forEach(function (campo) {
+            if (!campo.classList.contains("join-honeypot")) campo.disabled = true;
+          });
+        })
+        .catch(function () {
+          // aqui sim dá para saber que não saiu: sem rede o fetch rejeita
+          botao.disabled = false;
+          mostrar(texto("msg-erro", "Não foi possível enviar. Escreva direto para o e-mail ao lado."), "erro");
+        });
     });
   });
 </script>
@@ -1485,7 +1741,7 @@ ul.task-list li input[type="checkbox"] {
 GAIA Lab
 </div>
 <address class="footer-address">
-FGV EMAp — Escola de Matemática Aplicada<br> Praia de Botafogo, 190 — 5º andar<br> Botafogo, Rio de Janeiro — RJ<br> CEP 22250-900, Brasil
+FGV EMAp, Escola de Matemática Aplicada<br> Praia de Botafogo, 190, 5º andar<br> Botafogo, Rio de Janeiro, RJ<br> CEP 22250-900, Brasil
 </address>
 </div>
 <div class="footer-col">
