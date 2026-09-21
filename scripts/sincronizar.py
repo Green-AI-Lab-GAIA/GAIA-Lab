@@ -131,9 +131,21 @@ def comparar_com_local(tabela: str, remotas: list[dict]) -> bool:
     return True
 
 
+def arquivos_alterados() -> list[str]:
+    """Caminhos com alteracao pendente.
+
+    Le o git sem passar pelo strip(): o formato --porcelain comeca com dois
+    caracteres de status e um espaco, e aparar a saida come o espaco da primeira
+    linha e corta o caminho.
+    """
+    bruto = subprocess.run(("git", "status", "--porcelain", "-z"), cwd=RAIZ,
+                           capture_output=True, text=True).stdout
+    itens = [p for p in bruto.split("\0") if len(p) > 3]
+    return [p[3:] for p in itens]
+
+
 def arvore_tem_so_o_que_o_job_mexe() -> None:
-    sujos = [l[3:] for l in rodar("git", "status", "--porcelain").splitlines()]
-    intrusos = [s for s in sujos if not s.startswith(PERMITIDOS)]
+    intrusos = [s for s in arquivos_alterados() if not s.startswith(PERMITIDOS)]
     if intrusos:
         falhar("arvore de trabalho com alteracao de fora do job: "
                + ", ".join(intrusos[:5])
@@ -236,7 +248,7 @@ def main() -> int:
     if saida:
         aviso(f"{agora()} {saida}")
 
-    alterados = [l[3:] for l in rodar("git", "status", "--porcelain").splitlines()]
+    alterados = arquivos_alterados()
     if not alterados:
         aviso(f"{agora()} nada mudou desde a ultima rodada")
         return 0
