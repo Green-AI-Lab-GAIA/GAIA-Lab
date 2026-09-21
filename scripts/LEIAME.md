@@ -3,24 +3,43 @@
 ## Conteúdo a partir das tabelas
 
 ```bash
+python3 scripts/baixar_imagens.py      # imagens do Drive -> pasta de cada item
 python3 scripts/gerar_conteudo.py      # tabelas -> people/, publications/, news/
 python3 scripts/sincronizar.py         # baixa, valida, gera, builda e commita
 python3 scripts/sincronizar.py --push  # idem, publicando
 python3 scripts/sincronizar.py --seco  # só relata o que mudaria
 python3 scripts/sincronizar.py --autoteste   # exercita validação e comparação
-python3 scripts/migrar_para_csv.py     # uso único: conteúdo atual -> dados/*.csv
 ```
 
 O gerador é idempotente: rodar duas vezes com as mesmas tabelas não muda nada.
 Ele valida cada linha e falha apontando o problema, em vez de publicar página
-incompleta.
+incompleta. O esquema das colunas, com o texto de cada pergunta do formulário,
+está em `scripts/tabelas.py`.
+
+## Imagens
+
+`scripts/baixar_imagens.py` lê o endereço que o formulário gravou na célula, baixa
+o arquivo e salva na pasta do item com o nome que o site espera
+(`people/<pessoa>/avatar.jpg`, `publications/<artigo>/miniatura.png`,
+`news/<noticia>/imagem.jpg`). O que já foi baixado fica anotado em
+`dados/imagens.json`, então a rodada seguinte não baixa de novo.
+
+Para o download funcionar sem senha, a pasta de respostas do formulário precisa
+estar compartilhada como "qualquer pessoa com o link". Se não estiver, o Google
+devolve a página de login no lugar da imagem: o script reconhece isso e para,
+em vez de gravar a página de login como se fosse a foto.
 
 ## Job automático
 
 `scripts/sincronizar.py` baixa cada planilha publicada em CSV (endereços em
 `dados/fontes.conf`), recusa o que vier inválido, compara com o CSV versionado,
-substitui só quando mudou, roda o gerador, faz o build com `scripts/build.sh` e
-commita. O push só acontece com `--push`.
+substitui só quando mudou, baixa as imagens, roda o gerador, faz o build com
+`scripts/build.sh` e commita. O push só acontece com `--push`.
+
+A validação olha o texto das perguntas, não nomes internos: se uma pergunta
+obrigatória sumir da planilha, o job para dizendo qual pergunta faltou. Colunas
+que o formulário cria sozinho (carimbo de data e hora, e-mail de quem respondeu,
+Score) são ignoradas.
 
 Antes de commitar, o job confere a árvore de trabalho: se houver alteração fora
 de `dados/`, `people/`, `publications/`, `news/` e `docs/`, ele para e avisa, para

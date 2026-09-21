@@ -26,12 +26,12 @@ about:
 
 ::: {#perfil}
 
-PhD student in Artificial Intelligence at CNAM, in Paris, and Applied Scientist Intern at Microsoft. She holds BSc degrees in Data Science and AI and in Applied Mathematics from FGV EMAp, and an MASH MSc from Université Paris Dauphine–PSL. Her research covers deep learning, computer vision, and remote sensing.
+PhD student in Artificial Intelligence at CNAM, in Paris, and Applied Scientist Intern at Microsoft. She holds BSc degrees in Data Science and AI and in Applied Mathematics from FGV EMAp, and an MASH MSc from Université Paris Dauphine, PSL. Her research covers deep learning, computer vision, and remote sensing.
 
 ## Education
 
 - PhD student in Computer Science, CNAM.
-- MASH MSc (Mathematics and AI), Université Paris Dauphine–PSL.
+- MASH MSc (Mathematics and AI), Université Paris Dauphine, PSL.
 - BSc in Data Science and AI, FGV EMAp.
 - BSc in Applied Mathematics, FGV EMAp.
 

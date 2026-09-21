@@ -24,10 +24,9 @@ toc: false
 ::: {.pub-detail-meta}
 **Authors:** Matheus Pinheiro Ferreira, Matheus Santos Fuza, José M. S. M. Viveiros, Tomás Ferranti, Dário Oliveira, Giulio Brossi Santoro, Paulo Guilherme Molin, Catherine Torres de Almeida, Angélica F. Resende, Danilo R. A. de Almeida, Yelu Zeng, Ricardo Ribeiro Rodrigues, Pedro H. S. Brancalion
 
-**Published:** April 2026 — International Journal of Remote Sensing, vol. 47, no. 7, pp. 3213–3238 (Taylor & Francis)
+**Published:** April 2026, International Journal of Remote Sensing, v. 47, n. 7, p. 3213-3238 (Taylor & Francis)
 
-[View publication](https://www.tandfonline.com/doi/figure/10.1080/01431161.2026.2628300?scroll=top&needAccess=true){.pub-btn}
-[Download PDF](https://www.tandfonline.com/doi/epdf/10.1080/01431161.2026.2628300?needAccess=true){.pub-btn}
+[Read the article](https://www.tandfonline.com/doi/figure/10.1080/01431161.2026.2628300?scroll=top&needAccess=true){.pub-btn}
 :::
 
 ::::
@@ -55,23 +54,24 @@ use of space-borne hyperspectral imagery and ensem-ble deep learning for robust 
 intropical regions, emphasizing the critical role of high spectral resolution.
 
 :::: {.pub-figures}
-![Location of the study area in the São Paulo state, Brazil. True color compositions of sixteen EnMAP hyperspectral 
-satellite scenes are shown across the São Paulo state. An inset in the lower left corner highlights the spatial 
-distribution of field plots established in four forest land-cover types.](fig1.jpg)
+![Localização da área de estudo no estado de São Paulo, Brasil. São apresentadas composições em cores reais de dezesseis cenas 
+do satélite hiperespectral EnMAP abrangendo o estado de São Paulo. Um detalhe no canto inferior esquerdo destaca a distribuição 
+espacial das parcelas de campo estabelecidas em quatro tipos de cobertura florestal.](fig1.jpg)
 
-![Deep learning-based ensemble approach. Three distinct deep learning models were trained independently: a recurrent 
-Neural network (RNN), an autoencoder, and a 1D convolutional Neural network (1D-CNN). Each model produced class 
-probability outputs, which were then combined using a hard voting mechanism to generate the final ensemble prediction.](fig2.jpg)
+![Abordagem de ensemble baseada em aprendizado profundo. Três modelos distintos de aprendizado profundo foram treinados de forma 
+independente: uma rede neural recorrente (RNN), um autoencoder e uma rede neural convolucional 1D (1D-CNN). Cada modelo gerou saídas 
+de probabilidade de classe, as quais foram posteriormente combinadas utilizando um mecanismo de votação rígida (hard voting) para 
+gerar a previsão final do ensemble.](fig2.jpg)
 ::::
 
-## Cite this publication
+## How to cite
 
 ```bibtex
 @article{ferreira2026enmap,
   title     = {Exploring EnMAP hyperspectral images and ensemble deep learning
                for classifying forest land-cover types in Brazil},
   author    = {Pinheiro Ferreira, Matheus and Fuza, Matheus Santos and
-               Viveiros, José M. S. M. and Ferranti, Tomáss and
+               Viveiros, José M. S. M. and Ferranti, Tomás and
                Oliveira, Dário and Santoro, Giulio Brossi and
                Molin, Paulo Guilherme and de Almeida, Catherine Torres and
                Resende, Angélica F. and de Almeida, Danilo R. A. and

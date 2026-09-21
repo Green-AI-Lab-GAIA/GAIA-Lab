@@ -26,12 +26,12 @@ about:
 
 ::: {#perfil}
 
-Doutoranda em Inteligência Artificial no CNAM, em Paris, e Applied Scientist Intern na Microsoft. Formada em Ciência de Dados e IA e em Matemática Aplicada pela FGV EMAp, com mestrado MASH pela Université Paris Dauphine–PSL. Pesquisa deep learning, visão computacional e sensoriamento remoto.
+Doutoranda em Inteligência Artificial no CNAM, em Paris, e Applied Scientist Intern na Microsoft. Formada em Ciência de Dados e IA e em Matemática Aplicada pela FGV EMAp, com mestrado MASH pela Université Paris Dauphine, PSL. Pesquisa deep learning, visão computacional e sensoriamento remoto.
 
 ## Formação
 
 - Doutoranda em Ciência da Computação, CNAM.
-- Mestrado MASH (Matemática e IA), Université Paris Dauphine–PSL.
+- Mestrado MASH (Matemática e IA), Université Paris Dauphine, PSL.
 - Graduação em Ciência de Dados e IA, FGV EMAp.
 - Graduação em Matemática Aplicada, FGV EMAp.
 

@@ -33,7 +33,7 @@ Pesquisadora de deep learning no GAIA Lab. Doutoranda na FGV EMAp, mestre em Mod
 
 ## Formação
 
-- Doutoranda,, FGV EMAp.
+- Doutoranda, FGV EMAp.
 - Mestrado em Modelagem Matemática e Ciência de Dados, FGV EMAp.
 - Graduação em Ciência de Dados e IA, FGV EMAp.
 

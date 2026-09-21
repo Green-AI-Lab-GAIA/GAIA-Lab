@@ -26,7 +26,7 @@ about:
 
 ::: {#perfil}
 
-PhD in Mechanical Engineering from PUC-Rio, MSc from UFRJ, and BSc in Physics from UERJ, with an MBA in Data Science from ICMC-USP. He was an applied machine learning specialist at FGV (2023–2025), working with physics-based models (PINNs, Neural ODEs). He is currently a researcher and senior data scientist at Radix.
+PhD in Mechanical Engineering from PUC-Rio, MSc from UFRJ, and BSc in Physics from UERJ, with an MBA in Data Science from ICMC-USP. He was an applied machine learning specialist at FGV (2023-2025), working with physics-based models (PINNs, Neural ODEs). He is currently a researcher and senior data scientist at Radix.
 
 ## Education
 

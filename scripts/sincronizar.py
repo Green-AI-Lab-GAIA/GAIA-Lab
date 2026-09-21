@@ -19,6 +19,7 @@ from __future__ import annotations
 import argparse
 import csv
 import io
+import json
 import subprocess
 import sys
 import urllib.error
@@ -26,21 +27,13 @@ import urllib.request
 from datetime import datetime
 from pathlib import Path
 
+from tabelas import COLUNAS, mapa_de_colunas, perguntas_faltando
+
 RAIZ = Path(__file__).resolve().parent.parent
 DADOS = RAIZ / "dados"
 FONTES = DADOS / "fontes.conf"
 
-TABELAS = {
-    "pessoas": ["slug", "grupo", "nome", "primeiro", "ultimo", "imagem", "cargo_pt", "cargo_en",
-                "formacao_pt", "formacao_en", "linkedin", "email", "bio_pt", "bio_en",
-                "formacao_detalhe_pt", "formacao_detalhe_en", "interesses_pt", "interesses_en"],
-    "publicacoes": ["slug", "data", "imagem", "titulo", "titulo_en", "autores", "veiculo",
-                    "local_pt", "local_en", "publicado_pt", "publicado_en", "resumo_pt", "resumo_en",
-                    "botao1_pt", "botao1_en", "botao1_url", "botao2_pt", "botao2_en", "botao2_url",
-                    "texto_pt", "texto_en"],
-    "noticias": ["slug", "data", "imagem", "titulo_pt", "titulo_en", "fonte_pt", "fonte_en",
-                 "data_texto_pt", "data_texto_en", "url_pt", "url_en", "resumo_pt", "resumo_en"],
-}
+TABELAS = tuple(COLUNAS)
 
 # arquivos que o job pode mexer; qualquer outra alteracao na arvore faz o job parar
 PERMITIDOS = ("dados/", "people/", "publications/", "news/", "docs/")
@@ -86,27 +79,31 @@ def baixar(url: str) -> str:
         return resposta.read().decode("utf-8", errors="replace")
 
 
-def interpretar(tabela: str, texto: str, origem: str) -> list[dict]:
-    """Valida o que chegou e devolve as linhas. Recusa o que nao for a tabela."""
+def interpretar(tabela: str, texto: str, origem: str) -> tuple[list[dict], list[str]]:
+    """Valida o que chegou e devolve (linhas, cabecalhos). Recusa o que nao servir.
+
+    O cabecalho da planilha e o texto das perguntas do formulario, entao o que se
+    confere e se as perguntas obrigatorias estao la, nao um nome interno de coluna.
+    """
     if not texto.strip():
         falhar(f"{tabela}: {origem} veio vazio")
     if texto.lstrip().startswith("<"):
         falhar(f"{tabela}: {origem} veio como pagina HTML, provavelmente planilha despublicada")
-    linhas = list(csv.DictReader(io.StringIO(texto)))
+    leitor = csv.DictReader(io.StringIO(texto))
+    cabecalhos = [c for c in (leitor.fieldnames or []) if c]
+    linhas = [{k: (v or "").strip() for k, v in linha.items()} for linha in leitor]
     if not linhas:
         falhar(f"{tabela}: {origem} nao tem nenhuma linha de dados")
-    faltando = [c for c in TABELAS[tabela] if c not in linhas[0]]
+    faltando = perguntas_faltando(tabela, mapa_de_colunas(tabela, cabecalhos))
     if faltando:
-        falhar(f"{tabela}: {origem} sem as colunas {faltando}")
-    if len(linhas[0]) != len(TABELAS[tabela]):
-        falhar(f"{tabela}: {origem} tem {len(linhas[0])} colunas, esperadas {len(TABELAS[tabela])}")
-    return [{k: (v or "").strip() for k, v in linha.items()} for linha in linhas]
+        falhar(f"{tabela}: {origem} sem a coluna das perguntas {faltando}. "
+               f"Cabecalhos que chegaram: {cabecalhos}")
+    return linhas, cabecalhos
 
 
-def normalizar(linhas: list[dict]) -> list[dict]:
+def normalizar(linhas: list[dict]) -> list[str]:
     """Compara pelo conteudo: ordem das linhas nao importa, espaco nas pontas nao conta."""
-    return sorted(({k: v.strip() for k, v in linha.items()} for linha in linhas),
-                  key=lambda l: l["slug"])
+    return sorted(json.dumps(linha, sort_keys=True, ensure_ascii=False) for linha in linhas)
 
 
 def gravavel(linhas: list[dict], colunas: list[str]) -> str:
@@ -117,8 +114,8 @@ def gravavel(linhas: list[dict], colunas: list[str]) -> str:
     return saida.getvalue()
 
 
-def comparar_com_local(tabela: str, remotas: list[dict]) -> bool:
-    """Devolve True se mudou. Substitui o CSV local pelo conteudo remoto normalizado."""
+def comparar_com_local(tabela: str, remotas: list[dict], cabecalhos: list[str]) -> bool:
+    """Devolve True se mudou. Grava o CSV local na ordem e no cabecalho da planilha."""
     destino = DADOS / f"{tabela}.csv"
     locais = []
     if destino.exists():
@@ -126,7 +123,7 @@ def comparar_com_local(tabela: str, remotas: list[dict]) -> bool:
             locais = [{k: (v or "").strip() for k, v in linha.items()} for linha in csv.DictReader(fh)]
     if normalizar(locais) == normalizar(remotas):
         return False
-    destino.write_text(gravavel(normalizar(remotas), TABELAS[tabela]), encoding="utf-8")
+    destino.write_text(gravavel(remotas, cabecalhos), encoding="utf-8")
     aviso(f"{agora()} {tabela}: {len(locais)} -> {len(remotas)} linhas, CSV atualizado")
     return True
 
@@ -164,12 +161,14 @@ def autoteste() -> int:
     try:
         shutil.copy(original / "pessoas.csv", temporario / "pessoas.csv")
         conteudo = (temporario / "pessoas.csv").read_text(encoding="utf-8")
+        cabecalho_ok = ",".join(c.rotulo for c in COLUNAS["pessoas"])
 
         ruins = {
             "planilha vazia": "",
             "pagina de login em HTML": "<!DOCTYPE html><html>Faca login</html>",
             "cabecalho sem as colunas": "nome,email\nx,y\n",
-            "sem nenhuma linha": ",".join(TABELAS["pessoas"]) + "\n",
+            "sem nenhuma linha": cabecalho_ok + "\n",
+            "pergunta obrigatoria sem coluna": "Nome completo,LinkedIn\nAna,x\n",
         }
         for nome, texto in ruins.items():
             try:
@@ -179,21 +178,22 @@ def autoteste() -> int:
             except SystemExit:
                 pass
 
-        linhas = interpretar("pessoas", conteudo, "autoteste")
-        if comparar_com_local("pessoas", linhas):
+        linhas, cabecalhos = interpretar("pessoas", conteudo, "autoteste")
+        if comparar_com_local("pessoas", linhas, cabecalhos):
             aviso("autoteste: conteudo igual foi tratado como mudanca")
             falhas += 1
-        if comparar_com_local("pessoas", list(reversed(linhas))):
+        if comparar_com_local("pessoas", list(reversed(linhas)), cabecalhos):
             aviso("autoteste: so a ordem das linhas mudou e foi tratado como mudanca")
             falhas += 1
         editadas = [dict(l) for l in linhas]
-        editadas[0]["bio_pt"] = "Editado no autoteste."
-        if not comparar_com_local("pessoas", editadas):
+        editadas[0]["Apresentação"] = "Editado no autoteste."
+        if not comparar_com_local("pessoas", editadas, cabecalhos):
             aviso("autoteste: celula alterada nao foi detectada")
             falhas += 1
         with (temporario / "pessoas.csv").open(encoding="utf-8", newline="") as fh:
             gravado = list(csv.DictReader(fh))
-        if len(gravado) != len(linhas) or not any(l["bio_pt"] == "Editado no autoteste." for l in gravado):
+        if len(gravado) != len(linhas) or not any(
+                l.get("Apresentação") == "Editado no autoteste." for l in gravado):
             aviso("autoteste: CSV local nao recebeu a alteracao")
             falhas += 1
     finally:
@@ -233,17 +233,21 @@ def main() -> int:
     for tabela in sorted(enderecos):
         if tabela not in TABELAS:
             falhar(f"fontes.conf tem uma tabela desconhecida: {tabela}")
-        remotas = interpretar(tabela, baixar(enderecos[tabela]), enderecos[tabela][:60])
+        remotas, cabecalhos = interpretar(tabela, baixar(enderecos[tabela]), enderecos[tabela][:60])
         if args.seco:
             aviso(f"{agora()} {tabela}: {len(remotas)} linhas na planilha (modo seco, nada gravado)")
             continue
-        if comparar_com_local(tabela, remotas):
+        if comparar_com_local(tabela, remotas, cabecalhos):
             mudou.append(tabela)
 
     if args.seco:
+        rodar("python3", "scripts/baixar_imagens.py", "--seco")
         return 0
 
     arvore_tem_so_o_que_o_job_mexe()
+    saida = rodar("python3", "scripts/baixar_imagens.py")
+    if saida:
+        aviso(f"{agora()} {saida}")
     saida = rodar("python3", "scripts/gerar_conteudo.py")
     if saida:
         aviso(f"{agora()} {saida}")

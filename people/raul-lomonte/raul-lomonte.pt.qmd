@@ -1,6 +1,6 @@
 ---
 title: "Raul Lomonte Figueiredo"
-last: "Lomonte"
+last: "Figueiredo"
 first: "Raul"
 people_group: "masters"
 subtitle: "Assistente de Pesquisa"

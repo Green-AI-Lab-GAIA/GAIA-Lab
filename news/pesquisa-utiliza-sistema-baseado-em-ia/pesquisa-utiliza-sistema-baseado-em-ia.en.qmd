@@ -4,7 +4,7 @@ date: 2025-07-16
 news-source: "FGV"
 news-date: "July 16, 2025"
 news-url: "https://portal.fgv.br/en/noticias/research-uses-ai-based-system-predict-meat-quality-cellphone-photos"
-image: "images/news-carne.png"
+image: "imagem.png"
 summary: "Study paves the way for developing applications that help consumers identify, through images, softer and juicier cuts."
 ---
 

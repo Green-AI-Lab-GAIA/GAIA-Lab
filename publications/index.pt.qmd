@@ -13,34 +13,10 @@ listing:
     fields: [title, image, date, paper-authors, pub-date, venue, snippet]
   - id: news
     contents:
-      - title: "Pesquisa utiliza sistema baseado em IA para prever qualidade da carne a partir de fotos de celular "
-        path: "https://portal.fgv.br/noticias/pesquisa-utiliza-sistema-baseado-em-ia-para-prever-qualidade-da-carne-partir-de-fotos-de"
-        date: 2025-07-16
-        news-source: "FGV"
-        news-date: "16 de julho de 2025"
-        image: "images/news-carne.png"
-        summary: "Sistema treinado com fotos de cortes bovinos e suínos prevê maciez e gordura intramuscular, abrindo caminho para 
-        aplicativos que ajudem o consumidor a identificar cortes mais macios e suculentos."
-      - title: "Estudo monitora desmatamento e identifica espécies vegetais com uso de inteligência artificial"
-        path: "https://portal.fgv.br/noticias/estudo-monitora-desmatamento-e-identifica-especies-vegetais-com-uso-de-inteligencia"
-        date: 2025-03-20
-        news-source: "FGV"
-        news-date: "20 de março de 2025"
-        image: "images/news-desmatamento.jpg"
-        summary: "O método LLP-Co aprende padrões visuais e agrupa grandes volumes de dados automaticamente, aplicado à identificação 
-        de áreas desmatadas e da biodiversidade vegetal da Floresta Amazônica."
-      - title: "Pesquisadores criam algoritmo que realiza classificação agrícola por meio de imagens de satélite"
-        path: "https://portal.fgv.br/noticias/pesquisadores-criam-algoritmo-realiza-classificacao-agricola-meio-imagens-satelite"
-        date: 2024-10-08
-        news-source: "FGV"
-        news-date: "8 de outubro de 2024"
-        image: "images/news-agricultura.jpg"
-        summary: "Estudo da FGV EMAp utiliza, pela primeira vez, uma abordagem com proporções globais para classificar culturas 
-        agrícolas por agrupamento auto-supervisionado."
+      - "../news/*/*.pt.qmd"
     template: ../_ejs/news-card.ejs
     sort: "date desc"
-resources:
-  - "images/"
+    fields: [title, image, date, news-source, news-date, news-url, summary]
 page-layout: full
 toc: false
 ---

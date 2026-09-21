@@ -4,7 +4,7 @@ date: 2024-10-08
 news-source: "FGV"
 news-date: "8 de outubro de 2024"
 news-url: "https://portal.fgv.br/noticias/pesquisadores-criam-algoritmo-realiza-classificacao-agricola-meio-imagens-satelite"
-image: "images/news-agricultura.jpg"
+image: "imagem.jpg"
 summary: "Estudo da FGV EMAp utiliza, pela primeira vez, uma abordagem com proporções globais para classificar culturas agrícolas por agrupamento auto-supervisionado."
 ---
 

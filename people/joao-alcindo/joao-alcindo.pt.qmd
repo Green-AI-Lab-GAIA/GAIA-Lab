@@ -29,7 +29,7 @@ about:
 
 ::: {#perfil}
 
-Assistente de pesquisa no GAIA Lab, aplicando visão computacional e deep learning a imagens de satélite para sustentabilidade e monitoramento ambiental — de modelos self-supervised para reflorestamento e desmatamento à agricultura com imagens hiperespectrais. Mestre em Matemática Aplicada e Ciência de Dados pela FGV EMAp e bacharel em Ciência de Dados e IA pela mesma escola. Parte para um mestrado na França, seguindo vinculado aos projetos do laboratório.
+Assistente de pesquisa no GAIA Lab, aplicando visão computacional e deep learning a imagens de satélite para sustentabilidade e monitoramento ambiental, de modelos self-supervised para reflorestamento e desmatamento à agricultura com imagens hiperespectrais. Mestre em Matemática Aplicada e Ciência de Dados pela FGV EMAp e bacharel em Ciência de Dados e IA pela mesma escola. Parte para um mestrado na França, seguindo vinculado aos projetos do laboratório.
 
 ## Formação
 

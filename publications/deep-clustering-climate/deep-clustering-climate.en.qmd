@@ -24,10 +24,9 @@ toc: false
 ::: {.pub-detail-meta}
 **Authors:** Lívia Meinhardt, Dário Oliveira
 
-**Published:** April 2026 — arXiv preprint arXiv:2604.22909
+**Published:** April 2026, arXiv preprint arXiv:2604.22909
 
-[View on arXiv](https://arxiv.org/abs/2604.22909){.pub-btn}
-[Download PDF](https://arxiv.org/pdf/2604.22909){.pub-btn}
+[Read the article](https://arxiv.org/abs/2604.22909){.pub-btn}
 :::
 
 ::::
@@ -49,16 +48,15 @@ highlight the potential of self-supervised discretization as a tool for
 climate data analysis and open avenues for incorporating richer climate
 indicators in future work.
 
-
 :::: {.pub-figures}
-![Spatial extent of the selected study region (Brazilian Cerrado) used for model training and evaluation.](fig1.png)
+![Extensão espacial da região de estudo selecionada (Cerrado brasileiro) utilizada para o treinamento e a avaliação do modelo.](fig1.png)
 
-![Lagged probability analysis showing the sensitivity of the learned regimes at lags $\tau \in \left[ −12, +12 \right]$ months relative to the Oceanic Nino Index. 
-Negative lags indicate precursor behavior before El Nino, while positive lags indicate delayed responses after the ENSO peak.](fig2.png)
+![Análise de probabilidade com defasagem que demonstra a sensibilidade dos regimes aprendidos em defasagens $\tau \in \left[ −12, +12 \right]$ meses em relação ao Índice 
+Niño Oceânico. Defasagens negativas indicam comportamento precursor antes do El Niño, enquanto defasagens positivas indicam respostas postergadas após 
+o pico do ENOS.](fig2.png)
 ::::
 
-
-## Cite this publication
+## How to cite
 
 ```bibtex
 @misc{meinhardt2026deepclustering,

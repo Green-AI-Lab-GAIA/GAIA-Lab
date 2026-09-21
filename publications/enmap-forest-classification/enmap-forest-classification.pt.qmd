@@ -24,10 +24,9 @@ toc: false
 ::: {.pub-detail-meta}
 **Autores:** Matheus Pinheiro Ferreira, Matheus Santos Fuza, José M. S. M. Viveiros, Tomás Ferranti, Dário Oliveira, Giulio Brossi Santoro, Paulo Guilherme Molin, Catherine Torres de Almeida, Angélica F. Resende, Danilo R. A. de Almeida, Yelu Zeng, Ricardo Ribeiro Rodrigues, Pedro H. S. Brancalion
 
-**Publicação:** Abril de 2026 — International Journal of Remote Sensing, v. 47, n. 7, p. 3213–3238 (Taylor & Francis)
+**Publicação:** Abril de 2026, International Journal of Remote Sensing, v. 47, n. 7, p. 3213-3238 (Taylor & Francis)
 
-[Ver publicação](https://www.tandfonline.com/doi/figure/10.1080/01431161.2026.2628300?scroll=top&needAccess=true){.pub-btn}
-[Baixar PDF](https://www.tandfonline.com/doi/epdf/10.1080/01431161.2026.2628300?needAccess=true){.pub-btn}
+[Acessar o artigo](https://www.tandfonline.com/doi/figure/10.1080/01431161.2026.2628300?scroll=top&needAccess=true){.pub-btn}
 :::
 
 ::::

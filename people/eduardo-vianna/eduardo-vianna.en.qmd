@@ -1,6 +1,6 @@
 ---
 title: "Eduardo Vianna de L. F. Guimarães"
-last: "Vianna"
+last: "Guimarães"
 first: "Eduardo"
 people_group: "alumni"
 subtitle: "Data Scientist, BNDES"

@@ -1,10 +1,10 @@
 ---
 title: "Study monitors deforestation and identifies plant species using artificial intelligence"
 date: 2025-03-20
-news-source: "FGV (in Portuguese)"
+news-source: "FGV"
 news-date: "March 20, 2025"
 news-url: "https://portal.fgv.br/en/node/21767"
-image: "images/news-desmatamento.jpg"
+image: "imagem.jpg"
 summary: "The LLP-Co method learns visual patterns and clusters large data volumes automatically, applied to identifying deforested areas and features of plant biodiversity in the Amazon rainforest."
 ---
 

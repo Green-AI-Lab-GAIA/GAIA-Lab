@@ -111,9 +111,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-date','listing-news-source','listing-news-date','listing-image','listing-summary',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
+      valueNames: ['listing-title','listing-image','listing-date','listing-news-source','listing-news-date','listing-news-url','listing-summary',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-title","listing-date","listing-news-source","listing-news-date","listing-image","listing-summary"],
+      searchColumns: ["listing-project","listing-pagetitle","listing-website","listing-format","listing-lang","listing-toc-title","listing-language","listing-title","listing-date","listing-news-source","listing-news-date","listing-news-url","listing-image","listing-summary","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -492,18 +492,18 @@ window.Quarto = {
   
     <a class="news-card" href="https://portal.fgv.br/noticias/pesquisa-utiliza-sistema-baseado-em-ia-para-prever-qualidade-da-carne-partir-de-fotos-de" data-date="16 de jul. de 2025">
       
-        <img class="news-image" src="images/news-carne.png" alt="" loading="lazy">
+        <img class="news-image" src="../news/pesquisa-utiliza-sistema-baseado-em-ia/imagem.png" alt="" loading="lazy">
       
       <div class="news-body">
         <div class="news-source">FGV · 16 de julho de 2025</div>
-        <div class="news-title">Pesquisa utiliza sistema baseado em IA para prever qualidade da carne a partir de fotos de celular </div>
+        <div class="news-title">Pesquisa utiliza sistema baseado em IA para prever qualidade da carne a partir de fotos de celular</div>
         <div class="news-summary">Sistema treinado com fotos de cortes bovinos e suínos prevê maciez e gordura intramuscular, abrindo caminho para aplicativos que ajudem o consumidor a identificar cortes mais macios e suculentos.</div>
       </div>
     </a>
   
     <a class="news-card" href="https://portal.fgv.br/noticias/estudo-monitora-desmatamento-e-identifica-especies-vegetais-com-uso-de-inteligencia" data-date="20 de mar. de 2025">
       
-        <img class="news-image" src="images/news-desmatamento.jpg" alt="" loading="lazy">
+        <img class="news-image" src="../news/estudo-monitora-desmatamento-e/imagem.jpg" alt="" loading="lazy">
       
       <div class="news-body">
         <div class="news-source">FGV · 20 de março de 2025</div>
@@ -514,7 +514,7 @@ window.Quarto = {
   
     <a class="news-card" href="https://portal.fgv.br/noticias/pesquisadores-criam-algoritmo-realiza-classificacao-agricola-meio-imagens-satelite" data-date="8 de out. de 2024">
       
-        <img class="news-image" src="images/news-agricultura.jpg" alt="" loading="lazy">
+        <img class="news-image" src="../news/pesquisadores-criam-algoritmo-que/imagem.jpg" alt="" loading="lazy">
       
       <div class="news-body">
         <div class="news-source">FGV · 8 de outubro de 2024</div>

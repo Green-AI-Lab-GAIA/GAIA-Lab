@@ -111,9 +111,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-date','listing-news-source','listing-news-date','listing-image','listing-summary',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
+      valueNames: ['listing-title','listing-image','listing-date','listing-news-source','listing-news-date','listing-news-url','listing-summary',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-title","listing-date","listing-news-source","listing-news-date","listing-image","listing-summary"],
+      searchColumns: ["listing-project","listing-pagetitle","listing-website","listing-format","listing-lang","listing-toc-title","listing-language","listing-title","listing-date","listing-news-source","listing-news-date","listing-news-url","listing-image","listing-summary","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -492,7 +492,7 @@ window.Quarto = {
   
     <a class="news-card" href="https://portal.fgv.br/en/noticias/research-uses-ai-based-system-predict-meat-quality-cellphone-photos" data-date="Jul 16, 2025">
       
-        <img class="news-image" src="images/news-carne.png" alt="" loading="lazy">
+        <img class="news-image" src="../news/pesquisa-utiliza-sistema-baseado-em-ia/imagem.png" alt="" loading="lazy">
       
       <div class="news-body">
         <div class="news-source">FGV · July 16, 2025</div>
@@ -503,10 +503,10 @@ window.Quarto = {
   
     <a class="news-card" href="https://portal.fgv.br/en/node/21767" data-date="Mar 20, 2025">
       
-        <img class="news-image" src="images/news-desmatamento.jpg" alt="" loading="lazy">
+        <img class="news-image" src="../news/estudo-monitora-desmatamento-e/imagem.jpg" alt="" loading="lazy">
       
       <div class="news-body">
-        <div class="news-source">FGV (in Portuguese) · March 20, 2025</div>
+        <div class="news-source">FGV · March 20, 2025</div>
         <div class="news-title">Study monitors deforestation and identifies plant species using artificial intelligence</div>
         <div class="news-summary">The LLP-Co method learns visual patterns and clusters large data volumes automatically, applied to identifying deforested areas and features of plant biodiversity in the Amazon rainforest.</div>
       </div>
@@ -514,7 +514,7 @@ window.Quarto = {
   
     <a class="news-card" href="https://portal.fgv.br/en/news/researchers-create-algorithm-crop-classification-using-satellite-images" data-date="Oct 8, 2024">
       
-        <img class="news-image" src="images/news-agricultura.jpg" alt="" loading="lazy">
+        <img class="news-image" src="../news/pesquisadores-criam-algoritmo-que/imagem.jpg" alt="" loading="lazy">
       
       <div class="news-body">
         <div class="news-source">FGV · October 8, 2024</div>

@@ -33,7 +33,7 @@ Pesquisador de deep learning no GAIA Lab desde 2024. Doutorando na FGV EMAp, mes
 
 ## Formação
 
-- Doutorando,, FGV EMAp.
+- Doutorando, FGV EMAp.
 - Mestrado em Matemática Aplicada e Ciência de Dados, FGV EMAp.
 - Graduação em Matemática Aplicada, FGV EMAp.
 

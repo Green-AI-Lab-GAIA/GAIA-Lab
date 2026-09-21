@@ -4,7 +4,7 @@ date: 2025-07-16
 news-source: "FGV"
 news-date: "16 de julho de 2025"
 news-url: "https://portal.fgv.br/noticias/pesquisa-utiliza-sistema-baseado-em-ia-para-prever-qualidade-da-carne-partir-de-fotos-de"
-image: "images/news-carne.png"
+image: "imagem.png"
 summary: "Sistema treinado com fotos de cortes bovinos e suínos prevê maciez e gordura intramuscular, abrindo caminho para aplicativos que ajudem o consumidor a identificar cortes mais macios e suculentos."
 ---
 

@@ -24,10 +24,9 @@ toc: false
 ::: {.pub-detail-meta}
 **Autores:** Lívia Meinhardt, Dário Oliveira
 
-**Publicação:** Abril de 2026 — arXiv preprint arXiv:2604.22909
+**Publicação:** Abril de 2026, arXiv preprint arXiv:2604.22909
 
-[Ver no arXiv](https://arxiv.org/abs/2604.22909){.pub-btn}
-[Baixar PDF](https://arxiv.org/pdf/2604.22909){.pub-btn}
+[Acessar o artigo](https://arxiv.org/abs/2604.22909){.pub-btn}
 :::
 
 ::::
@@ -44,7 +43,6 @@ climáticos consistentes sob as premissas do nosso modelo, oferecendo uma repres
 do fenômeno El Niño, reforçando sua relevância científica. Os resultados alcançados destacam o potencial da discretização autossupervisionada 
 como ferramenta para a análise de dados climáticos, além de abrir caminhos para a incorporação de indicadores climáticos mais abrangentes em 
 trabalhos futuros.
-
 
 :::: {.pub-figures}
 ![Extensão espacial da região de estudo selecionada (Cerrado brasileiro) utilizada para o treinamento e a avaliação do modelo.](fig1.png)

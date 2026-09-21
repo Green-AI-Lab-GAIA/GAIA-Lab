@@ -33,7 +33,7 @@ Doutorando na FGV EMAp, mestre em Modelagem Matemática e com dupla graduação 
 
 ## Formação
 
-- Doutorando,, FGV EMAp.
+- Doutorando, FGV EMAp.
 - Mestrado em Modelagem Matemática, FGV EMAp.
 - Graduação em Ciência de Dados e IA, FGV EMAp.
 - Graduação em Matemática Aplicada, FGV EMAp.

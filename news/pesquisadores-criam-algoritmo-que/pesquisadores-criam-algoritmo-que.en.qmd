@@ -4,7 +4,7 @@ date: 2024-10-08
 news-source: "FGV"
 news-date: "October 8, 2024"
 news-url: "https://portal.fgv.br/en/news/researchers-create-algorithm-crop-classification-using-satellite-images"
-image: "images/news-agricultura.jpg"
+image: "imagem.jpg"
 summary: "FGV EMAp study is the first to use a global-proportions approach to classify crops through self-supervised clustering."
 ---
 

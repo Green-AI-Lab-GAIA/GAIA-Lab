@@ -13,34 +13,10 @@ listing:
     fields: [title, image, date, paper-authors, pub-date, venue, snippet]
   - id: news
     contents:
-      - title: "Research uses AI-based system to predict meat quality from cellphone photos"
-        path: "https://portal.fgv.br/en/noticias/research-uses-ai-based-system-predict-meat-quality-cellphone-photos"
-        date: 2025-07-16
-        news-source: "FGV"
-        news-date: "July 16, 2025"
-        image: "images/news-carne.png"
-        summary: "Study paves the way for developing applications that help consumers identify, through images, softer and juicier
-        cuts."
-      - title: "Study monitors deforestation and identifies plant species using artificial intelligence"
-        path: "https://portal.fgv.br/en/node/21767"
-        date: 2025-03-20
-        news-source: "FGV (in Portuguese)"
-        news-date: "March 20, 2025"
-        image: "images/news-desmatamento.jpg"
-        summary: "The LLP-Co method learns visual patterns and clusters large data volumes automatically, applied to identifying 
-        deforested areas and features of plant biodiversity in the Amazon rainforest."
-      - title: "Researchers create algorithm for crop classification using satellite images"
-        path: "https://portal.fgv.br/en/news/researchers-create-algorithm-crop-classification-using-satellite-images"
-        date: 2024-10-08
-        news-source: "FGV"
-        news-date: "October 8, 2024"
-        image: "images/news-agricultura.jpg"
-        summary: "FGV EMAp study is the first to use a global-proportions approach to classify crops through self-supervised 
-        clustering."
+      - "../news/*/*.en.qmd"
     template: ../_ejs/news-card.ejs
     sort: "date desc"
-resources:
-  - "images/"
+    fields: [title, image, date, news-source, news-date, news-url, summary]
 page-layout: full
 toc: false
 ---
