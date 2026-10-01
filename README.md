@@ -52,7 +52,7 @@ O deploy e a atualização do site seguem o pipeline automatizado abaixo:
 └───────────────────────────┬────────────────────────────┘
                             │ (git push)
                             ▼
-[ GitHub Pages: https://green-ai-lab-gaia.github.io/ ]
+[ GitHub Pages: https://green-ai-lab-gaia.github.io/GAIA-Lab/ ]
 ```
 
 ### Executar a pipeline manualmente
