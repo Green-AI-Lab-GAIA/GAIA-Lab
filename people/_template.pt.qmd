@@ -5,7 +5,7 @@
 title: "Nome Completo"
 last: "Sobrenome"
 first: "Nome"
-people_group: "professor | postdoc | phd | masters | undergrad | alumni"
+people_group: "professor | postdoc | phd | masters | undergrad | colaborador | alumni"
 subtitle: "Cargo no GAIA Lab (ex.: Assistente de Pesquisa)"
 education: "Formação para o card (ex.: Mestrando em X, FGV EMAp)"
 image: avatar.jpg

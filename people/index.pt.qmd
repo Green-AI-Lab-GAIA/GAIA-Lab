@@ -1,8 +1,9 @@
 ---
 title: "Conheça a Equipe"
-# Cada listagem filtra as páginas .pt.qmd dos membros por people_group,
-# em ordem alfabética de nome. Grupos sem integrantes no momento (pós-doc,
-# doutorado) ficam comentados aqui e nas seções abaixo, prontos para ativar.
+# Cada listagem filtra as páginas .pt.qmd dos membros por people_group, em ordem
+# alfabética de nome. Grupo sem ninguém no momento não aparece na página: a seção
+# e o link do sumário saem sozinhos, sem precisar comentar nada aqui.
+# Ver _includes/listing-empty.html.
 listing:
   - id: professor
     contents:
@@ -13,15 +14,15 @@ listing:
     sort: title
     type: grid
     fields: [title, subtitle, image, education]
-  # - id: postdoc
-  #   contents:
-  #     - "*/*.pt.qmd"
-  #   include:
-  #     people_group: "postdoc"
-  #   template: ../_ejs/people-card.ejs
-  #   sort: title
-  #   type: grid
-  #   fields: [title, subtitle, image, education]
+  - id: postdoc
+    contents:
+      - "*/*.pt.qmd"
+    include:
+      people_group: "postdoc"
+    template: ../_ejs/people-card.ejs
+    sort: title
+    type: grid
+    fields: [title, subtitle, image, education]
   - id: phd
     contents:
       - "*/*.pt.qmd"
@@ -49,6 +50,15 @@ listing:
     sort: title
     type: grid
     fields: [title, subtitle, image, education]
+  - id: colaborador
+    contents:
+      - "*/*.pt.qmd"
+    include:
+      people_group: "colaborador"
+    template: ../_ejs/people-card.ejs
+    sort: title
+    type: grid
+    fields: [title, subtitle, image, education]
   - id: alumni
     contents:
       - "*/*.pt.qmd"
@@ -72,12 +82,10 @@ toc: false
 ::: {#professor}
 :::
 
-<!--
 ## Pós-Doutorado
 
 ::: {#postdoc}
 :::
--->
 
 ## Doutorado
 
@@ -94,6 +102,11 @@ toc: false
 ::: {#undergrad}
 :::
 
+## Colaborador
+
+::: {#colaborador}
+:::
+
 ## Alumni
 
 ::: {#alumni}
@@ -106,9 +119,11 @@ toc: false
   <div class="side-toc-title">Sumário</div>
   <ul>
     <li><a class="side-toc-link" href="#professor">Professor</a></li>
+    <li><a class="side-toc-link" href="#pós-doutorado">Pós-Doutorado</a></li>
     <li><a class="side-toc-link" href="#doutorado">Doutorado</a></li>
     <li><a class="side-toc-link" href="#mestrado">Mestrado</a></li>
     <li><a class="side-toc-link" href="#graduação">Graduação</a></li>
+    <li><a class="side-toc-link" href="#colaborador">Colaborador</a></li>
     <li><a class="side-toc-link" href="#alumni">Alumni</a></li>
   </ul>
 </div>

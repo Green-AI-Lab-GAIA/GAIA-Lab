@@ -1,40 +1,43 @@
 [
   {
-    "listing": "/publications/index.pt.html",
-    "items": [
-      "/publications/deep-clustering-climate/deep-clustering-climate.pt.html",
-      "/publications/enmap-forest-classification/enmap-forest-classification.pt.html",
-      "/publications/viscoelastic-udes/viscoelastic-udes.pt.html",
-      "/news/pesquisa-utiliza-sistema-baseado-em-ia/pesquisa-utiliza-sistema-baseado-em-ia.pt.html",
-      "/news/estudo-monitora-desmatamento-e/estudo-monitora-desmatamento-e.pt.html",
-      "/news/pesquisadores-criam-algoritmo-que/pesquisadores-criam-algoritmo-que.pt.html"
-    ]
-  },
-  {
     "listing": "/people/index.pt.html",
     "items": [
       "/people/dario-oliveira/dario-oliveira.pt.html",
-      "/people/danilo-cardoso/danilo-cardoso.pt.html",
+      "/people/danilo-lemos-cardoso/danilo-lemos-cardoso.pt.html",
       "/people/erick-brito/erick-brito.pt.html",
       "/people/heitor-trielli/heitor-trielli.pt.html",
-      "/people/livia-meinhardt/livia-meinhardt.pt.html",
+      "/people/livia-cereja-meinhardt/livia-cereja-meinhardt.pt.html",
       "/people/tomas-ferranti/tomas-ferranti.pt.html",
-      "/people/gabriel-jacinto/gabriel-jacinto.pt.html",
+      "/people/gabriel-jacinto-pereira/gabriel-jacinto-pereira.pt.html",
       "/people/gustavo-danon/gustavo-danon.pt.html",
       "/people/hanna-ferreira/hanna-ferreira.pt.html",
+      "/people/janaina-neres-evangelista/janaina-neres-evangelista.pt.html",
       "/people/joao-alcindo/joao-alcindo.pt.html",
       "/people/lucas-westfal/lucas-westfal.pt.html",
-      "/people/pedro-martins/pedro-martins.pt.html",
-      "/people/raul-lomonte/raul-lomonte.pt.html",
-      "/people/rodrigo-pintucci/rodrigo-pintucci.pt.html",
-      "/people/thiago-melchiors/thiago-melchiors.pt.html",
-      "/people/antonio-brych/antonio-brych.pt.html",
-      "/people/sillas-costa/sillas-costa.pt.html",
-      "/people/eduardo-vianna/eduardo-vianna.pt.html",
+      "/people/pedro-thomaz-conzatti-martins/pedro-thomaz-conzatti-martins.pt.html",
+      "/people/raul-lomonte-figueiredo/raul-lomonte-figueiredo.pt.html",
+      "/people/rodrigo-gomes-hutz-pintucci/rodrigo-gomes-hutz-pintucci.pt.html",
+      "/people/thiago-franke-melchiors/thiago-franke-melchiors.pt.html",
+      "/people/antonio-joaquim-brych-mendes-de-souza/antonio-joaquim-brych-mendes-de-souza.pt.html",
+      "/people/sillas-da-rocha-costa/sillas-da-rocha-costa.pt.html",
+      "/people/eduardo-vianna-de-l-f-guimaraes/eduardo-vianna-de-l-f-guimaraes.pt.html",
       "/people/elias-rodrigues/elias-rodrigues.pt.html",
       "/people/juliana-carvalho/juliana-carvalho.pt.html",
       "/people/luiz-luz/luiz-luz.pt.html",
-      "/people/pedro-soto/pedro-soto.pt.html"
+      "/people/pedro-soto/pedro-soto.pt.html",
+      "/people/jorginho-do-play/jorginho-do-play.pt.html"
+    ]
+  },
+  {
+    "listing": "/publications/index.pt.html",
+    "items": [
+      "/publications/deep-clustering-for-climate-analyzing-teleconnections/deep-clustering-for-climate-analyzing-teleconnections.pt.html",
+      "/publications/exploring-enmap-hyperspectral-images-and-ensemble-deep/exploring-enmap-hyperspectral-images-and-ensemble-deep.pt.html",
+      "/publications/finding-the-underlying-viscoelastic-constitutive-equation/finding-the-underlying-viscoelastic-constitutive-equation.pt.html",
+      "/news/teste/teste.pt.html",
+      "/news/pesquisa-utiliza-sistema-baseado-em-ia-para-prever/pesquisa-utiliza-sistema-baseado-em-ia-para-prever.pt.html",
+      "/news/estudo-monitora-desmatamento-e-identifica-especies-vegetais/estudo-monitora-desmatamento-e-identifica-especies-vegetais.pt.html",
+      "/news/pesquisadores-criam-algoritmo-que-realiza-classificacao/pesquisadores-criam-algoritmo-que-realiza-classificacao.pt.html"
     ]
   }
 ]

@@ -1,7 +1,6 @@
 ---
 title: "Cursos"
 # Disciplinas ministradas por integrantes do laboratório na FGV EMAp.
-# As ilustrações em courses/images/ podem ser trocadas por fotos reais.
 resources:
   - "images/"
 page-layout: full
@@ -18,7 +17,7 @@ toc: false
 
   <div class="course-card">
     <img class="course-image" src="images/redes-neurais.svg"
-         alt="Ilustração de uma rede neural com camadas de nós conectados">
+         alt="Redes Neurais e Aprendizado Profundo">
     <div class="course-info">
       <span class="course-level">Pós-graduação em Matemática Aplicada e Ciência de Dados, EMAp</span>
       <div class="course-title">Redes Neurais e Aprendizado Profundo</div>
@@ -28,13 +27,13 @@ toc: false
         <li><strong>Aulas:</strong> presenciais, segundas e terças, das 14h20 às 16h (horário de Brasília)</li>
         <li><strong>Oferta:</strong> todo segundo semestre</li>
       </ul>
-      <a class="pub-btn" href="https://emap.fgv.br/curso/doutorado#aba-disciplinas">Página do programa</a>
+      <a class="pub-btn" href="https://emap.fgv.br/curso/doutorado#aba-disciplinas">Página do curso</a>
     </div>
   </div>
 
   <div class="course-card">
     <img class="course-image" src="images/aprendizado-profundo.svg"
-         alt="Ilustração de blocos de camadas de um modelo profundo">
+         alt="Aprendizado Profundo">
     <div class="course-info">
       <span class="course-level">Graduação em Ciência de Dados e IA, EMAp</span>
       <div class="course-title">Aprendizado Profundo</div>

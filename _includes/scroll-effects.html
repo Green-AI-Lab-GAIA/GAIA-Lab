@@ -113,18 +113,55 @@
     }
 
     var temaAnterior = temaAgora();
-
+  
+    // Anima o botão de tema a cada troca: as classes temporárias reativam os
+    // keyframes do CSS (o indicador estica e o ícone que entra gira). Sem elas o
+    // CSS só guardaria o estado final, sem a passagem de um lado ao outro
+    var botaoTema = document.querySelector(".quarto-color-scheme-toggle");
+    var timerTema = null;
+    function animarBotaoTema(agora) {
+      if (!botaoTema || reduzido) return;
+      botaoTema.classList.remove("animating-to-dark", "animating-to-light");
+      void botaoTema.offsetWidth; // reinicia os keyframes se um já estava ativo
+      var classe = agora === "dark" ? "animating-to-dark" : "animating-to-light";
+      botaoTema.classList.add(classe);
+      clearTimeout(timerTema);
+      timerTema = setTimeout(function () {
+        botaoTema.classList.remove(classe);
+      }, 600);
+    }
+  
     // A troca de tema não move nada, então o observador de tela não dispara e
-    // os blocos ficariam revelados de uma vez só. Este vigia reanima quando o
-    // tema muda de fato, e ignora as outras classes que o <body> recebe
-    var vigiaTema = new MutationObserver(function () {
+    // os blocos ficariam revelados de uma vez só. Este é o único lugar que
+    // reage à troca de fato e ignora as outras classes que o <body> recebe
+    function aoMudarTema() {
       var agora = temaAgora();
       if (agora === temaAnterior) return;
       temaAnterior = agora;
+      // reiniciarReveais força layout e pode travar a linha principal por um
+      // instante; roda primeiro para a animação do botão começar limpa
       if (!reduzido) reiniciarReveais();
-    });
-    vigiaTema.observe(document.body, { attributes: true, attributeFilter: ["class"] });
-    vigiaTema.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "data-bs-theme"] });
+      animarBotaoTema(agora);
+    }
+
+    // Caminho normal: o Quarto anuncia a troca como classe no <body>/<html>
+    if (typeof MutationObserver === "function") {
+      var vigiaTema = new MutationObserver(aoMudarTema);
+      vigiaTema.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+      vigiaTema.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "data-bs-theme"] });
+    }
+
+    // Rede de segurança: o clique é a nossa garantia de que a animação roda
+    // mesmo se o Quarto parar de anunciar a troca por atributo (o script dele
+    // não é nosso, e sem aviso a animação sumiria sem erro nenhum). Como o
+    // onclick inline já rodou quando este listener é chamado, o timeout deixa
+    // as microtarefas do vigia resolverem antes: aqui só sobra o caso em que
+    // ele não viu nada, então os dois caminhos nunca animam duas vezes
+    if (botaoTema) {
+      botaoTema.addEventListener("click", function () {
+        setTimeout(aoMudarTema, 0);
+      });
+    }
 
     var carrosseis = document.querySelectorAll(".hscroll-wrap");
     for (var k = 0; k < carrosseis.length; k++) {

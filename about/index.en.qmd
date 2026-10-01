@@ -104,7 +104,7 @@ states, and checks every result against official references.</p>
 <p class="reveal" style="margin: 2rem 0 3rem;">
   <a class="pub-btn" href="/people/">Meet the team</a>
   <a class="pub-btn" href="/publications/">See the publications</a>
-  <a class="pub-btn" href="/join-us/">Join us</a>
+  <a class="pub-btn" href="/join-us/">Contact us</a>
 </p>
 ```
 

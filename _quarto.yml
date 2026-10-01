@@ -36,9 +36,13 @@ format:
     include-in-header: _includes/favicon.html
     # Scripts de comportamento: troca de idioma por página, links externos em
     # nova aba, cópia de e-mail e efeitos de rolagem (reveal, carrossel,
-    # contadores, comparador de imagens, exploradores e envio da inscrição)
+    # contadores, comparador de imagens, exploradores e envio da inscrição).
+    # listing-empty vem antes de scroll-effects: tira da página a seção de
+    # listagem sem ninguém antes de o sumário lateral ser montado.
     include-after-body:
+      - _includes/listing-empty.html
       - _includes/language-switch.html
+      - _includes/navbar-mobile.html
       - _includes/link-behavior.html
       - _includes/scroll-effects.html
       - _includes/explorers.html

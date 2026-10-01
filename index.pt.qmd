@@ -16,11 +16,9 @@ toc: false
 ```{=html}
 <div class="home-hero">
   <div class="hero-map" aria-hidden="true">
-    <img src="images/hero/mapa-1.webp" alt="">
-    <img src="images/hero/mapa-2.webp" alt="">
-    <img src="images/hero/mapa-3.webp" alt="">
-    <img src="images/hero/mapa-4.webp" alt="">
-    <img src="images/hero/mapa-5.webp" alt="">
+    <img src="images/hero/mapa-1.jpg" alt="">
+    <img src="images/hero/mapa-2.jpg" alt="">
+    <img src="images/hero/mapa-3.jpg" alt="">
   </div>
   <div class="hero-lockup">
     <img class="logo" src="icon/icon.png" alt="Logo do GAIA Lab">
@@ -39,35 +37,35 @@ toc: false
 </div>
 
 <div class="home-body">
-<div id="home-areas" class="home-areas">
-  <a class="area-card reveal" href="/research/#agricultura">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round">
-      <path d="M4 20C4 11 11 4 20 4c0 9-7 16-16 16Z"/>
-      <path d="M4 20C9 15 13 11 17 7"/>
-    </svg>
-    <div class="area-title">Agricultura</div>
-    <div class="area-text">Classificação de culturas e séries de índices de vegetação em escala de talhão.</div>
-    <div class="area-kpi">359,6 mil talhões<span>em 5 estados, de 2020 a 2025</span></div>
-  </a>
-  <a class="area-card reveal" href="/research/#floresta">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 2 6 10h3l-4 7h14l-4-7h3L12 2Z"/>
-      <path d="M12 17v5"/>
-    </svg>
-    <div class="area-title">Floresta</div>
-    <div class="area-text">Segmentação de floresta por satélite, validada contra dados oficiais do INPE.</div>
-    <div class="area-kpi">0,85 de IoU<span>em 26 trimestres, de 2020 a 2026</span></div>
-  </a>
-  <a class="area-card reveal" href="/research/#clima">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="8" cy="8" r="3.5"/>
-      <path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M12.6 3.4l-1.4 1.4"/>
-      <path d="M13 17.5a4 4 0 0 1 7.6-1.2A3 3 0 0 1 20 22h-6a3 3 0 0 1-1-4.5Z"/>
-    </svg>
-    <div class="area-title">Clima</div>
-    <div class="area-text">Tendências climáticas e risco agrícola em janelas de 15 anos.</div>
-    <div class="area-kpi">+1,1 °C na máxima<span>Nova Mutum, MT, de 2011 a 2025</span></div>
-  </a>
+  <div id="home-areas" class="home-areas">
+    <a class="area-card reveal" href="/research/#agricultura">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round">
+        <path d="M4 20C4 11 11 4 20 4c0 9-7 16-16 16Z"/>
+        <path d="M4 20C9 15 13 11 17 7"/>
+      </svg>
+      <div class="area-title">Agricultura</div>
+      <div class="area-text">Classificação de culturas e séries de índices de vegetação em escala de talhão.</div>
+      <div class="area-kpi">359,6 mil talhões<span>em 5 estados, de 2020 a 2025</span></div>
+    </a>
+    <a class="area-card reveal" href="/research/#floresta">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2 6 10h3l-4 7h14l-4-7h3L12 2Z"/>
+        <path d="M12 17v5"/>
+      </svg>
+      <div class="area-title">Floresta</div>
+      <div class="area-text">Segmentação de floresta por satélite, validada contra dados oficiais do INPE.</div>
+      <div class="area-kpi">0,85 de IoU<span>em 26 trimestres, de 2020 a 2026</span></div>
+    </a>
+    <a class="area-card reveal" href="/research/#clima">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="8" cy="8" r="3.5"/>
+        <path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M12.6 3.4l-1.4 1.4"/>
+        <path d="M13 17.5a4 4 0 0 1 7.6-1.2A3 3 0 0 1 20 22h-6a3 3 0 0 1-1-4.5Z"/>
+      </svg>
+      <div class="area-title">Clima</div>
+      <div class="area-text">Tendências climáticas e risco agrícola em janelas de 15 anos.</div>
+      <div class="area-kpi">+1,1 °C na máxima<span>Nova Mutum, MT, de 2011 a 2025</span></div>
+    </a>
 </div>
 ```
 
@@ -102,7 +100,7 @@ toc: false
 <p class="reveal" style="margin: 2.5rem 0 3rem;">
   <a class="pub-btn" href="/publications/">Ver as publicações</a>
   <a class="pub-btn" href="/about/">Sobre o laboratório</a>
-  <a class="pub-btn" href="/join-us/">Junte-se a nós</a>
+  <a class="pub-btn" href="/join-us/">Fale conosco</a>
 </p>
 </div>
 ```

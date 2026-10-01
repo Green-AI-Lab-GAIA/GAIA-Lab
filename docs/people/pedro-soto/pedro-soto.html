@@ -78,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="icon" type="image/png" href="../../icon/favicon-light.png">
 
 
-<link rel="stylesheet" href="../../styles.css?v=0b209f99">
+<link rel="stylesheet" href="../../styles.css?v=9b405240">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -359,6 +359,26 @@ ul.task-list li input[type="checkbox"] {
 
 </main> <!-- /main -->
 <script>
+/* Seção de listagem sem ninguém não é publicada (ver styles.css): o CSS já esconde
+   pelo :has(); aqui vai a mesma conta em JS, que também tira o link do sumário
+   lateral e serve de rede para navegador sem :has(). Páginas com abas de filtro
+   ficam de fora, porque lá filtrar pode esvaziar uma seção na hora. */
+(function () {
+  if (document.querySelector(".side-toc-link[data-view]")) return;
+
+  var listagens = document.querySelectorAll("section.level2 > .quarto-listing");
+  for (var i = 0; i < listagens.length; i++) {
+    var secao = listagens[i].closest("section.level2");
+    if (secao.querySelector(".quarto-grid-item, .quarto-listing-item")) continue;
+    secao.classList.add("secao-vazia");
+    // href termina em "#id": os scripts do Quarto às vezes reescrevem a âncora
+    // como URL completa
+    var links = document.querySelectorAll('a.side-toc-link[href$="#' + secao.id + '"]');
+    for (var j = 0; j < links.length; j++) links[j].classList.add("secao-vazia");
+  }
+})();
+</script>
+<script>
   // Faz o link PT/EN da navbar apontar para a versão da página atual no outro
   // idioma. O site em inglês é publicado sob /en/, espelhando a raiz, então a
   // troca é apenas inserir ou remover esse prefixo no caminho. A posição de
@@ -402,6 +422,87 @@ ul.task-list li input[type="checkbox"] {
       }
     }
   });
+</script>
+<script>
+  // Menu recolhido (abaixo de lg): o botão de tema precisa viver DENTRO do menu,
+  // na mesma linha do botão de idioma. O Quarto entrega esse botão fora do menu
+  // — ele é irmão da .navbar-collapse, dentro de .quarto-navbar-tools — e CSS
+  // sozinho não traz um elemento para dentro de outro: sem o menu aberto ele
+  // ficaria solto na barra e, com o menu aberto, apareceria depois da lista. Era
+  // isso que fazia o botão pular de lugar a cada abertura do menu.
+  //
+  // Aqui o elemento é movido de verdade ao cruzar o breakpoint de lg e devolvido
+  // à posição de origem no modo largo. O <li> que o recebe entra na MESMA lista
+  // do botão de idioma, que no modo pequeno passa a ser uma linha (flex-row, ver
+  // styles.css): os dois controles ficam lado a lado no fim dos links.
+  (function () {
+    var pequeno = window.matchMedia("(max-width: 991.98px)");
+    var volta = null; // guarda as posições originais enquanto o modo pequeno dura
+
+    // O botão de idioma é o link curto de duas letras (PT/EN) do menu. A classe
+    // lang-switch vem do _includes/language-switch.html; o texto é a rede para
+    // quando este script roda antes dele (é o caso: roda ainda no parser).
+    function acharIdioma(menu) {
+      var porClasse = menu.querySelector("a.nav-link.lang-switch");
+      if (porClasse) return porClasse;
+      var links = menu.querySelectorAll("a.nav-link");
+      for (var i = 0; i < links.length; i++) {
+        if (/^[A-Za-z]{2}$/.test(links[i].textContent.trim())) return links[i];
+      }
+      return null;
+    }
+
+    function dentroDoMenu() {
+      if (volta) return;
+      var menu = document.getElementById("navbarCollapse");
+      var ferramentas = document.querySelector(".quarto-navbar-tools");
+      if (!menu || !ferramentas) return;
+      var idioma = acharIdioma(menu);
+      if (!idioma) return;
+      var lista = idioma.parentNode.parentNode; // a ul.navbar-nav do idioma
+      volta = {
+        lista: lista,
+        ferramentas: ferramentas,
+        pai: ferramentas.parentNode,
+        seguinte: ferramentas.nextSibling // irmão a repor no lugar na volta
+      };
+      // O ms-auto empurrava a lista para a direita no modo largo; aqui ela é a
+      // nossa linha de configurações e precisa do alinhamento à esquerda
+      lista.classList.remove("ms-auto");
+      lista.classList.add("menu-config");
+      var itemTema = document.createElement("li");
+      itemTema.className = "nav-item menu-tema";
+      itemTema.appendChild(ferramentas);
+      lista.appendChild(itemTema);
+    }
+
+    function foraDoMenu() {
+      if (!volta) return;
+      volta.ferramentas.parentNode.removeChild(volta.ferramentas);
+      volta.pai.insertBefore(volta.ferramentas, volta.seguinte);
+      var itemTema = volta.lista.querySelector("li.menu-tema");
+      if (itemTema) volta.lista.removeChild(itemTema);
+      volta.lista.classList.remove("menu-config");
+      volta.lista.classList.add("ms-auto");
+      volta = null;
+    }
+
+    function organizar() {
+      if (pequeno.matches) dentroDoMenu();
+      else foraDoMenu();
+    }
+
+    // A navbar já está no documento quando este script roda, então o botão entra
+    // no menu antes da primeira pintura e não há salto na abertura da página
+    organizar();
+    document.addEventListener("DOMContentLoaded", organizar);
+    // O aviso do matchMedia é o caminho principal; o resize é a rede para os
+    // casos em que só ele dispara (barra de rolagem aparecendo, por exemplo).
+    // organizar() é idempotente: chamar demais não move nada duas vezes
+    window.addEventListener("resize", organizar);
+    if (pequeno.addEventListener) pequeno.addEventListener("change", organizar);
+    else pequeno.addListener(organizar);
+  })();
 </script>
 <script>
   // Comportamento dos links do site:
@@ -612,18 +713,55 @@ ul.task-list li input[type="checkbox"] {
     }
 
     var temaAnterior = temaAgora();
-
+  
+    // Anima o botão de tema a cada troca: as classes temporárias reativam os
+    // keyframes do CSS (o indicador estica e o ícone que entra gira). Sem elas o
+    // CSS só guardaria o estado final, sem a passagem de um lado ao outro
+    var botaoTema = document.querySelector(".quarto-color-scheme-toggle");
+    var timerTema = null;
+    function animarBotaoTema(agora) {
+      if (!botaoTema || reduzido) return;
+      botaoTema.classList.remove("animating-to-dark", "animating-to-light");
+      void botaoTema.offsetWidth; // reinicia os keyframes se um já estava ativo
+      var classe = agora === "dark" ? "animating-to-dark" : "animating-to-light";
+      botaoTema.classList.add(classe);
+      clearTimeout(timerTema);
+      timerTema = setTimeout(function () {
+        botaoTema.classList.remove(classe);
+      }, 600);
+    }
+  
     // A troca de tema não move nada, então o observador de tela não dispara e
-    // os blocos ficariam revelados de uma vez só. Este vigia reanima quando o
-    // tema muda de fato, e ignora as outras classes que o <body> recebe
-    var vigiaTema = new MutationObserver(function () {
+    // os blocos ficariam revelados de uma vez só. Este é o único lugar que
+    // reage à troca de fato e ignora as outras classes que o <body> recebe
+    function aoMudarTema() {
       var agora = temaAgora();
       if (agora === temaAnterior) return;
       temaAnterior = agora;
+      // reiniciarReveais força layout e pode travar a linha principal por um
+      // instante; roda primeiro para a animação do botão começar limpa
       if (!reduzido) reiniciarReveais();
-    });
-    vigiaTema.observe(document.body, { attributes: true, attributeFilter: ["class"] });
-    vigiaTema.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "data-bs-theme"] });
+      animarBotaoTema(agora);
+    }
+
+    // Caminho normal: o Quarto anuncia a troca como classe no <body>/<html>
+    if (typeof MutationObserver === "function") {
+      var vigiaTema = new MutationObserver(aoMudarTema);
+      vigiaTema.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+      vigiaTema.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "data-bs-theme"] });
+    }
+
+    // Rede de segurança: o clique é a nossa garantia de que a animação roda
+    // mesmo se o Quarto parar de anunciar a troca por atributo (o script dele
+    // não é nosso, e sem aviso a animação sumiria sem erro nenhum). Como o
+    // onclick inline já rodou quando este listener é chamado, o timeout deixa
+    // as microtarefas do vigia resolverem antes: aqui só sobra o caso em que
+    // ele não viu nada, então os dois caminhos nunca animam duas vezes
+    if (botaoTema) {
+      botaoTema.addEventListener("click", function () {
+        setTimeout(aoMudarTema, 0);
+      });
+    }
 
     var carrosseis = document.querySelectorAll(".hscroll-wrap");
     for (var k = 0; k < carrosseis.length; k++) {
@@ -1054,16 +1192,13 @@ ul.task-list li input[type="checkbox"] {
   });
 </script>
 <script>
-  // Envio do formulário "Junte-se a nós".
+  // Envio do formulário de contato ("Contato" / "Contact").
   //
   // O site é estático, então quem recebe o POST é o aplicativo da web do Apps
   // Script (ver ferramentas/apps-script/), apontado em data-endpoint no próprio
-  // formulário. Enquanto o endereço estiver vazio, o envio cai no caminho antigo
-  // de abrir o e-mail do visitante, para a página nunca ficar sem função.
-  //
-  // O Apps Script não devolve resposta legível por CORS, então o envio é feito
-  // com mode: no-cors e a confirmação na tela é "saiu", não "chegou". Quem
-  // garante a chegada é o e-mail que o script manda para o coordenador.
+  // formulário. O Apps Script não devolve resposta legível por CORS, então o
+  // envio é feito com mode: no-cors e a confirmação na tela é "saiu", não
+  // "chegou". Quem garante a chegada é o e-mail que o script manda.
   document.addEventListener("DOMContentLoaded", function () {
     var form = document.getElementById("join-form");
     if (!form) return;
@@ -1071,6 +1206,10 @@ ul.task-list li input[type="checkbox"] {
     var status = form.querySelector(".join-status");
     var botao = form.querySelector(".join-submit");
     var honeypot = form.querySelector(".join-honeypot");
+    var motivo = form.querySelector("#join-motivo");
+    var blocoOutro = form.querySelector(".join-outro");
+    var campoOutro = form.querySelector("#join-outro");
+    var contador = form.querySelector(".join-contador");
     var abertoEm = Date.now();
 
     function mostrar(mensagem, tipo) {
@@ -1083,53 +1222,200 @@ ul.task-list li input[type="checkbox"] {
       return form.getAttribute("data-" + chave) || padrao;
     }
 
-    function abrirEmail() {
-      var corpo = texto("msg-assunto", "Interesse em ingressar no GAIA Lab") + " - " +
-        form.querySelector("#join-nome").value.trim() + "\n\n" +
-        form.querySelector("#join-msg").value.trim() + "\n\n" +
-        form.querySelector("#join-email").value.trim();
-      var destino = (form.getAttribute("data-email") || "").trim();
-      if (!destino) return false;
-      window.location.href = "mailto:" + destino +
-        "?subject=" + encodeURIComponent(form.getAttribute("data-msg-assunto") || "GAIA Lab") +
-        "&body=" + encodeURIComponent(corpo);
-      return true;
+    function opcaoAtual() {
+      return motivo ? motivo.options[motivo.selectedIndex] : null;
     }
+
+    function ehOutro() {
+      var opcao = opcaoAtual();
+      return !!opcao && opcao.hasAttribute("data-outro");
+    }
+
+    function motivoEscolhido() {
+      var opcao = opcaoAtual();
+      if (!opcao) return "";
+      var rotulo = opcao.textContent.trim();
+      if (ehOutro()) {
+        var detalhe = campoOutro ? campoOutro.value.trim() : "";
+        return detalhe ? rotulo + ": " + detalhe : rotulo;
+      }
+      return rotulo;
+    }
+
+    function atualizarContador() {
+      if (!contador || !campoOutro) return;
+      contador.textContent = campoOutro.value.length + "/" + campoOutro.maxLength;
+    }
+
+    // O campo do "Outro" só aparece quando essa opção é a escolhida; ao
+    // escondê-lo o valor é limpo para não ir junto no envio.
+    function atualizarOutro() {
+      var ativo = ehOutro();
+      if (blocoOutro) blocoOutro.hidden = !ativo;
+      if (!ativo && campoOutro) campoOutro.value = "";
+      atualizarContador();
+    }
+
+    // --- Lista de opções própria -------------------------------------------
+    // O <select> nativo continua no formulário (envio e quem está sem JS), mas
+    // fica escondido; aqui ele é trocado por botão + lista, iguais em qualquer
+    // sistema. O nativo só é escondido quando este código roda com sucesso.
+    function construirCombo(select) {
+      var combo = select.parentElement;
+      combo.classList.add("combo");
+      select.classList.add("combo-native");
+
+      var rotulo = form.querySelector('label[for="' + select.id + '"]');
+      if (rotulo && !rotulo.id) rotulo.id = select.id + "-rotulo";
+
+      var botao = document.createElement("button");
+      botao.type = "button";
+      botao.className = "combo-btn";
+      botao.id = select.id + "-botao";
+      botao.setAttribute("aria-haspopup", "listbox");
+      botao.setAttribute("aria-expanded", "false");
+      if (rotulo) botao.setAttribute("aria-labelledby", rotulo.id);
+
+      var valor = document.createElement("span");
+      valor.className = "combo-valor";
+      var seta = document.createElement("span");
+      seta.className = "combo-arrow";
+      seta.setAttribute("aria-hidden", "true");
+      botao.appendChild(valor);
+      botao.appendChild(seta);
+
+      var lista = document.createElement("ul");
+      lista.className = "combo-list";
+      lista.setAttribute("role", "listbox");
+      lista.id = select.id + "-lista";
+      lista.hidden = true;
+      botao.setAttribute("aria-controls", lista.id);
+
+      function sincronizar() {
+        var opcao = select.options[select.selectedIndex];
+        valor.textContent = opcao ? opcao.textContent.trim() : "";
+        Array.prototype.forEach.call(lista.children, function (item) {
+          var escolhido = item.dataset.indice === String(select.selectedIndex);
+          item.setAttribute("aria-selected", escolhido ? "true" : "false");
+        });
+      }
+
+      Array.prototype.forEach.call(select.options, function (opcao, indice) {
+        var item = document.createElement("li");
+        item.setAttribute("role", "option");
+        item.tabIndex = -1;
+        item.dataset.indice = String(indice);
+        item.textContent = opcao.textContent.trim();
+        item.addEventListener("click", function () { escolher(indice); });
+        lista.appendChild(item);
+      });
+
+      combo.appendChild(botao);
+      combo.appendChild(lista);
+
+      function abrir() {
+        lista.hidden = false;
+        combo.classList.add("is-open");
+        botao.setAttribute("aria-expanded", "true");
+      }
+      function fechar() {
+        lista.hidden = true;
+        combo.classList.remove("is-open");
+        botao.setAttribute("aria-expanded", "false");
+      }
+      function focarItem(indice) {
+        var item = lista.children[indice];
+        if (item) item.focus();
+      }
+      function escolher(indice) {
+        select.selectedIndex = indice;
+        select.dispatchEvent(new Event("change", { bubbles: true }));
+        sincronizar();
+        fechar();
+        botao.focus();
+      }
+
+      botao.addEventListener("click", function () {
+        if (lista.hidden) { abrir(); focarItem(select.selectedIndex); } else { fechar(); }
+      });
+      botao.addEventListener("keydown", function (evento) {
+        if (evento.key === "ArrowDown" || evento.key === "Enter" || evento.key === " ") {
+          evento.preventDefault();
+          abrir();
+          focarItem(select.selectedIndex);
+        } else if (evento.key === "ArrowUp") {
+          evento.preventDefault();
+          abrir();
+          focarItem(lista.children.length - 1);
+        }
+      });
+      lista.addEventListener("keydown", function (evento) {
+        var indice = Array.prototype.indexOf.call(lista.children, document.activeElement);
+        if (evento.key === "ArrowDown") { evento.preventDefault(); focarItem(Math.min(indice + 1, lista.children.length - 1)); }
+        else if (evento.key === "ArrowUp") { evento.preventDefault(); focarItem(Math.max(indice - 1, 0)); }
+        else if (evento.key === "Enter" || evento.key === " ") { evento.preventDefault(); if (indice >= 0) escolher(indice); }
+        else if (evento.key === "Escape") { evento.preventDefault(); fechar(); botao.focus(); }
+      });
+      if (rotulo) rotulo.addEventListener("click", function (evento) {
+        evento.preventDefault();
+        botao.focus();
+        abrir();
+      });
+      document.addEventListener("click", function (evento) {
+        if (!combo.contains(evento.target)) fechar();
+      });
+
+      sincronizar();
+    }
+
+    if (motivo) construirCombo(motivo);
+    if (motivo) {
+      motivo.addEventListener("change", atualizarOutro);
+      atualizarOutro();
+    }
+    if (campoOutro) campoOutro.addEventListener("input", atualizarContador);
 
     form.addEventListener("submit", function (evento) {
       evento.preventDefault();
-      if (honeypot && honeypot.value) return;                       // robô
-      if (Date.now() - abertoEm < 3000) {                            // preenchido rápido demais
+      if (honeypot && honeypot.value) return;                        // robô
+      if (Date.now() - abertoEm < 3000) {                             // rápido demais
         mostrar(texto("msg-rapido", "Confira os dados e envie de novo."), "erro");
+        return;
+      }
+      if (ehOutro() && (!campoOutro || !campoOutro.value.trim())) {   // "Outro" sem texto
+        mostrar(texto("msg-outro", "Diga em poucas palavras qual é o motivo."), "erro");
+        if (campoOutro) campoOutro.focus();
         return;
       }
 
       var endpoint = (form.getAttribute("data-endpoint") || "").trim();
-      var dados = new FormData(form);
-      dados.append("pagina", location.pathname);
-      dados.append("idioma", form.getAttribute("data-idioma") || "pt");
-
-      if (!endpoint) {                                              // sem backend configurado
-        abrirEmail();
+      if (!endpoint) {
+        mostrar(texto("msg-erro", "Não foi possível enviar. Tente novamente mais tarde."), "erro");
         return;
       }
+
+      var dados = new FormData(form);
+      dados.set("motivo", motivoEscolhido());   // "Outro" já vem com o detalhe
+      dados.delete("outro");                     // o detalhe já está no motivo
+      dados.append("token", form.getAttribute("data-token") || "");
+      dados.append("pagina", location.pathname);
+      dados.append("idioma", form.getAttribute("data-idioma") || "pt");
 
       botao.disabled = true;
       mostrar(texto("msg-enviando", "Enviando..."), "enviando");
       var parametros = new URLSearchParams();
-      dados.forEach(function (valor, chave) { parametros.append(chave, valor); });
+      dados.forEach(function (v, k) { parametros.append(k, v); });
 
       fetch(endpoint, { method: "POST", mode: "no-cors", body: parametros })
         .then(function () {
-          mostrar(texto("msg-ok", "Inscrição enviada. Responderemos por e-mail."), "ok");
+          mostrar(texto("msg-ok", "Mensagem enviada. Responderemos por e-mail."), "ok");
           form.querySelectorAll("input, select, textarea, button").forEach(function (campo) {
             if (!campo.classList.contains("join-honeypot")) campo.disabled = true;
           });
         })
         .catch(function () {
-          // aqui sim dá para saber que não saiu: sem rede o fetch rejeita
           botao.disabled = false;
-          mostrar(texto("msg-erro", "Não foi possível enviar. Escreva direto para o e-mail ao lado."), "erro");
+          mostrar(texto("msg-erro", "Não foi possível enviar. Tente novamente mais tarde."), "erro");
         });
     });
   });
@@ -1749,9 +2035,8 @@ FGV EMAp, Escola de Matemática Aplicada<br> Praia de Botafogo, 190, 5º andar<b
 <div class="footer-title">
 Contato
 </div>
-<a class="email-protect" data-user="dario.oliveira" data-domain="fgv.br" role="button" tabindex="0">dario.oliveira [arroba] fgv.br</a>
 <div class="footer-social">
-<p><a href="https://www.linkedin.com/company/green-ai-lab/" aria-label="LinkedIn do GAIA Lab"><svg viewbox="0 0 16 16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path></svg></a> <a href="https://github.com/Green-AI-Lab-GAIA" aria-label="GitHub do GAIA Lab"><svg viewbox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></p>
+<p><a href="../../join-us/" aria-label="Contato"><svg viewbox="0 0 16 16" fill="currentColor"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"></path></svg></a> <a href="https://www.linkedin.com/company/green-ai-lab/" aria-label="LinkedIn do GAIA Lab"><svg viewbox="0 0 16 16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path></svg></a> <a href="https://github.com/Green-AI-Lab-GAIA" aria-label="GitHub do GAIA Lab"><svg viewbox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></p>
 </div>
 </div>
 <div class="footer-col">
@@ -1776,9 +2061,6 @@ Navegação
 </li>
 <li>
 <a href="../../people/">Equipe</a>
-</li>
-<li>
-<a class="footer-join" href="../../join-us/">Junte-se a nós</a>
 </li>
 </ul>
 </div>

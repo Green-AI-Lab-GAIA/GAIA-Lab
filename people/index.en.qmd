@@ -1,8 +1,9 @@
 ---
 title: "Meet the Team"
-# Cada listagem filtra as páginas .en.qmd dos membros por people_group,
-# em ordem alfabética de nome. Grupos sem integrantes no momento (pós-doc,
-# doutorado) ficam comentados aqui e nas seções abaixo, prontos para ativar.
+# Cada listagem filtra as páginas .en.qmd dos membros por people_group, em ordem
+# alfabética de nome. Grupo sem ninguém no momento não aparece na página: a seção
+# e o link do sumário saem sozinhos, sem precisar comentar nada aqui.
+# Ver _includes/listing-empty.html.
 listing:
   - id: professor
     contents:
@@ -13,15 +14,15 @@ listing:
     sort: title
     type: grid
     fields: [title, subtitle, image, education]
-  # - id: postdoc
-  #   contents:
-  #     - "*/*.en.qmd"
-  #   include:
-  #     people_group: "postdoc"
-  #   template: ../_ejs/people-card.ejs
-  #   sort: title
-  #   type: grid
-  #   fields: [title, subtitle, image, education]
+  - id: postdoc
+    contents:
+      - "*/*.en.qmd"
+    include:
+      people_group: "postdoc"
+    template: ../_ejs/people-card.ejs
+    sort: title
+    type: grid
+    fields: [title, subtitle, image, education]
   - id: phd
     contents:
       - "*/*.en.qmd"
@@ -49,6 +50,15 @@ listing:
     sort: title
     type: grid
     fields: [title, subtitle, image, education]
+  - id: colaborador
+    contents:
+      - "*/*.en.qmd"
+    include:
+      people_group: "colaborador"
+    template: ../_ejs/people-card.ejs
+    sort: title
+    type: grid
+    fields: [title, subtitle, image, education]
   - id: alumni
     contents:
       - "*/*.en.qmd"
@@ -72,12 +82,10 @@ toc: false
 ::: {#professor}
 :::
 
-<!--
 ## Postdoctoral Researchers
 
 ::: {#postdoc}
 :::
--->
 
 ## PhD Students
 
@@ -94,6 +102,11 @@ toc: false
 ::: {#undergrad}
 :::
 
+## Collaborator
+
+::: {#colaborador}
+:::
+
 ## Alumni
 
 ::: {#alumni}
@@ -106,9 +119,11 @@ toc: false
   <div class="side-toc-title">Contents</div>
   <ul>
     <li><a class="side-toc-link" href="#professor">Professor</a></li>
+    <li><a class="side-toc-link" href="#postdoctoral-researchers">Postdoctoral Researchers</a></li>
     <li><a class="side-toc-link" href="#phd-students">PhD Students</a></li>
     <li><a class="side-toc-link" href="#masters">Master's</a></li>
     <li><a class="side-toc-link" href="#undergraduate">Undergraduate</a></li>
+    <li><a class="side-toc-link" href="#collaborator">Collaborator</a></li>
     <li><a class="side-toc-link" href="#alumni">Alumni</a></li>
   </ul>
 </div>

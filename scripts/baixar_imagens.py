@@ -40,6 +40,7 @@ DESTINOS = {
                     ("publications", "figura1", "figura1"),
                     ("publications", "figura2", "figura2")],
     "noticias": [("news", "imagem", "imagem")],
+    "cursos": [("courses/images", "", "imagem")],
 }
 
 EXTENSAO = {
@@ -133,11 +134,18 @@ def baixar_tabela(tabela: str, seco: bool, registro: dict) -> tuple[int, int, bo
             valor = (linha.get(coluna) or "").strip()
             if not valor:
                 continue
-            prefixo = f"{pasta}/{linha['slug']}/{base}"
-            item = f"{tabela}/{linha['slug']}/{base}"
+            if base:
+                prefixo = f"{pasta}/{linha['slug']}/{base}"
+                item = f"{tabela}/{linha['slug']}/{base}"
+            else:
+                prefixo = f"{pasta}/{linha['slug']}"
+                item = f"{tabela}/{linha['slug']}/{coluna}"
             if not eh_endereco(valor):
-                if not (RAIZ / f"{prefixo}{Path(valor).suffix}").exists() and \
-                        not list((RAIZ / f"{pasta}/{linha['slug']}").glob(f"{base}.*")):
+                caminho_local = RAIZ / "courses" / valor if valor.startswith("images/") else RAIZ / pasta / valor
+                arquivo_com_ext = RAIZ / f"{prefixo}{Path(valor).suffix}"
+                arquivos_pasta = list((RAIZ / pasta).glob(f"{linha['slug']}.*") if not base
+                                      else (RAIZ / f"{pasta}/{linha['slug']}").glob(f"{base}.*"))
+                if not caminho_local.exists() and not arquivo_com_ext.exists() and not arquivos_pasta:
                     aviso(f"aviso: {item}: a planilha cita {valor!r} e o arquivo nao esta na pasta")
                 continue
             antigos = versionados(registro, prefixo)
@@ -160,7 +168,7 @@ def baixar_tabela(tabela: str, seco: bool, registro: dict) -> tuple[int, int, bo
             registro[f"{prefixo}{sufixo}"] = {"url": valor, "bytes": len(dados)}
             mudou = True
             baixadas += 1
-            aviso(f"{item}: {len(dados) // 1024} KB em {pasta}/{linha['slug']}/{base}{sufixo}")
+            aviso(f"{item}: {len(dados) // 1024} KB em {prefixo}{sufixo}")
     return baixadas, puladas, mudou
 
 

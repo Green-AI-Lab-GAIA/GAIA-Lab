@@ -1,0 +1,53 @@
+---
+title: "Pedro Thomaz Conzatti Martins"
+last: "Martins"
+first: "Pedro"
+people_group: "masters"
+subtitle: "Research Assistant"
+education: "MSc Student in Applied Mathematics and Data Science, FGV EMAp"
+image: avatar.jpeg
+page-layout: full
+toc: false
+about:
+  id: perfil
+  template: trestles
+  image-shape: round
+  image: avatar.jpeg
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: "https://www.linkedin.com/in/pedro-thomaz-conzatti-martins"
+---
+
+```{=html}
+<div class="page-shell">
+<div class="page-main">
+```
+
+::: {#perfil}
+
+Research assistant at the GAIA Lab. MSc student in Applied Mathematics and Data Science at FGV EMAp, where he also earned his BSc in Data Science and AI, with a technical degree in informatics from IFRS.
+
+## Education
+
+- MSc student in Applied Mathematics and Data Science, FGV EMAp.
+- BSc in Data Science and AI, FGV EMAp.
+- Technical degree in Informatics, IFRS.
+
+## Interests
+
+Deep learning, LLMs and computer vision.
+
+:::
+
+```{=html}
+<a class="back-link" href="/people/">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+  <span>Back to the team</span>
+</a>
+```
+
+```{=html}
+</div>
+</div>
+```

@@ -1,0 +1,20 @@
+<script>
+/* Seção de listagem sem ninguém não é publicada (ver styles.css): o CSS já esconde
+   pelo :has(); aqui vai a mesma conta em JS, que também tira o link do sumário
+   lateral e serve de rede para navegador sem :has(). Páginas com abas de filtro
+   ficam de fora, porque lá filtrar pode esvaziar uma seção na hora. */
+(function () {
+  if (document.querySelector(".side-toc-link[data-view]")) return;
+
+  var listagens = document.querySelectorAll("section.level2 > .quarto-listing");
+  for (var i = 0; i < listagens.length; i++) {
+    var secao = listagens[i].closest("section.level2");
+    if (secao.querySelector(".quarto-grid-item, .quarto-listing-item")) continue;
+    secao.classList.add("secao-vazia");
+    // href termina em "#id": os scripts do Quarto às vezes reescrevem a âncora
+    // como URL completa
+    var links = document.querySelectorAll('a.side-toc-link[href$="#' + secao.id + '"]');
+    for (var j = 0; j < links.length; j++) links[j].classList.add("secao-vazia");
+  }
+})();
+</script>

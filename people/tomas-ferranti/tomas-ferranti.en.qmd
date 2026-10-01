@@ -17,9 +17,6 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: "https://www.linkedin.com/in/tomas-ferranti"
-    - icon: envelope
-      text: Email
-      href: "mailto:tomas_ferranti_07@hotmail.com"
 ---
 
 ```{=html}

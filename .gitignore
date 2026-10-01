@@ -1,6 +1,10 @@
 /.quarto/
 _site/
 
+# Bytecode do python: nasce a cada rodada e nao tem o que fazer no repositorio
+__pycache__/
+*.pyc
+
 # Perfis do LinkedIn usados como fonte (dados pessoais, nao publicar)
 /perfis/
 

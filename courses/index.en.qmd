@@ -1,7 +1,6 @@
 ---
 title: "Courses"
-# Disciplinas ministradas por integrantes do laboratório na FGV EMAp.
-# As ilustrações em courses/images/ podem ser trocadas por fotos reais.
+# Courses taught by lab members at FGV EMAp.
 resources:
   - "images/"
 page-layout: full
@@ -18,30 +17,30 @@ toc: false
 
   <div class="course-card">
     <img class="course-image" src="images/redes-neurais.svg"
-         alt="Illustration of a neural network with layers of connected nodes">
+         alt="Neural Networks and Deep Learning">
     <div class="course-info">
       <span class="course-level">Graduate program in Applied Mathematics and Data Science, EMAp</span>
       <div class="course-title">Neural Networks and Deep Learning</div>
       <ul class="course-details">
         <li><strong>Professor:</strong> Dário Oliveira</li>
         <li><strong>Course load:</strong> 60h</li>
-        <li><strong>Classes:</strong> in person, Mondays and Tuesdays, 2:20–4:00 pm (Brasília time)</li>
+        <li><strong>Classes:</strong> in person, Mondays and Tuesdays, 2:20-4:00 pm (Brasília time)</li>
         <li><strong>Offered:</strong> every second semester</li>
       </ul>
-      <a class="pub-btn" href="https://emap.fgv.br/curso/doutorado#aba-disciplinas">Program page</a>
+      <a class="pub-btn" href="https://emap.fgv.br/curso/doutorado#aba-disciplinas">Course page</a>
     </div>
   </div>
 
   <div class="course-card">
     <img class="course-image" src="images/aprendizado-profundo.svg"
-         alt="Illustration of stacked layer blocks of a deep model">
+         alt="Deep Learning">
     <div class="course-info">
       <span class="course-level">Undergraduate program in Data Science and AI, EMAp</span>
       <div class="course-title">Deep Learning</div>
       <ul class="course-details">
         <li><strong>Professor:</strong> Dário Oliveira</li>
         <li><strong>Course load:</strong> 60h</li>
-        <li><strong>Classes:</strong> in person, Tuesdays and Thursdays, 9:20–11:00 am (Brasília time)</li>
+        <li><strong>Classes:</strong> in person, Tuesdays and Thursdays, 9:20-11:00 am (Brasília time)</li>
         <li><strong>Offered:</strong> every second semester</li>
       </ul>
       <a class="pub-btn" href="https://emap.fgv.br/curso/ciencia-de-dados-e-inteligencia-artificial#aba-grade-curricular">Course page</a>

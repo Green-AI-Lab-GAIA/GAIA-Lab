@@ -1,14 +1,11 @@
 <script>
-  // Envio do formulário "Junte-se a nós".
+  // Envio do formulário de contato ("Contato" / "Contact").
   //
   // O site é estático, então quem recebe o POST é o aplicativo da web do Apps
   // Script (ver ferramentas/apps-script/), apontado em data-endpoint no próprio
-  // formulário. Enquanto o endereço estiver vazio, o envio cai no caminho antigo
-  // de abrir o e-mail do visitante, para a página nunca ficar sem função.
-  //
-  // O Apps Script não devolve resposta legível por CORS, então o envio é feito
-  // com mode: no-cors e a confirmação na tela é "saiu", não "chegou". Quem
-  // garante a chegada é o e-mail que o script manda para o coordenador.
+  // formulário. O Apps Script não devolve resposta legível por CORS, então o
+  // envio é feito com mode: no-cors e a confirmação na tela é "saiu", não
+  // "chegou". Quem garante a chegada é o e-mail que o script manda.
   document.addEventListener("DOMContentLoaded", function () {
     var form = document.getElementById("join-form");
     if (!form) return;
@@ -16,6 +13,10 @@
     var status = form.querySelector(".join-status");
     var botao = form.querySelector(".join-submit");
     var honeypot = form.querySelector(".join-honeypot");
+    var motivo = form.querySelector("#join-motivo");
+    var blocoOutro = form.querySelector(".join-outro");
+    var campoOutro = form.querySelector("#join-outro");
+    var contador = form.querySelector(".join-contador");
     var abertoEm = Date.now();
 
     function mostrar(mensagem, tipo) {
@@ -28,53 +29,200 @@
       return form.getAttribute("data-" + chave) || padrao;
     }
 
-    function abrirEmail() {
-      var corpo = texto("msg-assunto", "Interesse em ingressar no GAIA Lab") + " - " +
-        form.querySelector("#join-nome").value.trim() + "\n\n" +
-        form.querySelector("#join-msg").value.trim() + "\n\n" +
-        form.querySelector("#join-email").value.trim();
-      var destino = (form.getAttribute("data-email") || "").trim();
-      if (!destino) return false;
-      window.location.href = "mailto:" + destino +
-        "?subject=" + encodeURIComponent(form.getAttribute("data-msg-assunto") || "GAIA Lab") +
-        "&body=" + encodeURIComponent(corpo);
-      return true;
+    function opcaoAtual() {
+      return motivo ? motivo.options[motivo.selectedIndex] : null;
     }
+
+    function ehOutro() {
+      var opcao = opcaoAtual();
+      return !!opcao && opcao.hasAttribute("data-outro");
+    }
+
+    function motivoEscolhido() {
+      var opcao = opcaoAtual();
+      if (!opcao) return "";
+      var rotulo = opcao.textContent.trim();
+      if (ehOutro()) {
+        var detalhe = campoOutro ? campoOutro.value.trim() : "";
+        return detalhe ? rotulo + ": " + detalhe : rotulo;
+      }
+      return rotulo;
+    }
+
+    function atualizarContador() {
+      if (!contador || !campoOutro) return;
+      contador.textContent = campoOutro.value.length + "/" + campoOutro.maxLength;
+    }
+
+    // O campo do "Outro" só aparece quando essa opção é a escolhida; ao
+    // escondê-lo o valor é limpo para não ir junto no envio.
+    function atualizarOutro() {
+      var ativo = ehOutro();
+      if (blocoOutro) blocoOutro.hidden = !ativo;
+      if (!ativo && campoOutro) campoOutro.value = "";
+      atualizarContador();
+    }
+
+    // --- Lista de opções própria -------------------------------------------
+    // O <select> nativo continua no formulário (envio e quem está sem JS), mas
+    // fica escondido; aqui ele é trocado por botão + lista, iguais em qualquer
+    // sistema. O nativo só é escondido quando este código roda com sucesso.
+    function construirCombo(select) {
+      var combo = select.parentElement;
+      combo.classList.add("combo");
+      select.classList.add("combo-native");
+
+      var rotulo = form.querySelector('label[for="' + select.id + '"]');
+      if (rotulo && !rotulo.id) rotulo.id = select.id + "-rotulo";
+
+      var botao = document.createElement("button");
+      botao.type = "button";
+      botao.className = "combo-btn";
+      botao.id = select.id + "-botao";
+      botao.setAttribute("aria-haspopup", "listbox");
+      botao.setAttribute("aria-expanded", "false");
+      if (rotulo) botao.setAttribute("aria-labelledby", rotulo.id);
+
+      var valor = document.createElement("span");
+      valor.className = "combo-valor";
+      var seta = document.createElement("span");
+      seta.className = "combo-arrow";
+      seta.setAttribute("aria-hidden", "true");
+      botao.appendChild(valor);
+      botao.appendChild(seta);
+
+      var lista = document.createElement("ul");
+      lista.className = "combo-list";
+      lista.setAttribute("role", "listbox");
+      lista.id = select.id + "-lista";
+      lista.hidden = true;
+      botao.setAttribute("aria-controls", lista.id);
+
+      function sincronizar() {
+        var opcao = select.options[select.selectedIndex];
+        valor.textContent = opcao ? opcao.textContent.trim() : "";
+        Array.prototype.forEach.call(lista.children, function (item) {
+          var escolhido = item.dataset.indice === String(select.selectedIndex);
+          item.setAttribute("aria-selected", escolhido ? "true" : "false");
+        });
+      }
+
+      Array.prototype.forEach.call(select.options, function (opcao, indice) {
+        var item = document.createElement("li");
+        item.setAttribute("role", "option");
+        item.tabIndex = -1;
+        item.dataset.indice = String(indice);
+        item.textContent = opcao.textContent.trim();
+        item.addEventListener("click", function () { escolher(indice); });
+        lista.appendChild(item);
+      });
+
+      combo.appendChild(botao);
+      combo.appendChild(lista);
+
+      function abrir() {
+        lista.hidden = false;
+        combo.classList.add("is-open");
+        botao.setAttribute("aria-expanded", "true");
+      }
+      function fechar() {
+        lista.hidden = true;
+        combo.classList.remove("is-open");
+        botao.setAttribute("aria-expanded", "false");
+      }
+      function focarItem(indice) {
+        var item = lista.children[indice];
+        if (item) item.focus();
+      }
+      function escolher(indice) {
+        select.selectedIndex = indice;
+        select.dispatchEvent(new Event("change", { bubbles: true }));
+        sincronizar();
+        fechar();
+        botao.focus();
+      }
+
+      botao.addEventListener("click", function () {
+        if (lista.hidden) { abrir(); focarItem(select.selectedIndex); } else { fechar(); }
+      });
+      botao.addEventListener("keydown", function (evento) {
+        if (evento.key === "ArrowDown" || evento.key === "Enter" || evento.key === " ") {
+          evento.preventDefault();
+          abrir();
+          focarItem(select.selectedIndex);
+        } else if (evento.key === "ArrowUp") {
+          evento.preventDefault();
+          abrir();
+          focarItem(lista.children.length - 1);
+        }
+      });
+      lista.addEventListener("keydown", function (evento) {
+        var indice = Array.prototype.indexOf.call(lista.children, document.activeElement);
+        if (evento.key === "ArrowDown") { evento.preventDefault(); focarItem(Math.min(indice + 1, lista.children.length - 1)); }
+        else if (evento.key === "ArrowUp") { evento.preventDefault(); focarItem(Math.max(indice - 1, 0)); }
+        else if (evento.key === "Enter" || evento.key === " ") { evento.preventDefault(); if (indice >= 0) escolher(indice); }
+        else if (evento.key === "Escape") { evento.preventDefault(); fechar(); botao.focus(); }
+      });
+      if (rotulo) rotulo.addEventListener("click", function (evento) {
+        evento.preventDefault();
+        botao.focus();
+        abrir();
+      });
+      document.addEventListener("click", function (evento) {
+        if (!combo.contains(evento.target)) fechar();
+      });
+
+      sincronizar();
+    }
+
+    if (motivo) construirCombo(motivo);
+    if (motivo) {
+      motivo.addEventListener("change", atualizarOutro);
+      atualizarOutro();
+    }
+    if (campoOutro) campoOutro.addEventListener("input", atualizarContador);
 
     form.addEventListener("submit", function (evento) {
       evento.preventDefault();
-      if (honeypot && honeypot.value) return;                       // robô
-      if (Date.now() - abertoEm < 3000) {                            // preenchido rápido demais
+      if (honeypot && honeypot.value) return;                        // robô
+      if (Date.now() - abertoEm < 3000) {                             // rápido demais
         mostrar(texto("msg-rapido", "Confira os dados e envie de novo."), "erro");
+        return;
+      }
+      if (ehOutro() && (!campoOutro || !campoOutro.value.trim())) {   // "Outro" sem texto
+        mostrar(texto("msg-outro", "Diga em poucas palavras qual é o motivo."), "erro");
+        if (campoOutro) campoOutro.focus();
         return;
       }
 
       var endpoint = (form.getAttribute("data-endpoint") || "").trim();
-      var dados = new FormData(form);
-      dados.append("pagina", location.pathname);
-      dados.append("idioma", form.getAttribute("data-idioma") || "pt");
-
-      if (!endpoint) {                                              // sem backend configurado
-        abrirEmail();
+      if (!endpoint) {
+        mostrar(texto("msg-erro", "Não foi possível enviar. Tente novamente mais tarde."), "erro");
         return;
       }
+
+      var dados = new FormData(form);
+      dados.set("motivo", motivoEscolhido());   // "Outro" já vem com o detalhe
+      dados.delete("outro");                     // o detalhe já está no motivo
+      dados.append("token", form.getAttribute("data-token") || "");
+      dados.append("pagina", location.pathname);
+      dados.append("idioma", form.getAttribute("data-idioma") || "pt");
 
       botao.disabled = true;
       mostrar(texto("msg-enviando", "Enviando..."), "enviando");
       var parametros = new URLSearchParams();
-      dados.forEach(function (valor, chave) { parametros.append(chave, valor); });
+      dados.forEach(function (v, k) { parametros.append(k, v); });
 
       fetch(endpoint, { method: "POST", mode: "no-cors", body: parametros })
         .then(function () {
-          mostrar(texto("msg-ok", "Inscrição enviada. Responderemos por e-mail."), "ok");
+          mostrar(texto("msg-ok", "Mensagem enviada. Responderemos por e-mail."), "ok");
           form.querySelectorAll("input, select, textarea, button").forEach(function (campo) {
             if (!campo.classList.contains("join-honeypot")) campo.disabled = true;
           });
         })
         .catch(function () {
-          // aqui sim dá para saber que não saiu: sem rede o fetch rejeita
           botao.disabled = false;
-          mostrar(texto("msg-erro", "Não foi possível enviar. Escreva direto para o e-mail ao lado."), "erro");
+          mostrar(texto("msg-erro", "Não foi possível enviar. Tente novamente mais tarde."), "erro");
         });
     });
   });

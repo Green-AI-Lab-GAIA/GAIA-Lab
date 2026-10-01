@@ -1,0 +1,54 @@
+---
+title: "Thiago Franke Melchiors"
+last: "Melchiors"
+first: "Thiago"
+people_group: "masters"
+subtitle: "Assistente de Pesquisa"
+education: "Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp"
+image: avatar.jpeg
+page-layout: full
+toc: false
+about:
+  id: perfil
+  template: trestles
+  image-shape: round
+  image: avatar.jpeg
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: "https://www.linkedin.com/in/thiago-melchiors"
+---
+
+```{=html}
+<div class="page-shell">
+<div class="page-main">
+```
+
+::: {#perfil}
+
+Graduado em Ciência de Dados e Inteligência Artificial pela FGV EMAp e mestrando em Matemática Aplicada 
+e Ciência de Dados pela mesma instituição. No Gaia Lab, pesquisa sensoriamento remoto no monitoramento 
+de florestas e do uso da terra. Também atua como cientista de dados na FGV, com foco em LLMs e PLN.
+
+## Formação
+
+- Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp.
+- Graduação em Ciência de Dados e IA, FGV EMAp.
+
+## Interesses
+
+Aprendizado de máquina e visão computacional para sensoriamento remoto.
+
+:::
+
+```{=html}
+<a class="back-link" href="/people/">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+  <span>Voltar para a equipe</span>
+</a>
+```
+
+```{=html}
+</div>
+</div>
+```

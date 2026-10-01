@@ -17,9 +17,6 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: "https://www.linkedin.com/in/hanna-rodrigues"
-    - icon: envelope
-      text: Email
-      href: "mailto:hanna.rodrigues.ismart@gmail.com"
 ---
 
 ```{=html}

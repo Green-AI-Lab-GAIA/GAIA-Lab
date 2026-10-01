@@ -1,5 +1,5 @@
 ---
-title: "Join Us"
+title: "Contact"
 page-layout: full
 toc: false
 ---
@@ -9,52 +9,64 @@ toc: false
 <div class="page-main">
 ```
 
-The GAIA Lab is always open to students and researchers interested in artificial
-intelligence applied to remote sensing, climate, forests, and agriculture. Fill in
-the form below: your application goes straight to the lab coordinator.
+The GAIA Lab is open to students and researchers interested in artificial
+intelligence applied to remote sensing, climate, forests, and agriculture, and
+also to partnerships, collaborations, and exchanging ideas.
+
+If you're on the fence about writing to us, we suggest you fill out the form below! :)
 
 ```{=html}
 <form id="join-form" class="join-form"
       data-idioma="en"
-      data-email="dario.oliveira@fgv.br"
-      data-endpoint=""
-      data-token="troque-por-um-texto-aleatorio"
+      data-endpoint="https://script.google.com/macros/s/AKfycbwxLpFZLPE_y_saxefnjBdP6meILCRdXVaRYt27l_nPU9zVif_c8GPnraXn_n1aQyAYZQ/exec"
+      data-token="gaia-contato-9f3c71"
       data-msg-enviando="Sending..."
-      data-msg-ok="Application sent. We will reply by email."
+      data-msg-ok="Message sent. We will reply by email."
       data-msg-erro="Could not send. Write directly to the address beside the form."
       data-msg-rapido="Please check the fields and send again."
-      data-msg-assunto="Interest in joining the GAIA Lab">
+      data-msg-outro="Tell us in a few words what the reason is."
+      data-lbl-motivo="Reason"
+      data-lbl-mensagem="Message"
+      data-lbl-email="Email"
+      data-msg-assunto="Contact from the GAIA Lab website">
   <label for="join-nome">Name</label>
   <input id="join-nome" name="nome" type="text" autocomplete="name" required>
 
   <label for="join-email">Your email</label>
   <input id="join-email" name="email" type="email" autocomplete="email" required>
 
-  <label for="join-nivel">Intended level</label>
-  <select id="join-nivel" name="nivel">
-    <option>Undergraduate research</option>
-    <option>Master's</option>
-    <option>PhD</option>
-    <option>Postdoc</option>
-    <option>Other</option>
-  </select>
+  <label for="join-motivo">Reason for contact</label>
+  <div class="combo">
+    <select id="join-motivo" name="motivo">
+      <option>Scientific Initiation</option>
+      <option>Master's</option>
+      <option>PhD</option>
+      <option>Post-doc</option>
+      <option>Collaboration or partnership</option>
+      <option>Media or event</option>
+      <option data-outro>Other</option>
+    </select>
+  </div>
+
+  <div class="join-outro" hidden>
+    <label for="join-outro">What is it?</label>
+    <input id="join-outro" name="outro" type="text" maxlength="80"
+           placeholder="e.g. company partnership, talk invitation">
+    <div class="join-contador" aria-live="polite">0/80</div>
+  </div>
 
   <label for="join-msg">Message</label>
   <textarea id="join-msg" name="mensagem" rows="6" required
-            placeholder="Briefly describe your background and research interests"></textarea>
+            placeholder="Tell us why you are reaching out and, if relevant, your research interests"></textarea>
 
   <input class="join-honeypot" name="website" type="text" tabindex="-1"
          autocomplete="off" aria-hidden="true">
 
-  <button type="submit" class="join-submit">Send application</button>
+  <button type="submit" class="join-submit">Send message</button>
   <p class="join-status" role="status" aria-live="polite"></p>
 </form>
 
-<p class="join-alt">Or write directly to
-<a class="email-protect" data-user="dario.oliveira" data-domain="fgv.br" role="button" tabindex="0">dario.oliveira [at] fgv.br</a>
-(click to copy the address).</p>
-
-<a class="back-link" href="/">
+<a class="back-link" href="/en/">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
   <span>Back to home</span>
 </a>

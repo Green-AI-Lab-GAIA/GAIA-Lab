@@ -1,20 +1,22 @@
-# Endpoint das inscrições
+# Endpoint do formulário de contato
 
 O site é estático e não recebe POST. Quem recebe é um aplicativo da web do Google
-Apps Script, que grava a inscrição numa planilha privada e manda o e-mail para o
-coordenador. Não é preciso Workspace: serve uma conta Google comum.
+Apps Script, que grava a mensagem numa aba da planilha do projeto (a mesma que
+guarda pessoas, publicações e notícias) e manda o e-mail para o coordenador.
+Não é preciso Workspace: serve uma conta Google comum.
 
 ## Colocar no ar
 
-1. Criar uma planilha **só de inscrições**, separada das planilhas de conteúdo, com
-   a primeira aba chamada `inscricoes`. Colunas usadas: data, nome, e-mail, nível,
-   mensagem, idioma, página.
-2. Na planilha: Extensões, Apps Script, colar `inscricoes.gs`, ajustar `DESTINO`,
-   `TOKEN` e `LIMITE_POR_HORA`.
+1. A aba `contatos` (com o cabeçalho: data, nome, email, motivo, mensagem)
+   é criada sozinha na primeira mensagem, se ainda não existir.
+   As outras abas não são tocadas.
+2. Na planilha: Extensões, Apps Script, colar `inscricoes.gs`, ajustar `DESTINO`
+   e `TOKEN` (e `LIMITE_POR_HORA`, se quiser). O `PLANILHA_ID` já aponta para a
+   planilha do projeto.
 3. Implantar, Nova implantação, tipo **Aplicativo da web**, executar como **eu**,
    acesso **qualquer pessoa**. Autorizar quando o Google pedir.
-4. Copiar a URL `/exec` e colar no atributo `data-endpoint` do formulário, nos dois
-   arquivos: `join-us/index.pt.qmd` e `join-us/index.en.qmd`.
+4. Copiar a URL `/exec` e colar no atributo `data-endpoint` do formulário, nos
+   dois arquivos: `join-us/index.pt.qmd` e `join-us/index.en.qmd`.
 5. Colar o mesmo valor de `TOKEN` no atributo `data-token` desses dois arquivos.
 
 Enquanto `data-endpoint` estiver vazio, o formulário continua funcionando pelo
@@ -24,9 +26,9 @@ caminho antigo, abrindo o e-mail do visitante. Nada quebra por falta do endpoint
 
 - Descarta envio com o honeypot preenchido (campo invisível que só robô completa).
 - Confere o token, os campos obrigatórios e o formato do e-mail.
-- Recusa mais de `LIMITE_POR_HORA` inscrições do mesmo e-mail na última hora.
-- Grava a linha na planilha e envia o e-mail com `Reply-To` no candidato, então
-  responder no e-mail já vai para a pessoa certa.
+- Recusa mais de `LIMITE_POR_HORA` mensagens do mesmo e-mail na última hora.
+- Grava a linha na aba `contatos` e envia o e-mail com `Reply-To` no remetente,
+  então responder no e-mail já vai para a pessoa certa.
 
 ## Limites que valem saber
 
@@ -40,5 +42,5 @@ caminho antigo, abrindo o e-mail do visitante. Nada quebra por falta do endpoint
 
 ## Continuidade
 
-O script e a planilha pertencem à conta que os criou. Deixe pelo menos **duas
-contas** com acesso de edição e registre aqui quem são os responsáveis.
+O script pertence à conta que o criou. Deixe pelo menos **duas contas** com acesso
+de edição à planilha e registre aqui quem são os responsáveis.

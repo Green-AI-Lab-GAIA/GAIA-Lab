@@ -104,7 +104,7 @@ brasileiros, e confere cada resultado contra referências oficiais.</p>
 <p class="reveal" style="margin: 2rem 0 3rem;">
   <a class="pub-btn" href="/people/">Conheça a equipe</a>
   <a class="pub-btn" href="/publications/">Ver as publicações</a>
-  <a class="pub-btn" href="/join-us/">Junte-se a nós</a>
+  <a class="pub-btn" href="/join-us/">Fale conosco</a>
 </p>
 ```
 

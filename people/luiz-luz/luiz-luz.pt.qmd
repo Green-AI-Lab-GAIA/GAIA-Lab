@@ -17,9 +17,6 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: "https://www.linkedin.com/in/luiz-fernando-luz"
-    - icon: envelope
-      text: Email
-      href: "mailto:ziulluz@gmail.com"
 ---
 
 ```{=html}

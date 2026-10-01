@@ -1,0 +1,55 @@
+---
+title: "Janaina Neres Evangelista"
+last: "Evangelista"
+first: "Janaina"
+people_group: "masters"
+subtitle: "Research Assistant"
+education: "MSc student in Applied Mathematics and Data Science, FGV EMAp."
+image: avatar.jpg
+page-layout: full
+toc: false
+about:
+  id: perfil
+  template: trestles
+  image-shape: round
+  image: avatar.jpg
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: "linkedin.com/in/janaina-neres-evangelista"
+    - icon: envelope
+      text: Email
+      href: "mailto:thiago.franke.ms@gmail.com"
+---
+
+```{=html}
+<div class="page-shell">
+<div class="page-main">
+```
+
+::: {#perfil}
+
+Master’s student in Applied Mathematics and Data Science at FGV EMAp, and holds a bachelor’s degree in Data Science and AI from the same school.
+
+## Education
+
+- MSc student in Applied Mathematics and Data Science, FGV EMAp.
+- BSc in Data Science and AI, FGV EMAp.
+
+## Interests
+
+Artificial intelligence, remote sensing, and agribusiness.
+
+:::
+
+```{=html}
+<a class="back-link" href="/people/">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+  <span>Back to the team</span>
+</a>
+```
+
+```{=html}
+</div>
+</div>
+```

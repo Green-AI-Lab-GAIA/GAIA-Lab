@@ -17,9 +17,6 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: "https://www.linkedin.com/in/joao-alcindo"
-    - icon: envelope
-      text: Email
-      href: "mailto:joao.az-rib@hotmail.com"
 ---
 
 ```{=html}

@@ -1,0 +1,52 @@
+---
+title: "Antonio Joaquim Brych Mendes de Souza"
+last: "Souza"
+first: "Antonio"
+people_group: "undergrad"
+subtitle: "Undergraduate Researcher"
+education: "BSc in Data Science and AI, FGV EMAp"
+image: avatar.jpeg
+page-layout: full
+toc: false
+about:
+  id: perfil
+  template: trestles
+  image-shape: round
+  image: avatar.jpeg
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: "https://www.linkedin.com/in/abrych"
+---
+
+```{=html}
+<div class="page-shell">
+<div class="page-main">
+```
+
+::: {#perfil}
+
+BSc student in Data Science and Artificial Intelligence at FGV EMAp. He is a member of the GAIA Lab, where he participates in research projects under the supervision of Prof. Dario Oliveira. His research interests include robust statistics, robust deep learning, and modern statistical methods for machine learning. He also conducts research in data science and predictive analytics applied to investment management at Arbor Capital.
+
+## Education
+
+- BSc student in Data Science and AI, FGV EMAp.
+- BSc in Computer Science, PUC RIO, 2022-2022 (Transferred to FGV EMAp).
+
+## Interests
+
+Robust Deep learning, Natural Language Processing, Robust Statistics.
+
+:::
+
+```{=html}
+<a class="back-link" href="/people/">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+  <span>Back to the team</span>
+</a>
+```
+
+```{=html}
+</div>
+</div>
+```

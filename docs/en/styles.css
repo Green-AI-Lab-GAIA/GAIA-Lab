@@ -821,6 +821,10 @@ html.has-js .reveal.revealed {
   border: 2px solid rgba(255, 255, 255, 0.7);
   border-radius: 999px;
   padding: 0.15rem 0.75rem;
+  /* No menu recolhido o <li> ocupa a linha toda e o <a> (block, do Bootstrap)
+     esticaria junto; fit-content mantém a pílula do tamanho do próprio texto
+     (~51px em telas grandes) nos dois regimes */
+  width: fit-content;
   font-weight: 600;
   letter-spacing: 0.05em;
   transition: background-color 0.25s ease, color 0.25s ease,
@@ -839,76 +843,276 @@ html.has-js .reveal.revealed {
   transform: scale(0.95);
 }
 
-/* Botão de tema: converte o toggle padrão do Quarto num switch deslizante
-   com sol/lua dentro da bolinha; o estado vem da classe quarto-light ou
-   quarto-dark que o Quarto aplica ao body */
+  /* Botão de tema: converte o toggle padrão do Quarto no switch premium
+     animado (o indicador verde estica de uma ponta à outra e o ícone que
+     entra gira com efeito de mola). O estado vem da classe quarto-light ou
+     quarto-dark que o Quarto aplica ao body; as classes temporárias
+     animating-to-dark/light são postas por _includes/scroll-effects.html na
+     troca, para os keyframes tocarem uma vez a cada clique.
 
-.quarto-navbar-tools {
-  display: flex;
-  align-items: center;
-}
+     O Quarto só entrega três "camadas" dentro do botão (o ::before, o ::after
+     e o <i class="bi">), então o indicador fica no ::before, o sol no ::after
+     e a lua no próprio <i>. Toda a geometria sai das variáveis abaixo: para
+     mudar o tamanho do botão, basta mexer em --t-h/--t-w. */
 
-.quarto-color-scheme-toggle {
-  display: inline-block;
-  position: relative;
-  width: 56px;
-  height: 30px;
-  padding: 0 !important;
-  margin-left: 1.25rem;
-  border: 2px solid rgba(255, 255, 255, 0.7);
-  border-radius: 15px;
-  background-color: #9fcb6b;
-  transition: background-color 0.3s ease, border-color 0.3s ease,
-              transform 0.2s ease, box-shadow 0.2s ease;
-}
+  .quarto-navbar-tools {
+    display: flex;
+    align-items: center;
+  }
 
-.quarto-color-scheme-toggle:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-}
+  /* Navbar recolhida (abaixo de lg). Duas coisas mudam de lugar aqui:
 
-.quarto-color-scheme-toggle:active {
-  background-color: #ffd75e;
-}
+     (1) o título. O container é flex com justify-content space-between e os três
+     itens da primeira faixa (hambúrguer, título, utilitários) têm larguras
+     diferentes, então o título parava ~20px à esquerda do centro da tela. Com o
+     justify-content center ele passa a ser o único item em fluxo da faixa — o
+     hambúrguer sai do fluxo, absoluto à esquerda — e a faixa inteira sobra para
+     centralizá-lo, independentemente do hambúrguer e dos utilitários. O
+     max-width corta o título antes de ele encostar no hambúrguer.
 
-.quarto-color-scheme-toggle i.bi {
-  display: none;
-}
+     (2) a zona de configurações do menu: idioma e tema na mesma linha, no fim da
+     lista de links. Quem move o botão de tema para dentro do menu é o
+     _includes/navbar-mobile.html (aqui só se ajeita a linha que o recebe, a
+     ul marcada com menu-config). Sem JavaScript não há como entrar no menu, e o
+     botão de tema fica na barra encostado à direita — também fora do fluxo, para
+     não tirar o título do centro. */
+  @media (max-width: 991.98px) {
+    .navbar .navbar-container {
+      position: relative;
+      justify-content: center;
+    }
 
-/* Bolinha deslizante com o ícone do modo atual (sol ou lua) */
-.quarto-color-scheme-toggle::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 3px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: #fff;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='5' fill='%23e8940a'/%3E%3Cg stroke='%23e8940a' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M19.4 4.6l-2.1 2.1M6.7 17.3l-2.1 2.1'/%3E%3C/g%3E%3C/svg%3E");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 15px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
-  transform: translateY(-50%);
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
+    .navbar .navbar-toggler {
+      position: absolute;
+      left: 0.75rem;
+      /* Centro da PRIMEIRA linha (a do título), não do container: com o menu
+         aberto o container cresce e o antigo top:50% levava o hambúrguer para o
+         meio da lista. A linha do título vale 2.5rem (font-size 1.25rem ×
+         line-height 1.5 + 2 × padding .3125rem), então seu meio fica em 1.25rem
+         do topo do container e o ícone não sai do lugar ao abrir/fechar. */
+      top: 1.25rem;
+      transform: translateY(-50%);
+      margin-right: 0;
+    }
 
-body.quarto-dark .quarto-color-scheme-toggle {
-  background-color: #232a3b;
-  border-color: rgba(255, 255, 255, 0.4);
-}
+    /* 150px = espaço para os dois cantos; o título do site (96px) nunca chega
+       perto disso, é só a garantia de que ele não invade o hambúrguer */
+    .navbar .navbar-container > .navbar-brand-container {
+      max-width: calc(100% - 150px);
+    }
 
-body.quarto-dark .quarto-color-scheme-toggle:active {
-  background-color: #5a6b95;
-}
+    /* o Quarto dá 17px de margem à direita no título; centrar a caixa com essa
+       margem deixaria o texto 8,5px fora do centro (a margem conta na largura) */
+    .navbar .navbar-container > .navbar-brand-container > .navbar-brand {
+      margin-right: 0;
+    }
 
-body.quarto-dark .quarto-color-scheme-toggle::before {
-  background-color: #3a4560;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z' fill='%23f5d76e'/%3E%3C/svg%3E");
-  background-size: 12px;
-  transform: translateY(-50%) translateX(26px);
-}
+    html:not(.has-js) .navbar > .navbar-container > .quarto-navbar-tools {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* A lista do idioma vira a linha de configurações: os dois controles lado a
+       lado, alinhados à esquerda com os links acima e com um respiro no lugar do
+       "Equipe" logo acima (o ms-auto que empurrava a lista para a direita sai do
+       caminho pelo script) */
+    .navbar .navbar-collapse ul.navbar-nav.menu-config {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.5rem 0 0;
+    }
+
+    /* a pílula do idioma fica com a altura do botão de tema (--t-h) para os dois
+       se alinharem pelo centro, mesmo com o texto de altura menor */
+    .navbar .navbar-collapse .menu-config a.nav-link.lang-switch {
+      display: inline-flex;
+      align-items: center;
+      height: 35px;
+    }
+
+    /* Dois espaçamentos do Quarto pensados para a barra larga e que, soltos no
+       meio do menu, só desalinhariam os dois botões: o margin-left da .tools
+       (aproximava-a dos utilitários) e o do próprio botão de tema */
+    .navbar .navbar-collapse .menu-config .quarto-navbar-tools,
+    .navbar .navbar-collapse .menu-config .quarto-color-scheme-toggle {
+      margin-left: 0;
+    }
+  }
+
+  .quarto-color-scheme-toggle {
+    /* Cores: o indicador usa o verde do site; o resto vem do protótipo
+       (branco no claro, grafite no escuro, cinza/branco nos ícones) */
+    --t-bg-light: #ffffff;
+    --t-bg-dark: #242529;
+    --t-indicator: #4a7a08;
+    --t-icon-inactive: #a1a1aa;
+    --t-icon-active: #ffffff;
+    /* Geometria: mesma altura do botão de idioma (a.nav-link.lang-switch, 35px)
+       para os dois ficarem do mesmo tamanho na barra; largura 2x a altura,
+       mantendo a proporção do protótipo */
+    --t-h: 35px;
+    --t-w: 70px;
+    --t-inset: 4px;
+    --t-far: calc(var(--t-w) - var(--t-inset) - (var(--t-h) - 2 * var(--t-inset)));
+    display: inline-block;
+    position: relative;
+    width: var(--t-w);
+    height: var(--t-h);
+    padding: 0 !important;
+    margin-left: 1.25rem;
+    border: none;
+    border-radius: calc(var(--t-h) / 2);
+    background-color: var(--t-bg-light);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05),
+                inset 0 0 0 1px rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.6s ease;
+  }
+
+  .quarto-color-scheme-toggle:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  }
+
+  .quarto-color-scheme-toggle:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(74, 122, 8, 0.35);
+  }
+
+  body.quarto-dark .quarto-color-scheme-toggle {
+    background-color: var(--t-bg-dark);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  /* O indicador (pílula que estica e encolhe). Ancorar um lado e mover o
+     outro é o que cria o efeito de elipse do protótipo */
+  .quarto-color-scheme-toggle::before {
+    content: "";
+    position: absolute;
+    top: var(--t-inset);
+    bottom: var(--t-inset);
+    left: var(--t-inset);
+    right: var(--t-far);
+    background-color: var(--t-indicator);
+    border-radius: calc((var(--t-h) - 2 * var(--t-inset)) / 2);
+    transition: background-color 0.6s ease;
+    z-index: 1;
+  }
+
+  body.quarto-dark .quarto-color-scheme-toggle::before {
+    left: var(--t-far);
+    right: var(--t-inset);
+  }
+
+  /* Os dois ícones (sol à esquerda, lua à direita) ocupam meia pílula cada
+     um e são desenhados por máscara, para herdarem a cor do estado */
+  .quarto-color-scheme-toggle::after,
+  .quarto-color-scheme-toggle i.bi {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: calc(var(--t-w) / 2);
+    height: 100%;
+    background-color: var(--t-icon-inactive);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    z-index: 2;
+    pointer-events: none;
+    transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Sol (modo claro): ativo à esquerda, some no escuro */
+  .quarto-color-scheme-toggle::after {
+    left: 0;
+    background-color: var(--t-icon-active);
+    -webkit-mask-size: calc(var(--t-h) * 0.43);
+    mask-size: calc(var(--t-h) * 0.43);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='4.3' fill='black'/%3E%3Cpath d='M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='4.3' fill='black'/%3E%3Cpath d='M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6'/%3E%3C/svg%3E");
+  }
+
+  /* Lua (modo escuro): ativa à direita, apagada no claro */
+  .quarto-color-scheme-toggle i.bi {
+    right: 0;
+    -webkit-mask-size: calc(var(--t-h) * 0.39);
+    mask-size: calc(var(--t-h) * 0.39);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'%3E%3Cpath d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'%3E%3Cpath d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'/%3E%3C/svg%3E");
+  }
+
+  body.quarto-dark .quarto-color-scheme-toggle::after {
+    background-color: var(--t-icon-inactive);
+  }
+
+  body.quarto-dark .quarto-color-scheme-toggle i.bi {
+    background-color: var(--t-icon-active);
+  }
+
+  /* Animações de entrada: só tocam quando a classe temporária está presente,
+     então não disparam no carregamento da página */
+  .quarto-color-scheme-toggle.animating-to-dark::before {
+    animation: tStretchToDark 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  .quarto-color-scheme-toggle.animating-to-dark::after {
+    animation: tIconPulseLeave 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  .quarto-color-scheme-toggle.animating-to-dark i.bi {
+    animation: tIconRotateEnter 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .quarto-color-scheme-toggle.animating-to-light::before {
+    animation: tStretchToLight 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  .quarto-color-scheme-toggle.animating-to-light i.bi {
+    animation: tIconPulseLeave 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  .quarto-color-scheme-toggle.animating-to-light::after {
+    animation: tIconRotateEnter 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  /* O indicador estica até cobrir as duas pontas (45%) antes de recolher */
+  @keyframes tStretchToDark {
+    0%   { left: var(--t-inset); right: var(--t-far); }
+    45%  { left: var(--t-inset); right: var(--t-inset); }
+    100% { left: var(--t-far);   right: var(--t-inset); }
+  }
+
+  @keyframes tStretchToLight {
+    0%   { left: var(--t-far);   right: var(--t-inset); }
+    45%  { left: var(--t-inset); right: var(--t-inset); }
+    100% { left: var(--t-inset); right: var(--t-far); }
+  }
+
+  /* O ícone que sai pulsa; o que entra chega girando 360º com leve mola */
+  @keyframes tIconPulseLeave {
+    0%   { transform: scale(1) rotate(0deg); }
+    45%  { transform: scale(1.3) rotate(20deg); }
+    100% { transform: scale(1) rotate(0deg); }
+  }
+
+  @keyframes tIconRotateEnter {
+    0%   { transform: rotate(-360deg) scale(0.3); opacity: 0; }
+    70%  { transform: rotate(15deg) scale(1.1); opacity: 1; }
+    100% { transform: rotate(0deg) scale(1); opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .quarto-color-scheme-toggle,
+    .quarto-color-scheme-toggle::before,
+    .quarto-color-scheme-toggle::after,
+    .quarto-color-scheme-toggle i.bi {
+      transition: none;
+      animation: none !important;
+    }
+  }
 
 /* Títulos de seção com barra de destaque verde */
 
@@ -1219,6 +1423,19 @@ main.content {
 #TOC a.active {
   border-left-color: #365902 !important;
   font-weight: 600;
+}
+
+/* Seção de listagem sem ninguém (pós-doc, colaborador, ...) não é publicada:
+ somem o título, o espaço que ele ocupava e o link do sumário lateral. A regra
+ exige que a seção contenha a listagem, então seção com texto continua valendo.
+ Fica fora das páginas com abas de filtro (Publicações), onde filtrar pode
+ esvaziar uma seção na hora e ela não deve sumir. O JS em
+ _includes/listing-empty.html repete a conta para navegador sem :has() e tira o
+ link do sumário. */
+section.level2.secao-vazia,
+.side-toc-link.secao-vazia,
+body:not(:has(.side-toc-link[data-view])) section.level2:has(> .quarto-listing):not(:has(.quarto-grid-item, .quarto-listing-item)) {
+display: none;
 }
 
 /* Filtro de período: slider duplo de ano inicial e final */
@@ -1735,8 +1952,19 @@ main.content {
 
 /* Rodapé do site (definido nos perfis _quarto-pt.yml e _quarto-en.yml) */
 
+/* Só o centro recebe conteúdo: a esquerda e a direita nascem como um &nbsp;
+   cada uma e, por serem flex 1 1 0 (e flex 100% abaixo de 576px) no Quarto,
+   empilhavam como duas faixas verdes vazias acima do rodapé de verdade. No
+   tamanho do próprio conteúdo e com o centro dividindo a linha, as faixas
+   somem. Se um dia as duas colunas ganharem conteúdo, revisar. */
+
+.nav-footer-left,
+.nav-footer-right {
+  flex: 0 0 auto;
+}
+
 .nav-footer .nav-footer-center {
-  flex: 1 1 100%;
+  flex: 1 1 0;
   text-align: left;
 }
 
@@ -1792,6 +2020,13 @@ main.content {
   margin-top: 0.9rem;
 }
 
+/* O Quarto às vezes embrulha os ícones num <p> (markdown em volta do HTML);
+   sem isto os <a> viram blocos e empilham. Com display:contents o <p> some do
+   layout e os ícones voltam a ser itens diretos da linha. */
+.footer-social p {
+  display: contents;
+}
+
 .footer-social a {
   display: flex;
   align-items: center;
@@ -1828,6 +2063,27 @@ main.content {
   font-weight: 700;
 }
 
+/* No celular o Quarto ainda soma 3em acima e 1em abaixo do centro; sobra só
+   o respiro do próprio conteúdo */
+@media (max-width: 768px) {
+  .nav-footer {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .nav-footer .nav-footer-center {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .site-footer {
+    padding: 1.25rem 1rem 1rem;
+    /* só o ritmo vertical: o gap horizontal de 4rem segue decidindo em que
+       linha cada coluna cai (com ele, as três empilham no celular) */
+    row-gap: 1.75rem;
+  }
+}
+
 /* Formulário da página "Junte-se a nós" */
 
 .join-form {
@@ -1859,6 +2115,122 @@ main.content {
   outline: none;
   border-color: #365902;
   box-shadow: 0 0 0 3px rgba(54, 89, 2, 0.18);
+}
+
+/* Lista de opções própria: o <select> nativo fica escondido e o JS monta um
+   botão + lista com o visual do site, igual em qualquer sistema (no iOS e no
+   macOS o painel nativo muda de forma e não dá para estilizar). O <select>
+   continua no formulário, invisível, para o envio e para quem está sem JS. */
+.combo {
+  position: relative;
+}
+
+.combo-native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.combo-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.55rem 0.9rem;
+  font: inherit;
+  color: #333;
+  text-align: left;
+  background: #fff;
+  border: 2px solid #b5c4a3;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.combo-btn:focus-visible {
+  outline: none;
+  border-color: #365902;
+  box-shadow: 0 0 0 3px rgba(54, 89, 2, 0.18);
+}
+
+.combo-arrow {
+  flex: 0 0 auto;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-right: 0.15rem;
+  background-color: #365902;
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 6l5 5 5-5'/></svg>") no-repeat center / contain;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 6l5 5 5-5'/></svg>") no-repeat center / contain;
+  transition: transform 0.25s ease;
+}
+
+.combo.is-open .combo-arrow {
+  transform: rotate(180deg);
+}
+
+.combo-list {
+  position: absolute;
+  z-index: 40;
+  left: 0;
+  right: 0;
+  top: calc(100% + 0.35rem);
+  margin: 0;
+  padding: 0.35rem;
+  list-style: none;
+  background: #fff;
+  border: 2px solid #b5c4a3;
+  border-radius: 10px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
+  max-height: 16rem;
+  overflow-y: auto;
+}
+
+.combo-list[hidden] {
+  display: none;
+}
+
+.combo-list li {
+  padding: 0.5rem 0.7rem;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.combo-list li:hover,
+.combo-list li:focus {
+  outline: none;
+  background: #eef3e6;
+}
+
+.combo-list li[aria-selected="true"] {
+  background: #365902;
+  color: #fff;
+}
+
+/* Bloco do "Outro": escondido até essa opção ser escolhida. */
+.join-outro {
+  display: flex;
+  flex-direction: column;
+}
+
+.join-outro[hidden] {
+  display: none;
+}
+
+.join-outro label {
+  margin-top: 0.6rem;
+}
+
+.join-contador {
+  align-self: flex-end;
+  margin-top: 0.2rem;
+  font-size: 0.78rem;
+  color: #888;
 }
 
 .join-submit {
@@ -2109,6 +2481,37 @@ body.quarto-dark .join-form select:focus,
 body.quarto-dark .join-form textarea:focus {
   border-color: #7fb04f;
   box-shadow: 0 0 0 3px rgba(127, 176, 79, 0.2);
+}
+
+/* A lista de opções própria (<select> nativo escondido) */
+body.quarto-dark .combo-btn,
+body.quarto-dark .combo-list {
+  background: #22262b;
+  border-color: #4a5445;
+  color: #eee;
+}
+
+body.quarto-dark .combo-btn:focus-visible {
+  border-color: #7fb04f;
+  box-shadow: 0 0 0 3px rgba(127, 176, 79, 0.2);
+}
+
+body.quarto-dark .combo-arrow {
+  background-color: #7fb04f;
+}
+
+body.quarto-dark .combo-list li:hover,
+body.quarto-dark .combo-list li:focus {
+  background: #2c333b;
+}
+
+body.quarto-dark .combo-list li[aria-selected="true"] {
+  background: #7fb04f;
+  color: #14170f;
+}
+
+body.quarto-dark .join-contador {
+  color: #888;
 }
 
 body.quarto-dark .join-alt {

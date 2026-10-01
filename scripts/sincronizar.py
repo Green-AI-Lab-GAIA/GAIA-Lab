@@ -27,7 +27,7 @@ import urllib.request
 from datetime import datetime
 from pathlib import Path
 
-from tabelas import COLUNAS, mapa_de_colunas, perguntas_faltando
+from tabelas import COLUNAS, itens, mapa_de_colunas, perguntas_faltando
 
 RAIZ = Path(__file__).resolve().parent.parent
 DADOS = RAIZ / "dados"
@@ -36,7 +36,7 @@ FONTES = DADOS / "fontes.conf"
 TABELAS = tuple(COLUNAS)
 
 # arquivos que o job pode mexer; qualquer outra alteracao na arvore faz o job parar
-PERMITIDOS = ("dados/", "people/", "publications/", "news/", "docs/")
+PERMITIDOS = ("dados/", "people/", "publications/", "news/", "courses/", "about/", "docs/")
 
 
 def aviso(texto: str) -> None:
@@ -149,6 +149,50 @@ def arvore_tem_so_o_que_o_job_mexe() -> None:
                + " (commite ou guarde antes de rodar)")
 
 
+def conferir_listas(conteudo: str) -> int:
+    """Celula de lista: o jeito natural e uma linha por item (no formulario,
+    pergunta do tipo paragrafo; na planilha, Ctrl+Enter dentro da celula). '|' e
+    ';' sao atalho de quem responde tudo numa linha so. As formas tem de dar o
+    mesmo resultado, e a quebra de linha precisa atravessar o CSV publicado
+    inteira. Devolve quantas conferencias falharam."""
+    esperado = ["Doutorado em Engenharia Elétrica, PUC-Rio.",
+                "Mestrado em Engenharia Elétrica, PUC-Rio."]
+    formas = {
+        "Enter": "\n".join(esperado),
+        "Enter do Windows": "\r\n".join(esperado),
+        "marcadores (-)": "\n".join("- " + i for i in esperado),
+        "barra vertical (|)": "|".join(esperado),
+        "ponto e virgula (;)": "; ".join(esperado),
+    }
+    falhas = 0
+    for nome, forma in formas.items():
+        if itens(forma) != esperado:
+            aviso(f"autoteste: lista separada por {nome} foi lida como {itens(forma)}")
+            falhas += 1
+    paragrafo = "Doutor em Engenharia Elétrica, PUC-Rio"
+    if itens(paragrafo) != [paragrafo]:
+        aviso("autoteste: paragrafo sem separador virou mais de um item")
+        falhas += 1
+
+    leitor = csv.DictReader(io.StringIO(conteudo))
+    colunas, registros = list(leitor.fieldnames or []), list(leitor)
+    pergunta = mapa_de_colunas("pessoas", colunas).get("formacao_detalhe")
+    if not pergunta or not registros:
+        return falhas
+    for valor in ("Um.\nDois.", "\r\nUm.\r\nDois.", "Um.|Dois.", "Um.; Dois."):
+        registros[0][pergunta] = valor
+        saida = io.StringIO()
+        escritor = csv.DictWriter(saida, fieldnames=colunas, lineterminator="\n")
+        escritor.writeheader()
+        escritor.writerows(registros)
+        chegou = interpretar("pessoas", saida.getvalue(), "autoteste")[0][0][pergunta]
+        if chegou != valor.strip():
+            aviso(f"autoteste: celula {valor!r} chegou como {chegou!r}, o CSV publicado "
+                  "perdeu a quebra de linha")
+            falhas += 1
+    return falhas
+
+
 def autoteste() -> int:
     """Exercita o que costuma dar errado no job, sem rede e sem mexer no git."""
     import shutil
@@ -196,6 +240,8 @@ def autoteste() -> int:
                 l.get("Apresentação") == "Editado no autoteste." for l in gravado):
             aviso("autoteste: CSV local nao recebeu a alteracao")
             falhas += 1
+
+        falhas += conferir_listas(conteudo)
     finally:
         DADOS = original
         shutil.rmtree(temporario, ignore_errors=True)
@@ -259,7 +305,7 @@ def main() -> int:
 
     aviso(f"{agora()} build do site")
     rodar("bash", "scripts/build.sh")
-    rodar("git", "add", "dados", "people", "publications", "news", "docs")
+    rodar("git", "add", "dados", "people", "publications", "news", "courses", "about", "docs")
     resumo = ", ".join(mudou) if mudou else "conteudo"
     rodar("git", "commit", "-m", f"conteudo: atualiza {resumo} a partir das planilhas")
     if args.push:

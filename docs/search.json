@@ -7,102 +7,116 @@
     "text": "Três frentes de pesquisa, um mesmo método: transformar\nimagem de satélite e série climática em informação que pode ser conferida contra\ndado oficial. Cada frente tem um explorador, os números que a sustentam e o que\nainda não funciona.\n\n\n  \n    01\n    \n      Frente de pesquisa\n      Agricultura\n    \n  \n  Classificação de culturas e séries de índices de\n  vegetação em escala de talhão. A base própria cobre 359,6 mil talhões em 897\n  municípios de cinco estados, com dados de 2020 a 2025.\n\n  \n    Séries de índices de vegetação\n    17 índices, 23 datas por ano e 499.720 séries por talhão,\n    num total de 11,5 milhões de linhas. Troque a camada para ver o mesmo dado por\n    outro ângulo.\n\n    \n      \n        \n        \n        \n      \n      \n        Sazonalidade por estado\n        Mapa de calor do NDVI\n        Filtro de nuvem\n      \n      Sazonalidade média dos índices de vegetação nos cinco estados, por data de passagem do satélite.\n    \n\n    \n      \n        \n        Da série bruta à série pronta: observação original, interpolação e suavização.\n      \n      \n        \n        Cobertura de observações válidas por talhão depois do filtro de nuvem.\n      \n    \n  \n\n  \n    Início de safra contra a janela oficial\n    Detectamos o início da safra pelo satélite e comparamos com a\n    janela de plantio do ZARC, em Campo Verde, Mato Grosso. A janela oficial\n    descreve bem a soja e quase não cobre o resto do calendário da fazenda.\n\n    \n      \n        Soja\n        \n        65,5 %\n      \n      \n        Algodão\n        \n        7,6 %\n      \n      \n        Milho safrinha\n        \n        3,3 %\n      \n    \n    Parcela dos talhões cujo início de safra detectado cai dentro da janela oficial, em Campo Verde, Mato Grosso. A soja soma 2.971 de 4.539 talhões. Em outros municípios analisados, a soja fica entre 72,7 % e 84,5 %.\n  \n\n  \n    359.596Talhões mapeados\n    897Municípios\n    17Índices de vegetação\n    11,5 miLinhas de séries\n  \n\n  \n    \n    \n      Projeto 01Classificação de culturas por talhãoSoja, milho e algodão identificados talhão por talhão e safra por safra. Contra os dados de campo do INPE em Campo Verde, a acurácia média foi 98,7 % na soja, 91,5 % no milho e 90,0 % no algodão. A referência pública marca 99,3 %, 82,4 % e 64,4 %.\n      Projeto 02Base própria de talhõesBase gerada a cada safra, reprocessada a cada ciclo e extensível a novos estados: 359,6 mil talhões em 897 municípios de Bahia, Maranhão, Mato Grosso, Tocantins e Paraná.\n      Projeto 03Séries temporais de índices17 índices, 23 datas por ano e 499.720 séries, com filtro de nuvem e interpolação documentados, num total de 11,5 milhões de linhas.\n      Projeto 04Agrupamento por comportamentoCada talhão e safra reúne 1.670 valores entre índices, séries diárias e séries climáticas. O agrupamento por semelhança revela perfis de comportamento dentro da carteira.\n      Projeto 05Produtividade e riscoUm dos grupos, com 1.240 talhões, aparece com produtividade 18 % abaixo da média, solos arenosos e 3,1 vezes mais ocorrência de sinistro. O grupo é classificado como risco alto.\n    \n    \n  \n\n\n\n  \n    02\n    \n      Frente de pesquisa\n      Floresta\n    \n  \n  Segmentação de floresta em escala de imóvel, com\n  validação contra dados oficiais do INPE. O modelo chega a 0,85 de IoU em\n  trimestres que não estavam no treino.\n\n  \n    A mesma cena, seis anos depois\n    \n      \n      \n      \n      \n      2020 Q1\n      2026 Q2\n    \n    Predição do modelo na mesma cena, em 2020 Q1 e 2026 Q2. Arraste o divisor para comparar.\n  \n\n  \n    Seis anos de floresta, trimestre por trimestre\n    26 mapas trimestrais, de 2020 Q1 a 2026 Q2, percorridos por\n    um controle deslizante.\n\n    \n      \n        \n        2026 Q2\n      \n      \n        \n        2026 Q2\n      \n    \n    Predição de floresta por trimestre. As imagens carregam sob demanda, um trimestre por vez.\n  \n\n  \n    O que o modelo vê e com que confiança\n    \n      \n        \n        \n        \n      \n      \n        Predição do modelo\n        Áreas de CAR\n        Referência 2023\n      \n      Predição do modelo para o trimestre 2023 Q3, cobrindo a área completa de análise.\n    \n\n    \n      \n      Confiança do modelo pixel a pixel, em seis classes, no trimestre 2023 Q3. Cada cor indica o quanto a decisão daquele pixel é estável.\n    \n\n    \n      Onde o modelo erra. Na validação contra os alertas DETER e os\n      polígonos PRODES, o recall da classe de floresta fica em 0,28 e 0,26, e a área\n      prevista é maior que a área alertada, 165,3 km² contra 27,1 km² do DETER e\n      44,5 km² do PRODES. Parte disso é diferença de critério: o alerta oficial marca\n      o corte recente, o modelo marca a ausência de dossel. Publicamos o número\n      porque ele define o uso correto do produto.\n    \n  \n\n  \n    Resultados por trimestre e por célula\n    \n      \n        \n        Desempenho por trimestre no experimento de contexto temporal, que usa o trimestre anterior como informação adicional.\n      \n      \n        \n        Desempenho por célula do recorte, mostrando onde o modelo é mais ou menos estável dentro da mesma área.\n      \n      \n        \n        Matriz de confusão do modelo trimestral. A banda infravermelha próxima leva o IoU de 0,72 para 0,74.\n      \n      \n        \n        Área por ano segundo o modelo e segundo os dois sistemas oficiais, DETER e PRODES.\n      \n    \n  \n\n  \n    0,85IoU no melhor modelo\n    26Trimestres mapeados\n    180GeoTIFF entregues\n    203Alertas DETER avaliados\n  \n\n  \n    \n    \n      Projeto 01Segmentação de floresta por satéliteModelo SegFormer com imagens Sentinel-2 do Brazil Data Cube: 0,74 de IoU na versão trimestral com a banda infravermelha e 0,85 com contexto temporal. A grade de análise tem 9.712 por 11.110 pixels, em cerca de 10 metros por pixel.\n      Projeto 02Generalização espacialTreino em uma região e teste em outra, para medir o que o modelo aprende de floresta e o que aprende de lugar: 0,79 de oeste para leste e 0,76 de sul para norte.\n      Projeto 03Floresta dentro das áreas de CARAvaliação com o imóvel rural como unidade: 0,797 de IoU. A floresta ocupa 24 % da área de CAR, contra 37 % do retângulo que envolve a cena.\n      Projeto 04Validação contra DETER e PRODES203 alertas do DETER e 9.105 polígonos do PRODES comparados com a predição, com os limites publicados junto com o resultado.\n      Projeto 05Entregas trimestrais180 arquivos GeoTIFF entregues, um por trimestre e por recorte, de 2020 a 2026, prontos para uso em sistema de informação geográfica.\n    \n    \n  \n\n\n\n  \n    03\n    \n      Frente de pesquisa\n      Clima\n    \n  \n  Tendências climáticas e risco agrícola em janelas de\n  15 anos, município por município, ligando a série do clima ao comportamento da\n  lavoura.\n\n  \n    15 anos de clima em Nova Mutum, Mato Grosso\n    Seis indicadores de tendência entre 2011 e 2025, comparados com\n    a média de 1985 a 2010 quando existe série de referência.\n\n    \n      \n        Temperatura máxima\n        0\n        aumento em 15 anos, cerca de 0,076 °C por ano\n      \n      \n        Temperatura média\n        0\n        aumento em 15 anos, cerca de 0,066 °C por ano\n      \n      \n        Temperatura mínima\n        0\n        aumento em 15 anos, cerca de 0,056 °C por ano\n      \n      \n        Noites quentes\n        0\n        noites com mínima acima de 22 °C, 7,7 dias a mais por ano\n      \n      \n        Chuva acumulada no ano\n        1.631 mm\n        média do período, 7,7 % abaixo dos 1.767 mm de 1985 a 2010\n      \n      \n        Dias secos na estação chuvosa\n        24,5 dias\n        média do período, 5,3 dias a mais que os 19,2 dias de 1985 a 2010\n      \n    \n  \n\n  \n    Risco operacional e risco sistêmico\n    A leitura é sempre em relação à vizinhança, para separar o que\n    é problema da fazenda do que é problema da região.\n\n    \n      \n        Risco operacional\n        Manejo, praga, condição e contexto do produtor\n        O que diferencia um talhão dos vizinhos próximos, com o mesmo clima e o mesmo solo.\n      \n      \n        Risco sistêmico\n        Seca, geada e veranico regional\n        O que atinge a região inteira, e por isso não se resolve com decisão de manejo isolada.\n      \n    \n  \n\n  \n    15Anos de série\n    6Indicadores de tendência\n    +108Noites quentes\n    2011 a 2025Período analisado\n  \n\n  \n    \n    \n      Projeto 01Tendência climática municipalJanelas de 15 anos com seis indicadores por município, para separar tendência de variação de ano a ano.\n      Projeto 02Noites quentes e estresse térmicoA mínima acima de 22 °C acumulou 108 noites a mais em 15 anos. É o indicador que mais conversa com perda de produtividade.\n      Projeto 03Chuva e veranicoChuva acumulada e dias secos na estação chuvosa, comparados com a referência de 1985 a 2010.\n      Projeto 04Índices de vegetação como sensor de secaA resposta da lavoura à falta de água aparece na série de índices antes de aparecer na produtividade, o que liga esta frente à de Agricultura.\n    \n    \n  \n\n\n\n\n  Sumário\n  \n    Agricultura\n    Floresta\n    Clima"
   },
   {
-    "objectID": "publications/index.pt.html",
-    "href": "publications/index.pt.html",
-    "title": "Publicações",
+    "objectID": "publications/finding-the-underlying-viscoelastic-constitutive-equation/finding-the-underlying-viscoelastic-constitutive-equation.pt.html",
+    "href": "publications/finding-the-underlying-viscoelastic-constitutive-equation/finding-the-underlying-viscoelastic-constitutive-equation.pt.html",
+    "title": "Finding the underlying viscoelastic constitutive equation via universal differential equations and differentiable physics",
     "section": "",
-    "text": "Nenhum resultado para os filtros escolhidos.\n\n\n\n\n\n  \n    \n      \n        \n        \n          Deep Clustering for Climate: Analyzing Teleconnections through Learned Categorical States\n          Lívia Meinhardt, Dário Oliveira\n          Abril de 2026 · arXiv preprint\n          Redes siamesas mascaradas discretizam séries temporais climáticas em clusters semanticamente ricos, com associações estatísticas a eventos de El Niño.\n        \n      \n    \n  \n    \n      \n        \n        \n          Exploring EnMAP hyperspectral images and ensemble deep learning for classifying forest land-cover types in Brazil\n          Matheus Pinheiro Ferreira, Matheus Santos Fuza, José M. S. M. Viveiros, Tomás Ferranti, Dário Oliveira, Giulio Brossi Santoro, Paulo Guilherme Molin, Catherine Torres de Almeida, Angélica F. Resende, Danilo R. A. de Almeida, Yelu Zeng, Ricardo Ribeiro Rodrigues, Pedro H. S. Brancalion\n          Abril de 2026 · International Journal of Remote Sensing\n          Ensemble de deep learning com imagens hiperespectrais do satélite EnMAP para classificar tipos de cobertura florestal em São Paulo.\n        \n      \n    \n  \n    \n      \n        \n        \n          Finding the underlying viscoelastic constitutive equation via universal differential equations and differentiable physics\n          Elias C. Rodrigues, Roney L. Thompson, Dário A. B. Oliveira, Roberto F. Ausas\n          Novembro de 2025 · Engineering Applications of Artificial Intelligence\n          Equações diferenciais universais e física diferenciável reconstroem termos ausentes em modelos constitutivos de fluidos viscoelásticos.\n        \n      \n    \n  \n\nSem itens correspondentes\n\n\n\n\n\n  \n    \n      \n        \n      \n      \n        FGV · 16 de julho de 2025\n        Pesquisa utiliza sistema baseado em IA para prever qualidade da carne a partir de fotos de celular\n        Sistema treinado com fotos de cortes bovinos e suínos prevê maciez e gordura intramuscular, abrindo caminho para aplicativos que ajudem o consumidor a identificar cortes mais macios e suculentos.\n      \n    \n  \n    \n      \n        \n      \n      \n        FGV · 20 de março de 2025\n        Estudo monitora desmatamento e identifica espécies vegetais com uso de inteligência artificial\n        O método LLP-Co aprende padrões visuais e agrupa grandes volumes de dados automaticamente, aplicado à identificação de áreas desmatadas e da biodiversidade vegetal da Floresta Amazônica.\n      \n    \n  \n    \n      \n        \n      \n      \n        FGV · 8 de outubro de 2024\n        Pesquisadores criam algoritmo que realiza classificação agrícola por meio de imagens de satélite\n        Estudo da FGV EMAp utiliza, pela primeira vez, uma abordagem com proporções globais para classificar culturas agrícolas por agrupamento auto-supervisionado.\n      \n    \n  \n\nSem itens correspondentes\n\n\n\n\n\n\n  Sumário\n  \n    Artigos\n    Notícias"
+    "text": "Autores: Elias C. Rodrigues, Roney L. Thompson, Dário A. B. Oliveira, Roberto F. Ausas\nPublicação: Novembro de 2025, Engineering Applications of Artificial Intelligence, v. 160, 111788 (Pergamon)\nAcessar o artigo\n\n\n\n\nDeterminar o modelo constitutivo adequado para descrever o comportamento de um determinado material é um aspecto fundamental, porém desafiador, da reologia. Embora os métodos baseados em dados apresentem um caminho promissor para o refinamento desses modelos, é necessária uma investigação mais aprofundada sobre as capacidades e limitações das técnicas emergentes. Esta pesquisa aborda essa lacuna utilizando Equações Diferenciais Universais (UDEs) e física diferenciável para modelar fluidos viscoelásticos, combinando equações diferenciais convencionais com redes neurais para reconstruir termos ausentes nos modelos constitutivos. O estudo concentra-se na análise de quatro modelos viscoelásticos, Maxwell Convectivo Superior (UCM), Johnson, Segalman, Giesekus e Phan, Thien, Tanner Exponencial (ePTT), utilizando conjuntos de dados sintéticos. A metodologia foi testada sob diferentes condições experimentais, incluindo fluxos oscilatórios e de partida (startup). Análises de erro relativo revelaram que a estrutura das UDEs mantém erros baixos e estáveis ​​(abaixo de 0,3%) para os modelos UCM, Johnson, Segalman e Giesekus em diversas condições, ao mesmo tempo que apresenta erros mais elevados, porém consistentes (4%), para o modelo ePTT, devido à sua forte não linearidade. Esses resultados destacam o potencial das UDEs na mecânica dos fluidos, identificando também áreas críticas para o aprimoramento metodológico. Além disso, foi empregada uma abordagem de destilação de modelos para extrair modelos simplificados a partir de modelos complexos, ressaltando a versatilidade e a robustez das UDEs na modelagem reológica.\n\n\n\n\nFig. 4. Avaliação da extrapolação dos modelos UDE para a tensão de cisalhamento \\((\\sigma_{12}^*, t^*)\\) com entrada \\(\\dot{\\gamma}^*(t^*) = 3\\cos(1.5\\,t^*)\\). Os pontos destacados em verde correspondem aos pontos de treinamento, \\(t^* \\in [0, 20]\\). A curva azul ilustra a solução numérica da equação diferencial, chamada de solução de referência (“ground truth”). A curva preta representa o modelo UDE antes do treinamento, enquanto a curva vermelha ilustra o modelo UDE após o treinamento. Os seguintes parâmetros foram utilizados: \\(\\xi = 0.4\\) (Johnson, Segalman), \\(\\alpha = 0.2\\) (Giesekus) e \\((\\xi, \\epsilon) = (0, 0.4)\\) para (ePTT).\n\n\n\n\n\n\n@article{rodrigues2025viscoelastic,\n  title     = {Finding the underlying viscoelastic constitutive equation via\n               universal differential equations and differentiable physics},\n  author    = {Rodrigues, Elias C. and Thompson, Roney L. and\n               Oliveira, Dário A. B. and Ausas, Roberto F.},\n  journal   = {Engineering Applications of Artificial Intelligence},\n  volume    = {160},\n  pages     = {111788},\n  year      = {2025},\n  publisher = {Pergamon}\n}\n\n  \n  Voltar para as publicações"
   },
   {
-    "objectID": "publications/deep-clustering-climate/deep-clustering-climate.pt.html",
-    "href": "publications/deep-clustering-climate/deep-clustering-climate.pt.html",
+    "objectID": "publications/finding-the-underlying-viscoelastic-constitutive-equation/finding-the-underlying-viscoelastic-constitutive-equation.pt.html#resumo",
+    "href": "publications/finding-the-underlying-viscoelastic-constitutive-equation/finding-the-underlying-viscoelastic-constitutive-equation.pt.html#resumo",
+    "title": "Finding the underlying viscoelastic constitutive equation via universal differential equations and differentiable physics",
+    "section": "",
+    "text": "Determinar o modelo constitutivo adequado para descrever o comportamento de um determinado material é um aspecto fundamental, porém desafiador, da reologia. Embora os métodos baseados em dados apresentem um caminho promissor para o refinamento desses modelos, é necessária uma investigação mais aprofundada sobre as capacidades e limitações das técnicas emergentes. Esta pesquisa aborda essa lacuna utilizando Equações Diferenciais Universais (UDEs) e física diferenciável para modelar fluidos viscoelásticos, combinando equações diferenciais convencionais com redes neurais para reconstruir termos ausentes nos modelos constitutivos. O estudo concentra-se na análise de quatro modelos viscoelásticos, Maxwell Convectivo Superior (UCM), Johnson, Segalman, Giesekus e Phan, Thien, Tanner Exponencial (ePTT), utilizando conjuntos de dados sintéticos. A metodologia foi testada sob diferentes condições experimentais, incluindo fluxos oscilatórios e de partida (startup). Análises de erro relativo revelaram que a estrutura das UDEs mantém erros baixos e estáveis ​​(abaixo de 0,3%) para os modelos UCM, Johnson, Segalman e Giesekus em diversas condições, ao mesmo tempo que apresenta erros mais elevados, porém consistentes (4%), para o modelo ePTT, devido à sua forte não linearidade. Esses resultados destacam o potencial das UDEs na mecânica dos fluidos, identificando também áreas críticas para o aprimoramento metodológico. Além disso, foi empregada uma abordagem de destilação de modelos para extrair modelos simplificados a partir de modelos complexos, ressaltando a versatilidade e a robustez das UDEs na modelagem reológica.\n\n\n\n\nFig. 4. Avaliação da extrapolação dos modelos UDE para a tensão de cisalhamento \\((\\sigma_{12}^*, t^*)\\) com entrada \\(\\dot{\\gamma}^*(t^*) = 3\\cos(1.5\\,t^*)\\). Os pontos destacados em verde correspondem aos pontos de treinamento, \\(t^* \\in [0, 20]\\). A curva azul ilustra a solução numérica da equação diferencial, chamada de solução de referência (“ground truth”). A curva preta representa o modelo UDE antes do treinamento, enquanto a curva vermelha ilustra o modelo UDE após o treinamento. Os seguintes parâmetros foram utilizados: \\(\\xi = 0.4\\) (Johnson, Segalman), \\(\\alpha = 0.2\\) (Giesekus) e \\((\\xi, \\epsilon) = (0, 0.4)\\) para (ePTT)."
+  },
+  {
+    "objectID": "publications/finding-the-underlying-viscoelastic-constitutive-equation/finding-the-underlying-viscoelastic-constitutive-equation.pt.html#como-citar",
+    "href": "publications/finding-the-underlying-viscoelastic-constitutive-equation/finding-the-underlying-viscoelastic-constitutive-equation.pt.html#como-citar",
+    "title": "Finding the underlying viscoelastic constitutive equation via universal differential equations and differentiable physics",
+    "section": "",
+    "text": "@article{rodrigues2025viscoelastic,\n  title     = {Finding the underlying viscoelastic constitutive equation via\n               universal differential equations and differentiable physics},\n  author    = {Rodrigues, Elias C. and Thompson, Roney L. and\n               Oliveira, Dário A. B. and Ausas, Roberto F.},\n  journal   = {Engineering Applications of Artificial Intelligence},\n  volume    = {160},\n  pages     = {111788},\n  year      = {2025},\n  publisher = {Pergamon}\n}\n\n  \n  Voltar para as publicações"
+  },
+  {
+    "objectID": "publications/deep-clustering-for-climate-analyzing-teleconnections/deep-clustering-for-climate-analyzing-teleconnections.pt.html",
+    "href": "publications/deep-clustering-for-climate-analyzing-teleconnections/deep-clustering-for-climate-analyzing-teleconnections.pt.html",
     "title": "Deep Clustering for Climate: Analyzing Teleconnections through Learned Categorical States",
     "section": "",
     "text": "Autores: Lívia Meinhardt, Dário Oliveira\nPublicação: Abril de 2026, arXiv preprint arXiv:2604.22909\nAcessar o artigo\n\n\n\n\nCompreender e representar a complexa variabilidade climática é essencial tanto para a análise científica quanto para a modelagem preditiva. Contudo, identificar regimes climáticos relevantes a partir de variáveis brutas representa um desafio, uma vez que estas apresentam elevado nível de ruído e dependências não lineares. Neste trabalho, investigamos o uso de Redes Siamesas Mascaradas (Masked Siamese Networks) para discretizar séries temporais climáticas em agrupamentos (clusters) semanticamente ricos. Com foco nas temperaturas diárias mínima e máxima, demonstramos que as representações obtidas: (i) geram clusters que refletem estados climáticos consistentes sob as premissas do nosso modelo, oferecendo uma representação simplificada para aplicações futuras; (ii) viabilizam a amostragem e a análise de cenários climáticos específicos; e (iii) apresentam associações estatísticas com eventos do fenômeno El Niño, reforçando sua relevância científica. Os resultados alcançados destacam o potencial da discretização autossupervisionada como ferramenta para a análise de dados climáticos, além de abrir caminhos para a incorporação de indicadores climáticos mais abrangentes em trabalhos futuros.\n\n\n\n\nExtensão espacial da região de estudo selecionada (Cerrado brasileiro) utilizada para o treinamento e a avaliação do modelo.\n\n\n\n\n\nAnálise de probabilidade com defasagem que demonstra a sensibilidade dos regimes aprendidos em defasagens \\(\\tau \\in \\left[ −12, +12 \\right]\\) meses em relação ao Índice Niño Oceânico. Defasagens negativas indicam comportamento precursor antes do El Niño, enquanto defasagens positivas indicam respostas postergadas após o pico do ENOS.\n\n\n\n\n\n\n@misc{meinhardt2026deepclustering,\n  title         = {Deep Clustering for Climate: Analyzing Teleconnections\n                   through Learned Categorical States},\n  author        = {Meinhardt, Lívia and Oliveira, Dário},\n  year          = {2026},\n  eprint        = {2604.22909},\n  archivePrefix = {arXiv}\n}\n\n  \n  Voltar para as publicações"
   },
   {
-    "objectID": "publications/deep-clustering-climate/deep-clustering-climate.pt.html#resumo",
-    "href": "publications/deep-clustering-climate/deep-clustering-climate.pt.html#resumo",
+    "objectID": "publications/deep-clustering-for-climate-analyzing-teleconnections/deep-clustering-for-climate-analyzing-teleconnections.pt.html#resumo",
+    "href": "publications/deep-clustering-for-climate-analyzing-teleconnections/deep-clustering-for-climate-analyzing-teleconnections.pt.html#resumo",
     "title": "Deep Clustering for Climate: Analyzing Teleconnections through Learned Categorical States",
     "section": "",
     "text": "Compreender e representar a complexa variabilidade climática é essencial tanto para a análise científica quanto para a modelagem preditiva. Contudo, identificar regimes climáticos relevantes a partir de variáveis brutas representa um desafio, uma vez que estas apresentam elevado nível de ruído e dependências não lineares. Neste trabalho, investigamos o uso de Redes Siamesas Mascaradas (Masked Siamese Networks) para discretizar séries temporais climáticas em agrupamentos (clusters) semanticamente ricos. Com foco nas temperaturas diárias mínima e máxima, demonstramos que as representações obtidas: (i) geram clusters que refletem estados climáticos consistentes sob as premissas do nosso modelo, oferecendo uma representação simplificada para aplicações futuras; (ii) viabilizam a amostragem e a análise de cenários climáticos específicos; e (iii) apresentam associações estatísticas com eventos do fenômeno El Niño, reforçando sua relevância científica. Os resultados alcançados destacam o potencial da discretização autossupervisionada como ferramenta para a análise de dados climáticos, além de abrir caminhos para a incorporação de indicadores climáticos mais abrangentes em trabalhos futuros.\n\n\n\n\nExtensão espacial da região de estudo selecionada (Cerrado brasileiro) utilizada para o treinamento e a avaliação do modelo.\n\n\n\n\n\nAnálise de probabilidade com defasagem que demonstra a sensibilidade dos regimes aprendidos em defasagens \\(\\tau \\in \\left[ −12, +12 \\right]\\) meses em relação ao Índice Niño Oceânico. Defasagens negativas indicam comportamento precursor antes do El Niño, enquanto defasagens positivas indicam respostas postergadas após o pico do ENOS."
   },
   {
-    "objectID": "publications/deep-clustering-climate/deep-clustering-climate.pt.html#como-citar",
-    "href": "publications/deep-clustering-climate/deep-clustering-climate.pt.html#como-citar",
+    "objectID": "publications/deep-clustering-for-climate-analyzing-teleconnections/deep-clustering-for-climate-analyzing-teleconnections.pt.html#como-citar",
+    "href": "publications/deep-clustering-for-climate-analyzing-teleconnections/deep-clustering-for-climate-analyzing-teleconnections.pt.html#como-citar",
     "title": "Deep Clustering for Climate: Analyzing Teleconnections through Learned Categorical States",
     "section": "",
     "text": "@misc{meinhardt2026deepclustering,\n  title         = {Deep Clustering for Climate: Analyzing Teleconnections\n                   through Learned Categorical States},\n  author        = {Meinhardt, Lívia and Oliveira, Dário},\n  year          = {2026},\n  eprint        = {2604.22909},\n  archivePrefix = {arXiv}\n}\n\n  \n  Voltar para as publicações"
   },
   {
-    "objectID": "people/thiago-melchiors/thiago-melchiors.pt.html",
-    "href": "people/thiago-melchiors/thiago-melchiors.pt.html",
+    "objectID": "people/thiago-franke-melchiors/thiago-franke-melchiors.pt.html",
+    "href": "people/thiago-franke-melchiors/thiago-franke-melchiors.pt.html",
     "title": "Thiago Franke Melchiors",
     "section": "",
-    "text": "LinkedIn\n  \n  \n    \n     Email\n  \n\n  \n  \nGraduado em Ciência de Dados e Inteligência Artificial pela FGV EMAp e mestrando em Matemática Aplicada e Ciência de Dados pela mesma instituição. No Gaia Lab, pesquisa sensoriamento remoto no monitoramento de florestas e do uso da terra. Também atua como cientista de dados na FGV, com foco em LLMs e PLN.\n\n\n\nMestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\n\n\n\n\nAprendizado de máquina e visão computacional para sensoriamento remoto.\n\n\n\n\n\n  \n  Voltar para a equipe"
+    "text": "LinkedIn\n  \n\n  \n  \nGraduado em Ciência de Dados e Inteligência Artificial pela FGV EMAp e mestrando em Matemática Aplicada e Ciência de Dados pela mesma instituição. No Gaia Lab, pesquisa sensoriamento remoto no monitoramento de florestas e do uso da terra. Também atua como cientista de dados na FGV, com foco em LLMs e PLN.\n\n\n\nMestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\n\n\n\n\nAprendizado de máquina e visão computacional para sensoriamento remoto.\n\n\n\n\n\n  \n  Voltar para a equipe"
   },
   {
-    "objectID": "people/thiago-melchiors/thiago-melchiors.pt.html#formação",
-    "href": "people/thiago-melchiors/thiago-melchiors.pt.html#formação",
+    "objectID": "people/thiago-franke-melchiors/thiago-franke-melchiors.pt.html#formação",
+    "href": "people/thiago-franke-melchiors/thiago-franke-melchiors.pt.html#formação",
     "title": "Thiago Franke Melchiors",
     "section": "",
     "text": "Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp."
   },
   {
-    "objectID": "people/thiago-melchiors/thiago-melchiors.pt.html#interesses",
-    "href": "people/thiago-melchiors/thiago-melchiors.pt.html#interesses",
+    "objectID": "people/thiago-franke-melchiors/thiago-franke-melchiors.pt.html#interesses",
+    "href": "people/thiago-franke-melchiors/thiago-franke-melchiors.pt.html#interesses",
     "title": "Thiago Franke Melchiors",
     "section": "",
     "text": "Aprendizado de máquina e visão computacional para sensoriamento remoto."
   },
   {
-    "objectID": "people/rodrigo-pintucci/rodrigo-pintucci.pt.html",
-    "href": "people/rodrigo-pintucci/rodrigo-pintucci.pt.html",
+    "objectID": "people/rodrigo-gomes-hutz-pintucci/rodrigo-gomes-hutz-pintucci.pt.html",
+    "href": "people/rodrigo-gomes-hutz-pintucci/rodrigo-gomes-hutz-pintucci.pt.html",
     "title": "Rodrigo Gomes Hutz Pintucci",
     "section": "",
-    "text": "LinkedIn\n  \n  \n    \n     Email\n  \n\n  \n  \nMestrando na FGV EMAp e pesquisador do GAIA Lab. Bacharel em Ciência de Dados e IA pela mesma escola, selecionado pelo programa Seleção de Talentos por seu desempenho na OBMEP.\n\n\n\nMestrando, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\nTécnico em Automação Industrial, ETE FMC.\n\n\n\n\nPython, visualização de dados, visão computacional, aprendizado de máquinas.\n\n\n\n\n\n  \n  Voltar para a equipe"
+    "text": "LinkedIn\n  \n\n  \n  \nMestrando na FGV EMAp e pesquisador do GAIA Lab. Bacharel em Ciência de Dados e IA pela mesma escola, selecionado pelo programa Seleção de Talentos por seu desempenho na OBMEP.\n\n\n\nMestrando, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\nTécnico em Automação Industrial, ETE FMC.\n\n\n\n\nPython, visualização de dados, visão computacional, aprendizado de máquinas.\n\n\n\n\n\n  \n  Voltar para a equipe"
   },
   {
-    "objectID": "people/rodrigo-pintucci/rodrigo-pintucci.pt.html#formação",
-    "href": "people/rodrigo-pintucci/rodrigo-pintucci.pt.html#formação",
+    "objectID": "people/rodrigo-gomes-hutz-pintucci/rodrigo-gomes-hutz-pintucci.pt.html#formação",
+    "href": "people/rodrigo-gomes-hutz-pintucci/rodrigo-gomes-hutz-pintucci.pt.html#formação",
     "title": "Rodrigo Gomes Hutz Pintucci",
     "section": "",
     "text": "Mestrando, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\nTécnico em Automação Industrial, ETE FMC."
   },
   {
-    "objectID": "people/rodrigo-pintucci/rodrigo-pintucci.pt.html#interesses",
-    "href": "people/rodrigo-pintucci/rodrigo-pintucci.pt.html#interesses",
+    "objectID": "people/rodrigo-gomes-hutz-pintucci/rodrigo-gomes-hutz-pintucci.pt.html#interesses",
+    "href": "people/rodrigo-gomes-hutz-pintucci/rodrigo-gomes-hutz-pintucci.pt.html#interesses",
     "title": "Rodrigo Gomes Hutz Pintucci",
     "section": "",
     "text": "Python, visualização de dados, visão computacional, aprendizado de máquinas."
   },
   {
-    "objectID": "people/pedro-soto/pedro-soto.pt.html",
-    "href": "people/pedro-soto/pedro-soto.pt.html",
-    "title": "Pedro Soto",
+    "objectID": "people/pedro-thomaz-conzatti-martins/pedro-thomaz-conzatti-martins.pt.html",
+    "href": "people/pedro-thomaz-conzatti-martins/pedro-thomaz-conzatti-martins.pt.html",
+    "title": "Pedro Thomaz Conzatti Martins",
     "section": "",
-    "text": "LinkedIn\n  \n\n  \n  \nDoutor em Engenharia Elétrica pela PUC-Rio, mestre na mesma área pela PUC-Rio, bacharel em engenharia de telecomunicações e eletrônica pela Universidad de Oriente Santiago de Cuba. Desenvolve pesquisas nas áreas de visão computacional, aprendizado de máquina, aprendizado profundo, sensoriamento remoto e biometria. Membro da International Society of Photogrammetry and Remote Sensing (ISPRS) e do Capítulo Brasileiro da IEEE Geoscience and Remote Sensing Society (GRSS). É pesquisador no laboratório da ISEN Yncréa Ouest, L@BISEN.\n\n\n\nDoutorado em Engenharia Elétrica, PUC-Rio.\nMestrado em Processamento de Sinais, PUC-Rio.\nGraduação em Engenharia de Telecomunicações e Eletrônica, Universidad de Oriente (Santiago de Cuba).\n\n\n\n\nVisão computacional, aprendizado de máquina, aprendizado profundo, sensoriamento remoto e biometria.\n\n\n\n\n\n  \n  Voltar para a equipe"
+    "text": "LinkedIn\n  \n\n  \n  \nAssistente de pesquisa no GAIA Lab. Mestrando em Matemática Aplicada e Ciência de Dados na FGV EMAp, graduado em Ciência de Dados e IA pela mesma escola, com formação técnica em informática pelo IFRS.\n\n\n\nMestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\nTécnico em Informática, IFRS.\n\n\n\n\nDeep learning, LLMs e visão computacional.\n\n\n\n\n\n  \n  Voltar para a equipe"
   },
   {
-    "objectID": "people/pedro-soto/pedro-soto.pt.html#formação",
-    "href": "people/pedro-soto/pedro-soto.pt.html#formação",
-    "title": "Pedro Soto",
+    "objectID": "people/pedro-thomaz-conzatti-martins/pedro-thomaz-conzatti-martins.pt.html#formação",
+    "href": "people/pedro-thomaz-conzatti-martins/pedro-thomaz-conzatti-martins.pt.html#formação",
+    "title": "Pedro Thomaz Conzatti Martins",
     "section": "",
-    "text": "Doutorado em Engenharia Elétrica, PUC-Rio.\nMestrado em Processamento de Sinais, PUC-Rio.\nGraduação em Engenharia de Telecomunicações e Eletrônica, Universidad de Oriente (Santiago de Cuba)."
+    "text": "Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\nTécnico em Informática, IFRS."
   },
   {
-    "objectID": "people/pedro-soto/pedro-soto.pt.html#interesses",
-    "href": "people/pedro-soto/pedro-soto.pt.html#interesses",
-    "title": "Pedro Soto",
+    "objectID": "people/pedro-thomaz-conzatti-martins/pedro-thomaz-conzatti-martins.pt.html#interesses",
+    "href": "people/pedro-thomaz-conzatti-martins/pedro-thomaz-conzatti-martins.pt.html#interesses",
+    "title": "Pedro Thomaz Conzatti Martins",
     "section": "",
-    "text": "Visão computacional, aprendizado de máquina, aprendizado profundo, sensoriamento remoto e biometria."
+    "text": "Deep learning, LLMs e visão computacional."
   },
   {
     "objectID": "people/luiz-luz/luiz-luz.pt.html",
     "href": "people/luiz-luz/luiz-luz.pt.html",
     "title": "Luiz Luz",
     "section": "",
-    "text": "LinkedIn\n  \n  \n    \n     Email\n  \n\n  \n  \nFoi pesquisador de deep learning no GAIA Lab, aplicando visão computacional a dados de satélite para monitoramento da biodiversidade na Amazônia. Mestre em Modelagem Matemática pela FGV EMAp e graduado em Ciência de Dados e IA pela mesma escola. Atua como engenheiro de IA generativa na Dharma AI, com agentes LLM e fine-tuning de modelos.\n\n\n\nMestrado em Modelagem Matemática (aplicações ESG), FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\n\n\n\n\nSensoriamento remoto, visão computacional, agentes LLM e engenharia de dados.\n\n\n\n\n\n  \n  Voltar para a equipe"
+    "text": "LinkedIn\n  \n\n  \n  \nFoi pesquisador de deep learning no GAIA Lab, aplicando visão computacional a dados de satélite para monitoramento da biodiversidade na Amazônia. Mestre em Modelagem Matemática pela FGV EMAp e graduado em Ciência de Dados e IA pela mesma escola. Atua como engenheiro de IA generativa na Dharma AI, com agentes LLM e fine-tuning de modelos.\n\n\n\nMestrado em Modelagem Matemática (aplicações ESG), FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\n\n\n\n\nSensoriamento remoto, visão computacional, agentes LLM e engenharia de dados.\n\n\n\n\n\n  \n  Voltar para a equipe"
   },
   {
     "objectID": "people/luiz-luz/luiz-luz.pt.html#formação",
@@ -119,46 +133,67 @@
     "text": "Sensoriamento remoto, visão computacional, agentes LLM e engenharia de dados."
   },
   {
-    "objectID": "people/livia-meinhardt/livia-meinhardt.pt.html",
-    "href": "people/livia-meinhardt/livia-meinhardt.pt.html",
+    "objectID": "people/livia-cereja-meinhardt/livia-cereja-meinhardt.pt.html",
+    "href": "people/livia-cereja-meinhardt/livia-cereja-meinhardt.pt.html",
     "title": "Lívia Cereja Meinhardt",
     "section": "",
-    "text": "LinkedIn\n  \n  \n    \n     Email\n  \n\n  \n  \nPesquisadora de deep learning no GAIA Lab. Doutoranda na FGV EMAp, mestre em Modelagem Matemática e Ciência de Dados e graduada em Ciência de Dados e IA pela mesma escola. Passou pela SPX Capital como analista quantitativa de crédito.\n\n\n\nDoutoranda, FGV EMAp.\nMestrado em Modelagem Matemática e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\n\n\n\n\nMachine learning, deep learning e modelagem estatística.\n\n\n\n\n\n  \n  Voltar para a equipe"
+    "text": "LinkedIn\n  \n\n  \n  \nPesquisadora de deep learning no GAIA Lab. Doutoranda na FGV EMAp, mestre em Modelagem Matemática e Ciência de Dados e graduada em Ciência de Dados e IA pela mesma escola. Passou pela SPX Capital como analista quantitativa de crédito.\n\n\n\nDoutoranda, FGV EMAp.\nMestrado em Modelagem Matemática e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\n\n\n\n\nMachine learning, deep learning e modelagem estatística.\n\n\n\n\n\n  \n  Voltar para a equipe"
   },
   {
-    "objectID": "people/livia-meinhardt/livia-meinhardt.pt.html#formação",
-    "href": "people/livia-meinhardt/livia-meinhardt.pt.html#formação",
+    "objectID": "people/livia-cereja-meinhardt/livia-cereja-meinhardt.pt.html#formação",
+    "href": "people/livia-cereja-meinhardt/livia-cereja-meinhardt.pt.html#formação",
     "title": "Lívia Cereja Meinhardt",
     "section": "",
     "text": "Doutoranda, FGV EMAp.\nMestrado em Modelagem Matemática e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp."
   },
   {
-    "objectID": "people/livia-meinhardt/livia-meinhardt.pt.html#interesses",
-    "href": "people/livia-meinhardt/livia-meinhardt.pt.html#interesses",
+    "objectID": "people/livia-cereja-meinhardt/livia-cereja-meinhardt.pt.html#interesses",
+    "href": "people/livia-cereja-meinhardt/livia-cereja-meinhardt.pt.html#interesses",
     "title": "Lívia Cereja Meinhardt",
     "section": "",
     "text": "Machine learning, deep learning e modelagem estatística."
   },
   {
-    "objectID": "people/joao-alcindo/joao-alcindo.pt.html",
-    "href": "people/joao-alcindo/joao-alcindo.pt.html",
-    "title": "João Alcindo",
+    "objectID": "people/jorginho-do-play/jorginho-do-play.pt.html",
+    "href": "people/jorginho-do-play/jorginho-do-play.pt.html",
+    "title": "jorginho do play",
     "section": "",
-    "text": "LinkedIn\n  \n  \n    \n     Email\n  \n\n  \n  \nAssistente de pesquisa no GAIA Lab, aplicando visão computacional e deep learning a imagens de satélite para sustentabilidade e monitoramento ambiental, de modelos self-supervised para reflorestamento e desmatamento à agricultura com imagens hiperespectrais. Mestre em Matemática Aplicada e Ciência de Dados pela FGV EMAp e bacharel em Ciência de Dados e IA pela mesma escola. Parte para um mestrado na França, seguindo vinculado aos projetos do laboratório.\n\n\n\nMestrado em Matemática Aplicada e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\n\n\n\n\nSensoriamento remoto, observação da Terra e agricultura.\n\n\n\n\n\n  \n  Voltar para a equipe"
+    "text": "LinkedIn\n  \n  \n    \n     Email\n  \n\n  \n  \neste é meu nome e essa é minha apresentação\n\n\n\nformação 1\nformação 2\n\n\n\n\neu tenho alguns interesses\n\n\n\n\n\n  \n  Voltar para a equipe"
   },
   {
-    "objectID": "people/joao-alcindo/joao-alcindo.pt.html#formação",
-    "href": "people/joao-alcindo/joao-alcindo.pt.html#formação",
-    "title": "João Alcindo",
+    "objectID": "people/jorginho-do-play/jorginho-do-play.pt.html#formação",
+    "href": "people/jorginho-do-play/jorginho-do-play.pt.html#formação",
+    "title": "jorginho do play",
     "section": "",
-    "text": "Mestrado em Matemática Aplicada e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp."
+    "text": "formação 1\nformação 2"
   },
   {
-    "objectID": "people/joao-alcindo/joao-alcindo.pt.html#interesses",
-    "href": "people/joao-alcindo/joao-alcindo.pt.html#interesses",
-    "title": "João Alcindo",
+    "objectID": "people/jorginho-do-play/jorginho-do-play.pt.html#interesses",
+    "href": "people/jorginho-do-play/jorginho-do-play.pt.html#interesses",
+    "title": "jorginho do play",
     "section": "",
-    "text": "Sensoriamento remoto, observação da Terra e agricultura."
+    "text": "eu tenho alguns interesses"
+  },
+  {
+    "objectID": "people/janaina-neres-evangelista/janaina-neres-evangelista.pt.html",
+    "href": "people/janaina-neres-evangelista/janaina-neres-evangelista.pt.html",
+    "title": "Janaina Neres Evangelista",
+    "section": "",
+    "text": "LinkedIn\n  \n  \n    \n     Email\n  \n\n  \n  \nMestrando em Matemática Aplicada e Ciência de Dados na FGV EMAp, graduado em Ciência de Dados e IA pela mesma escola.\n\n\n\nMestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\n\n\n\n\nInteligência artificial, sensoriamento remoto e agronegócio.\n\n\n\n\n\n  \n  Voltar para a equipe"
+  },
+  {
+    "objectID": "people/janaina-neres-evangelista/janaina-neres-evangelista.pt.html#formação",
+    "href": "people/janaina-neres-evangelista/janaina-neres-evangelista.pt.html#formação",
+    "title": "Janaina Neres Evangelista",
+    "section": "",
+    "text": "Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp."
+  },
+  {
+    "objectID": "people/janaina-neres-evangelista/janaina-neres-evangelista.pt.html#interesses",
+    "href": "people/janaina-neres-evangelista/janaina-neres-evangelista.pt.html#interesses",
+    "title": "Janaina Neres Evangelista",
+    "section": "",
+    "text": "Inteligência artificial, sensoriamento remoto e agronegócio."
   },
   {
     "objectID": "people/heitor-trielli/heitor-trielli.pt.html",
@@ -207,7 +242,7 @@
     "href": "people/erick-brito/erick-brito.pt.html",
     "title": "Erick Brito",
     "section": "",
-    "text": "LinkedIn\n  \n  \n    \n     Email\n  \n\n  \n  \nPesquisador de deep learning no GAIA Lab desde 2024. Doutorando na FGV EMAp, mestre em Matemática Aplicada e Ciência de Dados e graduado em Matemática Aplicada pela mesma escola.\n\n\n\nDoutorando, FGV EMAp.\nMestrado em Matemática Aplicada e Ciência de Dados, FGV EMAp.\nGraduação em Matemática Aplicada, FGV EMAp.\n\n\n\n\nVisão computacional, inteligência artificial e algoritmos.\n\n\n\n\n\n  \n  Voltar para a equipe"
+    "text": "LinkedIn\n  \n\n  \n  \nPesquisador de deep learning no GAIA Lab desde 2024. Doutorando na FGV EMAp, mestre em Matemática Aplicada e Ciência de Dados e graduado em Matemática Aplicada pela mesma escola.\n\n\n\nDoutorando, FGV EMAp.\nMestrado em Matemática Aplicada e Ciência de Dados, FGV EMAp.\nGraduação em Matemática Aplicada, FGV EMAp.\n\n\n\n\nVisão computacional, inteligência artificial e algoritmos.\n\n\n\n\n\n  \n  Voltar para a equipe"
   },
   {
     "objectID": "people/erick-brito/erick-brito.pt.html#formação",
@@ -224,81 +259,81 @@
     "text": "Visão computacional, inteligência artificial e algoritmos."
   },
   {
-    "objectID": "people/eduardo-vianna/eduardo-vianna.pt.html",
-    "href": "people/eduardo-vianna/eduardo-vianna.pt.html",
+    "objectID": "people/eduardo-vianna-de-l-f-guimaraes/eduardo-vianna-de-l-f-guimaraes.pt.html",
+    "href": "people/eduardo-vianna-de-l-f-guimaraes/eduardo-vianna-de-l-f-guimaraes.pt.html",
     "title": "Eduardo Vianna de L. F. Guimarães",
     "section": "",
     "text": "LinkedIn\n  \n\n  \n  \nBacharel em Matemática Aplicada pela FGV EMAp, laureado no Prêmio CAPES Talento Universitário e multimedalhista da OBMEP. Atua como cientista de dados no BNDES; antes, trabalhou na Empresa de Pesquisa Energética (EPE), na SPX Capital e na Americanas.\n\n\n\nGraduação em Matemática Aplicada, FGV EMAp.\n\n\n\n\nCiência de dados, mineração e manipulação de dados.\n\n\n\n\n\n  \n  Voltar para a equipe"
   },
   {
-    "objectID": "people/eduardo-vianna/eduardo-vianna.pt.html#formação",
-    "href": "people/eduardo-vianna/eduardo-vianna.pt.html#formação",
+    "objectID": "people/eduardo-vianna-de-l-f-guimaraes/eduardo-vianna-de-l-f-guimaraes.pt.html#formação",
+    "href": "people/eduardo-vianna-de-l-f-guimaraes/eduardo-vianna-de-l-f-guimaraes.pt.html#formação",
     "title": "Eduardo Vianna de L. F. Guimarães",
     "section": "",
     "text": "Graduação em Matemática Aplicada, FGV EMAp."
   },
   {
-    "objectID": "people/eduardo-vianna/eduardo-vianna.pt.html#interesses",
-    "href": "people/eduardo-vianna/eduardo-vianna.pt.html#interesses",
+    "objectID": "people/eduardo-vianna-de-l-f-guimaraes/eduardo-vianna-de-l-f-guimaraes.pt.html#interesses",
+    "href": "people/eduardo-vianna-de-l-f-guimaraes/eduardo-vianna-de-l-f-guimaraes.pt.html#interesses",
     "title": "Eduardo Vianna de L. F. Guimarães",
     "section": "",
     "text": "Ciência de dados, mineração e manipulação de dados."
   },
   {
-    "objectID": "people/danilo-cardoso/danilo-cardoso.pt.html",
-    "href": "people/danilo-cardoso/danilo-cardoso.pt.html",
+    "objectID": "people/danilo-lemos-cardoso/danilo-lemos-cardoso.pt.html",
+    "href": "people/danilo-lemos-cardoso/danilo-lemos-cardoso.pt.html",
     "title": "Danilo Lemos Cardoso",
     "section": "",
     "text": "LinkedIn\n  \n\n  \n  \nPesquisador do GAIA Lab. Doutorando na FGV EMAp, mestre em Modelagem Matemática e graduado em Matemática Aplicada pela mesma escola, com formação técnica em eletrônica pelo COLTEC/UFMG.\n\n\n\nDoutorando, FGV EMAp.\nMestrado em Modelagem Matemática, FGV EMAp.\nGraduação em Matemática Aplicada, FGV EMAp.\nTécnico em Eletrônica, COLTEC/UFMG.\n\n\n\n\nProgramação, Linux e solução de problemas.\n\n\n\n\n\n  \n  Voltar para a equipe"
   },
   {
-    "objectID": "people/danilo-cardoso/danilo-cardoso.pt.html#formação",
-    "href": "people/danilo-cardoso/danilo-cardoso.pt.html#formação",
+    "objectID": "people/danilo-lemos-cardoso/danilo-lemos-cardoso.pt.html#formação",
+    "href": "people/danilo-lemos-cardoso/danilo-lemos-cardoso.pt.html#formação",
     "title": "Danilo Lemos Cardoso",
     "section": "",
     "text": "Doutorando, FGV EMAp.\nMestrado em Modelagem Matemática, FGV EMAp.\nGraduação em Matemática Aplicada, FGV EMAp.\nTécnico em Eletrônica, COLTEC/UFMG."
   },
   {
-    "objectID": "people/danilo-cardoso/danilo-cardoso.pt.html#interesses",
-    "href": "people/danilo-cardoso/danilo-cardoso.pt.html#interesses",
+    "objectID": "people/danilo-lemos-cardoso/danilo-lemos-cardoso.pt.html#interesses",
+    "href": "people/danilo-lemos-cardoso/danilo-lemos-cardoso.pt.html#interesses",
     "title": "Danilo Lemos Cardoso",
     "section": "",
     "text": "Programação, Linux e solução de problemas."
   },
   {
-    "objectID": "news/pesquisadores-criam-algoritmo-que/pesquisadores-criam-algoritmo-que.pt.html",
-    "href": "news/pesquisadores-criam-algoritmo-que/pesquisadores-criam-algoritmo-que.pt.html",
-    "title": "Pesquisadores criam algoritmo que realiza classificação agrícola por meio de imagens de satélite",
+    "objectID": "news/teste/teste.pt.html",
+    "href": "news/teste/teste.pt.html",
+    "title": "teste",
     "section": "",
-    "text": "Estudo da FGV EMAp utiliza, pela primeira vez, uma abordagem com proporções globais para classificar culturas agrícolas por agrupamento auto-supervisionado.\nLer a notícia na íntegra\n\n\n  \n  Voltar para as notícias"
+    "text": "The medical condition of dozens of prisoners has deteriorated as inmates protest against suspension of amnesty law.\nLer a notícia na íntegra\n\n\n  \n  Voltar para as notícias"
   },
   {
-    "objectID": "news/estudo-monitora-desmatamento-e/estudo-monitora-desmatamento-e.pt.html",
-    "href": "news/estudo-monitora-desmatamento-e/estudo-monitora-desmatamento-e.pt.html",
-    "title": "Estudo monitora desmatamento e identifica espécies vegetais com uso de inteligência artificial",
+    "objectID": "news/pesquisa-utiliza-sistema-baseado-em-ia-para-prever/pesquisa-utiliza-sistema-baseado-em-ia-para-prever.pt.html",
+    "href": "news/pesquisa-utiliza-sistema-baseado-em-ia-para-prever/pesquisa-utiliza-sistema-baseado-em-ia-para-prever.pt.html",
+    "title": "Pesquisa utiliza sistema baseado em IA para prever qualidade da carne a partir de fotos de celular",
     "section": "",
-    "text": "O método LLP-Co aprende padrões visuais e agrupa grandes volumes de dados automaticamente, aplicado à identificação de áreas desmatadas e da biodiversidade vegetal da Floresta Amazônica.\nLer a notícia na íntegra\n\n\n  \n  Voltar para as notícias"
+    "text": "Sistema treinado com fotos de cortes bovinos e suínos prevê maciez e gordura intramuscular, abrindo caminho para aplicativos que ajudem o consumidor a identificar cortes mais macios e suculentos.\nLer a notícia na íntegra\n\n\n  \n  Voltar para as notícias"
   },
   {
-    "objectID": "index.pt.html#o-laboratório-em-números",
-    "href": "index.pt.html#o-laboratório-em-números",
-    "title": "GAIA Lab",
-    "section": "O laboratório em números",
-    "text": "O laboratório em números\n\n  0Talhões mapeados\n  0Municípios\n  0Estados\n  2020 a 2025Período dos dados"
+    "objectID": "join-us/index.pt.html",
+    "href": "join-us/index.pt.html",
+    "title": "Contato",
+    "section": "",
+    "text": "O GAIA Lab está aberto a estudantes e pesquisadores interessados em inteligência artificial aplicada a sensoriamento remoto, clima, florestas e agricultura, e também a parcerias, colaborações e trocas de ideia.\nSe você está em dúvida sobre nos escrever, sugerimos que preencha o formulário abaixo! :)\n\n  Nome\n  \n\n  Seu e-mail\n  \n\n  Motivo do contato\n  \n    \n      Iniciação Científica\n      Mestrado\n      Doutorado\n      Pós-doutorado\n      Colaboração ou parceria\n      Imprensa ou evento\n      Outro\n    \n  \n\n  \n    Qual?\n    \n    0/80\n  \n\n  Mensagem\n  \n\n  \n\n  Enviar mensagem\n  \n\n\n\n  \n  Voltar para o início"
   },
   {
-    "objectID": "index.pt.html#como-fazemos",
-    "href": "index.pt.html#como-fazemos",
-    "title": "GAIA Lab",
-    "section": "Como fazemos",
-    "text": "Como fazemos\n\n  \n  \n    01EtapaSegmentação de talhõesDelimitação de cada área produtiva a partir de imagens de satélite.\n    02EtapaClassificação de culturasSoja, milho e algodão identificados talhão por talhão, safra por safra.\n    03EtapaSéries de satélite e clima17 índices de vegetação e 10 séries climáticas somam 1.670 valores por talhão e safra.\n    04EtapaAgrupamento por semelhançaTalhões reunidos por comportamento espectral e climático.\n    05EtapaCaracterização de riscoCada grupo é descrito por manejo, produtividade e ocorrência de sinistro.\n  \n  \n\n\n  Ver as publicações\n  Sobre o laboratório\n  Junte-se a nós"
+    "objectID": "courses/index.pt.html",
+    "href": "courses/index.pt.html",
+    "title": "Cursos",
+    "section": "",
+    "text": "Pós-graduação em Matemática Aplicada e Ciência de Dados, EMAp\n      Redes Neurais e Aprendizado Profundo\n      \n        Professor: Dário Oliveira\n        Carga horária: 60h\n        Aulas: presenciais, segundas e terças, das 14h20 às 16h (horário de Brasília)\n        Oferta: todo segundo semestre\n      \n      Página do curso\n    \n  \n\n  \n    \n    \n      Graduação em Ciência de Dados e IA, EMAp\n      Aprendizado Profundo\n      \n        Professor: Dário Oliveira\n        Carga horária: 60h\n        Aulas: presenciais, terças e quintas, das 9h20 às 11h (horário de Brasília)\n        Oferta: todo segundo semestre\n      \n      Página do curso"
   },
   {
     "objectID": "about/index.pt.html",
     "href": "about/index.pt.html",
     "title": "Sobre",
     "section": "",
-    "text": "O GAIA Lab desenvolve métodos de\naprendizado de máquina que transformam imagens de satélite e\ndados climáticos em informação verificável sobre florestas,\nagricultura e clima. Criado em 2024 na\nFGV EMAp, o laboratório trabalha em escala territorial, em cinco estados\nbrasileiros, e confere cada resultado contra referências oficiais.\n\n\n  0Pesquisadores\n  0Frentes de pesquisa\n  0Publicações\n  0Fundação\n\n\n\n\n  \n    2024\n    Criação do laboratório na FGV EMAp, no Rio de Janeiro, reunindo pesquisa em aprendizado de máquina aplicada ao monitoramento da Terra.\n  \n  \n    2025\n    Construção da base própria de talhões e das séries de índices de vegetação: 359,6 mil talhões em 897 municípios de cinco estados, com dados de 2020 a 2025.\n  \n  \n    2025\n    Equipe na 14ª Conferência Internacional de Informática Climática, em abril, e primeiros modelos de segmentação de floresta com imagens Sentinel-2 do Brazil Data Cube.\n  \n  \n    2026\n    Produto de floresta em escala, com 26 mapas trimestrais entregues de 2020 a 2026 e validação contra os alertas DETER e os polígonos PRODES, do INPE.\n  \n\n\n\n\n\n  \n    \n    \n    \n  \n  \n    \n    \n\n\n\n\n\n\n    \n    \n  \n\n\n\n\n\n  \n  \n    Princípio 01Ciência reprodutívelA mesma execução, repetida, varia até ±0,0076 de IoU. Todo resultado sai com essa margem declarada.\n    Princípio 02Validação contra referências oficiaisCada produto é comparado com DETER, PRODES, ZARC, MapBiomas e o Cadastro Ambiental Rural.\n    Princípio 03Escala territorial359,6 mil talhões, 897 municípios e cinco estados, com séries de 2020 a 2025.\n    Princípio 04Transparência sobre os limitesPublicamos onde o modelo erra. Na validação contra alertas do DETER, o recall da classe de floresta é 0,28.\n  \n  \n\n\n\n\nTreinamento em GPU dedicada e inferência em escala territorial, com estrutura própria do laboratório.\n\n\n  14Estações de trabalho\n  15GPUs\n  312 GBVRAM, capacidade nominal\n  1,6 TBMemória RAM\n\n\n\n  Conheça a equipe\n  Ver as publicações\n  Junte-se a nós"
+    "text": "O GAIA Lab desenvolve métodos de\naprendizado de máquina que transformam imagens de satélite e\ndados climáticos em informação verificável sobre florestas,\nagricultura e clima. Criado em 2024 na\nFGV EMAp, o laboratório trabalha em escala territorial, em cinco estados\nbrasileiros, e confere cada resultado contra referências oficiais.\n\n\n  0Pesquisadores\n  0Frentes de pesquisa\n  0Publicações\n  0Fundação\n\n\n\n\n  \n    2024\n    Criação do laboratório na FGV EMAp, no Rio de Janeiro, reunindo pesquisa em aprendizado de máquina aplicada ao monitoramento da Terra.\n  \n  \n    2025\n    Construção da base própria de talhões e das séries de índices de vegetação: 359,6 mil talhões em 897 municípios de cinco estados, com dados de 2020 a 2025.\n  \n  \n    2025\n    Equipe na 14ª Conferência Internacional de Informática Climática, em abril, e primeiros modelos de segmentação de floresta com imagens Sentinel-2 do Brazil Data Cube.\n  \n  \n    2026\n    Produto de floresta em escala, com 26 mapas trimestrais entregues de 2020 a 2026 e validação contra os alertas DETER e os polígonos PRODES, do INPE.\n  \n\n\n\n\n\n  \n    \n    \n    \n  \n  \n    \n    \n\n\n\n\n\n\n    \n    \n  \n\n\n\n\n\n  \n  \n    Princípio 01Ciência reprodutívelA mesma execução, repetida, varia até ±0,0076 de IoU. Todo resultado sai com essa margem declarada.\n    Princípio 02Validação contra referências oficiaisCada produto é comparado com DETER, PRODES, ZARC, MapBiomas e o Cadastro Ambiental Rural.\n    Princípio 03Escala territorial359,6 mil talhões, 897 municípios e cinco estados, com séries de 2020 a 2025.\n    Princípio 04Transparência sobre os limitesPublicamos onde o modelo erra. Na validação contra alertas do DETER, o recall da classe de floresta é 0,28.\n  \n  \n\n\n\n\nTreinamento em GPU dedicada e inferência em escala territorial, com estrutura própria do laboratório.\n\n\n  14Estações de trabalho\n  15GPUs\n  312 GBVRAM, capacidade nominal\n  1,6 TBMemória RAM\n\n\n\n  Conheça a equipe\n  Ver as publicações\n  Fale conosco"
   },
   {
     "objectID": "about/index.pt.html#nossa-história",
@@ -319,46 +354,53 @@
     "href": "about/index.pt.html#capacidade-computacional",
     "title": "Sobre",
     "section": "",
-    "text": "Treinamento em GPU dedicada e inferência em escala territorial, com estrutura própria do laboratório.\n\n\n  14Estações de trabalho\n  15GPUs\n  312 GBVRAM, capacidade nominal\n  1,6 TBMemória RAM\n\n\n\n  Conheça a equipe\n  Ver as publicações\n  Junte-se a nós"
+    "text": "Treinamento em GPU dedicada e inferência em escala territorial, com estrutura própria do laboratório.\n\n\n  14Estações de trabalho\n  15GPUs\n  312 GBVRAM, capacidade nominal\n  1,6 TBMemória RAM\n\n\n\n  Conheça a equipe\n  Ver as publicações\n  Fale conosco"
   },
   {
-    "objectID": "courses/index.pt.html",
-    "href": "courses/index.pt.html",
-    "title": "Cursos",
+    "objectID": "index.pt.html#o-laboratório-em-números",
+    "href": "index.pt.html#o-laboratório-em-números",
+    "title": "GAIA Lab",
+    "section": "O laboratório em números",
+    "text": "O laboratório em números\n\n  0Talhões mapeados\n  0Municípios\n  0Estados\n  2020 a 2025Período dos dados"
+  },
+  {
+    "objectID": "index.pt.html#como-fazemos",
+    "href": "index.pt.html#como-fazemos",
+    "title": "GAIA Lab",
+    "section": "Como fazemos",
+    "text": "Como fazemos\n\n  \n  \n    01EtapaSegmentação de talhõesDelimitação de cada área produtiva a partir de imagens de satélite.\n    02EtapaClassificação de culturasSoja, milho e algodão identificados talhão por talhão, safra por safra.\n    03EtapaSéries de satélite e clima17 índices de vegetação e 10 séries climáticas somam 1.670 valores por talhão e safra.\n    04EtapaAgrupamento por semelhançaTalhões reunidos por comportamento espectral e climático.\n    05EtapaCaracterização de riscoCada grupo é descrito por manejo, produtividade e ocorrência de sinistro.\n  \n  \n\n\n  Ver as publicações\n  Sobre o laboratório\n  Fale conosco"
+  },
+  {
+    "objectID": "news/estudo-monitora-desmatamento-e-identifica-especies-vegetais/estudo-monitora-desmatamento-e-identifica-especies-vegetais.pt.html",
+    "href": "news/estudo-monitora-desmatamento-e-identifica-especies-vegetais/estudo-monitora-desmatamento-e-identifica-especies-vegetais.pt.html",
+    "title": "Estudo monitora desmatamento e identifica espécies vegetais com uso de inteligência artificial",
     "section": "",
-    "text": "Pós-graduação em Matemática Aplicada e Ciência de Dados, EMAp\n      Redes Neurais e Aprendizado Profundo\n      \n        Professor: Dário Oliveira\n        Carga horária: 60h\n        Aulas: presenciais, segundas e terças, das 14h20 às 16h (horário de Brasília)\n        Oferta: todo segundo semestre\n      \n      Página do programa\n    \n  \n\n  \n    \n    \n      Graduação em Ciência de Dados e IA, EMAp\n      Aprendizado Profundo\n      \n        Professor: Dário Oliveira\n        Carga horária: 60h\n        Aulas: presenciais, terças e quintas, das 9h20 às 11h (horário de Brasília)\n        Oferta: todo segundo semestre\n      \n      Página do curso"
+    "text": "O método LLP-Co aprende padrões visuais e agrupa grandes volumes de dados automaticamente, aplicado à identificação de áreas desmatadas e da biodiversidade vegetal da Floresta Amazônica.\nLer a notícia na íntegra\n\n\n  \n  Voltar para as notícias"
   },
   {
-    "objectID": "join-us/index.pt.html",
-    "href": "join-us/index.pt.html",
-    "title": "Junte-se a nós",
+    "objectID": "news/pesquisadores-criam-algoritmo-que-realiza-classificacao/pesquisadores-criam-algoritmo-que-realiza-classificacao.pt.html",
+    "href": "news/pesquisadores-criam-algoritmo-que-realiza-classificacao/pesquisadores-criam-algoritmo-que-realiza-classificacao.pt.html",
+    "title": "Pesquisadores criam algoritmo que realiza classificação agrícola por meio de imagens de satélite",
     "section": "",
-    "text": "O GAIA Lab está sempre aberto a estudantes e pesquisadores interessados em inteligência artificial aplicada a sensoriamento remoto, clima, florestas e agricultura. Preencha o formulário abaixo: a inscrição chega direto ao coordenador do laboratório.\n\n  Nome\n  \n\n  Seu e-mail\n  \n\n  Nível pretendido\n  \n    Iniciação Científica\n    Mestrado\n    Doutorado\n    Pós-Doutorado\n    Outro\n  \n\n  Mensagem\n  \n\n  \n\n  Enviar inscrição\n  \n\n\nOu escreva diretamente para\ndario.oliveira [arroba] fgv.br\n(clique para copiar o endereço).\n\n\n  \n  Voltar para o início"
+    "text": "Estudo da FGV EMAp utiliza, pela primeira vez, uma abordagem com proporções globais para classificar culturas agrícolas por agrupamento auto-supervisionado.\nLer a notícia na íntegra\n\n\n  \n  Voltar para as notícias"
   },
   {
-    "objectID": "news/pesquisa-utiliza-sistema-baseado-em-ia/pesquisa-utiliza-sistema-baseado-em-ia.pt.html",
-    "href": "news/pesquisa-utiliza-sistema-baseado-em-ia/pesquisa-utiliza-sistema-baseado-em-ia.pt.html",
-    "title": "Pesquisa utiliza sistema baseado em IA para prever qualidade da carne a partir de fotos de celular",
-    "section": "",
-    "text": "Sistema treinado com fotos de cortes bovinos e suínos prevê maciez e gordura intramuscular, abrindo caminho para aplicativos que ajudem o consumidor a identificar cortes mais macios e suculentos.\nLer a notícia na íntegra\n\n\n  \n  Voltar para as notícias"
-  },
-  {
-    "objectID": "people/antonio-brych/antonio-brych.pt.html",
-    "href": "people/antonio-brych/antonio-brych.pt.html",
+    "objectID": "people/antonio-joaquim-brych-mendes-de-souza/antonio-joaquim-brych-mendes-de-souza.pt.html",
+    "href": "people/antonio-joaquim-brych-mendes-de-souza/antonio-joaquim-brych-mendes-de-souza.pt.html",
     "title": "Antonio Joaquim Brych Mendes de Souza",
     "section": "",
-    "text": "LinkedIn\n  \n  \n    \n     Email\n  \n\n  \n  \nGraduando em Ciência de Dados e Inteligência Artificial na FGV EMAp. É membro do GAIA Lab, onde participa de projetos de pesquisa sob a supervisão do Prof. Dario Oliveira. Seus interesses de pesquisa incluem estatística robusta, deep learning robusto e métodos estatísticos modernos para machine learning. Também realiza pesquisas em ciência de dados e análise preditiva aplicadas à gestão de investimentos na Arbor Capital.\n\n\n\nGraduando em Ciência de Dados e IA, FGV EMAp.\nGraduação em Ciência da Computação, PUC-Rio, 2022-2022 (transferido para a FGV EMAp).\n\n\n\n\nDeep learning robusto, processamento de linguagem natural e estatística robusta.\n\n\n\n\n\n  \n  Voltar para a equipe"
+    "text": "LinkedIn\n  \n\n  \n  \nGraduando em Ciência de Dados e Inteligência Artificial na FGV EMAp. É membro do GAIA Lab, onde participa de projetos de pesquisa sob a supervisão do Prof. Dario Oliveira. Seus interesses de pesquisa incluem estatística robusta, deep learning robusto e métodos estatísticos modernos para machine learning. Também realiza pesquisas em ciência de dados e análise preditiva aplicadas à gestão de investimentos na Arbor Capital.\n\n\n\nGraduando em Ciência de Dados e IA, FGV EMAp.\nGraduação em Ciência da Computação, PUC-Rio, 2022-2022 (transferido para a FGV EMAp).\n\n\n\n\nDeep learning robusto, processamento de linguagem natural e estatística robusta.\n\n\n\n\n\n  \n  Voltar para a equipe"
   },
   {
-    "objectID": "people/antonio-brych/antonio-brych.pt.html#formação",
-    "href": "people/antonio-brych/antonio-brych.pt.html#formação",
+    "objectID": "people/antonio-joaquim-brych-mendes-de-souza/antonio-joaquim-brych-mendes-de-souza.pt.html#formação",
+    "href": "people/antonio-joaquim-brych-mendes-de-souza/antonio-joaquim-brych-mendes-de-souza.pt.html#formação",
     "title": "Antonio Joaquim Brych Mendes de Souza",
     "section": "",
     "text": "Graduando em Ciência de Dados e IA, FGV EMAp.\nGraduação em Ciência da Computação, PUC-Rio, 2022-2022 (transferido para a FGV EMAp)."
   },
   {
-    "objectID": "people/antonio-brych/antonio-brych.pt.html#interesses",
-    "href": "people/antonio-brych/antonio-brych.pt.html#interesses",
+    "objectID": "people/antonio-joaquim-brych-mendes-de-souza/antonio-joaquim-brych-mendes-de-souza.pt.html#interesses",
+    "href": "people/antonio-joaquim-brych-mendes-de-souza/antonio-joaquim-brych-mendes-de-souza.pt.html#interesses",
     "title": "Antonio Joaquim Brych Mendes de Souza",
     "section": "",
     "text": "Deep learning robusto, processamento de linguagem natural e estatística robusta."
@@ -368,7 +410,7 @@
     "href": "people/dario-oliveira/dario-oliveira.pt.html",
     "title": "Dario Oliveira",
     "section": "",
-    "text": "LinkedIn\n  \n  \n    \n     Email\n  \n\n  \n  \nProfessor da Escola de Matemática Aplicada da FGV (EMAp) e coordenador do GAIA Lab. Foi pesquisador sênior do IBM Research, cientista de pesquisa na GE Global Research e professor visitante na Universidade Técnica de Munique (TUM). Pesquisa aprendizado de máquina e aprendizado profundo aplicados em sensoriamento remoto, sustentabilidade, clima, florestas e agricultura digital.\n\n\n\nDoutorado em Engenharia Elétrica (análise de imagens e visão computacional), PUC-Rio.\nMestrado em Engenharia Elétrica, PUC-Rio.\nGraduação em Engenharia Elétrica, UERJ.\n\n\n\n\nIA espaço-temporal, sensoriamento remoto, sustentabilidade, clima, florestas e agricultura digital.\n\n\n\n\n\n  \n  Voltar para a equipe"
+    "text": "LinkedIn\n  \n\n  \n  \nProfessor da Escola de Matemática Aplicada da FGV (EMAp) e coordenador do GAIA Lab. Foi pesquisador sênior do IBM Research, cientista de pesquisa na GE Global Research e professor visitante na Universidade Técnica de Munique (TUM). Pesquisa aprendizado de máquina e aprendizado profundo aplicados em sensoriamento remoto, sustentabilidade, clima, florestas e agricultura digital.\n\n\n\nDoutorado em Engenharia Elétrica (análise de imagens e visão computacional), PUC-Rio.\nMestrado em Engenharia Elétrica, PUC-Rio.\nGraduação em Engenharia Elétrica, UERJ.\n\n\n\n\nIA espaço-temporal, sensoriamento remoto, sustentabilidade, clima, florestas e agricultura digital.\n\n\n\n\n\n  \n  Voltar para a equipe"
   },
   {
     "objectID": "people/dario-oliveira/dario-oliveira.pt.html#formação",
@@ -406,22 +448,22 @@
     "text": "Machine learning científico, simulação computacional e modelos preditivos."
   },
   {
-    "objectID": "people/gabriel-jacinto/gabriel-jacinto.pt.html",
-    "href": "people/gabriel-jacinto/gabriel-jacinto.pt.html",
+    "objectID": "people/gabriel-jacinto-pereira/gabriel-jacinto-pereira.pt.html",
+    "href": "people/gabriel-jacinto-pereira/gabriel-jacinto-pereira.pt.html",
     "title": "Gabriel Jacinto Pereira",
     "section": "",
-    "text": "LinkedIn\n  \n  \n    \n     Email\n  \n\n  \n  \nMestrando na FGV EMAp e pesquisador do GAIA Lab. Bacharel em Ciência de Dados e IA pela mesma escola, bolsista de mérito do CDMC e multimedalhista em olimpíadas científicas (OBMEP, OBA). Estagiou em ciência e engenharia de dados na C Capital.\n\n\n\nMestrando, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\n\n\n\n\nMachine learning, séries temporais e matemática aplicada.\n\n\n\n\n\n  \n  Voltar para a equipe"
+    "text": "LinkedIn\n  \n\n  \n  \nMestrando na FGV EMAp e pesquisador do GAIA Lab. Bacharel em Ciência de Dados e IA pela mesma escola, bolsista de mérito do CDMC e multimedalhista em olimpíadas científicas (OBMEP, OBA). Estagiou em ciência e engenharia de dados na C Capital.\n\n\n\nMestrando, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\n\n\n\n\nMachine learning, séries temporais e matemática aplicada.\n\n\n\n\n\n  \n  Voltar para a equipe"
   },
   {
-    "objectID": "people/gabriel-jacinto/gabriel-jacinto.pt.html#formação",
-    "href": "people/gabriel-jacinto/gabriel-jacinto.pt.html#formação",
+    "objectID": "people/gabriel-jacinto-pereira/gabriel-jacinto-pereira.pt.html#formação",
+    "href": "people/gabriel-jacinto-pereira/gabriel-jacinto-pereira.pt.html#formação",
     "title": "Gabriel Jacinto Pereira",
     "section": "",
     "text": "Mestrando, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp."
   },
   {
-    "objectID": "people/gabriel-jacinto/gabriel-jacinto.pt.html#interesses",
-    "href": "people/gabriel-jacinto/gabriel-jacinto.pt.html#interesses",
+    "objectID": "people/gabriel-jacinto-pereira/gabriel-jacinto-pereira.pt.html#interesses",
+    "href": "people/gabriel-jacinto-pereira/gabriel-jacinto-pereira.pt.html#interesses",
     "title": "Gabriel Jacinto Pereira",
     "section": "",
     "text": "Machine learning, séries temporais e matemática aplicada."
@@ -431,7 +473,7 @@
     "href": "people/hanna-ferreira/hanna-ferreira.pt.html",
     "title": "Hanna Ferreira",
     "section": "",
-    "text": "LinkedIn\n  \n  \n    \n     Email\n  \n\n  \n  \nMestranda em Matemática Aplicada e Ciência de Dados na FGV EMAp, assistente de pesquisa no GAIA Lab e pesquisadora no CBPF (Centro Brasileiro de Pesquisas Físicas). Com dupla graduação em Matemática Aplicada e em Ciência de Dados e IA pela mesma escola. No GAIA Lab aplica deep learning e visão computacional a imagens de satélite; no CBPF aplica deep learning e visão computacional a imagem, vídeo e sensoriamento 3D nos domínios de Óleo & Gás e Esportes.\n\n\n\nMestranda em Matemática Aplicada e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\nGraduação em Matemática Aplicada, FGV EMAp.\n\n\n\n\nDeep learning, visão computacional e quantificação de incerteza.\n\n\n\n\n\n  \n  Voltar para a equipe"
+    "text": "LinkedIn\n  \n\n  \n  \nMestranda em Matemática Aplicada e Ciência de Dados na FGV EMAp, assistente de pesquisa no GAIA Lab e pesquisadora no CBPF (Centro Brasileiro de Pesquisas Físicas). Com dupla graduação em Matemática Aplicada e em Ciência de Dados e IA pela mesma escola. No GAIA Lab aplica deep learning e visão computacional a imagens de satélite; no CBPF aplica deep learning e visão computacional a imagem, vídeo e sensoriamento 3D nos domínios de Óleo & Gás e Esportes.\n\n\n\nMestranda em Matemática Aplicada e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\nGraduação em Matemática Aplicada, FGV EMAp.\n\n\n\n\nDeep learning, visão computacional e quantificação de incerteza.\n\n\n\n\n\n  \n  Voltar para a equipe"
   },
   {
     "objectID": "people/hanna-ferreira/hanna-ferreira.pt.html#formação",
@@ -452,7 +494,7 @@
     "href": "people/index.pt.html",
     "title": "Conheça a Equipe",
     "section": "",
-    "text": "Dario Oliveira \n                \n                \n                  Professor e Coordenador do GAIA Lab\n                \n                \n                  \n                    Doutor em Engenharia Elétrica, PUC-Rio\n                  \n                  \n                \n              \n          \n        \n      \n    \n  \n  \nSem itens correspondentes\n\n\n\n\n\n\n\n     \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Danilo Lemos Cardoso \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Doutorando, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Erick Brito \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Doutorando, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Heitor Trielli \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Doutorando em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Lívia Cereja Meinhardt \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Doutoranda, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Tomás Ferranti \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Doutorando, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n      \n    \n  \n  \nSem itens correspondentes\n\n\n\n\n\n\n     \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Gabriel Jacinto Pereira \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Gustavo Danon \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Hanna Ferreira \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestranda em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  João Alcindo \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestre em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Lucas Westfal \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Pedro Thomaz Conzatti Martins \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Raul Lomonte Figueiredo \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Rodrigo Gomes Hutz Pintucci \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Thiago Franke Melchiors \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n      \n    \n  \n  \nSem itens correspondentes\n\n\n\n\n\n\n     \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Antonio Joaquim Brych Mendes de Souza \n                \n                \n                  Iniciação Científica\n                \n                \n                  \n                    Graduação em Ciência de Dados e IA, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Sillas da Rocha Costa \n                \n                \n                  Iniciação Científica\n                \n                \n                  \n                    Graduando em Ciência de Dados e IA, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n      \n    \n  \n  \nSem itens correspondentes\n\n\n\n\n\n\n     \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Eduardo Vianna de L. F. Guimarães \n                \n                \n                  Cientista de Dados, BNDES\n                \n                \n                  \n                    Bacharel em Matemática Aplicada, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Elias Rodrigues \n                \n                \n                  Cientista de Dados Sênior, Radix\n                \n                \n                  \n                    Doutor em Engenharia Mecânica, PUC-Rio\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Juliana Carvalho \n                \n                \n                  Doutoranda em IA, CNAM, Paris\n                \n                \n                  \n                    Doutoranda em Ciência da Computação, CNAM\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Luiz Luz \n                \n                \n                  Engenheiro de IA Generativa, Dharma AI\n                \n                \n                  \n                    Mestre em Modelagem Matemática, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Pedro Soto \n                \n                \n                  Pesquisador Científico em Vision-AD e AutoROB no L@BISEN\n                \n                \n                  \n                    Doutor em Engenharia Elétrica, PUC-Rio\n                  \n                  \n                \n              \n          \n        \n      \n    \n  \n  \nSem itens correspondentes\n\n\n\n\n  Sumário\n  \n    Professor\n    Doutorado\n    Mestrado\n    Graduação\n    Alumni"
+    "text": "Dario Oliveira \n                \n                \n                  Professor e Coordenador do GAIA Lab\n                \n                \n                  \n                    Doutor em Engenharia Elétrica, PUC-Rio\n                  \n                  \n                \n              \n          \n        \n      \n    \n  \n  \nSem itens correspondentes\n\n\n\n\n\n\n     \n      \n    \n  \n  \nSem itens correspondentes\n\n\n\n\n\n\n     \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Danilo Lemos Cardoso \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Doutorando, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Erick Brito \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Doutorando, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Heitor Trielli \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Doutorando em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Lívia Cereja Meinhardt \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Doutoranda, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Tomás Ferranti \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Doutorando, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n      \n    \n  \n  \nSem itens correspondentes\n\n\n\n\n\n\n     \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Gabriel Jacinto Pereira \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Gustavo Danon \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Hanna Ferreira \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestranda em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Janaina Neres Evangelista \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp.\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  João Alcindo \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestre em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Lucas Westfal \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Pedro Thomaz Conzatti Martins \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Raul Lomonte Figueiredo \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Rodrigo Gomes Hutz Pintucci \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Thiago Franke Melchiors \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n      \n    \n  \n  \nSem itens correspondentes\n\n\n\n\n\n\n     \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Antonio Joaquim Brych Mendes de Souza \n                \n                \n                  Iniciação Científica\n                \n                \n                  \n                    Graduação em Ciência de Dados e IA, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Sillas da Rocha Costa \n                \n                \n                  Iniciação Científica\n                \n                \n                  \n                    Graduando em Ciência de Dados e IA, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n      \n    \n  \n  \nSem itens correspondentes\n\n\n\n\n\n\n     \n      \n    \n  \n  \nSem itens correspondentes\n\n\n\n\n\n\n     \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Eduardo Vianna de L. F. Guimarães \n                \n                \n                  Cientista de Dados, BNDES\n                \n                \n                  \n                    Bacharel em Matemática Aplicada, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Elias Rodrigues \n                \n                \n                  Cientista de Dados Sênior, Radix\n                \n                \n                  \n                    Doutor em Engenharia Mecânica, PUC-Rio\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Juliana Carvalho \n                \n                \n                  Doutoranda em IA, CNAM, Paris\n                \n                \n                  \n                    Doutoranda em Ciência da Computação, CNAM\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Luiz Luz \n                \n                \n                  Engenheiro de IA Generativa, Dharma AI\n                \n                \n                  \n                    Mestre em Modelagem Matemática, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Pedro Soto \n                \n                \n                  Pesquisador Científico em Vision-AD e AutoROB no L@BISEN\n                \n                \n                  \n                    Doutor em Engenharia Elétrica, PUC-Rio\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  jorginho do play \n                \n                \n                  Pesquisador\n                \n                \n                  \n                    nda\n                  \n                  \n                \n              \n          \n        \n      \n    \n  \n  \nSem itens correspondentes\n\n\n\n\n  Sumário\n  \n    Professor\n    Pós-Doutorado\n    Doutorado\n    Mestrado\n    Graduação\n    Colaborador\n    Alumni"
   },
   {
     "objectID": "people/index.pt.html#professor",
@@ -460,6 +502,13 @@
     "title": "Conheça a Equipe",
     "section": "",
     "text": "Dario Oliveira \n                \n                \n                  Professor e Coordenador do GAIA Lab\n                \n                \n                  \n                    Doutor em Engenharia Elétrica, PUC-Rio\n                  \n                  \n                \n              \n          \n        \n      \n    \n  \n  \nSem itens correspondentes"
+  },
+  {
+    "objectID": "people/index.pt.html#pós-doutorado",
+    "href": "people/index.pt.html#pós-doutorado",
+    "title": "Conheça a Equipe",
+    "section": "",
+    "text": "Sem itens correspondentes"
   },
   {
     "objectID": "people/index.pt.html#doutorado",
@@ -473,7 +522,7 @@
     "href": "people/index.pt.html#mestrado",
     "title": "Conheça a Equipe",
     "section": "",
-    "text": "Gabriel Jacinto Pereira \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Gustavo Danon \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Hanna Ferreira \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestranda em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  João Alcindo \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestre em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Lucas Westfal \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Pedro Thomaz Conzatti Martins \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Raul Lomonte Figueiredo \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Rodrigo Gomes Hutz Pintucci \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Thiago Franke Melchiors \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n      \n    \n  \n  \nSem itens correspondentes"
+    "text": "Gabriel Jacinto Pereira \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Gustavo Danon \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Hanna Ferreira \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestranda em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Janaina Neres Evangelista \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp.\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  João Alcindo \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestre em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Lucas Westfal \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Pedro Thomaz Conzatti Martins \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Raul Lomonte Figueiredo \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Rodrigo Gomes Hutz Pintucci \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Thiago Franke Melchiors \n                \n                \n                  Assistente de Pesquisa\n                \n                \n                  \n                    Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n      \n    \n  \n  \nSem itens correspondentes"
   },
   {
     "objectID": "people/index.pt.html#graduação",
@@ -483,11 +532,39 @@
     "text": "Antonio Joaquim Brych Mendes de Souza \n                \n                \n                  Iniciação Científica\n                \n                \n                  \n                    Graduação em Ciência de Dados e IA, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Sillas da Rocha Costa \n                \n                \n                  Iniciação Científica\n                \n                \n                  \n                    Graduando em Ciência de Dados e IA, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n      \n    \n  \n  \nSem itens correspondentes"
   },
   {
+    "objectID": "people/index.pt.html#colaborador",
+    "href": "people/index.pt.html#colaborador",
+    "title": "Conheça a Equipe",
+    "section": "",
+    "text": "Sem itens correspondentes"
+  },
+  {
     "objectID": "people/index.pt.html#alumni",
     "href": "people/index.pt.html#alumni",
     "title": "Conheça a Equipe",
     "section": "",
-    "text": "Eduardo Vianna de L. F. Guimarães \n                \n                \n                  Cientista de Dados, BNDES\n                \n                \n                  \n                    Bacharel em Matemática Aplicada, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Elias Rodrigues \n                \n                \n                  Cientista de Dados Sênior, Radix\n                \n                \n                  \n                    Doutor em Engenharia Mecânica, PUC-Rio\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Juliana Carvalho \n                \n                \n                  Doutoranda em IA, CNAM, Paris\n                \n                \n                  \n                    Doutoranda em Ciência da Computação, CNAM\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Luiz Luz \n                \n                \n                  Engenheiro de IA Generativa, Dharma AI\n                \n                \n                  \n                    Mestre em Modelagem Matemática, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Pedro Soto \n                \n                \n                  Pesquisador Científico em Vision-AD e AutoROB no L@BISEN\n                \n                \n                  \n                    Doutor em Engenharia Elétrica, PUC-Rio\n                  \n                  \n                \n              \n          \n        \n      \n    \n  \n  \nSem itens correspondentes"
+    "text": "Eduardo Vianna de L. F. Guimarães \n                \n                \n                  Cientista de Dados, BNDES\n                \n                \n                  \n                    Bacharel em Matemática Aplicada, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Elias Rodrigues \n                \n                \n                  Cientista de Dados Sênior, Radix\n                \n                \n                  \n                    Doutor em Engenharia Mecânica, PUC-Rio\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Juliana Carvalho \n                \n                \n                  Doutoranda em IA, CNAM, Paris\n                \n                \n                  \n                    Doutoranda em Ciência da Computação, CNAM\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Luiz Luz \n                \n                \n                  Engenheiro de IA Generativa, Dharma AI\n                \n                \n                  \n                    Mestre em Modelagem Matemática, FGV EMAp\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  Pedro Soto \n                \n                \n                  Pesquisador Científico em Vision-AD e AutoROB no L@BISEN\n                \n                \n                  \n                    Doutor em Engenharia Elétrica, PUC-Rio\n                  \n                  \n                \n              \n          \n        \n       \n        \n          \n            \n              \n                \n              \n              \n                \n                  jorginho do play \n                \n                \n                  Pesquisador\n                \n                \n                  \n                    nda\n                  \n                  \n                \n              \n          \n        \n      \n    \n  \n  \nSem itens correspondentes"
+  },
+  {
+    "objectID": "people/joao-alcindo/joao-alcindo.pt.html",
+    "href": "people/joao-alcindo/joao-alcindo.pt.html",
+    "title": "João Alcindo",
+    "section": "",
+    "text": "LinkedIn\n  \n\n  \n  \nAssistente de pesquisa no GAIA Lab, aplicando visão computacional e deep learning a imagens de satélite para sustentabilidade e monitoramento ambiental, de modelos self-supervised para reflorestamento e desmatamento à agricultura com imagens hiperespectrais. Mestre em Matemática Aplicada e Ciência de Dados pela FGV EMAp e bacharel em Ciência de Dados e IA pela mesma escola. Parte para um mestrado na França, seguindo vinculado aos projetos do laboratório.\n\n\n\nMestrado em Matemática Aplicada e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\n\n\n\n\nSensoriamento remoto, observação da Terra e agricultura.\n\n\n\n\n\n  \n  Voltar para a equipe"
+  },
+  {
+    "objectID": "people/joao-alcindo/joao-alcindo.pt.html#formação",
+    "href": "people/joao-alcindo/joao-alcindo.pt.html#formação",
+    "title": "João Alcindo",
+    "section": "",
+    "text": "Mestrado em Matemática Aplicada e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp."
+  },
+  {
+    "objectID": "people/joao-alcindo/joao-alcindo.pt.html#interesses",
+    "href": "people/joao-alcindo/joao-alcindo.pt.html#interesses",
+    "title": "João Alcindo",
+    "section": "",
+    "text": "Sensoriamento remoto, observação da Terra e agricultura."
   },
   {
     "objectID": "people/juliana-carvalho/juliana-carvalho.pt.html",
@@ -532,64 +609,64 @@
     "text": "Saúde pervasiva, IoT, visão computacional e informática médica."
   },
   {
-    "objectID": "people/pedro-martins/pedro-martins.pt.html",
-    "href": "people/pedro-martins/pedro-martins.pt.html",
-    "title": "Pedro Thomaz Conzatti Martins",
+    "objectID": "people/pedro-soto/pedro-soto.pt.html",
+    "href": "people/pedro-soto/pedro-soto.pt.html",
+    "title": "Pedro Soto",
     "section": "",
-    "text": "LinkedIn\n  \n  \n    \n     Email\n  \n\n  \n  \nAssistente de pesquisa no GAIA Lab. Mestrando em Matemática Aplicada e Ciência de Dados na FGV EMAp, graduado em Ciência de Dados e IA pela mesma escola, com formação técnica em informática pelo IFRS.\n\n\n\nMestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\nTécnico em Informática, IFRS.\n\n\n\n\nDeep learning, LLMs e visão computacional.\n\n\n\n\n\n  \n  Voltar para a equipe"
+    "text": "LinkedIn\n  \n\n  \n  \nDoutor em Engenharia Elétrica pela PUC-Rio, mestre na mesma área pela PUC-Rio, bacharel em engenharia de telecomunicações e eletrônica pela Universidad de Oriente Santiago de Cuba. Desenvolve pesquisas nas áreas de visão computacional, aprendizado de máquina, aprendizado profundo, sensoriamento remoto e biometria. Membro da International Society of Photogrammetry and Remote Sensing (ISPRS) e do Capítulo Brasileiro da IEEE Geoscience and Remote Sensing Society (GRSS). É pesquisador no laboratório da ISEN Yncréa Ouest, L@BISEN.\n\n\n\nDoutorado em Engenharia Elétrica, PUC-Rio.\nMestrado em Processamento de Sinais, PUC-Rio.\nGraduação em Engenharia de Telecomunicações e Eletrônica, Universidad de Oriente (Santiago de Cuba).\n\n\n\n\nVisão computacional, aprendizado de máquina, aprendizado profundo, sensoriamento remoto e biometria.\n\n\n\n\n\n  \n  Voltar para a equipe"
   },
   {
-    "objectID": "people/pedro-martins/pedro-martins.pt.html#formação",
-    "href": "people/pedro-martins/pedro-martins.pt.html#formação",
-    "title": "Pedro Thomaz Conzatti Martins",
+    "objectID": "people/pedro-soto/pedro-soto.pt.html#formação",
+    "href": "people/pedro-soto/pedro-soto.pt.html#formação",
+    "title": "Pedro Soto",
     "section": "",
-    "text": "Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\nTécnico em Informática, IFRS."
+    "text": "Doutorado em Engenharia Elétrica, PUC-Rio.\nMestrado em Processamento de Sinais, PUC-Rio.\nGraduação em Engenharia de Telecomunicações e Eletrônica, Universidad de Oriente (Santiago de Cuba)."
   },
   {
-    "objectID": "people/pedro-martins/pedro-martins.pt.html#interesses",
-    "href": "people/pedro-martins/pedro-martins.pt.html#interesses",
-    "title": "Pedro Thomaz Conzatti Martins",
+    "objectID": "people/pedro-soto/pedro-soto.pt.html#interesses",
+    "href": "people/pedro-soto/pedro-soto.pt.html#interesses",
+    "title": "Pedro Soto",
     "section": "",
-    "text": "Deep learning, LLMs e visão computacional."
+    "text": "Visão computacional, aprendizado de máquina, aprendizado profundo, sensoriamento remoto e biometria."
   },
   {
-    "objectID": "people/raul-lomonte/raul-lomonte.pt.html",
-    "href": "people/raul-lomonte/raul-lomonte.pt.html",
+    "objectID": "people/raul-lomonte-figueiredo/raul-lomonte-figueiredo.pt.html",
+    "href": "people/raul-lomonte-figueiredo/raul-lomonte-figueiredo.pt.html",
     "title": "Raul Lomonte Figueiredo",
     "section": "",
-    "text": "LinkedIn\n  \n  \n    \n     Email\n  \n\n  \n  \nPesquisador de deep learning no GAIA Lab desde 2023, atuando na interseção entre visão computacional, inteligência artificial e dados georreferenciados. Concentra-se em modelos de deep learning para sensoriamento remoto aplicado ao agronegócio, com ênfase em aprendizado sob rótulos ruidosos e quantificação de incerteza. Mestrando em Matemática Aplicada e Ciência de Dados na FGV EMAp, graduado em Ciência de Dados e IA pela mesma escola.\n\n\n\nMestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\nTécnico em Informática, IFSULDEMINAS.\n\n\n\n\nInteligência artificial, sensoriamento remoto e agronegócio.\n\n\n\n\n\n  \n  Voltar para a equipe"
+    "text": "LinkedIn\n  \n\n  \n  \nPesquisador de deep learning no GAIA Lab desde 2023, atuando na interseção entre visão computacional, inteligência artificial e dados georreferenciados. Concentra-se em modelos de deep learning para sensoriamento remoto aplicado ao agronegócio, com ênfase em aprendizado sob rótulos ruidosos e quantificação de incerteza. Mestrando em Matemática Aplicada e Ciência de Dados na FGV EMAp, graduado em Ciência de Dados e IA pela mesma escola.\n\n\n\nMestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\nTécnico em Informática, IFSULDEMINAS.\n\n\n\n\nInteligência artificial, sensoriamento remoto e agronegócio.\n\n\n\n\n\n  \n  Voltar para a equipe"
   },
   {
-    "objectID": "people/raul-lomonte/raul-lomonte.pt.html#formação",
-    "href": "people/raul-lomonte/raul-lomonte.pt.html#formação",
+    "objectID": "people/raul-lomonte-figueiredo/raul-lomonte-figueiredo.pt.html#formação",
+    "href": "people/raul-lomonte-figueiredo/raul-lomonte-figueiredo.pt.html#formação",
     "title": "Raul Lomonte Figueiredo",
     "section": "",
     "text": "Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\nTécnico em Informática, IFSULDEMINAS."
   },
   {
-    "objectID": "people/raul-lomonte/raul-lomonte.pt.html#interesses",
-    "href": "people/raul-lomonte/raul-lomonte.pt.html#interesses",
+    "objectID": "people/raul-lomonte-figueiredo/raul-lomonte-figueiredo.pt.html#interesses",
+    "href": "people/raul-lomonte-figueiredo/raul-lomonte-figueiredo.pt.html#interesses",
     "title": "Raul Lomonte Figueiredo",
     "section": "",
     "text": "Inteligência artificial, sensoriamento remoto e agronegócio."
   },
   {
-    "objectID": "people/sillas-costa/sillas-costa.pt.html",
-    "href": "people/sillas-costa/sillas-costa.pt.html",
+    "objectID": "people/sillas-da-rocha-costa/sillas-da-rocha-costa.pt.html",
+    "href": "people/sillas-da-rocha-costa/sillas-da-rocha-costa.pt.html",
     "title": "Sillas da Rocha Costa",
     "section": "",
-    "text": "LinkedIn\n  \n  \n    \n     Email\n  \n\n  \n  \nGraduando em Ciência de Dados e IA na FGV EMAp, bolsista do programa Seleção de Talentos do CDMC. Faz iniciação científica (PIBIC/CNPq) no GAIA Lab, orientado pelo Prof. Dario Oliveira, com deep learning e visão computacional aplicados a imagens de satélite. Também desenvolve IA e RAG no projeto Mosqlimate e foi monitor de disciplinas na EMAp.\n\n\n\nGraduando em Ciência de Dados e IA, FGV EMAp.\nTécnico em Informática, IFMS.\n\n\n\n\nDeep learning, visão computacional, modelagem geoespacial e engenharia de IA.\n\n\n\n\n\n  \n  Voltar para a equipe"
+    "text": "LinkedIn\n  \n\n  \n  \nGraduando em Ciência de Dados e IA na FGV EMAp, bolsista do programa Seleção de Talentos do CDMC. Faz iniciação científica (PIBIC/CNPq) no GAIA Lab, orientado pelo Prof. Dario Oliveira, com deep learning e visão computacional aplicados a imagens de satélite. Também desenvolve IA e RAG no projeto Mosqlimate e foi monitor de disciplinas na EMAp.\n\n\n\nGraduando em Ciência de Dados e IA, FGV EMAp.\nTécnico em Informática, IFMS.\n\n\n\n\nDeep learning, visão computacional, modelagem geoespacial e engenharia de IA.\n\n\n\n\n\n  \n  Voltar para a equipe"
   },
   {
-    "objectID": "people/sillas-costa/sillas-costa.pt.html#formação",
-    "href": "people/sillas-costa/sillas-costa.pt.html#formação",
+    "objectID": "people/sillas-da-rocha-costa/sillas-da-rocha-costa.pt.html#formação",
+    "href": "people/sillas-da-rocha-costa/sillas-da-rocha-costa.pt.html#formação",
     "title": "Sillas da Rocha Costa",
     "section": "",
     "text": "Graduando em Ciência de Dados e IA, FGV EMAp.\nTécnico em Informática, IFMS."
   },
   {
-    "objectID": "people/sillas-costa/sillas-costa.pt.html#interesses",
-    "href": "people/sillas-costa/sillas-costa.pt.html#interesses",
+    "objectID": "people/sillas-da-rocha-costa/sillas-da-rocha-costa.pt.html#interesses",
+    "href": "people/sillas-da-rocha-costa/sillas-da-rocha-costa.pt.html#interesses",
     "title": "Sillas da Rocha Costa",
     "section": "",
     "text": "Deep learning, visão computacional, modelagem geoespacial e engenharia de IA."
@@ -599,7 +676,7 @@
     "href": "people/tomas-ferranti/tomas-ferranti.pt.html",
     "title": "Tomás Ferranti",
     "section": "",
-    "text": "LinkedIn\n  \n  \n    \n     Email\n  \n\n  \n  \nDoutorando na FGV EMAp, mestre em Modelagem Matemática e com dupla graduação em Matemática Aplicada e em Ciência de Dados e IA pela mesma escola. Atua como cientista de dados na Proffer, com precificação inteligente e visualizações customizadas.\n\n\n\nDoutorando, FGV EMAp.\nMestrado em Modelagem Matemática, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\nGraduação em Matemática Aplicada, FGV EMAp.\n\n\n\n\nMachine learning, visualização de dados e precificação.\n\n\n\n\n\n  \n  Voltar para a equipe"
+    "text": "LinkedIn\n  \n\n  \n  \nDoutorando na FGV EMAp, mestre em Modelagem Matemática e com dupla graduação em Matemática Aplicada e em Ciência de Dados e IA pela mesma escola. Atua como cientista de dados na Proffer, com precificação inteligente e visualizações customizadas.\n\n\n\nDoutorando, FGV EMAp.\nMestrado em Modelagem Matemática, FGV EMAp.\nGraduação em Ciência de Dados e IA, FGV EMAp.\nGraduação em Matemática Aplicada, FGV EMAp.\n\n\n\n\nMachine learning, visualização de dados e precificação.\n\n\n\n\n\n  \n  Voltar para a equipe"
   },
   {
     "objectID": "people/tomas-ferranti/tomas-ferranti.pt.html#formação",
@@ -616,45 +693,31 @@
     "text": "Machine learning, visualização de dados e precificação."
   },
   {
-    "objectID": "publications/enmap-forest-classification/enmap-forest-classification.pt.html",
-    "href": "publications/enmap-forest-classification/enmap-forest-classification.pt.html",
+    "objectID": "publications/exploring-enmap-hyperspectral-images-and-ensemble-deep/exploring-enmap-hyperspectral-images-and-ensemble-deep.pt.html",
+    "href": "publications/exploring-enmap-hyperspectral-images-and-ensemble-deep/exploring-enmap-hyperspectral-images-and-ensemble-deep.pt.html",
     "title": "Exploring EnMAP hyperspectral images and ensemble deep learning for classifying forest land-cover types in Brazil",
     "section": "",
     "text": "Autores: Matheus Pinheiro Ferreira, Matheus Santos Fuza, José M. S. M. Viveiros, Tomás Ferranti, Dário Oliveira, Giulio Brossi Santoro, Paulo Guilherme Molin, Catherine Torres de Almeida, Angélica F. Resende, Danilo R. A. de Almeida, Yelu Zeng, Ricardo Ribeiro Rodrigues, Pedro H. S. Brancalion\nPublicação: Abril de 2026, International Journal of Remote Sensing, v. 47, n. 7, p. 3213-3238 (Taylor & Francis)\nAcessar o artigo\n\n\n\n\nInformações espacialmente explícitas sobre tipos de cobertura florestal são fundamentais para o manejo e a conservação eficazes de ecossistemas florestais e para o monitoramento de iniciativas de restauração. Este estudo investiga o potencial do satélite hiperespectral EnMAP (Environmental Mapping and Analysis Program) para distinguir entre tipos de cobertura florestal tropical em São Paulo, Brasil. Desenvolvemos e avaliamos uma abordagem inovadora de ensemble baseada em aprendizado profundo (deep learning), integrando uma Rede Neural Convolucional (CNN) 1D, um autoencoder e uma Rede Neural Recorrente (RNN) para classificação em nível de pixel. Também avaliamos o impacto da resolução espectral comparando dados do EnMAP com dados simulados do Landsat 8 e do Sentinel-2A, e investigamos a influência da seleção de bandas na acurácia da classificação. O estudo concentrou-se no mapeamento de tipos de cobertura florestal, incluindo remanescentes conservados, regeneração natural, plantios de restauração e monoculturas. Nossos resultados revelam distinções significativas nas respostas espectrais entre esses tipos de cobertura florestal. O modelo de ensemble de aprendizado profundo superou significativamente os modelos individuais de aprendizado profundo e os classificadores tradicionais de Máquina de Vetores de Suporte (SVM), alcançando o maior F1-Score ponderado (0,700). Os dados do EnMAP também apresentaram F1-scores significativamente superiores aos do Sentinel-2A e do Landsat-8 (p &lt; 0,05), com os maiores ganhos observados para regeneração natural e plantios de restauração. Curiosamente, a seleção de bandas não melhorou universalmente o desempenho da classificação para os modelos de aprendizado profundo e, em alguns casos, levou a uma redução na acurácia. Embora as monoculturas tenham sido classificadas com alta acurácia, foram observadas classificações incorretas entre regeneração natural e plantios de restauração, bem como entre remanescentes conservados e regeneração natural, refletindo suas semelhanças espectrais. Este estudo fornece insights valiosos sobre o uso eficaz de imagens hiperespectrais espaciais e de ensemble de aprendizado profundo para o mapeamento robusto de tipos de cobertura florestal em regiões tropicais, enfatizando o papel crucial da alta resolução espectral.\n\n\n\n\nLocalização da área de estudo no estado de São Paulo, Brasil. São apresentadas composições em cores reais de dezesseis cenas do satélite hiperespectral EnMAP abrangendo o estado de São Paulo. Um detalhe no canto inferior esquerdo destaca a distribuição espacial das parcelas de campo estabelecidas em quatro tipos de cobertura florestal.\n\n\n\n\n\nAbordagem de ensemble baseada em aprendizado profundo. Três modelos distintos de aprendizado profundo foram treinados de forma independente: uma rede neural recorrente (RNN), um autoencoder e uma rede neural convolucional 1D (1D-CNN). Cada modelo gerou saídas de probabilidade de classe, as quais foram posteriormente combinadas utilizando um mecanismo de votação rígida (hard voting) para gerar a previsão final do ensemble.\n\n\n\n\n\n\n@article{ferreira2026enmap,\n  title     = {Exploring EnMAP hyperspectral images and ensemble deep learning\n               for classifying forest land-cover types in Brazil},\n  author    = {Pinheiro Ferreira, Matheus and Fuza, Matheus Santos and\n               Viveiros, José M. S. M. and Ferranti, Tomás and\n               Oliveira, Dário and Santoro, Giulio Brossi and\n               Molin, Paulo Guilherme and de Almeida, Catherine Torres and\n               Resende, Angélica F. and de Almeida, Danilo R. A. and\n               Zeng, Yelu and Rodrigues, Ricardo Ribeiro and\n               Brancalion, Pedro H. S.},\n  journal   = {International Journal of Remote Sensing},\n  volume    = {47},\n  number    = {7},\n  pages     = {3213--3238},\n  year      = {2026},\n  publisher = {Taylor \\& Francis}\n}\n\n  \n  Voltar para as publicações"
   },
   {
-    "objectID": "publications/enmap-forest-classification/enmap-forest-classification.pt.html#resumo",
-    "href": "publications/enmap-forest-classification/enmap-forest-classification.pt.html#resumo",
+    "objectID": "publications/exploring-enmap-hyperspectral-images-and-ensemble-deep/exploring-enmap-hyperspectral-images-and-ensemble-deep.pt.html#resumo",
+    "href": "publications/exploring-enmap-hyperspectral-images-and-ensemble-deep/exploring-enmap-hyperspectral-images-and-ensemble-deep.pt.html#resumo",
     "title": "Exploring EnMAP hyperspectral images and ensemble deep learning for classifying forest land-cover types in Brazil",
     "section": "",
     "text": "Informações espacialmente explícitas sobre tipos de cobertura florestal são fundamentais para o manejo e a conservação eficazes de ecossistemas florestais e para o monitoramento de iniciativas de restauração. Este estudo investiga o potencial do satélite hiperespectral EnMAP (Environmental Mapping and Analysis Program) para distinguir entre tipos de cobertura florestal tropical em São Paulo, Brasil. Desenvolvemos e avaliamos uma abordagem inovadora de ensemble baseada em aprendizado profundo (deep learning), integrando uma Rede Neural Convolucional (CNN) 1D, um autoencoder e uma Rede Neural Recorrente (RNN) para classificação em nível de pixel. Também avaliamos o impacto da resolução espectral comparando dados do EnMAP com dados simulados do Landsat 8 e do Sentinel-2A, e investigamos a influência da seleção de bandas na acurácia da classificação. O estudo concentrou-se no mapeamento de tipos de cobertura florestal, incluindo remanescentes conservados, regeneração natural, plantios de restauração e monoculturas. Nossos resultados revelam distinções significativas nas respostas espectrais entre esses tipos de cobertura florestal. O modelo de ensemble de aprendizado profundo superou significativamente os modelos individuais de aprendizado profundo e os classificadores tradicionais de Máquina de Vetores de Suporte (SVM), alcançando o maior F1-Score ponderado (0,700). Os dados do EnMAP também apresentaram F1-scores significativamente superiores aos do Sentinel-2A e do Landsat-8 (p &lt; 0,05), com os maiores ganhos observados para regeneração natural e plantios de restauração. Curiosamente, a seleção de bandas não melhorou universalmente o desempenho da classificação para os modelos de aprendizado profundo e, em alguns casos, levou a uma redução na acurácia. Embora as monoculturas tenham sido classificadas com alta acurácia, foram observadas classificações incorretas entre regeneração natural e plantios de restauração, bem como entre remanescentes conservados e regeneração natural, refletindo suas semelhanças espectrais. Este estudo fornece insights valiosos sobre o uso eficaz de imagens hiperespectrais espaciais e de ensemble de aprendizado profundo para o mapeamento robusto de tipos de cobertura florestal em regiões tropicais, enfatizando o papel crucial da alta resolução espectral.\n\n\n\n\nLocalização da área de estudo no estado de São Paulo, Brasil. São apresentadas composições em cores reais de dezesseis cenas do satélite hiperespectral EnMAP abrangendo o estado de São Paulo. Um detalhe no canto inferior esquerdo destaca a distribuição espacial das parcelas de campo estabelecidas em quatro tipos de cobertura florestal.\n\n\n\n\n\nAbordagem de ensemble baseada em aprendizado profundo. Três modelos distintos de aprendizado profundo foram treinados de forma independente: uma rede neural recorrente (RNN), um autoencoder e uma rede neural convolucional 1D (1D-CNN). Cada modelo gerou saídas de probabilidade de classe, as quais foram posteriormente combinadas utilizando um mecanismo de votação rígida (hard voting) para gerar a previsão final do ensemble."
   },
   {
-    "objectID": "publications/enmap-forest-classification/enmap-forest-classification.pt.html#como-citar",
-    "href": "publications/enmap-forest-classification/enmap-forest-classification.pt.html#como-citar",
+    "objectID": "publications/exploring-enmap-hyperspectral-images-and-ensemble-deep/exploring-enmap-hyperspectral-images-and-ensemble-deep.pt.html#como-citar",
+    "href": "publications/exploring-enmap-hyperspectral-images-and-ensemble-deep/exploring-enmap-hyperspectral-images-and-ensemble-deep.pt.html#como-citar",
     "title": "Exploring EnMAP hyperspectral images and ensemble deep learning for classifying forest land-cover types in Brazil",
     "section": "",
     "text": "@article{ferreira2026enmap,\n  title     = {Exploring EnMAP hyperspectral images and ensemble deep learning\n               for classifying forest land-cover types in Brazil},\n  author    = {Pinheiro Ferreira, Matheus and Fuza, Matheus Santos and\n               Viveiros, José M. S. M. and Ferranti, Tomás and\n               Oliveira, Dário and Santoro, Giulio Brossi and\n               Molin, Paulo Guilherme and de Almeida, Catherine Torres and\n               Resende, Angélica F. and de Almeida, Danilo R. A. and\n               Zeng, Yelu and Rodrigues, Ricardo Ribeiro and\n               Brancalion, Pedro H. S.},\n  journal   = {International Journal of Remote Sensing},\n  volume    = {47},\n  number    = {7},\n  pages     = {3213--3238},\n  year      = {2026},\n  publisher = {Taylor \\& Francis}\n}\n\n  \n  Voltar para as publicações"
   },
   {
-    "objectID": "publications/viscoelastic-udes/viscoelastic-udes.pt.html",
-    "href": "publications/viscoelastic-udes/viscoelastic-udes.pt.html",
-    "title": "Finding the underlying viscoelastic constitutive equation via universal differential equations and differentiable physics",
+    "objectID": "publications/index.pt.html",
+    "href": "publications/index.pt.html",
+    "title": "Publicações",
     "section": "",
-    "text": "Autores: Elias C. Rodrigues, Roney L. Thompson, Dário A. B. Oliveira, Roberto F. Ausas\nPublicação: Novembro de 2025, Engineering Applications of Artificial Intelligence, v. 160, 111788 (Pergamon)\nAcessar o artigo\n\n\n\n\nDeterminar o modelo constitutivo adequado para descrever o comportamento de um determinado material é um aspecto fundamental, porém desafiador, da reologia. Embora os métodos baseados em dados apresentem um caminho promissor para o refinamento desses modelos, é necessária uma investigação mais aprofundada sobre as capacidades e limitações das técnicas emergentes. Esta pesquisa aborda essa lacuna utilizando Equações Diferenciais Universais (UDEs) e física diferenciável para modelar fluidos viscoelásticos, combinando equações diferenciais convencionais com redes neurais para reconstruir termos ausentes nos modelos constitutivos. O estudo concentra-se na análise de quatro modelos viscoelásticos, Maxwell Convectivo Superior (UCM), Johnson, Segalman, Giesekus e Phan, Thien, Tanner Exponencial (ePTT), utilizando conjuntos de dados sintéticos. A metodologia foi testada sob diferentes condições experimentais, incluindo fluxos oscilatórios e de partida (startup). Análises de erro relativo revelaram que a estrutura das UDEs mantém erros baixos e estáveis ​​(abaixo de 0,3%) para os modelos UCM, Johnson, Segalman e Giesekus em diversas condições, ao mesmo tempo que apresenta erros mais elevados, porém consistentes (4%), para o modelo ePTT, devido à sua forte não linearidade. Esses resultados destacam o potencial das UDEs na mecânica dos fluidos, identificando também áreas críticas para o aprimoramento metodológico. Além disso, foi empregada uma abordagem de destilação de modelos para extrair modelos simplificados a partir de modelos complexos, ressaltando a versatilidade e a robustez das UDEs na modelagem reológica.\n\n\n\n\nFig. 4. Avaliação da extrapolação dos modelos UDE para a tensão de cisalhamento \\((\\sigma_{12}^*, t^*)\\) com entrada \\(\\dot{\\gamma}^*(t^*) = 3\\cos(1.5\\,t^*)\\). Os pontos destacados em verde correspondem aos pontos de treinamento, \\(t^* \\in [0, 20]\\). A curva azul ilustra a solução numérica da equação diferencial, chamada de solução de referência (“ground truth”). A curva preta representa o modelo UDE antes do treinamento, enquanto a curva vermelha ilustra o modelo UDE após o treinamento. Os seguintes parâmetros foram utilizados: \\(\\xi = 0.4\\) (Johnson, Segalman), \\(\\alpha = 0.2\\) (Giesekus) e \\((\\xi, \\epsilon) = (0, 0.4)\\) para (ePTT).\n\n\n\n\n\n\n@article{rodrigues2025viscoelastic,\n  title     = {Finding the underlying viscoelastic constitutive equation via\n               universal differential equations and differentiable physics},\n  author    = {Rodrigues, Elias C. and Thompson, Roney L. and\n               Oliveira, Dário A. B. and Ausas, Roberto F.},\n  journal   = {Engineering Applications of Artificial Intelligence},\n  volume    = {160},\n  pages     = {111788},\n  year      = {2025},\n  publisher = {Pergamon}\n}\n\n  \n  Voltar para as publicações"
-  },
-  {
-    "objectID": "publications/viscoelastic-udes/viscoelastic-udes.pt.html#resumo",
-    "href": "publications/viscoelastic-udes/viscoelastic-udes.pt.html#resumo",
-    "title": "Finding the underlying viscoelastic constitutive equation via universal differential equations and differentiable physics",
-    "section": "",
-    "text": "Determinar o modelo constitutivo adequado para descrever o comportamento de um determinado material é um aspecto fundamental, porém desafiador, da reologia. Embora os métodos baseados em dados apresentem um caminho promissor para o refinamento desses modelos, é necessária uma investigação mais aprofundada sobre as capacidades e limitações das técnicas emergentes. Esta pesquisa aborda essa lacuna utilizando Equações Diferenciais Universais (UDEs) e física diferenciável para modelar fluidos viscoelásticos, combinando equações diferenciais convencionais com redes neurais para reconstruir termos ausentes nos modelos constitutivos. O estudo concentra-se na análise de quatro modelos viscoelásticos, Maxwell Convectivo Superior (UCM), Johnson, Segalman, Giesekus e Phan, Thien, Tanner Exponencial (ePTT), utilizando conjuntos de dados sintéticos. A metodologia foi testada sob diferentes condições experimentais, incluindo fluxos oscilatórios e de partida (startup). Análises de erro relativo revelaram que a estrutura das UDEs mantém erros baixos e estáveis ​​(abaixo de 0,3%) para os modelos UCM, Johnson, Segalman e Giesekus em diversas condições, ao mesmo tempo que apresenta erros mais elevados, porém consistentes (4%), para o modelo ePTT, devido à sua forte não linearidade. Esses resultados destacam o potencial das UDEs na mecânica dos fluidos, identificando também áreas críticas para o aprimoramento metodológico. Além disso, foi empregada uma abordagem de destilação de modelos para extrair modelos simplificados a partir de modelos complexos, ressaltando a versatilidade e a robustez das UDEs na modelagem reológica.\n\n\n\n\nFig. 4. Avaliação da extrapolação dos modelos UDE para a tensão de cisalhamento \\((\\sigma_{12}^*, t^*)\\) com entrada \\(\\dot{\\gamma}^*(t^*) = 3\\cos(1.5\\,t^*)\\). Os pontos destacados em verde correspondem aos pontos de treinamento, \\(t^* \\in [0, 20]\\). A curva azul ilustra a solução numérica da equação diferencial, chamada de solução de referência (“ground truth”). A curva preta representa o modelo UDE antes do treinamento, enquanto a curva vermelha ilustra o modelo UDE após o treinamento. Os seguintes parâmetros foram utilizados: \\(\\xi = 0.4\\) (Johnson, Segalman), \\(\\alpha = 0.2\\) (Giesekus) e \\((\\xi, \\epsilon) = (0, 0.4)\\) para (ePTT)."
-  },
-  {
-    "objectID": "publications/viscoelastic-udes/viscoelastic-udes.pt.html#como-citar",
-    "href": "publications/viscoelastic-udes/viscoelastic-udes.pt.html#como-citar",
-    "title": "Finding the underlying viscoelastic constitutive equation via universal differential equations and differentiable physics",
-    "section": "",
-    "text": "@article{rodrigues2025viscoelastic,\n  title     = {Finding the underlying viscoelastic constitutive equation via\n               universal differential equations and differentiable physics},\n  author    = {Rodrigues, Elias C. and Thompson, Roney L. and\n               Oliveira, Dário A. B. and Ausas, Roberto F.},\n  journal   = {Engineering Applications of Artificial Intelligence},\n  volume    = {160},\n  pages     = {111788},\n  year      = {2025},\n  publisher = {Pergamon}\n}\n\n  \n  Voltar para as publicações"
+    "text": "Nenhum resultado para os filtros escolhidos.\n\n\n\n\n\n  \n    \n      \n        \n        \n          Deep Clustering for Climate: Analyzing Teleconnections through Learned Categorical States\n          Lívia Meinhardt, Dário Oliveira\n          Abril de 2026 · arXiv preprint\n          Redes siamesas mascaradas discretizam séries temporais climáticas em clusters semanticamente ricos, com associações estatísticas a eventos de El Niño.\n        \n      \n    \n  \n    \n      \n        \n        \n          Exploring EnMAP hyperspectral images and ensemble deep learning for classifying forest land-cover types in Brazil\n          Matheus Pinheiro Ferreira, Matheus Santos Fuza, José M. S. M. Viveiros, Tomás Ferranti, Dário Oliveira, Giulio Brossi Santoro, Paulo Guilherme Molin, Catherine Torres de Almeida, Angélica F. Resende, Danilo R. A. de Almeida, Yelu Zeng, Ricardo Ribeiro Rodrigues, Pedro H. S. Brancalion\n          Abril de 2026 · International Journal of Remote Sensing\n          Ensemble de deep learning com imagens hiperespectrais do satélite EnMAP para classificar tipos de cobertura florestal em São Paulo.\n        \n      \n    \n  \n    \n      \n        \n        \n          Finding the underlying viscoelastic constitutive equation via universal differential equations and differentiable physics\n          Elias C. Rodrigues, Roney L. Thompson, Dário A. B. Oliveira, Roberto F. Ausas\n          Novembro de 2025 · Engineering Applications of Artificial Intelligence\n          Equações diferenciais universais e física diferenciável reconstroem termos ausentes em modelos constitutivos de fluidos viscoelásticos.\n        \n      \n    \n  \n\nSem itens correspondentes\n\n\n\n\n\n  \n    \n      \n        \n      \n      \n        al jazeera · 30 de setembro de 2026\n        teste\n        The medical condition of dozens of prisoners has deteriorated as inmates protest against suspension of amnesty law.\n      \n    \n  \n    \n      \n        \n      \n      \n        FGV · 16 de julho de 2025\n        Pesquisa utiliza sistema baseado em IA para prever qualidade da carne a partir de fotos de celular\n        Sistema treinado com fotos de cortes bovinos e suínos prevê maciez e gordura intramuscular, abrindo caminho para aplicativos que ajudem o consumidor a identificar cortes mais macios e suculentos.\n      \n    \n  \n    \n      \n        \n      \n      \n        FGV · 20 de março de 2025\n        Estudo monitora desmatamento e identifica espécies vegetais com uso de inteligência artificial\n        O método LLP-Co aprende padrões visuais e agrupa grandes volumes de dados automaticamente, aplicado à identificação de áreas desmatadas e da biodiversidade vegetal da Floresta Amazônica.\n      \n    \n  \n    \n      \n        \n      \n      \n        FGV · 8 de outubro de 2024\n        Pesquisadores criam algoritmo que realiza classificação agrícola por meio de imagens de satélite\n        Estudo da FGV EMAp utiliza, pela primeira vez, uma abordagem com proporções globais para classificar culturas agrícolas por agrupamento auto-supervisionado.\n      \n    \n  \n\nSem itens correspondentes\n\n\n\n\n\n\n  Sumário\n  \n    Artigos\n    Notícias"
   }
 ]

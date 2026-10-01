@@ -1,0 +1,81 @@
+<script>
+  // Menu recolhido (abaixo de lg): o botão de tema precisa viver DENTRO do menu,
+  // na mesma linha do botão de idioma. O Quarto entrega esse botão fora do menu
+  // — ele é irmão da .navbar-collapse, dentro de .quarto-navbar-tools — e CSS
+  // sozinho não traz um elemento para dentro de outro: sem o menu aberto ele
+  // ficaria solto na barra e, com o menu aberto, apareceria depois da lista. Era
+  // isso que fazia o botão pular de lugar a cada abertura do menu.
+  //
+  // Aqui o elemento é movido de verdade ao cruzar o breakpoint de lg e devolvido
+  // à posição de origem no modo largo. O <li> que o recebe entra na MESMA lista
+  // do botão de idioma, que no modo pequeno passa a ser uma linha (flex-row, ver
+  // styles.css): os dois controles ficam lado a lado no fim dos links.
+  (function () {
+    var pequeno = window.matchMedia("(max-width: 991.98px)");
+    var volta = null; // guarda as posições originais enquanto o modo pequeno dura
+
+    // O botão de idioma é o link curto de duas letras (PT/EN) do menu. A classe
+    // lang-switch vem do _includes/language-switch.html; o texto é a rede para
+    // quando este script roda antes dele (é o caso: roda ainda no parser).
+    function acharIdioma(menu) {
+      var porClasse = menu.querySelector("a.nav-link.lang-switch");
+      if (porClasse) return porClasse;
+      var links = menu.querySelectorAll("a.nav-link");
+      for (var i = 0; i < links.length; i++) {
+        if (/^[A-Za-z]{2}$/.test(links[i].textContent.trim())) return links[i];
+      }
+      return null;
+    }
+
+    function dentroDoMenu() {
+      if (volta) return;
+      var menu = document.getElementById("navbarCollapse");
+      var ferramentas = document.querySelector(".quarto-navbar-tools");
+      if (!menu || !ferramentas) return;
+      var idioma = acharIdioma(menu);
+      if (!idioma) return;
+      var lista = idioma.parentNode.parentNode; // a ul.navbar-nav do idioma
+      volta = {
+        lista: lista,
+        ferramentas: ferramentas,
+        pai: ferramentas.parentNode,
+        seguinte: ferramentas.nextSibling // irmão a repor no lugar na volta
+      };
+      // O ms-auto empurrava a lista para a direita no modo largo; aqui ela é a
+      // nossa linha de configurações e precisa do alinhamento à esquerda
+      lista.classList.remove("ms-auto");
+      lista.classList.add("menu-config");
+      var itemTema = document.createElement("li");
+      itemTema.className = "nav-item menu-tema";
+      itemTema.appendChild(ferramentas);
+      lista.appendChild(itemTema);
+    }
+
+    function foraDoMenu() {
+      if (!volta) return;
+      volta.ferramentas.parentNode.removeChild(volta.ferramentas);
+      volta.pai.insertBefore(volta.ferramentas, volta.seguinte);
+      var itemTema = volta.lista.querySelector("li.menu-tema");
+      if (itemTema) volta.lista.removeChild(itemTema);
+      volta.lista.classList.remove("menu-config");
+      volta.lista.classList.add("ms-auto");
+      volta = null;
+    }
+
+    function organizar() {
+      if (pequeno.matches) dentroDoMenu();
+      else foraDoMenu();
+    }
+
+    // A navbar já está no documento quando este script roda, então o botão entra
+    // no menu antes da primeira pintura e não há salto na abertura da página
+    organizar();
+    document.addEventListener("DOMContentLoaded", organizar);
+    // O aviso do matchMedia é o caminho principal; o resize é a rede para os
+    // casos em que só ele dispara (barra de rolagem aparecendo, por exemplo).
+    // organizar() é idempotente: chamar demais não move nada duas vezes
+    window.addEventListener("resize", organizar);
+    if (pequeno.addEventListener) pequeno.addEventListener("change", organizar);
+    else pequeno.addListener(organizar);
+  })();
+</script>
