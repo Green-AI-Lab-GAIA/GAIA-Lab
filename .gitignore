@@ -10,3 +10,19 @@ __pycache__/
 
 # PDFs do LinkedIn dentro das pastas de membros (dados pessoais)
 people/*/*.pdf
+
+# Documentos locais e relatorios gerados
+*.pdf
+*.html
+!docs/**/*.html
+!_includes/**/*.html
+!_ejs/**/*.html
+readme.html
+README.pdf
+scripts/gerar_readme_pdf.py
+
+# Dados locais sincronizados das planilhas e configuracoes de fontes
+/dados/
+
+# Ferramentas internas e scripts de automacao privada (Apps Script)
+/ferramentas/

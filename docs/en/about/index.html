@@ -444,7 +444,7 @@ states, and checks every result against official references.</p>
   // Faz o link PT/EN da navbar apontar para a versão da página atual no outro
   // idioma. Suporta tanto hospedagem na raiz (/) quanto sob subdiretório (como /GAIA-Lab/
   // no GitHub Pages). A posição de rolagem é guardada no clique e restaurada na página equivalente.
-  document.addEventListener("DOMContentLoaded", function () {
+  (function () {
     var CHAVE = "gaia-scroll-troca-idioma";
 
     // Restaura a rolagem salva por uma troca de idioma recém-feita
@@ -456,66 +456,140 @@ states, and checks every result against official references.</p>
       }
     } catch (erro) { /* sem sessionStorage; segue a partir do topo */ }
 
-    var isEnglish = document.documentElement.lang.indexOf("en") === 0;
-    var path = window.location.pathname;
+    var secoes = ["about", "research", "publications", "courses", "people", "join-us", "news", "index.html"];
 
-    // Detecta o caminho base do site a partir do link da marca da navbar
-    var brand = document.querySelector(".navbar-brand");
-    var base = "";
-    if (brand) {
-      try {
-        var resolved = new URL(brand.getAttribute("href"), window.location.href).pathname;
-        base = resolved.replace(/\/index\.html$/, "").replace(/\/$/, "");
-        // Se estiver em inglês, remove o /en final da base para achar o prefixo do repositório
-        if (isEnglish && base.endsWith("/en")) {
-          base = base.slice(0, -3);
+    function analisarUrl() {
+      var p = window.location.pathname;
+      var partes = p.split("/").filter(Boolean);
+
+      var repo = "";
+      var emIngles = false;
+      var resto = [];
+
+      if (partes.length > 0) {
+        if (partes[0].toLowerCase() === "en") {
+          if (partes.length > 1 && !secoes.includes(partes[1].toLowerCase())) {
+            // Caso de URL invertida (/en/GAIA-Lab/...)
+            repo = partes[1];
+            emIngles = true;
+            resto = partes.slice(2);
+          } else {
+            // Hospedagem na raiz (/en/...)
+            emIngles = true;
+            resto = partes.slice(1);
+          }
+        } else if (!secoes.includes(partes[0].toLowerCase())) {
+          // Primeiro segmento é o repositório (/GAIA-Lab/...)
+          repo = partes[0];
+          if (partes.length > 1 && partes[1].toLowerCase() === "en") {
+            emIngles = true;
+            resto = partes.slice(2);
+          } else {
+            emIngles = false;
+            resto = partes.slice(1);
+          }
+        } else {
+          // Hospedagem na raiz (/research/...)
+          emIngles = false;
+          resto = partes;
         }
-      } catch (e) { base = ""; }
+      }
+
+      // Se o atributo lang do HTML for inglês, confirma emIngles
+      if (document.documentElement && document.documentElement.lang && document.documentElement.lang.indexOf("en") === 0) {
+        emIngles = true;
+      }
+
+      return {
+        repo: repo,
+        base: repo ? ("/" + repo) : "",
+        emIngles: emIngles,
+        resto: resto
+      };
     }
 
-    var target;
-    if (isEnglish) {
-      // De inglês para português: remove "/en" do caminho
-      target = path.replace(/\/en(\/|$)/, "/") || (base ? base + "/" : "/");
-    } else {
-      // De português para inglês: insere "/en" após o prefixo base
-      var rel = (base && path.startsWith(base)) ? path.slice(base.length) : path;
-      if (!rel.startsWith("/")) rel = "/" + rel;
-      target = base + "/en" + rel;
+    function calcularDestino() {
+      var info = analisarUrl();
+      var novoCaminho = "";
+
+      if (info.emIngles) {
+        // De inglês -> português: remove o /en
+        if (info.resto.length === 0) {
+          novoCaminho = info.base ? (info.base + "/") : "/";
+        } else {
+          var ultimo = info.resto[info.resto.length - 1];
+          var barraFinal = ultimo.includes(".") ? "" : "/";
+          novoCaminho = info.base + "/" + info.resto.join("/") + barraFinal;
+        }
+      } else {
+        // De português -> inglês: adiciona /en após a base do repositório
+        if (info.resto.length === 0) {
+          novoCaminho = info.base + "/en/";
+        } else {
+          var ultimo = info.resto[info.resto.length - 1];
+          var barraFinal = ultimo.includes(".") ? "" : "/";
+          novoCaminho = info.base + "/en/" + info.resto.join("/") + barraFinal;
+        }
+      }
+
+      novoCaminho = novoCaminho.replace(/\/+/g, "/");
+      return novoCaminho + window.location.search;
     }
 
-    // Corrige os links do rodapé para respeitarem o caminho base e o idioma atual
-    var footerLinks = document.querySelectorAll(".site-footer a[href^='/']");
-    for (var f = 0; f < footerLinks.length; f++) {
-      var rawHref = footerLinks[f].getAttribute("href");
-      if (rawHref && rawHref.startsWith("/")) {
-        var prefix = isEnglish ? (base + "/en") : base;
-        var cleanHref = rawHref === "/" ? "/" : rawHref;
-        footerLinks[f].href = (prefix + cleanHref).replace(/\/+/g, "/");
+    function atualizarRodape(base, emIngles) {
+      var footerLinks = document.querySelectorAll(".site-footer a[href^='/']");
+      for (var f = 0; f < footerLinks.length; f++) {
+        var rawHref = footerLinks[f].getAttribute("data-original-href");
+        if (!rawHref) {
+          rawHref = footerLinks[f].getAttribute("href");
+          footerLinks[f].setAttribute("data-original-href", rawHref);
+        }
+        if (rawHref && rawHref.startsWith("/")) {
+          var prefix = emIngles ? (base + "/en") : base;
+          var cleanHref = rawHref === "/" ? "/" : rawHref;
+          footerLinks[f].href = (prefix + cleanHref).replace(/\/+/g, "/");
+        }
       }
     }
 
-    // O botão exibe a sigla do idioma atual e o clique leva ao outro idioma
-    var label = isEnglish ? "EN" : "PT";
-    var links = document.querySelectorAll(".navbar a.nav-link");
-    for (var i = 0; i < links.length; i++) {
-      if (links[i].textContent.trim() === label) {
-        links[i].href = target;
-        links[i].title = isEnglish ? "Ler em português" : "Read in English";
-        // A classe permite estilizar o botão de idioma no styles.css
-        links[i].classList.add("lang-switch");
-        links[i].addEventListener("click", function () {
-          try {
-            sessionStorage.setItem(CHAVE, JSON.stringify({
-              y: window.scrollY,
-              quando: Date.now()
-            }));
-          } catch (erro) { /* sem sessionStorage; a troca abre no topo */ }
-        });
-        break;
+    function configurarBotaoIdioma() {
+      var info = analisarUrl();
+      var label = info.emIngles ? "EN" : "PT";
+      var destino = calcularDestino();
+
+      var links = document.querySelectorAll(".navbar a.nav-link");
+      for (var i = 0; i < links.length; i++) {
+        var texto = links[i].textContent.trim();
+        if (texto === label || links[i].classList.contains("lang-switch") || /^[A-Za-z]{2}$/.test(texto)) {
+          if (texto === "EN" || texto === "PT" || links[i].classList.contains("lang-switch")) {
+            links[i].classList.add("lang-switch");
+            links[i].href = destino;
+            links[i].title = info.emIngles ? "Ler em português" : "Read in English";
+            links[i].onclick = function (evento) {
+              evento.preventDefault();
+              try {
+                sessionStorage.setItem(CHAVE, JSON.stringify({
+                  y: window.scrollY,
+                  quando: Date.now()
+                }));
+              } catch (erro) { /* sem sessionStorage; segue */ }
+              window.location.href = calcularDestino();
+            };
+          }
+        }
       }
     }
-  });
+
+    function inicializar() {
+      var info = analisarUrl();
+      configurarBotaoIdioma();
+      atualizarRodape(info.base, info.emIngles);
+    }
+
+    inicializar();
+    document.addEventListener("DOMContentLoaded", inicializar);
+    window.addEventListener("pageshow", inicializar);
+  })();
 </script>
 <script>
   // Menu recolhido (abaixo de lg): o botão de tema precisa viver DENTRO do menu,

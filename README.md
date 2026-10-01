@@ -123,7 +123,7 @@ Para adicionar fotos à galeria:
 ├── _quarto-pt.yml         Navbar e rodapé em português (publica na raiz de docs/)
 ├── _quarto-en.yml         Navbar e rodapé em inglês (publica em docs/en/)
 ├── styles.css             Estilos customizados do site
-├── dados/                 CSVs locais sincronizados com o Google Sheets
+├── dados/                 CSVs locais sincronizados com o Google Sheets (ignorado no git)
 ├── scripts/
 │   ├── atualizar.sh       Disparador chamado pelo Cron semanal
 │   ├── sincronizar.py     Orquestrador do pipeline de sincronização e deploy
@@ -131,8 +131,7 @@ Para adicionar fotos à galeria:
 │   ├── baixar_imagens.py  Download de fotos do Google Drive para pastas locais
 │   ├── gerar_conteudo.py  Gera arquivos .qmd (pessoas, artigos, notícias, cursos, galeria)
 │   ├── build.sh           Executa o quarto render (pt e en) e limpeza de temporários
-│   ├── flatten_lang.py    Pós-processamento: ajusta URLs, mascara e-mails e versiona CSS
-│   └── gerar_readme_pdf.py Gera a documentação README.pdf e readme.html
+│   └── flatten_lang.py    Pós-processamento: ajusta URLs, mascara e-mails e versiona CSS
 ├── people/                Fichas de membros (geradas automaticamente)
 ├── publications/          Páginas de artigos científicos (geradas automaticamente)
 ├── news/                  Notícias e matérias de imprensa (geradas automaticamente)

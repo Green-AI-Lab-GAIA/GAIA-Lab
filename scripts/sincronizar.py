@@ -305,7 +305,7 @@ def main() -> int:
 
     aviso(f"{agora()} build do site")
     rodar("bash", "scripts/build.sh")
-    rodar("git", "add", "dados", "people", "publications", "news", "courses", "about", "docs")
+    rodar("git", "add", "people", "publications", "news", "courses", "about", "docs")
     resumo = ", ".join(mudou) if mudou else "conteudo"
     rodar("git", "commit", "-m", f"conteudo: atualiza {resumo} a partir das planilhas")
     if args.push:
