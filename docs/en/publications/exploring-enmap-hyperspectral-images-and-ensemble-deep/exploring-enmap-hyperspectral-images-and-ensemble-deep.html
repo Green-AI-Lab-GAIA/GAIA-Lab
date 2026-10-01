@@ -450,13 +450,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </script>
 <script>
   // Faz o link PT/EN da navbar apontar para a versão da página atual no outro
-  // idioma. O site em inglês é publicado sob /en/, espelhando a raiz, então a
-  // troca é apenas inserir ou remover esse prefixo no caminho. A posição de
-  // rolagem é guardada no clique e restaurada na página equivalente.
+  // idioma. Suporta tanto hospedagem na raiz (/) quanto sob subdiretório (como /GAIA-Lab/
+  // no GitHub Pages). A posição de rolagem é guardada no clique e restaurada na página equivalente.
   document.addEventListener("DOMContentLoaded", function () {
     var CHAVE = "gaia-scroll-troca-idioma";
 
-    // restaura a rolagem salva por uma troca de idioma recém-feita
+    // Restaura a rolagem salva por uma troca de idioma recém-feita
     try {
       var salvo = JSON.parse(sessionStorage.getItem(CHAVE) || "null");
       sessionStorage.removeItem(CHAVE);
@@ -467,9 +466,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
     var isEnglish = document.documentElement.lang.indexOf("en") === 0;
     var path = window.location.pathname;
-    var target = isEnglish
-      ? path.replace(/^\/en(\/|$)/, "/")
-      : "/en" + path;
+
+    // Detecta o caminho base do site a partir do link da marca da navbar
+    var brand = document.querySelector(".navbar-brand");
+    var base = "";
+    if (brand) {
+      try {
+        var resolved = new URL(brand.getAttribute("href"), window.location.href).pathname;
+        base = resolved.replace(/\/index\.html$/, "").replace(/\/$/, "");
+        // Se estiver em inglês, remove o /en final da base para achar o prefixo do repositório
+        if (isEnglish && base.endsWith("/en")) {
+          base = base.slice(0, -3);
+        }
+      } catch (e) { base = ""; }
+    }
+
+    var target;
+    if (isEnglish) {
+      // De inglês para português: remove "/en" do caminho
+      target = path.replace(/\/en(\/|$)/, "/") || (base ? base + "/" : "/");
+    } else {
+      // De português para inglês: insere "/en" após o prefixo base
+      var rel = (base && path.startsWith(base)) ? path.slice(base.length) : path;
+      if (!rel.startsWith("/")) rel = "/" + rel;
+      target = base + "/en" + rel;
+    }
+
+    // Corrige os links do rodapé para respeitarem o caminho base e o idioma atual
+    var footerLinks = document.querySelectorAll(".site-footer a[href^='/']");
+    for (var f = 0; f < footerLinks.length; f++) {
+      var rawHref = footerLinks[f].getAttribute("href");
+      if (rawHref && rawHref.startsWith("/")) {
+        var prefix = isEnglish ? (base + "/en") : base;
+        var cleanHref = rawHref === "/" ? "/" : rawHref;
+        footerLinks[f].href = (prefix + cleanHref).replace(/\/+/g, "/");
+      }
+    }
 
     // O botão exibe a sigla do idioma atual e o clique leva ao outro idioma
     var label = isEnglish ? "EN" : "PT";
