@@ -48,6 +48,27 @@ body.home #title-block-header {
   text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
 }
 
+@media (max-width: 640px) {
+  .hero-lockup {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-lockup .logo {
+    width: 85px;
+  }
+
+  .hero-name {
+    font-size: clamp(2.4rem, 8vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .hero-tagline {
+    font-size: 1.15rem;
+    margin-top: 1.2rem;
+  }
+}
+
 .hero-tagline {
   max-width: 640px;
   margin-top: 1.6rem;
