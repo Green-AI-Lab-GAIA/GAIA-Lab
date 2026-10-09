@@ -2,7 +2,7 @@
 title: "GAIA Lab"
 # A logo é servida localmente (icon/) para carregar junto com o resto da
 # página; as imagens padrão são os fallbacks de fotos quebradas no site todo.
-# images/hero/ traz os quadros do mapa usados no fundo do hero e a foto base.
+# images/hero/ traz imagens usadas no fundo do hero.
 resources:
   - "icon/"
   - "images/hero/"
@@ -16,19 +16,23 @@ toc: false
 ```{=html}
 <div class="home-hero">
   <div class="hero-map" aria-hidden="true">
-    <img src="images/hero/mapa-1.jpg" alt="">
-    <img src="images/hero/mapa-2.jpg" alt="">
-    <img src="images/hero/mapa-3.jpg" alt="">
+    <img class="active" src="images/hero/1-hero.jpg" alt="">
+    <img src="images/hero/2-hero.jpg" alt="">
+    <img src="images/hero/3-hero.jpg" alt="">
+    <img src="images/hero/4-hero.jpg" alt="">
+    <img src="images/hero/5-hero.jpg" alt="">
+    <img src="images/hero/6-hero.jpg" alt="">
+    <img src="images/hero/7-hero.jpg" alt="">
   </div>
   <div class="hero-lockup">
     <img class="logo" src="icon/icon.png" alt="GAIA Lab logo">
     <span class="hero-name">GAIA Lab</span>
   </div>
   <p class="hero-tagline">
-    Machine learning and remote sensing for forests, agriculture and climate,
-    at FGV EMAp, since 2024.
+    Artificial intelligence and Earth observation to understand the dynamics
+    of complex socio-environmental systems.
   </p>
-  <a class="hero-cta" href="/research/">See the research</a>
+  <a class="hero-cta" href="/about/">Learn more</a>
   <a class="hero-scroll" href="#home-areas" aria-label="Scroll to the research areas">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
       <path d="m5 9 7 7 7-7"/>
@@ -66,7 +70,18 @@ toc: false
       <div class="area-text">Climate trends and agricultural risk in 15-year windows.</div>
       <div class="area-kpi">+1.1 °C peak<span>Nova Mutum, MT, 2011 to 2025</span></div>
     </a>
-</div>
+    <a class="area-card reveal" href="/research/#cities">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 21h18"/>
+        <path d="M5 21V7l8-4v18"/>
+        <path d="M19 21V11l-6-4"/>
+        <path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/>
+      </svg>
+      <div class="area-title">Cities</div>
+      <div class="area-text">Characterization of urban settlements and socioeconomic analysis through satellite imagery.</div>
+      <div class="area-kpi">Urban sensing<span>Mapping and socioeconomic vulnerability</span></div>
+    </a>
+  </div>
 ```
 
 ## The lab in numbers

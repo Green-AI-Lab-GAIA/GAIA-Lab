@@ -4,7 +4,7 @@ last: "Westfal"
 first: "Lucas"
 people_group: "masters"
 subtitle: "Research Assistant"
-education: "MSc Student, FGV EMAp"
+education: "MSc student in Applied Mathematics and Data Science, FGV EMAp."
 image: avatar.jpeg
 page-layout: full
 toc: false
@@ -16,7 +16,10 @@ about:
   links:
     - icon: linkedin
       text: LinkedIn
-      href: "https://www.linkedin.com/in/lucas-westfal-001aab1b1"
+      href: "https://br.linkedin.com/in/lucas-westfal-001aab1b1"
+    - icon: envelope
+      text: Email
+      href: "mailto:lucaswestfal4@gmail.com"
 ---
 
 ```{=html}
@@ -26,17 +29,17 @@ about:
 
 ::: {#perfil}
 
-MSc student at FGV EMAp and researcher at the GAIA Lab. BSc in Applied Mathematics from the same school, with a technical degree in mechatronics from IFSC. His research covers pervasive health, the Internet of Things, computer vision, and medical informatics.
+Master's student at FGV EMAp and researcher in applied mathematics for automation. Holds a BSc in Applied Mathematics from the same institution, funded by the CDMC. Focuses on solving defense-related problems and teaching additive manufacturing techniques for both the Brazilian Marine Corps Officers' Advanced Career Course (C-ApA-CFN) and undergraduate students at FGV EMAp.
 
 ## Education
 
-- MSc student, FGV EMAp.
-- BSc in Applied Mathematics, FGV EMAp.
-- Technical degree in Mechatronics, IFSC.
+- Master's degree in progress in Applied Mathematics and Data Science. Fundação Getulio Vargas, FGV, Brazil.
+- Bachelor's degree in Mathematics. Fundação Getulio Vargas, FGV, Brazil.
+- Vocational / Technical Diploma in Mechatronics. Federal Institute of Santa Catarina, IFSC, Brazil.
 
 ## Interests
 
-Pervasive health, IoT, computer vision, and medical informatics.
+Simulation-Based Inference (SBI), Computer Vision and Machine Learning (ML), Design for Additive Manufacturing (DfAM), Internet of Things (IoT).
 
 :::
 

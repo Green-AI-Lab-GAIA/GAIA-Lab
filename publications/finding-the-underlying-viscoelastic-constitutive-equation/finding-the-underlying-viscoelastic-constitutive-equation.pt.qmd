@@ -50,7 +50,7 @@ destilação de modelos para extrair modelos simplificados a partir de modelos c
 e a robustez das UDEs na modelagem reológica.
 
 :::: {.pub-figures}
-![**Fig. 4.** Avaliação da extrapolação dos modelos UDE para a tensão de cisalhamento $(\sigma_{12}^*, t^*)$ com entrada $\dot{\gamma}^*(t^*) = 3\cos(1.5\,t^*)$. Os pontos destacados em verde correspondem aos pontos de treinamento, $t^* \in [0, 20]$. A curva azul ilustra a solução numérica da equação diferencial, chamada de solução de referência ("ground truth"). A curva preta representa o modelo UDE antes do treinamento, enquanto a curva vermelha ilustra o modelo UDE após o treinamento. Os seguintes parâmetros foram utilizados: $\xi = 0.4$ (Johnson, Segalman), $\alpha = 0.2$ (Giesekus) e $(\xi, \epsilon) = (0, 0.4)$ para (ePTT).](figura1.png)
+![Avaliação da extrapolação dos modelos UDE para a tensão de cisalhamento $(\sigma_{12}^*, t^*)$ com entrada $\dot{\gamma}^*(t^*) = 3\cos(1.5\,t^*)$. Os pontos destacados em verde correspondem aos pontos de treinamento, $t^* \in [0, 20]$. A curva azul ilustra a solução numérica da equação diferencial, chamada de solução de referência ("ground truth"). A curva preta representa o modelo UDE antes do treinamento, enquanto a curva vermelha ilustra o modelo UDE após o treinamento. Os seguintes parâmetros foram utilizados: $\xi = 0.4$ (Johnson, Segalman), $\alpha = 0.2$ (Giesekus) e $(\xi, \epsilon) = (0, 0.4)$ para (ePTT).](figura1.png)
 ::::
 
 ## Como citar

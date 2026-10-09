@@ -54,14 +54,9 @@ use of space-borne hyperspectral imagery and ensem-ble deep learning for robust 
 intropical regions, emphasizing the critical role of high spectral resolution.
 
 :::: {.pub-figures}
-![Localização da área de estudo no estado de São Paulo, Brasil. São apresentadas composições em cores reais de dezesseis cenas 
-do satélite hiperespectral EnMAP abrangendo o estado de São Paulo. Um detalhe no canto inferior esquerdo destaca a distribuição 
-espacial das parcelas de campo estabelecidas em quatro tipos de cobertura florestal.](figura1.jpg)
+![Location of the study area in the state of São Paulo, Brazil. True-color composites of sixteen scenes from the EnMAP hyperspectral satellite covering the state of São Paulo are shown. An inset in the lower-left corner highlights the spatial distribution of field plots established across four forest cover types.](figura1.jpg)
 
-![Abordagem de ensemble baseada em aprendizado profundo. Três modelos distintos de aprendizado profundo foram treinados de forma 
-independente: uma rede neural recorrente (RNN), um autoencoder e uma rede neural convolucional 1D (1D-CNN). Cada modelo gerou saídas 
-de probabilidade de classe, as quais foram posteriormente combinadas utilizando um mecanismo de votação rígida (hard voting) para 
-gerar a previsão final do ensemble.](figura2.jpg)
+![Deep learning-based ensemble approach. Three distinct deep learning models were trained independently: a recurrent neural network (RNN), an autoencoder, and a 1D convolutional neural network (1D-CNN). Each model generated class probability outputs, which were subsequently combined using a hard voting mechanism to produce the final ensemble prediction.](figura2.jpg)
 ::::
 
 ## How to cite

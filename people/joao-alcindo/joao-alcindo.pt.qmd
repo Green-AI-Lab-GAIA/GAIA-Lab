@@ -30,6 +30,7 @@ Assistente de pesquisa no GAIA Lab, aplicando visão computacional e deep learni
 
 ## Formação
 
+- Mestrando no IASD Program da Université PSL.
 - Mestrado em Matemática Aplicada e Ciência de Dados, FGV EMAp.
 - Graduação em Ciência de Dados e IA, FGV EMAp.
 

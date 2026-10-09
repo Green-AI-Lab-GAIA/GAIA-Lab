@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="icon" type="image/png" href="./icon/favicon-light.png">
 
 
-<link rel="stylesheet" href="styles.css?v=4b9287ad">
+<link rel="stylesheet" href="styles.css?v=962d8b77">
 </head>
 
 <body class="nav-fixed home fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -326,19 +326,23 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="home-hero">
   <div class="hero-map" aria-hidden="true">
-    <img src="images/hero/mapa-1.jpg" alt="">
-    <img src="images/hero/mapa-2.jpg" alt="">
-    <img src="images/hero/mapa-3.jpg" alt="">
+    <img class="active" src="images/hero/1-hero.jpg" alt="">
+    <img src="images/hero/2-hero.jpg" alt="">
+    <img src="images/hero/3-hero.jpg" alt="">
+    <img src="images/hero/4-hero.jpg" alt="">
+    <img src="images/hero/5-hero.jpg" alt="">
+    <img src="images/hero/6-hero.jpg" alt="">
+    <img src="images/hero/7-hero.jpg" alt="">
   </div>
   <div class="hero-lockup">
     <img class="logo" src="icon/icon.png" alt="GAIA Lab logo">
     <span class="hero-name">GAIA Lab</span>
   </div>
   <p class="hero-tagline">
-    Machine learning and remote sensing for forests, agriculture and climate,
-    at FGV EMAp, since 2024.
+    Artificial intelligence and Earth observation to understand the dynamics
+    of complex socio-environmental systems.
   </p>
-  <a class="hero-cta" href="./research/">See the research</a>
+  <a class="hero-cta" href="./about/">Learn more</a>
   <a class="hero-scroll" href="#home-areas" aria-label="Scroll to the research areas">
     <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
       <path d="m5 9 7 7 7-7"></path>
@@ -376,7 +380,18 @@ ul.task-list li input[type="checkbox"] {
       <div class="area-text">Climate trends and agricultural risk in 15-year windows.</div>
       <div class="area-kpi">+1.1 °C peak<span>Nova Mutum, MT, 2011 to 2025</span></div>
     </a>
-</div>
+    <a class="area-card reveal" href="./research/#cities">
+      <svg viewbox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 21h18"></path>
+        <path d="M5 21V7l8-4v18"></path>
+        <path d="M19 21V11l-6-4"></path>
+        <path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"></path>
+      </svg>
+      <div class="area-title">Cities</div>
+      <div class="area-text">Characterization of urban settlements and socioeconomic analysis through satellite imagery.</div>
+      <div class="area-kpi">Urban sensing<span>Mapping and socioeconomic vulnerability</span></div>
+    </a>
+  </div>
 <section id="the-lab-in-numbers" class="level2">
 <h2 data-anchor-id="the-lab-in-numbers">The lab in numbers</h2>
 <div class="stats reveal">
@@ -821,6 +836,11 @@ ul.task-list li input[type="checkbox"] {
         var caixa = reveais[r].getBoundingClientRect();
         if (caixa.top < window.innerHeight && caixa.bottom > 0) revelar(reveais[r]);
       }
+      for (var f = 0; f < voadores.length; f++) {
+        if (voadores[f].classList.contains("in-view")) continue;
+        var boxV = voadores[f].getBoundingClientRect();
+        if (boxV.top < window.innerHeight && boxV.bottom > 0) voadores[f].classList.add("in-view");
+      }
     }
 
     var observador = new IntersectionObserver(function (entradas) {
@@ -832,6 +852,24 @@ ul.task-list li input[type="checkbox"] {
     }, { threshold: 0.15 });
 
     for (var i = 0; i < reveais.length; i++) observador.observe(reveais[i]);
+
+    // Elementos voadores na rolagem (.fly-item)
+    var voadores = document.querySelectorAll(".fly-item");
+    if (voadores.length) {
+      if (reduzido) {
+        for (var f = 0; f < voadores.length; f++) voadores[f].classList.add("in-view");
+      } else {
+        var observadorVoadores = new IntersectionObserver(function (entradasV) {
+          for (var v = 0; v < entradasV.length; v++) {
+            if (!entradasV[v].isIntersecting) continue;
+            entradasV[v].target.classList.add("in-view");
+            observadorVoadores.unobserve(entradasV[v].target);
+          }
+        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+
+        for (var f = 0; f < voadores.length; f++) observadorVoadores.observe(voadores[f]);
+      }
+    }
 
     // Rede de segurança: se o observador não disparar (navegadores antigos ou
     // situações excepcionais), o que já está na tela aparece mesmo assim
@@ -1239,6 +1277,49 @@ ul.task-list li input[type="checkbox"] {
         });
       });
     });
+
+    // Revezamento de fotos no hero: qualquer numero de imagens em .hero-map
+    // e alternado a cada 10s com transicao suave via classe .active
+    var heroContainer = document.querySelector(".hero-map");
+    if (heroContainer) {
+      var heroImgs = heroContainer.querySelectorAll("img");
+      if (heroImgs.length > 1) {
+        var heroIndex = 0;
+        heroImgs[0].classList.add("active");
+
+        var heroTimer = null;
+
+        function proximaFotoHero() {
+          heroImgs[heroIndex].classList.remove("active");
+          heroIndex = (heroIndex + 1) % heroImgs.length;
+          heroImgs[heroIndex].classList.add("active");
+        }
+
+        function iniciarHeroTimer() {
+          if (reduzido) return;
+          pararHeroTimer();
+          heroTimer = setInterval(proximaFotoHero, 10000);
+        }
+
+        function pararHeroTimer() {
+          if (heroTimer) {
+            clearInterval(heroTimer);
+            heroTimer = null;
+          }
+        }
+
+        iniciarHeroTimer();
+
+        // Pausa a rotacao quando a aba do navegador estiver oculta
+        document.addEventListener("visibilitychange", function () {
+          if (document.hidden) {
+            pararHeroTimer();
+          } else {
+            iniciarHeroTimer();
+          }
+        });
+      }
+    }
   });
 </script>
 <script>
@@ -1346,6 +1427,36 @@ ul.task-list li input[type="checkbox"] {
         }
         ativar(0);
       })(exploradores[e]);
+    }
+
+    // --------------------------------------------------------------- cinema interativo da floresta
+    var cinemas = document.querySelectorAll(".forest-cinema-wrap");
+    for (var c = 0; c < cinemas.length; c++) {
+      (function (wrap) {
+        var botoes = wrap.querySelectorAll(".cinema-btn");
+        var paineis = wrap.querySelectorAll(".cinema-pane");
+
+        botoes.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var alvo = btn.getAttribute("data-cinema-tab");
+            botoes.forEach(function (b) {
+              var ativo = b === btn;
+              b.classList.toggle("active", ativo);
+              b.setAttribute("aria-selected", ativo ? "true" : "false");
+            });
+            paineis.forEach(function (p) {
+              var ativo = p.id === "pane-" + alvo;
+              p.classList.toggle("active", ativo);
+              if (ativo) {
+                p.querySelectorAll("img[data-src]").forEach(function (im) {
+                  im.src = im.getAttribute("data-src");
+                  im.removeAttribute("data-src");
+                });
+              }
+            });
+          });
+        });
+      })(cinemas[c]);
     }
   });
 </script>
@@ -1552,29 +1663,68 @@ ul.task-list li input[type="checkbox"] {
         return;
       }
 
-      var dados = new FormData(form);
-      dados.set("motivo", motivoEscolhido());   // "Outro" já vem com o detalhe
-      dados.delete("outro");                     // o detalhe já está no motivo
-      dados.append("token", form.getAttribute("data-token") || "");
-      dados.append("pagina", location.pathname);
-      dados.append("idioma", form.getAttribute("data-idioma") || "pt");
+      var campoAnexo = form.querySelector("#join-anexo");
+      var anexo = campoAnexo && campoAnexo.files && campoAnexo.files[0];
 
-      botao.disabled = true;
-      mostrar(texto("msg-enviando", "Enviando..."), "enviando");
-      var parametros = new URLSearchParams();
-      dados.forEach(function (v, k) { parametros.append(k, v); });
+      // Limite de 10 MB (10 * 1024 * 1024 bytes)
+      var LIMITE_BYTES = 10 * 1024 * 1024;
+      if (anexo && anexo.size > LIMITE_BYTES) {
+        mostrar(texto("msg-tamanho", "O arquivo deve ter no máximo 10 MB."), "erro");
+        if (campoAnexo) campoAnexo.focus();
+        return;
+      }
 
-      fetch(endpoint, { method: "POST", mode: "no-cors", body: parametros })
-        .then(function () {
-          mostrar(texto("msg-ok", "Mensagem enviada. Responderemos por e-mail."), "ok");
-          form.querySelectorAll("input, select, textarea, button").forEach(function (campo) {
-            if (!campo.classList.contains("join-honeypot")) campo.disabled = true;
-          });
+      function enviar(arquivoBase64, arquivoNome, arquivoTipo) {
+        var dados = {
+          nome: (form.querySelector("#join-nome") && form.querySelector("#join-nome").value || "").trim(),
+          email: (form.querySelector("#join-email") && form.querySelector("#join-email").value || "").trim(),
+          motivo: motivoEscolhido(),
+          mensagem: ((form.querySelector("#join-msg") || form.querySelector("#join-mensagem")) && (form.querySelector("#join-msg") || form.querySelector("#join-mensagem")).value || "").trim(),
+          website: (honeypot && honeypot.value) || "",
+          token: form.getAttribute("data-token") || "",
+          pagina: location.pathname,
+          idioma: form.getAttribute("data-idioma") || "pt",
+          arquivoBase64: arquivoBase64 || "",
+          arquivoNome: arquivoNome || "",
+          arquivoTipo: arquivoTipo || ""
+        };
+
+        botao.disabled = true;
+        mostrar(texto("msg-enviando", "Enviando..."), "enviando");
+
+        fetch(endpoint, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(dados)
         })
-        .catch(function () {
-          botao.disabled = false;
-          mostrar(texto("msg-erro", "Não foi possível enviar. Tente novamente mais tarde."), "erro");
-        });
+          .then(function () {
+            mostrar(texto("msg-ok", "Mensagem enviada. Responderemos por e-mail."), "ok");
+            form.querySelectorAll("input, select, textarea, button").forEach(function (campo) {
+              if (!campo.classList.contains("join-honeypot")) campo.disabled = true;
+            });
+          })
+          .catch(function () {
+            botao.disabled = false;
+            mostrar(texto("msg-erro", "Não foi possível enviar. Tente novamente mais tarde."), "erro");
+          });
+      }
+
+      if (anexo) {
+        mostrar(texto("msg-lendo", "Preparando arquivo..."), "enviando");
+        var leitor = new FileReader();
+        leitor.onload = function () {
+          var res = leitor.result || "";
+          var base64 = res.indexOf(",") !== -1 ? res.split(",")[1] : res;
+          enviar(base64, anexo.name, anexo.type);
+        };
+        leitor.onerror = function () {
+          mostrar(texto("msg-erro-arquivo", "Não foi possível ler o arquivo selecionado."), "erro");
+        };
+        leitor.readAsDataURL(anexo);
+      } else {
+        enviar("", "", "");
+      }
     });
   });
 </script>

@@ -49,7 +49,7 @@ distillation approach was employed to extract simplified models from complex one
 and robustness of UDEs in rheological modeling.
 
 :::: {.pub-figures}
-![**Fig. 4.** Avaliação da extrapolação dos modelos UDE para a tensão de cisalhamento $(\sigma_{12}^*, t^*)$ com entrada $\dot{\gamma}^*(t^*) = 3\cos(1.5\,t^*)$. Os pontos destacados em verde correspondem aos pontos de treinamento, $t^* \in [0, 20]$. A curva azul ilustra a solução numérica da equação diferencial, chamada de solução de referência ("ground truth"). A curva preta representa o modelo UDE antes do treinamento, enquanto a curva vermelha ilustra o modelo UDE após o treinamento. Os seguintes parâmetros foram utilizados: $\xi = 0.4$ (Johnson, Segalman), $\alpha = 0.2$ (Giesekus) e $(\xi, \epsilon) = (0, 0.4)$ para (ePTT).](figura1.png)
+![Evaluation of the extrapolation of UDE models for shear stress $(\sigma_{12}^*, t^*)$ with input $\dot{\gamma}^*(t^*) = 3\cos(1.5\,t^*)$. The green highlighted points correspond to the training points, $t^* \in [0, 20]$. The blue curve illustrates the numerical solution of the differential equation, referred to as the reference solution ("ground truth"). The black curve represents the UDE model before training, while the red curve illustrates the UDE model after training. The following parameters were used: $\xi = 0.4$ (Johnson, Segalman), $\alpha = 0.2$ (Giesekus), and $(\xi, \epsilon) = (0, 0.4)$ for (ePTT).](figura1.png)
 ::::
 
 ## How to cite

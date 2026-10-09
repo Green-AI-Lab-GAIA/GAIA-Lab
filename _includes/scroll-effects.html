@@ -63,6 +63,11 @@
         var caixa = reveais[r].getBoundingClientRect();
         if (caixa.top < window.innerHeight && caixa.bottom > 0) revelar(reveais[r]);
       }
+      for (var f = 0; f < voadores.length; f++) {
+        if (voadores[f].classList.contains("in-view")) continue;
+        var boxV = voadores[f].getBoundingClientRect();
+        if (boxV.top < window.innerHeight && boxV.bottom > 0) voadores[f].classList.add("in-view");
+      }
     }
 
     var observador = new IntersectionObserver(function (entradas) {
@@ -74,6 +79,24 @@
     }, { threshold: 0.15 });
 
     for (var i = 0; i < reveais.length; i++) observador.observe(reveais[i]);
+
+    // Elementos voadores na rolagem (.fly-item)
+    var voadores = document.querySelectorAll(".fly-item");
+    if (voadores.length) {
+      if (reduzido) {
+        for (var f = 0; f < voadores.length; f++) voadores[f].classList.add("in-view");
+      } else {
+        var observadorVoadores = new IntersectionObserver(function (entradasV) {
+          for (var v = 0; v < entradasV.length; v++) {
+            if (!entradasV[v].isIntersecting) continue;
+            entradasV[v].target.classList.add("in-view");
+            observadorVoadores.unobserve(entradasV[v].target);
+          }
+        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+
+        for (var f = 0; f < voadores.length; f++) observadorVoadores.observe(voadores[f]);
+      }
+    }
 
     // Rede de segurança: se o observador não disparar (navegadores antigos ou
     // situações excepcionais), o que já está na tela aparece mesmo assim
@@ -481,5 +504,48 @@
         });
       });
     });
+
+    // Revezamento de fotos no hero: qualquer numero de imagens em .hero-map
+    // e alternado a cada 10s com transicao suave via classe .active
+    var heroContainer = document.querySelector(".hero-map");
+    if (heroContainer) {
+      var heroImgs = heroContainer.querySelectorAll("img");
+      if (heroImgs.length > 1) {
+        var heroIndex = 0;
+        heroImgs[0].classList.add("active");
+
+        var heroTimer = null;
+
+        function proximaFotoHero() {
+          heroImgs[heroIndex].classList.remove("active");
+          heroIndex = (heroIndex + 1) % heroImgs.length;
+          heroImgs[heroIndex].classList.add("active");
+        }
+
+        function iniciarHeroTimer() {
+          if (reduzido) return;
+          pararHeroTimer();
+          heroTimer = setInterval(proximaFotoHero, 10000);
+        }
+
+        function pararHeroTimer() {
+          if (heroTimer) {
+            clearInterval(heroTimer);
+            heroTimer = null;
+          }
+        }
+
+        iniciarHeroTimer();
+
+        // Pausa a rotacao quando a aba do navegador estiver oculta
+        document.addEventListener("visibilitychange", function () {
+          if (document.hidden) {
+            pararHeroTimer();
+          } else {
+            iniciarHeroTimer();
+          }
+        });
+      }
+    }
   });
 </script>

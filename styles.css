@@ -14,10 +14,7 @@ body.home #title-block-header {
   justify-content: center;
   min-height: calc(100vh - 62px);
   width: 100%;
-  /* Versão WebP da foto de fundo; os mapas entram por cima pelo bloco .hero-map */
-  background-image: url('images/hero/fundo.webp');
-  background-size: cover;
-  background-position: center;
+  background-color: #0b140d;
   border-radius: 0 0 18px 18px;
   text-align: center;
   padding: 2rem 1.5rem;
@@ -434,6 +431,111 @@ html.has-js .reveal.revealed {
   line-height: 1.55;
 }
 
+/* Layout split da Missão (Texto + Animação de Satélite e Terra) */
+.mission-split {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 2.8rem;
+  max-width: 1140px;
+  margin: 1.8rem auto 3rem;
+}
+
+.mission-split .mission {
+  max-width: none;
+  margin: 0 0 1.25rem;
+  font-size: 1.35rem;
+  line-height: 1.6;
+}
+
+.mission-split .mission:last-child {
+  margin-bottom: 0;
+}
+
+.mission-visual-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.earth-orbit-card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
+  border-radius: 32px;
+  background: radial-gradient(circle at 50% 50%, rgba(54, 89, 2, 0.06) 0%, rgba(10, 20, 8, 0) 72%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.quarto-dark .earth-orbit-card {
+  background: radial-gradient(circle at 50% 50%, rgba(167, 209, 119, 0.09) 0%, rgba(10, 20, 8, 0) 75%);
+}
+
+.earth-orbit-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.08));
+}
+
+body.quarto-dark .earth-orbit-svg {
+  filter: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.45));
+}
+
+.orbit-badge {
+  position: absolute;
+  bottom: -0.4rem;
+  background: var(--gaia-surface);
+  border: 1px solid var(--gaia-border);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+  border-radius: 999px;
+  padding: 0.32rem 0.85rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--gaia-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  pointer-events: none;
+}
+
+body.quarto-dark .orbit-badge {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.orbit-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7fb04f;
+  box-shadow: 0 0 6px #7fb04f;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@media (max-width: 900px) {
+  .mission-split {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+  }
+
+  .mission-split .mission {
+    font-size: 1.25rem;
+  }
+
+  .earth-orbit-card {
+    max-width: 340px;
+    margin: 0 auto;
+  }
+}
+
 .mark {
   font-style: normal;
   font-weight: 600;
@@ -752,52 +854,168 @@ html.has-js .reveal.revealed {
   transform: scaleX(1);
 }
 
-/* Linha do tempo da página Sobre */
+/* Linha do tempo da página Sobre com Régua SVG */
 
-.timeline {
+.timeline-ruler {
   position: relative;
-  max-width: 720px;
-  margin: 2rem auto 3rem;
-  padding-left: 2rem;
+  max-width: 780px;
+  margin: 2.2rem auto 3.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 8px;
-  top: 6px;
-  bottom: 6px;
-  width: 3px;
-  border-radius: 2px;
-  background: #9fcb6b;
-}
-
-.tl-item {
+.timeline-ruler .tl-item {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 1.6rem;
   position: relative;
-  margin-bottom: 1.8rem;
+  padding-bottom: 2.4rem;
 }
 
-.tl-item::before {
-  content: "";
+.timeline-ruler .tl-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-ruler .tl-ruler-col {
+  position: relative;
+  width: 44px;
+  height: 100%;
+  color: var(--gaia-accent);
+}
+
+.timeline-ruler .tl-ruler-segment {
   position: absolute;
-  left: -1.72rem;
-  top: 0.4rem;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: #365902;
-  border: 3px solid #9fcb6b;
+  top: 14px;
+  left: 0;
+  width: 44px;
+  height: calc(100% + 2.4rem);
+  color: var(--gaia-accent);
 }
 
-.tl-year {
+.timeline-ruler .tl-item-last .tl-ruler-segment {
+  height: 24px;
+}
+
+.timeline-ruler .tl-ruler-node {
+  position: absolute;
+  top: 2px;
+  left: 10px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.timeline-ruler .tl-node-svg {
+  width: 28px;
+  height: 28px;
+  overflow: visible;
+}
+
+.timeline-ruler .node-halo {
+  fill: var(--gaia-surface);
+  stroke: var(--gaia-border);
+  stroke-width: 1.2px;
+}
+
+.timeline-ruler .node-cross {
+  stroke: var(--gaia-accent);
+  stroke-width: 1.2px;
+  opacity: 0.75;
+}
+
+.timeline-ruler .node-ring {
+  fill: var(--gaia-surface);
+  stroke: var(--gaia-accent);
+  stroke-width: 2px;
+}
+
+.timeline-ruler .node-core {
+  fill: var(--gaia-accent);
+}
+
+.timeline-ruler .tl-content {
+  padding-top: 0.15rem;
+}
+
+.timeline-ruler .tl-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.timeline-ruler .tl-year {
+  font-size: 1.35rem;
   font-weight: 800;
-  color: #365902;
-  font-size: 1.15rem;
-  margin-bottom: 0.2rem;
+  letter-spacing: -0.02em;
+  color: var(--gaia-accent);
+  line-height: 1;
+  font-feature-settings: "tnum";
 }
 
-.tl-text {
-  color: #555;
+.timeline-ruler .tl-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: var(--gaia-soft);
+  border: 1px solid var(--gaia-border);
+  color: var(--gaia-muted);
+}
+
+.timeline-ruler .tl-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 0.45rem;
+  color: var(--gaia-text);
+  line-height: 1.35;
+}
+
+.timeline-ruler .tl-text {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--gaia-muted);
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .timeline-ruler .tl-item {
+    grid-template-columns: 36px 1fr;
+    gap: 1rem;
+    padding-bottom: 1.8rem;
+  }
+
+  .timeline-ruler .tl-ruler-col {
+    width: 36px;
+  }
+
+  .timeline-ruler .tl-ruler-segment {
+    width: 36px;
+    height: calc(100% + 1.8rem);
+  }
+
+  .timeline-ruler .tl-ruler-node {
+    left: 4px;
+  }
+
+  .timeline-ruler .tl-year {
+    font-size: 1.2rem;
+  }
+
+  .timeline-ruler .tl-heading {
+    font-size: 1.05rem;
+  }
+
+  .timeline-ruler .tl-text {
+    font-size: 0.93rem;
+  }
 }
 
 /* Links dos menus: sublinhado animado que cresce da esquerda no hover */
@@ -881,15 +1099,13 @@ html.has-js .reveal.revealed {
     align-items: center;
   }
 
-  /* Navbar recolhida (abaixo de lg). Duas coisas mudam de lugar aqui:
+  /* Navbar recolhida
 
      (1) o título. O container é flex com justify-content space-between e os três
      itens da primeira faixa (hambúrguer, título, utilitários) têm larguras
-     diferentes, então o título parava ~20px à esquerda do centro da tela. Com o
-     justify-content center ele passa a ser o único item em fluxo da faixa — o
-     hambúrguer sai do fluxo, absoluto à esquerda — e a faixa inteira sobra para
-     centralizá-lo, independentemente do hambúrguer e dos utilitários. O
-     max-width corta o título antes de ele encostar no hambúrguer.
+     diferentes. Com justify-content center ele é o único item em fluxo da faixa
+     e a faixa inteira sobra para centralizá-lo, independentemente do hambúrguer e 
+     dos utilitários. O max-width corta o título antes de ele encostar no hambúrguer.
 
      (2) a zona de configurações do menu: idioma e tema na mesma linha, no fim da
      lista de links. Quem move o botão de tema para dentro do menu é o
@@ -2138,6 +2354,72 @@ display: none;
   box-shadow: 0 0 0 3px rgba(54, 89, 2, 0.18);
 }
 
+.join-form .join-req {
+  color: #365902;
+  font-weight: bold;
+  margin-left: 0.2rem;
+}
+
+body.quarto-dark .join-form .join-req {
+  color: #7fb04f;
+}
+
+.join-form .join-opcional {
+  font-size: 0.85rem;
+  font-weight: normal;
+  color: #666;
+  margin-left: 0.35rem;
+}
+
+body.quarto-dark .join-form .join-opcional {
+  color: #aaa;
+}
+
+.join-form .join-dica {
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: #555;
+  margin-top: -0.1rem;
+  margin-bottom: 0.45rem;
+}
+
+body.quarto-dark .join-form .join-dica {
+  color: #aaa;
+}
+
+.join-form input[type="file"] {
+  padding: 0.45rem 0.6rem;
+  cursor: pointer;
+}
+
+.join-form input[type="file"]::file-selector-button {
+  padding: 0.4rem 0.9rem;
+  margin-right: 0.8rem;
+  background: #f0f4eb;
+  border: 1px solid #b5c4a3;
+  border-radius: 6px;
+  color: #365902;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.join-form input[type="file"]::file-selector-button:hover {
+  background: #e3ebd8;
+  border-color: #365902;
+}
+
+body.quarto-dark .join-form input[type="file"]::file-selector-button {
+  background: #2a3128;
+  border-color: #4a5445;
+  color: #9ecc74;
+}
+
+body.quarto-dark .join-form input[type="file"]::file-selector-button:hover {
+  background: #354032;
+  border-color: #7fb04f;
+}
+
 /* Lista de opções própria: o <select> nativo fica escondido e o JS monta um
    botão + lista com o visual do site, igual em qualquer sistema (no iOS e no
    macOS o painel nativo muda de forma e não dá para estilizar). O <select>
@@ -2641,8 +2923,9 @@ body.quarto-dark {
   --gaia-soft: #262b30;
 }
 
-/* Sequencia de mapas reais do produto Floresta como fundo do hero: os quadros
-   entram em revezamento, um atras do outro, num ciclo longo e discreto */
+/* Sequencia de mapas do fundo do hero: revezamento controlado por JavaScript
+   com transicao suave de opacidade. Aceita qualquer quantidade de fotos sem
+   necessidade de alterar regras de CSS. */
 
 .home-hero .hero-map {
   position: absolute;
@@ -2657,14 +2940,19 @@ body.quarto-dark {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  animation: hero-map-ciclo 50s linear infinite;
+  transition: opacity 1.6s ease-in-out;
+  pointer-events: none;
 }
 
-.hero-map img:nth-child(1) { animation-delay: 0s; }
-.hero-map img:nth-child(2) { animation-delay: 10s; }
-.hero-map img:nth-child(3) { animation-delay: 20s; }
-.hero-map img:nth-child(4) { animation-delay: 30s; }
-.hero-map img:nth-child(5) { animation-delay: 40s; }
+/* Primeira imagem visivel por padrao (evita tela escura antes do JS inicializar) */
+.hero-map img:first-child,
+.hero-map img.active {
+  opacity: 1;
+}
+
+html.has-js .hero-map img:not(.active) {
+  opacity: 0;
+}
 
 .hero-map::after {
   content: "";
@@ -2681,16 +2969,16 @@ body.quarto-dark {
   z-index: 1;
 }
 
-@keyframes hero-map-ciclo {
-  0% { opacity: 0; }
-  4% { opacity: 1; }
-  16% { opacity: 1; }
-  20% { opacity: 0; }
-  100% { opacity: 0; }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .hero-map img:first-child { opacity: 1; }
+  .hero-map img {
+    transition: none;
+  }
+  .hero-map img:first-child {
+    opacity: 1;
+  }
+  .hero-map img:not(:first-child) {
+    opacity: 0 !important;
+  }
 }
 
 .area-kpi {
@@ -3087,4 +3375,482 @@ body.quarto-dark .explorer-tab[aria-selected="true"] {
 
 body.quarto-dark .join-status.erro {
   color: #ff9b8f;
+}
+
+/* ===================================================================
+   FLORESTA INTERATIVA & SCROLL-DRIVEN FLY-IN EFFECTS
+   =================================================================== */
+
+/* Elementos voadores no scroll (.fly-item) */
+.fly-item {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.85s ease;
+}
+
+.fly-left {
+  transform: translate3d(-70px, 15px, 0) scale(0.95);
+}
+
+.fly-right {
+  transform: translate3d(70px, 15px, 0) scale(0.95);
+}
+
+.fly-up {
+  transform: translate3d(0, 50px, 0) scale(0.96);
+}
+
+.fly-item.in-view {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) scale(1) !important;
+}
+
+/* Scroll-driven animations nativas quando suportadas */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    .fly-item.fly-left {
+      animation: flyInLeft auto cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 90%;
+    }
+    .fly-item.fly-right {
+      animation: flyInRight auto cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 90%;
+    }
+    .fly-item.fly-up {
+      animation: flyInUp auto cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 90%;
+    }
+
+    @keyframes flyInLeft {
+      from { opacity: 0; transform: translate3d(-70px, 15px, 0) scale(0.95); }
+      to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+    }
+    @keyframes flyInRight {
+      from { opacity: 0; transform: translate3d(70px, 15px, 0) scale(0.95); }
+      to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+    }
+    @keyframes flyInUp {
+      from { opacity: 0; transform: translate3d(0, 50px, 0) scale(0.96); }
+      to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fly-item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ===================================================================
+   CINEMA INTERATIVO DA FLORESTA (HERO SHOWCASE)
+   =================================================================== */
+
+.forest-cinema-wrap {
+  margin: 2.8rem 0 3.5rem;
+  border: 1px solid var(--gaia-border);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--gaia-surface);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+}
+
+body.quarto-dark .forest-cinema-wrap {
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  border-color: #384236;
+}
+
+.forest-cinema-header {
+  padding: 2.2rem 2.2rem 1.4rem;
+  background: linear-gradient(180deg, var(--gaia-soft) 0%, var(--gaia-surface) 100%);
+  border-bottom: 1px solid var(--gaia-border);
+}
+
+.cinema-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gaia-accent);
+  background: rgba(54, 89, 2, 0.09);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 0.8rem;
+}
+
+body.quarto-dark .cinema-badge {
+  background: rgba(167, 209, 119, 0.12);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gaia-accent);
+  box-shadow: 0 0 8px var(--gaia-accent);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.5; }
+}
+
+.forest-cinema-title {
+  font-size: 1.65rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: var(--gaia-text, inherit);
+}
+
+.forest-cinema-desc {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--gaia-muted);
+  max-width: 820px;
+  margin: 0 0 1.4rem;
+}
+
+.forest-cinema-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.cinema-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.05rem;
+  border-radius: 999px;
+  border: 1px solid var(--gaia-border);
+  background: var(--gaia-surface);
+  color: var(--gaia-muted);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.cinema-btn:hover {
+  background: var(--gaia-soft);
+  color: var(--gaia-accent);
+  border-color: var(--gaia-accent);
+}
+
+.cinema-btn.active {
+  background: var(--gaia-accent);
+  color: #fff !important;
+  border-color: var(--gaia-accent);
+  box-shadow: 0 4px 14px rgba(54, 89, 2, 0.3);
+}
+
+body.quarto-dark .cinema-btn.active {
+  box-shadow: 0 4px 14px rgba(167, 209, 119, 0.25);
+  color: #1a2216 !important;
+}
+
+/* Palco visual cinemático */
+.forest-cinema-stage-container {
+  position: relative;
+  background: #080c07;
+  overflow: hidden;
+}
+
+.forest-cinema-stage {
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.cinema-pane {
+  display: none;
+  width: 100%;
+  animation: cinemaFade 0.45s ease forwards;
+}
+
+.cinema-pane.active {
+  display: block;
+}
+
+@keyframes cinemaFade {
+  from { opacity: 0; transform: scale(0.985); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.cinema-pane img {
+  display: block;
+  max-width: 100%;
+  max-height: 600px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.cinema-dual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 1.2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.cinema-dual-grid img {
+  width: 100%;
+  height: auto;
+  max-height: 540px;
+  border-radius: 10px;
+  background: #111;
+}
+
+.cinema-overlay-bar {
+  padding: 0.75rem 1.4rem;
+  background: rgba(10, 16, 9, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.overlay-tag {
+  color: #c9e89d;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.overlay-meta {
+  color: #889980;
+  font-size: 0.8rem;
+}
+
+/* Camada de cartões flutuantes voadores (.floating-cards-layer) */
+.floating-cards-layer {
+  pointer-events: none;
+}
+
+.float-card {
+  position: absolute;
+  z-index: 5;
+  background: rgba(15, 22, 14, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(167, 209, 119, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+  border-radius: 12px;
+  padding: 0.75rem 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #fff;
+  max-width: 280px;
+  pointer-events: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.float-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: #a7d177;
+}
+
+.float-card-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.float-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #bbf083;
+}
+
+.float-card-sub {
+  font-size: 0.76rem;
+  line-height: 1.3;
+  color: #ccd5c7;
+}
+
+.float-card-top-left {
+  top: 1.2rem;
+  left: 1.2rem;
+}
+
+.float-card-top-right {
+  top: 1.2rem;
+  right: 1.2rem;
+}
+
+.float-card-bottom-left {
+  bottom: 3.5rem;
+  left: 1.2rem;
+}
+
+.float-card-bottom-right {
+  bottom: 3.5rem;
+  right: 1.2rem;
+}
+
+/* ===================================================================
+   SCROLLYTELLING VERTICAL (A JORNADA DOS DADOS)
+   =================================================================== */
+
+.scrolly-flow {
+  margin: 3.5rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.flow-step {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.8rem;
+  border-radius: 18px;
+  background: var(--gaia-surface);
+  border: 1px solid var(--gaia-border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.flow-step:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+body.quarto-dark .flow-step {
+  border-color: #384236;
+}
+
+.flow-step.flow-reverse {
+  grid-template-columns: 1fr 1fr;
+}
+
+.flow-step.flow-reverse .flow-media {
+  order: 2;
+}
+
+.flow-step.flow-reverse .flow-content {
+  order: 1;
+}
+
+.flow-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.flow-num {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gaia-accent);
+}
+
+.flow-content h4 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--gaia-text, inherit);
+}
+
+.flow-content p {
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: var(--gaia-muted);
+  margin: 0;
+}
+
+.flow-media {
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0f140e;
+  border: 1px solid var(--gaia-border);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flow-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.flow-step:hover .flow-media img {
+  transform: scale(1.02);
+}
+
+/* Responsividade mobile */
+@media (max-width: 900px) {
+  .float-card {
+    position: static;
+    max-width: 100%;
+  }
+
+  .floating-cards-layer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: #0f160e;
+    pointer-events: auto;
+  }
+
+  .cinema-dual-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-step,
+  .flow-step.flow-reverse {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+
+  .flow-step.flow-reverse .flow-media {
+    order: 0;
+  }
+
+  .flow-step.flow-reverse .flow-content {
+    order: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .floating-cards-layer {
+    grid-template-columns: 1fr;
+  }
+
+  .forest-cinema-header {
+    padding: 1.4rem 1.2rem 1rem;
+  }
+
+  .forest-cinema-title {
+    font-size: 1.35rem;
+  }
+
+  .cinema-overlay-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
 }

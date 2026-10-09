@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="icon" type="image/png" href="../icon/favicon-light.png">
 
 
-<link rel="stylesheet" href="../styles.css?v=4b9287ad">
+<link rel="stylesheet" href="../styles.css?v=962d8b77">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -328,37 +328,360 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="page-shell">
 <div class="page-main">
-<p class="mission reveal">GAIA Lab develops
-<em class="mark">machine learning</em> methods that turn satellite imagery and
-climate data into verifiable information about <em class="mark">forests</em>,
-<em class="mark">agriculture</em> and <em class="mark">climate</em>. Created in
-2024 at FGV EMAp, the lab works at territorial scale, across five Brazilian
-states, and checks every result against official references.</p>
+<div class="mission-split reveal">
+  <div class="mission-text-col">
+    <p class="mission">The laboratory develops artificial intelligence applied to <em class="mark">geospatial 
+and Earth observation data</em>, focusing on learning useful representations of complex 
+planetary events. The central research question is how <em class="mark">environmental 
+systems interact with each other</em>, investigating how climate, forests, agriculture, and cities 
+influence each other in cascading ways, and how this coupling varies across regions.</p>
+    <p class="mission">Alongside this, the laboratory applies language models to technical 
+and institutional documents, in contractual analysis and assessment projects.</p>
+  </div>
+  <div class="mission-visual-col">
+    <div class="earth-orbit-card">
+      <svg class="earth-orbit-svg" viewbox="25 25 290 290" fill="none" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Animated visualization of Earth and Earth observation satellite in orbit">
+        <defs>
+          <radialgradient id="earth-halo-en" cx="50%" cy="50%" r="50%">
+            <stop offset="65%" stop-color="#7fb04f" stop-opacity="0.25"></stop>
+            <stop offset="85%" stop-color="#365902" stop-opacity="0.10"></stop>
+            <stop offset="100%" stop-color="#365902" stop-opacity="0"></stop>
+          </radialgradient>
+          <radialgradient id="earth-ocean-en" cx="38%" cy="32%" r="68%">
+            <stop offset="0%" stop-color="#24554b"></stop>
+            <stop offset="55%" stop-color="#143630"></stop>
+            <stop offset="100%" stop-color="#081815"></stop>
+          </radialgradient>
+          <lineargradient id="earth-land-en" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#6ea53c"></stop>
+            <stop offset="50%" stop-color="#4e7f27"></stop>
+            <stop offset="100%" stop-color="#305215"></stop>
+          </lineargradient>
+          <radialgradient id="sphere-light-en" cx="32%" cy="28%" r="72%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.30"></stop>
+            <stop offset="45%" stop-color="#ffffff" stop-opacity="0.05"></stop>
+            <stop offset="70%" stop-color="#000000" stop-opacity="0.35"></stop>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0.75"></stop>
+          </radialgradient>
+      <!-- Volumetric Laser Beam Gradient -->
+      <lineargradient id="laser-cone-grad-en" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#4ade80" stop-opacity="0.65"></stop>
+        <stop offset="40%" stop-color="#22c55e" stop-opacity="0.30"></stop>
+        <stop offset="100%" stop-color="#15803d" stop-opacity="0.08"></stop>
+      </lineargradient>
+          <clippath id="earth-clip-en">
+            <circle cx="170" cy="170" r="80"></circle>
+          </clippath>
+          <path id="orbitPath-en" d="M 280.59,92.57 A 135 50 -35 0 1 59.41,247.43 A 135 50 -35 0 1 280.59,92.57 Z"></path>
+                    <!-- Unified Satellite Spacecraft Definition (Exact Details & Dynamic Morphing Swath Grid) -->
+          <g id="satellite-craft-en">
+
+<!-- Solar Panels -->
+            <rect x="-21" y="-4" width="11" height="8" rx="1.5" fill="#1e3a5f" stroke="#60a5fa" stroke-width="0.8"></rect>
+            <line x1="-15.5" y1="-4" x2="-15.5" y2="4" stroke="#60a5fa" stroke-width="0.6"></line>
+            <line x1="-21" y1="0" x2="-10" y2="0" stroke="#60a5fa" stroke-width="0.6"></line>
+            <rect x="10" y="-4" width="11" height="8" rx="1.5" fill="#1e3a5f" stroke="#60a5fa" stroke-width="0.8"></rect>
+            <line x1="15.5" y1="-4" x2="15.5" y2="4" stroke="#60a5fa" stroke-width="0.6"></line>
+            <line x1="10" y1="0" x2="21" y2="0" stroke="#60a5fa" stroke-width="0.6"></line>
+
+            <!-- Mount booms -->
+            <line x1="-10" y1="0" x2="-7" y2="0" stroke="#cbd5e1" stroke-width="1.2"></line>
+            <line x1="7" y1="0" x2="10" y2="0" stroke="#cbd5e1" stroke-width="1.2"></line>
+
+            <!-- Bus body -->
+            <rect x="-7" y="-6" width="14" height="12" rx="2" fill="#ca8a04" stroke="#fef08a" stroke-width="1"></rect>
+
+            <!-- Sensor optical aperture with laser emitter diode -->
+            <rect x="-3.5" y="3.2" width="7" height="2.2" rx="0.6" fill="#0f172a" stroke="#cbd5e1" stroke-width="0.6"></rect>
+            <circle cx="0" cy="4.3" r="1.3" fill="#4ade80">
+              <animate attributename="fill" values="#4ade80;#bbf7d0;#4ade80" dur="0.4s" repeatcount="indefinite"></animate>
+            </circle>
+
+            <!-- Antenna -->
+            <line x1="0" y1="-6" x2="0" y2="-9" stroke="#cbd5e1" stroke-width="1"></line>
+            <circle cx="0" cy="-9" r="1" fill="#cbd5e1"></circle>
+
+            <!-- Scanner detector pushbroom array #### no satélite -->
+            <g transform="translate(-4, -4.5)">
+              <rect x="0" y="0" width="8" height="3" rx="0.8" fill="#0b1712" stroke="#4ade80" stroke-width="0.4"></rect>
+              <rect x="0.8" y="0.6" width="1.2" height="1.8" rx="0.2" fill="#4ade80">
+                <animate attributename="fill" values="#4ade80;#143625;#4ade80" dur="0.6s" repeatcount="indefinite"></animate>
+              </rect>
+              <rect x="2.5" y="0.6" width="1.2" height="1.8" rx="0.2" fill="#a7d177">
+                <animate attributename="fill" values="#143625;#a7d177;#143625" dur="0.6s" repeatcount="indefinite"></animate>
+              </rect>
+              <rect x="4.2" y="0.6" width="1.2" height="1.8" rx="0.2" fill="#4ade80">
+                <animate attributename="fill" values="#4ade80;#143625;#4ade80" dur="0.6s" begin="0.3s" repeatcount="indefinite"></animate>
+              </rect>
+              <rect x="5.9" y="0.6" width="1.2" height="1.8" rx="0.2" fill="#a7d177">
+                <animate attributename="fill" values="#143625;#a7d177;#143625" dur="0.6s" begin="0.3s" repeatcount="indefinite"></animate>
+              </rect>
+            </g>
+          </g>
+        </defs>
+
+        <!-- Ambient micro stars -->
+        <circle cx="50" cy="60" r="1.2" fill="#7fb04f" opacity="0.4"></circle>
+        <circle cx="295" cy="50" r="1.4" fill="#7fb04f" opacity="0.5"></circle>
+        <circle cx="45" cy="280" r="1" fill="#7fb04f" opacity="0.35"></circle>
+        <circle cx="300" cy="270" r="1.2" fill="#7fb04f" opacity="0.4"></circle>
+
+        <!-- Back Orbit Arc (behind Earth) -->
+        <path d="M 59.41,247.43 A 135 50 -35 0 1 280.59,92.57" fill="none" stroke="#7fb04f" stroke-width="1.2" stroke-dasharray="3 4" opacity="0.25"></path>
+
+        <!-- SATELLITE (BACK PASS - behind Earth with seamless scale transition) -->
+        <g id="sat-back-en">
+          <animate attributename="opacity" values="0; 0; 1; 1; 0" keytimes="0; 0.47; 0.53; 0.97; 1" dur="14s" repeatcount="indefinite"></animate>
+          <animatemotion dur="14s" repeatcount="indefinite" rotate="auto">
+            <mpath href="#orbitPath-en"></mpath>
+          </animatemotion>
+          <g>
+            <animatetransform attributename="transform" type="scale" values="1.0; 1.0; 0.85; 1.0; 1.0" keytimes="0; 0.50; 0.75; 0.98; 1" dur="14s" repeatcount="indefinite" additive="sum"></animatetransform>
+            <use href="#satellite-craft-en"></use>
+          </g>
+        </g>
+
+        <!-- Atmosphere Halo -->
+        <circle cx="170" cy="170" r="95" fill="url(#earth-halo-en)"></circle>
+
+        <!-- Earth Globe Body -->
+        <circle cx="170" cy="170" r="80" fill="url(#earth-ocean-en)"></circle>
+
+        <!-- Continents & Grid inside Earth (Exact shape from reference) -->
+        <g clip-path="url(#earth-clip-en)">
+          <!-- Geodetic Grid (Orthographic centered on South America 15°S, 55°W) -->
+          <path d="M 90.0,169.6 L 91.5,166.0 L 96.4,161.9 L 102.9,158.7 L 113.4,155.4 L 124.1,153.0 L 138.7,150.9 L 152.0,149.8 L 168.6,149.3 L 182.5,149.5 L 198.7,150.7 L 211.2,152.3 L 224.6,154.9 L 233.9,157.5 L 242.5,161.2 L 247.9,165.3 L 249.4,167.5 L 250.0,169.6" fill="none" stroke="rgba(255,255,255,0.13)" stroke-width="0.8"></path>
+          <path d="M 96.6,200.4 L 98.0,197.1 L 102.4,193.3 L 108.4,190.4 L 118.1,187.3 L 130.0,184.8 L 141.3,183.3 L 153.5,182.2 L 168.7,181.7 L 181.5,182.0 L 196.3,183.0 L 207.8,184.5 L 220.1,186.8 L 228.6,189.3 L 236.5,192.7 L 241.5,196.5 L 242.9,198.4 L 243.4,200.4" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.6"></path>
+          <path d="M 97.1,136.9 L 99.8,133.7 L 105.8,130.1 L 113.0,127.3 L 121.8,124.9 L 132.2,123.0 L 143.7,121.5 L 168.7,120.3 L 193.9,121.3 L 205.6,122.6 L 218.2,124.9 L 227.0,127.3 L 234.2,130.1 L 239.4,133.1 L 241.5,135.0 L 242.9,136.9" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.6"></path>
+          <path d="M 170.0,246.9 L 170.0,90.0" stroke="rgba(255,255,255,0.10)" stroke-width="0.7" fill="none"></path>
+          <path d="M 169.3,246.9 L 162.4,242.4 L 155.7,235.7 L 149.4,227.0 L 143.8,216.6 L 138.9,204.7 L 135.0,191.8 L 132.2,178.2 L 130.5,164.4 L 130.0,150.7 L 130.7,137.7 L 132.7,125.6 L 135.7,114.8 L 139.8,105.8 L 144.8,98.7 L 150.6,93.7 L 157.0,91.1" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.6"></path>
+          <path d="M 170.7,246.9 L 177.6,242.4 L 184.3,235.7 L 190.6,227.0 L 196.2,216.6 L 201.1,204.7 L 205.0,191.8 L 207.8,178.2 L 209.5,164.4 L 210.0,150.7 L 209.3,137.7 L 207.3,125.6 L 204.3,114.8 L 200.2,105.8 L 195.2,98.7 L 189.4,93.7 L 183.0,91.1" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.6"></path>
+
+          <!-- Continents centered on South America (Exact Cartography) -->
+          <path d="M 168.9,242.5 L 168.9,243.1 L 167.3,242.7 L 168.9,242.5 Z M 172.8,241.4 L 172.8,242.6 L 170.2,242.9 L 171.8,241.3 L 172.8,241.4 Z M 152.8,238.8 L 154.2,239.0 L 152.3,239.3 L 151.7,238.9 L 152.8,238.8 Z M 163.9,236.5 L 164.2,237.4 L 163.3,237.7 L 161.4,237.2 L 162.4,236.8 L 161.9,235.4 L 162.4,234.9 L 163.9,236.5 Z M 153.1,248.2 L 162.8,249.0 L 164.0,248.0 L 170.0,247.3 L 163.2,248.1 L 162.3,247.8 L 163.7,247.4 L 163.1,246.9 L 157.9,247.0 L 156.0,246.2 L 152.3,246.3 L 152.8,246.1 L 149.8,244.9 L 148.7,243.4 L 150.6,242.1 L 150.8,241.2 L 152.3,241.6 L 155.5,241.1 L 152.1,239.7 L 155.1,239.8 L 156.8,239.2 L 156.5,238.6 L 162.0,238.9 L 164.7,237.8 L 164.8,237.3 L 163.5,235.5 L 163.3,233.1 L 165.2,231.0 L 168.2,229.7 L 168.4,230.3 L 165.8,231.2 L 166.0,232.4 L 164.4,233.7 L 166.9,236.1 L 167.7,238.4 L 165.0,240.6 L 163.0,240.8 L 164.6,241.5 L 163.7,241.8 L 164.8,242.7 L 168.4,243.5 L 169.5,244.3 L 171.1,243.5 L 172.3,243.7 L 176.0,243.1 L 176.4,242.4 L 174.9,242.4 L 175.5,241.6 L 182.5,240.5 L 188.1,238.5 L 188.5,239.0 L 189.5,238.5 L 189.4,238.9 L 190.9,239.3 L 190.6,239.6 L 194.4,239.3 L 194.0,240.2 L 195.5,240.0 L 195.2,240.4 L 196.4,240.5 L 196.5,241.0 L 195.8,241.5 L 196.5,241.9 L 199.3,241.7 L 197.6,243.0 L 201.0,243.2 L 194.9,246.0 L 190.0,247.2 L 191.1,247.2 L 181.7,249.1 L 172.2,250.0 L 162.6,249.7 Z M 159.6,220.5 L 161.9,221.3 L 161.7,221.8 L 160.5,221.6 L 159.7,222.4 L 158.9,222.3 L 156.2,221.4 L 153.7,219.8 L 157.0,220.9 L 157.9,219.1 L 159.6,220.5 Z M 166.9,217.2 L 167.6,217.7 L 167.4,218.1 L 166.2,218.4 L 165.8,218.0 L 165.1,218.5 L 164.7,218.1 L 166.9,217.2 Z M 161.9,136.2 L 160.5,136.2 L 160.9,135.4 L 161.6,135.2 L 161.9,136.2 Z M 156.0,126.5 L 153.9,126.9 L 154.1,126.3 L 156.0,126.5 Z M 141.6,128.0 L 139.9,127.8 L 141.7,127.4 L 142.5,127.9 L 141.6,128.0 Z M 147.3,125.2 L 150.6,125.2 L 152.5,126.2 L 152.0,126.7 L 149.5,126.7 L 148.5,127.7 L 147.3,127.1 L 145.3,127.5 L 144.9,126.8 L 147.4,126.5 L 147.0,125.6 L 146.2,125.5 L 147.3,125.2 Z M 139.2,122.7 L 140.7,122.9 L 145.2,125.1 L 140.9,125.8 L 141.8,125.1 L 140.6,124.8 L 140.1,123.9 L 136.6,123.7 L 136.2,123.5 L 136.7,123.2 L 132.9,124.5 L 136.3,122.7 L 139.2,122.7 Z M 141.9,121.4 L 141.1,120.6 L 141.5,119.9 L 141.9,121.4 Z M 229.2,116.8 L 230.4,118.2 L 228.5,116.5 L 229.2,116.8 Z M 169.0,97.1 L 168.4,97.6 L 171.4,97.9 L 171.1,98.4 L 171.8,98.3 L 172.2,99.0 L 171.9,99.6 L 170.8,99.5 L 170.7,98.9 L 169.6,99.4 L 168.8,99.0 L 166.0,99.0 L 167.9,97.1 L 169.2,96.6 L 169.6,96.6 L 169.0,97.1 Z M 206.5,100.4 L 205.0,100.2 L 203.5,99.0 L 203.7,98.6 L 206.5,100.4 Z M 202.8,97.4 L 211.7,102.7 L 208.8,102.0 L 209.1,101.6 L 206.7,100.0 L 207.5,100.3 L 202.8,97.4 Z M 153.4,92.2 L 155.0,92.4 L 151.0,93.0 L 153.4,92.2 Z M 190.8,92.9 L 192.2,93.4 L 191.2,93.4 L 186.8,92.1 L 190.8,92.9 Z M 154.2,91.6 L 157.4,91.2 L 149.2,93.3 L 143.7,95.6 L 144.4,95.5 L 143.7,96.2 L 149.1,96.1 L 148.2,97.0 L 148.9,98.0 L 150.5,97.1 L 150.6,96.1 L 153.8,94.9 L 153.9,94.3 L 153.5,94.1 L 155.9,92.6 L 160.2,92.7 L 159.8,93.4 L 160.8,93.7 L 163.4,92.7 L 165.1,94.0 L 164.8,94.3 L 168.1,95.0 L 169.4,95.7 L 169.4,96.3 L 165.5,97.4 L 159.9,97.6 L 154.8,100.0 L 160.9,98.2 L 161.6,98.4 L 160.6,98.9 L 160.9,100.1 L 163.7,100.2 L 164.8,99.4 L 165.3,100.1 L 159.6,102.0 L 158.8,102.0 L 158.9,101.4 L 160.8,100.7 L 158.1,100.9 L 154.2,102.7 L 153.9,103.2 L 154.6,103.7 L 150.6,104.6 L 152.4,104.4 L 150.3,104.7 L 148.8,106.3 L 148.4,105.9 L 148.5,106.8 L 147.2,107.9 L 147.7,107.2 L 147.4,106.3 L 147.1,107.2 L 146.5,107.1 L 147.1,107.3 L 147.0,109.3 L 139.7,113.9 L 139.3,115.3 L 139.8,118.3 L 139.0,120.2 L 138.1,120.3 L 137.6,119.6 L 137.0,118.1 L 137.3,116.4 L 136.3,115.6 L 135.1,116.2 L 134.0,115.7 L 132.0,116.0 L 130.7,116.4 L 130.5,117.4 L 127.0,117.5 L 125.5,118.1 L 122.5,120.3 L 120.5,124.4 L 119.7,127.1 L 120.4,130.2 L 121.7,130.7 L 125.1,129.2 L 126.9,126.5 L 130.5,125.3 L 130.6,126.1 L 128.8,129.3 L 128.3,129.1 L 127.8,131.4 L 127.1,132.3 L 131.6,131.5 L 133.3,132.1 L 132.2,137.3 L 133.9,139.7 L 134.8,139.9 L 137.2,138.5 L 140.6,139.4 L 142.1,138.2 L 142.5,136.7 L 143.3,136.0 L 145.2,135.7 L 147.5,134.0 L 148.3,134.3 L 147.1,135.3 L 147.5,136.5 L 146.9,137.3 L 147.3,138.2 L 147.9,138.1 L 148.2,137.2 L 147.8,135.8 L 149.5,135.2 L 149.8,134.2 L 150.3,135.0 L 151.2,135.0 L 152.0,136.0 L 154.7,135.8 L 156.5,136.4 L 157.3,135.6 L 160.6,135.4 L 159.4,135.8 L 159.9,136.4 L 162.0,137.1 L 162.2,138.1 L 164.3,138.8 L 165.2,140.3 L 167.0,141.4 L 171.4,141.7 L 175.1,143.7 L 176.3,146.8 L 177.0,147.0 L 177.0,148.0 L 176.0,149.1 L 176.4,149.5 L 178.9,149.7 L 178.9,151.1 L 180.0,150.2 L 184.0,151.7 L 184.7,152.5 L 184.5,153.3 L 186.0,152.9 L 190.7,153.9 L 194.3,156.8 L 196.5,157.5 L 197.5,160.6 L 196.9,162.9 L 191.9,168.1 L 190.6,174.7 L 188.0,180.2 L 186.6,181.6 L 183.2,181.9 L 179.3,183.9 L 178.2,185.2 L 177.5,189.0 L 171.4,196.6 L 170.1,197.3 L 168.6,197.2 L 166.0,196.0 L 166.0,196.6 L 167.5,197.8 L 167.3,198.7 L 168.0,199.2 L 167.0,201.5 L 165.4,202.2 L 162.0,202.5 L 162.5,204.8 L 159.4,205.4 L 159.7,206.6 L 160.4,207.0 L 161.0,206.6 L 161.3,207.2 L 159.7,208.4 L 159.6,210.3 L 158.1,211.0 L 158.0,211.9 L 160.0,212.9 L 159.8,214.0 L 158.9,214.7 L 158.6,216.1 L 157.6,217.1 L 158.9,218.9 L 157.8,218.9 L 156.8,219.6 L 157.0,220.6 L 153.3,219.2 L 151.4,215.2 L 152.1,213.1 L 150.6,212.9 L 151.2,211.8 L 151.0,209.8 L 152.1,210.1 L 152.0,207.5 L 151.3,207.2 L 151.4,208.8 L 150.7,208.7 L 150.6,203.7 L 149.7,201.0 L 150.1,201.0 L 150.9,194.7 L 150.1,189.9 L 150.6,188.2 L 150.6,179.6 L 149.9,175.4 L 142.3,170.8 L 136.8,161.0 L 134.8,159.8 L 135.2,159.1 L 134.5,157.9 L 136.5,154.8 L 136.2,154.2 L 135.8,154.9 L 135.0,154.4 L 135.0,152.8 L 136.1,150.2 L 137.7,149.2 L 138.2,147.5 L 138.9,147.3 L 139.9,145.7 L 139.5,145.4 L 139.8,143.1 L 138.5,140.4 L 138.8,140.0 L 137.2,139.4 L 135.9,140.6 L 136.5,141.2 L 135.3,141.8 L 135.2,141.1 L 132.2,140.7 L 132.1,139.9 L 130.6,138.8 L 130.4,139.5 L 129.8,139.1 L 129.9,137.7 L 127.9,135.7 L 128.2,135.2 L 127.0,135.6 L 124.1,135.2 L 120.9,133.1 L 118.9,134.2 L 113.1,132.7 L 112.0,131.3 L 112.7,128.6 L 111.4,125.7 L 111.8,124.8 L 111.1,122.8 L 111.7,120.4 L 110.3,122.1 L 109.8,127.6 L 110.2,128.5 L 109.6,129.1 L 108.9,127.5 L 109.5,126.1 L 108.6,124.9 L 109.7,123.7 L 109.4,123.0 L 110.6,119.8 L 110.7,119.1 L 110.0,119.1 L 112.0,115.6 L 120.0,107.6 L 129.3,101.1 L 137.3,97.0 L 145.6,93.8 Z M 159.7,90.7 L 166.2,90.9 L 162.7,91.1 L 164.0,91.8 L 161.6,91.8 L 162.7,92.3 L 156.3,92.1 L 160.6,91.1 L 155.1,91.4 L 158.4,90.8 Z M 246.4,193.7 L 243.2,201.3 L 240.1,206.3 L 236.3,210.1 L 235.5,210.4 L 234.9,209.4 L 233.3,209.6 L 233.6,208.1 L 235.2,205.5 L 239.3,192.3 L 240.4,184.3 L 243.1,177.8 L 243.3,168.7 L 241.8,162.4 L 242.3,157.1 L 241.3,154.4 L 239.7,154.2 L 238.4,151.1 L 236.6,150.5 L 233.7,151.2 L 231.3,149.9 L 228.4,150.1 L 223.1,144.3 L 220.7,139.9 L 218.6,137.8 L 218.2,136.0 L 217.0,134.4 L 217.9,133.0 L 217.7,130.7 L 215.7,126.1 L 216.7,123.5 L 216.7,121.7 L 217.3,120.5 L 218.4,120.3 L 219.4,118.8 L 218.3,116.2 L 219.3,115.2 L 219.0,113.8 L 222.1,115.3 L 223.5,114.7 L 227.4,116.0 L 236.4,126.1 L 235.9,124.7 L 241.5,134.2 L 245.0,142.2 L 247.6,150.6 L 249.3,159.1 L 250.0,167.8 L 249.7,176.5 L 248.5,185.2 Z M 232.2,119.7 L 227.4,114.3 L 221.8,109.3 L 229.7,117.2 L 221.4,109.5 L 221.3,110.0 L 219.6,109.2 L 220.5,110.2 L 219.9,110.5 L 221.2,112.4 L 221.1,113.8 L 219.6,113.3 L 219.3,113.8 L 217.9,112.6 L 216.1,112.2 L 211.8,106.7 L 212.3,106.4 L 216.3,107.5 L 214.8,105.9 L 210.7,103.2 L 212.4,103.8 L 211.3,103.0 L 212.7,103.3 L 211.5,101.9 L 212.4,102.3 L 208.9,100.1 L 217.5,105.6 L 225.3,112.2 Z M 183.1,91.1 L 184.7,91.4 L 178.7,91.4 L 177.7,92.1 L 178.2,92.3 L 178.0,92.9 L 177.1,92.9 L 173.8,92.3 L 170.8,91.0 L 172.0,90.3 L 168.8,90.0 L 178.4,90.4 Z" fill="url(#earth-land-en)"></path>
+
+          <!-- Ping radar FGV EMAp (Rio de Janeiro: 22.91°S, 43.17°W -> x=185.1, y=181.4) -->
+          <g transform="translate(185.1, 181.4)">
+            <circle cx="0" cy="0" r="2.5" fill="#a7d177"></circle>
+            <circle cx="0" cy="0" r="2.5" fill="none" stroke="#a7d177" stroke-width="1.2" opacity="0.9">
+              <animate attributename="r" values="2.5; 11; 16" dur="2.4s" repeatcount="indefinite"></animate>
+              <animate attributename="opacity" values="0.9; 0.4; 0" dur="2.4s" repeatcount="indefinite"></animate>
+            </circle>
+          </g>
+
+          <!-- Weather clouds -->
+          <path d="M 125,148 C 145,143 170,150 190,146 C 180,152 155,148 130,153 Z" fill="#ffffff" opacity="0.25"></path>
+          <path d="M 140,205 C 160,200 185,210 205,208 C 190,214 165,208 140,211 Z" fill="#ffffff" opacity="0.22"></path>
+          <path d="M 115,122 C 130,118 145,124 155,121 C 145,126 130,123 118,125 Z" fill="#ffffff" opacity="0.2"></path>
+          <!-- Landed laser swath on Earth surface -->
+          <g id="ground-laser-swath-en">
+            <!-- Ground footprint illumination glow -->
+            <path fill="#4ade80" opacity="0.25" d="M 246.9,110.7 L 219.0,130.2 L 224.2,137.6 L 252.0,118.0 Z">
+              <animate attributename="d" values="M 246.9,110.7 L 219.0,130.2 L 224.2,137.6 L 252.0,118.0 Z; M 253.1,143.5 L 221.4,131.2 L 218.1,139.6 L 249.8,151.9 Z; M 242.9,163.7 L 215.6,143.5 L 210.2,150.7 L 237.6,170.9 Z; M 230.0,179.6 L 205.7,155.8 L 199.4,162.3 L 223.7,186.1 Z; M 215.8,193.4 L 193.9,167.3 L 187.0,173.1 L 208.9,199.2 Z; M 200.4,205.6 L 180.9,177.8 L 173.6,182.9 L 193.1,210.8 Z; M 184.1,216.5 L 167.1,187.1 L 159.3,191.6 L 176.3,221.0 Z; M 166.7,226.0 L 152.7,195.0 L 144.5,198.7 L 158.5,229.7 Z; M 147.8,233.8 L 138.1,201.2 L 129.5,203.8 L 139.2,236.4 Z; M 125.7,238.8 L 125.0,204.8 L 116.0,205.0 L 116.7,239.0 Z; M 93.1,229.3 L 121.0,209.8 L 115.8,202.4 L 88.0,222.0 Z; M 93.1,229.3 L 121.0,209.8 L 115.8,202.4 L 88.0,222.0 Z; M 246.9,110.7 L 219.0,130.2 L 224.2,137.6 L 252.0,118.0 Z; M 246.9,110.7 L 219.0,130.2 L 224.2,137.6 L 252.0,118.0 Z" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
+              <animate attributename="opacity" values="0; 0.75; 1; 1; 1; 1; 1; 1; 1; 0.75; 0; 0; 0; 0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
+            </path>
+
+            <!-- Transverse scanlines cutting across the trajectory (/, |, \) -->
+            <path fill="none" stroke="#86efac" stroke-width="1.3" opacity="0.95" stroke-linecap="round" d="M 249.5,114.4 L 221.6,133.9 M 246.9,110.7 L 219.0,130.2 M 252.0,118.0 L 224.2,137.6">
+              <animate attributename="d" values="M 249.5,114.4 L 221.6,133.9 M 246.9,110.7 L 219.0,130.2 M 252.0,118.0 L 224.2,137.6; M 251.4,147.7 L 219.7,135.4 M 253.1,143.5 L 221.4,131.2 M 249.8,151.9 L 218.1,139.6; M 240.2,167.3 L 212.9,147.1 M 242.9,163.7 L 215.6,143.5 M 237.6,170.9 L 210.2,150.7; M 226.9,182.9 L 202.6,159.1 M 230.0,179.6 L 205.7,155.8 M 223.7,186.1 L 199.4,162.3; M 212.3,196.3 L 190.5,170.2 M 215.8,193.4 L 193.9,167.3 M 208.9,199.2 L 187.0,173.1; M 196.7,208.2 L 177.2,180.3 M 200.4,205.6 L 180.9,177.8 M 193.1,210.8 L 173.6,182.9; M 180.2,218.7 L 163.2,189.3 M 184.1,216.5 L 167.1,187.1 M 176.3,221.0 L 159.3,191.6; M 162.6,227.8 L 148.6,196.9 M 166.7,226.0 L 152.7,195.0 M 158.5,229.7 L 144.5,198.7; M 143.5,235.1 L 133.8,202.5 M 147.8,233.8 L 138.1,201.2 M 139.2,236.4 L 129.5,203.8; M 121.2,238.9 L 120.5,204.9 M 125.7,238.8 L 125.0,204.8 M 116.7,239.0 L 116.0,205.0; M 90.5,225.6 L 118.4,206.1 M 93.1,229.3 L 121.0,209.8 M 88.0,222.0 L 115.8,202.4; M 90.5,225.6 L 118.4,206.1 M 93.1,229.3 L 121.0,209.8 M 88.0,222.0 L 115.8,202.4; M 249.5,114.4 L 221.6,133.9 M 246.9,110.7 L 219.0,130.2 M 252.0,118.0 L 224.2,137.6; M 249.5,114.4 L 221.6,133.9 M 246.9,110.7 L 219.0,130.2 M 252.0,118.0 L 224.2,137.6" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
+              <animate attributename="opacity" values="0; 0.75; 1; 1; 1; 1; 1; 1; 1; 0.75; 0; 0; 0; 0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
+            </path>
+
+            <!-- Multi-beam pushbroom laser spots along transverse line -->
+            <path fill="#ffffff" opacity="0.9" d="M 246.0,116.8 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0">
+              <animate attributename="d" values="M 246.0,116.8 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 247.5,146.1 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 236.8,164.8 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 223.8,179.9 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 209.6,193.0 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 194.3,204.7 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 178.1,215.1 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 160.9,224.0 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 142.3,231.0 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 121.1,234.6 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 94.0,223.2 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 94.0,223.2 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 246.0,116.8 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 246.0,116.8 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
+              <animate attributename="opacity" values="0; 0.75; 1; 1; 1; 1; 1; 1; 1; 0.75; 0; 0; 0; 0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
+            </path>
+            <path fill="#bbf7d0" opacity="0.9" d="(240.8, 120.4)">
+              <animate attributename="d" values="M 240.8,120.4 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 241.6,143.9 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 231.8,161.1 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 219.3,175.5 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 205.5,188.2 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 190.7,199.6 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 174.9,209.6 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 158.3,218.2 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 140.5,225.0 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 121.0,228.4 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 99.2,219.6 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 99.2,219.6 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 240.8,120.4 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 240.8,120.4 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
+              <animate attributename="opacity" values="0; 0.75; 1; 1; 1; 1; 1; 1; 1; 0.75; 0; 0; 0; 0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
+            </path>
+            <path fill="#ffffff" opacity="0.95" d="M 235.5,124.1 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0">
+              <animate attributename="d" values="M 235.5,124.1 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 235.6,141.5 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 226.6,157.2 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 214.7,171.0 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 201.4,183.2 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 187.0,194.3 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 171.7,204.0 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 155.6,212.4 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 138.6,218.8 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 120.8,221.9 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 104.5,215.9 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 104.5,215.9 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 235.5,124.1 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 235.5,124.1 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
+              <animate attributename="opacity" values="0; 0.75; 1; 1; 1; 1; 1; 1; 1; 0.75; 0; 0; 0; 0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
+            </path>
+            <path fill="#bbf7d0" opacity="0.9" d="M 230.2,127.8 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0">
+              <animate attributename="d" values="M 230.2,127.8 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 229.6,139.2 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 221.4,153.4 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 210.1,166.4 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 197.3,178.3 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 183.3,189.0 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 168.5,198.4 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 152.9,206.5 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 136.8,212.6 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 120.7,215.4 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 109.8,212.2 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 109.8,212.2 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 230.2,127.8 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 230.2,127.8 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
+              <animate attributename="opacity" values="0; 0.75; 1; 1; 1; 1; 1; 1; 1; 0.75; 0; 0; 0; 0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
+            </path>
+            <path fill="#ffffff" opacity="0.9" d="M 225.1,131.4 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0">
+              <animate attributename="d" values="M 225.1,131.4 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 223.7,137.0 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 216.3,149.6 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 205.6,162.0 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 193.2,173.5 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 179.7,183.8 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 165.3,193.0 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 150.3,200.8 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 135.0,206.6 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 120.6,209.2 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 114.9,208.6 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 114.9,208.6 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 225.1,131.4 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 225.1,131.4 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
+              <animate attributename="opacity" values="0; 0.75; 1; 1; 1; 1; 1; 1; 1; 0.75; 0; 0; 0; 0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
+            </path>
+          </g>
+
+          <!-- 3D Sphere shading -->
+          <circle cx="170" cy="170" r="80" fill="url(#sphere-light-en)"></circle>
+        </g>
+
+        <!-- Volumetric laser beam connecting satellite aperture to Earth surface -->
+        <g id="volumetric-laser-beam-en">
+          <!-- Translucent volumetric beam cone -->
+          <path fill="url(#laser-cone-grad-en)" opacity="0.45" d="M 277.3,94.9 L 246.9,110.7 L 219.0,130.2 Z">
+            <animate attributename="d" values="M 277.3,94.9 L 246.9,110.7 L 219.0,130.2 Z; M 277.0,120.5 L 253.1,143.5 L 221.4,131.2 Z; M 262.2,146.1 L 242.9,163.7 L 215.6,143.5 Z; M 242.6,168.8 L 230.0,179.6 L 205.7,155.8 Z; M 220.4,189.3 L 215.8,193.4 L 193.9,167.3 Z; M 196.4,207.7 L 200.4,205.6 L 180.9,177.8 Z; M 170.9,224.0 L 184.1,216.5 L 167.1,187.1 Z; M 144.0,237.8 L 166.7,226.0 L 152.7,195.0 Z; M 116.0,248.5 L 147.8,233.8 L 138.1,201.2 Z; M 86.9,253.6 L 125.7,238.8 L 125.0,204.8 Z; M 62.7,245.1 L 93.1,229.3 L 121.0,209.8 Z; M 62.7,245.1 L 93.1,229.3 L 121.0,209.8 Z; M 277.3,94.9 L 246.9,110.7 L 219.0,130.2 Z; M 277.3,94.9 L 246.9,110.7 L 219.0,130.2 Z" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
+            <animate attributename="opacity" values="0; 0.75; 1; 1; 1; 1; 1; 1; 1; 0.75; 0; 0; 0; 0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
+          </path>
+
+          <!-- Boundary laser guide rays -->
+          <path fill="none" stroke="#4ade80" stroke-width="0.9" opacity="0.75" stroke-dasharray="2 3" d="M 277.3,94.9 L 246.9,110.7 M 277.3,94.9 L 219.0,130.2">
+            <animate attributename="d" values="M 277.3,94.9 L 246.9,110.7 M 277.3,94.9 L 219.0,130.2; M 277.0,120.5 L 253.1,143.5 M 277.0,120.5 L 221.4,131.2; M 262.2,146.1 L 242.9,163.7 M 262.2,146.1 L 215.6,143.5; M 242.6,168.8 L 230.0,179.6 M 242.6,168.8 L 205.7,155.8; M 220.4,189.3 L 215.8,193.4 M 220.4,189.3 L 193.9,167.3; M 196.4,207.7 L 200.4,205.6 M 196.4,207.7 L 180.9,177.8; M 170.9,224.0 L 184.1,216.5 M 170.9,224.0 L 167.1,187.1; M 144.0,237.8 L 166.7,226.0 M 144.0,237.8 L 152.7,195.0; M 116.0,248.5 L 147.8,233.8 M 116.0,248.5 L 138.1,201.2; M 86.9,253.6 L 125.7,238.8 M 86.9,253.6 L 125.0,204.8; M 62.7,245.1 L 93.1,229.3 M 62.7,245.1 L 121.0,209.8; M 62.7,245.1 L 93.1,229.3 M 62.7,245.1 L 121.0,209.8; M 277.3,94.9 L 246.9,110.7 M 277.3,94.9 L 219.0,130.2; M 277.3,94.9 L 246.9,110.7 M 277.3,94.9 L 219.0,130.2" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
+            <animate attributename="opacity" values="0; 0.75; 1; 1; 1; 1; 1; 1; 1; 0.75; 0; 0; 0; 0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
+          </path>
+
+          <!-- Central core laser ray -->
+          <path fill="none" stroke="#86efac" stroke-width="1.1" opacity="0.85" d="M 277.3,94.9 L 235.5,124.1">
+            <animate attributename="d" values="M 277.3,94.9 L 235.5,124.1; M 277.0,120.5 L 235.6,141.5; M 262.2,146.1 L 226.6,157.2; M 242.6,168.8 L 214.7,171.0; M 220.4,189.3 L 201.4,183.2; M 196.4,207.7 L 187.0,194.3; M 170.9,224.0 L 171.7,204.0; M 144.0,237.8 L 155.6,212.4; M 116.0,248.5 L 138.6,218.8; M 86.9,253.6 L 120.8,221.9; M 62.7,245.1 L 104.5,215.9; M 62.7,245.1 L 104.5,215.9; M 277.3,94.9 L 235.5,124.1; M 277.3,94.9 L 235.5,124.1" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
+            <animate attributename="opacity" values="0; 0.75; 1; 1; 1; 1; 1; 1; 1; 0.75; 0; 0; 0; 0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
+          </path>
+        </g>
+
+        <!-- Front Orbit Arc (in front of Earth) -->
+        <path d="M 280.59,92.57 A 135 50 -35 0 1 59.41,247.43" fill="none" stroke="#7fb04f" stroke-width="1.6" stroke-dasharray="4 4" opacity="0.75"></path>
+
+        <!-- SATELLITE (FRONT PASS - in front of Earth with seamless scale transition) -->
+        <g id="sat-front-en">
+          <animate attributename="opacity" values="1; 1; 0; 0; 1" keytimes="0; 0.47; 0.53; 0.97; 1" dur="14s" repeatcount="indefinite"></animate>
+          <animatemotion dur="14s" repeatcount="indefinite" rotate="auto">
+            <mpath href="#orbitPath-en"></mpath>
+          </animatemotion>
+          <g>
+            <animatetransform attributename="transform" type="scale" values="1.0; 1.15; 1.0; 1.0; 1.0" keytimes="0; 0.25; 0.50; 0.98; 1" dur="14s" repeatcount="indefinite" additive="sum"></animatetransform>
+            <use href="#satellite-craft-en"></use>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
 
 <div class="stats reveal">
   <div><div class="stat-num" data-count="22">0</div><div class="stat-label">Researchers</div></div>
   <div><div class="stat-num" data-count="3">0</div><div class="stat-label">Research fronts</div></div>
   <div><div class="stat-num" data-count="3">0</div><div class="stat-label">Publications</div></div>
-  <div><div class="stat-num" data-count="2024">0</div><div class="stat-label">Founded</div></div>
+  <div><div class="stat-num" data-count="2022">0</div><div class="stat-label">Founded</div></div>
 </div>
 <section id="our-history" class="level2">
 <h2 class="anchored" data-anchor-id="our-history">Our history</h2>
-<div class="timeline">
+<div class="timeline-ruler">
+  <svg class="timeline-ruler-defs" width="0" height="0" style="position:absolute; width:0; height:0; overflow:hidden;" aria-hidden="true">
+    <defs>
+      <pattern id="tl-ruler-ticks-en" width="44" height="24" patternunits="userSpaceOnUse">
+        <line x1="24" y1="0" x2="24" y2="24" stroke="currentColor" stroke-width="2" opacity="0.45"></line>
+        <line x1="10" y1="0" x2="24" y2="0" stroke="currentColor" stroke-width="1.6" opacity="0.75"></line>
+        <line x1="17" y1="6" x2="24" y2="6" stroke="currentColor" stroke-width="1" opacity="0.35"></line>
+        <line x1="13" y1="12" x2="24" y2="12" stroke="currentColor" stroke-width="1.3" opacity="0.55"></line>
+        <line x1="17" y1="18" x2="24" y2="18" stroke="currentColor" stroke-width="1" opacity="0.35"></line>
+      </pattern>
+    </defs>
+  </svg>
+
   <div class="tl-item reveal">
-    <div class="tl-year">2024</div>
-    <div class="tl-text">The lab is created at FGV EMAp, in Rio de Janeiro, bringing together machine learning research applied to Earth observation.</div>
+    <div class="tl-ruler-col" aria-hidden="true">
+      <svg class="tl-ruler-segment" width="44" height="100%">
+        <rect x="0" y="0" width="44" height="100%" fill="url(#tl-ruler-ticks-en)"></rect>
+      </svg>
+      <div class="tl-ruler-node">
+        <svg viewbox="0 0 28 28" class="tl-node-svg">
+          <circle cx="14" cy="14" r="10" class="node-halo"></circle>
+          <line x1="14" y1="1" x2="14" y2="5" class="node-cross"></line>
+          <line x1="14" y1="23" x2="14" y2="27" class="node-cross"></line>
+          <line x1="1" y1="14" x2="5" y2="14" class="node-cross"></line>
+          <line x1="23" y1="14" x2="27" y2="14" class="node-cross"></line>
+          <circle cx="14" cy="14" r="7" class="node-ring"></circle>
+          <circle cx="14" cy="14" r="3.2" class="node-core"></circle>
+        </svg>
+      </div>
+    </div>
+    <div class="tl-content">
+      <div class="tl-meta">
+        <span class="tl-year">2022</span>
+        <span class="tl-tag">September · Founding</span>
+      </div>
+      <h3 class="tl-heading anchored">Founding at FGV EMAp</h3>
+      <p class="tl-text">Launch of Green AI Lab activities at FGV EMAp, in Rio de Janeiro, dedicated to developing artificial intelligence methods for Earth observation and learning with scarce ground truth.</p>
+    </div>
   </div>
+
   <div class="tl-item reveal">
-    <div class="tl-year">2025</div>
-    <div class="tl-text">Build of our own plot level base and of the vegetation index series: 359,600 plots across 897 municipalities in five states, covering 2020 to 2025.</div>
+    <div class="tl-ruler-col" aria-hidden="true">
+      <svg class="tl-ruler-segment" width="44" height="100%">
+        <rect x="0" y="0" width="44" height="100%" fill="url(#tl-ruler-ticks-en)"></rect>
+      </svg>
+      <div class="tl-ruler-node">
+        <svg viewbox="0 0 28 28" class="tl-node-svg">
+          <circle cx="14" cy="14" r="10" class="node-halo"></circle>
+          <line x1="14" y1="1" x2="14" y2="5" class="node-cross"></line>
+          <line x1="14" y1="23" x2="14" y2="27" class="node-cross"></line>
+          <line x1="1" y1="14" x2="5" y2="14" class="node-cross"></line>
+          <line x1="23" y1="14" x2="27" y2="14" class="node-cross"></line>
+          <circle cx="14" cy="14" r="7" class="node-ring"></circle>
+          <circle cx="14" cy="14" r="3.2" class="node-core"></circle>
+        </svg>
+      </div>
+    </div>
+    <div class="tl-content">
+      <div class="tl-meta">
+        <span class="tl-year">2023</span>
+        <span class="tl-tag">Foundation Models</span>
+      </div>
+      <h3 class="tl-heading anchored">Geospatial Foundation Models</h3>
+      <p class="tl-text">Co-authorship in the development of Prithvi in partnership with NASA and IBM, a pioneering open-source geospatial foundation model, and formulation of learning from label proportions methods for remote sensing.</p>
+    </div>
   </div>
+
   <div class="tl-item reveal">
-    <div class="tl-year">2025</div>
-    <div class="tl-text">Team at the 14th International Conference on Climate Informatics, in April, and the first forest segmentation models with Sentinel-2 imagery from the Brazil Data Cube.</div>
+    <div class="tl-ruler-col" aria-hidden="true">
+      <svg class="tl-ruler-segment" width="44" height="100%">
+        <rect x="0" y="0" width="44" height="100%" fill="url(#tl-ruler-ticks-en)"></rect>
+      </svg>
+      <div class="tl-ruler-node">
+        <svg viewbox="0 0 28 28" class="tl-node-svg">
+          <circle cx="14" cy="14" r="10" class="node-halo"></circle>
+          <line x1="14" y1="1" x2="14" y2="5" class="node-cross"></line>
+          <line x1="14" y1="23" x2="14" y2="27" class="node-cross"></line>
+          <line x1="1" y1="14" x2="5" y2="14" class="node-cross"></line>
+          <line x1="23" y1="14" x2="27" y2="14" class="node-cross"></line>
+          <circle cx="14" cy="14" r="7" class="node-ring"></circle>
+          <circle cx="14" cy="14" r="3.2" class="node-core"></circle>
+        </svg>
+      </div>
+    </div>
+    <div class="tl-content">
+      <div class="tl-meta">
+        <span class="tl-year">2025</span>
+        <span class="tl-tag">Territorial Scale</span>
+      </div>
+      <h3 class="tl-heading anchored">Territorial Scale and Strategic Partnerships</h3>
+      <p class="tl-text">Build of our dedicated agricultural base covering 359,600 plots across 897 municipalities in five Brazilian states with FGV Agro, alongside territorial monitoring tools developed in partnership with FGV CES and Coiab.</p>
+    </div>
   </div>
-  <div class="tl-item reveal">
-    <div class="tl-year">2026</div>
-    <div class="tl-text">Forest product at scale, with 26 quarterly maps delivered from 2020 to 2026 and validation against INPE's DETER alerts and PRODES polygons.</div>
+
+  <div class="tl-item tl-item-last reveal">
+    <div class="tl-ruler-col" aria-hidden="true">
+      <svg class="tl-ruler-segment" width="44" height="24">
+        <line x1="24" y1="0" x2="24" y2="20" stroke="currentColor" stroke-width="2" opacity="0.45"></line>
+        <line x1="12" y1="20" x2="36" y2="20" stroke="currentColor" stroke-width="2" opacity="0.65"></line>
+      </svg>
+      <div class="tl-ruler-node">
+        <svg viewbox="0 0 28 28" class="tl-node-svg">
+          <circle cx="14" cy="14" r="10" class="node-halo"></circle>
+          <line x1="14" y1="1" x2="14" y2="5" class="node-cross"></line>
+          <line x1="14" y1="23" x2="14" y2="27" class="node-cross"></line>
+          <line x1="1" y1="14" x2="5" y2="14" class="node-cross"></line>
+          <line x1="23" y1="14" x2="27" y2="14" class="node-cross"></line>
+          <circle cx="14" cy="14" r="7" class="node-ring"></circle>
+          <circle cx="14" cy="14" r="3.2" class="node-core"></circle>
+        </svg>
+      </div>
+    </div>
+    <div class="tl-content">
+      <div class="tl-meta">
+        <span class="tl-year">2026</span>
+        <span class="tl-tag">Monitoring &amp; NLP</span>
+      </div>
+      <h3 class="tl-heading anchored">Continuous Monitoring and Language Models</h3>
+      <p class="tl-text">Consolidation of the continuous forest monitoring product at territorial scale, with 26 quarterly maps delivered from 2020 to 2026 validated against INPE's DETER alerts and PRODES polygons, alongside expansion into language models for institutional and regulatory document analysis.</p>
+    </div>
   </div>
 </div>
 </section>
@@ -831,6 +1154,11 @@ states, and checks every result against official references.</p>
         var caixa = reveais[r].getBoundingClientRect();
         if (caixa.top < window.innerHeight && caixa.bottom > 0) revelar(reveais[r]);
       }
+      for (var f = 0; f < voadores.length; f++) {
+        if (voadores[f].classList.contains("in-view")) continue;
+        var boxV = voadores[f].getBoundingClientRect();
+        if (boxV.top < window.innerHeight && boxV.bottom > 0) voadores[f].classList.add("in-view");
+      }
     }
 
     var observador = new IntersectionObserver(function (entradas) {
@@ -842,6 +1170,24 @@ states, and checks every result against official references.</p>
     }, { threshold: 0.15 });
 
     for (var i = 0; i < reveais.length; i++) observador.observe(reveais[i]);
+
+    // Elementos voadores na rolagem (.fly-item)
+    var voadores = document.querySelectorAll(".fly-item");
+    if (voadores.length) {
+      if (reduzido) {
+        for (var f = 0; f < voadores.length; f++) voadores[f].classList.add("in-view");
+      } else {
+        var observadorVoadores = new IntersectionObserver(function (entradasV) {
+          for (var v = 0; v < entradasV.length; v++) {
+            if (!entradasV[v].isIntersecting) continue;
+            entradasV[v].target.classList.add("in-view");
+            observadorVoadores.unobserve(entradasV[v].target);
+          }
+        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+
+        for (var f = 0; f < voadores.length; f++) observadorVoadores.observe(voadores[f]);
+      }
+    }
 
     // Rede de segurança: se o observador não disparar (navegadores antigos ou
     // situações excepcionais), o que já está na tela aparece mesmo assim
@@ -1249,6 +1595,49 @@ states, and checks every result against official references.</p>
         });
       });
     });
+
+    // Revezamento de fotos no hero: qualquer numero de imagens em .hero-map
+    // e alternado a cada 10s com transicao suave via classe .active
+    var heroContainer = document.querySelector(".hero-map");
+    if (heroContainer) {
+      var heroImgs = heroContainer.querySelectorAll("img");
+      if (heroImgs.length > 1) {
+        var heroIndex = 0;
+        heroImgs[0].classList.add("active");
+
+        var heroTimer = null;
+
+        function proximaFotoHero() {
+          heroImgs[heroIndex].classList.remove("active");
+          heroIndex = (heroIndex + 1) % heroImgs.length;
+          heroImgs[heroIndex].classList.add("active");
+        }
+
+        function iniciarHeroTimer() {
+          if (reduzido) return;
+          pararHeroTimer();
+          heroTimer = setInterval(proximaFotoHero, 10000);
+        }
+
+        function pararHeroTimer() {
+          if (heroTimer) {
+            clearInterval(heroTimer);
+            heroTimer = null;
+          }
+        }
+
+        iniciarHeroTimer();
+
+        // Pausa a rotacao quando a aba do navegador estiver oculta
+        document.addEventListener("visibilitychange", function () {
+          if (document.hidden) {
+            pararHeroTimer();
+          } else {
+            iniciarHeroTimer();
+          }
+        });
+      }
+    }
   });
 </script>
 <script>
@@ -1356,6 +1745,36 @@ states, and checks every result against official references.</p>
         }
         ativar(0);
       })(exploradores[e]);
+    }
+
+    // --------------------------------------------------------------- cinema interativo da floresta
+    var cinemas = document.querySelectorAll(".forest-cinema-wrap");
+    for (var c = 0; c < cinemas.length; c++) {
+      (function (wrap) {
+        var botoes = wrap.querySelectorAll(".cinema-btn");
+        var paineis = wrap.querySelectorAll(".cinema-pane");
+
+        botoes.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var alvo = btn.getAttribute("data-cinema-tab");
+            botoes.forEach(function (b) {
+              var ativo = b === btn;
+              b.classList.toggle("active", ativo);
+              b.setAttribute("aria-selected", ativo ? "true" : "false");
+            });
+            paineis.forEach(function (p) {
+              var ativo = p.id === "pane-" + alvo;
+              p.classList.toggle("active", ativo);
+              if (ativo) {
+                p.querySelectorAll("img[data-src]").forEach(function (im) {
+                  im.src = im.getAttribute("data-src");
+                  im.removeAttribute("data-src");
+                });
+              }
+            });
+          });
+        });
+      })(cinemas[c]);
     }
   });
 </script>
@@ -1562,29 +1981,68 @@ states, and checks every result against official references.</p>
         return;
       }
 
-      var dados = new FormData(form);
-      dados.set("motivo", motivoEscolhido());   // "Outro" já vem com o detalhe
-      dados.delete("outro");                     // o detalhe já está no motivo
-      dados.append("token", form.getAttribute("data-token") || "");
-      dados.append("pagina", location.pathname);
-      dados.append("idioma", form.getAttribute("data-idioma") || "pt");
+      var campoAnexo = form.querySelector("#join-anexo");
+      var anexo = campoAnexo && campoAnexo.files && campoAnexo.files[0];
 
-      botao.disabled = true;
-      mostrar(texto("msg-enviando", "Enviando..."), "enviando");
-      var parametros = new URLSearchParams();
-      dados.forEach(function (v, k) { parametros.append(k, v); });
+      // Limite de 10 MB (10 * 1024 * 1024 bytes)
+      var LIMITE_BYTES = 10 * 1024 * 1024;
+      if (anexo && anexo.size > LIMITE_BYTES) {
+        mostrar(texto("msg-tamanho", "O arquivo deve ter no máximo 10 MB."), "erro");
+        if (campoAnexo) campoAnexo.focus();
+        return;
+      }
 
-      fetch(endpoint, { method: "POST", mode: "no-cors", body: parametros })
-        .then(function () {
-          mostrar(texto("msg-ok", "Mensagem enviada. Responderemos por e-mail."), "ok");
-          form.querySelectorAll("input, select, textarea, button").forEach(function (campo) {
-            if (!campo.classList.contains("join-honeypot")) campo.disabled = true;
-          });
+      function enviar(arquivoBase64, arquivoNome, arquivoTipo) {
+        var dados = {
+          nome: (form.querySelector("#join-nome") && form.querySelector("#join-nome").value || "").trim(),
+          email: (form.querySelector("#join-email") && form.querySelector("#join-email").value || "").trim(),
+          motivo: motivoEscolhido(),
+          mensagem: ((form.querySelector("#join-msg") || form.querySelector("#join-mensagem")) && (form.querySelector("#join-msg") || form.querySelector("#join-mensagem")).value || "").trim(),
+          website: (honeypot && honeypot.value) || "",
+          token: form.getAttribute("data-token") || "",
+          pagina: location.pathname,
+          idioma: form.getAttribute("data-idioma") || "pt",
+          arquivoBase64: arquivoBase64 || "",
+          arquivoNome: arquivoNome || "",
+          arquivoTipo: arquivoTipo || ""
+        };
+
+        botao.disabled = true;
+        mostrar(texto("msg-enviando", "Enviando..."), "enviando");
+
+        fetch(endpoint, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(dados)
         })
-        .catch(function () {
-          botao.disabled = false;
-          mostrar(texto("msg-erro", "Não foi possível enviar. Tente novamente mais tarde."), "erro");
-        });
+          .then(function () {
+            mostrar(texto("msg-ok", "Mensagem enviada. Responderemos por e-mail."), "ok");
+            form.querySelectorAll("input, select, textarea, button").forEach(function (campo) {
+              if (!campo.classList.contains("join-honeypot")) campo.disabled = true;
+            });
+          })
+          .catch(function () {
+            botao.disabled = false;
+            mostrar(texto("msg-erro", "Não foi possível enviar. Tente novamente mais tarde."), "erro");
+          });
+      }
+
+      if (anexo) {
+        mostrar(texto("msg-lendo", "Preparando arquivo..."), "enviando");
+        var leitor = new FileReader();
+        leitor.onload = function () {
+          var res = leitor.result || "";
+          var base64 = res.indexOf(",") !== -1 ? res.split(",")[1] : res;
+          enviar(base64, anexo.name, anexo.type);
+        };
+        leitor.onerror = function () {
+          mostrar(texto("msg-erro-arquivo", "Não foi possível ler o arquivo selecionado."), "erro");
+        };
+        leitor.readAsDataURL(anexo);
+      } else {
+        enviar("", "", "");
+      }
     });
   });
 </script>

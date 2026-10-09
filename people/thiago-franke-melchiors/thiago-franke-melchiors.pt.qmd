@@ -5,14 +5,14 @@ first: "Thiago"
 people_group: "masters"
 subtitle: "Assistente de Pesquisa"
 education: "Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp"
-image: avatar.jpeg
+image: avatar.jpg
 page-layout: full
 toc: false
 about:
   id: perfil
   template: trestles
   image-shape: round
-  image: avatar.jpeg
+  image: avatar.jpg
   links:
     - icon: linkedin
       text: LinkedIn

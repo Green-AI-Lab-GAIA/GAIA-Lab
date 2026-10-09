@@ -4,7 +4,7 @@ last: "Westfal"
 first: "Lucas"
 people_group: "masters"
 subtitle: "Assistente de Pesquisa"
-education: "Mestrando, FGV EMAp"
+education: "Mestrando em Matemática Aplicada e Ciência de Dados, FGV EMAp."
 image: avatar.jpeg
 page-layout: full
 toc: false
@@ -16,7 +16,10 @@ about:
   links:
     - icon: linkedin
       text: LinkedIn
-      href: "https://www.linkedin.com/in/lucas-westfal-001aab1b1"
+      href: "https://br.linkedin.com/in/lucas-westfal-001aab1b1"
+    - icon: envelope
+      text: Email
+      href: "mailto:lucaswestfal4@gmail.com"
 ---
 
 ```{=html}
@@ -26,17 +29,17 @@ about:
 
 ::: {#perfil}
 
-Mestrando na FGV EMAp e pesquisador do GAIA Lab. Bacharel em Matemática Aplicada pela mesma escola, com formação técnica em mecatrônica pelo IFSC. Pesquisa saúde pervasiva, Internet das Coisas, visão computacional e informática médica.
+Mestrando na FGV EMAp e pesquisador em matemática aplicada à automação. É bacharel em Matemática Aplicada pela mesma instituição, com financiamento do CDMC. Dedica-se à resolução de problemas voltados ao setor de Defesa e ao ensino de técnicas de manufatura aditiva para o Curso de Aperfeiçoamento Avançado de Oficiais do Corpo de Fuzileiros Navais da Marinha do Brasil (C-ApA-CFN) e para alunos de graduação da FGV EMAp.
 
 ## Formação
 
-- Mestrando, FGV EMAp.
-- Graduação em Matemática Aplicada, FGV EMAp.
-- Técnico em Mecatrônica, IFSC.
+- Mestrado em andamento em Matemática Aplicada e Ciência de Dados. Fundação Getúlio Vargas, FGV, Brasil.
+- Graduação em Matemática. Fundação Getúlio Vargas, FGV, Brasil.
+- Curso técnico/profissionalizante em Mecatrônica. Instituto Federal de Santa Catarina, IFSC, Brasil.
 
 ## Interesses
 
-Saúde pervasiva, IoT, visão computacional e informática médica.
+Inferência Baseada em Simulação (SBI), Visão Computacional e Aprendizado de Máquina (ML), Design para Manufatura Aditiva (DfAM), Internet das Coisas (IoT).
 
 :::
 

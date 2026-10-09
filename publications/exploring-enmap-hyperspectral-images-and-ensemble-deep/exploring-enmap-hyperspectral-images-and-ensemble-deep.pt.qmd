@@ -54,9 +54,7 @@ estudo fornece insights valiosos sobre o uso eficaz de imagens hiperespectrais e
 para o mapeamento robusto de tipos de cobertura florestal em regiões tropicais, enfatizando o papel crucial da alta resolução espectral.
 
 :::: {.pub-figures}
-![Localização da área de estudo no estado de São Paulo, Brasil. São apresentadas composições em cores reais de dezesseis cenas 
-do satélite hiperespectral EnMAP abrangendo o estado de São Paulo. Um detalhe no canto inferior esquerdo destaca a distribuição 
-espacial das parcelas de campo estabelecidas em quatro tipos de cobertura florestal.](figura1.jpg)
+![Localização da área de estudo no estado de São Paulo, Brasil. São apresentadas composições em cores reais de dezesseis cenas do satélite hiperespectral EnMAP abrangendo o estado de São Paulo. Um detalhe no canto inferior esquerdo destaca a distribuição espacial das parcelas de campo estabelecidas em quatro tipos de cobertura florestal.](figura1.jpg)
 
 ![Abordagem de ensemble baseada em aprendizado profundo. Três modelos distintos de aprendizado profundo foram treinados de forma 
 independente: uma rede neural recorrente (RNN), um autoencoder e uma rede neural convolucional 1D (1D-CNN). Cada modelo gerou saídas 

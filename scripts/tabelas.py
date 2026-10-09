@@ -41,6 +41,7 @@ COLUNAS = {
         Coluna("formacao_detalhe_en", "Formação detalhada em inglês", False),
         Coluna("apresentacao_en", "Apresentação em inglês", False),
         Coluna("interesses_en", "Interesses de pesquisa em inglês", False),
+        Coluna("exibir", "Exibir", False, ("visivel", "mostrar", "publicar")),
     ],
     "publicacoes": [
         Coluna("titulo", "Título", True, ("titulo", "título do artigo")),
@@ -59,8 +60,12 @@ COLUNAS = {
         Coluna("legenda1", "Legenda da figura 1", False),
         Coluna("figura2", "Figura 2", False),
         Coluna("legenda2", "Legenda da figura 2", False),
+        Coluna("legenda1_en", "Legenda da figura 1 em inglês", False, ("legenda 1 em ingles", "caption 1", "figure 1 caption")),
+        Coluna("legenda2_en", "Legenda da figura 2 em inglês", False, ("legenda 2 em ingles", "caption 2", "figure 2 caption")),
         Coluna("resumo_en", "Resumo em inglês", False),
         Coluna("resumo_curto_en", "Resumo curto em inglês", False),
+        Coluna("titulo_en", "Título em inglês", False, ("titulo em ingles", "title in english")),
+        Coluna("exibir", "Exibir", False, ("visivel", "mostrar", "publicar")),
     ],
     "noticias": [
         Coluna("titulo", "Título", True, ("titulo",)),
@@ -72,6 +77,7 @@ COLUNAS = {
         Coluna("titulo_en", "Título em inglês", False),
         Coluna("resumo_en", "Resumo em inglês", False),
         Coluna("url_en", "Endereço da matéria em inglês", False),
+        Coluna("exibir", "Exibir", False, ("visivel", "mostrar", "publicar")),
     ],
     "cursos": [
         Coluna("titulo", "Nome do curso", True, ("titulo", "nome da disciplina", "disciplina", "curso")),
@@ -87,6 +93,7 @@ COLUNAS = {
         Coluna("url", "Página do curso", True, ("pagina do curso", "link do curso", "endereco do curso", "pagina do programa", "url", "link")),
         Coluna("url_en", "Página do curso em inglês", False, ("pagina do curso em ingles", "course page", "url em ingles")),
         Coluna("imagem", "Imagem ilustrativa", False, ("imagem", "foto", "icone", "ilustracao", "capa")),
+        Coluna("exibir", "Exibir", False, ("visivel", "mostrar", "publicar")),
     ],
 }
 
@@ -194,6 +201,25 @@ def itens(valor: str) -> list[str]:
 
 def eh_endereco(valor: str) -> bool:
     return bool(re.match(r"^https?://", (valor or "").strip(), re.I))
+
+
+def deve_exibir(valor: str | bool | None) -> bool:
+    """Interpreta o valor da coluna 'Exibir'.
+
+    Por padrao, itens sao exibidos (celula vazia ou sem a coluna = True).
+    Valores negativos (Ocultar, Nao, Nao exibir, Esconder, False, Falso, 0)
+    ocultam o item da publicacao no site.
+    """
+    if valor is None:
+        return True
+    if isinstance(valor, bool):
+        return valor
+    v = normalizar(str(valor))
+    if not v:
+        return True
+    if v in ("false", "falso", "nao", "nao exibir", "ocultar", "esconder", "0"):
+        return False
+    return True
 
 
 def sem_travessao(texto: str) -> str:
@@ -338,6 +364,8 @@ def ler_xlsx_bruto(caminho: Path, nome_aba: str = "") -> list[dict[str, str]]:
                 elif t == "inlineStr":
                     it = c.find(f".//{ns}t")
                     val = it.text if it is not None and it.text else ""
+                elif t == "b":
+                    val = "TRUE" if v is not None and v.text == "1" else "FALSE"
                 else:
                     val = v.text if v is not None and v.text else ""
                 row.append(val)
@@ -388,6 +416,10 @@ def ler_tabela(tabela: str, caminho: Path) -> list[dict]:
     linhas, usados = [], set()
     for numero, linha in enumerate(bruto, start=2):
         dado = {chave: (linha.get(cabecalho) or "").strip() for chave, cabecalho in mapa.items()}
+        if not any(dado.values()):
+            continue
+        if not deve_exibir(dado.get("exibir", "")):
+            continue
         for coluna in COLUNAS[tabela]:
             if coluna.obrigatoria and not dado.get(coluna.chave):
                 raise ErroDeConteudo(f"{caminho.name}, linha {numero}: "

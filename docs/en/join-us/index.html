@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="icon" type="image/png" href="../icon/favicon-light.png">
 
 
-<link rel="stylesheet" href="../styles.css?v=4b9287ad">
+<link rel="stylesheet" href="../styles.css?v=962d8b77">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -328,16 +328,16 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="page-shell">
 <div class="page-main">
-<p>The GAIA Lab is open to students and researchers interested in artificial intelligence applied to remote sensing, climate, forests, and agriculture, and also to partnerships, collaborations, and exchanging ideas.</p>
+<p>The GAIA Lab is open to students and researchers interested in artificial intelligence applied to remote sensing, climate, forests, agriculture and cities, and also to partnerships, collaborations, and exchanging ideas.</p>
 <p>If you’re on the fence about writing to us, we suggest you fill out the form below! :)</p>
-<form id="join-form" class="join-form" data-idioma="en" data-endpoint="https://script.google.com/macros/s/AKfycbwxLpFZLPE_y_saxefnjBdP6meILCRdXVaRYt27l_nPU9zVif_c8GPnraXn_n1aQyAYZQ/exec" data-token="gaia-contato-9f3c71" data-msg-enviando="Sending..." data-msg-ok="Message sent. We will reply by email." data-msg-erro="Could not send. Write directly to the address beside the form." data-msg-rapido="Please check the fields and send again." data-msg-outro="Tell us in a few words what the reason is." data-lbl-motivo="Reason" data-lbl-mensagem="Message" data-lbl-email="Email" data-msg-assunto="Contact from the GAIA Lab website">
-  <label for="join-nome">Name</label>
+<form id="join-form" class="join-form" data-idioma="en" data-endpoint="https://script.google.com/macros/s/AKfycbwfOl6sXBq-WGeNR-ojyiNEL6nS6V5G91wcpRL_f-XyYNHUWJoYdkiL9roQlmgf89uCxg/exec" data-token="gaia-contato-9f3c71" data-msg-enviando="Sending..." data-msg-ok="Message sent. We will reply by email." data-msg-erro="Could not send. Write directly to the address beside the form." data-msg-rapido="Please check the fields and send again." data-msg-outro="Tell us in a few words what the reason is." data-msg-tamanho="The file must be at most 10 MB." data-msg-lendo="Preparing file..." data-msg-erro-arquivo="Could not read the selected file." data-lbl-motivo="Reason" data-lbl-mensagem="Message" data-lbl-email="Email" data-msg-assunto="Contact from the GAIA Lab website">
+  <label for="join-nome">Name <span class="join-req" aria-hidden="true">*</span></label>
   <input id="join-nome" name="nome" type="text" autocomplete="name" required="">
 
-  <label for="join-email">Your email</label>
+  <label for="join-email">Your email <span class="join-req" aria-hidden="true">*</span></label>
   <input id="join-email" name="email" type="email" autocomplete="email" required="">
 
-  <label for="join-motivo">Reason for contact</label>
+  <label for="join-motivo">Reason for contact <span class="join-req" aria-hidden="true">*</span></label>
   <div class="combo">
     <select id="join-motivo" name="motivo">
       <option>Scientific Initiation</option>
@@ -356,8 +356,14 @@ ul.task-list li input[type="checkbox"] {
     <div class="join-contador" aria-live="polite">0/80</div>
   </div>
 
-  <label for="join-msg">Message</label>
+  <label for="join-msg">Message <span class="join-req" aria-hidden="true">*</span></label>
   <textarea id="join-msg" name="mensagem" rows="6" required="" placeholder="Tell us why you are reaching out and, if relevant, your research interests"></textarea>
+
+  <label for="join-anexo">Attachment <span class="join-opcional">(optional)</span></label>
+  <span class="join-dica">
+    Feel free to attach a CV, transcript, recommendation letter, portfolio, or any other document you find relevant (PDF or ZIP, up to 10 MB).
+  </span>
+  <input id="join-anexo" name="anexo" type="file" accept=".pdf,.zip,application/pdf,application/zip,application/x-zip-compressed">
 
   <input class="join-honeypot" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
 
@@ -786,6 +792,11 @@ ul.task-list li input[type="checkbox"] {
         var caixa = reveais[r].getBoundingClientRect();
         if (caixa.top < window.innerHeight && caixa.bottom > 0) revelar(reveais[r]);
       }
+      for (var f = 0; f < voadores.length; f++) {
+        if (voadores[f].classList.contains("in-view")) continue;
+        var boxV = voadores[f].getBoundingClientRect();
+        if (boxV.top < window.innerHeight && boxV.bottom > 0) voadores[f].classList.add("in-view");
+      }
     }
 
     var observador = new IntersectionObserver(function (entradas) {
@@ -797,6 +808,24 @@ ul.task-list li input[type="checkbox"] {
     }, { threshold: 0.15 });
 
     for (var i = 0; i < reveais.length; i++) observador.observe(reveais[i]);
+
+    // Elementos voadores na rolagem (.fly-item)
+    var voadores = document.querySelectorAll(".fly-item");
+    if (voadores.length) {
+      if (reduzido) {
+        for (var f = 0; f < voadores.length; f++) voadores[f].classList.add("in-view");
+      } else {
+        var observadorVoadores = new IntersectionObserver(function (entradasV) {
+          for (var v = 0; v < entradasV.length; v++) {
+            if (!entradasV[v].isIntersecting) continue;
+            entradasV[v].target.classList.add("in-view");
+            observadorVoadores.unobserve(entradasV[v].target);
+          }
+        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+
+        for (var f = 0; f < voadores.length; f++) observadorVoadores.observe(voadores[f]);
+      }
+    }
 
     // Rede de segurança: se o observador não disparar (navegadores antigos ou
     // situações excepcionais), o que já está na tela aparece mesmo assim
@@ -1204,6 +1233,49 @@ ul.task-list li input[type="checkbox"] {
         });
       });
     });
+
+    // Revezamento de fotos no hero: qualquer numero de imagens em .hero-map
+    // e alternado a cada 10s com transicao suave via classe .active
+    var heroContainer = document.querySelector(".hero-map");
+    if (heroContainer) {
+      var heroImgs = heroContainer.querySelectorAll("img");
+      if (heroImgs.length > 1) {
+        var heroIndex = 0;
+        heroImgs[0].classList.add("active");
+
+        var heroTimer = null;
+
+        function proximaFotoHero() {
+          heroImgs[heroIndex].classList.remove("active");
+          heroIndex = (heroIndex + 1) % heroImgs.length;
+          heroImgs[heroIndex].classList.add("active");
+        }
+
+        function iniciarHeroTimer() {
+          if (reduzido) return;
+          pararHeroTimer();
+          heroTimer = setInterval(proximaFotoHero, 10000);
+        }
+
+        function pararHeroTimer() {
+          if (heroTimer) {
+            clearInterval(heroTimer);
+            heroTimer = null;
+          }
+        }
+
+        iniciarHeroTimer();
+
+        // Pausa a rotacao quando a aba do navegador estiver oculta
+        document.addEventListener("visibilitychange", function () {
+          if (document.hidden) {
+            pararHeroTimer();
+          } else {
+            iniciarHeroTimer();
+          }
+        });
+      }
+    }
   });
 </script>
 <script>
@@ -1311,6 +1383,36 @@ ul.task-list li input[type="checkbox"] {
         }
         ativar(0);
       })(exploradores[e]);
+    }
+
+    // --------------------------------------------------------------- cinema interativo da floresta
+    var cinemas = document.querySelectorAll(".forest-cinema-wrap");
+    for (var c = 0; c < cinemas.length; c++) {
+      (function (wrap) {
+        var botoes = wrap.querySelectorAll(".cinema-btn");
+        var paineis = wrap.querySelectorAll(".cinema-pane");
+
+        botoes.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var alvo = btn.getAttribute("data-cinema-tab");
+            botoes.forEach(function (b) {
+              var ativo = b === btn;
+              b.classList.toggle("active", ativo);
+              b.setAttribute("aria-selected", ativo ? "true" : "false");
+            });
+            paineis.forEach(function (p) {
+              var ativo = p.id === "pane-" + alvo;
+              p.classList.toggle("active", ativo);
+              if (ativo) {
+                p.querySelectorAll("img[data-src]").forEach(function (im) {
+                  im.src = im.getAttribute("data-src");
+                  im.removeAttribute("data-src");
+                });
+              }
+            });
+          });
+        });
+      })(cinemas[c]);
     }
   });
 </script>
@@ -1517,29 +1619,68 @@ ul.task-list li input[type="checkbox"] {
         return;
       }
 
-      var dados = new FormData(form);
-      dados.set("motivo", motivoEscolhido());   // "Outro" já vem com o detalhe
-      dados.delete("outro");                     // o detalhe já está no motivo
-      dados.append("token", form.getAttribute("data-token") || "");
-      dados.append("pagina", location.pathname);
-      dados.append("idioma", form.getAttribute("data-idioma") || "pt");
+      var campoAnexo = form.querySelector("#join-anexo");
+      var anexo = campoAnexo && campoAnexo.files && campoAnexo.files[0];
 
-      botao.disabled = true;
-      mostrar(texto("msg-enviando", "Enviando..."), "enviando");
-      var parametros = new URLSearchParams();
-      dados.forEach(function (v, k) { parametros.append(k, v); });
+      // Limite de 10 MB (10 * 1024 * 1024 bytes)
+      var LIMITE_BYTES = 10 * 1024 * 1024;
+      if (anexo && anexo.size > LIMITE_BYTES) {
+        mostrar(texto("msg-tamanho", "O arquivo deve ter no máximo 10 MB."), "erro");
+        if (campoAnexo) campoAnexo.focus();
+        return;
+      }
 
-      fetch(endpoint, { method: "POST", mode: "no-cors", body: parametros })
-        .then(function () {
-          mostrar(texto("msg-ok", "Mensagem enviada. Responderemos por e-mail."), "ok");
-          form.querySelectorAll("input, select, textarea, button").forEach(function (campo) {
-            if (!campo.classList.contains("join-honeypot")) campo.disabled = true;
-          });
+      function enviar(arquivoBase64, arquivoNome, arquivoTipo) {
+        var dados = {
+          nome: (form.querySelector("#join-nome") && form.querySelector("#join-nome").value || "").trim(),
+          email: (form.querySelector("#join-email") && form.querySelector("#join-email").value || "").trim(),
+          motivo: motivoEscolhido(),
+          mensagem: ((form.querySelector("#join-msg") || form.querySelector("#join-mensagem")) && (form.querySelector("#join-msg") || form.querySelector("#join-mensagem")).value || "").trim(),
+          website: (honeypot && honeypot.value) || "",
+          token: form.getAttribute("data-token") || "",
+          pagina: location.pathname,
+          idioma: form.getAttribute("data-idioma") || "pt",
+          arquivoBase64: arquivoBase64 || "",
+          arquivoNome: arquivoNome || "",
+          arquivoTipo: arquivoTipo || ""
+        };
+
+        botao.disabled = true;
+        mostrar(texto("msg-enviando", "Enviando..."), "enviando");
+
+        fetch(endpoint, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(dados)
         })
-        .catch(function () {
-          botao.disabled = false;
-          mostrar(texto("msg-erro", "Não foi possível enviar. Tente novamente mais tarde."), "erro");
-        });
+          .then(function () {
+            mostrar(texto("msg-ok", "Mensagem enviada. Responderemos por e-mail."), "ok");
+            form.querySelectorAll("input, select, textarea, button").forEach(function (campo) {
+              if (!campo.classList.contains("join-honeypot")) campo.disabled = true;
+            });
+          })
+          .catch(function () {
+            botao.disabled = false;
+            mostrar(texto("msg-erro", "Não foi possível enviar. Tente novamente mais tarde."), "erro");
+          });
+      }
+
+      if (anexo) {
+        mostrar(texto("msg-lendo", "Preparando arquivo..."), "enviando");
+        var leitor = new FileReader();
+        leitor.onload = function () {
+          var res = leitor.result || "";
+          var base64 = res.indexOf(",") !== -1 ? res.split(",")[1] : res;
+          enviar(base64, anexo.name, anexo.type);
+        };
+        leitor.onerror = function () {
+          mostrar(texto("msg-erro-arquivo", "Não foi possível ler o arquivo selecionado."), "erro");
+        };
+        leitor.readAsDataURL(anexo);
+      } else {
+        enviar("", "", "");
+      }
     });
   });
 </script>

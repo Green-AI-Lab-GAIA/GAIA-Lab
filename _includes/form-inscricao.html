@@ -201,29 +201,68 @@
         return;
       }
 
-      var dados = new FormData(form);
-      dados.set("motivo", motivoEscolhido());   // "Outro" já vem com o detalhe
-      dados.delete("outro");                     // o detalhe já está no motivo
-      dados.append("token", form.getAttribute("data-token") || "");
-      dados.append("pagina", location.pathname);
-      dados.append("idioma", form.getAttribute("data-idioma") || "pt");
+      var campoAnexo = form.querySelector("#join-anexo");
+      var anexo = campoAnexo && campoAnexo.files && campoAnexo.files[0];
 
-      botao.disabled = true;
-      mostrar(texto("msg-enviando", "Enviando..."), "enviando");
-      var parametros = new URLSearchParams();
-      dados.forEach(function (v, k) { parametros.append(k, v); });
+      // Limite de 10 MB (10 * 1024 * 1024 bytes)
+      var LIMITE_BYTES = 10 * 1024 * 1024;
+      if (anexo && anexo.size > LIMITE_BYTES) {
+        mostrar(texto("msg-tamanho", "O arquivo deve ter no máximo 10 MB."), "erro");
+        if (campoAnexo) campoAnexo.focus();
+        return;
+      }
 
-      fetch(endpoint, { method: "POST", mode: "no-cors", body: parametros })
-        .then(function () {
-          mostrar(texto("msg-ok", "Mensagem enviada. Responderemos por e-mail."), "ok");
-          form.querySelectorAll("input, select, textarea, button").forEach(function (campo) {
-            if (!campo.classList.contains("join-honeypot")) campo.disabled = true;
-          });
+      function enviar(arquivoBase64, arquivoNome, arquivoTipo) {
+        var dados = {
+          nome: (form.querySelector("#join-nome") && form.querySelector("#join-nome").value || "").trim(),
+          email: (form.querySelector("#join-email") && form.querySelector("#join-email").value || "").trim(),
+          motivo: motivoEscolhido(),
+          mensagem: ((form.querySelector("#join-msg") || form.querySelector("#join-mensagem")) && (form.querySelector("#join-msg") || form.querySelector("#join-mensagem")).value || "").trim(),
+          website: (honeypot && honeypot.value) || "",
+          token: form.getAttribute("data-token") || "",
+          pagina: location.pathname,
+          idioma: form.getAttribute("data-idioma") || "pt",
+          arquivoBase64: arquivoBase64 || "",
+          arquivoNome: arquivoNome || "",
+          arquivoTipo: arquivoTipo || ""
+        };
+
+        botao.disabled = true;
+        mostrar(texto("msg-enviando", "Enviando..."), "enviando");
+
+        fetch(endpoint, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(dados)
         })
-        .catch(function () {
-          botao.disabled = false;
-          mostrar(texto("msg-erro", "Não foi possível enviar. Tente novamente mais tarde."), "erro");
-        });
+          .then(function () {
+            mostrar(texto("msg-ok", "Mensagem enviada. Responderemos por e-mail."), "ok");
+            form.querySelectorAll("input, select, textarea, button").forEach(function (campo) {
+              if (!campo.classList.contains("join-honeypot")) campo.disabled = true;
+            });
+          })
+          .catch(function () {
+            botao.disabled = false;
+            mostrar(texto("msg-erro", "Não foi possível enviar. Tente novamente mais tarde."), "erro");
+          });
+      }
+
+      if (anexo) {
+        mostrar(texto("msg-lendo", "Preparando arquivo..."), "enviando");
+        var leitor = new FileReader();
+        leitor.onload = function () {
+          var res = leitor.result || "";
+          var base64 = res.indexOf(",") !== -1 ? res.split(",")[1] : res;
+          enviar(base64, anexo.name, anexo.type);
+        };
+        leitor.onerror = function () {
+          mostrar(texto("msg-erro-arquivo", "Não foi possível ler o arquivo selecionado."), "erro");
+        };
+        leitor.readAsDataURL(anexo);
+      } else {
+        enviar("", "", "");
+      }
     });
   });
 </script>

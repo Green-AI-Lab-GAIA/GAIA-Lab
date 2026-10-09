@@ -30,6 +30,7 @@ Research assistant at the GAIA Lab, applying computer vision and deep learning t
 
 ## Education
 
+- Master's student in the IASD Program at Université PSL.
 - MSc in Applied Mathematics and Data Science, FGV EMAp.
 - BSc in Data Science and AI, FGV EMAp.
 

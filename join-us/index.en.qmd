@@ -10,7 +10,7 @@ toc: false
 ```
 
 The GAIA Lab is open to students and researchers interested in artificial
-intelligence applied to remote sensing, climate, forests, and agriculture, and
+intelligence applied to remote sensing, climate, forests, agriculture and cities, and
 also to partnerships, collaborations, and exchanging ideas.
 
 If you're on the fence about writing to us, we suggest you fill out the form below! :)
@@ -18,24 +18,27 @@ If you're on the fence about writing to us, we suggest you fill out the form bel
 ```{=html}
 <form id="join-form" class="join-form"
       data-idioma="en"
-      data-endpoint="https://script.google.com/macros/s/AKfycbwxLpFZLPE_y_saxefnjBdP6meILCRdXVaRYt27l_nPU9zVif_c8GPnraXn_n1aQyAYZQ/exec"
+      data-endpoint="https://script.google.com/macros/s/AKfycbwfOl6sXBq-WGeNR-ojyiNEL6nS6V5G91wcpRL_f-XyYNHUWJoYdkiL9roQlmgf89uCxg/exec"
       data-token="gaia-contato-9f3c71"
       data-msg-enviando="Sending..."
       data-msg-ok="Message sent. We will reply by email."
       data-msg-erro="Could not send. Write directly to the address beside the form."
       data-msg-rapido="Please check the fields and send again."
       data-msg-outro="Tell us in a few words what the reason is."
+      data-msg-tamanho="The file must be at most 10 MB."
+      data-msg-lendo="Preparing file..."
+      data-msg-erro-arquivo="Could not read the selected file."
       data-lbl-motivo="Reason"
       data-lbl-mensagem="Message"
       data-lbl-email="Email"
       data-msg-assunto="Contact from the GAIA Lab website">
-  <label for="join-nome">Name</label>
+  <label for="join-nome">Name <span class="join-req" aria-hidden="true">*</span></label>
   <input id="join-nome" name="nome" type="text" autocomplete="name" required>
 
-  <label for="join-email">Your email</label>
+  <label for="join-email">Your email <span class="join-req" aria-hidden="true">*</span></label>
   <input id="join-email" name="email" type="email" autocomplete="email" required>
 
-  <label for="join-motivo">Reason for contact</label>
+  <label for="join-motivo">Reason for contact <span class="join-req" aria-hidden="true">*</span></label>
   <div class="combo">
     <select id="join-motivo" name="motivo">
       <option>Scientific Initiation</option>
@@ -55,9 +58,15 @@ If you're on the fence about writing to us, we suggest you fill out the form bel
     <div class="join-contador" aria-live="polite">0/80</div>
   </div>
 
-  <label for="join-msg">Message</label>
+  <label for="join-msg">Message <span class="join-req" aria-hidden="true">*</span></label>
   <textarea id="join-msg" name="mensagem" rows="6" required
             placeholder="Tell us why you are reaching out and, if relevant, your research interests"></textarea>
+
+  <label for="join-anexo">Attachment <span class="join-opcional">(optional)</span></label>
+  <span class="join-dica">
+    Feel free to attach a CV, transcript, recommendation letter, portfolio, or any other document you find relevant (PDF or ZIP, up to 10 MB).
+  </span>
+  <input id="join-anexo" name="anexo" type="file" accept=".pdf,.zip,application/pdf,application/zip,application/x-zip-compressed">
 
   <input class="join-honeypot" name="website" type="text" tabindex="-1"
          autocomplete="off" aria-hidden="true">

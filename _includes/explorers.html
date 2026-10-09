@@ -104,5 +104,35 @@
         ativar(0);
       })(exploradores[e]);
     }
+
+    // --------------------------------------------------------------- cinema interativo da floresta
+    var cinemas = document.querySelectorAll(".forest-cinema-wrap");
+    for (var c = 0; c < cinemas.length; c++) {
+      (function (wrap) {
+        var botoes = wrap.querySelectorAll(".cinema-btn");
+        var paineis = wrap.querySelectorAll(".cinema-pane");
+
+        botoes.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var alvo = btn.getAttribute("data-cinema-tab");
+            botoes.forEach(function (b) {
+              var ativo = b === btn;
+              b.classList.toggle("active", ativo);
+              b.setAttribute("aria-selected", ativo ? "true" : "false");
+            });
+            paineis.forEach(function (p) {
+              var ativo = p.id === "pane-" + alvo;
+              p.classList.toggle("active", ativo);
+              if (ativo) {
+                p.querySelectorAll("img[data-src]").forEach(function (im) {
+                  im.src = im.getAttribute("data-src");
+                  im.removeAttribute("data-src");
+                });
+              }
+            });
+          });
+        });
+      })(cinemas[c]);
+    }
   });
 </script>

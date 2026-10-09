@@ -49,11 +49,9 @@ climate data analysis and open avenues for incorporating richer climate
 indicators in future work.
 
 :::: {.pub-figures}
-![Extensão espacial da região de estudo selecionada (Cerrado brasileiro) utilizada para o treinamento e a avaliação do modelo.](figura1.png)
+![Spatial extent of the selected study area (Brazilian Cerrado) used for model training and evaluation.](figura1.png)
 
-![Análise de probabilidade com defasagem que demonstra a sensibilidade dos regimes aprendidos em defasagens $\tau \in \left[ −12, +12 \right]$ meses em relação ao Índice 
-Niño Oceânico. Defasagens negativas indicam comportamento precursor antes do El Niño, enquanto defasagens positivas indicam respostas postergadas após 
-o pico do ENOS.](figura2.png)
+![Lagged probability analysis demonstrating the sensitivity of the learned regimes across lags $\tau \in \left[ -12, +12 \right]$ months relative to the Oceanic Niño Index. Negative lags indicate precursor behavior prior to El Niño, while positive lags indicate delayed responses following the ENSO peak.](figura2.png)
 ::::
 
 ## How to cite

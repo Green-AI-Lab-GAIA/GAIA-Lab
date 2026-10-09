@@ -47,9 +47,7 @@ trabalhos futuros.
 :::: {.pub-figures}
 ![Extensão espacial da região de estudo selecionada (Cerrado brasileiro) utilizada para o treinamento e a avaliação do modelo.](figura1.png)
 
-![Análise de probabilidade com defasagem que demonstra a sensibilidade dos regimes aprendidos em defasagens $\tau \in \left[ −12, +12 \right]$ meses em relação ao Índice 
-Niño Oceânico. Defasagens negativas indicam comportamento precursor antes do El Niño, enquanto defasagens positivas indicam respostas postergadas após 
-o pico do ENOS.](figura2.png)
+![Análise de probabilidade com defasagem que demonstra a sensibilidade dos regimes aprendidos em defasagens $\tau \in \left[ −12, +12 \right]$ meses em relação ao Índice Niño Oceânico. Defasagens negativas indicam comportamento precursor antes do El Niño, enquanto defasagens positivas indicam respostas postergadas após o pico do ENOS.](figura2.png)
 ::::
 
 ## Como citar

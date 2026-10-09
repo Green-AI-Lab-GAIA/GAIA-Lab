@@ -78,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="icon" type="image/png" href="../../icon/favicon-light.png">
 
 
-<link rel="stylesheet" href="../../styles.css?v=4b9287ad">
+<link rel="stylesheet" href="../../styles.css?v=962d8b77">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -768,6 +768,11 @@ ul.task-list li input[type="checkbox"] {
         var caixa = reveais[r].getBoundingClientRect();
         if (caixa.top < window.innerHeight && caixa.bottom > 0) revelar(reveais[r]);
       }
+      for (var f = 0; f < voadores.length; f++) {
+        if (voadores[f].classList.contains("in-view")) continue;
+        var boxV = voadores[f].getBoundingClientRect();
+        if (boxV.top < window.innerHeight && boxV.bottom > 0) voadores[f].classList.add("in-view");
+      }
     }
 
     var observador = new IntersectionObserver(function (entradas) {
@@ -779,6 +784,24 @@ ul.task-list li input[type="checkbox"] {
     }, { threshold: 0.15 });
 
     for (var i = 0; i < reveais.length; i++) observador.observe(reveais[i]);
+
+    // Elementos voadores na rolagem (.fly-item)
+    var voadores = document.querySelectorAll(".fly-item");
+    if (voadores.length) {
+      if (reduzido) {
+        for (var f = 0; f < voadores.length; f++) voadores[f].classList.add("in-view");
+      } else {
+        var observadorVoadores = new IntersectionObserver(function (entradasV) {
+          for (var v = 0; v < entradasV.length; v++) {
+            if (!entradasV[v].isIntersecting) continue;
+            entradasV[v].target.classList.add("in-view");
+            observadorVoadores.unobserve(entradasV[v].target);
+          }
+        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+
+        for (var f = 0; f < voadores.length; f++) observadorVoadores.observe(voadores[f]);
+      }
+    }
 
     // Rede de segurança: se o observador não disparar (navegadores antigos ou
     // situações excepcionais), o que já está na tela aparece mesmo assim
@@ -1186,6 +1209,49 @@ ul.task-list li input[type="checkbox"] {
         });
       });
     });
+
+    // Revezamento de fotos no hero: qualquer numero de imagens em .hero-map
+    // e alternado a cada 10s com transicao suave via classe .active
+    var heroContainer = document.querySelector(".hero-map");
+    if (heroContainer) {
+      var heroImgs = heroContainer.querySelectorAll("img");
+      if (heroImgs.length > 1) {
+        var heroIndex = 0;
+        heroImgs[0].classList.add("active");
+
+        var heroTimer = null;
+
+        function proximaFotoHero() {
+          heroImgs[heroIndex].classList.remove("active");
+          heroIndex = (heroIndex + 1) % heroImgs.length;
+          heroImgs[heroIndex].classList.add("active");
+        }
+
+        function iniciarHeroTimer() {
+          if (reduzido) return;
+          pararHeroTimer();
+          heroTimer = setInterval(proximaFotoHero, 10000);
+        }
+
+        function pararHeroTimer() {
+          if (heroTimer) {
+            clearInterval(heroTimer);
+            heroTimer = null;
+          }
+        }
+
+        iniciarHeroTimer();
+
+        // Pausa a rotacao quando a aba do navegador estiver oculta
+        document.addEventListener("visibilitychange", function () {
+          if (document.hidden) {
+            pararHeroTimer();
+          } else {
+            iniciarHeroTimer();
+          }
+        });
+      }
+    }
   });
 </script>
 <script>
@@ -1293,6 +1359,36 @@ ul.task-list li input[type="checkbox"] {
         }
         ativar(0);
       })(exploradores[e]);
+    }
+
+    // --------------------------------------------------------------- cinema interativo da floresta
+    var cinemas = document.querySelectorAll(".forest-cinema-wrap");
+    for (var c = 0; c < cinemas.length; c++) {
+      (function (wrap) {
+        var botoes = wrap.querySelectorAll(".cinema-btn");
+        var paineis = wrap.querySelectorAll(".cinema-pane");
+
+        botoes.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var alvo = btn.getAttribute("data-cinema-tab");
+            botoes.forEach(function (b) {
+              var ativo = b === btn;
+              b.classList.toggle("active", ativo);
+              b.setAttribute("aria-selected", ativo ? "true" : "false");
+            });
+            paineis.forEach(function (p) {
+              var ativo = p.id === "pane-" + alvo;
+              p.classList.toggle("active", ativo);
+              if (ativo) {
+                p.querySelectorAll("img[data-src]").forEach(function (im) {
+                  im.src = im.getAttribute("data-src");
+                  im.removeAttribute("data-src");
+                });
+              }
+            });
+          });
+        });
+      })(cinemas[c]);
     }
   });
 </script>
@@ -1499,29 +1595,68 @@ ul.task-list li input[type="checkbox"] {
         return;
       }
 
-      var dados = new FormData(form);
-      dados.set("motivo", motivoEscolhido());   // "Outro" já vem com o detalhe
-      dados.delete("outro");                     // o detalhe já está no motivo
-      dados.append("token", form.getAttribute("data-token") || "");
-      dados.append("pagina", location.pathname);
-      dados.append("idioma", form.getAttribute("data-idioma") || "pt");
+      var campoAnexo = form.querySelector("#join-anexo");
+      var anexo = campoAnexo && campoAnexo.files && campoAnexo.files[0];
 
-      botao.disabled = true;
-      mostrar(texto("msg-enviando", "Enviando..."), "enviando");
-      var parametros = new URLSearchParams();
-      dados.forEach(function (v, k) { parametros.append(k, v); });
+      // Limite de 10 MB (10 * 1024 * 1024 bytes)
+      var LIMITE_BYTES = 10 * 1024 * 1024;
+      if (anexo && anexo.size > LIMITE_BYTES) {
+        mostrar(texto("msg-tamanho", "O arquivo deve ter no máximo 10 MB."), "erro");
+        if (campoAnexo) campoAnexo.focus();
+        return;
+      }
 
-      fetch(endpoint, { method: "POST", mode: "no-cors", body: parametros })
-        .then(function () {
-          mostrar(texto("msg-ok", "Mensagem enviada. Responderemos por e-mail."), "ok");
-          form.querySelectorAll("input, select, textarea, button").forEach(function (campo) {
-            if (!campo.classList.contains("join-honeypot")) campo.disabled = true;
-          });
+      function enviar(arquivoBase64, arquivoNome, arquivoTipo) {
+        var dados = {
+          nome: (form.querySelector("#join-nome") && form.querySelector("#join-nome").value || "").trim(),
+          email: (form.querySelector("#join-email") && form.querySelector("#join-email").value || "").trim(),
+          motivo: motivoEscolhido(),
+          mensagem: ((form.querySelector("#join-msg") || form.querySelector("#join-mensagem")) && (form.querySelector("#join-msg") || form.querySelector("#join-mensagem")).value || "").trim(),
+          website: (honeypot && honeypot.value) || "",
+          token: form.getAttribute("data-token") || "",
+          pagina: location.pathname,
+          idioma: form.getAttribute("data-idioma") || "pt",
+          arquivoBase64: arquivoBase64 || "",
+          arquivoNome: arquivoNome || "",
+          arquivoTipo: arquivoTipo || ""
+        };
+
+        botao.disabled = true;
+        mostrar(texto("msg-enviando", "Enviando..."), "enviando");
+
+        fetch(endpoint, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(dados)
         })
-        .catch(function () {
-          botao.disabled = false;
-          mostrar(texto("msg-erro", "Não foi possível enviar. Tente novamente mais tarde."), "erro");
-        });
+          .then(function () {
+            mostrar(texto("msg-ok", "Mensagem enviada. Responderemos por e-mail."), "ok");
+            form.querySelectorAll("input, select, textarea, button").forEach(function (campo) {
+              if (!campo.classList.contains("join-honeypot")) campo.disabled = true;
+            });
+          })
+          .catch(function () {
+            botao.disabled = false;
+            mostrar(texto("msg-erro", "Não foi possível enviar. Tente novamente mais tarde."), "erro");
+          });
+      }
+
+      if (anexo) {
+        mostrar(texto("msg-lendo", "Preparando arquivo..."), "enviando");
+        var leitor = new FileReader();
+        leitor.onload = function () {
+          var res = leitor.result || "";
+          var base64 = res.indexOf(",") !== -1 ? res.split(",")[1] : res;
+          enviar(base64, anexo.name, anexo.type);
+        };
+        leitor.onerror = function () {
+          mostrar(texto("msg-erro-arquivo", "Não foi possível ler o arquivo selecionado."), "erro");
+        };
+        leitor.readAsDataURL(anexo);
+      } else {
+        enviar("", "", "");
+      }
     });
   });
 </script>
