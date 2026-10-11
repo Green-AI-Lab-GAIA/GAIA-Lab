@@ -214,8 +214,10 @@
       var linksSumario = sumario.querySelectorAll("a[href*='#']");
       var pares = [];
       for (var s = 0; s < linksSumario.length; s++) {
-        var secao = document.getElementById(linksSumario[s].getAttribute("href").split("#")[1] || "");
-        if (secao) pares.push([secao, linksSumario[s]]);
+        var aEl = linksSumario[s];
+        if (aEl.classList.contains("secao-vazia") || (aEl.closest("li") && aEl.closest("li").classList.contains("secao-vazia"))) continue;
+        var secao = document.getElementById(aEl.getAttribute("href").split("#")[1] || "");
+        if (secao && !secao.classList.contains("secao-vazia")) pares.push([secao, aEl]);
       }
       // rola na própria página, sem recarregar (scripts do Quarto às vezes
       // reescrevem âncoras como URLs completas)

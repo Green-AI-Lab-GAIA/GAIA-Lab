@@ -307,7 +307,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles.css?v=99991f5f">
+<link rel="stylesheet" href="../styles.css?v=d2e525a0">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -1168,32 +1168,48 @@ window.Quarto = {
 
 </main> <!-- /main -->
 <script>
-/* Secao de listagem sem ninguem nao e publicada (ver styles.css): o CSS ja esconde
-   pelo :has(); aqui vai a mesma conta em JS, que tambem tira o link e o item li do
-   sumario lateral, evitando acumulo de gaps no flexbox. Paginas com abas de filtro
-   ficam de fora, porque la filtrar pode esvaziar uma secao na hora. */
+/* Secao de listagem sem ninguem nao e publicada: o script oculta tanto a secao
+   no corpo da pagina quanto o link e o item li correspondente no sumario lateral,
+   evitando acumulo de gaps no flexbox. Paginas com abas de filtro ficam de fora. */
 (function () {
-  if (document.querySelector(".side-toc-link[data-view]")) return;
+  function esconderSecoesVazias() {
+    if (document.querySelector(".side-toc-link[data-view]")) return;
 
-  var listagens = document.querySelectorAll("section.level2 > .quarto-listing");
-  for (var i = 0; i < listagens.length; i++) {
-    var secao = listagens[i].closest("section.level2");
-    if (!secao) continue;
-    if (secao.querySelector(".quarto-grid-item, .quarto-listing-item")) continue;
-    secao.classList.add("secao-vazia");
-    // href termina em "#id": os scripts do Quarto as vezes reescrevem a ancora
-    // como URL completa (com ou sem codificacao de URL)
-    var idEncoded = encodeURIComponent(secao.id);
-    var seletor = 'a.side-toc-link[href$="#' + secao.id + '"], a.side-toc-link[href$="#' + idEncoded + '"]';
-    var links = document.querySelectorAll(seletor);
-    for (var j = 0; j < links.length; j++) {
-      links[j].classList.add("secao-vazia");
-      var li = links[j].closest("li");
-      if (li) {
-        li.classList.add("secao-vazia");
+    var listagens = document.querySelectorAll("section.level2 > .quarto-listing");
+    for (var i = 0; i < listagens.length; i++) {
+      var secao = listagens[i].closest("section.level2");
+      if (!secao) continue;
+      if (secao.querySelector(".quarto-grid-item, .quarto-listing-item, .listing-box, .card")) continue;
+
+      secao.classList.add("secao-vazia");
+      secao.style.setProperty("display", "none", "important");
+
+      var secId = secao.id || "";
+      var secIdDecoded = decodeURIComponent(secId);
+      var links = document.querySelectorAll(".side-toc-link");
+      for (var j = 0; j < links.length; j++) {
+        var a = links[j];
+        var href = a.getAttribute("href") || "";
+        var hash = href.indexOf("#") !== -1 ? href.substring(href.indexOf("#") + 1) : "";
+        var hashDecoded = decodeURIComponent(hash);
+        if (hash === secId || hashDecoded === secIdDecoded || hash === secIdDecoded || hashDecoded === secId) {
+          a.classList.add("secao-vazia");
+          a.style.setProperty("display", "none", "important");
+          var li = a.closest("li");
+          if (li) {
+            li.classList.add("secao-vazia");
+            li.style.setProperty("display", "none", "important");
+          }
+        }
       }
     }
   }
+
+  esconderSecoesVazias();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", esconderSecoesVazias);
+  }
+  window.addEventListener("load", esconderSecoesVazias);
 })();
 </script>
 <script>
@@ -1738,8 +1754,10 @@ window.Quarto = {
       var linksSumario = sumario.querySelectorAll("a[href*='#']");
       var pares = [];
       for (var s = 0; s < linksSumario.length; s++) {
-        var secao = document.getElementById(linksSumario[s].getAttribute("href").split("#")[1] || "");
-        if (secao) pares.push([secao, linksSumario[s]]);
+        var aEl = linksSumario[s];
+        if (aEl.classList.contains("secao-vazia") || (aEl.closest("li") && aEl.closest("li").classList.contains("secao-vazia"))) continue;
+        var secao = document.getElementById(aEl.getAttribute("href").split("#")[1] || "");
+        if (secao && !secao.classList.contains("secao-vazia")) pares.push([secao, aEl]);
       }
       // rola na própria página, sem recarregar (scripts do Quarto às vezes
       // reescrevem âncoras como URLs completas)

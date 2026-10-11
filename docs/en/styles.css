@@ -1879,24 +1879,12 @@ main.content {
  para que o flexbox da barra de sumário não acumule gaps de categorias vazias. */
 section.level2.secao-vazia,
 .side-toc-link.secao-vazia,
+.side-toc li.secao-vazia,
 .side-toc-body ul li.secao-vazia,
 .side-toc-body ul li:has(> .secao-vazia),
 .side-toc-body ul li:has(> .side-toc-link.secao-vazia),
 .side-toc-body ul li:not(:has(a:not(.secao-vazia))),
-.side-toc-body ul li:empty,
-body:has(section[id="professor"]:not(:has(.quarto-grid-item, .quarto-listing-item))) .side-toc li:has(a[href$="#professor"]),
-body:has(section[id="pós-doutorado"]:not(:has(.quarto-grid-item, .quarto-listing-item))) .side-toc li:has(a[href$="#pós-doutorado"], a[href$="#pos-doutorado"], a[href$="#p%C3%B3s-doutorado"]),
-body:has(section[id="postdoctoral-researchers"]:not(:has(.quarto-grid-item, .quarto-listing-item))) .side-toc li:has(a[href$="#postdoctoral-researchers"]),
-body:has(section[id="doutorado"]:not(:has(.quarto-grid-item, .quarto-listing-item))) .side-toc li:has(a[href$="#doutorado"]),
-body:has(section[id="phd-students"]:not(:has(.quarto-grid-item, .quarto-listing-item))) .side-toc li:has(a[href$="#phd-students"]),
-body:has(section[id="mestrado"]:not(:has(.quarto-grid-item, .quarto-listing-item))) .side-toc li:has(a[href$="#mestrado"]),
-body:has(section[id="masters"]:not(:has(.quarto-grid-item, .quarto-listing-item))) .side-toc li:has(a[href$="#masters"]),
-body:has(section[id="graduação"]:not(:has(.quarto-grid-item, .quarto-listing-item))) .side-toc li:has(a[href$="#graduação"], a[href$="#graduacao"], a[href$="#gradua%C3%A7%C3%A3o"]),
-body:has(section[id="undergraduate"]:not(:has(.quarto-grid-item, .quarto-listing-item))) .side-toc li:has(a[href$="#undergraduate"]),
-body:has(section[id="colaborador"]:not(:has(.quarto-grid-item, .quarto-listing-item))) .side-toc li:has(a[href$="#colaborador"]),
-body:has(section[id="collaborator"]:not(:has(.quarto-grid-item, .quarto-listing-item))) .side-toc li:has(a[href$="#collaborator"]),
-body:has(section[id="alumni"]:not(:has(.quarto-grid-item, .quarto-listing-item))) .side-toc li:has(a[href$="#alumni"]),
-body:not(:has(.side-toc-link[data-view])) section.level2:has(> .quarto-listing):not(:has(.quarto-grid-item, .quarto-listing-item)) {
+.side-toc-body ul li:empty {
   display: none !important;
 }
 
