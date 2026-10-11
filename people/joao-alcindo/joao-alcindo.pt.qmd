@@ -2,7 +2,7 @@
 title: "João Alcindo"
 last: "Alcindo"
 first: "João"
-people_group: "alumni"
+people_group: "colaborador"
 subtitle: "Assistente de Pesquisa"
 education: "Mestre em Matemática Aplicada e Ciência de Dados, FGV EMAp"
 image: avatar.jpeg
