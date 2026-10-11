@@ -52,7 +52,7 @@ toc: false
   <div id="pub-search-empty" class="pub-search-empty" hidden>Nenhum resultado para os filtros escolhidos.</div>
 </div>
 
-<div class="pub-view" data-view="artigos">
+<div id="artigos" class="pub-view" data-view="artigos">
 ```
 
 ::: {#papers}
@@ -60,7 +60,7 @@ toc: false
 
 ```{=html}
 </div>
-<div class="pub-view" data-view="noticias" hidden>
+<div id="noticias" class="pub-view" data-view="noticias" hidden>
 ```
 
 ::: {#news}
@@ -74,8 +74,8 @@ toc: false
 <div class="side-toc-body">
   <div class="side-toc-title">Sumário</div>
   <ul>
-    <li><a class="side-toc-link active" data-view="artigos" role="button" tabindex="0">Artigos</a></li>
-    <li><a class="side-toc-link" data-view="noticias" role="button" tabindex="0">Notícias</a></li>
+    <li><a class="side-toc-link active" data-view="artigos" href="#artigos" role="button" tabindex="0">Artigos</a></li>
+    <li><a class="side-toc-link" data-view="noticias" href="#noticias" role="button" tabindex="0">Notícias</a></li>
   </ul>
 </div>
 </aside>

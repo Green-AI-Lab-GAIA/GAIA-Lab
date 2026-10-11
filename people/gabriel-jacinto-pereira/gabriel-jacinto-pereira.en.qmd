@@ -17,6 +17,9 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: "https://www.linkedin.com/in/gabriel-jacinto-pereira"
+    - icon: envelope
+      text: Email
+      href: "mailto:gabrielpereirajp1201@gmail.com"
 ---
 
 ```{=html}

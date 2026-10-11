@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="icon" type="image/png" href="../../icon/favicon-light.png">
 
 
-<link rel="stylesheet" href="../../styles.css?v=962d8b77">
+<link rel="stylesheet" href="../../styles.css?v=912c4e6e">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -770,11 +770,13 @@ ul.task-list li input[type="checkbox"] {
 
     var observador = new IntersectionObserver(function (entradas) {
       for (var i = 0; i < entradas.length; i++) {
-        if (!entradas[i].isIntersecting) continue;
-        revelar(entradas[i].target);
-        observador.unobserve(entradas[i].target);
+        if (entradas[i].isIntersecting) {
+          revelar(entradas[i].target);
+        } else {
+          entradas[i].target.classList.remove("revealed");
+        }
       }
-    }, { threshold: 0.15 });
+    }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
 
     for (var i = 0; i < reveais.length; i++) observador.observe(reveais[i]);
 
@@ -786,9 +788,11 @@ ul.task-list li input[type="checkbox"] {
       } else {
         var observadorVoadores = new IntersectionObserver(function (entradasV) {
           for (var v = 0; v < entradasV.length; v++) {
-            if (!entradasV[v].isIntersecting) continue;
-            entradasV[v].target.classList.add("in-view");
-            observadorVoadores.unobserve(entradasV[v].target);
+            if (entradasV[v].isIntersecting) {
+              entradasV[v].target.classList.add("in-view");
+            } else {
+              entradasV[v].target.classList.remove("in-view");
+            }
           }
         }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
 
@@ -1047,7 +1051,7 @@ ul.task-list li input[type="checkbox"] {
         img.src = itens[idx].src;
         img.alt = itens[idx].alt || "";
         // caption já vem como HTML (texto simples escapado, ou figcaption
-        // renderizada — inclui fórmulas do MathJax nas figuras dos artigos)
+        // renderizada, inclui fórmulas do MathJax nas figuras dos artigos)
         legenda.innerHTML = itens[idx].caption || "";
         var varios = itens.length > 1;
         setaPrev.hidden = setaNext.hidden = !varios;
@@ -1685,10 +1689,10 @@ ul.task-list li input[type="checkbox"] {
   });
 </script>
 <script>
-  // Página de publicações: alterna entre as vistas de artigos e notícias,
-  // filtra por texto (busca) e por período (slider de anos) e pagina os
-  // resultados no navegador — o site é estático, então todo o trabalho é
-  // feito sobre os cards já renderizados na página.
+  // Pagina de publicacoes: alterna entre as vistas de artigos e noticias,
+  // filtra por texto (busca) e por periodo (slider de anos) e pagina os
+  // resultados no navegador. Como o site e estatico, todo o trabalho e
+  // feito sobre os cards ja renderizados na pagina.
   document.addEventListener("DOMContentLoaded", function () {
     var raiz = document.getElementById("pub-views");
     if (!raiz) return;
@@ -1812,7 +1816,8 @@ ul.task-list li input[type="checkbox"] {
     }
 
     for (var t = 0; t < abas.length; t++) {
-      abas[t].addEventListener("click", function () {
+      abas[t].addEventListener("click", function (evento) {
+        if (evento) evento.preventDefault();
         estado.vista = this.getAttribute("data-view");
         estado.pagina = 1;
         history.replaceState(null, "", "#" + estado.vista);
@@ -1835,12 +1840,46 @@ ul.task-list li input[type="checkbox"] {
     anoMin.addEventListener("input", pesquisar);
     anoMax.addEventListener("input", pesquisar);
 
-    // permite chegar direto numa vista via link (#artigos, #noticias...)
-    var alvo = window.location.hash.replace("#", "");
-    for (var h = 0; h < vistas.length; h++) {
-      if (vistas[h].getAttribute("data-view") === alvo) estado.vista = alvo;
+    function rolarParaAlvo(id) {
+      if (!id) return;
+      var el = document.getElementById(id) ||
+               document.getElementById("listing-" + id) ||
+               document.querySelector('.pub-view[data-view="' + id + '"]');
+      if (el) {
+        setTimeout(function () {
+          el.scrollIntoView({ behavior: "smooth" });
+        }, 80);
+      }
+    }
+
+    // Permite chegar direto numa vista via link (#artigos, #noticias, #papers, #news)
+    var alvoInicial = (window.location.hash || "").replace("#", "");
+    if (alvoInicial) {
+      for (var h = 0; h < vistas.length; h++) {
+        if (vistas[h].getAttribute("data-view") === alvoInicial) {
+          estado.vista = alvoInicial;
+          break;
+        }
+      }
     }
     aplicar();
+    if (alvoInicial) {
+      rolarParaAlvo(alvoInicial);
+    }
+
+    window.addEventListener("hashchange", function () {
+      var novoAlvo = (window.location.hash || "").replace("#", "");
+      if (!novoAlvo) return;
+      for (var h = 0; h < vistas.length; h++) {
+        if (vistas[h].getAttribute("data-view") === novoAlvo) {
+          estado.vista = novoAlvo;
+          estado.pagina = 1;
+          aplicar();
+          rolarParaAlvo(novoAlvo);
+          break;
+        }
+      }
+    });
   });
 </script>
 <script id="quarto-html-after-body" type="application/javascript">

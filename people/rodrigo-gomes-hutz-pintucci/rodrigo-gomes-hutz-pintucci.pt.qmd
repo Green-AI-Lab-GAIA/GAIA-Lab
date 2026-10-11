@@ -17,6 +17,9 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: "https://www.linkedin.com/in/rodrigo-gomes-hutz-pintucci-6a21171b6"
+    - icon: envelope
+      text: Email
+      href: "mailto:rodrigoghp@gmail.com"
 ---
 
 ```{=html}

@@ -32,90 +32,224 @@ toc: false
     Inteligência artificial e observação da Terra para entender a dinâmica de
     sistemas socioambientais complexos.
   </p>
-  <a class="hero-cta" href="/about/">Saber mais</a>
-  <a class="hero-scroll" href="#home-areas" aria-label="Rolar para as áreas de pesquisa">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-      <path d="m5 9 7 7 7-7"/>
-    </svg>
-  </a>
+  <div class="hero-action-group">
+    <a class="hero-cta" href="#home-pesquisa">Saber mais</a>
+    <a class="hero-scroll" href="#home-pesquisa" aria-label="Rolar para as áreas de pesquisa">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <path d="m5 9 7 7 7-7"/>
+      </svg>
+    </a>
+  </div>
 </div>
 
 <div class="home-body">
-  <div id="home-areas" class="home-areas">
-    <a class="area-card reveal" href="/research/#agricultura">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round">
-        <path d="M4 20C4 11 11 4 20 4c0 9-7 16-16 16Z"/>
-        <path d="M4 20C9 15 13 11 17 7"/>
-      </svg>
-      <div class="area-title">Agricultura</div>
-      <div class="area-text">Classificação de culturas e séries de índices de vegetação em escala de talhão.</div>
-      <div class="area-kpi">359,6 mil talhões<span>em 5 estados, de 2020 a 2025</span></div>
-    </a>
-    <a class="area-card reveal" href="/research/#floresta">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2 6 10h3l-4 7h14l-4-7h3L12 2Z"/>
-        <path d="M12 17v5"/>
-      </svg>
-      <div class="area-title">Floresta</div>
-      <div class="area-text">Segmentação de floresta por satélite, validada contra dados oficiais do INPE.</div>
-      <div class="area-kpi">0,85 de IoU<span>em 26 trimestres, de 2020 a 2026</span></div>
-    </a>
-    <a class="area-card reveal" href="/research/#clima">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="8" cy="8" r="3.5"/>
-        <path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M12.6 3.4l-1.4 1.4"/>
-        <path d="M13 17.5a4 4 0 0 1 7.6-1.2A3 3 0 0 1 20 22h-6a3 3 0 0 1-1-4.5Z"/>
-      </svg>
-      <div class="area-title">Clima</div>
-      <div class="area-text">Tendências climáticas e risco agrícola em janelas de 15 anos.</div>
-      <div class="area-kpi">+1,1 °C na máxima<span>Nova Mutum, MT, de 2011 a 2025</span></div>
-    </a>
-    <a class="area-card reveal" href="/research/#cidades">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 21h18"/>
-        <path d="M5 21V7l8-4v18"/>
-        <path d="M19 21V11l-6-4"/>
-        <path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/>
-      </svg>
-      <div class="area-title">Cidades</div>
-      <div class="area-text">Caracterização de assentamentos urbanos e leitura socioeconômica por imagens de satélite.</div>
-      <div class="area-kpi">Sensoriamento urbano<span>Mapeamento e vulnerabilidade socioeconômica</span></div>
-    </a>
-  </div>
-```
+  <section id="home-pesquisa" class="home-section reveal">
+    <div class="section-badge"><span class="pulse-dot"></span> 01 / Áreas de Aplicação</div>
+    <h2 class="section-title">Pesquisa Aplicada a Desafios Socioambientais</h2>
+    <p class="section-lead">
+      Combinamos dados orbitais e aprendizado profundo para enfrentar gargalos
+      ecológicos e produtivos em quatro frentes prioritárias. Da escala do talhão
+      agrícola ao tecido urbano, convertemos fluxos complexos de satélite em diagnósticos
+      territoriais acionáveis.
+    </p>
+    <div class="home-areas">
+      <a class="area-card reveal" href="research/#agricultura">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round">
+          <path d="M4 20C4 11 11 4 20 4c0 9-7 16-16 16Z"/>
+          <path d="M4 20C9 15 13 11 17 7"/>
+        </svg>
+        <div class="area-title">Agricultura</div>
+        <div class="area-text">Classificação de culturas e séries de índices de vegetação em escala de talhão.</div>
+        <div class="area-kpi">359,6 mil talhões<span>em 5 estados, de 2020 a 2025</span></div>
+      </a>
+      <a class="area-card reveal" href="research/#floresta">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2 6 10h3l-4 7h14l-4-7h3L12 2Z"/>
+          <path d="M12 17v5"/>
+        </svg>
+        <div class="area-title">Floresta</div>
+        <div class="area-text">Segmentação de floresta por satélite, validada contra dados oficiais do INPE.</div>
+        <div class="area-kpi">0,85 de IoU<span>em 26 trimestres, de 2020 a 2026</span></div>
+      </a>
+      <a class="area-card reveal" href="research/#clima">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="8" cy="8" r="3.5"/>
+          <path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M12.6 3.4l-1.4 1.4"/>
+          <path d="M13 17.5a4 4 0 0 1 7.6-1.2A3 3 0 0 1 20 22h-6a3 3 0 0 1-1-4.5Z"/>
+        </svg>
+        <div class="area-title">Clima</div>
+        <div class="area-text">Tendências climáticas e risco agrícola em janelas de 15 anos.</div>
+        <div class="area-kpi">+1,1 °C na máxima<span>Nova Mutum, MT, de 2011 a 2025</span></div>
+      </a>
+      <a class="area-card reveal" href="research/#cidades">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 21h18"/>
+          <path d="M5 21V7l8-4v18"/>
+          <path d="M19 21V11l-6-4"/>
+          <path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/>
+        </svg>
+        <div class="area-title">Cidades</div>
+        <div class="area-text">Caracterização de assentamentos urbanos e leitura socioeconômica por imagens de satélite.</div>
+        <div class="area-kpi">Sensoriamento urbano<span>Mapeamento e vulnerabilidade socioeconômica</span></div>
+      </a>
+    </div>
+    <div class="section-cta">
+      <a class="pub-btn" href="research/">Conhecer nossas áreas de pesquisa</a>
+    </div>
+  </section>
 
-## O laboratório em números
+  <section class="home-section reveal">
+    <div class="section-badge">02 / Abordagem & Metodologia</div>
+    <h2 class="section-title">Como Fazemos: Da Órbita ao Conhecimento Acionável</h2>
+    <p class="section-lead">
+      Nossa esteira metodológica conecta múltiplas constelações de satélites, reanálises
+      climáticas e modelos de aprendizado profundo de ponta a ponta, com validação sistemática
+      e compromisso com código aberto.
+    </p>
 
-```{=html}
-<div class="stats reveal">
-  <div><div class="stat-num" data-count="359596" data-thousands=".">0</div><div class="stat-label">Talhões mapeados</div></div>
-  <div><div class="stat-num" data-count="897">0</div><div class="stat-label">Municípios</div></div>
-  <div><div class="stat-num" data-count="5">0</div><div class="stat-label">Estados</div></div>
-  <div><div class="stat-num">2020 a 2025</div><div class="stat-label">Período dos dados</div></div>
-</div>
-```
+    <div class="stats reveal">
+      <div><div class="stat-num" data-count="359596" data-thousands=".">0</div><div class="stat-label">Talhões mapeados</div></div>
+      <div><div class="stat-num" data-count="897">0</div><div class="stat-label">Municípios</div></div>
+      <div><div class="stat-num" data-count="5">0</div><div class="stat-label">Estados</div></div>
+      <div><div class="stat-num">2020 a 2025</div><div class="stat-label">Período dos dados</div></div>
+    </div>
 
-## Como fazemos
+    <div class="hscroll-wrap reveal">
+      <button class="hscroll-btn prev" aria-label="Etapa anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="hscroll">
+        <article class="hs-card"><div class="hs-step">01</div><div class="hs-kicker">Etapa</div><div class="hs-title">Segmentação de talhões</div><div class="hs-text">Delimitação de cada área produtiva a partir de imagens de satélite.</div></article>
+        <article class="hs-card"><div class="hs-step">02</div><div class="hs-kicker">Etapa</div><div class="hs-title">Classificação de culturas</div><div class="hs-text">Soja, milho e algodão identificados talhão por talhão, safra por safra.</div></article>
+        <article class="hs-card"><div class="hs-step">03</div><div class="hs-kicker">Etapa</div><div class="hs-title">Séries de satélite e clima</div><div class="hs-text">17 índices de vegetação e 10 séries climáticas somam 1.670 valores por talhão e safra.</div></article>
+        <article class="hs-card"><div class="hs-step">04</div><div class="hs-kicker">Etapa</div><div class="hs-title">Agrupamento por semelhança</div><div class="hs-text">Talhões reunidos por comportamento espectral e climático.</div></article>
+        <article class="hs-card"><div class="hs-step">05</div><div class="hs-kicker">Etapa</div><div class="hs-title">Caracterização de risco</div><div class="hs-text">Cada grupo é descrito por manejo, produtividade e ocorrência de sinistro.</div></article>
+      </div>
+      <button class="hscroll-btn next" aria-label="Próxima etapa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 5 7 7-7 7"/></svg></button>
+    </div>
+    <div class="section-cta">
+      <a class="pub-btn" href="about/">Saiba mais sobre a nossa abordagem</a>
+    </div>
+  </section>
 
-```{=html}
-<div class="hscroll-wrap reveal">
-  <button class="hscroll-btn prev" aria-label="Etapa anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
-  <div class="hscroll">
-    <article class="hs-card"><div class="hs-step">01</div><div class="hs-kicker">Etapa</div><div class="hs-title">Segmentação de talhões</div><div class="hs-text">Delimitação de cada área produtiva a partir de imagens de satélite.</div></article>
-    <article class="hs-card"><div class="hs-step">02</div><div class="hs-kicker">Etapa</div><div class="hs-title">Classificação de culturas</div><div class="hs-text">Soja, milho e algodão identificados talhão por talhão, safra por safra.</div></article>
-    <article class="hs-card"><div class="hs-step">03</div><div class="hs-kicker">Etapa</div><div class="hs-title">Séries de satélite e clima</div><div class="hs-text">17 índices de vegetação e 10 séries climáticas somam 1.670 valores por talhão e safra.</div></article>
-    <article class="hs-card"><div class="hs-step">04</div><div class="hs-kicker">Etapa</div><div class="hs-title">Agrupamento por semelhança</div><div class="hs-text">Talhões reunidos por comportamento espectral e climático.</div></article>
-    <article class="hs-card"><div class="hs-step">05</div><div class="hs-kicker">Etapa</div><div class="hs-title">Caracterização de risco</div><div class="hs-text">Cada grupo é descrito por manejo, produtividade e ocorrência de sinistro.</div></article>
-  </div>
-  <button class="hscroll-btn next" aria-label="Próxima etapa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 5 7 7-7 7"/></svg></button>
-</div>
-```
+  <section class="home-section jogral-section reveal">
+    <div class="jogral-grid">
+      <div class="jogral-text">
+        <div class="section-badge">03 / Ciência Aberta & Difusão</div>
+        <h2 class="section-title">Produção Científica, Defesas Acadêmicas e Difusão</h2>
+        <p class="section-lead">
+          A investigação científica desenvolvida no GAIA Lab gera impacto em múltiplos formatos
+          e canais. Nossas contribuições são submetidas a periódicos de referência internacional
+          e apresentadas nos principais congressos de inteligência artificial, visão computacional
+          e sensoriamento remoto.
+        </p>
+        <p>
+          No ambiente universitário, o laboratório atua na formação contínua de pesquisadores
+          através de teses de doutorado, dissertações de mestrado e pesquisas de graduação (TCCs)
+          dedicadas a problemas socioambientais concretos. Na esfera pública, nossos métodos e
+          dados subsidiam reportagens, podcasts e matérias de imprensa sobre preservação ambiental
+          e transição ecológica.
+        </p>
+        <div class="jogral-actions">
+          <a class="pub-btn" href="publications/#artigos">Explorar publicações científicas</a>
+          <a class="pub-btn pub-btn-secondary" href="publications/#noticias">Acompanhar notícias do laboratório</a>
+        </div>
+      </div>
 
-```{=html}
-<p class="reveal" style="margin: 2.5rem 0 3rem;">
-  <a class="pub-btn" href="/publications/">Ver as publicações</a>
-  <a class="pub-btn" href="/about/">Sobre o laboratório</a>
-  <a class="pub-btn" href="/join-us/">Fale conosco</a>
-</p>
+      <div class="jogral-visual">
+        <div class="jogral-cards">
+          <div class="jogral-card reveal">
+            <div class="jogral-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10M6 14h6"/></svg>
+            </div>
+            <div class="jogral-card-body">
+              <h3>Artigos em Periódicos & Conferências</h3>
+              <p>Modelos de aprendizado profundo, visão computacional e fusão de dados orbitais revisados por pares.</p>
+            </div>
+          </div>
+          <div class="jogral-card reveal">
+            <div class="jogral-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div class="jogral-card-body">
+              <h3>Teses, Dissertações e TCCs</h3>
+              <p>Investigação acadêmica com forte rigor matemático orientada a desafios ecológicos reais.</p>
+            </div>
+          </div>
+          <div class="jogral-card reveal">
+            <div class="jogral-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg>
+            </div>
+            <div class="jogral-card-body">
+              <h3>Notícias & Presença na Mídia</h3>
+              <p>Divulgação científica, reportagens na imprensa e diálogo aberto com a sociedade civil.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-section jogral-section reveal">
+    <div class="jogral-grid reverse">
+      <div class="jogral-visual">
+        <div class="jogral-cards">
+          <div class="jogral-card reveal">
+            <div class="jogral-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="jogral-card-body">
+              <h3>Pesquisadores & Pós-Doutorado</h3>
+              <p>Lideranças científicas coordenando frentes de modelagem computacional e transferência tecnológica.</p>
+            </div>
+          </div>
+          <div class="jogral-card reveal">
+            <div class="jogral-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 14c4 0 7-3 7-7s-3-7-7-7-7 3-7 7 3 7 7 7Z"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg>
+            </div>
+            <div class="jogral-card-body">
+              <h3>Doutorado & Mestrado Acadêmico</h3>
+              <p>Pós-graduandos investigando fronteiras em inteligência artificial verde e sensoriamento biofísico.</p>
+            </div>
+          </div>
+          <div class="jogral-card reveal">
+            <div class="jogral-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="jogral-card-body">
+              <h3>Graduação & Iniciação Científica</h3>
+              <p>Estudantes em formação ativa desenvolvendo ferramentas, testes de hipóteses e código aberto.</p>
+            </div>
+          </div>
+          <div class="jogral-card reveal">
+            <div class="jogral-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20M12 2a14.5 14.5 0 0 1 0 20M2 12h20"/></svg>
+            </div>
+            <div class="jogral-card-body">
+              <h3>Rede Nacional & Internacional</h3>
+              <p>Colaboradores em instituições de referência no Brasil e no exterior somando olhares plurais.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="jogral-text">
+        <div class="section-badge">04 / Capital Humano & Pluralidade</div>
+        <h2 class="section-title">Um Grupo Multidisciplinar e Altamente Capacitado</h2>
+        <p class="section-lead">
+          A solidez do GAIA Lab está na competência e na diversidade de sua equipe.
+          Reunimos pesquisadores de ciência da computação, matemática aplicada, engenharias,
+          ciências ambientais e economia trabalhando em estreita colaboração.
+        </p>
+        <p>
+          Nossa estrutura integra pesquisadores seniores, pós-doutorandos, doutorandos,
+          mestrandos e alunos de graduação em um ecossistema horizontal de mentoria e
+          aprendizado. Essa interação cotidiana com redes globais capacita novas lideranças
+          científicas preparadas para os desafios socioambientais mais urgentes.
+        </p>
+        <div class="jogral-actions">
+          <a class="pub-btn" href="people/">Conhecer nossa equipe</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 ```

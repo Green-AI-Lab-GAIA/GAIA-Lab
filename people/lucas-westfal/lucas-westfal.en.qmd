@@ -19,7 +19,7 @@ about:
       href: "https://br.linkedin.com/in/lucas-westfal-001aab1b1"
     - icon: envelope
       text: Email
-      href: "mailto:lucaswestfal4@gmail.com"
+      href: "mailto:lucas.westfal@fgv.edu.br"
 ---
 
 ```{=html}

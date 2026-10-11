@@ -17,6 +17,9 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: "https://www.linkedin.com/in/raullomontefigueiredo"
+    - icon: envelope
+      text: Email
+      href: "mailto:raullomonte13@gmail.com"
 ---
 
 ```{=html}

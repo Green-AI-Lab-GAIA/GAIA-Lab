@@ -2,7 +2,7 @@
 title: "João Alcindo"
 last: "Alcindo"
 first: "João"
-people_group: "masters"
+people_group: "alumni"
 subtitle: "Research Assistant"
 education: "MSc in Applied Mathematics and Data Science, FGV EMAp"
 image: avatar.jpeg
@@ -17,6 +17,9 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: "https://www.linkedin.com/in/joao-alcindo"
+    - icon: envelope
+      text: Email
+      href: "mailto:joao.az-rib@hotmail.com"
 ---
 
 ```{=html}

@@ -53,6 +53,7 @@ toc: false
 </div>
 
 <div class="pub-view" data-view="papers">
+<span id="papers"></span>
 ```
 
 ::: {#papers}
@@ -61,6 +62,7 @@ toc: false
 ```{=html}
 </div>
 <div class="pub-view" data-view="news" hidden>
+<span id="news"></span>
 ```
 
 ::: {#news}
@@ -74,8 +76,8 @@ toc: false
 <div class="side-toc-body">
   <div class="side-toc-title">Contents</div>
   <ul>
-    <li><a class="side-toc-link active" data-view="papers" role="button" tabindex="0">Papers</a></li>
-    <li><a class="side-toc-link" data-view="news" role="button" tabindex="0">News</a></li>
+    <li><a class="side-toc-link active" data-view="papers" href="#papers" role="button" tabindex="0">Papers</a></li>
+    <li><a class="side-toc-link" data-view="news" href="#news" role="button" tabindex="0">News</a></li>
   </ul>
 </div>
 </aside>

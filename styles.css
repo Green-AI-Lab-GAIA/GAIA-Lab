@@ -77,41 +77,59 @@ body.home #title-block-header {
   animation: hero-in 0.9s ease-out 2.3s forwards;
 }
 
-.hero-cta {
+.hero-action-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
   margin-top: 1.8rem;
-  padding: 0.6rem 1.7rem;
-  border: 2px solid rgba(255, 255, 255, 0.85);
+  z-index: 2;
+}
+
+.hero-cta {
+  margin-top: 0;
+  padding: 0.65rem 1.85rem;
+  border: 2px solid rgba(255, 255, 255, 0.9);
   border-radius: 999px;
   color: #fff !important;
   font-weight: 600;
   text-decoration: none;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(4px);
   opacity: 0;
   animation: hero-in 0.9s ease-out 2.8s forwards;
   transition: background-color 0.25s ease, color 0.25s ease,
-              transform 0.2s ease;
+              transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .hero-cta:hover {
   background: #fff;
   color: #365902 !important;
   transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
 .hero-scroll {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: static;
+  transform: none;
   color: #fff;
   opacity: 0;
-  animation: hero-in 0.9s ease-out 3.3s forwards;
+  animation: hero-in 0.9s ease-out 3.1s forwards;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.hero-scroll:hover {
+  transform: translateY(3px);
+  color: #a7d177;
 }
 
 .hero-scroll svg {
-  width: 30px;
-  height: 30px;
-  animation: hero-bounce 2s ease-in-out 4s infinite;
+  width: 28px;
+  height: 28px;
+  animation: hero-bounce 2s ease-in-out 3.5s infinite;
 }
 
 @keyframes hero-in {
@@ -124,7 +142,7 @@ body.home #title-block-header {
 
 @keyframes hero-bounce {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
+  50% { transform: translateY(7px); }
 }
 
 /* Cards de áreas de pesquisa na home */
@@ -134,8 +152,8 @@ body.home #title-block-header {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.5rem;
   max-width: 1100px;
-  margin: 3.5rem auto;
-  padding: 0 1rem;
+  margin: 2.2rem auto 2.5rem;
+  padding: 0;
 }
 
 .area-card {
@@ -174,12 +192,200 @@ body.home #title-block-header {
   color: #555;
 }
 
+/* Seções estruturadas e layout em jogral na home */
+
+.home-section {
+  margin: 5rem 0;
+  position: relative;
+}
+
+.home-section:first-child {
+  margin-top: 3.5rem;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gaia-accent);
+  background: rgba(54, 89, 2, 0.08);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 0.9rem;
+}
+
+body.quarto-dark .section-badge {
+  background: rgba(167, 209, 119, 0.12);
+  color: #a7d177;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 3.4vw, 2.3rem);
+  font-weight: 800;
+  line-height: 1.25;
+  color: #1a1a1a;
+  margin-top: 0;
+  margin-bottom: 0.9rem;
+  letter-spacing: -0.02em;
+}
+
+body.quarto-dark .section-title {
+  color: #f1f3f5;
+}
+
+.section-lead {
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: #4b5563;
+  max-width: 860px;
+  margin-bottom: 1.8rem;
+}
+
+body.quarto-dark .section-lead {
+  color: #cbd5e1;
+}
+
+.section-cta {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+/* Layout em jogral (alternância rítmica texto e painel visual) */
+
+.jogral-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3.5rem;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.jogral-grid.reverse {
+  grid-template-columns: 0.9fr 1.1fr;
+}
+
+.jogral-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.jogral-text p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 1.1rem;
+}
+
+body.quarto-dark .jogral-text p {
+  color: #c5cbd2;
+}
+
+.jogral-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.jogral-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.jogral-card {
+  display: flex;
+  gap: 1.15rem;
+  align-items: flex-start;
+  padding: 1.25rem 1.4rem;
+  border-radius: 14px;
+  border: 1px solid var(--gaia-border);
+  background: var(--gaia-surface);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.jogral-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gaia-accent);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.jogral-card-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(54, 89, 2, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gaia-accent);
+}
+
+body.quarto-dark .jogral-card-icon {
+  background: rgba(167, 209, 119, 0.12);
+  color: #a7d177;
+}
+
+.jogral-card-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.jogral-card-body h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #222;
+  margin: 0 0 0.35rem 0;
+}
+
+body.quarto-dark .jogral-card-body h3 {
+  color: #e5e7eb;
+}
+
+.jogral-card-body p {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #666;
+  margin: 0;
+}
+
+body.quarto-dark .jogral-card-body p {
+  color: #9ca3af;
+}
+
+@media (max-width: 900px) {
+  .jogral-grid,
+  .jogral-grid.reverse {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+  }
+
+  .jogral-grid.reverse .jogral-text {
+    order: 1;
+  }
+
+  .jogral-grid.reverse .jogral-visual {
+    order: 2;
+  }
+}
+
 /* Aparição suave dos blocos ao rolar (classe adicionada por scroll-effects) */
 
 html.has-js .reveal {
   opacity: 0;
   transform: translateY(26px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
 html.has-js .reveal.revealed {
@@ -1111,7 +1317,7 @@ body.quarto-dark .orbit-badge {
      lista de links. Quem move o botão de tema para dentro do menu é o
      _includes/navbar-mobile.html (aqui só se ajeita a linha que o recebe, a
      ul marcada com menu-config). Sem JavaScript não há como entrar no menu, e o
-     botão de tema fica na barra encostado à direita — também fora do fluxo, para
+     botão de tema fica na barra encostado à direita, também fora do fluxo, para
      não tirar o título do centro. */
   @media (max-width: 991.98px) {
     .navbar .navbar-container {
@@ -1449,12 +1655,18 @@ html {
   scroll-behavior: smooth;
 }
 
-section[id] {
+section[id],
+.pub-view[id],
+#pub-views,
+#papers,
+#news,
+#artigos,
+#noticias {
   scroll-margin-top: 4.5rem;
 }
 
 /* Estrutura única de página, usada em todas as abas: o conteúdo principal
-   (.page-main) tem a mesma largura fluida em todo o site — no máximo 1150px,
+   (.page-main) tem a mesma largura fluida em todo o site, no máximo 1150px,
    encolhendo junto com a tela e sempre reservando calhas simétricas onde o
    sumário lateral se encaixa. Páginas sem sumário usam a mesma estrutura.
    O display: block desativa o grid de página que o Quarto injeta no div
@@ -1477,11 +1689,11 @@ main.content {
   min-width: 0;
 }
 
-/* Conteúdo da home depois do hero: o hero ocupa a largura toda e o resto usa a
-   mesma coluna de texto das outras páginas */
+/* Conteúdo da home depois do hero */
 .home-body {
-  max-width: min(1150px, calc(100% - 404px));
+  max-width: 1140px;
   margin: 0 auto;
+  padding: 0 1.5rem;
   min-width: 0;
 }
 
@@ -1492,7 +1704,7 @@ main.content {
 }
 
 .home-body .home-areas {
-  margin: 3rem 0;
+  margin: 2rem 0;
 }
 
 .home-body .stats {
@@ -1511,7 +1723,7 @@ main.content {
 }
 
 /* Nos perfis (template about) o título é o nome dentro da coluna do
-   trestles — mantém o comportamento natural dele ali */
+   trestles: mantém o comportamento natural dele ali */
 .about-entity #title-block-header {
   width: auto;
   max-width: none;
@@ -1565,7 +1777,7 @@ main.content {
 }
 
 /* Em telas menores as calhas somem: o conteúdo ocupa a largura disponível e
-   o sumário vira uma barra fixa no topo — continua visível em qualquer ponto
+   o sumário vira uma barra fixa no topo, continua visível em qualquer ponto
    da rolagem, com a seção atual sublinhada em verde */
 @media (max-width: 1199px) {
   .page-shell {
@@ -2011,21 +2223,47 @@ display: none;
 }
 
 .pub-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   border: 1.5px solid #365902;
   border-radius: 999px;
-  padding: 0.3rem 0.9rem;
-  margin: 0.15rem 0.3rem 0.15rem 0;
+  padding: 0.45rem 1.25rem;
+  margin: 0.2rem 0.4rem 0.2rem 0;
   color: #365902 !important;
+  font-weight: 600;
+  font-size: 0.93rem;
   text-decoration: none;
   transition: background-color 0.25s ease, color 0.25s ease,
-              transform 0.2s ease;
+              transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .pub-btn:hover {
   background-color: #365902;
   color: #fff !important;
   transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(54, 89, 2, 0.22);
+}
+
+.pub-btn-secondary {
+  border-color: #4b5563;
+  color: #374151 !important;
+}
+
+.pub-btn-secondary:hover {
+  background-color: #374151;
+  color: #fff !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+}
+
+body.quarto-dark .pub-btn-secondary {
+  border-color: #9ca3af;
+  color: #e5e7eb !important;
+}
+
+body.quarto-dark .pub-btn-secondary:hover {
+  background-color: #4b5563;
+  color: #fff !important;
 }
 
 @media (max-width: 768px) {

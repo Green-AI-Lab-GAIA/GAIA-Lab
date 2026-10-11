@@ -19,25 +19,20 @@ Ele valida cada linha e falha apontando o problema, em vez de publicar página
 incompleta. O esquema das colunas, com o texto de cada pergunta do formulário,
 está em `scripts/tabelas.py`.
 
-### As perguntas do formulário
+### As colunas da planilha
 
-O cabeçalho da planilha é o **texto da pergunta**, porque é o formulário que
-escreve a linha de título. Não precisa ser idêntico ao de `tabelas.py`: o casamento
-ignora acento, maiúscula, pontuação e espaço repetido, e cada coluna tem apelidos
-de redação (`E-mail` casa com `Email Address` e `Endereço de e-mail`). O que não
-pode é **faltar** uma pergunta obrigatória — a coluna então não existe e a resposta
-fica invisível para o site.
+O cabeçalho da planilha usa os nomes exatos definidos em `scripts/tabelas.py`.
+O casamento procura pelo texto exato de cada coluna, ignorando apenas espaços
+e quebras de linha extras nas pontas. Não há apelidos, garantindo que colunas
+automáticas (como `Email Address`) não sejam confundidas com perguntas reais
+(como `E-mail`). O que não pode é faltar uma pergunta obrigatória: se faltar, o
+gerador recusa a publicação e avisa no terminal.
 
-Antes de montar o formulário, `tabelas.py perguntas pessoas` imprime os textos, o
-que é obrigatório e os apelidos aceitos. Depois de montar, dá para conferir sem
-esperar o job: cole a linha de título da planilha (funciona com tabulação, do
-Ctrl+C do Sheets, ou com vírgula, do arquivo publicado) e o comando diz o que
-casou, o que casou só por variação e o que faltou, saindo com erro se faltar
-obrigatória.
+Antes de montar ou exportar, `tabelas.py perguntas pessoas` imprime os textos
+e quais são obrigatórias. Para conferir os cabeçalhos de uma planilha existente:
 
 ```bash
-pbpaste | python3 scripts/tabelas.py conferir publicacoes -   # no macOS
-xclip -o | python3 scripts/tabelas.py conferir publicacoes -  # no Linux
+python3 scripts/tabelas.py conferir publicacoes dados/publicacoes.csv
 ```
 
 ### Listas dentro de uma célula

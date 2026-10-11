@@ -1,99 +1,96 @@
 #!/usr/bin/env python3
 """Esquema das tabelas de conteudo: quais colunas existem e com que nome de pergunta.
 
-O cabecalho da planilha do Google e o proprio texto da pergunta do formulario, que
-e quem escreve a linha de titulo. Por isso o codigo nao procura pela palavra
-"titulo": procura pelo texto que o formulario mostra, ignorando acento, maiuscula,
-pontuacao e espaco extra. Assim o formulario pode ser reescrito sem quebrar nada,
-e a mensagem de erro diz a pergunta que falta, nao um nome interno.
+O cabecalho da planilha do Google ou do Excel usa exatamente os nomes definidos
+neste esquema. O codigo procura pelo texto exato de cada coluna, ignorando apenas
+espacos e quebras de linha extras nas pontas.
 
 Cada coluna tem tres partes: a chave usada no codigo, o texto que aparece na
-planilha e se e obrigatoria. Os apelidos cobrem variacoes de redacao.
+planilha e se e obrigatoria. Nao ha aceitacao por apelidos.
 """
 from __future__ import annotations
 
 import csv
 import datetime
+import io
 import re
 import sys
 import unicodedata
 from collections import namedtuple
 from pathlib import Path
 
-# chave, rotulo (texto da pergunta), obrigatoria, apelidos
-Coluna = namedtuple("Coluna", "chave rotulo obrigatoria apelidos", defaults=(False, ()))
+# chave, rotulo (texto exato da coluna), obrigatoria
+Coluna = namedtuple("Coluna", "chave rotulo obrigatoria", defaults=(False,))
 
 
 COLUNAS = {
     "pessoas": [
         Coluna("nome", "Nome completo", True),
         Coluna("vinculo", "Vínculo", True),
-        Coluna("cargo", "Função", True, ("cargo", "funcao exercida")),
-        Coluna("formacao", "Formação", True, ("formacao resumida",)),
+        Coluna("cargo", "Função", True),
+        Coluna("formacao", "Formação", True),
         Coluna("formacao_detalhe", "Formação detalhada", False),
-        Coluna("apresentacao", "Apresentação", False, ("bio", "sobre")),
-        Coluna("interesses", "Interesses de pesquisa", False, ("interesses",)),
+        Coluna("apresentacao", "Apresentação", False),
+        Coluna("interesses", "Interesses de pesquisa", False),
         Coluna("linkedin", "LinkedIn", False),
-        Coluna("email", "E-mail", False, ("email address", "endereco de email", "e mail")),
-        Coluna("foto", "Foto", False, ("imagem", "foto do membro")),
+        Coluna("email", "E-mail", False),
+        Coluna("foto", "Foto", False),
         Coluna("cargo_en", "Função em inglês", False),
         Coluna("formacao_en", "Formação em inglês", False),
         Coluna("formacao_detalhe_en", "Formação detalhada em inglês", False),
         Coluna("apresentacao_en", "Apresentação em inglês", False),
         Coluna("interesses_en", "Interesses de pesquisa em inglês", False),
-        Coluna("exibir", "Exibir", False, ("visivel", "mostrar", "publicar")),
+        Coluna("exibir", "Exibir", False),
     ],
     "publicacoes": [
-        Coluna("titulo", "Título", True, ("titulo", "título do artigo")),
-        Coluna("autores", "Autores, na ordem", True, ("autores",)),
-        Coluna("veiculo", "Revista ou evento", True, ("veiculo", "periodico")),
-        Coluna("local", "Detalhes (volume, número, páginas, editora)", True,
-               ("detalhes", "detalhes da publicacao")),
-        Coluna("data", "Data da publicação", True, ("data",)),
-        Coluna("url", "Endereço do artigo (DOI ou link)", True,
-               ("endereco do artigo", "doi", "link do artigo")),
-        Coluna("resumo", "Resumo", True, ("abstract",)),
-        Coluna("resumo_curto", "Resumo curto", False, ("resumo curto para a lista",)),
-        Coluna("citacao", "Como citar, em LaTeX", True, ("como citar", "citacao", "citação")),
-        Coluna("imagem", "Imagem de destaque", False, ("miniatura", "capa", "thumbnail")),
+        Coluna("titulo", "Título", True),
+        Coluna("autores", "Autores, na ordem", True),
+        Coluna("veiculo", "Revista ou evento", True),
+        Coluna("local", "Detalhes (volume, número, páginas, editora)", True),
+        Coluna("data", "Data da publicação", True),
+        Coluna("url", "Endereço do artigo (DOI ou link)", True),
+        Coluna("resumo", "Resumo", True),
+        Coluna("resumo_curto", "Resumo curto", False),
+        Coluna("citacao", "Como citar, em LaTeX", True),
+        Coluna("imagem", "Imagem de destaque", False),
         Coluna("figura1", "Figura 1", False),
         Coluna("legenda1", "Legenda da figura 1", False),
         Coluna("figura2", "Figura 2", False),
         Coluna("legenda2", "Legenda da figura 2", False),
-        Coluna("legenda1_en", "Legenda da figura 1 em inglês", False, ("legenda 1 em ingles", "caption 1", "figure 1 caption")),
-        Coluna("legenda2_en", "Legenda da figura 2 em inglês", False, ("legenda 2 em ingles", "caption 2", "figure 2 caption")),
+        Coluna("legenda1_en", "Legenda da figura 1 em inglês", False),
+        Coluna("legenda2_en", "Legenda da figura 2 em inglês", False),
         Coluna("resumo_en", "Resumo em inglês", False),
         Coluna("resumo_curto_en", "Resumo curto em inglês", False),
-        Coluna("titulo_en", "Título em inglês", False, ("titulo em ingles", "title in english")),
-        Coluna("exibir", "Exibir", False, ("visivel", "mostrar", "publicar")),
+        Coluna("titulo_en", "Título em inglês", False),
+        Coluna("exibir", "Exibir", False),
     ],
     "noticias": [
-        Coluna("titulo", "Título", True, ("titulo",)),
-        Coluna("veiculo", "Veículo", True, ("veiculo", "fonte")),
-        Coluna("data", "Data", True, ("data",)),
-        Coluna("url", "Endereço da matéria", True, ("endereco da materia", "link")),
+        Coluna("titulo", "Título", True),
+        Coluna("veiculo", "Veículo", True),
+        Coluna("data", "Data", True),
+        Coluna("url", "Endereço da matéria", True),
         Coluna("resumo", "Resumo", True),
-        Coluna("imagem", "Imagem", False, ("foto", "capa")),
+        Coluna("imagem", "Imagem", False),
         Coluna("titulo_en", "Título em inglês", False),
         Coluna("resumo_en", "Resumo em inglês", False),
         Coluna("url_en", "Endereço da matéria em inglês", False),
-        Coluna("exibir", "Exibir", False, ("visivel", "mostrar", "publicar")),
+        Coluna("exibir", "Exibir", False),
     ],
     "cursos": [
-        Coluna("titulo", "Nome do curso", True, ("titulo", "nome da disciplina", "disciplina", "curso")),
-        Coluna("titulo_en", "Nome do curso em inglês", False, ("titulo em ingles", "course title", "nome do curso em ingles")),
-        Coluna("nivel", "Nível ou programa", True, ("nivel", "programa", "nivel de ensino")),
-        Coluna("nivel_en", "Nível ou programa em inglês", False, ("nivel em ingles", "programa em ingles", "level", "program")),
-        Coluna("professor", "Professor(es)", True, ("professor", "professores", "docente", "docentes", "instrutor")),
-        Coluna("carga_horaria", "Carga horária", True, ("carga horaria", "duracao", "horas", "course load")),
-        Coluna("aulas", "Horário e formato das aulas", True, ("horario e formato das aulas", "aulas", "horario das aulas", "horario")),
-        Coluna("aulas_en", "Horário e formato das aulas em inglês", False, ("horario e formato das aulas em ingles", "aulas em ingles", "classes", "schedule")),
-        Coluna("oferta", "Período de oferta", True, ("periodo de oferta", "oferta", "quando e ofertado", "semestre")),
-        Coluna("oferta_en", "Período de oferta em inglês", False, ("periodo de oferta em ingles", "oferta em ingles", "offered", "term")),
-        Coluna("url", "Página do curso", True, ("pagina do curso", "link do curso", "endereco do curso", "pagina do programa", "url", "link")),
-        Coluna("url_en", "Página do curso em inglês", False, ("pagina do curso em ingles", "course page", "url em ingles")),
-        Coluna("imagem", "Imagem ilustrativa", False, ("imagem", "foto", "icone", "ilustracao", "capa")),
-        Coluna("exibir", "Exibir", False, ("visivel", "mostrar", "publicar")),
+        Coluna("titulo", "Nome do curso", True),
+        Coluna("titulo_en", "Nome do curso em inglês", False),
+        Coluna("nivel", "Nível ou programa", True),
+        Coluna("nivel_en", "Nível ou programa em inglês", False),
+        Coluna("professor", "Professor(es)", True),
+        Coluna("carga_horaria", "Carga horária", True),
+        Coluna("aulas", "Horário e formato das aulas", True),
+        Coluna("aulas_en", "Horário e formato das aulas em inglês", False),
+        Coluna("oferta", "Período de oferta", True),
+        Coluna("oferta_en", "Período de oferta em inglês", False),
+        Coluna("url", "Página do curso", True),
+        Coluna("url_en", "Página do curso em inglês", False),
+        Coluna("imagem", "Imagem ilustrativa", False),
+        Coluna("exibir", "Exibir", False),
     ],
 }
 
@@ -282,18 +279,15 @@ def por_extenso(valor: str, lang: str, com_dia: bool) -> str:
 
 def mapa_de_colunas(tabela: str, cabecalhos: list[str]) -> dict[str, str]:
     """De qual cabecalho da planilha sai cada chave do esquema."""
-    por_rotulo = {}
-    for coluna in COLUNAS[tabela]:
-        for rotulo in (coluna.rotulo,) + tuple(coluna.apelidos):
-            por_rotulo[normalizar(rotulo)] = coluna.chave
-    mapa, conhecidos = {}, set()
+    por_rotulo = {coluna.rotulo.strip(): coluna.chave for coluna in COLUNAS[tabela]}
+    mapa = {}
     for cabecalho in cabecalhos:
-        chave = por_rotulo.get(normalizar(cabecalho))
-        conhecidos.add(bool(chave))
+        h_limpo = (cabecalho or "").strip()
+        chave = por_rotulo.get(h_limpo)
         if chave and chave not in mapa:
             mapa[chave] = cabecalho
     desconhecidos = [c for c in cabecalhos
-                     if normalizar(c) not in por_rotulo
+                     if (c or "").strip() not in por_rotulo
                      and not RUIDO_DO_FORMULARIO.match(normalizar(c))]
     if desconhecidos:
         print(f"aviso: {tabela}: colunas que o esquema nao usa: "
@@ -464,7 +458,7 @@ def texto(linha: dict, chave: str, lang: str) -> str:
 # ---------------------------------------------------------------- linha de comando
 
 def perguntas(tabelas_: list[str]) -> int:
-    """Os textos que o formulario tem de usar. Quem monta o formulario copia daqui."""
+    """Os textos que a planilha tem de usar. Quem monta a planilha copia daqui."""
     for tabela in tabelas_:
         if tabela not in COLUNAS:
             print(f"tabela desconhecida: {tabela!r}. Use " + ", ".join(COLUNAS), file=sys.stderr)
@@ -473,18 +467,11 @@ def perguntas(tabelas_: list[str]) -> int:
         for coluna in COLUNAS[tabela]:
             marca = "obrigatoria" if coluna.obrigatoria else "opcional   "
             print(f"  {marca}  {coluna.rotulo}")
-            for apelido in coluna.apelidos:
-                print(f"              {apelido}   (tambem serve)")
     return 0
 
 
 def conferir(tabela: str, cabecalhos: list[str]) -> int:
-    """Confere a linha de titulo de uma planilha contra o esquema.
-
-    O texto da pergunta nao precisa ser identico: acento, maiuscula, pontuacao e
-    espaco extra nao contam, e alguns apelidos de redacao valem. O que nao pode e
-    faltar uma pergunta obrigatoria, porque ai a coluna nao existe e a resposta
-    fica invisivel para o site."""
+    """Confere a linha de titulo de uma planilha contra o esquema."""
     mapa = mapa_de_colunas(tabela, cabecalhos)
     faltando = []
     for coluna in COLUNAS[tabela]:
@@ -496,13 +483,11 @@ def conferir(tabela: str, cabecalhos: list[str]) -> int:
             else:
                 print(f"  sem coluna {coluna.rotulo!r}   (opcional)")
             continue
-        variacao = "" if normalizar(chegou) == normalizar(coluna.rotulo) else "   [casou por variacao]"
-        print(f"  ok         {coluna.rotulo!r} <- {chegou!r}{variacao}")
+        print(f"  ok         {coluna.rotulo!r} <- {chegou!r}")
     if faltando:
         print("\nSem as perguntas obrigatorias nao da para publicar: "
               + ", ".join(repr(f) for f in faltando))
-        print("Ponha esse texto exato no formulario, ou acrescente o apelido em "
-              "COLUNAS, aqui em tabelas.py.")
+        print("Ponha esse texto exato na planilha, conforme o esquema em tabelas.py.")
         return 1
     print("\nTodas as perguntas obrigatorias chegaram.")
     return 0
@@ -522,13 +507,11 @@ def main(argv: list[str]) -> int:
             return 2
         if origem == "-":
             conteudo = sys.stdin.read()
-            linhas = [l for l in conteudo.splitlines() if l.strip()]
-            if not linhas:
+            if not conteudo.strip():
                 print("nada para conferir", file=sys.stderr)
                 return 2
-            primeira = linhas[0]
-            corte = "\t" if "\t" in primeira else ","
-            cabecalhos = [c.strip() for c in next(csv.reader([primeira], delimiter=corte))]
+            corte = "\t" if "\t" in conteudo else ","
+            cabecalhos = [c.strip() for c in next(csv.reader(io.StringIO(conteudo), delimiter=corte), [])]
         else:
             try:
                 caminho = Path(origem) if Path(origem).exists() else None
@@ -540,16 +523,19 @@ def main(argv: list[str]) -> int:
                     print("nenhuma linha encontrada no arquivo Excel", file=sys.stderr)
                     return 2
                 cabecalhos = list(dados[0].keys())
+            elif caminho:
+                with caminho.open(encoding="utf-8-sig", newline="") as fh:
+                    conteudo_amostra = fh.readline()
+                    corte = "\t" if "\t" in conteudo_amostra else ","
+                    fh.seek(0)
+                    cabecalhos = [c.strip() for c in next(csv.reader(fh, delimiter=corte), [])]
             else:
-                conteudo = (caminho.read_text(encoding="utf-8-sig") if caminho
-                            else origem)  # a propria linha de cabecalho, colada
-                linhas = [l for l in conteudo.splitlines() if l.strip()]
-                if not linhas:
+                conteudo = origem
+                if not conteudo.strip():
                     print("nada para conferir", file=sys.stderr)
                     return 2
-                primeira = linhas[0]
-                corte = "\t" if "\t" in primeira else ","
-                cabecalhos = [c.strip() for c in next(csv.reader([primeira], delimiter=corte))]
+                corte = "\t" if "\t" in conteudo else ","
+                cabecalhos = [c.strip() for c in next(csv.reader(io.StringIO(conteudo), delimiter=corte), [])]
         return conferir(tabela, cabecalhos)
     print(uso)
     return 2

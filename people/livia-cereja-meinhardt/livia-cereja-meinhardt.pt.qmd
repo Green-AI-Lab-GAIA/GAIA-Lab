@@ -17,6 +17,9 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: "https://www.linkedin.com/in/livia-cereja-meinhardt"
+    - icon: envelope
+      text: Email
+      href: "mailto:livia.meinhardt@gmail.com"
 ---
 
 ```{=html}
