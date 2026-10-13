@@ -328,126 +328,41 @@ and institutional documents, in contractual analysis and assessment projects.</p
 
 ```{=html}
 <div class="timeline-ruler">
-  <svg class="timeline-ruler-defs" width="0" height="0" style="position:absolute; width:0; height:0; overflow:hidden;" aria-hidden="true">
-    <defs>
-      <pattern id="tl-ruler-ticks-en" width="44" height="24" patternUnits="userSpaceOnUse">
-        <line x1="24" y1="0" x2="24" y2="24" stroke="currentColor" stroke-width="2" opacity="0.45" />
-        <line x1="10" y1="0" x2="24" y2="0" stroke="currentColor" stroke-width="1.6" opacity="0.75" />
-        <line x1="17" y1="6" x2="24" y2="6" stroke="currentColor" stroke-width="1" opacity="0.35" />
-        <line x1="13" y1="12" x2="24" y2="12" stroke="currentColor" stroke-width="1.3" opacity="0.55" />
-        <line x1="17" y1="18" x2="24" y2="18" stroke="currentColor" stroke-width="1" opacity="0.35" />
-      </pattern>
-    </defs>
-  </svg>
-
-  <div class="tl-item reveal">
-    <div class="tl-ruler-col" aria-hidden="true">
-      <svg class="tl-ruler-segment" width="44" height="100%">
-        <rect x="0" y="0" width="44" height="100%" fill="url(#tl-ruler-ticks-en)" />
-      </svg>
-      <div class="tl-ruler-node">
-        <svg viewBox="0 0 28 28" class="tl-node-svg">
-          <circle cx="14" cy="14" r="10" class="node-halo" />
-          <line x1="14" y1="1" x2="14" y2="5" class="node-cross" />
-          <line x1="14" y1="23" x2="14" y2="27" class="node-cross" />
-          <line x1="1" y1="14" x2="5" y2="14" class="node-cross" />
-          <line x1="23" y1="14" x2="27" y2="14" class="node-cross" />
-          <circle cx="14" cy="14" r="7" class="node-ring" />
-          <circle cx="14" cy="14" r="3.2" class="node-core" />
-        </svg>
+  <div class="tl-rail" aria-hidden="true"></div>
+  <ol class="tl-list" aria-label="Lab timeline">
+    <li class="tl-item">
+      <span class="tl-year">2022</span>
+      <span class="tl-node" aria-hidden="true"></span>
+      <div class="tl-body">
+        <h3 class="tl-heading">Founding at FGV EMAp</h3>
+        <p class="tl-text">Launch of Green AI Lab activities at FGV EMAp, in Rio de Janeiro, in September, dedicated to developing artificial intelligence methods for Earth observation and learning with scarce ground truth.</p>
       </div>
-    </div>
-    <div class="tl-content">
-      <div class="tl-meta">
-        <span class="tl-year">2022</span>
-        <span class="tl-tag">September · Founding</span>
+    </li>
+    <li class="tl-item">
+      <span class="tl-year">2023</span>
+      <span class="tl-node" aria-hidden="true"></span>
+      <div class="tl-body">
+        <h3 class="tl-heading">Geospatial Foundation Models</h3>
+        <p class="tl-text">Co-authorship in the development of Prithvi in partnership with NASA and IBM, a pioneering open-source geospatial foundation model, and formulation of learning from label proportions methods for remote sensing.</p>
       </div>
-      <h3 class="tl-heading">Founding at FGV EMAp</h3>
-      <p class="tl-text">Launch of Green AI Lab activities at FGV EMAp, in Rio de Janeiro, dedicated to developing artificial intelligence methods for Earth observation and learning with scarce ground truth.</p>
-    </div>
-  </div>
-
-  <div class="tl-item reveal">
-    <div class="tl-ruler-col" aria-hidden="true">
-      <svg class="tl-ruler-segment" width="44" height="100%">
-        <rect x="0" y="0" width="44" height="100%" fill="url(#tl-ruler-ticks-en)" />
-      </svg>
-      <div class="tl-ruler-node">
-        <svg viewBox="0 0 28 28" class="tl-node-svg">
-          <circle cx="14" cy="14" r="10" class="node-halo" />
-          <line x1="14" y1="1" x2="14" y2="5" class="node-cross" />
-          <line x1="14" y1="23" x2="14" y2="27" class="node-cross" />
-          <line x1="1" y1="14" x2="5" y2="14" class="node-cross" />
-          <line x1="23" y1="14" x2="27" y2="14" class="node-cross" />
-          <circle cx="14" cy="14" r="7" class="node-ring" />
-          <circle cx="14" cy="14" r="3.2" class="node-core" />
-        </svg>
+    </li>
+    <li class="tl-item">
+      <span class="tl-year">2025</span>
+      <span class="tl-node" aria-hidden="true"></span>
+      <div class="tl-body">
+        <h3 class="tl-heading">Territorial Scale and Strategic Partnerships</h3>
+        <p class="tl-text">Build of our dedicated agricultural base covering 359,600 plots across 897 municipalities in five Brazilian states with FGV Agro, alongside territorial monitoring tools developed in partnership with FGV CES and Coiab.</p>
       </div>
-    </div>
-    <div class="tl-content">
-      <div class="tl-meta">
-        <span class="tl-year">2023</span>
-        <span class="tl-tag">Foundation Models</span>
+    </li>
+    <li class="tl-item">
+      <span class="tl-year">2026</span>
+      <span class="tl-node" aria-hidden="true"></span>
+      <div class="tl-body">
+        <h3 class="tl-heading">Continuous Monitoring and Language Models</h3>
+        <p class="tl-text">Consolidation of the continuous forest monitoring product at territorial scale, with 26 quarterly maps delivered from 2020 to 2026 validated against INPE's DETER alerts and PRODES polygons, alongside expansion into language models for institutional and regulatory document analysis.</p>
       </div>
-      <h3 class="tl-heading">Geospatial Foundation Models</h3>
-      <p class="tl-text">Co-authorship in the development of Prithvi in partnership with NASA and IBM, a pioneering open-source geospatial foundation model, and formulation of learning from label proportions methods for remote sensing.</p>
-    </div>
-  </div>
-
-  <div class="tl-item reveal">
-    <div class="tl-ruler-col" aria-hidden="true">
-      <svg class="tl-ruler-segment" width="44" height="100%">
-        <rect x="0" y="0" width="44" height="100%" fill="url(#tl-ruler-ticks-en)" />
-      </svg>
-      <div class="tl-ruler-node">
-        <svg viewBox="0 0 28 28" class="tl-node-svg">
-          <circle cx="14" cy="14" r="10" class="node-halo" />
-          <line x1="14" y1="1" x2="14" y2="5" class="node-cross" />
-          <line x1="14" y1="23" x2="14" y2="27" class="node-cross" />
-          <line x1="1" y1="14" x2="5" y2="14" class="node-cross" />
-          <line x1="23" y1="14" x2="27" y2="14" class="node-cross" />
-          <circle cx="14" cy="14" r="7" class="node-ring" />
-          <circle cx="14" cy="14" r="3.2" class="node-core" />
-        </svg>
-      </div>
-    </div>
-    <div class="tl-content">
-      <div class="tl-meta">
-        <span class="tl-year">2025</span>
-        <span class="tl-tag">Territorial Scale</span>
-      </div>
-      <h3 class="tl-heading">Territorial Scale and Strategic Partnerships</h3>
-      <p class="tl-text">Build of our dedicated agricultural base covering 359,600 plots across 897 municipalities in five Brazilian states with FGV Agro, alongside territorial monitoring tools developed in partnership with FGV CES and Coiab.</p>
-    </div>
-  </div>
-
-  <div class="tl-item tl-item-last reveal">
-    <div class="tl-ruler-col" aria-hidden="true">
-      <svg class="tl-ruler-segment" width="44" height="24">
-        <line x1="24" y1="0" x2="24" y2="20" stroke="currentColor" stroke-width="2" opacity="0.45" />
-        <line x1="12" y1="20" x2="36" y2="20" stroke="currentColor" stroke-width="2" opacity="0.65" />
-      </svg>
-      <div class="tl-ruler-node">
-        <svg viewBox="0 0 28 28" class="tl-node-svg">
-          <circle cx="14" cy="14" r="10" class="node-halo" />
-          <line x1="14" y1="1" x2="14" y2="5" class="node-cross" />
-          <line x1="14" y1="23" x2="14" y2="27" class="node-cross" />
-          <line x1="1" y1="14" x2="5" y2="14" class="node-cross" />
-          <line x1="23" y1="14" x2="27" y2="14" class="node-cross" />
-          <circle cx="14" cy="14" r="7" class="node-ring" />
-          <circle cx="14" cy="14" r="3.2" class="node-core" />
-        </svg>
-      </div>
-    </div>
-    <div class="tl-content">
-      <div class="tl-meta">
-        <span class="tl-year">2026</span>
-        <span class="tl-tag">Monitoring & NLP</span>
-      </div>
-      <h3 class="tl-heading">Continuous Monitoring and Language Models</h3>
-      <p class="tl-text">Consolidation of the continuous forest monitoring product at territorial scale, with 26 quarterly maps delivered from 2020 to 2026 validated against INPE's DETER alerts and PRODES polygons, alongside expansion into language models for institutional and regulatory document analysis.</p>
-    </div>
-  </div>
+    </li>
+  </ol>
 </div>
 ```
 

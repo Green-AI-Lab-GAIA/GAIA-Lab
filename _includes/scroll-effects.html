@@ -553,5 +553,108 @@
         });
       }
     }
+
+    // Linha do tempo da página Sobre: traço progressivo e ativação dinâmica no scroll
+    var tl = document.querySelector(".timeline-ruler");
+    if (tl) {
+      var itens = tl.querySelectorAll(".tl-item");
+      var nodes = tl.querySelectorAll(".tl-node");
+      var rail = tl.querySelector(".tl-rail");
+
+      if (reduzido) {
+        for (var t = 0; t < itens.length; t++) itens[t].classList.add("is-active");
+      } else if (itens.length && nodes.length) {
+        tl.classList.add("tl-ready");
+
+        function ajustarMedidas() {
+          var tlBox = tl.getBoundingClientRect();
+          var firstNode = nodes[0].getBoundingClientRect();
+          var lastNode = nodes[nodes.length - 1].getBoundingClientRect();
+          var topOffset = (firstNode.top + firstNode.height / 2) - tlBox.top;
+          var bottomOffset = (lastNode.top + lastNode.height / 2) - tlBox.top;
+          var railHeight = Math.max(bottomOffset - topOffset, 20);
+          if (rail) {
+            rail.style.top = topOffset + "px";
+            rail.style.height = railHeight + "px";
+          }
+        }
+
+        function atualizarTimeline() {
+          var winH = window.innerHeight;
+          var triggerY = winH * 0.65;
+          var firstNode = nodes[0].getBoundingClientRect();
+          var lastNode = nodes[nodes.length - 1].getBoundingClientRect();
+          var startY = firstNode.top + firstNode.height / 2;
+          var endY = lastNode.top + lastNode.height / 2;
+          var totalDist = endY - startY;
+
+          var fillPercent = 0;
+          if (totalDist > 0) {
+            var prog = (triggerY - startY) / totalDist;
+            fillPercent = Math.min(Math.max(prog, 0), 1) * 100;
+          }
+          tl.style.setProperty("--tl-fill", fillPercent.toFixed(1) + "%");
+
+          for (var i = 0; i < itens.length; i++) {
+            var nBox = nodes[i].getBoundingClientRect();
+            var centerY = nBox.top + nBox.height / 2;
+            if (centerY <= triggerY) {
+              itens[i].classList.add("is-active");
+            } else {
+              itens[i].classList.remove("is-active");
+            }
+          }
+        }
+
+        var ticking = false;
+        window.addEventListener("scroll", function () {
+          if (!ticking) {
+            requestAnimationFrame(function () {
+              atualizarTimeline();
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+
+        window.addEventListener("resize", function () {
+          ajustarMedidas();
+          atualizarTimeline();
+        });
+
+        ajustarMedidas();
+        atualizarTimeline();
+        setTimeout(function () {
+          ajustarMedidas();
+          atualizarTimeline();
+        }, 200);
+      }
+    }
+
+    // Equaliza a altura de todos os .area-card-overlay para manter alinhamento uniforme
+    function equalizarAreaOverlays() {
+      var overlays = document.querySelectorAll(".area-card-overlay");
+      if (!overlays.length) return;
+      for (var k = 0; k < overlays.length; k++) {
+        overlays[k].style.minHeight = "";
+      }
+      var maxH = 0;
+      for (var k = 0; k < overlays.length; k++) {
+        var h = overlays[k].getBoundingClientRect().height;
+        if (h > maxH) maxH = h;
+      }
+      if (maxH > 0) {
+        var rounded = Math.ceil(maxH) + "px";
+        for (var k = 0; k < overlays.length; k++) {
+          overlays[k].style.minHeight = rounded;
+        }
+      }
+    }
+
+    equalizarAreaOverlays();
+    window.addEventListener("resize", equalizarAreaOverlays);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(equalizarAreaOverlays);
+    }
   });
 </script>

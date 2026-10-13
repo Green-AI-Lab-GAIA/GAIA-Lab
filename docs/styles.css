@@ -157,39 +157,227 @@ body.home #title-block-header {
 }
 
 .area-card {
-  display: block;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 1.6rem 1.4rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 400px;
+  border-radius: 18px;
+  padding: 0.85rem;
+  overflow: hidden;
   text-decoration: none;
   color: inherit;
-  transition: box-shadow 0.3s ease, transform 0.3s ease,
-              border-color 0.3s ease;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.28s ease, transform 0.28s ease,
+              border-color 0.28s ease;
 }
 
 .area-card:hover {
   transform: translateY(-5px);
-  border-color: #7fb04f;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+  border-color: var(--gaia-accent);
+  box-shadow: 0 14px 28px rgba(54, 89, 2, 0.16);
 }
 
-.area-card svg {
-  width: 42px;
-  height: 42px;
-  stroke: #365902;
-  margin-bottom: 0.8rem;
+body.quarto-dark .area-card {
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+body.quarto-dark .area-card:hover {
+  border-color: #a7d177;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.55);
+}
+
+.area-card:focus-visible {
+  outline: 2px solid var(--gaia-accent);
+  outline-offset: 3px;
+}
+
+/* Imagem de fundo da área */
+.area-card-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.area-card:hover .area-card-bg {
+  transform: scale(1.06);
+}
+
+/* Topo do card: botão de seta flutuante */
+.area-card-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.25rem;
+}
+
+.card-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--gaia-accent);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  flex-shrink: 0;
+}
+
+.card-arrow svg {
+  width: 17px;
+  height: 17px;
+  stroke: currentColor;
+  stroke-width: 2.2;
+}
+
+.area-card:hover .card-arrow {
+  background: var(--gaia-accent);
+  color: #fff;
+  border-color: var(--gaia-accent);
+  transform: translateX(3px);
+}
+
+body.quarto-dark .card-arrow {
+  background: rgba(15, 20, 22, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #a7d177;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+}
+
+body.quarto-dark .area-card:hover .card-arrow {
+  background: #a7d177;
+  color: #141a0d;
+  border-color: #a7d177;
+}
+
+/* Camada translúcida refinada agrupando texto e métrica no rodapé */
+.area-card-overlay {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 232px;
+  box-sizing: border-box;
+  padding: 1.15rem 1.1rem 1rem;
+  border-radius: 13px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.62) 0%,
+    rgba(255, 255, 255, 0.78) 100%
+  );
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.area-card:hover .area-card-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.72) 0%,
+    rgba(255, 255, 255, 0.86) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.85);
+}
+
+body.quarto-dark .area-card-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(15, 20, 22, 0.58) 0%,
+    rgba(15, 20, 22, 0.78) 100%
+  );
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+body.quarto-dark .area-card:hover .area-card-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(15, 20, 22, 0.70) 0%,
+    rgba(15, 20, 22, 0.86) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.22);
 }
 
 .area-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #365902;
-  margin-bottom: 0.35rem;
+  font-size: 1.22rem;
+  font-weight: 750;
+  line-height: 1.25;
+  color: #0f2203;
+  margin: 0 0 0.4rem;
+  transition: color 0.2s ease;
+}
+
+.area-card:hover .area-title {
+  color: #1e3f05;
+}
+
+body.quarto-dark .area-title {
+  color: #b7e388;
+}
+
+body.quarto-dark .area-card:hover .area-title {
+  color: #d1f3a5;
 }
 
 .area-text {
-  font-size: 0.95rem;
-  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: #1a202c;
+  font-weight: 450;
+  margin: 0 0 0.75rem;
+  flex: 1 1 auto;
+}
+
+body.quarto-dark .area-text {
+  color: #f3f4f6;
+}
+
+.area-kpi {
+  margin-top: auto;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.09);
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #1a3805;
+}
+
+body.quarto-dark .area-kpi {
+  border-top-color: rgba(255, 255, 255, 0.14);
+  color: #c8ec9e;
+}
+
+.area-kpi span {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.73rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #4b5563;
+}
+
+body.quarto-dark .area-kpi span {
+  color: #cbd5e1;
 }
 
 /* Seções estruturadas e layout em jogral na home */
@@ -318,6 +506,27 @@ body.quarto-dark .jogral-text p {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
+a.jogral-card {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+a.jogral-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gaia-accent);
+  box-shadow: 0 10px 24px rgba(54, 89, 2, 0.12);
+}
+
+body.quarto-dark a.jogral-card:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+}
+
+a.jogral-card:focus-visible {
+  outline: 2px solid var(--gaia-accent);
+  outline-offset: 3px;
+}
+
 .jogral-card-icon {
   flex-shrink: 0;
   width: 44px;
@@ -340,15 +549,25 @@ body.quarto-dark .jogral-card-icon {
   height: 22px;
 }
 
+.jogral-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
 .jogral-card-body h3 {
   font-size: 1.05rem;
   font-weight: 700;
   color: #222;
   margin: 0 0 0.35rem 0;
+  transition: color 0.25s ease;
 }
 
 body.quarto-dark .jogral-card-body h3 {
   color: #e5e7eb;
+}
+
+a.jogral-card:hover .jogral-card-body h3 {
+  color: var(--gaia-accent);
 }
 
 .jogral-card-body p {
@@ -360,6 +579,44 @@ body.quarto-dark .jogral-card-body h3 {
 
 body.quarto-dark .jogral-card-body p {
   color: #9ca3af;
+}
+
+.jogral-card-arrow {
+  margin-left: auto;
+  align-self: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(54, 89, 2, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gaia-accent);
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.jogral-card-arrow svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2.2;
+}
+
+a.jogral-card:hover .jogral-card-arrow {
+  background: var(--gaia-accent);
+  color: #fff;
+  transform: translateX(4px);
+}
+
+body.quarto-dark .jogral-card-arrow {
+  background: rgba(167, 209, 119, 0.14);
+  color: #a7d177;
+}
+
+body.quarto-dark a.jogral-card:hover .jogral-card-arrow {
+  background: #a7d177;
+  color: #1a1a1a;
 }
 
 @media (max-width: 900px) {
@@ -1060,167 +1317,215 @@ body.quarto-dark .orbit-badge {
   transform: scaleX(1);
 }
 
-/* Linha do tempo da página Sobre com Régua SVG */
+/* Linha do tempo da página Sobre: uma régua que se preenche com a rolagem.
+   O _includes/timeline.html grava em --tl-fill quanto da régua a linha de
+   leitura já percorreu e marca com .is-active os marcos alcançados (ano cheio,
+   nó preenchido, texto visível); ao rolar de volta, a classe sai e o marco
+   apaga. O estado apagado só vale com .tl-ready, posta pelo script: sem
+   JavaScript, ou com movimento reduzido, tudo fica visível. */
 
 .timeline-ruler {
+  --tl-year-w: 6.75rem;
+  --tl-rail-w: 3rem;
+  /* altura do centro do nó, alinhada ao meio dos algarismos do ano */
+  --tl-node-y: 0.95rem;
+  --tl-faint: color-mix(in srgb, var(--gaia-accent) 32%, transparent);
+  --tl-ease: cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
-  max-width: 780px;
-  margin: 2.2rem auto 3.5rem;
-  display: flex;
-  flex-direction: column;
+  max-width: 960px;
+  margin: 2.6rem auto 3.5rem;
+}
+
+.timeline-ruler .tl-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .timeline-ruler .tl-item {
   display: grid;
-  grid-template-columns: 44px 1fr;
-  gap: 1.6rem;
-  position: relative;
-  padding-bottom: 2.4rem;
+  grid-template-columns: var(--tl-year-w) var(--tl-rail-w) minmax(0, 1fr);
+  grid-template-areas: "year node body";
+  align-items: start;
+  padding-bottom: 3.4rem;
 }
 
 .timeline-ruler .tl-item:last-child {
   padding-bottom: 0;
 }
 
-.timeline-ruler .tl-ruler-col {
-  position: relative;
-  width: 44px;
-  height: 100%;
-  color: var(--gaia-accent);
-}
-
-.timeline-ruler .tl-ruler-segment {
+/* Régua: traço vertical com marcas de medida à esquerda, uma maior a cada
+   cinco. Duas camadas iguais: a de baixo apagada, a de cima na cor de
+   destaque e recortada até --tl-fill. O script ajusta top e height para a
+   régua ir do primeiro ao último nó. */
+.timeline-ruler .tl-rail {
   position: absolute;
-  top: 14px;
-  left: 0;
-  width: 44px;
-  height: calc(100% + 2.4rem);
+  top: var(--tl-node-y);
+  bottom: 0;
+  left: calc(var(--tl-year-w) + var(--tl-rail-w) / 2 - 13px);
+  width: 14px;
   color: var(--gaia-accent);
+  pointer-events: none;
 }
 
-.timeline-ruler .tl-item-last .tl-ruler-segment {
-  height: 24px;
-}
-
-.timeline-ruler .tl-ruler-node {
+.timeline-ruler .tl-rail::before,
+.timeline-ruler .tl-rail::after {
+  content: "";
   position: absolute;
-  top: 2px;
-  left: 10px;
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
+  inset: 0;
+  background-image:
+    linear-gradient(currentColor, currentColor),
+    repeating-linear-gradient(to bottom, currentColor 0 1px, transparent 1px 12px),
+    repeating-linear-gradient(to bottom, currentColor 0 1.5px, transparent 1.5px 60px);
+  background-size: 2px 100%, 6px 100%, 12px 100%;
+  background-position: right 0 top 0, right 2px top 0, right 2px top 0;
+  background-repeat: no-repeat;
 }
 
-.timeline-ruler .tl-node-svg {
-  width: 28px;
-  height: 28px;
-  overflow: visible;
+.timeline-ruler .tl-rail::before {
+  opacity: 0.25;
 }
 
-.timeline-ruler .node-halo {
-  fill: var(--gaia-surface);
-  stroke: var(--gaia-border);
-  stroke-width: 1.2px;
+.timeline-ruler .tl-rail::after {
+  clip-path: inset(0 0 calc(100% - var(--tl-fill, 100%)) 0);
 }
 
-.timeline-ruler .node-cross {
-  stroke: var(--gaia-accent);
-  stroke-width: 1.2px;
-  opacity: 0.75;
-}
-
-.timeline-ruler .node-ring {
-  fill: var(--gaia-surface);
-  stroke: var(--gaia-accent);
-  stroke-width: 2px;
-}
-
-.timeline-ruler .node-core {
-  fill: var(--gaia-accent);
-}
-
-.timeline-ruler .tl-content {
-  padding-top: 0.15rem;
-}
-
-.timeline-ruler .tl-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  margin-bottom: 0.35rem;
-  flex-wrap: wrap;
-}
-
+/* Ano: cheio quando alcançado; antes disso, só o contorno, como as
+   numerações vazadas da página de Pesquisa */
 .timeline-ruler .tl-year {
-  font-size: 1.35rem;
+  grid-area: year;
+  justify-self: end;
+  padding-right: 1rem;
+  font-size: 2.15rem;
   font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--gaia-accent);
   line-height: 1;
-  font-feature-settings: "tnum";
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--gaia-accent);
+  -webkit-text-stroke: 1.5px transparent;
+  transition: color 0.5s ease, -webkit-text-stroke-color 0.5s ease;
 }
 
-.timeline-ruler .tl-tag {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.76rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  padding: 0.2rem 0.65rem;
-  border-radius: 999px;
-  background: var(--gaia-soft);
-  border: 1px solid var(--gaia-border);
-  color: var(--gaia-muted);
+/* Nó sobre a régua; o anel da cor do fundo descola o nó do traço. O ::after
+   é a marca curta que liga o nó ao texto, desenhada quando o marco acende */
+.timeline-ruler .tl-node {
+  grid-area: node;
+  justify-self: center;
+  position: relative;
+  z-index: 1;
+  width: 13px;
+  height: 13px;
+  margin-top: calc(var(--tl-node-y) - 6.5px);
+  border: 2px solid var(--gaia-accent);
+  border-radius: 50%;
+  background: var(--gaia-accent);
+  box-shadow: 0 0 0 4px var(--bs-body-bg, #fff);
+  transition: background-color 0.4s ease, border-color 0.4s ease,
+              transform 0.6s var(--tl-ease);
+}
+
+.timeline-ruler .tl-node::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 6px);
+  width: calc(var(--tl-rail-w) / 2 - 14px);
+  height: 2px;
+  margin-top: -1px;
+  background: var(--gaia-accent);
+  transform-origin: left center;
+  transition: transform 0.5s var(--tl-ease) 0.1s;
+}
+
+.timeline-ruler .tl-body {
+  grid-area: body;
+  padding-left: 0.5rem;
+  transition: opacity 0.6s var(--tl-ease), transform 0.6s var(--tl-ease);
 }
 
 .timeline-ruler .tl-heading {
-  font-size: 1.15rem;
+  font-size: 1.22rem;
   font-weight: 700;
-  margin: 0 0 0.45rem;
-  color: var(--gaia-text);
   line-height: 1.35;
+  margin: 0 0 0.5rem;
+  color: inherit;
+  transition: color 0.5s ease;
 }
 
 .timeline-ruler .tl-text {
-  font-size: 0.98rem;
-  line-height: 1.6;
-  color: var(--gaia-muted);
+  max-width: 100%;
   margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--gaia-muted);
+  transition: color 0.5s ease;
 }
 
+/* Marcos ainda não alcançados pela linha de leitura:
+   Funcionam como o span .tl-year, não ficam 100% transparentes,
+   permanecem com presença sutil/fantasma até serem acesos pelo scroll */
+.timeline-ruler.tl-ready .tl-item:not(.is-active) .tl-year {
+  color: transparent;
+  -webkit-text-stroke-color: var(--tl-faint);
+}
+
+.timeline-ruler.tl-ready .tl-item:not(.is-active) .tl-node {
+  background: var(--bs-body-bg, #fff);
+  border-color: var(--tl-faint);
+  transform: scale(0.85);
+}
+
+.timeline-ruler.tl-ready .tl-item:not(.is-active) .tl-node::after {
+  opacity: 0.25;
+  transform: scaleX(0.3);
+  transition-delay: 0s;
+}
+
+.timeline-ruler.tl-ready .tl-item:not(.is-active) .tl-body {
+  opacity: 0.32;
+  transform: translateY(4px);
+}
+
+/* Em telas estreitas o ano sobe para cima do título e a régua vai para a
+   borda esquerda */
 @media (max-width: 640px) {
+  .timeline-ruler {
+    --tl-year-w: 0px;
+    --tl-rail-w: 2.25rem;
+    --tl-node-y: 0.75rem;
+    margin-top: 2rem;
+  }
+
   .timeline-ruler .tl-item {
-    grid-template-columns: 36px 1fr;
-    gap: 1rem;
-    padding-bottom: 1.8rem;
+    grid-template-columns: var(--tl-rail-w) minmax(0, 1fr);
+    grid-template-areas:
+      "node year"
+      "node body";
+    padding-bottom: 2.6rem;
   }
 
-  .timeline-ruler .tl-ruler-col {
-    width: 36px;
+  .timeline-ruler .tl-node {
+    grid-row: 1 / span 2;
+    align-self: start;
   }
 
-  .timeline-ruler .tl-ruler-segment {
-    width: 36px;
-    height: calc(100% + 1.8rem);
-  }
-
-  .timeline-ruler .tl-ruler-node {
-    left: 4px;
+  .timeline-ruler .tl-node::after {
+    display: none;
   }
 
   .timeline-ruler .tl-year {
-    font-size: 1.2rem;
+    justify-self: start;
+    padding: 0 0 0 0.35rem;
+    margin-bottom: 0.45rem;
+    font-size: 1.65rem;
   }
 
   .timeline-ruler .tl-heading {
-    font-size: 1.05rem;
+    font-size: 1.08rem;
   }
 
   .timeline-ruler .tl-text {
-    font-size: 0.93rem;
+    font-size: 0.94rem;
   }
 }
 
@@ -3092,8 +3397,7 @@ body.quarto-dark .hs-card {
 
 body.quarto-dark .area-title,
 body.quarto-dark .hs-title,
-body.quarto-dark .stat-num,
-body.quarto-dark .tl-year {
+body.quarto-dark .stat-num {
   color: #7fb04f;
 }
 
@@ -3220,22 +3524,6 @@ html.has-js .hero-map img:not(.active) {
   }
 }
 
-.area-kpi {
-  margin-top: 1rem;
-  font-size: 1.02rem;
-  font-weight: 800;
-  color: var(--gaia-accent);
-}
-
-.area-kpi span {
-  display: block;
-  margin-top: 0.15rem;
-  font-size: 0.74rem;
-  font-weight: 400;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--gaia-muted);
-}
 
 .metrics {
   display: grid;
