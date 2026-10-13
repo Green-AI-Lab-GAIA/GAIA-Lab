@@ -16,7 +16,7 @@ toc: false
 <div class="course-list">
 
   <div class="course-card">
-    <img class="course-image" src="images/redes-neurais.svg"
+    <img class="course-image" src="https://drive.google.com/open?id=1cKUhFbmSiYTbl2u2v5hKO0oGnvci4As3"
          alt="Neural Networks and Deep Learning">
     <div class="course-info">
       <span class="course-level">Graduate program in Applied Mathematics and Data Science, EMAp</span>
@@ -27,12 +27,12 @@ toc: false
         <li><strong>Classes:</strong> in person, Mondays and Tuesdays, 2:20-4:00 pm (Brasília time)</li>
         <li><strong>Offered:</strong> every second semester</li>
       </ul>
-      <a class="pub-btn" href="https://emap.fgv.br/curso/doutorado#aba-disciplinas">Course page</a>
+      <a class="pub-btn" href="https://emap.fgv.br/en/doctorate-degree/doctorate-degree">Course page</a>
     </div>
   </div>
 
   <div class="course-card">
-    <img class="course-image" src="images/aprendizado-profundo.svg"
+    <img class="course-image" src="https://drive.google.com/open?id=1tZFKktaMMpY5po1iADBwJQo-GUCJb9GG"
          alt="Deep Learning">
     <div class="course-info">
       <span class="course-level">Undergraduate program in Data Science and AI, EMAp</span>
@@ -43,7 +43,7 @@ toc: false
         <li><strong>Classes:</strong> in person, Tuesdays and Thursdays, 9:20-11:00 am (Brasília time)</li>
         <li><strong>Offered:</strong> every second semester</li>
       </ul>
-      <a class="pub-btn" href="https://emap.fgv.br/curso/ciencia-de-dados-e-inteligencia-artificial#aba-grade-curricular">Course page</a>
+      <a class="pub-btn" href="https://emap.fgv.br/en/program/data-science-and-artificial-intelligence">Course page</a>
     </div>
   </div>
 

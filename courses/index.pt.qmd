@@ -16,7 +16,7 @@ toc: false
 <div class="course-list">
 
   <div class="course-card">
-    <img class="course-image" src="images/redes-neurais.svg"
+    <img class="course-image" src="https://drive.google.com/open?id=1cKUhFbmSiYTbl2u2v5hKO0oGnvci4As3"
          alt="Redes Neurais e Aprendizado Profundo">
     <div class="course-info">
       <span class="course-level">Pós-graduação em Matemática Aplicada e Ciência de Dados, EMAp</span>
@@ -32,7 +32,7 @@ toc: false
   </div>
 
   <div class="course-card">
-    <img class="course-image" src="images/aprendizado-profundo.svg"
+    <img class="course-image" src="https://drive.google.com/open?id=1tZFKktaMMpY5po1iADBwJQo-GUCJb9GG"
          alt="Aprendizado Profundo">
     <div class="course-info">
       <span class="course-level">Graduação em Ciência de Dados e IA, EMAp</span>

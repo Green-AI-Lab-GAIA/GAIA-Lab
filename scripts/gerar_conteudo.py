@@ -556,9 +556,73 @@ def ler_legendas_galeria() -> dict[str, tuple[str, str]]:
     return mapa
 
 
+def encontrar_arquivo_foto_galeria(linha: dict) -> Path | None:
+    """Encontra o arquivo de imagem no disco correspondente a linha da galeria."""
+    val = (linha.get("imagem") or "").strip()
+    if val and not eh_endereco(val):
+        p = PASTA_GALERIA / val
+        if p.exists() and p.is_file():
+            return p
+        p_raiz = RAIZ / val
+        if p_raiz.exists() and p_raiz.is_file():
+            return p_raiz
+    slug = linha.get("slug")
+    if slug:
+        candidatos = list(PASTA_GALERIA.glob(f"{slug}.*"))
+        candidatos = [c for c in candidatos if c.suffix.lower() in EXTENSOES_GALERIA and c.parent != WEB_GALERIA]
+        if candidatos:
+            return candidatos[0]
+    return None
+
+
 def gerar_galeria() -> None:
     if not PASTA_GALERIA.exists():
+        PASTA_GALERIA.mkdir(parents=True, exist_ok=True)
+
+    caminho_csv = DADOS / "galeria.csv"
+    caminho_xlsx = DADOS / "galeria.xlsx"
+
+    if caminho_csv.exists() or caminho_xlsx.exists():
+        caminho = caminho_csv if caminho_csv.exists() else caminho_xlsx
+        linhas = ler_tabela("galeria", caminho)
+        itens_galeria = []
+        linhas_legendas = [
+            "# Legendas das fotos da galeria: geradas a partir de dados/galeria.csv",
+            "# nome-do-arquivo | legenda em português | caption in English",
+            "",
+        ]
+        for linha in linhas:
+            arquivo = encontrar_arquivo_foto_galeria(linha)
+            if not arquivo:
+                identificador = linha.get("slug") or linha.get("imagem") or "foto"
+                print(f"aviso: galeria: imagem nao encontrada no disco para {identificador!r}", file=sys.stderr)
+                continue
+            leg_pt = texto(linha, "legenda", "pt")
+            leg_en = texto(linha, "legenda", "en")
+            linhas_legendas.append(f"{arquivo.name} | {leg_pt} | {leg_en}")
+            itens_galeria.append((arquivo, leg_pt, leg_en))
+
+        # Atualiza legendas.txt para documentação e integridade histórica
+        LEGENDAS_GALERIA.write_text("\n".join(linhas_legendas) + "\n", encoding="utf-8")
+
+        for lang in ("pt", "en"):
+            linhas_html = ["```{=html}"]
+            for arquivo, leg_pt, leg_en in itens_galeria:
+                legenda = html.escape(leg_pt if lang == "pt" else leg_en)
+                linhas_html.append(
+                    f'<button class="gallery-thumb" type="button" data-caption="{legenda}">'
+                    f'<img src="{caminho_miniatura_galeria(arquivo)}" alt="{legenda}" loading="lazy">'
+                    f"</button>"
+                )
+            linhas_html.append("```")
+            conteudo = "\n".join(linhas_html) + "\n"
+            destino = RAIZ / f"about/_galeria.{lang}.qmd"
+            if not destino.exists() or destino.read_text(encoding="utf-8") != conteudo:
+                destino.write_text(conteudo, encoding="utf-8")
+        print(f"galeria: {len(itens_galeria)} fotos processadas, 2 paginas compiladas")
         return
+
+    # Fallback se a planilha nao existir
     legendas = ler_legendas_galeria()
     total_fotos = 0
     for lang in ("pt", "en"):

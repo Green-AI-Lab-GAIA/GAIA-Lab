@@ -696,12 +696,12 @@ and institutional documents, in contractual analysis and assessment projects.</p
   <div class="gallery-strip">
     <button class="hscroll-btn prev" aria-label="Previous photos"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 5l-7 7 7 7"></path></svg></button>
     <div class="gallery-thumbs">
-<button class="gallery-thumb" type="button" data-caption="Celebrating the Lab's newly minted Master's graduates, July 2026"><img src="images/galeria/web/01.cerimomia-pos-2026.webp" alt="Celebrating the Lab's newly minted Master's graduates, July 2026" loading="lazy"></button>
-<button class="gallery-thumb" type="button" data-caption="14th International Conference on Climate Informatics, April 2025"><img src="images/galeria/web/02.climate-informatics.webp" alt="14th International Conference on Climate Informatics, April 2025" loading="lazy"></button>
-<button class="gallery-thumb" type="button" data-caption="Closing of the 14th International Conference on Climate Informatics, April 2025"><img src="images/galeria/web/03.climate_informatics_closing.webp" alt="Closing of the 14th International Conference on Climate Informatics, April 2025" loading="lazy"></button>
-<button class="gallery-thumb" type="button" data-caption="Laboratory team attending the conference, April 2025"><img src="images/galeria/web/04.climate_informatics_group.webp" alt="Laboratory team attending the conference, April 2025" loading="lazy"></button>
-<button class="gallery-thumb" type="button" data-caption="End-of-year gathering, December 2025"><img src="images/galeria/web/05.fim-de-ano-2025a.webp" alt="End-of-year gathering, December 2025" loading="lazy"></button>
-<button class="gallery-thumb" type="button" data-caption="Same thing, but with hands raised"><img src="images/galeria/web/06.fim-de-ano-2025b.webp" alt="Same thing, but with hands raised" loading="lazy"></button>
+<button class="gallery-thumb" type="button" data-caption="Celebrating the Lab's newly minted Master's graduates, July 2026"><img src="images/galeria/web/prestigiando-os-recem-titulados-mestres-do-lab-julho-de-2026.webp" alt="Celebrating the Lab's newly minted Master's graduates, July 2026" loading="lazy"></button>
+<button class="gallery-thumb" type="button" data-caption="14th International Conference on Climate Informatics, April 2025"><img src="images/galeria/web/14a-conferencia-internacional-de-informatica-climatica.webp" alt="14th International Conference on Climate Informatics, April 2025" loading="lazy"></button>
+<button class="gallery-thumb" type="button" data-caption="Closing of the 14th International Conference on Climate Informatics, April 2025"><img src="images/galeria/web/encerramento-da-14a-conferencia-internacional-sobre.webp" alt="Closing of the 14th International Conference on Climate Informatics, April 2025" loading="lazy"></button>
+<button class="gallery-thumb" type="button" data-caption="Laboratory team attending the conference, April 2025"><img src="images/galeria/web/equipe-do-laboratorio-que-estava-acompanhando-a-conferencia.webp" alt="Laboratory team attending the conference, April 2025" loading="lazy"></button>
+<button class="gallery-thumb" type="button" data-caption="End-of-year gathering, December 2025"><img src="images/galeria/web/confraternizacao-de-fim-de-ano-dezembro-de-2025.webp" alt="End-of-year gathering, December 2025" loading="lazy"></button>
+<button class="gallery-thumb" type="button" data-caption="Same thing, but with hands raised"><img src="images/galeria/web/mesma-coisa-mas-com-as-maos-para-o-alto.webp" alt="Same thing, but with hands raised" loading="lazy"></button>
     </div>
     <button class="hscroll-btn next" aria-label="Next photos"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 5 7 7-7 7"></path></svg></button>
   </div>
@@ -1628,7 +1628,7 @@ and institutional documents, in contractual analysis and assessment projects.</p
     });
 
     // Revezamento de fotos no hero: qualquer numero de imagens em .hero-map
-    // e alternado a cada 10s com transicao suave via classe .active
+    // e alternado a cada 7s com transicao suave via classe .active
     var heroContainer = document.querySelector(".hero-map");
     if (heroContainer) {
       var heroImgs = heroContainer.querySelectorAll("img");
@@ -1647,7 +1647,7 @@ and institutional documents, in contractual analysis and assessment projects.</p
         function iniciarHeroTimer() {
           if (reduzido) return;
           pararHeroTimer();
-          heroTimer = setInterval(proximaFotoHero, 10000);
+          heroTimer = setInterval(proximaFotoHero, 7000);
         }
 
         function pararHeroTimer() {

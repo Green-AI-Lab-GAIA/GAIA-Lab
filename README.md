@@ -6,7 +6,7 @@ Site institucional do GAIA Lab (Green AI Lab), desenvolvido com [Quarto](https:/
 
 ## 1. Gerenciamento de Conteúdo (Camada CMS)
 
-A maior parte do conteúdo do site (membros, publicações, notícias e cursos) é gerenciada de forma descentralizada via Google Forms e Google Sheets, sem necessidade de editar arquivos de código ou Markdown manualmente.
+A maior parte do conteúdo do site (membros, publicações, notícias, cursos e fotos da galeria) é gerenciada de forma descentralizada via Google Forms e Google Sheets, sem necessidade de editar arquivos de código ou Markdown manualmente.
 
 ### Formulários de Cadastro
 
@@ -20,6 +20,8 @@ Para adicionar novos itens ao site, utilize os formulários públicos correspond
   *Coleta título, veículo jornalístico, data, link original, resumo e imagem horizontal (16:9).*
 * **Curso:** [https://forms.gle/3v1ZMRcUi9XoDk5k9](https://forms.gle/3v1ZMRcUi9XoDk5k9)  
   *Coleta título, código, nível, carga horária, professor, ementa, link do curso e imagem horizontal (16:9).*
+* **Galeria:** [https://forms.gle/6hEL3VbhkALooAVU9](https://forms.gle/6hEL3VbhkALooAVU9)  
+  *Coleta imagem da foto (anexo Drive) e legendas em português e inglês para a galeria da página Sobre.*
 
 > **Edição de conteúdo:** os formulários são editáveis. Guarde o link de edição exibido após o envio para corrigir ou atualizar dados posteriormente. Alterações também podem ser feitas diretamente na planilha central (*Informações do site do Gaia Lab*).
 
@@ -33,10 +35,10 @@ O formulário de contato do site (`/join-us/`) envia mensagens para o backend Go
 O deploy e a atualização do site seguem o pipeline automatizado abaixo:
 
 ```text
-[ 4 Google Forms + Contato ]
+[ 5 Google Forms + Contato ]
             │ (respostas em tempo real)
             ▼
-[ Google Sheets (5 abas) + Pastas de Mídia no Drive ]
+[ Google Sheets (6 abas) + Pastas de Mídia no Drive ]
             │ (disparo agendado no cron: sábado à 00:00)
             ▼
 [ Cron ➔ scripts/atualizar.sh ]
@@ -73,22 +75,19 @@ O deploy e a atualização do site seguem o pipeline automatizado abaixo:
 
 ---
 
-## 3. Galeria da Página Sobre (Edição Manual)
+## 3. Galeria da Página Sobre
 
-Atualmente, a galeria de fotos em `about/` é a única seção que ainda não está integrada à camada de formulários (será migrada para o CMS futuramente).
+A galeria de fotos em `about/` é integrada à camada de CMS do laboratório, podendo receber fotos tanto pelo Google Forms quanto por arquivos locais:
 
-Para adicionar fotos à galeria:
-
-1. Adicione o arquivo de imagem (`.jpg`, `.png`, `.webp`) na pasta `about/images/galeria/`.
-2. Abra `about/images/galeria/legendas.txt` e adicione uma linha no formato:
-   ```text
-   nome-do-arquivo.jpg | Legenda em português | Caption in English
-   ```
-3. Regenere o site rodando:
-   ```bash
-   python3 scripts/gerar_conteudo.py
-   bash scripts/build.sh
-   ```
+* **Via Formulário e Planilha (Recomendado):**
+  Envie a foto pelo formulário público ou adicione diretamente na aba `galeria` da planilha central informando o link do Drive (ou nome do arquivo local), a legenda em português e opcionalmente a legenda em inglês.
+* **Armazenamento e sincronização local:**
+  As fotos são baixadas para `about/images/galeria/` e otimizadas automaticamente em WebP na pasta `about/images/galeria/web/`. O arquivo `about/images/galeria/legendas.txt` é mantido sincronizado automaticamente com as legendas bilíngues.
+* **Regeneração manual (se necessário):**
+  ```bash
+  python3 scripts/gerar_conteudo.py
+  bash scripts/build.sh
+  ```
 
 ---
 

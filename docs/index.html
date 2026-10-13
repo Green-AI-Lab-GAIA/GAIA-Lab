@@ -354,7 +354,6 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="home-body">
   <section id="home-pesquisa" class="home-section reveal">
-    <div class="section-badge"><span class="pulse-dot"></span> 01 / Áreas de Aplicação</div>
     <h2 class="section-title">Pesquisa Aplicada a Desafios Socioambientais</h2>
     <p class="section-lead">
       Combinamos dados orbitais e aprendizado profundo para enfrentar gargalos
@@ -409,7 +408,6 @@ ul.task-list li input[type="checkbox"] {
   </section>
 
   <section class="home-section reveal">
-    <div class="section-badge">02 / Abordagem &amp; Metodologia</div>
     <h2 class="section-title">Como Fazemos: Da Órbita ao Conhecimento Acionável</h2>
     <p class="section-lead">
       Nossa esteira metodológica conecta múltiplas constelações de satélites, reanálises
@@ -443,7 +441,6 @@ ul.task-list li input[type="checkbox"] {
   <section class="home-section jogral-section reveal">
     <div class="jogral-grid">
       <div class="jogral-text">
-        <div class="section-badge">03 / Ciência Aberta &amp; Difusão</div>
         <h2 class="section-title">Produção Científica, Defesas Acadêmicas e Difusão</h2>
         <p class="section-lead">
           A investigação científica desenvolvida no GAIA Lab gera impacto em múltiplos formatos
@@ -542,7 +539,6 @@ ul.task-list li input[type="checkbox"] {
       </div>
 
       <div class="jogral-text">
-        <div class="section-badge">04 / Capital Humano &amp; Pluralidade</div>
         <h2 class="section-title">Um Grupo Multidisciplinar e Altamente Capacitado</h2>
         <p class="section-lead">
           A solidez do GAIA Lab está na competência e na diversidade de sua equipe.
@@ -1451,7 +1447,7 @@ ul.task-list li input[type="checkbox"] {
     });
 
     // Revezamento de fotos no hero: qualquer numero de imagens em .hero-map
-    // e alternado a cada 10s com transicao suave via classe .active
+    // e alternado a cada 7s com transicao suave via classe .active
     var heroContainer = document.querySelector(".hero-map");
     if (heroContainer) {
       var heroImgs = heroContainer.querySelectorAll("img");
@@ -1470,7 +1466,7 @@ ul.task-list li input[type="checkbox"] {
         function iniciarHeroTimer() {
           if (reduzido) return;
           pararHeroTimer();
-          heroTimer = setInterval(proximaFotoHero, 10000);
+          heroTimer = setInterval(proximaFotoHero, 7000);
         }
 
         function pararHeroTimer() {

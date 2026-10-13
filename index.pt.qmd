@@ -44,7 +44,6 @@ toc: false
 
 <div class="home-body">
   <section id="home-pesquisa" class="home-section reveal">
-    <div class="section-badge"><span class="pulse-dot"></span> 01 / Áreas de Aplicação</div>
     <h2 class="section-title">Pesquisa Aplicada a Desafios Socioambientais</h2>
     <p class="section-lead">
       Combinamos dados orbitais e aprendizado profundo para enfrentar gargalos
@@ -99,7 +98,6 @@ toc: false
   </section>
 
   <section class="home-section reveal">
-    <div class="section-badge">02 / Abordagem & Metodologia</div>
     <h2 class="section-title">Como Fazemos: Da Órbita ao Conhecimento Acionável</h2>
     <p class="section-lead">
       Nossa esteira metodológica conecta múltiplas constelações de satélites, reanálises
@@ -133,7 +131,6 @@ toc: false
   <section class="home-section jogral-section reveal">
     <div class="jogral-grid">
       <div class="jogral-text">
-        <div class="section-badge">03 / Ciência Aberta & Difusão</div>
         <h2 class="section-title">Produção Científica, Defesas Acadêmicas e Difusão</h2>
         <p class="section-lead">
           A investigação científica desenvolvida no GAIA Lab gera impacto em múltiplos formatos
@@ -232,7 +229,6 @@ toc: false
       </div>
 
       <div class="jogral-text">
-        <div class="section-badge">04 / Capital Humano & Pluralidade</div>
         <h2 class="section-title">Um Grupo Multidisciplinar e Altamente Capacitado</h2>
         <p class="section-lead">
           A solidez do GAIA Lab está na competência e na diversidade de sua equipe.

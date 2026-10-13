@@ -44,7 +44,6 @@ toc: false
 
 <div class="home-body">
   <section id="home-pesquisa" class="home-section reveal">
-    <div class="section-badge"><span class="pulse-dot"></span> 01 / Application Areas</div>
     <h2 class="section-title">Research Applied to Socio-Environmental Challenges</h2>
     <p class="section-lead">
       We combine massive satellite streams and deep learning to tackle critical
@@ -99,7 +98,6 @@ toc: false
   </section>
 
   <section class="home-section reveal">
-    <div class="section-badge">02 / Approach & Methodology</div>
     <h2 class="section-title">How We Work: From Orbit to Actionable Intelligence</h2>
     <p class="section-lead">
       Our methodological pipeline connects multimodal satellite constellations,
@@ -133,7 +131,6 @@ toc: false
   <section class="home-section jogral-section reveal">
     <div class="jogral-grid">
       <div class="jogral-text">
-        <div class="section-badge">03 / Open Science & Outreach</div>
         <h2 class="section-title">Scientific Production, Academic Theses and Public Outreach</h2>
         <p class="section-lead">
           Scientific inquiries led by GAIA Lab generate impact across multiple formats
@@ -231,7 +228,6 @@ toc: false
       </div>
 
       <div class="jogral-text">
-        <div class="section-badge">04 / Human Capital & Plurality</div>
         <h2 class="section-title">A Highly Skilled, Multidisciplinary Team</h2>
         <p class="section-lead">
           The fundamental engine of GAIA Lab is the depth and versatility of our team.

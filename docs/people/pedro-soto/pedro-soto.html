@@ -1243,7 +1243,7 @@ ul.task-list li input[type="checkbox"] {
     });
 
     // Revezamento de fotos no hero: qualquer numero de imagens em .hero-map
-    // e alternado a cada 10s com transicao suave via classe .active
+    // e alternado a cada 7s com transicao suave via classe .active
     var heroContainer = document.querySelector(".hero-map");
     if (heroContainer) {
       var heroImgs = heroContainer.querySelectorAll("img");
@@ -1262,7 +1262,7 @@ ul.task-list li input[type="checkbox"] {
         function iniciarHeroTimer() {
           if (reduzido) return;
           pararHeroTimer();
-          heroTimer = setInterval(proximaFotoHero, 10000);
+          heroTimer = setInterval(proximaFotoHero, 7000);
         }
 
         function pararHeroTimer() {

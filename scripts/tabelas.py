@@ -92,7 +92,14 @@ COLUNAS = {
         Coluna("imagem", "Imagem ilustrativa", False),
         Coluna("exibir", "Exibir", False),
     ],
+    "galeria": [
+        Coluna("imagem", "Imagem", True),
+        Coluna("legenda", "Legenda em português", True),
+        Coluna("legenda_en", "Legenda em inglês", False),
+        Coluna("exibir", "Exibir", False),
+    ],
 }
+COLUNAS["galeria_fotos"] = COLUNAS["galeria"]
 
 # colunas que o proprio Google cria e que nao sao erro nenhum: nao vale avisar
 RUIDO_DO_FORMULARIO = re.compile(
@@ -433,15 +440,52 @@ def ler_tabela(tabela: str, caminho: Path) -> list[dict]:
                     "Use " + ", ".join(sorted({v for v in VINCULOS})))
             partes = dado["nome"].split()
             dado["primeiro"], dado["ultimo"] = partes[0], partes[-1]
+            if not slug_valido(dado["slug"]):
+                raise ErroDeConteudo(f"{caminho.name}, linha {numero}: endereco invalido: {dado['slug']!r}")
+            if dado["slug"] != simples:
+                print(f"aviso: {tabela}: {simples!r} ja estava em uso; linha {numero} "
+                      f"virou {dado['slug']!r}")
+            linhas.append(dado)
+        elif tabela in ("galeria", "galeria_fotos"):
+            raw_imgs = dado["imagem"]
+            if eh_endereco(raw_imgs):
+                urls = [u.strip() for u in re.split(r",\s*(?=https?://)|[\r\n]+", raw_imgs) if u.strip()]
+            else:
+                urls = [u.strip() for u in re.split(r"[\r\n]+|,\s*", raw_imgs) if u.strip()]
+            if not urls:
+                urls = [raw_imgs]
+
+            if len(urls) > 1:
+                linhas_pt = [p.strip() for p in re.split(r"[\r\n]+|[|;]", dado.get("legenda", "")) if p.strip()]
+                linhas_en = [p.strip() for p in re.split(r"[\r\n]+|[|;]", dado.get("legenda_en", "")) if p.strip()]
+            else:
+                linhas_pt = [dado.get("legenda", "")]
+                linhas_en = [dado.get("legenda_en", "")]
+
+            for idx, img_val in enumerate(urls):
+                item_dado = dict(dado)
+                item_dado["imagem"] = img_val
+                if len(urls) > 1:
+                    item_dado["legenda"] = linhas_pt[idx] if idx < len(linhas_pt) else (linhas_pt[0] if linhas_pt else "")
+                    item_dado["legenda_en"] = linhas_en[idx] if idx < len(linhas_en) else (linhas_en[0] if linhas_en else "")
+
+                texto_base = item_dado.get("legenda") or Path(img_val).stem or f"foto-{numero}-{idx + 1}"
+                simples = slugificar(texto_base)
+                if not simples:
+                    simples = f"foto-{numero}-{idx + 1}"
+                item_dado["slug"] = endereco_unico(simples, usados)
+                if not slug_valido(item_dado["slug"]):
+                    raise ErroDeConteudo(f"{caminho.name}, linha {numero}: endereco invalido: {item_dado['slug']!r}")
+                linhas.append(item_dado)
         else:
             simples = slugificar(dado["titulo"])
             dado["slug"] = endereco_unico(dado["titulo"], usados)
-        if not slug_valido(dado["slug"]):
-            raise ErroDeConteudo(f"{caminho.name}, linha {numero}: endereco invalido: {dado['slug']!r}")
-        if dado["slug"] != simples:
-            print(f"aviso: {tabela}: {simples!r} ja estava em uso; linha {numero} "
-                  f"virou {dado['slug']!r}")
-        linhas.append(dado)
+            if not slug_valido(dado["slug"]):
+                raise ErroDeConteudo(f"{caminho.name}, linha {numero}: endereco invalido: {dado['slug']!r}")
+            if dado["slug"] != simples:
+                print(f"aviso: {tabela}: {simples!r} ja estava em uso; linha {numero} "
+                      f"virou {dado['slug']!r}")
+            linhas.append(dado)
     return linhas
 
 
@@ -495,7 +539,7 @@ def conferir(tabela: str, cabecalhos: list[str]) -> int:
 
 def main(argv: list[str]) -> int:
     uso = ("uso:\n"
-           "  python3 scripts/tabelas.py perguntas [pessoas|publicacoes|noticias|cursos]\n"
+           "  python3 scripts/tabelas.py perguntas [pessoas|publicacoes|noticias|cursos|galeria]\n"
            "  python3 scripts/tabelas.py conferir <tabela> <arquivo.csv|arquivo.xlsx>\n"
            "  python3 scripts/tabelas.py conferir <tabela> -   (linha de titulo pelo stdin)")
     if len(argv) >= 2 and argv[1] == "perguntas":

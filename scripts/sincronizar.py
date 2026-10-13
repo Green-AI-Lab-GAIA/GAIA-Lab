@@ -116,7 +116,8 @@ def gravavel(linhas: list[dict], colunas: list[str]) -> str:
 
 def comparar_com_local(tabela: str, remotas: list[dict], cabecalhos: list[str]) -> bool:
     """Devolve True se mudou. Grava o CSV local na ordem e no cabecalho da planilha."""
-    destino = DADOS / f"{tabela}.csv"
+    nome_csv = "galeria" if tabela in ("galeria", "galeria_fotos") else tabela
+    destino = DADOS / f"{nome_csv}.csv"
     locais = []
     if destino.exists():
         with destino.open(encoding="utf-8", newline="") as fh:
@@ -305,7 +306,7 @@ def main() -> int:
 
     aviso(f"{agora()} build do site")
     rodar("bash", "scripts/build.sh")
-    rodar("git", "add", "people", "publications", "news", "courses", "about", "docs")
+    rodar("git", "add", "people", "publications", "news", "courses", "about", "docs", "dados")
     resumo = ", ".join(mudou) if mudou else "conteudo"
     rodar("git", "commit", "-m", f"conteudo: atualiza {resumo} a partir das planilhas")
     if args.push:

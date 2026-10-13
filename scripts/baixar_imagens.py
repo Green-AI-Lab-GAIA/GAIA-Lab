@@ -41,6 +41,7 @@ DESTINOS = {
                     ("publications", "figura2", "figura2")],
     "noticias": [("news", "imagem", "imagem")],
     "cursos": [("courses/images", "", "imagem")],
+    "galeria": [("about/images/galeria", "", "imagem")],
 }
 
 EXTENSAO = {
@@ -126,7 +127,10 @@ def versionados(registro: dict, prefixo: str) -> list[str]:
 
 def baixar_tabela(tabela: str, seco: bool, registro: dict) -> tuple[int, int, bool]:
     """Devolve (baixadas, puladas, registro_mudou)."""
-    linhas = ler_tabela(tabela, DADOS / f"{tabela}.csv")
+    caminho = DADOS / f"{tabela}.csv"
+    if not caminho.exists() and not caminho.with_suffix(".xlsx").exists():
+        return 0, 0, False
+    linhas = ler_tabela(tabela, caminho)
     baixadas = puladas = 0
     mudou = False
     for linha in linhas:

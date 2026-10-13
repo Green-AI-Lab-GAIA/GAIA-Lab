@@ -4,7 +4,7 @@
 
 ```bash
 python3 scripts/baixar_imagens.py      # imagens do Drive -> pasta de cada item
-python3 scripts/gerar_conteudo.py      # tabelas -> people/, publications/, news/, courses/
+python3 scripts/gerar_conteudo.py      # tabelas -> people/, publications/, news/, courses/, about/
 python3 scripts/sincronizar.py         # baixa, valida, gera, builda e commita
 python3 scripts/sincronizar.py --push  # idem, publicando
 python3 scripts/sincronizar.py --seco  # só relata o que mudaria
@@ -56,7 +56,7 @@ separador nenhum vira um item só, de modo que um parágrafo comum continua vál
 `scripts/baixar_imagens.py` lê o endereço que o formulário gravou na célula, baixa
 o arquivo e salva na pasta do item com o nome que o site espera
 (`people/<pessoa>/avatar.jpg`, `publications/<artigo>/miniatura.png`,
-`news/<noticia>/imagem.jpg`, `courses/images/<curso>.jpg`). O que já foi baixado fica anotado em
+`news/<noticia>/imagem.jpg`, `courses/images/<curso>.jpg`, `about/images/galeria/<foto>.jpg`). O que já foi baixado fica anotado em
 `dados/imagens.json`, então a rodada seguinte não baixa de novo.
 
 Para o download funcionar sem senha, a pasta de respostas do formulário precisa
