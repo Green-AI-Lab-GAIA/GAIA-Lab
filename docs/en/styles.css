@@ -1,3 +1,80 @@
+/* ==========================================================================
+   GAIA LAB DESIGN SYSTEM: POLÍTICA UNIFICADORA DE CORES E TOKENS VISUAIS
+   ==========================================================================
+   DIRETRIZ OBRIGATÓRIA PARA HUMANOS E AGENTES LLM:
+   NÃO declare cores hexadecimais avulsas (#...) nos componentes do site.
+   Qualquer novo componente ou alteração DEVE utilizar exclusivamente as
+   variáveis semânticas declaradas neste bloco de tokens.
+
+   1. HIERARQUIA DE VERDE (UMA COR ATIVA POR TEMA):
+      - TEMA CLARO:
+        * --gaia-accent: #365902 (Verde Floresta Oficial GAIA Lab / FGV)
+          Taxa de contraste WCAG AAA (6.7:1 sobre fundo branco). Utilizada em:
+          navbar, links, botões, números estatísticos, nós da timeline,
+          bordas superiores e ativas de cartões, kickers e ícones.
+        * --gaia-accent-hover: #2b4702 (versão aprofundada para hover).
+        * --gaia-accent-faint: rgba(54, 89, 2, 0.08) (fundos sutis e faixas).
+        * --gaia-mark: linear-gradient(transparent 62%, rgba(159, 203, 107, 0.65) 62%)
+          (marca-texto editorial do estilo .mark).
+      - TEMA ESCURO (body.quarto-dark):
+        * --gaia-accent: #a7d177 (Verde Sálvia Luminoso)
+          Taxa de contraste WCAG AAA (6.8:1 sobre fundo escuro #212529).
+          Mapeada automaticamente para todos os pontos de destaque.
+        * --gaia-accent-hover: #c3e899.
+        * --gaia-accent-faint: rgba(167, 209, 119, 0.12).
+        * --gaia-mark: linear-gradient(transparent 62%, rgba(127, 176, 79, 0.45) 62%)
+          (com letra escura #343a40 para máxima nitidez e contraste).
+
+   2. NEUTROS E SUPERFÍCIES:
+      - TEMA CLARO:
+        * --gaia-surface: #ffffff (fundo de cartões).
+        * --gaia-soft: #f6f8f2 (fundos suaves e faixas alternadas).
+        * --gaia-border: #e5e7eb (bordas neutras sutis).
+        * --gaia-text: #1a1a1a (texto principal).
+        * --gaia-muted: #4b5563 (texto secundário legível).
+        * --gaia-faint: #6c757d (legendas e notas discretas).
+      - TEMA ESCURO:
+        * --gaia-surface: #2b3035.
+        * --gaia-soft: #1e2327.
+        * --gaia-border: #3a4147.
+        * --gaia-text: #dee2e6.
+        * --gaia-muted: #adb5bd.
+        * --gaia-faint: #868e96.
+
+   3. O ESTILO .mark (DESTAQUE ESPECIAL):
+      - O .mark tem função estritamente editorial: destacar trechos curtos em
+        parágrafos com efeito de marca-texto semitransparente preenchido ao rolar.
+      - Não deve ser aplicado a botões, cabeçalhos ou bordas.
+   ========================================================================== */
+
+:root {
+  --gaia-accent: #365902;
+  --gaia-accent-hover: #2b4702;
+  --gaia-accent-faint: rgba(54, 89, 2, 0.08);
+  --gaia-mark: linear-gradient(transparent 62%, rgba(159, 203, 107, 0.65) 62%);
+
+  --gaia-surface: #ffffff;
+  --gaia-soft: #f6f8f2;
+  --gaia-border: #e5e7eb;
+  --gaia-text: #1a1a1a;
+  --gaia-muted: #4b5563;
+  --gaia-faint: #6c757d;
+}
+
+body.quarto-dark {
+  --gaia-accent: #a7d177;
+  --gaia-accent-hover: #c3e899;
+  --gaia-accent-faint: rgba(167, 209, 119, 0.12);
+  --gaia-mark: linear-gradient(transparent 62%, rgba(127, 176, 79, 0.45) 62%);
+
+  --gaia-surface: #2b3035;
+  --gaia-soft: #1e2327;
+  --gaia-border: #3a4147;
+  --gaia-text: #dee2e6;
+  --gaia-muted: #adb5bd;
+  --gaia-faint: #868e96;
+}
+
 /* Estilos do site; o tema base (claro/escuro) vem do Quarto (_quarto.yml) */
 
 /* Capa da página inicial: logo e nome surgem suavemente no centro, deslizam
@@ -265,7 +342,7 @@ body.quarto-dark .area-card:hover .card-arrow {
   border-color: #a7d177;
 }
 
-/* Camada translúcida refinada agrupando texto e métrica no rodapé */
+/* Camada translúcida com texto e métrica no rodapé */
 .area-card-overlay {
   position: relative;
   z-index: 1;
@@ -320,7 +397,7 @@ body.quarto-dark .area-card:hover .area-card-overlay {
 
 .area-title {
   font-size: 1.22rem;
-  font-weight: 750;
+  font-weight: 700;
   line-height: 1.25;
   color: #0f2203;
   margin: 0 0 0.4rem;
@@ -343,7 +420,7 @@ body.quarto-dark .area-card:hover .area-title {
   font-size: 0.9rem;
   line-height: 1.45;
   color: #1a202c;
-  font-weight: 450;
+  font-weight: 400;
   margin: 0 0 0.75rem;
   flex: 1 1 auto;
 }
@@ -357,7 +434,7 @@ body.quarto-dark .area-text {
   padding-top: 0.65rem;
   border-top: 1px solid rgba(0, 0, 0, 0.09);
   font-size: 0.98rem;
-  font-weight: 800;
+  font-weight: 700;
   color: #1a3805;
 }
 
@@ -370,7 +447,7 @@ body.quarto-dark .area-kpi {
   display: block;
   margin-top: 0.2rem;
   font-size: 0.73rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #4b5563;
@@ -413,7 +490,7 @@ body.quarto-dark .section-badge {
 
 .section-title {
   font-size: clamp(1.75rem, 3.4vw, 2.3rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.25;
   color: #1a1a1a;
   margin-top: 0;
@@ -425,15 +502,17 @@ body.quarto-dark .section-title {
   color: #f1f3f5;
 }
 
-.section-lead {
+.section-lead,
+.rsec-lead {
   font-size: 1.08rem;
   line-height: 1.65;
   color: #4b5563;
-  max-width: 860px;
+  max-width: 960px;
   margin-bottom: 1.8rem;
 }
 
-body.quarto-dark .section-lead {
+body.quarto-dark .section-lead,
+body.quarto-dark .rsec-lead {
   color: #cbd5e1;
 }
 
@@ -666,7 +745,7 @@ html.has-js .reveal.revealed {
 
 .rsec-num {
   font-size: clamp(3.5rem, 9vw, 7rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
   color: transparent;
   -webkit-text-stroke: 2px rgba(54, 89, 2, 0.35);
@@ -678,15 +757,10 @@ html.has-js .reveal.revealed {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: #7fb04f;
-  margin-bottom: 0.2rem;
+  color: var(--gaia-accent);
+margin-bottom: 0.2rem;
 }
 
-.rsec-lead {
-  max-width: 720px;
-  color: #444;
-  margin-bottom: 1.8rem;
-}
 
 /* Carrossel horizontal de cards (rolagem com snap + botões) */
 
@@ -702,19 +776,19 @@ html.has-js .reveal.revealed {
   scroll-snap-type: x mandatory;
   padding: 0.4rem 0.2rem 1rem;
   scrollbar-width: thin;
-  scrollbar-color: #9fcb6b transparent;
+  scrollbar-color: var(--gaia-accent) transparent;
 }
 
 .hs-card {
   flex: 0 0 300px;
   scroll-snap-align: start;
   border: 1px solid #ddd;
-  border-top: 4px solid #7fb04f;
+  border-top: 3px solid var(--gaia-accent);
   border-radius: 10px;
   padding: 1.2rem 1.1rem;
   background:
     repeating-linear-gradient(-45deg,
-      rgba(127, 176, 79, 0.05) 0 10px, transparent 10px 20px);
+      var(--gaia-accent-faint) 0 10px, transparent 10px 20px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -728,13 +802,13 @@ html.has-js .reveal.revealed {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #7fb04f;
+  color: var(--gaia-accent);
   margin-bottom: 0.3rem;
 }
 
 .hs-title {
   font-weight: 700;
-  color: #365902;
+  color: var(--gaia-accent);
   margin-bottom: 0.45rem;
 }
 
@@ -763,7 +837,7 @@ html.has-js .reveal.revealed {
 }
 
 .hscroll-btn:hover {
-  background: #4a7a08;
+  background: var(--gaia-accent-hover);
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -773,6 +847,231 @@ html.has-js .reveal.revealed {
 .hscroll-btn svg {
   width: 18px;
   height: 18px;
+}
+
+/* Sistema em gaveta de princípios e parceiros (.principles-blades, .partner-blades) */
+
+.principles-blades,
+.partner-blades {
+  display: flex;
+  flex-direction: row;
+  gap: 0.9rem;
+  min-height: 310px;
+  margin: 1.4rem 0 2.5rem;
+  align-items: stretch;
+}
+
+.partner-blades {
+  gap: 0.65rem;
+  min-height: 295px;
+}
+
+.blade-card {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  border: 1px solid var(--gaia-border);
+  border-top: 3px solid var(--gaia-accent);
+  border-radius: 12px;
+  padding: 1.25rem 0.85rem;
+  background: var(--gaia-surface);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: flex 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.35s ease,
+              border-color 0.25s ease,
+              box-shadow 0.25s ease,
+              background-color 0.25s ease;
+}
+
+body.quarto-dark .blade-card {
+  background: var(--gaia-surface);
+  border-color: var(--gaia-border);
+  border-top-color: var(--gaia-accent);
+}
+
+.blade-card:hover {
+  border-color: var(--gaia-accent);
+}
+
+.blade-card.is-active {
+  flex: 2.5;
+  padding: 1.35rem 1.2rem;
+  border-color: var(--gaia-accent);
+  box-shadow: 0 8px 24px var(--gaia-accent-faint);
+}
+
+.partner-blades .blade-card.is-active {
+  flex: 2.3;
+}
+
+body.quarto-dark .blade-card.is-active {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.blade-content {
+  position: relative;
+  z-index: 2;
+}
+
+.blade-kicker {
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--gaia-accent);
+  margin-bottom: 0.35rem;
+}
+
+.blade-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--gaia-text);
+  margin: 0 0 0.75rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: manual;
+  -webkit-hyphens: manual;
+  transition: color 0.2s ease, font-size 0.3s ease;
+}
+
+.blade-card.is-active .blade-title {
+  font-size: 1.22rem;
+  color: var(--gaia-accent);
+}
+
+body.quarto-dark .blade-title {
+  color: var(--gaia-text);
+}
+
+body.quarto-dark .blade-card.is-active .blade-title {
+  color: var(--gaia-accent);
+}
+
+.blade-desc {
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: var(--gaia-muted);
+  margin: 0;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.35s ease, max-height 0.4s ease;
+}
+
+body.quarto-dark .blade-desc {
+  color: var(--gaia-muted);
+}
+
+.blade-card.is-active .blade-desc {
+  opacity: 1;
+  max-height: 220px;
+}
+
+.blade-watermark {
+  position: absolute;
+  right: 0.8rem;
+  bottom: 0.8rem;
+  width: 76px;
+  height: 76px;
+  opacity: 0.10;
+  pointer-events: none;
+  color: var(--gaia-accent);
+  transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+
+body.quarto-dark .blade-watermark {
+  color: var(--gaia-accent);
+  opacity: 0.16;
+}
+
+.blade-card.is-active .blade-watermark {
+  opacity: 0.22;
+  transform: scale(1.1);
+}
+
+body.quarto-dark .blade-card.is-active .blade-watermark {
+  opacity: 0.3;
+}
+
+.blade-watermark svg {
+  width: 100%;
+  height: 100%;
+}
+
+.blade-indicator {
+  display: none;
+}
+
+@media (max-width: 899px) {
+  .principles-blades,
+  .partner-blades {
+    flex-direction: column;
+    min-height: auto;
+    gap: 0.75rem;
+  }
+
+  .blade-card {
+    flex: none;
+    min-height: auto;
+    padding: 1.1rem 1.25rem;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .blade-card.is-active {
+    flex: none;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  }
+
+  .blade-title {
+    margin-bottom: 0.2rem;
+  }
+
+  .blade-card.is-active .blade-title {
+    margin-bottom: 0.55rem;
+  }
+
+  .blade-desc {
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.3s ease;
+  }
+
+  .blade-card.is-active .blade-desc {
+    max-height: 250px;
+    opacity: 1;
+    margin-top: 0.4rem;
+  }
+
+  .blade-indicator {
+    display: block;
+    position: absolute;
+    right: 1.1rem;
+    top: 1.25rem;
+    width: 18px;
+    height: 18px;
+    color: var(--gaia-accent);
+    transition: transform 0.3s ease;
+    pointer-events: none;
+  }
+
+  .blade-card.is-active .blade-indicator {
+    transform: rotate(90deg);
+  }
+
+  .blade-watermark {
+    width: 48px;
+    height: 48px;
+    right: 0.6rem;
+    bottom: 0.6rem;
+    opacity: 0.06;
+  }
 }
 
 /* Comparador antes/depois com divisor arrastável */
@@ -858,31 +1157,37 @@ html.has-js .reveal.revealed {
   margin-bottom: 2rem;
 }
 
-/* Faixa de números da página Sobre (contadores animados) */
+/* Faixa de números unificada (contadores animados e métricas chave) */
 
-.stats {
+.stats,
+.metrics {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1.5rem;
-  /* Segue a coluna de texto do container (page-main ou home-body), para a
-     margem das páginas ficar igual em todo o site */
+  grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
+  gap: 1.25rem;
   max-width: none;
-  margin: 2.5rem auto;
+  margin: 2rem auto;
+  padding: 0;
+  border: none;
   text-align: center;
 }
 
-.stat-num {
-  font-size: 2.8rem;
-  font-weight: 800;
-  color: #365902;
-  line-height: 1.1;
+.stat-num,
+.metrics .m-val {
+  font-size: clamp(1.8rem, 3.4vw, 2.25rem);
+  font-weight: 700;
+  color: var(--gaia-accent);
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
 }
 
-.stat-label {
-  font-size: 0.85rem;
+.stat-label,
+.metrics .m-lab {
+  font-size: 0.76rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #666;
+  color: var(--gaia-muted);
+  margin-top: 0.35rem;
 }
 
 /* Missão com palavras marcadas (o traço cresce quando o bloco aparece) */
@@ -890,8 +1195,8 @@ html.has-js .reveal.revealed {
 .mission {
   max-width: 780px;
   margin: 1.5rem auto 2.5rem;
-  font-size: 1.45rem;
-  line-height: 1.55;
+  font-size: 1.15rem;
+  line-height: 1.7;
 }
 
 /* Layout split da Missão (Texto + Animação de Satélite e Terra) */
@@ -901,14 +1206,14 @@ html.has-js .reveal.revealed {
   align-items: center;
   gap: 2.8rem;
   max-width: 1140px;
-  margin: 1.8rem auto 3rem;
+  margin: 0.2rem auto 2.8rem;
 }
 
 .mission-split .mission {
   max-width: none;
   margin: 0 0 1.25rem;
-  font-size: 1.35rem;
-  line-height: 1.6;
+  font-size: 1.15rem;
+  line-height: 1.7;
 }
 
 .mission-split .mission:last-child {
@@ -978,8 +1283,8 @@ body.quarto-dark .orbit-badge {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #7fb04f;
-  box-shadow: 0 0 6px #7fb04f;
+  background: var(--gaia-accent);
+  box-shadow: 0 0 6px var(--gaia-accent);
   animation: pulseDot 2s infinite ease-in-out;
 }
 
@@ -990,7 +1295,8 @@ body.quarto-dark .orbit-badge {
   }
 
   .mission-split .mission {
-    font-size: 1.25rem;
+    font-size: 1.05rem;
+    line-height: 1.65;
   }
 
   .earth-orbit-card {
@@ -1002,13 +1308,16 @@ body.quarto-dark .orbit-badge {
 .mark {
   font-style: normal;
   font-weight: 600;
-  /* A regra do Bootstrap para <mark> fixa o fundo e não a cor da letra. No tema
-     escuro a letra herdada ficaria clara sobre esse fundo, daí a cor fixa */
   color: #343a40;
-  background-image: linear-gradient(transparent 62%, rgba(159, 203, 107, 0.65) 62%);
+  background-image: var(--gaia-mark);
   background-size: 0% 100%;
   background-repeat: no-repeat;
   transition: background-size 1s ease 0.5s;
+}
+
+body.quarto-dark .mark {
+  color: #343a40 !important;
+  background-image: var(--gaia-mark);
 }
 
 .revealed .mark {
@@ -1061,7 +1370,7 @@ body.quarto-dark .orbit-badge {
   left: 0;
   height: 3px;
   width: 0;
-  background: #7fb04f;
+  background: var(--gaia-accent);
   z-index: 2;
 }
 
@@ -1128,7 +1437,7 @@ body.quarto-dark .orbit-badge {
 }
 
 .gallery-thumb.active {
-  border-color: #7fb04f;
+  border-color: var(--gaia-accent);
 }
 
 .lightbox {
@@ -1326,10 +1635,8 @@ body.quarto-dark .orbit-badge {
 
 .timeline-ruler {
   --tl-year-w: 6.75rem;
-  --tl-rail-w: 3rem;
-  /* altura do centro do nó, alinhada ao meio dos algarismos do ano */
+  --tl-rail-w: 2.75rem;
   --tl-node-y: 0.95rem;
-  --tl-faint: color-mix(in srgb, var(--gaia-accent) 32%, transparent);
   --tl-ease: cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   max-width: 960px;
@@ -1347,147 +1654,122 @@ body.quarto-dark .orbit-badge {
   grid-template-columns: var(--tl-year-w) var(--tl-rail-w) minmax(0, 1fr);
   grid-template-areas: "year node body";
   align-items: start;
-  padding-bottom: 3.4rem;
+  padding-bottom: 3.2rem;
 }
 
 .timeline-ruler .tl-item:last-child {
   padding-bottom: 0;
 }
 
-/* Régua: traço vertical com marcas de medida à esquerda, uma maior a cada
-   cinco. Duas camadas iguais: a de baixo apagada, a de cima na cor de
-   destaque e recortada até --tl-fill. O script ajusta top e height para a
-   régua ir do primeiro ao último nó. */
+/* Trilho vertical arredondado e suave, sem marcas pontudas */
 .timeline-ruler .tl-rail {
   position: absolute;
   top: var(--tl-node-y);
   bottom: 0;
-  left: calc(var(--tl-year-w) + var(--tl-rail-w) / 2 - 13px);
-  width: 14px;
-  color: var(--gaia-accent);
+  left: calc(var(--tl-year-w) + var(--tl-rail-w) / 2 - 2px);
+  width: 4px;
+  border-radius: 999px;
+  background: var(--gaia-border);
   pointer-events: none;
+  overflow: hidden;
 }
 
-.timeline-ruler .tl-rail::before,
+.timeline-ruler .tl-rail::before {
+  display: none;
+}
+
 .timeline-ruler .tl-rail::after {
   content: "";
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(currentColor, currentColor),
-    repeating-linear-gradient(to bottom, currentColor 0 1px, transparent 1px 12px),
-    repeating-linear-gradient(to bottom, currentColor 0 1.5px, transparent 1.5px 60px);
-  background-size: 2px 100%, 6px 100%, 12px 100%;
-  background-position: right 0 top 0, right 2px top 0, right 2px top 0;
-  background-repeat: no-repeat;
-}
-
-.timeline-ruler .tl-rail::before {
-  opacity: 0.25;
-}
-
-.timeline-ruler .tl-rail::after {
+  border-radius: 999px;
+  background: var(--gaia-accent);
   clip-path: inset(0 0 calc(100% - var(--tl-fill, 100%)) 0);
+  transition: clip-path 0.12s ease-out;
 }
 
-/* Ano: cheio quando alcançado; antes disso, só o contorno, como as
-   numerações vazadas da página de Pesquisa */
+/* Ano: tipografia sólida e arredondada, sem contornos vazados */
 .timeline-ruler .tl-year {
   grid-area: year;
   justify-self: end;
-  padding-right: 1rem;
-  font-size: 2.15rem;
-  font-weight: 800;
+  padding-right: 1.1rem;
+  font-size: 1.85rem;
+  font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
   color: var(--gaia-accent);
-  -webkit-text-stroke: 1.5px transparent;
-  transition: color 0.5s ease, -webkit-text-stroke-color 0.5s ease;
+  transition: color 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
 }
 
-/* Nó sobre a régua; o anel da cor do fundo descola o nó do traço. O ::after
-   é a marca curta que liga o nó ao texto, desenhada quando o marco acende */
+/* Nó circular suave e arredondado */
 .timeline-ruler .tl-node {
   grid-area: node;
   justify-self: center;
   position: relative;
   z-index: 1;
-  width: 13px;
-  height: 13px;
-  margin-top: calc(var(--tl-node-y) - 6.5px);
-  border: 2px solid var(--gaia-accent);
+  width: 16px;
+  height: 16px;
+  margin-top: calc(var(--tl-node-y) - 8px);
+  border: 3px solid var(--gaia-accent);
   border-radius: 50%;
   background: var(--gaia-accent);
-  box-shadow: 0 0 0 4px var(--bs-body-bg, #fff);
+  box-shadow: 0 0 0 5px var(--gaia-accent-faint);
   transition: background-color 0.4s ease, border-color 0.4s ease,
-              transform 0.6s var(--tl-ease);
+              box-shadow 0.4s ease, transform 0.5s var(--tl-ease);
 }
 
 .timeline-ruler .tl-node::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: calc(100% + 6px);
-  width: calc(var(--tl-rail-w) / 2 - 14px);
-  height: 2px;
-  margin-top: -1px;
-  background: var(--gaia-accent);
-  transform-origin: left center;
-  transition: transform 0.5s var(--tl-ease) 0.1s;
+  display: none;
 }
 
 .timeline-ruler .tl-body {
   grid-area: body;
-  padding-left: 0.5rem;
-  transition: opacity 0.6s var(--tl-ease), transform 0.6s var(--tl-ease);
+  padding-left: 0.6rem;
+  transition: opacity 0.5s var(--tl-ease), transform 0.5s var(--tl-ease);
 }
 
 .timeline-ruler .tl-heading {
-  font-size: 1.22rem;
+  font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.35;
-  margin: 0 0 0.5rem;
-  color: inherit;
-  transition: color 0.5s ease;
+  margin: 0 0 0.45rem;
+  color: var(--gaia-text);
+  transition: color 0.4s ease;
+}
+
+.timeline-ruler .tl-item.is-active .tl-heading {
+  color: var(--gaia-accent);
 }
 
 .timeline-ruler .tl-text {
-  max-width: 100%;
+  max-width: 680px;
   margin: 0;
-  font-size: 0.98rem;
+  font-size: 0.96rem;
   line-height: 1.65;
   color: var(--gaia-muted);
-  transition: color 0.5s ease;
+  transition: color 0.4s ease;
 }
 
-/* Marcos ainda não alcançados pela linha de leitura:
-   Funcionam como o span .tl-year, não ficam 100% transparentes,
-   permanecem com presença sutil/fantasma até serem acesos pelo scroll */
+/* Estado suave antes de alcançar a leitura */
 .timeline-ruler.tl-ready .tl-item:not(.is-active) .tl-year {
-  color: transparent;
-  -webkit-text-stroke-color: var(--tl-faint);
+  color: var(--gaia-muted);
+  opacity: 0.32;
+  transform: scale(0.96);
 }
 
 .timeline-ruler.tl-ready .tl-item:not(.is-active) .tl-node {
-  background: var(--bs-body-bg, #fff);
-  border-color: var(--tl-faint);
+  background: var(--gaia-surface);
+  border-color: var(--gaia-border);
+  box-shadow: 0 0 0 3px var(--gaia-border);
   transform: scale(0.85);
 }
 
-.timeline-ruler.tl-ready .tl-item:not(.is-active) .tl-node::after {
-  opacity: 0.25;
-  transform: scaleX(0.3);
-  transition-delay: 0s;
-}
-
 .timeline-ruler.tl-ready .tl-item:not(.is-active) .tl-body {
-  opacity: 0.32;
+  opacity: 0.35;
   transform: translateY(4px);
 }
 
-/* Em telas estreitas o ano sobe para cima do título e a régua vai para a
-   borda esquerda */
 @media (max-width: 640px) {
   .timeline-ruler {
     --tl-year-w: 0px;
@@ -1501,7 +1783,7 @@ body.quarto-dark .orbit-badge {
     grid-template-areas:
       "node year"
       "node body";
-    padding-bottom: 2.6rem;
+    padding-bottom: 2.4rem;
   }
 
   .timeline-ruler .tl-node {
@@ -1509,19 +1791,15 @@ body.quarto-dark .orbit-badge {
     align-self: start;
   }
 
-  .timeline-ruler .tl-node::after {
-    display: none;
-  }
-
   .timeline-ruler .tl-year {
     justify-self: start;
     padding: 0 0 0 0.35rem;
     margin-bottom: 0.45rem;
-    font-size: 1.65rem;
+    font-size: 1.55rem;
   }
 
   .timeline-ruler .tl-heading {
-    font-size: 1.08rem;
+    font-size: 1.12rem;
   }
 
   .timeline-ruler .tl-text {
@@ -1692,11 +1970,11 @@ body.quarto-dark .orbit-badge {
   }
 
   .quarto-color-scheme-toggle {
-    /* Cores: o indicador usa o verde do site; o resto vem do protótipo
-       (branco no claro, grafite no escuro, cinza/branco nos ícones) */
+    /* Cores: o indicador usa o verde floresta (#365902) fixo em ambos os modos;
+       o resto vem do protótipo (branco no claro, grafite no escuro, cinza/branco nos ícones) */
     --t-bg-light: #ffffff;
     --t-bg-dark: #242529;
-    --t-indicator: #4a7a08;
+    --t-indicator: #365902;
     --t-icon-inactive: #a1a1aa;
     --t-icon-active: #ffffff;
     /* Geometria: mesma altura do botão de idioma (a.nav-link.lang-switch, 35px)
@@ -1734,6 +2012,7 @@ body.quarto-dark .orbit-badge {
   }
 
   body.quarto-dark .quarto-color-scheme-toggle {
+    --t-indicator: #365902;
     background-color: var(--t-bg-dark);
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
   }
@@ -1878,7 +2157,7 @@ main h2::after {
   width: 56px;
   height: 3px;
   border-radius: 2px;
-  background: #365902;
+  background: var(--gaia-accent);
 }
 
 /* Página de perfil de membro (template 'trestles' do Quarto) */
@@ -2002,17 +2281,14 @@ main.content {
   min-width: 0;
 }
 
-.home-body .home-areas,
-.home-body .stats {
+.home-body .home-areas {
   max-width: none;
   padding: 0;
-}
-
-.home-body .home-areas {
   margin: 2rem 0;
 }
 
 .home-body .stats {
+  max-width: none;
   margin: 2.5rem 0;
 }
 
@@ -2158,7 +2434,7 @@ main.content {
   }
 
   body.quarto-dark .side-toc-link.active {
-    border-bottom-color: #7fb04f;
+    border-bottom-color: var(--gaia-accent);
   }
 }
 
@@ -2231,7 +2507,7 @@ section.level2.secao-vazia,
 }
 
 .year-range {
-  background: #7fb04f;
+  background: var(--gaia-accent);
 }
 
 /* Dois ranges sobrepostos: só as bolinhas recebem cliques */
@@ -2699,6 +2975,7 @@ body.quarto-dark .pub-btn-secondary:hover {
 .course-info {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .course-title {
@@ -2776,7 +3053,7 @@ body.quarto-dark .pub-btn-secondary:hover {
   width: 32px;
   height: 2px;
   border-radius: 2px;
-  background: #9fcb6b;
+  background: var(--gaia-accent);
 }
 
 .footer-address {
@@ -2905,7 +3182,7 @@ body.quarto-dark .pub-btn-secondary:hover {
 }
 
 body.quarto-dark .join-form .join-req {
-  color: #7fb04f;
+  color: var(--gaia-accent);
 }
 
 .join-form .join-opcional {
@@ -2961,7 +3238,7 @@ body.quarto-dark .join-form input[type="file"]::file-selector-button {
 
 body.quarto-dark .join-form input[type="file"]::file-selector-button:hover {
   background: #354032;
-  border-color: #7fb04f;
+  border-color: var(--gaia-accent);
 }
 
 /* Lista de opções própria: o <select> nativo fica escondido e o JS monta um
@@ -3095,7 +3372,7 @@ body.quarto-dark .join-form input[type="file"]::file-selector-button:hover {
 }
 
 .join-submit:hover {
-  background: #4a7a08;
+  background: var(--gaia-accent-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
@@ -3153,25 +3430,25 @@ body.quarto-dark .listing-box-education {
 }
 
 body.quarto-dark main h2::after {
-  background: #7fb04f;
+  background: var(--gaia-accent);
 }
 
 body.quarto-dark .about-entity .about-image {
-  border-color: #7fb04f;
+  border-color: var(--gaia-accent);
 }
 
 body.quarto-dark .about-entity .about-link {
-  border-color: #7fb04f;
-  color: #7fb04f !important;
+  border-color: var(--gaia-accent);
+  color: var(--gaia-accent) !important;
 }
 
 body.quarto-dark .about-entity .about-link:hover {
-  background-color: #7fb04f;
+  background-color: var(--gaia-accent);
   color: #1a1d21 !important;
 }
 
 body.quarto-dark .back-link {
-  color: #7fb04f;
+  color: var(--gaia-accent);
 }
 
 body.quarto-dark .pub-card {
@@ -3189,7 +3466,7 @@ body.quarto-dark .pub-detail-thumb img {
 
 body.quarto-dark .pub-title,
 body.quarto-dark .news-title {
-  color: #7fb04f;
+  color: var(--gaia-accent);
 }
 
 body.quarto-dark .pub-authors,
@@ -3204,22 +3481,22 @@ body.quarto-dark .news-source {
 }
 
 body.quarto-dark .pub-btn {
-  border-color: #7fb04f;
-  color: #7fb04f !important;
+  border-color: var(--gaia-accent);
+  color: var(--gaia-accent) !important;
 }
 
 body.quarto-dark .pub-btn:hover {
-  background-color: #7fb04f;
+  background-color: var(--gaia-accent);
   color: #1a1d21 !important;
 }
 
 body.quarto-dark .news-card {
-  border-left-color: #7fb04f;
-  background: rgba(127, 176, 79, 0.08);
+  border-left-color: var(--gaia-accent);
+  background: var(--gaia-accent-faint);
 }
 
 body.quarto-dark .news-card:hover {
-  background: rgba(127, 176, 79, 0.16);
+  background: var(--gaia-accent-faint);
 }
 
 body.quarto-dark .pub-search-input {
@@ -3229,20 +3506,20 @@ body.quarto-dark .pub-search-input {
 }
 
 body.quarto-dark .pub-search-input:focus {
-  border-color: #7fb04f;
-  box-shadow: 0 0 0 3px rgba(127, 176, 79, 0.2);
+  border-color: var(--gaia-accent);
+  box-shadow: 0 0 0 3px var(--gaia-accent-faint);
 }
 
 body.quarto-dark .pub-search-btn {
-  color: #7fb04f;
+  color: var(--gaia-accent);
 }
 
 body.quarto-dark .pub-search-btn:hover {
-  background: rgba(127, 176, 79, 0.15);
+  background: var(--gaia-accent-faint);
 }
 
 body.quarto-dark .pub-search-btn:active {
-  background: #7fb04f;
+  background: var(--gaia-accent);
   color: #1a1d21;
 }
 
@@ -3257,11 +3534,11 @@ body.quarto-dark .side-toc-link {
 
 body.quarto-dark .side-toc-link:hover,
 body.quarto-dark .side-toc-link.active {
-  color: #7fb04f;
+  color: var(--gaia-accent);
 }
 
 body.quarto-dark .side-toc-link.active {
-  border-left-color: #7fb04f;
+  border-left-color: var(--gaia-accent);
 }
 
 body.quarto-dark #TOC a {
@@ -3270,15 +3547,15 @@ body.quarto-dark #TOC a {
 
 body.quarto-dark #TOC a:hover,
 body.quarto-dark #TOC a.active {
-  color: #7fb04f !important;
+  color: var(--gaia-accent) !important;
 }
 
 body.quarto-dark #TOC a.active {
-  border-left-color: #7fb04f !important;
+  border-left-color: var(--gaia-accent) !important;
 }
 
 body.quarto-dark .year-label {
-  color: #7fb04f;
+  color: var(--gaia-accent);
 }
 
 body.quarto-dark .year-track {
@@ -3290,16 +3567,16 @@ body.quarto-dark .pub-count {
 }
 
 body.quarto-dark .pub-page {
-  border-color: #7fb04f;
-  color: #7fb04f;
+  border-color: var(--gaia-accent);
+  color: var(--gaia-accent);
 }
 
 body.quarto-dark .pub-page:not(.active):not(:disabled):hover {
-  background: rgba(127, 176, 79, 0.15);
+  background: var(--gaia-accent-faint);
 }
 
 body.quarto-dark .pub-page.active {
-  background: #7fb04f;
+  background: var(--gaia-accent);
   color: #1a1d21;
 }
 
@@ -3312,7 +3589,7 @@ body.quarto-dark .pub-figures figcaption {
 }
 
 body.quarto-dark .join-alt .email-protect {
-  color: #7fb04f;
+  color: var(--gaia-accent);
 }
 
 body.quarto-dark .join-form input,
@@ -3326,8 +3603,8 @@ body.quarto-dark .join-form textarea {
 body.quarto-dark .join-form input:focus,
 body.quarto-dark .join-form select:focus,
 body.quarto-dark .join-form textarea:focus {
-  border-color: #7fb04f;
-  box-shadow: 0 0 0 3px rgba(127, 176, 79, 0.2);
+  border-color: var(--gaia-accent);
+  box-shadow: 0 0 0 3px var(--gaia-accent-faint);
 }
 
 /* A lista de opções própria (<select> nativo escondido) */
@@ -3339,12 +3616,12 @@ body.quarto-dark .combo-list {
 }
 
 body.quarto-dark .combo-btn:focus-visible {
-  border-color: #7fb04f;
-  box-shadow: 0 0 0 3px rgba(127, 176, 79, 0.2);
+  border-color: var(--gaia-accent);
+  box-shadow: 0 0 0 3px var(--gaia-accent-faint);
 }
 
 body.quarto-dark .combo-arrow {
-  background-color: #7fb04f;
+  background-color: var(--gaia-accent);
 }
 
 body.quarto-dark .combo-list li:hover,
@@ -3353,7 +3630,7 @@ body.quarto-dark .combo-list li:focus {
 }
 
 body.quarto-dark .combo-list li[aria-selected="true"] {
-  background: #7fb04f;
+  background: var(--gaia-accent);
   color: #14170f;
 }
 
@@ -3374,12 +3651,12 @@ body.quarto-dark .course-card:hover {
 }
 
 body.quarto-dark .course-title {
-  color: #7fb04f;
+  color: var(--gaia-accent);
 }
 
 body.quarto-dark .course-level {
-  color: #7fb04f;
-  background: rgba(127, 176, 79, 0.12);
+  color: var(--gaia-accent);
+  background: var(--gaia-accent-faint);
 }
 
 body.quarto-dark .course-details {
@@ -3392,24 +3669,23 @@ body.quarto-dark .hs-card {
 }
 
 body.quarto-dark .hs-card {
-  border-top-color: #7fb04f;
+  border-top-color: var(--gaia-accent);
 }
 
 body.quarto-dark .area-title,
 body.quarto-dark .hs-title,
 body.quarto-dark .stat-num {
-  color: #7fb04f;
+  color: var(--gaia-accent);
 }
 
 body.quarto-dark .area-text,
 body.quarto-dark .hs-text,
-body.quarto-dark .rsec-lead,
 body.quarto-dark .tl-text {
   color: #bbb;
 }
 
 body.quarto-dark .rsec-num {
-  -webkit-text-stroke-color: rgba(127, 176, 79, 0.45);
+  -webkit-text-stroke-color: var(--gaia-accent);
 }
 
 body.quarto-dark .stat-label,
@@ -3418,7 +3694,8 @@ body.quarto-dark .compare-caption {
 }
 
 body.quarto-dark .mark {
-  background-image: linear-gradient(transparent 62%, rgba(127, 176, 79, 0.4) 62%);
+  color: #343a40 !important;
+  background-image: var(--gaia-mark);
 }
 
 
@@ -3447,24 +3724,7 @@ body.quarto-dark .mark {
   }
 }
 
-/* Componentes de conteudo real (home, sobre e pesquisa). Os tokens --gaia-* têm
-   valor claro por padrão e escuro em body.quarto-dark, como o resto do arquivo */
-
-:root {
-  --gaia-accent: #365902;
-  --gaia-border: #ddd;
-  --gaia-muted: #666;
-  --gaia-surface: #fff;
-  --gaia-soft: #f6f8f2;
-}
-
-body.quarto-dark {
-  --gaia-accent: #a7d177;
-  --gaia-border: #3a4147;
-  --gaia-muted: #adb5bd;
-  --gaia-surface: #2b3035;
-  --gaia-soft: #262b30;
-}
+/* Tokens unificados GAIA LAB definidos no topo do arquivo */
 
 /* Sequencia de mapas do fundo do hero: revezamento controlado por JavaScript
    com transicao suave de opacidade. Aceita qualquer quantidade de fotos sem
@@ -3525,29 +3785,6 @@ html.has-js .hero-map img:not(.active) {
 }
 
 
-.metrics {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
-  gap: 1rem;
-  margin: 1.7rem 0 0;
-  padding: 1.1rem 0;
-  border-top: 1px solid var(--gaia-border);
-  border-bottom: 1px solid var(--gaia-border);
-  text-align: center;
-}
-
-.metrics .m-val {
-  font-size: 1.55rem;
-  font-weight: 800;
-  line-height: 1.15;
-  color: var(--gaia-accent);
-}
-
-.metrics .m-lab {
-  font-size: 0.74rem;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--gaia-muted);
 }
 
 /* Figuras dos relatorios vem em fundo claro: ficam sobre cartao branco nos dois
@@ -3756,7 +3993,7 @@ body.quarto-dark .explorer-tab[aria-selected="true"] {
 .trend-value {
   margin-top: 0.35rem;
   font-size: 1.9rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.1;
   color: var(--gaia-accent);
 }
@@ -3849,7 +4086,7 @@ body.quarto-dark .explorer-tab[aria-selected="true"] {
 .hs-card .hs-step {
   margin-bottom: 0.35rem;
   font-size: 1.8rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
   color: var(--gaia-accent);
 }
@@ -3903,10 +4140,6 @@ body.quarto-dark .explorer-tab[aria-selected="true"] {
 body.quarto-dark .join-status.erro {
   color: #ff9b8f;
 }
-
-/* ===================================================================
-   FLORESTA INTERATIVA & SCROLL-DRIVEN FLY-IN EFFECTS
-   =================================================================== */
 
 /* Elementos voadores no scroll (.fly-item) */
 .fly-item {
@@ -3975,10 +4208,7 @@ body.quarto-dark .join-status.erro {
   }
 }
 
-/* ===================================================================
-   CINEMA INTERATIVO DA FLORESTA (HERO SHOWCASE)
-   =================================================================== */
-
+/* Painel interativo da floresta */
 .forest-cinema-wrap {
   margin: 2.8rem 0 3.5rem;
   border: 1px solid var(--gaia-border);
@@ -4086,7 +4316,7 @@ body.quarto-dark .cinema-btn.active {
   color: #1a2216 !important;
 }
 
-/* Palco visual cinemático */
+/* Palco visual da floresta */
 .forest-cinema-stage-container {
   position: relative;
   background: #080c07;
@@ -4232,10 +4462,7 @@ body.quarto-dark .cinema-btn.active {
   right: 1.2rem;
 }
 
-/* ===================================================================
-   SCROLLYTELLING VERTICAL (A JORNADA DOS DADOS)
-   =================================================================== */
-
+/* Passos em grade alternada (.scrolly-flow) */
 .scrolly-flow {
   margin: 3.5rem 0 2rem;
   display: flex;
@@ -4284,7 +4511,7 @@ body.quarto-dark .flow-step {
 
 .flow-num {
   font-size: 0.85rem;
-  font-weight: 800;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--gaia-accent);
@@ -4381,3 +4608,919 @@ body.quarto-dark .flow-step {
     gap: 0.3rem;
   }
 }
+
+/* Página de pesquisa: áreas de aplicação, projetos e gráficos interativos */
+
+.research-intro {
+  margin-bottom: 3.2rem;
+  padding-bottom: 2.2rem;
+  border-bottom: 1px solid var(--gaia-border);
+}
+
+.research-intro-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 2.4rem;
+  align-items: start;
+  margin-top: 1.1rem;
+}
+
+.research-intro-prose p {
+  font-size: 1.04rem;
+  line-height: 1.68;
+  color: var(--bs-body-color, #222);
+  margin: 0 0 1rem;
+}
+
+.research-intro-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.research-axis-note {
+  padding: 1.25rem 1.35rem;
+  background: var(--gaia-soft);
+  border: 1px solid var(--gaia-border);
+  border-left: 3px solid var(--gaia-accent);
+  border-radius: 10px;
+  font-size: 0.92rem;
+  line-height: 1.58;
+  color: var(--gaia-muted);
+}
+
+.research-axis-note strong {
+  color: var(--bs-body-color, #222);
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
+  .research-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+}
+
+/* Blocos de projeto dentro de cada area de aplicacao */
+.proj-block {
+  margin: 2.4rem 0 2.8rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid var(--gaia-border);
+}
+
+.proj-block:first-of-type {
+  margin-top: 1.4rem;
+}
+
+.proj-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem 1.2rem;
+  margin-bottom: 0.9rem;
+}
+
+.proj-header h3 {
+  margin: 0;
+  font-size: 1.38rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.proj-partner-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.24rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  background: rgba(54, 89, 2, 0.09);
+  color: var(--gaia-accent);
+  border: 1px solid rgba(54, 89, 2, 0.22);
+}
+
+body.quarto-dark .proj-partner-tag {
+  background: rgba(167, 209, 119, 0.12);
+  border-color: rgba(167, 209, 119, 0.28);
+}
+
+.proj-prose p {
+  font-size: 1rem;
+  line-height: 1.68;
+  margin: 0 0 1rem;
+  max-width: 78ch;
+}
+
+/* Rodape relacional de cada area/projeto (Parceiro institucional e Linhas conectadas) */
+.area-meta-box {
+  margin-top: 1.8rem;
+  padding: 1.1rem 1.35rem;
+  background: var(--gaia-soft);
+  border: 1px solid var(--gaia-border);
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 1rem 1.8rem;
+}
+
+@media (max-width: 680px) {
+  .area-meta-box {
+    grid-template-columns: 1fr;
+  }
+}
+
+.meta-col-label {
+  font-size: 0.73rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gaia-muted);
+  margin-bottom: 0.35rem;
+}
+
+.meta-col-val {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--bs-body-color, #222);
+}
+
+.meta-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.meta-pill {
+  display: inline-block;
+  padding: 0.18rem 0.6rem;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  background: var(--gaia-surface);
+  border: 1px solid var(--gaia-border);
+  color: var(--bs-body-color, #222);
+  text-decoration: none;
+}
+
+a.meta-pill:hover {
+  border-color: var(--gaia-accent);
+  color: var(--gaia-accent);
+}
+
+/* Moldura editorial unica para graficos e simuladores interativos */
+.iviz-card {
+  margin: 1.6rem 0 2rem;
+  background: var(--gaia-surface);
+  border: 1px solid var(--gaia-border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+body.quarto-dark .iviz-card {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+.iviz-top {
+  padding: 1.15rem 1.35rem 0.95rem;
+  background: var(--gaia-soft);
+  border-bottom: 1px solid var(--gaia-border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.8rem 1.2rem;
+}
+
+.iviz-kicker {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--gaia-accent);
+  margin-bottom: 0.2rem;
+}
+
+.iviz-title {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+
+.iviz-sub {
+  margin: 0.2rem 0 0;
+  font-size: 0.86rem;
+  color: var(--gaia-muted);
+}
+
+.iviz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.iviz-btn {
+  padding: 0.34rem 0.78rem;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 1px solid var(--gaia-border);
+  background: var(--gaia-surface);
+  color: var(--gaia-muted);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.iviz-btn:hover {
+  border-color: var(--gaia-accent);
+  color: var(--gaia-accent);
+}
+
+.iviz-btn.is-active,
+.iviz-btn[aria-selected="true"],
+.iviz-btn[aria-pressed="true"] {
+  background: var(--gaia-accent);
+  border-color: var(--gaia-accent);
+  color: #fff;
+}
+
+body.quarto-dark .iviz-btn.is-active,
+body.quarto-dark .iviz-btn[aria-selected="true"],
+body.quarto-dark .iviz-btn[aria-pressed="true"] {
+  color: #141911;
+}
+
+.iviz-body {
+  padding: 1.35rem;
+}
+
+.iviz-grid-2 {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .iviz-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mapa de talhões e comparação de acurácia */
+.parcel-map-wrap {
+  position: relative;
+  background: #141b12;
+  border-radius: 10px;
+  padding: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.parcel-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.parcel-poly {
+  stroke: rgba(255, 255, 255, 0.55);
+  stroke-width: 1.4;
+  cursor: pointer;
+  transition: opacity 0.25s ease, fill 0.25s ease, stroke-width 0.2s ease;
+}
+
+.parcel-poly[data-shown-crop="soja"] { fill: #5a9a2e; }
+.parcel-poly[data-shown-crop="milho"] { fill: #d99b26; }
+.parcel-poly[data-shown-crop="algodao"] { fill: #3b82a6; }
+
+.parcel-poly.is-mismatch {
+  stroke: #ff5a4f;
+  stroke-width: 2.6;
+  stroke-dasharray: 4 2;
+}
+
+.parcel-poly.is-dimmed {
+  opacity: 0.22;
+}
+
+.parcel-poly.is-selected {
+  stroke: #ffffff;
+  stroke-width: 3;
+}
+
+.parcel-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.65rem;
+  font-size: 0.78rem;
+  color: #cfd8cc;
+}
+
+.parcel-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.parcel-swatch {
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.parcel-inspector {
+  padding: 0.9rem 1rem;
+  background: var(--gaia-soft);
+  border: 1px solid var(--gaia-border);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.parcel-inspector-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+}
+
+.parcel-inspector-title {
+  font-weight: 700;
+  font-size: 0.96rem;
+}
+
+.parcel-inspector-meta {
+  font-size: 0.8rem;
+  color: var(--gaia-muted);
+}
+
+.parcel-compare-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin: 0.55rem 0 0.7rem;
+  font-size: 0.82rem;
+}
+
+.parcel-compare-cell {
+  padding: 0.45rem 0.65rem;
+  border-radius: 7px;
+  background: var(--gaia-surface);
+  border: 1px solid var(--gaia-border);
+}
+
+.parcel-compare-cell span {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--gaia-muted);
+}
+
+.parcel-compare-cell strong {
+  font-size: 0.88rem;
+  color: var(--gaia-accent);
+}
+
+.parcel-compare-cell strong.is-error {
+  color: #c93b2b;
+}
+
+body.quarto-dark .parcel-compare-cell strong.is-error {
+  color: #ff8073;
+}
+
+/* Barras de acurácia (GAIA Lab vs referência) */
+.acc-bench {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.acc-crop-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+}
+
+.acc-crop-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.acc-dual-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+}
+
+.acc-bar-row {
+  display: grid;
+  grid-template-columns: 6.8rem 1fr 3.4rem;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.76rem;
+}
+
+.acc-bar-track {
+  height: 10px;
+  background: rgba(127, 127, 127, 0.16);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.acc-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.acc-bar-fill.gaia {
+  background: var(--gaia-accent);
+}
+
+.acc-bar-fill.ref {
+  background: #8b9488;
+}
+
+.acc-bar-pct {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+/* Risco operacional e vizinhança */
+.neighbor-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: var(--gaia-soft);
+  border: 1px solid var(--gaia-border);
+  border-radius: 10px;
+}
+
+.neighbor-grid-svg {
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+}
+
+.neighbor-cell {
+  transition: fill 0.35s ease;
+  stroke: var(--gaia-surface);
+  stroke-width: 2.5;
+}
+
+.neighbor-cell[data-health="healthy"] {
+  fill: #4f8a22;
+}
+
+.neighbor-cell[data-health="stressed"] {
+  fill: #c85a32;
+}
+
+.neighbor-target-cell {
+  fill: #365902;
+  stroke: #111;
+  stroke-width: 3;
+  transition: fill 0.35s ease;
+}
+
+.neighbor-target-cell[data-health="stressed"] {
+  fill: #c85a32;
+}
+
+body.quarto-dark .neighbor-target-cell {
+  stroke: #fff;
+}
+
+/* Simulador de estoque NPK */
+.npk-controls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 1.15rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--gaia-border);
+}
+
+.npk-ctrl-group label {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gaia-muted);
+  margin-bottom: 0.35rem;
+}
+
+.npk-provenance-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+  font-size: 0.77rem;
+}
+
+.prov-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  background: var(--gaia-soft);
+  border: 1px solid var(--gaia-border);
+  color: var(--gaia-muted);
+}
+
+.prov-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+/* Relatório territorial por audiência */
+.coiab-report-pane {
+  padding: 1.25rem;
+  background: var(--gaia-soft);
+  border: 1px solid var(--gaia-border);
+  border-radius: 10px;
+}
+
+.coiab-report-pane[hidden] {
+  display: none !important;
+}
+
+.coiab-doc-kicker {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gaia-accent);
+  margin-bottom: 0.3rem;
+}
+
+.coiab-doc-title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+}
+
+.coiab-doc-body {
+  font-size: 0.94rem;
+  line-height: 1.62;
+  margin: 0 0 0.85rem;
+}
+
+.coiab-doc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  color: var(--gaia-muted);
+}
+
+.coiab-doc-meta span {
+  padding: 0.2rem 0.55rem;
+  background: var(--gaia-surface);
+  border: 1px solid var(--gaia-border);
+  border-radius: 6px;
+}
+
+/* Corredor de transmissão e ameaças climáticas */
+.ceri-bars-stage {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.65rem;
+  align-items: end;
+  height: 170px;
+  padding: 1rem 0.8rem 0.4rem;
+  background: var(--gaia-soft);
+  border: 1px solid var(--gaia-border);
+  border-radius: 10px;
+}
+
+.grid-seg-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+  gap: 0.3rem;
+}
+
+.grid-seg-track {
+  width: 100%;
+  max-width: 42px;
+  height: 110px;
+  background: rgba(127, 127, 127, 0.14);
+  border-radius: 6px 6px 3px 3px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.grid-seg-bar {
+  width: 100%;
+  border-radius: 6px 6px 0 0;
+  transition: height 0.35s ease, background-color 0.35s ease;
+}
+
+.grid-seg-bar[data-level="low"] { background: #5a9a2e; }
+.grid-seg-bar[data-level="med"] { background: #d99b26; }
+.grid-seg-bar[data-level="high"] { background: #c85a32; }
+
+.grid-seg-val {
+  font-size: 0.74rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.grid-seg-label {
+  font-size: 0.72rem;
+  color: var(--gaia-muted);
+  text-align: center;
+}
+
+/* Camadas de linhas metodológicas */
+.layers-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.layer-card {
+  padding: 1.25rem 1.4rem;
+  background: var(--gaia-surface);
+  border: 1px solid var(--gaia-border);
+  border-left: 4px solid var(--gaia-accent);
+  border-radius: 12px;
+}
+
+.layer-card-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.4rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.layer-card-title {
+  font-size: 1.06rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.layer-card-sub {
+  font-size: 0.85rem;
+  color: var(--gaia-muted);
+}
+
+.lines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.85rem;
+}
+
+.line-item {
+  padding: 0.9rem 1rem;
+  background: var(--gaia-soft);
+  border: 1px solid var(--gaia-border);
+  border-radius: 9px;
+}
+
+.line-item h4 {
+  margin: 0 0 0.35rem;
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--gaia-accent);
+}
+
+.line-item p {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.52;
+  color: var(--bs-body-color, #222);
+}
+
+.line-item-who {
+  font-size: 0.78rem;
+  color: var(--gaia-muted);
+}
+
+/* Visualizador de satélite (Campo Verde, MT) */
+.cv-sat-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 0.9rem;
+  align-items: center;
+  padding: 0.65rem 0.85rem;
+  margin-bottom: 0.75rem;
+  background: var(--gaia-soft);
+  border: 1px solid var(--gaia-border);
+  border-radius: 9px;
+  font-size: 0.79rem;
+}
+
+.cv-sat-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.cv-sat-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gaia-muted);
+  margin-right: 0.2rem;
+}
+
+.cv-sat-viewport {
+  position: relative;
+  width: 100%;
+  height: 410px;
+  overflow: hidden;
+  background: #10170e;
+  border: 1px solid var(--gaia-border);
+  border-radius: 10px;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+.cv-sat-viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.cv-sat-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1400px;
+  height: 880px;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.cv-sat-stage.is-pixelated img {
+  image-rendering: pixelated;
+}
+
+.cv-sat-stage img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1400px;
+  height: 880px;
+  max-width: none !important;
+  margin: 0 !important;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  display: block;
+}
+
+.cv-sat-stage img.is-hidden {
+  display: none !important;
+}
+
+.cv-sat-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1400px;
+  height: 880px;
+  overflow: visible;
+}
+
+.cv-plot-path {
+  stroke: rgba(255, 255, 255, 0.72);
+  stroke-width: 1.4;
+  fill-opacity: 0.56;
+  cursor: pointer;
+  transition: fill-opacity 0.15s ease, stroke-width 0.15s ease;
+}
+
+.cv-plot-path:hover {
+  fill-opacity: 0.82;
+  stroke: #ffffff;
+  stroke-width: 2.6;
+}
+
+.cv-plot-path.is-selected {
+  fill-opacity: 0.86;
+  stroke: #ffffff;
+  stroke-width: 3.4;
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.75));
+}
+
+.cv-plot-path.is-mismatch {
+  stroke: #ff4d42;
+  stroke-width: 2.6;
+  stroke-dasharray: 6 3;
+}
+
+.cv-plot-path.is-dimmed {
+  fill-opacity: 0.12 !important;
+  stroke-opacity: 0.25;
+}
+
+.cv-sat-hud {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.45rem;
+  background: rgba(15, 22, 13, 0.84);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  color: #f1f5ef;
+  font-size: 0.75rem;
+  z-index: 4;
+}
+
+.cv-hud-btn {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  padding: 0.15rem 0.48rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1.2;
+}
+
+.cv-hud-btn:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.cv-sat-badge {
+  position: absolute;
+  bottom: 0.65rem;
+  left: 0.65rem;
+  padding: 0.28rem 0.6rem;
+  background: rgba(15, 22, 13, 0.84);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 7px;
+  color: #e8f0e5;
+  font-size: 0.73rem;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.cv-opacity-slider {
+  width: 78px;
+  accent-color: var(--gaia-accent);
+  cursor: pointer;
+}
+
+.cv-jump-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.45rem;
+  font-size: 0.79rem;
+  font-weight: 700;
+  color: var(--gaia-accent);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.cv-iv-svg-wrap {
+  background: var(--gaia-soft);
+  border: 1px solid var(--gaia-border);
+  border-radius: 10px;
+  padding: 0.85rem 0.95rem 0.65rem;
+}
+
+.cv-iv-point {
+  cursor: pointer;
+  transition: r 0.15s ease;
+}
+
+.cv-iv-point:hover {
+  r: 6;
+}
+
+

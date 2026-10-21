@@ -207,6 +207,44 @@
       })(carrosseis[k]);
     }
 
+    // Sistema em gaveta de lâminas sanfonadas (.principles-blades, .partner-blades)
+    var bladeContainers = document.querySelectorAll(".principles-blades, .accordion-blades, .partner-blades");
+    for (var bcIdx = 0; bcIdx < bladeContainers.length; bcIdx++) {
+      (function (container) {
+        var blades = container.querySelectorAll(".blade-card");
+        function ativarLamina(alvo) {
+          for (var i = 0; i < blades.length; i++) {
+            var b = blades[i];
+            if (b === alvo) {
+              b.classList.add("is-active");
+              b.setAttribute("aria-expanded", "true");
+            } else {
+              b.classList.remove("is-active");
+              b.setAttribute("aria-expanded", "false");
+            }
+          }
+        }
+        for (var j = 0; j < blades.length; j++) {
+          (function (blade) {
+            blade.addEventListener("mouseenter", function () {
+              if (window.matchMedia("(min-width: 900px)").matches) {
+                ativarLamina(blade);
+              }
+            });
+            blade.addEventListener("click", function () {
+              ativarLamina(blade);
+            });
+            blade.addEventListener("keydown", function (e) {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                ativarLamina(blade);
+              }
+            });
+          })(blades[j]);
+        }
+      })(bladeContainers[bcIdx]);
+    }
+
     // Sumário lateral com espião de rolagem: destaca no sumário a seção
     // atualmente visível (páginas com âncoras, como a de Pesquisa)
     var sumario = document.querySelector(".side-toc[data-spy]");

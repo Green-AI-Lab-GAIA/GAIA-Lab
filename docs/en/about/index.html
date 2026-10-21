@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="icon" type="image/png" href="../icon/favicon-light.png">
 
 
-<link rel="stylesheet" href="../styles.css?v=dafbb634">
+<link rel="stylesheet" href="../styles.css?v=bd55928f">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -335,8 +335,8 @@ and Earth observation data</em>, focusing on learning useful representations of 
 planetary events. The central research question is how <em class="mark">environmental 
 systems interact with each other</em>, investigating how climate, forests, agriculture, and cities 
 influence each other in cascading ways, and how this coupling varies across regions.</p>
-    <p class="mission">Alongside this, the laboratory applies language models to technical 
-and institutional documents, in contractual analysis and assessment projects.</p>
+    <p class="mission">In parallel with orbital observation, the laboratory develops and applies language models 
+to technical, institutional, and regulatory documents, supporting policy evaluation and governance.</p>
   </div>
   <div class="mission-visual-col">
     <div class="earth-orbit-card">
@@ -363,7 +363,6 @@ and institutional documents, in contractual analysis and assessment projects.</p
             <stop offset="70%" stop-color="#000000" stop-opacity="0.35"></stop>
             <stop offset="100%" stop-color="#000000" stop-opacity="0.75"></stop>
           </radialgradient>
-      <!-- Volumetric Laser Beam Gradient -->
       <lineargradient id="laser-cone-grad-en" x1="0%" y1="0%" x2="0%" y2="100%">
         <stop offset="0%" stop-color="#4ade80" stop-opacity="0.65"></stop>
         <stop offset="40%" stop-color="#22c55e" stop-opacity="0.30"></stop>
@@ -373,35 +372,22 @@ and institutional documents, in contractual analysis and assessment projects.</p
             <circle cx="170" cy="170" r="80"></circle>
           </clippath>
           <path id="orbitPath-en" d="M 280.59,92.57 A 135 50 -35 0 1 59.41,247.43 A 135 50 -35 0 1 280.59,92.57 Z"></path>
-                    <!-- Unified Satellite Spacecraft Definition (Exact Details & Dynamic Morphing Swath Grid) -->
           <g id="satellite-craft-en">
-
-<!-- Solar Panels -->
             <rect x="-21" y="-4" width="11" height="8" rx="1.5" fill="#1e3a5f" stroke="#60a5fa" stroke-width="0.8"></rect>
             <line x1="-15.5" y1="-4" x2="-15.5" y2="4" stroke="#60a5fa" stroke-width="0.6"></line>
             <line x1="-21" y1="0" x2="-10" y2="0" stroke="#60a5fa" stroke-width="0.6"></line>
             <rect x="10" y="-4" width="11" height="8" rx="1.5" fill="#1e3a5f" stroke="#60a5fa" stroke-width="0.8"></rect>
             <line x1="15.5" y1="-4" x2="15.5" y2="4" stroke="#60a5fa" stroke-width="0.6"></line>
             <line x1="10" y1="0" x2="21" y2="0" stroke="#60a5fa" stroke-width="0.6"></line>
-
-            <!-- Mount booms -->
             <line x1="-10" y1="0" x2="-7" y2="0" stroke="#cbd5e1" stroke-width="1.2"></line>
             <line x1="7" y1="0" x2="10" y2="0" stroke="#cbd5e1" stroke-width="1.2"></line>
-
-            <!-- Bus body -->
             <rect x="-7" y="-6" width="14" height="12" rx="2" fill="#ca8a04" stroke="#fef08a" stroke-width="1"></rect>
-
-            <!-- Sensor optical aperture with laser emitter diode -->
             <rect x="-3.5" y="3.2" width="7" height="2.2" rx="0.6" fill="#0f172a" stroke="#cbd5e1" stroke-width="0.6"></rect>
             <circle cx="0" cy="4.3" r="1.3" fill="#4ade80">
               <animate attributename="fill" values="#4ade80;#bbf7d0;#4ade80" dur="0.4s" repeatcount="indefinite"></animate>
             </circle>
-
-            <!-- Antenna -->
             <line x1="0" y1="-6" x2="0" y2="-9" stroke="#cbd5e1" stroke-width="1"></line>
             <circle cx="0" cy="-9" r="1" fill="#cbd5e1"></circle>
-
-            <!-- Scanner detector pushbroom array #### no satélite -->
             <g transform="translate(-4, -4.5)">
               <rect x="0" y="0" width="8" height="3" rx="0.8" fill="#0b1712" stroke="#4ade80" stroke-width="0.4"></rect>
               <rect x="0.8" y="0.6" width="1.2" height="1.8" rx="0.2" fill="#4ade80">
@@ -419,17 +405,11 @@ and institutional documents, in contractual analysis and assessment projects.</p
             </g>
           </g>
         </defs>
-
-        <!-- Ambient micro stars -->
         <circle cx="50" cy="60" r="1.2" fill="#7fb04f" opacity="0.4"></circle>
         <circle cx="295" cy="50" r="1.4" fill="#7fb04f" opacity="0.5"></circle>
         <circle cx="45" cy="280" r="1" fill="#7fb04f" opacity="0.35"></circle>
         <circle cx="300" cy="270" r="1.2" fill="#7fb04f" opacity="0.4"></circle>
-
-        <!-- Back Orbit Arc (behind Earth) -->
         <path d="M 59.41,247.43 A 135 50 -35 0 1 280.59,92.57" fill="none" stroke="#7fb04f" stroke-width="1.2" stroke-dasharray="3 4" opacity="0.25"></path>
-
-        <!-- SATELLITE (BACK PASS - behind Earth with seamless scale transition) -->
         <g id="sat-back-en">
           <animate attributename="opacity" values="0; 0; 1; 1; 0" keytimes="0; 0.47; 0.53; 0.97; 1" dur="14s" repeatcount="indefinite"></animate>
           <animatemotion dur="14s" repeatcount="indefinite" rotate="auto">
@@ -440,27 +420,16 @@ and institutional documents, in contractual analysis and assessment projects.</p
             <use href="#satellite-craft-en"></use>
           </g>
         </g>
-
-        <!-- Atmosphere Halo -->
         <circle cx="170" cy="170" r="95" fill="url(#earth-halo-en)"></circle>
-
-        <!-- Earth Globe Body -->
         <circle cx="170" cy="170" r="80" fill="url(#earth-ocean-en)"></circle>
-
-        <!-- Continents & Grid inside Earth (Exact shape from reference) -->
         <g clip-path="url(#earth-clip-en)">
-          <!-- Geodetic Grid (Orthographic centered on South America 15°S, 55°W) -->
           <path d="M 90.0,169.6 L 91.5,166.0 L 96.4,161.9 L 102.9,158.7 L 113.4,155.4 L 124.1,153.0 L 138.7,150.9 L 152.0,149.8 L 168.6,149.3 L 182.5,149.5 L 198.7,150.7 L 211.2,152.3 L 224.6,154.9 L 233.9,157.5 L 242.5,161.2 L 247.9,165.3 L 249.4,167.5 L 250.0,169.6" fill="none" stroke="rgba(255,255,255,0.13)" stroke-width="0.8"></path>
           <path d="M 96.6,200.4 L 98.0,197.1 L 102.4,193.3 L 108.4,190.4 L 118.1,187.3 L 130.0,184.8 L 141.3,183.3 L 153.5,182.2 L 168.7,181.7 L 181.5,182.0 L 196.3,183.0 L 207.8,184.5 L 220.1,186.8 L 228.6,189.3 L 236.5,192.7 L 241.5,196.5 L 242.9,198.4 L 243.4,200.4" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.6"></path>
           <path d="M 97.1,136.9 L 99.8,133.7 L 105.8,130.1 L 113.0,127.3 L 121.8,124.9 L 132.2,123.0 L 143.7,121.5 L 168.7,120.3 L 193.9,121.3 L 205.6,122.6 L 218.2,124.9 L 227.0,127.3 L 234.2,130.1 L 239.4,133.1 L 241.5,135.0 L 242.9,136.9" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.6"></path>
           <path d="M 170.0,246.9 L 170.0,90.0" stroke="rgba(255,255,255,0.10)" stroke-width="0.7" fill="none"></path>
           <path d="M 169.3,246.9 L 162.4,242.4 L 155.7,235.7 L 149.4,227.0 L 143.8,216.6 L 138.9,204.7 L 135.0,191.8 L 132.2,178.2 L 130.5,164.4 L 130.0,150.7 L 130.7,137.7 L 132.7,125.6 L 135.7,114.8 L 139.8,105.8 L 144.8,98.7 L 150.6,93.7 L 157.0,91.1" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.6"></path>
           <path d="M 170.7,246.9 L 177.6,242.4 L 184.3,235.7 L 190.6,227.0 L 196.2,216.6 L 201.1,204.7 L 205.0,191.8 L 207.8,178.2 L 209.5,164.4 L 210.0,150.7 L 209.3,137.7 L 207.3,125.6 L 204.3,114.8 L 200.2,105.8 L 195.2,98.7 L 189.4,93.7 L 183.0,91.1" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.6"></path>
-
-          <!-- Continents centered on South America (Exact Cartography) -->
           <path d="M 168.9,242.5 L 168.9,243.1 L 167.3,242.7 L 168.9,242.5 Z M 172.8,241.4 L 172.8,242.6 L 170.2,242.9 L 171.8,241.3 L 172.8,241.4 Z M 152.8,238.8 L 154.2,239.0 L 152.3,239.3 L 151.7,238.9 L 152.8,238.8 Z M 163.9,236.5 L 164.2,237.4 L 163.3,237.7 L 161.4,237.2 L 162.4,236.8 L 161.9,235.4 L 162.4,234.9 L 163.9,236.5 Z M 153.1,248.2 L 162.8,249.0 L 164.0,248.0 L 170.0,247.3 L 163.2,248.1 L 162.3,247.8 L 163.7,247.4 L 163.1,246.9 L 157.9,247.0 L 156.0,246.2 L 152.3,246.3 L 152.8,246.1 L 149.8,244.9 L 148.7,243.4 L 150.6,242.1 L 150.8,241.2 L 152.3,241.6 L 155.5,241.1 L 152.1,239.7 L 155.1,239.8 L 156.8,239.2 L 156.5,238.6 L 162.0,238.9 L 164.7,237.8 L 164.8,237.3 L 163.5,235.5 L 163.3,233.1 L 165.2,231.0 L 168.2,229.7 L 168.4,230.3 L 165.8,231.2 L 166.0,232.4 L 164.4,233.7 L 166.9,236.1 L 167.7,238.4 L 165.0,240.6 L 163.0,240.8 L 164.6,241.5 L 163.7,241.8 L 164.8,242.7 L 168.4,243.5 L 169.5,244.3 L 171.1,243.5 L 172.3,243.7 L 176.0,243.1 L 176.4,242.4 L 174.9,242.4 L 175.5,241.6 L 182.5,240.5 L 188.1,238.5 L 188.5,239.0 L 189.5,238.5 L 189.4,238.9 L 190.9,239.3 L 190.6,239.6 L 194.4,239.3 L 194.0,240.2 L 195.5,240.0 L 195.2,240.4 L 196.4,240.5 L 196.5,241.0 L 195.8,241.5 L 196.5,241.9 L 199.3,241.7 L 197.6,243.0 L 201.0,243.2 L 194.9,246.0 L 190.0,247.2 L 191.1,247.2 L 181.7,249.1 L 172.2,250.0 L 162.6,249.7 Z M 159.6,220.5 L 161.9,221.3 L 161.7,221.8 L 160.5,221.6 L 159.7,222.4 L 158.9,222.3 L 156.2,221.4 L 153.7,219.8 L 157.0,220.9 L 157.9,219.1 L 159.6,220.5 Z M 166.9,217.2 L 167.6,217.7 L 167.4,218.1 L 166.2,218.4 L 165.8,218.0 L 165.1,218.5 L 164.7,218.1 L 166.9,217.2 Z M 161.9,136.2 L 160.5,136.2 L 160.9,135.4 L 161.6,135.2 L 161.9,136.2 Z M 156.0,126.5 L 153.9,126.9 L 154.1,126.3 L 156.0,126.5 Z M 141.6,128.0 L 139.9,127.8 L 141.7,127.4 L 142.5,127.9 L 141.6,128.0 Z M 147.3,125.2 L 150.6,125.2 L 152.5,126.2 L 152.0,126.7 L 149.5,126.7 L 148.5,127.7 L 147.3,127.1 L 145.3,127.5 L 144.9,126.8 L 147.4,126.5 L 147.0,125.6 L 146.2,125.5 L 147.3,125.2 Z M 139.2,122.7 L 140.7,122.9 L 145.2,125.1 L 140.9,125.8 L 141.8,125.1 L 140.6,124.8 L 140.1,123.9 L 136.6,123.7 L 136.2,123.5 L 136.7,123.2 L 132.9,124.5 L 136.3,122.7 L 139.2,122.7 Z M 141.9,121.4 L 141.1,120.6 L 141.5,119.9 L 141.9,121.4 Z M 229.2,116.8 L 230.4,118.2 L 228.5,116.5 L 229.2,116.8 Z M 169.0,97.1 L 168.4,97.6 L 171.4,97.9 L 171.1,98.4 L 171.8,98.3 L 172.2,99.0 L 171.9,99.6 L 170.8,99.5 L 170.7,98.9 L 169.6,99.4 L 168.8,99.0 L 166.0,99.0 L 167.9,97.1 L 169.2,96.6 L 169.6,96.6 L 169.0,97.1 Z M 206.5,100.4 L 205.0,100.2 L 203.5,99.0 L 203.7,98.6 L 206.5,100.4 Z M 202.8,97.4 L 211.7,102.7 L 208.8,102.0 L 209.1,101.6 L 206.7,100.0 L 207.5,100.3 L 202.8,97.4 Z M 153.4,92.2 L 155.0,92.4 L 151.0,93.0 L 153.4,92.2 Z M 190.8,92.9 L 192.2,93.4 L 191.2,93.4 L 186.8,92.1 L 190.8,92.9 Z M 154.2,91.6 L 157.4,91.2 L 149.2,93.3 L 143.7,95.6 L 144.4,95.5 L 143.7,96.2 L 149.1,96.1 L 148.2,97.0 L 148.9,98.0 L 150.5,97.1 L 150.6,96.1 L 153.8,94.9 L 153.9,94.3 L 153.5,94.1 L 155.9,92.6 L 160.2,92.7 L 159.8,93.4 L 160.8,93.7 L 163.4,92.7 L 165.1,94.0 L 164.8,94.3 L 168.1,95.0 L 169.4,95.7 L 169.4,96.3 L 165.5,97.4 L 159.9,97.6 L 154.8,100.0 L 160.9,98.2 L 161.6,98.4 L 160.6,98.9 L 160.9,100.1 L 163.7,100.2 L 164.8,99.4 L 165.3,100.1 L 159.6,102.0 L 158.8,102.0 L 158.9,101.4 L 160.8,100.7 L 158.1,100.9 L 154.2,102.7 L 153.9,103.2 L 154.6,103.7 L 150.6,104.6 L 152.4,104.4 L 150.3,104.7 L 148.8,106.3 L 148.4,105.9 L 148.5,106.8 L 147.2,107.9 L 147.7,107.2 L 147.4,106.3 L 147.1,107.2 L 146.5,107.1 L 147.1,107.3 L 147.0,109.3 L 139.7,113.9 L 139.3,115.3 L 139.8,118.3 L 139.0,120.2 L 138.1,120.3 L 137.6,119.6 L 137.0,118.1 L 137.3,116.4 L 136.3,115.6 L 135.1,116.2 L 134.0,115.7 L 132.0,116.0 L 130.7,116.4 L 130.5,117.4 L 127.0,117.5 L 125.5,118.1 L 122.5,120.3 L 120.5,124.4 L 119.7,127.1 L 120.4,130.2 L 121.7,130.7 L 125.1,129.2 L 126.9,126.5 L 130.5,125.3 L 130.6,126.1 L 128.8,129.3 L 128.3,129.1 L 127.8,131.4 L 127.1,132.3 L 131.6,131.5 L 133.3,132.1 L 132.2,137.3 L 133.9,139.7 L 134.8,139.9 L 137.2,138.5 L 140.6,139.4 L 142.1,138.2 L 142.5,136.7 L 143.3,136.0 L 145.2,135.7 L 147.5,134.0 L 148.3,134.3 L 147.1,135.3 L 147.5,136.5 L 146.9,137.3 L 147.3,138.2 L 147.9,138.1 L 148.2,137.2 L 147.8,135.8 L 149.5,135.2 L 149.8,134.2 L 150.3,135.0 L 151.2,135.0 L 152.0,136.0 L 154.7,135.8 L 156.5,136.4 L 157.3,135.6 L 160.6,135.4 L 159.4,135.8 L 159.9,136.4 L 162.0,137.1 L 162.2,138.1 L 164.3,138.8 L 165.2,140.3 L 167.0,141.4 L 171.4,141.7 L 175.1,143.7 L 176.3,146.8 L 177.0,147.0 L 177.0,148.0 L 176.0,149.1 L 176.4,149.5 L 178.9,149.7 L 178.9,151.1 L 180.0,150.2 L 184.0,151.7 L 184.7,152.5 L 184.5,153.3 L 186.0,152.9 L 190.7,153.9 L 194.3,156.8 L 196.5,157.5 L 197.5,160.6 L 196.9,162.9 L 191.9,168.1 L 190.6,174.7 L 188.0,180.2 L 186.6,181.6 L 183.2,181.9 L 179.3,183.9 L 178.2,185.2 L 177.5,189.0 L 171.4,196.6 L 170.1,197.3 L 168.6,197.2 L 166.0,196.0 L 166.0,196.6 L 167.5,197.8 L 167.3,198.7 L 168.0,199.2 L 167.0,201.5 L 165.4,202.2 L 162.0,202.5 L 162.5,204.8 L 159.4,205.4 L 159.7,206.6 L 160.4,207.0 L 161.0,206.6 L 161.3,207.2 L 159.7,208.4 L 159.6,210.3 L 158.1,211.0 L 158.0,211.9 L 160.0,212.9 L 159.8,214.0 L 158.9,214.7 L 158.6,216.1 L 157.6,217.1 L 158.9,218.9 L 157.8,218.9 L 156.8,219.6 L 157.0,220.6 L 153.3,219.2 L 151.4,215.2 L 152.1,213.1 L 150.6,212.9 L 151.2,211.8 L 151.0,209.8 L 152.1,210.1 L 152.0,207.5 L 151.3,207.2 L 151.4,208.8 L 150.7,208.7 L 150.6,203.7 L 149.7,201.0 L 150.1,201.0 L 150.9,194.7 L 150.1,189.9 L 150.6,188.2 L 150.6,179.6 L 149.9,175.4 L 142.3,170.8 L 136.8,161.0 L 134.8,159.8 L 135.2,159.1 L 134.5,157.9 L 136.5,154.8 L 136.2,154.2 L 135.8,154.9 L 135.0,154.4 L 135.0,152.8 L 136.1,150.2 L 137.7,149.2 L 138.2,147.5 L 138.9,147.3 L 139.9,145.7 L 139.5,145.4 L 139.8,143.1 L 138.5,140.4 L 138.8,140.0 L 137.2,139.4 L 135.9,140.6 L 136.5,141.2 L 135.3,141.8 L 135.2,141.1 L 132.2,140.7 L 132.1,139.9 L 130.6,138.8 L 130.4,139.5 L 129.8,139.1 L 129.9,137.7 L 127.9,135.7 L 128.2,135.2 L 127.0,135.6 L 124.1,135.2 L 120.9,133.1 L 118.9,134.2 L 113.1,132.7 L 112.0,131.3 L 112.7,128.6 L 111.4,125.7 L 111.8,124.8 L 111.1,122.8 L 111.7,120.4 L 110.3,122.1 L 109.8,127.6 L 110.2,128.5 L 109.6,129.1 L 108.9,127.5 L 109.5,126.1 L 108.6,124.9 L 109.7,123.7 L 109.4,123.0 L 110.6,119.8 L 110.7,119.1 L 110.0,119.1 L 112.0,115.6 L 120.0,107.6 L 129.3,101.1 L 137.3,97.0 L 145.6,93.8 Z M 159.7,90.7 L 166.2,90.9 L 162.7,91.1 L 164.0,91.8 L 161.6,91.8 L 162.7,92.3 L 156.3,92.1 L 160.6,91.1 L 155.1,91.4 L 158.4,90.8 Z M 246.4,193.7 L 243.2,201.3 L 240.1,206.3 L 236.3,210.1 L 235.5,210.4 L 234.9,209.4 L 233.3,209.6 L 233.6,208.1 L 235.2,205.5 L 239.3,192.3 L 240.4,184.3 L 243.1,177.8 L 243.3,168.7 L 241.8,162.4 L 242.3,157.1 L 241.3,154.4 L 239.7,154.2 L 238.4,151.1 L 236.6,150.5 L 233.7,151.2 L 231.3,149.9 L 228.4,150.1 L 223.1,144.3 L 220.7,139.9 L 218.6,137.8 L 218.2,136.0 L 217.0,134.4 L 217.9,133.0 L 217.7,130.7 L 215.7,126.1 L 216.7,123.5 L 216.7,121.7 L 217.3,120.5 L 218.4,120.3 L 219.4,118.8 L 218.3,116.2 L 219.3,115.2 L 219.0,113.8 L 222.1,115.3 L 223.5,114.7 L 227.4,116.0 L 236.4,126.1 L 235.9,124.7 L 241.5,134.2 L 245.0,142.2 L 247.6,150.6 L 249.3,159.1 L 250.0,167.8 L 249.7,176.5 L 248.5,185.2 Z M 232.2,119.7 L 227.4,114.3 L 221.8,109.3 L 229.7,117.2 L 221.4,109.5 L 221.3,110.0 L 219.6,109.2 L 220.5,110.2 L 219.9,110.5 L 221.2,112.4 L 221.1,113.8 L 219.6,113.3 L 219.3,113.8 L 217.9,112.6 L 216.1,112.2 L 211.8,106.7 L 212.3,106.4 L 216.3,107.5 L 214.8,105.9 L 210.7,103.2 L 212.4,103.8 L 211.3,103.0 L 212.7,103.3 L 211.5,101.9 L 212.4,102.3 L 208.9,100.1 L 217.5,105.6 L 225.3,112.2 Z M 183.1,91.1 L 184.7,91.4 L 178.7,91.4 L 177.7,92.1 L 178.2,92.3 L 178.0,92.9 L 177.1,92.9 L 173.8,92.3 L 170.8,91.0 L 172.0,90.3 L 168.8,90.0 L 178.4,90.4 Z" fill="url(#earth-land-en)"></path>
-
-          <!-- Ping radar FGV EMAp (Rio de Janeiro: 22.91°S, 43.17°W -> x=185.1, y=181.4) -->
           <g transform="translate(185.1, 181.4)">
             <circle cx="0" cy="0" r="2.5" fill="#a7d177"></circle>
             <circle cx="0" cy="0" r="2.5" fill="none" stroke="#a7d177" stroke-width="1.2" opacity="0.9">
@@ -468,26 +437,18 @@ and institutional documents, in contractual analysis and assessment projects.</p
               <animate attributename="opacity" values="0.9; 0.4; 0" dur="2.4s" repeatcount="indefinite"></animate>
             </circle>
           </g>
-
-          <!-- Weather clouds -->
           <path d="M 125,148 C 145,143 170,150 190,146 C 180,152 155,148 130,153 Z" fill="#ffffff" opacity="0.25"></path>
           <path d="M 140,205 C 160,200 185,210 205,208 C 190,214 165,208 140,211 Z" fill="#ffffff" opacity="0.22"></path>
           <path d="M 115,122 C 130,118 145,124 155,121 C 145,126 130,123 118,125 Z" fill="#ffffff" opacity="0.2"></path>
-          <!-- Landed laser swath on Earth surface -->
           <g id="ground-laser-swath-en">
-            <!-- Ground footprint illumination glow -->
             <path fill="#4ade80" opacity="0.25" d="M 246.9,110.7 L 219.0,130.2 L 224.2,137.6 L 252.0,118.0 Z">
               <animate attributename="d" values="M 246.9,110.7 L 219.0,130.2 L 224.2,137.6 L 252.0,118.0 Z; M 253.1,143.5 L 221.4,131.2 L 218.1,139.6 L 249.8,151.9 Z; M 242.9,163.7 L 215.6,143.5 L 210.2,150.7 L 237.6,170.9 Z; M 230.0,179.6 L 205.7,155.8 L 199.4,162.3 L 223.7,186.1 Z; M 215.8,193.4 L 193.9,167.3 L 187.0,173.1 L 208.9,199.2 Z; M 200.4,205.6 L 180.9,177.8 L 173.6,182.9 L 193.1,210.8 Z; M 184.1,216.5 L 167.1,187.1 L 159.3,191.6 L 176.3,221.0 Z; M 166.7,226.0 L 152.7,195.0 L 144.5,198.7 L 158.5,229.7 Z; M 147.8,233.8 L 138.1,201.2 L 129.5,203.8 L 139.2,236.4 Z; M 125.7,238.8 L 125.0,204.8 L 116.0,205.0 L 116.7,239.0 Z; M 93.1,229.3 L 121.0,209.8 L 115.8,202.4 L 88.0,222.0 Z; M 93.1,229.3 L 121.0,209.8 L 115.8,202.4 L 88.0,222.0 Z; M 246.9,110.7 L 219.0,130.2 L 224.2,137.6 L 252.0,118.0 Z; M 246.9,110.7 L 219.0,130.2 L 224.2,137.6 L 252.0,118.0 Z" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
               <animate attributename="opacity" values="0; 0.75; 1; 1; 1; 1; 1; 1; 1; 0.75; 0; 0; 0; 0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
             </path>
-
-            <!-- Transverse scanlines cutting across the trajectory (/, |, \) -->
             <path fill="none" stroke="#86efac" stroke-width="1.3" opacity="0.95" stroke-linecap="round" d="M 249.5,114.4 L 221.6,133.9 M 246.9,110.7 L 219.0,130.2 M 252.0,118.0 L 224.2,137.6">
               <animate attributename="d" values="M 249.5,114.4 L 221.6,133.9 M 246.9,110.7 L 219.0,130.2 M 252.0,118.0 L 224.2,137.6; M 251.4,147.7 L 219.7,135.4 M 253.1,143.5 L 221.4,131.2 M 249.8,151.9 L 218.1,139.6; M 240.2,167.3 L 212.9,147.1 M 242.9,163.7 L 215.6,143.5 M 237.6,170.9 L 210.2,150.7; M 226.9,182.9 L 202.6,159.1 M 230.0,179.6 L 205.7,155.8 M 223.7,186.1 L 199.4,162.3; M 212.3,196.3 L 190.5,170.2 M 215.8,193.4 L 193.9,167.3 M 208.9,199.2 L 187.0,173.1; M 196.7,208.2 L 177.2,180.3 M 200.4,205.6 L 180.9,177.8 M 193.1,210.8 L 173.6,182.9; M 180.2,218.7 L 163.2,189.3 M 184.1,216.5 L 167.1,187.1 M 176.3,221.0 L 159.3,191.6; M 162.6,227.8 L 148.6,196.9 M 166.7,226.0 L 152.7,195.0 M 158.5,229.7 L 144.5,198.7; M 143.5,235.1 L 133.8,202.5 M 147.8,233.8 L 138.1,201.2 M 139.2,236.4 L 129.5,203.8; M 121.2,238.9 L 120.5,204.9 M 125.7,238.8 L 125.0,204.8 M 116.7,239.0 L 116.0,205.0; M 90.5,225.6 L 118.4,206.1 M 93.1,229.3 L 121.0,209.8 M 88.0,222.0 L 115.8,202.4; M 90.5,225.6 L 118.4,206.1 M 93.1,229.3 L 121.0,209.8 M 88.0,222.0 L 115.8,202.4; M 249.5,114.4 L 221.6,133.9 M 246.9,110.7 L 219.0,130.2 M 252.0,118.0 L 224.2,137.6; M 249.5,114.4 L 221.6,133.9 M 246.9,110.7 L 219.0,130.2 M 252.0,118.0 L 224.2,137.6" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
               <animate attributename="opacity" values="0; 0.75; 1; 1; 1; 1; 1; 1; 1; 0.75; 0; 0; 0; 0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
             </path>
-
-            <!-- Multi-beam pushbroom laser spots along transverse line -->
             <path fill="#ffffff" opacity="0.9" d="M 246.0,116.8 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0">
               <animate attributename="d" values="M 246.0,116.8 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 247.5,146.1 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 236.8,164.8 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 223.8,179.9 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 209.6,193.0 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 194.3,204.7 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 178.1,215.1 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 160.9,224.0 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 142.3,231.0 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 121.1,234.6 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 94.0,223.2 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 94.0,223.2 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 246.0,116.8 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0; M 246.0,116.8 m -1.6,0 a 1.6,1.6 0 1,0 3.2,0 a 1.6,1.6 0 1,0 -3.2,0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
               <animate attributename="opacity" values="0; 0.75; 1; 1; 1; 1; 1; 1; 1; 0.75; 0; 0; 0; 0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
@@ -509,36 +470,23 @@ and institutional documents, in contractual analysis and assessment projects.</p
               <animate attributename="opacity" values="0; 0.75; 1; 1; 1; 1; 1; 1; 1; 0.75; 0; 0; 0; 0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
             </path>
           </g>
-
-          <!-- 3D Sphere shading -->
           <circle cx="170" cy="170" r="80" fill="url(#sphere-light-en)"></circle>
         </g>
-
-        <!-- Volumetric laser beam connecting satellite aperture to Earth surface -->
         <g id="volumetric-laser-beam-en">
-          <!-- Translucent volumetric beam cone -->
           <path fill="url(#laser-cone-grad-en)" opacity="0.45" d="M 277.3,94.9 L 246.9,110.7 L 219.0,130.2 Z">
             <animate attributename="d" values="M 277.3,94.9 L 246.9,110.7 L 219.0,130.2 Z; M 277.0,120.5 L 253.1,143.5 L 221.4,131.2 Z; M 262.2,146.1 L 242.9,163.7 L 215.6,143.5 Z; M 242.6,168.8 L 230.0,179.6 L 205.7,155.8 Z; M 220.4,189.3 L 215.8,193.4 L 193.9,167.3 Z; M 196.4,207.7 L 200.4,205.6 L 180.9,177.8 Z; M 170.9,224.0 L 184.1,216.5 L 167.1,187.1 Z; M 144.0,237.8 L 166.7,226.0 L 152.7,195.0 Z; M 116.0,248.5 L 147.8,233.8 L 138.1,201.2 Z; M 86.9,253.6 L 125.7,238.8 L 125.0,204.8 Z; M 62.7,245.1 L 93.1,229.3 L 121.0,209.8 Z; M 62.7,245.1 L 93.1,229.3 L 121.0,209.8 Z; M 277.3,94.9 L 246.9,110.7 L 219.0,130.2 Z; M 277.3,94.9 L 246.9,110.7 L 219.0,130.2 Z" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
             <animate attributename="opacity" values="0; 0.75; 1; 1; 1; 1; 1; 1; 1; 0.75; 0; 0; 0; 0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
           </path>
-
-          <!-- Boundary laser guide rays -->
           <path fill="none" stroke="#4ade80" stroke-width="0.9" opacity="0.75" stroke-dasharray="2 3" d="M 277.3,94.9 L 246.9,110.7 M 277.3,94.9 L 219.0,130.2">
             <animate attributename="d" values="M 277.3,94.9 L 246.9,110.7 M 277.3,94.9 L 219.0,130.2; M 277.0,120.5 L 253.1,143.5 M 277.0,120.5 L 221.4,131.2; M 262.2,146.1 L 242.9,163.7 M 262.2,146.1 L 215.6,143.5; M 242.6,168.8 L 230.0,179.6 M 242.6,168.8 L 205.7,155.8; M 220.4,189.3 L 215.8,193.4 M 220.4,189.3 L 193.9,167.3; M 196.4,207.7 L 200.4,205.6 M 196.4,207.7 L 180.9,177.8; M 170.9,224.0 L 184.1,216.5 M 170.9,224.0 L 167.1,187.1; M 144.0,237.8 L 166.7,226.0 M 144.0,237.8 L 152.7,195.0; M 116.0,248.5 L 147.8,233.8 M 116.0,248.5 L 138.1,201.2; M 86.9,253.6 L 125.7,238.8 M 86.9,253.6 L 125.0,204.8; M 62.7,245.1 L 93.1,229.3 M 62.7,245.1 L 121.0,209.8; M 62.7,245.1 L 93.1,229.3 M 62.7,245.1 L 121.0,209.8; M 277.3,94.9 L 246.9,110.7 M 277.3,94.9 L 219.0,130.2; M 277.3,94.9 L 246.9,110.7 M 277.3,94.9 L 219.0,130.2" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
             <animate attributename="opacity" values="0; 0.75; 1; 1; 1; 1; 1; 1; 1; 0.75; 0; 0; 0; 0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
           </path>
-
-          <!-- Central core laser ray -->
           <path fill="none" stroke="#86efac" stroke-width="1.1" opacity="0.85" d="M 277.3,94.9 L 235.5,124.1">
             <animate attributename="d" values="M 277.3,94.9 L 235.5,124.1; M 277.0,120.5 L 235.6,141.5; M 262.2,146.1 L 226.6,157.2; M 242.6,168.8 L 214.7,171.0; M 220.4,189.3 L 201.4,183.2; M 196.4,207.7 L 187.0,194.3; M 170.9,224.0 L 171.7,204.0; M 144.0,237.8 L 155.6,212.4; M 116.0,248.5 L 138.6,218.8; M 86.9,253.6 L 120.8,221.9; M 62.7,245.1 L 104.5,215.9; M 62.7,245.1 L 104.5,215.9; M 277.3,94.9 L 235.5,124.1; M 277.3,94.9 L 235.5,124.1" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
             <animate attributename="opacity" values="0; 0.75; 1; 1; 1; 1; 1; 1; 1; 0.75; 0; 0; 0; 0" keytimes="0.00; 0.05; 0.10; 0.15; 0.20; 0.25; 0.30; 0.35; 0.40; 0.45; 0.50; 0.55; 0.95; 1.00" dur="14s" repeatcount="indefinite"></animate>
           </path>
         </g>
-
-        <!-- Front Orbit Arc (in front of Earth) -->
         <path d="M 280.59,92.57 A 135 50 -35 0 1 59.41,247.43" fill="none" stroke="#7fb04f" stroke-width="1.6" stroke-dasharray="4 4" opacity="0.75"></path>
-
-        <!-- SATELLITE (FRONT PASS - in front of Earth with seamless scale transition) -->
         <g id="sat-front-en">
           <animate attributename="opacity" values="1; 1; 0; 0; 1" keytimes="0; 0.47; 0.53; 0.97; 1" dur="14s" repeatcount="indefinite"></animate>
           <animatemotion dur="14s" repeatcount="indefinite" rotate="auto">
@@ -555,10 +503,10 @@ and institutional documents, in contractual analysis and assessment projects.</p
 </div>
 
 <div class="stats reveal">
-  <div><div class="stat-num" data-count="22">0</div><div class="stat-label">Researchers</div></div>
-  <div><div class="stat-num" data-count="3">0</div><div class="stat-label">Research fronts</div></div>
-  <div><div class="stat-num" data-count="3">0</div><div class="stat-label">Publications</div></div>
-  <div><div class="stat-num" data-count="2022">0</div><div class="stat-label">Founded</div></div>
+  <div><div class="stat-num" data-count="17">0</div><div class="stat-label">Researchers</div></div>
+  <div><div class="stat-num" data-count="5">0</div><div class="stat-label">Application areas</div></div>
+  <div><div class="stat-num" data-count="8">0</div><div class="stat-label">Methodological lines</div></div>
+  <div><div class="stat-num" data-count="35">0</div><div class="stat-label">Publications and patents</div></div>
 </div>
 <section id="our-history" class="level2">
 <h2 class="anchored" data-anchor-id="our-history">Our history</h2>
@@ -570,34 +518,199 @@ and institutional documents, in contractual analysis and assessment projects.</p
       <span class="tl-node" aria-hidden="true"></span>
       <div class="tl-body">
         <h3 class="tl-heading anchored">Founding at FGV EMAp</h3>
-        <p class="tl-text">Launch of Green AI Lab activities at FGV EMAp, in Rio de Janeiro, in September, dedicated to developing artificial intelligence methods for Earth observation and learning with scarce ground truth.</p>
+        <p class="tl-text">Launch of Green AI Lab activities at FGV EMAp, in Rio de Janeiro, in September, dedicated to developing machine learning methods for Earth observation and analysis of scarce ground truth data.</p>
       </div>
     </li>
     <li class="tl-item">
       <span class="tl-year">2023</span>
       <span class="tl-node" aria-hidden="true"></span>
       <div class="tl-body">
-        <h3 class="tl-heading anchored">Geospatial Foundation Models</h3>
-        <p class="tl-text">Co-authorship in the development of Prithvi in partnership with NASA and IBM, a pioneering open-source geospatial foundation model, and formulation of learning from label proportions methods for remote sensing.</p>
+        <h3 class="tl-heading anchored">Foundation models and research consolidation</h3>
+        <p class="tl-text">Professor Dario Oliveira's co-authorship in developing Prithvi, an open-source geospatial foundation model arising from his collaboration at IBM Research alongside NASA, brought a rich exchange of experience and mindset. This background inspired an internal shift in perspective, fostering the consolidation of the laboratory and the structuring of research lines.</p>
       </div>
     </li>
     <li class="tl-item">
       <span class="tl-year">2025</span>
       <span class="tl-node" aria-hidden="true"></span>
       <div class="tl-body">
-        <h3 class="tl-heading anchored">Territorial Scale and Strategic Partnerships</h3>
-        <p class="tl-text">Build of our dedicated agricultural base covering 359,600 plots across 897 municipalities in five Brazilian states with FGV Agro, alongside territorial monitoring tools developed in partnership with FGV CES and Coiab.</p>
+        <h3 class="tl-heading anchored">14th Climate Informatics Conference (CI2025)</h3>
+        <p class="tl-text">Hosted for the first time in the Global South at the FGV Cultural Center in Rio de Janeiro, this international conference was co-organized by FGV EMAp and IBM Research Brazil. The laboratory took an active role in organization, scientific presentations, and connecting students directly with the global climate informatics community.</p>
       </div>
     </li>
     <li class="tl-item">
       <span class="tl-year">2026</span>
       <span class="tl-node" aria-hidden="true"></span>
       <div class="tl-body">
-        <h3 class="tl-heading anchored">Continuous Monitoring and Language Models</h3>
-        <p class="tl-text">Consolidation of the continuous forest monitoring product at territorial scale, with 26 quarterly maps delivered from 2020 to 2026 validated against INPE's DETER alerts and PRODES polygons, alongside expansion into language models for institutional and regulatory document analysis.</p>
+        <h3 class="tl-heading anchored">Project expansion and natural language processing</h3>
+        <p class="tl-text">The laboratory's projects achieve broad coverage across entire states and the country, driven by new research partnerships and the launch of new investigative avenues such as natural language processing.</p>
       </div>
     </li>
   </ol>
+</div>
+</section>
+<section id="how-we-work" class="level2">
+<h2 class="anchored" data-anchor-id="how-we-work">How we work</h2>
+<div class="principles-blades reveal" id="principles-blades">
+  <article class="blade-card is-active" tabindex="0" role="button" aria-expanded="true" data-index="0">
+    <div class="blade-watermark">
+      <svg viewbox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M30 35 L15 50 L30 65 M70 35 L85 50 L70 65 M55 25 L45 75"></path></svg>
+    </div>
+    <div class="blade-content">
+      <span class="blade-kicker">01</span>
+      <div class="blade-title">Replicable science</div>
+      <p class="blade-desc">Open methods and auditable code. Only stable results proven beyond statistical noise margins are validated.</p>
+    </div>
+    <div class="blade-indicator" aria-hidden="true"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"></path></svg></div>
+  </article>
+
+  <article class="blade-card" tabindex="0" role="button" aria-expanded="false" data-index="1">
+    <div class="blade-watermark">
+      <svg viewbox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M50 15 L80 28 V52 C80 71 67 84 50 90 C33 84 20 71 20 52 V28 L50 15 Z"></path><path d="M38 52 L46 60 L64 42"></path></svg>
+    </div>
+    <div class="blade-content">
+      <span class="blade-kicker">02</span>
+      <div class="blade-title">Territorial auditing</div>
+      <p class="blade-desc">Models evaluated against INPE monitoring programs (DETER and PRODES), agricultural risk zoning (ZARC), and land use references such as MapBiomas.</p>
+    </div>
+    <div class="blade-indicator" aria-hidden="true"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"></path></svg></div>
+  </article>
+
+  <article class="blade-card" tabindex="0" role="button" aria-expanded="false" data-index="2">
+    <div class="blade-watermark">
+      <svg viewbox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="50" cy="50" r="34"></circle><ellipse cx="50" cy="50" rx="34" ry="14"></ellipse><ellipse cx="50" cy="50" rx="14" ry="34"></ellipse></svg>
+    </div>
+    <div class="blade-content">
+      <span class="blade-kicker">03</span>
+      <div class="blade-title">Territorial scale</div>
+      <p class="blade-desc">Pipelines engineered for nationwide execution, processing terabytes of satellite data across multi-year time series.</p>
+    </div>
+    <div class="blade-indicator" aria-hidden="true"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"></path></svg></div>
+  </article>
+
+  <article class="blade-card" tabindex="0" role="button" aria-expanded="false" data-index="3">
+    <div class="blade-watermark">
+      <svg viewbox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 70 Q 35 25, 50 55 T 85 30"></path><path d="M15 80 Q 35 45, 50 70 T 85 50" stroke-dasharray="4 4" opacity="0.6"></path><path d="M15 55 Q 35 10, 50 40 T 85 15" stroke-dasharray="4 4" opacity="0.6"></path></svg>
+    </div>
+    <div class="blade-content">
+      <span class="blade-kicker">04</span>
+      <div class="blade-title">Limits and uncertainties</div>
+      <p class="blade-desc">Explicit mapping of where models fail or lose sensitivity, never hiding limitations behind aggregated averages.</p>
+    </div>
+    <div class="blade-indicator" aria-hidden="true"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"></path></svg></div>
+  </article>
+
+  <article class="blade-card" tabindex="0" role="button" aria-expanded="false" data-index="4">
+    <div class="blade-watermark">
+      <svg viewbox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="20" y="25" width="60" height="55" rx="6"></rect><line x1="20" y1="42" x2="80" y2="42"></line><circle cx="38" cy="58" r="4" fill="currentColor"></circle><circle cx="52" cy="58" r="4" fill="currentColor"></circle><circle cx="66" cy="58" r="4" fill="currentColor"></circle></svg>
+    </div>
+    <div class="blade-content">
+      <span class="blade-kicker">05</span>
+      <div class="blade-title">Weekly follow-ups</div>
+      <p class="blade-desc">Weekly meetings to evaluate progress and a shared digital board for continuous guidance of each research line.</p>
+    </div>
+    <div class="blade-indicator" aria-hidden="true"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"></path></svg></div>
+  </article>
+
+  <article class="blade-card" tabindex="0" role="button" aria-expanded="false" data-index="5">
+    <div class="blade-watermark">
+      <svg viewbox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="50,16 84,50 50,84 16,50"></polygon><line x1="50" y1="16" x2="50" y2="84"></line><line x1="16" y1="50" x2="84" y2="50"></line><circle cx="50" cy="16" r="6"></circle><circle cx="84" cy="50" r="6"></circle><circle cx="50" cy="84" r="6"></circle><circle cx="16" cy="50" r="6"></circle><circle cx="50" cy="50" r="7" fill="currentColor"></circle></svg>
+    </div>
+    <div class="blade-content">
+      <span class="blade-kicker">06</span>
+      <div class="blade-title">Methodological synergy</div>
+      <p class="blade-desc">Continuous integration between methodological research and direct application to real-world challenges, working alongside domain specialists in agriculture, forestry, and climate.</p>
+    </div>
+    <div class="blade-indicator" aria-hidden="true"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"></path></svg></div>
+  </article>
+</div>
+</section>
+<section id="research-infrastructure-and-environment" class="level2">
+<h2 class="anchored" data-anchor-id="research-infrastructure-and-environment">Research infrastructure and environment</h2>
+<p class="section-lead">A dedicated physical workspace at FGV EMAp integrated with a local cluster of 14 workstations and 15 GPUs, dedicated to experimental research, model training, and empirical testing of new methods.</p>
+
+<div class="metrics reveal">
+  <div><div class="m-val">14</div><div class="m-lab">Workstations</div></div>
+  <div><div class="m-val">15</div><div class="m-lab">Dedicated GPUs</div></div>
+  <div><div class="m-val">312 GB</div><div class="m-lab">Consolidated VRAM</div></div>
+  <div><div class="m-val">1.6 TB</div><div class="m-lab">System memory</div></div>
+</div>
+</section>
+<section id="institutional-partnerships" class="level2">
+<h2 class="anchored" data-anchor-id="institutional-partnerships">Institutional partnerships</h2>
+<p class="section-lead">The laboratory collaborates closely with Fundação Getulio Vargas research centers and civil society organizations to connect data science methods with real-world challenges.</p>
+
+<div class="partner-blades reveal" id="partner-blades">
+  <article class="blade-card is-active" tabindex="0" role="button" aria-expanded="true" data-index="0">
+    <div class="blade-watermark">
+      <svg viewbox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M50 18 C35 18 24 30 24 45 C24 55 29 63 36 67 L36 84 L64 84 L64 67 C71 63 76 55 76 45 C76 30 65 18 50 18 Z M50 18 L50 84 M36 45 L50 35 L64 45 M36 60 L50 50 L64 60"></path></svg>
+    </div>
+    <div class="blade-content">
+      <span class="blade-kicker">01</span>
+      <div class="blade-title">COIAB</div>
+      <p class="blade-desc">Coordination of Indigenous Organizations of the Brazilian Amazon. Joint work on territorial monitoring tools and the protection of Indigenous lands across the Amazon.</p>
+    </div>
+    <div class="blade-indicator" aria-hidden="true"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"></path></svg></div>
+  </article>
+
+  <article class="blade-card" tabindex="0" role="button" aria-expanded="false" data-index="1">
+    <div class="blade-watermark">
+      <svg viewbox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 78 Q50 68 80 78 M15 88 Q50 78 85 88 M50 72 V36 M50 36 C50 20 28 20 28 36 C28 50 50 48 50 48 M50 42 C50 28 72 28 72 42 C72 54 50 52 50 52"></path></svg>
+    </div>
+    <div class="blade-content">
+      <span class="blade-kicker">02</span>
+      <div class="blade-title">FGV Agro</div>
+      <p class="blade-desc">Center for Agribusiness Studies. Territorial-scale crop parcel mapping and predictive models for harvest tracking and sustainable rural credit.</p>
+    </div>
+    <div class="blade-indicator" aria-hidden="true"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"></path></svg></div>
+  </article>
+
+  <article class="blade-card" tabindex="0" role="button" aria-expanded="false" data-index="2">
+    <div class="blade-watermark">
+      <svg viewbox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="50" cy="50" r="32"></circle><path d="M50 22 A28 28 0 0 1 78 50 M78 50 L72 44 M78 50 L84 44 M50 78 A28 28 0 0 1 22 50 M22 50 L28 56 M22 50 L16 56 M50 36 C42 44 42 56 50 64 C58 56 58 44 50 36 Z"></path></svg>
+    </div>
+    <div class="blade-content">
+      <span class="blade-kicker">03</span>
+      <div class="blade-title">FGV CES</div>
+      <p class="blade-desc">Center for Sustainability Studies. Sustainability indicators, ecological integrity metrics, and socio-environmental policy research.</p>
+    </div>
+    <div class="blade-indicator" aria-hidden="true"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"></path></svg></div>
+  </article>
+
+  <article class="blade-card" tabindex="0" role="button" aria-expanded="false" data-index="3">
+    <div class="blade-watermark">
+      <svg viewbox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="22" y="45" width="22" height="42" rx="3"></rect><rect x="56" y="25" width="22" height="62" rx="3"></rect><line x1="14" y1="87" x2="86" y2="87"></line><path d="M33 30 L45 15 L43 25 L55 12"></path></svg>
+    </div>
+    <div class="blade-content">
+      <span class="blade-kicker">04</span>
+      <div class="blade-title">FGV CERI</div>
+      <p class="blade-desc">Center for Regulation and Infrastructure Studies. Sustainable infrastructure, energy transition, and regulation of environmental assets.</p>
+    </div>
+    <div class="blade-indicator" aria-hidden="true"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"></path></svg></div>
+  </article>
+
+  <article class="blade-card" tabindex="0" role="button" aria-expanded="false" data-index="4">
+    <div class="blade-watermark">
+      <svg viewbox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="50" cy="50" r="32"></circle><polygon points="50,26 57,43 74,50 57,57 50,74 43,57 26,50 43,43"></polygon><circle cx="50" cy="50" r="4" fill="currentColor"></circle></svg>
+    </div>
+    <div class="blade-content">
+      <span class="blade-kicker">05</span>
+      <div class="blade-title">FGV Projetos</div>
+      <p class="blade-desc">Technical advisory unit. Applying analytical solutions to sustainable development projects and public policy initiatives.</p>
+    </div>
+    <div class="blade-indicator" aria-hidden="true"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"></path></svg></div>
+  </article>
+
+  <article class="blade-card" tabindex="0" role="button" aria-expanded="false" data-index="5">
+    <div class="blade-watermark">
+      <svg viewbox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="20" y="22" width="60" height="58" rx="8"></rect><line x1="20" y1="40" x2="80" y2="40"></line><circle cx="36" cy="58" r="5" fill="currentColor"></circle><circle cx="52" cy="58" r="5" fill="currentColor"></circle><circle cx="68" cy="58" r="5" fill="currentColor"></circle><polyline points="32 30 40 30 48 30"></polyline></svg>
+    </div>
+    <div class="blade-content">
+      <span class="blade-kicker">06</span>
+      <div class="blade-title">FGV PMO</div>
+      <p class="blade-desc">FGV Project Management Office. Institutional coordination, governance for research initiatives, and support for strategic partnership programs.</p>
+    </div>
+    <div class="blade-indicator" aria-hidden="true"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"></path></svg></div>
+  </article>
 </div>
 </section>
 <section id="gallery" class="level2">
@@ -621,36 +734,6 @@ and institutional documents, in contractual analysis and assessment projects.</p
     <button class="hscroll-btn next" aria-label="Next photos"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 5 7 7-7 7"></path></svg></button>
   </div>
 </div>
-</section>
-<section id="how-we-work" class="level2">
-<h2 class="anchored" data-anchor-id="how-we-work">How we work</h2>
-<div class="hscroll-wrap reveal">
-  <button class="hscroll-btn prev" aria-label="Previous"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 5l-7 7 7 7"></path></svg></button>
-  <div class="hscroll">
-    <article class="hs-card"><div class="hs-kicker">Principle 01</div><div class="hs-title">Reproducible science</div><div class="hs-text">The same run, repeated, varies by up to ±0.0076 IoU. Every result comes with that margin stated.</div></article>
-    <article class="hs-card"><div class="hs-kicker">Principle 02</div><div class="hs-title">Validation against official references</div><div class="hs-text">Each product is compared with DETER, PRODES, ZARC, MapBiomas and the Rural Environmental Registry.</div></article>
-    <article class="hs-card"><div class="hs-kicker">Principle 03</div><div class="hs-title">Territorial scale</div><div class="hs-text">359,600 plots, 897 municipalities and five states, with series from 2020 to 2025.</div></article>
-    <article class="hs-card"><div class="hs-kicker">Principle 04</div><div class="hs-title">Transparency about limits</div><div class="hs-text">We publish where the model fails. Validated against DETER alerts, recall for the forest class is 0.28.</div></article>
-  </div>
-  <button class="hscroll-btn next" aria-label="Next"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 5 7 7-7 7"></path></svg></button>
-</div>
-</section>
-<section id="computing-capacity" class="level2">
-<h2 class="anchored" data-anchor-id="computing-capacity">Computing capacity</h2>
-<p class="reveal">GPU training and inference at territorial scale, on the lab's own hardware.</p>
-
-<div class="metrics reveal">
-  <div><div class="m-val">14</div><div class="m-lab">Workstations</div></div>
-  <div><div class="m-val">15</div><div class="m-lab">GPUs</div></div>
-  <div><div class="m-val">312 GB</div><div class="m-lab">VRAM, nominal capacity</div></div>
-  <div><div class="m-val">1.6 TB</div><div class="m-lab">System memory</div></div>
-</div>
-
-<p class="reveal" style="margin: 2rem 0 3rem;">
-  <a class="pub-btn" href="../people/">Meet the team</a>
-  <a class="pub-btn" href="../publications/">See the publications</a>
-  <a class="pub-btn" href="../join-us/">Contact us</a>
-</p>
 </section></div>
 </div>
 
@@ -1238,6 +1321,44 @@ and institutional documents, in contractual analysis and assessment projects.</p
       })(carrosseis[k]);
     }
 
+    // Sistema em gaveta de lâminas sanfonadas (.principles-blades, .partner-blades)
+    var bladeContainers = document.querySelectorAll(".principles-blades, .accordion-blades, .partner-blades");
+    for (var bcIdx = 0; bcIdx < bladeContainers.length; bcIdx++) {
+      (function (container) {
+        var blades = container.querySelectorAll(".blade-card");
+        function ativarLamina(alvo) {
+          for (var i = 0; i < blades.length; i++) {
+            var b = blades[i];
+            if (b === alvo) {
+              b.classList.add("is-active");
+              b.setAttribute("aria-expanded", "true");
+            } else {
+              b.classList.remove("is-active");
+              b.setAttribute("aria-expanded", "false");
+            }
+          }
+        }
+        for (var j = 0; j < blades.length; j++) {
+          (function (blade) {
+            blade.addEventListener("mouseenter", function () {
+              if (window.matchMedia("(min-width: 900px)").matches) {
+                ativarLamina(blade);
+              }
+            });
+            blade.addEventListener("click", function () {
+              ativarLamina(blade);
+            });
+            blade.addEventListener("keydown", function (e) {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                ativarLamina(blade);
+              }
+            });
+          })(blades[j]);
+        }
+      })(bladeContainers[bcIdx]);
+    }
+
     // Sumário lateral com espião de rolagem: destaca no sumário a seção
     // atualmente visível (páginas com âncoras, como a de Pesquisa)
     var sumario = document.querySelector(".side-toc[data-spy]");
@@ -1690,10 +1811,8 @@ and institutional documents, in contractual analysis and assessment projects.</p
   });
 </script>
 <script>
-  // Exploradores das paginas de pesquisa, sempre sobre imagens ja renderizadas no
-  // repositorio: nada e calculado nem buscado no navegador, e as imagens carregam
-  // sob demanda. [data-scrub] percorre uma sequencia (trimestres) com um slider;
-  // [data-explorer] troca entre as camadas da mesma cena.
+  // Exploradores das paginas de pesquisa: combinam mapas ja renderizados no
+  // repositorio com graficos SVG interativos de proposito unico intercalados ao texto.
   document.addEventListener("DOMContentLoaded", function () {
     var reduzido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -1701,7 +1820,7 @@ and institutional documents, in contractual analysis and assessment projects.</p
       if (url) { var im = new Image(); im.src = url; }
     }
 
-    // ---------------------------------------------------------------- scrubber
+    // Scrubber trimestral
     var scrubbers = document.querySelectorAll("[data-scrub]");
     for (var s = 0; s < scrubbers.length; s++) {
       (function (raiz) {
@@ -1762,7 +1881,7 @@ and institutional documents, in contractual analysis and assessment projects.</p
       })(scrubbers[s]);
     }
 
-    // --------------------------------------------------------------- camadas
+    // Seletor de camadas pre-renderizadas
     var exploradores = document.querySelectorAll("[data-explorer]");
     for (var e = 0; e < exploradores.length; e++) {
       (function (raiz) {
@@ -1796,37 +1915,1128 @@ and institutional documents, in contractual analysis and assessment projects.</p
       })(exploradores[e]);
     }
 
-    // --------------------------------------------------------------- cinema interativo da floresta
-    var cinemas = document.querySelectorAll(".forest-cinema-wrap");
-    for (var c = 0; c < cinemas.length; c++) {
-      (function (wrap) {
-        var botoes = wrap.querySelectorAll(".cinema-btn");
-        var paineis = wrap.querySelectorAll(".cinema-pane");
-
-        botoes.forEach(function (btn) {
+    // Seletor generico de abas/paineis ([data-tab-group])
+    var tabGroups = document.querySelectorAll("[data-tab-group]");
+    for (var tg = 0; tg < tabGroups.length; tg++) {
+      (function (group) {
+        var btns = group.querySelectorAll("[data-tab-target]");
+        var panes = group.querySelectorAll("[data-tab-pane]");
+        btns.forEach(function (btn) {
           btn.addEventListener("click", function () {
-            var alvo = btn.getAttribute("data-cinema-tab");
-            botoes.forEach(function (b) {
-              var ativo = b === btn;
-              b.classList.toggle("active", ativo);
-              b.setAttribute("aria-selected", ativo ? "true" : "false");
+            var target = btn.getAttribute("data-tab-target");
+            btns.forEach(function (b) {
+              var active = b === btn;
+              b.classList.toggle("is-active", active);
+              b.setAttribute("aria-selected", active ? "true" : "false");
             });
-            paineis.forEach(function (p) {
-              var ativo = p.id === "pane-" + alvo;
-              p.classList.toggle("active", ativo);
-              if (ativo) {
-                p.querySelectorAll("img[data-src]").forEach(function (im) {
-                  im.src = im.getAttribute("data-src");
-                  im.removeAttribute("data-src");
-                });
-              }
+            panes.forEach(function (p) {
+              var active = p.getAttribute("data-tab-pane") === target;
+              p.classList.toggle("is-active", active);
+              p.hidden = !active;
             });
           });
         });
-      })(cinemas[c]);
+      })(tabGroups[tg]);
+    }
+
+    // Classificação de culturas por talhão (GAIA Lab vs referência)
+    var cropExplorers = document.querySelectorAll("[data-crop-explorer]");
+    for (var ce = 0; ce < cropExplorers.length; ce++) {
+      (function (root) {
+        var lang = root.getAttribute("data-lang") || "pt";
+        var modeBtns = root.querySelectorAll("[data-crop-mode]");
+        var filterBtns = root.querySelectorAll("[data-crop-filter]");
+        var polygons = root.querySelectorAll(".parcel-poly");
+        var detailTitle = root.querySelector("[data-parcel-title]");
+        var detailMeta = root.querySelector("[data-parcel-meta]");
+        var detailSar = root.querySelector("[data-parcel-sar]");
+        var detailRef = root.querySelector("[data-parcel-ref]");
+
+        var currentMode = "gaia";
+        var currentFilter = "all";
+
+        function updatePolygons() {
+          polygons.forEach(function (poly) {
+            var trueCrop = poly.getAttribute("data-true-crop");
+            var refCrop = poly.getAttribute("data-ref-crop");
+            var shownCrop = currentMode === "gaia" ? trueCrop : refCrop;
+            poly.setAttribute("data-shown-crop", shownCrop);
+            var mismatch = currentMode === "ref" && trueCrop !== refCrop;
+            poly.classList.toggle("is-mismatch", mismatch);
+            var dimmed = currentFilter !== "all" && trueCrop !== currentFilter;
+            poly.classList.toggle("is-dimmed", dimmed);
+          });
+        }
+
+        function selectParcel(poly) {
+          polygons.forEach(function (p) { p.classList.remove("is-selected"); });
+          poly.classList.add("is-selected");
+          var id = poly.getAttribute("data-parcel-id");
+          var area = poly.getAttribute("data-area");
+          var cycle = poly.getAttribute("data-cycle") || "";
+          var gaiaLabel = poly.getAttribute("data-gaia-label");
+          var refLabel = poly.getAttribute("data-ref-label");
+          var trueCrop = poly.getAttribute("data-true-crop");
+          var refCrop = poly.getAttribute("data-ref-crop");
+          if (detailTitle) {
+            detailTitle.textContent = (lang === "en" ? "Plot " : "Talhão ") + id + " (" + area + " ha)";
+          }
+          if (detailMeta) detailMeta.textContent = cycle;
+          if (detailSar) detailSar.textContent = gaiaLabel;
+          if (detailRef) {
+            detailRef.textContent = refLabel;
+            detailRef.classList.toggle("is-error", trueCrop !== refCrop);
+          }
+        }
+
+        modeBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            currentMode = btn.getAttribute("data-crop-mode");
+            modeBtns.forEach(function (b) {
+              var active = b === btn;
+              b.classList.toggle("is-active", active);
+              b.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+            updatePolygons();
+          });
+        });
+
+        filterBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            currentFilter = btn.getAttribute("data-crop-filter");
+            filterBtns.forEach(function (b) {
+              var active = b === btn;
+              b.classList.toggle("is-active", active);
+              b.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+            updatePolygons();
+          });
+        });
+
+        polygons.forEach(function (poly) {
+          poly.addEventListener("click", function () { selectParcel(poly); });
+        });
+
+        updatePolygons();
+        var initial = root.querySelector(".parcel-poly.is-selected") || polygons[0];
+        if (initial) selectParcel(initial);
+      })(cropExplorers[ce]);
+    }
+
+    // Detecção de fenologia e leitura de risco na vizinhança
+    var phenoExplorers = document.querySelectorAll("[data-pheno-explorer]");
+    for (var pe = 0; pe < phenoExplorers.length; pe++) {
+      (function (root) {
+        var btns = root.querySelectorAll("[data-pheno-mode]");
+        var targetLine = root.querySelector(".pheno-target-line");
+        var envArea = root.querySelector(".pheno-env-area");
+        var envMean = root.querySelector(".pheno-env-mean");
+        var sosGroup = root.querySelector(".pheno-markers-group");
+        var neighbors = root.querySelectorAll(".neighbor-cell");
+        var targetCell = root.querySelector(".neighbor-target-cell");
+        var badge = root.querySelector("[data-pheno-badge]");
+        var diagnosis = root.querySelector("[data-pheno-diagnosis]");
+        var sosText = root.querySelector("[data-pheno-sos]");
+        var posText = root.querySelector("[data-pheno-pos]");
+        var eosText = root.querySelector("[data-pheno-eos]");
+
+        var states = {
+          safra: {
+            target: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,88 C 246,52 268,32 290,30 C 312,32 330,76 346,108 L 358,116",
+            envArea: "M 30,114 C 52,112 68,96 82,70 C 98,34 118,18 140,16 C 162,18 180,60 196,96 C 206,104 216,100 228,80 C 246,44 268,24 290,22 C 312,24 330,68 346,100 L 358,110 L 358,122 L 346,116 C 330,86 312,42 290,40 C 268,42 246,62 228,96 C 216,114 206,118 196,112 C 180,76 162,34 140,32 C 118,34 98,52 82,86 C 68,108 52,120 30,122 Z",
+            envMean: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,88 C 246,52 268,32 290,30 C 312,32 330,76 346,108 L 358,116",
+            showMarkers: true,
+            targetState: "healthy",
+            neighborState: "healthy",
+            targetColor: "#365902"
+          },
+          operacional: {
+            target: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,95 C 246,84 268,88 290,96 C 312,104 330,112 346,116 L 358,118",
+            envArea: "M 30,114 C 52,112 68,96 82,70 C 98,34 118,18 140,16 C 162,18 180,60 196,96 C 206,104 216,100 228,80 C 246,44 268,24 290,22 C 312,24 330,68 346,100 L 358,110 L 358,122 L 346,116 C 330,86 312,42 290,40 C 268,42 246,62 228,96 C 216,114 206,118 196,112 C 180,76 162,34 140,32 C 118,34 98,52 82,86 C 68,108 52,120 30,122 Z",
+            envMean: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,88 C 246,52 268,32 290,30 C 312,32 330,76 346,108 L 358,116",
+            showMarkers: true,
+            targetState: "stressed",
+            neighborState: "healthy",
+            targetColor: "#c85a32"
+          },
+          sistemico: {
+            target: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,94 C 246,78 268,74 290,82 C 312,92 330,108 346,115 L 358,118",
+            envArea: "M 30,114 C 52,112 68,96 82,70 C 98,34 118,18 140,16 C 162,18 180,60 196,96 C 206,104 216,100 228,86 C 246,70 268,66 290,74 C 312,84 330,100 346,110 L 358,114 L 358,124 L 346,120 C 330,114 312,100 290,90 C 268,82 246,86 228,102 C 216,114 206,118 196,112 C 180,76 162,34 140,32 C 118,34 98,52 82,86 C 68,108 52,120 30,122 Z",
+            envMean: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,94 C 246,78 268,74 290,82 C 312,92 330,108 346,115 L 358,118",
+            showMarkers: true,
+            targetState: "stressed",
+            neighborState: "stressed",
+            targetColor: "#c85a32"
+          }
+        };
+
+        btns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var mode = btn.getAttribute("data-pheno-mode");
+            var st = states[mode];
+            if (!st) return;
+            btns.forEach(function (b) {
+              var active = b === btn;
+              b.classList.toggle("is-active", active);
+              b.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+            if (targetLine) {
+              targetLine.setAttribute("d", st.target);
+              targetLine.setAttribute("stroke", st.targetColor);
+            }
+            if (envArea) envArea.setAttribute("d", st.envArea);
+            if (envMean) envMean.setAttribute("d", st.envMean);
+            if (sosGroup) sosGroup.style.opacity = st.showMarkers ? "1" : "0.35";
+            if (targetCell) targetCell.setAttribute("data-health", st.targetState);
+            neighbors.forEach(function (cell) {
+              cell.setAttribute("data-health", st.neighborState);
+            });
+            if (badge) badge.textContent = btn.getAttribute("data-badge-text") || "";
+            if (diagnosis) diagnosis.textContent = btn.getAttribute("data-diag-text") || "";
+            if (sosText) sosText.textContent = btn.getAttribute("data-sos-label") || "";
+            if (posText) posText.textContent = btn.getAttribute("data-pos-label") || "";
+            if (eosText) eosText.textContent = btn.getAttribute("data-eos-label") || "";
+          });
+        });
+      })(phenoExplorers[pe]);
+    }
+
+    // Simulador de estoque de macronutrientes NPK
+    var npkSims = document.querySelectorAll("[data-npk-sim]");
+    for (var ns = 0; ns < npkSims.length; ns++) {
+      (function (root) {
+        var lang = root.getAttribute("data-lang") || "pt";
+        var cropBtns = root.querySelectorAll("[data-npk-crop]");
+        var cutBtns = root.querySelectorAll("[data-npk-cut]");
+        var soilBtns = root.querySelectorAll("[data-npk-soil]");
+        var ruleBtns = root.querySelectorAll("[data-npk-rule]");
+
+        var yieldLine = root.querySelector(".npk-yield-line");
+        var stockLine = root.querySelector(".npk-stock-line");
+        var yieldDots = root.querySelectorAll(".npk-yield-dot");
+        var stockDots = root.querySelectorAll(".npk-stock-dot");
+        var valEndYield = root.querySelector("[data-npk-end-yield]");
+        var valEndStock = root.querySelector("[data-npk-end-stock]");
+        var calloutText = root.querySelector("[data-npk-callout]");
+
+        var state = {
+          crop: "soja",
+          cut: "N",
+          soil: "alto",
+          rule: "defensavel"
+        };
+
+        var baseProfiles = {
+          soja: {
+            N:   { alto: [100, 99, 99, 98, 98], baixo: [100, 98, 97, 96, 95], stockAlto: [100, 96, 93, 90, 88], stockBaixo: [65, 62, 59, 57, 55] },
+            P:   { alto: [100, 99, 95, 88, 79], baixo: [100, 86, 74, 64, 56], stockAlto: [100, 82, 66, 52, 40], stockBaixo: [55, 38, 26, 18, 12] },
+            NPK: { alto: [100, 98, 91, 80, 68], baixo: [100, 81, 65, 52, 43], stockAlto: [100, 78, 59, 44, 32], stockBaixo: [55, 34, 21, 14, 9] }
+          },
+          milho: {
+            N:   { alto: [100, 94, 82, 68, 55], baixo: [100, 76, 58, 45, 36], stockAlto: [100, 74, 53, 38, 27], stockBaixo: [55, 32, 19, 12, 8] },
+            P:   { alto: [100, 98, 92, 83, 73], baixo: [100, 84, 71, 60, 51], stockAlto: [100, 80, 63, 49, 38], stockBaixo: [55, 37, 25, 17, 11] },
+            NPK: { alto: [100, 92, 76, 59, 45], baixo: [100, 70, 50, 36, 27], stockAlto: [100, 70, 48, 32, 21], stockBaixo: [55, 29, 16, 10, 6] }
+          },
+          algodao: {
+            N:   { alto: [100, 95, 85, 73, 61], baixo: [100, 79, 63, 50, 40], stockAlto: [100, 77, 57, 42, 31], stockBaixo: [58, 35, 22, 14, 9] },
+            P:   { alto: [100, 98, 93, 84, 75], baixo: [100, 86, 73, 62, 53], stockAlto: [100, 81, 65, 51, 39], stockBaixo: [58, 39, 27, 18, 12] },
+            NPK: { alto: [100, 93, 79, 63, 49], baixo: [100, 73, 53, 39, 29], stockAlto: [100, 72, 50, 34, 23], stockBaixo: [58, 31, 18, 11, 7] }
+          }
+        };
+
+        var xs = [45, 115, 185, 255, 325];
+        function yCoord(val) {
+          return Math.round(132 - (val / 100) * 110);
+        }
+
+        function explain(c, cut, soil, rule) {
+          if (lang === "en") {
+            if (c === "soja" && cut === "N") {
+              return "Crop biology inside the model: cutting mineral nitrogen barely reduces Brazilian soybean yield because biological nitrogen fixation supplies nearly all the plant's demand. A model treating N, P, and K symmetrically would fail here.";
+            }
+            if (soil === "alto") {
+              return "High-stock soil acts as a buffer: in the first seasons, plants draw on accumulated soil reserves before productivity drops sharply. Under the " + (rule === "pessimista" ? "pessimistic (multiplicative)" : "most defensible") + " combination rule, year-5 yield reaches " + valEndYield.textContent + ".";
+            }
+            return "Low-stock soil responds in the very first crop season: without accumulated reserves in the soil profile, cutting " + cut + " immediately translates into yield loss.";
+          } else {
+            if (c === "soja" && cut === "N") {
+              return "Biologia da cultura no modelo: cortar nitrogênio mineral quase não derruba a produtividade da soja brasileira, pois a fixação biológica supre a maior parte da demanda da planta. Um modelo que tratasse N, P e K como insumos simétricos erraria essa resposta.";
+            }
+            if (soil === "alto") {
+              return "Solo com estoque alto amortece o corte inicial: nas primeiras safras a planta consome a reserva acumulada no perfil antes de a produção cair com força. Pela regra " + (rule === "pessimista" ? "pessimista (multiplicativa)" : "mais defensável") + ", a produtividade no 5º ano chega a " + valEndYield.textContent + ".";
+            }
+            return "Solo pobre responde já na primeira safra: sem reserva acumulada no solo para amortecer a redução de adubo, o corte de " + cut + " derruba a produtividade imediatamente.";
+          }
+        }
+
+        function renderNpk() {
+          var prof = baseProfiles[state.crop][state.cut];
+          var rawYield = state.soil === "alto" ? prof.alto.slice() : prof.baixo.slice();
+          var rawStock = state.soil === "alto" ? prof.stockAlto.slice() : prof.stockBaixo.slice();
+
+          if (state.rule === "pessimista" && state.cut === "NPK") {
+            for (var i = 1; i < rawYield.length; i++) {
+              rawYield[i] = Math.max(18, rawYield[i] - (i * 3));
+            }
+          }
+
+          var yPts = rawYield.map(function (v, idx) { return xs[idx] + "," + yCoord(v); });
+          var sPts = rawStock.map(function (v, idx) { return xs[idx] + "," + yCoord(v); });
+
+          if (yieldLine) yieldLine.setAttribute("points", yPts.join(" "));
+          if (stockLine) stockLine.setAttribute("points", sPts.join(" "));
+
+          yieldDots.forEach(function (d, idx) {
+            d.setAttribute("cx", xs[idx]);
+            d.setAttribute("cy", yCoord(rawYield[idx]));
+          });
+          stockDots.forEach(function (d, idx) {
+            d.setAttribute("cx", xs[idx]);
+            d.setAttribute("cy", yCoord(rawStock[idx]));
+          });
+
+          if (valEndYield) valEndYield.textContent = rawYield[4] + "%";
+          if (valEndStock) valEndStock.textContent = rawStock[4] + "%";
+          if (calloutText) calloutText.textContent = explain(state.crop, state.cut, state.soil, state.rule);
+        }
+
+        function bindGroup(btns, attr, key) {
+          btns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              state[key] = btn.getAttribute(attr);
+              btns.forEach(function (b) {
+                var active = b === btn;
+                b.classList.toggle("is-active", active);
+                b.setAttribute("aria-pressed", active ? "true" : "false");
+              });
+              renderNpk();
+            });
+          });
+        }
+
+        bindGroup(cropBtns, "data-npk-crop", "crop");
+        bindGroup(cutBtns, "data-npk-cut", "cut");
+        bindGroup(soilBtns, "data-npk-soil", "soil");
+        bindGroup(ruleBtns, "data-npk-rule", "rule");
+        renderNpk();
+      })(npkSims[ns]);
+    }
+
+    // Ameaças climáticas por trecho de linha (FGV CERI)
+    var ceriExplorers = document.querySelectorAll("[data-ceri-explorer]");
+    for (var ce2 = 0; ce2 < ceriExplorers.length; ce2++) {
+      (function (root) {
+        var threatBtns = root.querySelectorAll("[data-ceri-threat]");
+        var scenBtns = root.querySelectorAll("[data-ceri-scen]");
+        var segments = root.querySelectorAll(".grid-seg-bar");
+        var segVals = root.querySelectorAll(".grid-seg-val");
+        var titleEl = root.querySelector("[data-ceri-title]");
+        var methodEl = root.querySelector("[data-ceri-method]");
+        var indicatorEl = root.querySelector("[data-ceri-indicator]");
+
+        var state = { threat: "ventos", scen: "ssp245" };
+
+        var data = {
+          ventos: {
+            hist:   [28, 42, 35, 58, 49, 31],
+            ssp245: [39, 58, 48, 76, 67, 44],
+            ssp585: [52, 74, 63, 92, 84, 59]
+          },
+          tempestades: {
+            hist:   [45, 52, 61, 48, 39, 34],
+            ssp245: [62, 71, 82, 66, 54, 47],
+            ssp585: [78, 88, 96, 81, 69, 61]
+          },
+          temperatura: {
+            hist:   [32, 38, 44, 51, 47, 36],
+            ssp245: [54, 63, 72, 81, 75, 58],
+            ssp585: [76, 85, 93, 98, 91, 79]
+          },
+          incendios: {
+            hist:   [22, 35, 64, 71, 48, 25],
+            ssp245: [36, 54, 83, 89, 66, 38],
+            ssp585: [51, 72, 95, 99, 84, 52]
+          },
+          chuva: {
+            hist:   [48, 55, 39, 33, 58, 62],
+            ssp245: [64, 73, 52, 45, 76, 81],
+            ssp585: [82, 91, 68, 59, 92, 96]
+          }
+        };
+
+        function updateCeri() {
+          var activeBtn = root.querySelector('[data-ceri-threat="' + state.threat + '"]');
+          if (activeBtn) {
+            if (titleEl) titleEl.textContent = activeBtn.getAttribute("data-title") || "";
+            if (methodEl) methodEl.textContent = activeBtn.getAttribute("data-method") || "";
+            if (indicatorEl) indicatorEl.textContent = activeBtn.getAttribute("data-indicator") || "";
+          }
+          var vals = (data[state.threat] && data[state.threat][state.scen]) || [50, 50, 50, 50, 50, 50];
+          segments.forEach(function (bar, idx) {
+            var v = vals[idx] || 40;
+            bar.style.height = v + "%";
+            bar.setAttribute("data-level", v >= 75 ? "high" : (v >= 50 ? "med" : "low"));
+            if (segVals[idx]) segVals[idx].textContent = v + "/100";
+          });
+        }
+
+        threatBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            state.threat = btn.getAttribute("data-ceri-threat");
+            threatBtns.forEach(function (b) {
+              var active = b === btn;
+              b.classList.toggle("is-active", active);
+              b.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+            updateCeri();
+          });
+        });
+
+        scenBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            state.scen = btn.getAttribute("data-ceri-scen");
+            scenBtns.forEach(function (b) {
+              var active = b === btn;
+              b.classList.toggle("is-active", active);
+              b.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+            updateCeri();
+          });
+        });
+
+        updateCeri();
+      })(ceriExplorers[ce2]);
+    }
+
+    // Controle de zoom e arrasto (pan e zoom) para satélite
+    function initPanZoomStage(viewport, stage, natW, natH, hudRoot) {
+      var zoom = 1;
+      var tx = 0;
+      var ty = 0;
+      var minZoom = 0.45;
+      var maxZoom = 6.5;
+      var zoomLabel = hudRoot ? hudRoot.querySelector("[data-cv-zoom-val]") : null;
+      var btnIn = hudRoot ? hudRoot.querySelector("[data-cv-zoom-in]") : null;
+      var btnOut = hudRoot ? hudRoot.querySelector("[data-cv-zoom-out]") : null;
+      var btnFit = hudRoot ? hudRoot.querySelector("[data-cv-zoom-fit]") : null;
+
+      function clampPan() {
+        var vw = viewport.clientWidth || 600;
+        var vh = viewport.clientHeight || 410;
+        var sw = natW * zoom;
+        var sh = natH * zoom;
+        if (sw <= vw) {
+          tx = (vw - sw) / 2;
+        } else {
+          tx = Math.min(20, Math.max(vw - sw - 20, tx));
+        }
+        if (sh <= vh) {
+          ty = (vh - sh) / 2;
+        } else {
+          ty = Math.min(20, Math.max(vh - sh - 20, ty));
+        }
+      }
+
+      function applyTransform() {
+        clampPan();
+        stage.style.transform = "translate3d(" + tx.toFixed(1) + "px," + ty.toFixed(1) + "px,0) scale(" + zoom.toFixed(4) + ")";
+        stage.classList.toggle("is-pixelated", zoom >= 2.2);
+        if (zoomLabel) zoomLabel.textContent = Math.round(zoom * 100) + "%";
+      }
+
+      function fitToViewport(initialFocus) {
+        var vw = viewport.clientWidth || 600;
+        var vh = viewport.clientHeight || 410;
+        minZoom = Math.max(vw / natW, vh / natH) * 0.92;
+        if (initialFocus) {
+          zoom = Math.max(minZoom, 0.88);
+          tx = (vw / 2) - (natW * 0.48) * zoom;
+          ty = (vh / 2) - (natH * 0.48) * zoom;
+        } else {
+          zoom = Math.max(vw / natW, vh / natH);
+          tx = (vw - natW * zoom) / 2;
+          ty = (vh - natH * zoom) / 2;
+        }
+        applyTransform();
+      }
+
+      function zoomAt(factor, clientX, clientY) {
+        var rect = viewport.getBoundingClientRect();
+        var px = clientX !== undefined ? (clientX - rect.left) : (rect.width / 2);
+        var py = clientY !== undefined ? (clientY - rect.top) : (rect.height / 2);
+        var wx = (px - tx) / zoom;
+        var wy = (py - ty) / zoom;
+        var nextZoom = Math.min(maxZoom, Math.max(minZoom, zoom * factor));
+        zoom = nextZoom;
+        tx = px - wx * zoom;
+        ty = py - wy * zoom;
+        applyTransform();
+      }
+
+      function centerOnPoint(wx, wy, targetZoom) {
+        var vw = viewport.clientWidth || 600;
+        var vh = viewport.clientHeight || 410;
+        if (targetZoom) zoom = Math.min(maxZoom, Math.max(minZoom, targetZoom));
+        tx = (vw / 2) - wx * zoom;
+        ty = (vh / 2) - wy * zoom;
+        applyTransform();
+      }
+
+      viewport.addEventListener("wheel", function (e) {
+        e.preventDefault();
+        var factor = e.deltaY < 0 ? 1.18 : (1 / 1.18);
+        zoomAt(factor, e.clientX, e.clientY);
+      }, { passive: false });
+
+      var isDown = false;
+      var moved = false;
+      var startX = 0;
+      var startY = 0;
+      var origTx = 0;
+      var origTy = 0;
+      var rafId = null;
+
+      viewport.addEventListener("pointerdown", function (e) {
+        if (e.button !== 0 && e.pointerType === "mouse") return;
+        if (e.target.closest && e.target.closest(".cv-sat-hud")) return;
+        isDown = true;
+        moved = false;
+        startX = e.clientX;
+        startY = e.clientY;
+        origTx = tx;
+        origTy = ty;
+        viewport.classList.add("is-dragging");
+      });
+
+      window.addEventListener("pointermove", function (e) {
+        if (!isDown) return;
+        var dx = e.clientX - startX;
+        var dy = e.clientY - startY;
+        if (Math.abs(dx) > 4 || Math.abs(dy) > 4) moved = true;
+        tx = origTx + dx;
+        ty = origTy + dy;
+        if (!rafId) {
+          rafId = requestAnimationFrame(function () {
+            applyTransform();
+            rafId = null;
+          });
+        }
+      });
+
+      function stopDrag() {
+        if (!isDown) return;
+        isDown = false;
+        viewport.classList.remove("is-dragging");
+      }
+      window.addEventListener("pointerup", stopDrag);
+      window.addEventListener("pointercancel", stopDrag);
+
+      if (btnIn) btnIn.addEventListener("click", function () { zoomAt(1.32); });
+      if (btnOut) btnOut.addEventListener("click", function () { zoomAt(1 / 1.32); });
+      if (btnFit) btnFit.addEventListener("click", function () { fitToViewport(false); });
+
+      window.addEventListener("resize", function () { applyTransform(); });
+      setTimeout(function () { fitToViewport(true); }, 30);
+
+      return {
+        wasDragged: function () { return moved; },
+        centerOn: centerOnPoint,
+        fit: fitToViewport
+      };
+    }
+
+    // Visualizador de Agricultura (Campo Verde, MT)
+    var agroViewer = document.querySelector("[data-cv-agro-viewer]");
+    var ivExplorer = document.querySelector("[data-cv-iv-explorer]");
+    if (agroViewer || ivExplorer) {
+      (function () {
+        var lang = (agroViewer && agroViewer.getAttribute("data-lang")) || (ivExplorer && ivExplorer.getAttribute("data-lang")) || "pt";
+        var jsonUrl = (agroViewer && agroViewer.getAttribute("data-json")) || "images/agro/cv-plots-2021.json";
+
+        var cropNames = {
+          pt: { soja: "Soja (1ª safra)", milho: "Milho 2ª safra (sucessão)", algodao: "Algodão 2ª safra (sucessão)" },
+          en: { soja: "Soybean (1st crop)", milho: "2nd-crop corn (succession)", algodao: "2nd-crop cotton (succession)" }
+        };
+        var refNames = {
+          pt: { soja: "Soja / lavoura temporária", milho: "Milho", algodao: "Algodão" },
+          en: { soja: "Soybean / temporary crop", milho: "Corn", algodao: "Cotton" }
+        };
+        var cropColors = {
+          soja: "#5a9a2e",
+          milho: "#d99b26",
+          algodao: "#3b82a6"
+        };
+
+        function ndviToColor(val) {
+          var v = Math.max(0.15, Math.min(0.90, val || 0.5));
+          var t = (v - 0.15) / 0.75;
+          if (t < 0.45) {
+            var u = t / 0.45;
+            var r = Math.round(196 + (220 - 196) * u);
+            var g = Math.round(110 + (186 - 110) * u);
+            var b = Math.round(52 + (62 - 52) * u);
+            return "rgb(" + r + "," + g + "," + b + ")";
+          } else {
+            var u2 = (t - 0.45) / 0.55;
+            var r2 = Math.round(220 + (31 - 220) * u2);
+            var g2 = Math.round(186 + (141 - 186) * u2);
+            var b2 = Math.round(62 + (62 - 62) * u2);
+            return "rgb(" + r2 + "," + g2 + "," + b2 + ")";
+          }
+        }
+
+        var dataset = null;
+        var selectedPlot = null;
+        var mapState = {
+          quarter: "2021q1",
+          colorMode: "gaia",
+          cropFilter: "all",
+          opacity: 0.62
+        };
+        var ivState = {
+          indexName: "NDVI",
+          showSmooth: true,
+          showRaw: true,
+          showDrops: true,
+          showBand: true,
+          hoverIdx: -1
+        };
+
+        var pzInstance = null;
+        var svgGroup = null;
+        var pathElementsById = {};
+
+        // Inicializa mapa se existir
+        if (agroViewer) {
+          var viewport = agroViewer.querySelector(".cv-sat-viewport");
+          var stage = agroViewer.querySelector(".cv-sat-stage");
+          svgGroup = agroViewer.querySelector("[data-cv-plots-group]");
+          pzInstance = initPanZoomStage(viewport, stage, 1400, 880, agroViewer);
+
+          var baseImg = agroViewer.querySelector("[data-cv-base-img]");
+          var badgeEl = agroViewer.querySelector("[data-cv-sat-badge]");
+          var qBtns = agroViewer.querySelectorAll("[data-cv-quarter]");
+          var modeBtns = agroViewer.querySelectorAll("[data-cv-colormode]");
+          var filterBtns = agroViewer.querySelectorAll("[data-cv-cropfilter]");
+          var layerToggles = agroViewer.querySelectorAll("[data-cv-layer-toggle]");
+          var opSlider = agroViewer.querySelector("[data-cv-opacity]");
+          var opVal = agroViewer.querySelector("[data-cv-opacity-val]");
+          var jumpBtn = agroViewer.querySelector("[data-cv-jump-iv]");
+
+          qBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              mapState.quarter = btn.getAttribute("data-cv-quarter");
+              qBtns.forEach(function (b) {
+                var act = b === btn;
+                b.classList.toggle("is-active", act);
+                b.setAttribute("aria-pressed", act ? "true" : "false");
+              });
+              if (baseImg) baseImg.src = "images/agro/cv-rgb-" + mapState.quarter + ".webp";
+              if (badgeEl) badgeEl.textContent = btn.getAttribute("data-badge") || mapState.quarter.toUpperCase();
+              updateMapPolygons();
+            });
+          });
+
+          modeBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              mapState.colorMode = btn.getAttribute("data-cv-colormode");
+              modeBtns.forEach(function (b) {
+                var act = b === btn;
+                b.classList.toggle("is-active", act);
+                b.setAttribute("aria-pressed", act ? "true" : "false");
+              });
+              updateMapPolygons();
+            });
+          });
+
+          filterBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              mapState.cropFilter = btn.getAttribute("data-cv-cropfilter");
+              filterBtns.forEach(function (b) {
+                var act = b === btn;
+                b.classList.toggle("is-active", act);
+                b.setAttribute("aria-pressed", act ? "true" : "false");
+              });
+              updateMapPolygons();
+            });
+          });
+
+          layerToggles.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              var lay = btn.getAttribute("data-cv-layer-toggle");
+              var isOn = btn.classList.toggle("is-active");
+              btn.setAttribute("aria-pressed", isOn ? "true" : "false");
+              var imgLay = agroViewer.querySelector('[data-cv-layer="' + lay + '"]');
+              if (imgLay) imgLay.classList.toggle("is-hidden", !isOn);
+            });
+          });
+
+          if (opSlider) {
+            opSlider.addEventListener("input", function () {
+              mapState.opacity = parseInt(opSlider.value, 10) / 100;
+              if (opVal) opVal.textContent = opSlider.value + "%";
+              updateMapPolygons();
+            });
+          }
+
+          if (jumpBtn && ivExplorer) {
+            jumpBtn.addEventListener("click", function () {
+              ivExplorer.scrollIntoView({ behavior: "smooth", block: "center" });
+            });
+          }
+        }
+
+        function updateMapPolygons() {
+          if (!dataset || !svgGroup) return;
+          dataset.plots.forEach(function (p) {
+            var el = pathElementsById[p.fid];
+            if (!el) return;
+            var fill = "transparent";
+            var fillOp = mapState.opacity;
+            var mismatch = false;
+            if (mapState.colorMode === "gaia") {
+              fill = cropColors[p.crop] || "#5a9a2e";
+            } else if (mapState.colorMode === "ref") {
+              fill = cropColors[p.ref_crop] || "#5a9a2e";
+              mismatch = p.crop !== p.ref_crop;
+            } else if (mapState.colorMode === "ndvi") {
+              var qVal = mapState.quarter === "2021q1" ? p.ndvi_q1 : (mapState.quarter === "2021q2" ? p.ndvi_q2 : p.ndvi_q3);
+              fill = ndviToColor(qVal);
+              fillOp = Math.max(0.68, mapState.opacity);
+            } else if (mapState.colorMode === "outline") {
+              fill = "rgba(255,255,255,0.02)";
+              fillOp = 0.05;
+            }
+            var dimmed = mapState.cropFilter !== "all" && p.crop !== mapState.cropFilter;
+            el.style.fill = fill;
+            el.style.fillOpacity = dimmed ? "0.1" : String(fillOp);
+            el.classList.toggle("is-mismatch", mismatch);
+            el.classList.toggle("is-dimmed", dimmed);
+            el.classList.toggle("is-selected", selectedPlot && selectedPlot.fid === p.fid);
+          });
+        }
+
+        function selectPlotByFid(fid, centerMap) {
+          if (!dataset) return;
+          var found = null;
+          for (var i = 0; i < dataset.plots.length; i++) {
+            if (dataset.plots[i].fid === fid) { found = dataset.plots[i]; break; }
+          }
+          if (!found) found = dataset.plots[0];
+          selectedPlot = found;
+          ivState.hoverIdx = -1;
+
+          updateMapPolygons();
+          if (centerMap && pzInstance && selectedPlot) {
+            pzInstance.centerOn(selectedPlot.cx, selectedPlot.cy, 1.35);
+          }
+
+          // Atualiza detalhes do talhão
+          if (agroViewer && selectedPlot) {
+            var titleEl = agroViewer.querySelector("[data-parcel-title]");
+            var metaEl = agroViewer.querySelector("[data-parcel-meta]");
+            var sarEl = agroViewer.querySelector("[data-parcel-sar]");
+            var refEl = agroViewer.querySelector("[data-parcel-ref]");
+            var ndviEl = agroViewer.querySelector("[data-parcel-ndvi]");
+            var dropsEl = agroViewer.querySelector("[data-parcel-drops]");
+
+            var areaFmt = lang === "en" ? selectedPlot.area_ha.toFixed(1) : selectedPlot.area_ha.toFixed(1).replace(".", ",");
+            if (titleEl) {
+              titleEl.textContent = (lang === "en" ? "Plot " : "Talhão ") + selectedPlot.id + " (" + areaFmt + " ha · Campo Verde, MT)";
+            }
+            if (metaEl) {
+              metaEl.textContent = "FID " + selectedPlot.fid + " · Pico NDVI 1ª safra: " + selectedPlot.ndvi_q1.toFixed(2) + " | 2ª safra: " + selectedPlot.ndvi_q2.toFixed(2);
+            }
+            if (sarEl) sarEl.textContent = cropNames[lang][selectedPlot.crop];
+            if (refEl) {
+              var isErr = selectedPlot.crop !== selectedPlot.ref_crop;
+              refEl.textContent = refNames[lang][selectedPlot.ref_crop] + (isErr ? (lang === "en" ? " (mismatch)" : " (divergente)") : (lang === "en" ? " (concordant)" : " (concordante)"));
+              refEl.classList.toggle("is-error", isErr);
+            }
+            if (ndviEl) ndviEl.textContent = selectedPlot.ndvi_peak.toFixed(2);
+            if (dropsEl) {
+              dropsEl.textContent = selectedPlot.drops + (lang === "en" ? " passes filtered" : " passagens filtradas");
+            }
+          }
+
+          // Atualiza botões de preset e gráfico
+          if (ivExplorer && selectedPlot) {
+            var presetBtns = ivExplorer.querySelectorAll("[data-iv-preset]");
+            presetBtns.forEach(function (b) {
+              var act = b.getAttribute("data-iv-preset") === selectedPlot.fid;
+              b.classList.toggle("is-active", act);
+              b.setAttribute("aria-pressed", act ? "true" : "false");
+            });
+            renderIvCurve();
+          }
+        }
+
+        // Controles da série temporal de índices de vegetação
+        if (ivExplorer) {
+          var idxBtns = ivExplorer.querySelectorAll("[data-iv-index]");
+          var presetBtns = ivExplorer.querySelectorAll("[data-iv-preset]");
+          var toggleBtns = ivExplorer.querySelectorAll("[data-iv-toggle]");
+          var centerBtn = ivExplorer.querySelector("[data-iv-center-map]");
+
+          idxBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              ivState.indexName = btn.getAttribute("data-iv-index");
+              idxBtns.forEach(function (b) {
+                var act = b === btn;
+                b.classList.toggle("is-active", act);
+                b.setAttribute("aria-pressed", act ? "true" : "false");
+              });
+              renderIvCurve();
+            });
+          });
+
+          presetBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              var fid = btn.getAttribute("data-iv-preset");
+              selectPlotByFid(fid, true);
+            });
+          });
+
+          toggleBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              var key = btn.getAttribute("data-iv-toggle");
+              var act = btn.classList.toggle("is-active");
+              btn.setAttribute("aria-pressed", act ? "true" : "false");
+              if (key === "smooth") ivState.showSmooth = act;
+              if (key === "raw") ivState.showRaw = act;
+              if (key === "drops") ivState.showDrops = act;
+              if (key === "band") ivState.showBand = act;
+              renderIvCurve();
+            });
+          });
+
+          if (centerBtn && agroViewer) {
+            centerBtn.addEventListener("click", function () {
+              agroViewer.scrollIntoView({ behavior: "smooth", block: "center" });
+              if (pzInstance && selectedPlot) {
+                pzInstance.centerOn(selectedPlot.cx, selectedPlot.cy, 1.8);
+              }
+            });
+          }
+        }
+
+        function renderIvCurve() {
+          if (!ivExplorer || !dataset || !selectedPlot) return;
+          var idxName = ivState.indexName;
+          var dates = dataset.dates;
+          var n = dates.length;
+          var ser = selectedPlot.series[idxName] || selectedPlot.series.NDVI;
+          var reg = dataset.regional[idxName] || dataset.regional.NDVI;
+          var clearPct = selectedPlot.clear_pct;
+
+          var yMin = idxName === "NDWI" ? -0.65 : 0.0;
+          var yMax = idxName === "NDWI" ? 0.65 : 1.0;
+
+          var x0 = 42, x1 = 656, y0 = 18, y1 = 198;
+          function xAt(i) { return x0 + (i / (n - 1)) * (x1 - x0); }
+          function yAt(v) {
+            var clamped = Math.max(yMin, Math.min(yMax, v));
+            return y1 - ((clamped - yMin) / (yMax - yMin)) * (y1 - y0);
+          }
+
+          var bandEl = ivExplorer.querySelector("[data-iv-svg-band]");
+          var medEl = ivExplorer.querySelector("[data-iv-svg-median]");
+          var rawEl = ivExplorer.querySelector("[data-iv-svg-raw]");
+          var smoothEl = ivExplorer.querySelector("[data-iv-svg-smooth]");
+          var dropsGroup = ivExplorer.querySelector("[data-iv-svg-drops]");
+          var ptsGroup = ivExplorer.querySelector("[data-iv-svg-points]");
+          var yLabels = ivExplorer.querySelectorAll("[data-iv-ylabel]");
+
+          if (yLabels.length === 3) {
+            if (idxName === "NDWI") {
+              yLabels[0].textContent = "+0.6";
+              yLabels[1].textContent = "0.0";
+              yLabels[2].textContent = "-0.6";
+            } else {
+              yLabels[0].textContent = "1.0";
+              yLabels[1].textContent = "0.5";
+              yLabels[2].textContent = "0.0";
+            }
+          }
+
+          // Faixa regional P25 a P75
+          if (bandEl) {
+            if (ivState.showBand && reg) {
+              var topPts = reg.p75.map(function (v, i) { return xAt(i).toFixed(1) + "," + yAt(v).toFixed(1); });
+              var botPts = reg.p25.slice().reverse().map(function (v, revI) {
+                var i = n - 1 - revI;
+                return xAt(i).toFixed(1) + "," + yAt(v).toFixed(1);
+              });
+              bandEl.setAttribute("d", "M " + topPts.join(" L ") + " L " + botPts.join(" L ") + " Z");
+              bandEl.style.display = "";
+            } else {
+              bandEl.style.display = "none";
+            }
+          }
+
+          if (medEl) {
+            if (ivState.showBand && reg) {
+              var mPts = reg.p50.map(function (v, i) { return xAt(i).toFixed(1) + "," + yAt(v).toFixed(1); });
+              medEl.setAttribute("d", "M " + mPts.join(" L "));
+              medEl.style.display = "";
+            } else {
+              medEl.style.display = "none";
+            }
+          }
+
+          if (rawEl) {
+            if (ivState.showRaw) {
+              var rPts = ser.raw.map(function (v, i) { return xAt(i).toFixed(1) + "," + yAt(v).toFixed(1); });
+              rawEl.setAttribute("d", "M " + rPts.join(" L "));
+              rawEl.style.display = "";
+            } else {
+              rawEl.style.display = "none";
+            }
+          }
+
+          if (smoothEl) {
+            if (ivState.showSmooth) {
+              var sPts = ser.smooth.map(function (v, i) { return xAt(i).toFixed(1) + "," + yAt(v).toFixed(1); });
+              smoothEl.setAttribute("d", "M " + sPts.join(" L "));
+              smoothEl.style.display = "";
+            } else {
+              smoothEl.style.display = "none";
+            }
+          }
+
+          // Pontos interativos e descartes por nuvem
+          if (dropsGroup) {
+            dropsGroup.innerHTML = "";
+            if (ivState.showDrops) {
+              for (var i = 0; i < n; i++) {
+                var diff = Math.abs(ser.smooth[i] - ser.raw[i]);
+                var isCloudDrop = (clearPct[i] <= 60 && diff > 0.11) || (ser.smooth[i] - ser.raw[i] > 0.16);
+                if (isCloudDrop) {
+                  var cx = xAt(i).toFixed(1);
+                  var yR = yAt(ser.raw[i]).toFixed(1);
+                  var yS = yAt(ser.smooth[i]).toFixed(1);
+                  var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                  line.setAttribute("x1", cx);
+                  line.setAttribute("y1", yS);
+                  line.setAttribute("x2", cx);
+                  line.setAttribute("y2", yR);
+                  line.setAttribute("stroke", "#d9483b");
+                  line.setAttribute("stroke-width", "2");
+                  line.setAttribute("stroke-dasharray", "3 2");
+                  dropsGroup.appendChild(line);
+
+                  var ring = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                  ring.setAttribute("cx", cx);
+                  ring.setAttribute("cy", yR);
+                  ring.setAttribute("r", "6.5");
+                  ring.setAttribute("fill", "rgba(217, 72, 59, 0.18)");
+                  ring.setAttribute("stroke", "#d9483b");
+                  ring.setAttribute("stroke-width", "1.6");
+                  dropsGroup.appendChild(ring);
+                }
+              }
+            }
+          }
+
+          if (ptsGroup) {
+            ptsGroup.innerHTML = "";
+            for (var j = 0; j < n; j++) {
+              (function (idx) {
+                var cx = xAt(idx).toFixed(1);
+                var valUsed = ivState.showRaw ? ser.raw[idx] : ser.smooth[idx];
+                var cy = yAt(valUsed).toFixed(1);
+                var isCloud = (clearPct[idx] <= 60 && Math.abs(ser.smooth[idx] - ser.raw[idx]) > 0.11) || (ser.smooth[idx] - ser.raw[idx] > 0.16);
+                var c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                c.setAttribute("class", "cv-iv-point");
+                c.setAttribute("cx", cx);
+                c.setAttribute("cy", cy);
+                c.setAttribute("r", idx === ivState.hoverIdx ? "5.5" : "3.8");
+                c.setAttribute("fill", isCloud && ivState.showDrops ? "#d9483b" : "#365902");
+                c.setAttribute("stroke", "#ffffff");
+                c.setAttribute("stroke-width", "1.3");
+                c.addEventListener("mouseenter", function () {
+                  ivState.hoverIdx = idx;
+                  updateIvInspector(idx);
+                });
+                c.addEventListener("click", function () {
+                  ivState.hoverIdx = idx;
+                  updateIvInspector(idx);
+                });
+                ptsGroup.appendChild(c);
+              })(j);
+            }
+          }
+
+          // Cabeçalho do talhão selecionado
+          var activePlotLabel = ivExplorer.querySelector("[data-iv-active-plot]");
+          if (activePlotLabel) {
+            var aFmt = lang === "en" ? selectedPlot.area_ha.toFixed(1) : selectedPlot.area_ha.toFixed(1).replace(".", ",");
+            activePlotLabel.textContent = (lang === "en" ? "Plot " : "Talhão ") + selectedPlot.id + " (" + aFmt + " ha · " + cropNames[lang][selectedPlot.crop] + ")";
+          }
+
+          // Data de foco padrão
+          var defaultIdx = ivState.hoverIdx;
+          if (defaultIdx < 0) {
+            defaultIdx = 4;
+            for (var k = 0; k < n; k++) {
+              if (clearPct[k] <= 50 && (ser.smooth[k] - ser.raw[k] > 0.14)) {
+                defaultIdx = k;
+                break;
+              }
+            }
+          }
+          updateIvInspector(defaultIdx);
+        }
+
+        function updateIvInspector(idx) {
+          if (!ivExplorer || !dataset || !selectedPlot) return;
+          var idxName = ivState.indexName;
+          var ser = selectedPlot.series[idxName] || selectedPlot.series.NDVI;
+          var dStr = dataset.dates[idx] || "";
+          var rawVal = ser.raw[idx];
+          var smVal = ser.smooth[idx];
+          var clr = selectedPlot.clear_pct[idx];
+          var isDrop = (clr <= 60 && Math.abs(smVal - rawVal) > 0.11) || (smVal - rawVal > 0.16);
+
+          var elDate = ivExplorer.querySelector("[data-iv-insp-date]");
+          var elRaw = ivExplorer.querySelector("[data-iv-insp-raw]");
+          var elSmooth = ivExplorer.querySelector("[data-iv-insp-smooth]");
+          var elClear = ivExplorer.querySelector("[data-iv-insp-clear]");
+          var elStatus = ivExplorer.querySelector("[data-iv-insp-status]");
+
+          if (elDate) elDate.textContent = dStr;
+          if (elRaw) elRaw.textContent = rawVal.toFixed(3);
+          if (elSmooth) elSmooth.textContent = smVal.toFixed(3);
+          if (elClear) elClear.textContent = clr + "%";
+          if (elStatus) {
+            if (isDrop) {
+              elStatus.textContent = lang === "en"
+                ? "Residual cloud detected (low clear-sky coverage): spurious drop discarded before reconstructing the continuous curve."
+                : "Nuvem residual detectada (baixa cobertura limpa): queda espúria descartada pelo filtro antes da reconstrução da curva.";
+            } else {
+              elStatus.textContent = lang === "en"
+                ? "Valid satellite pass: clear-sky reflectance preserved in the penalized temporal smoothing."
+                : "Passagem limpa validada: observação preservada na reconstrução contínua do índice espectral.";
+            }
+          }
+        }
+
+        // Carrega dados de talhões e séries temporais de Campo Verde
+        fetch(jsonUrl)
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            dataset = data;
+            if (svgGroup && dataset.plots) {
+              svgGroup.innerHTML = "";
+              dataset.plots.forEach(function (p) {
+                var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                path.setAttribute("class", "cv-plot-path");
+                path.setAttribute("d", p.path);
+                path.setAttribute("data-fid", p.fid);
+                path.addEventListener("click", function (e) {
+                  if (pzInstance && pzInstance.wasDragged()) return;
+                  e.stopPropagation();
+                  selectPlotByFid(p.fid, false);
+                });
+                svgGroup.appendChild(path);
+                pathElementsById[p.fid] = path;
+              });
+            }
+            selectPlotByFid("3622_5102678", false);
+          })
+          .catch(function () {});
+      })();
+    }
+
+    // Visualizador de Floresta (Campo Verde, MT)
+    var forestViewers = document.querySelectorAll("[data-cv-forest-viewer]");
+    for (var fv = 0; fv < forestViewers.length; fv++) {
+      (function (root) {
+        var viewport = root.querySelector(".cv-sat-viewport");
+        var stage = root.querySelector(".cv-sat-stage");
+        if (!viewport || !stage) return;
+        initPanZoomStage(viewport, stage, 1400, 880, root);
+
+        var baseImg = root.querySelector("[data-cv-f-base]");
+        var predImg = root.querySelector('[data-cv-f-layer="pred"]');
+        var badgeEl = root.querySelector("[data-cv-sat-badge]");
+        var qBtns = root.querySelectorAll("[data-cv-f-quarter]");
+        var clipBtns = root.querySelectorAll("[data-cv-f-clip]");
+        var layBtns = root.querySelectorAll("[data-cv-f-toggle]");
+        var opSlider = root.querySelector("[data-cv-f-opacity]");
+        var opVal = root.querySelector("[data-cv-f-opacity-val]");
+
+        var fState = {
+          quarter: "2023q3",
+          clip: "completo",
+          opacity: 0.78
+        };
+
+        function syncForestLayers() {
+          if (baseImg) baseImg.src = "images/floresta/cv-rgb-" + fState.quarter + ".webp";
+          if (predImg) {
+            if (fState.clip === "car" && fState.quarter === "2023q3") {
+              predImg.src = "images/floresta/cv-pred-car-2023q3.webp";
+            } else {
+              predImg.src = "images/floresta/cv-pred-completo-" + fState.quarter + ".webp";
+            }
+            predImg.style.opacity = String(fState.opacity);
+          }
+          var incImg = root.querySelector('[data-cv-f-layer="incerteza"]');
+          if (incImg) incImg.style.opacity = String(fState.opacity);
+          var rotImg = root.querySelector('[data-cv-f-layer="rotulo"]');
+          if (rotImg) rotImg.style.opacity = String(fState.opacity);
+        }
+
+        qBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            fState.quarter = btn.getAttribute("data-cv-f-quarter");
+            qBtns.forEach(function (b) {
+              var act = b === btn;
+              b.classList.toggle("is-active", act);
+              b.setAttribute("aria-pressed", act ? "true" : "false");
+            });
+            if (badgeEl) badgeEl.textContent = btn.getAttribute("data-badge") || fState.quarter.toUpperCase();
+            syncForestLayers();
+          });
+        });
+
+        clipBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            fState.clip = btn.getAttribute("data-cv-f-clip");
+            clipBtns.forEach(function (b) {
+              var act = b === btn;
+              b.classList.toggle("is-active", act);
+              b.setAttribute("aria-pressed", act ? "true" : "false");
+            });
+            syncForestLayers();
+          });
+        });
+
+        layBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var lay = btn.getAttribute("data-cv-f-toggle");
+            var isOn = btn.classList.toggle("is-active");
+            btn.setAttribute("aria-pressed", isOn ? "true" : "false");
+            var imgEl = root.querySelector('[data-cv-f-layer="' + lay + '"]');
+            if (imgEl) imgEl.classList.toggle("is-hidden", !isOn);
+          });
+        });
+
+        if (opSlider) {
+          opSlider.addEventListener("input", function () {
+            fState.opacity = parseInt(opSlider.value, 10) / 100;
+            if (opVal) opVal.textContent = opSlider.value + "%";
+            syncForestLayers();
+          });
+        }
+
+        syncForestLayers();
+      })(forestViewers[fv]);
     }
   });
 </script>
+
 <script>
   // Envio do formulário de contato ("Contato" / "Contact").
   //
@@ -1892,7 +3102,7 @@ and institutional documents, in contractual analysis and assessment projects.</p
       atualizarContador();
     }
 
-    // --- Lista de opções própria -------------------------------------------
+    // Lista de opções própria
     // O <select> nativo continua no formulário (envio e quem está sem JS), mas
     // fica escondido; aqui ele é trocado por botão + lista, iguais em qualquer
     // sistema. O nativo só é escondido quando este código roda com sucesso.

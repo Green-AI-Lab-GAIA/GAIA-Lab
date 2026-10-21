@@ -86,7 +86,8 @@ def extensao(tipo: str, dados: bytes) -> str:
         return ".webp"
     if dados[:4] in (b"GIF8",):
         return ".gif"
-    if dados.lstrip()[:4] == b"<svg":
+    corpo = dados.lstrip()
+    if corpo.startswith(b"<svg") or (corpo.startswith(b"<?xml") and b"<svg" in corpo[:500]):
         return ".svg"
     raise ErroDeImagem(f"o que chegou nao parece imagem (tipo {tipo or 'desconhecido'})")
 
@@ -102,7 +103,9 @@ def baixar(url: str, item: str) -> tuple[bytes, str]:
         raise ErroDeImagem(f"{item}: o servidor respondeu {erro.code}") from erro
     except urllib.error.URLError as erro:
         raise ErroDeImagem(f"{item}: nao consegui alcancar o endereco ({erro.reason})") from erro
-    if dados.lstrip()[:1] == b"<" or "text/html" in tipo:
+    corpo = dados.lstrip()
+    eh_svg = corpo.startswith(b"<svg") or (corpo.startswith(b"<?xml") and b"<svg" in corpo[:500])
+    if not eh_svg and (corpo.startswith(b"<") or "text/html" in tipo):
         raise ErroDeImagem(
             f"{item}: o Drive devolveu uma pagina em vez da imagem, sinal de que o "
             "arquivo nao esta publico. Compartilhe a pasta de respostas do formulario "
@@ -160,19 +163,32 @@ def baixar_tabela(tabela: str, seco: bool, registro: dict) -> tuple[int, int, bo
                 aviso(f"{item}: baixaria {valor}")
                 baixadas += 1
                 continue
-            dados, tipo = baixar(endereco_de_download(valor, item), item)
-            sufixo = extensao(tipo, dados)
-            destino = RAIZ / f"{prefixo}{sufixo}"
-            destino.parent.mkdir(parents=True, exist_ok=True)
-            destino.write_bytes(dados)
-            for antigo in antigos:
-                if antigo != f"{prefixo}{sufixo}" and (RAIZ / antigo).exists():
-                    (RAIZ / antigo).unlink()
-                    registro.pop(antigo, None)
-            registro[f"{prefixo}{sufixo}"] = {"url": valor, "bytes": len(dados)}
-            mudou = True
-            baixadas += 1
-            aviso(f"{item}: {len(dados) // 1024} KB em {prefixo}{sufixo}")
+            try:
+                dados, tipo = baixar(endereco_de_download(valor, item), item)
+                sufixo = extensao(tipo, dados)
+                destino = RAIZ / f"{prefixo}{sufixo}"
+                destino.parent.mkdir(parents=True, exist_ok=True)
+                destino.write_bytes(dados)
+                for antigo in antigos:
+                    if antigo != f"{prefixo}{sufixo}" and (RAIZ / antigo).exists():
+                        (RAIZ / antigo).unlink()
+                        registro.pop(antigo, None)
+                outros_antigos = [
+                    p for p in (RAIZ / pasta).glob(f"{linha['slug']}.*")
+                    if p != destino and p.is_file()
+                ] if not base else [
+                    p for p in (RAIZ / f"{pasta}/{linha['slug']}").glob(f"{base}.*")
+                    if p != destino and p.is_file()
+                ]
+                for p in outros_antigos:
+                    p.unlink(missing_ok=True)
+                    registro.pop(str(p.relative_to(RAIZ)), None)
+                registro[f"{prefixo}{sufixo}"] = {"url": valor, "bytes": len(dados)}
+                mudou = True
+                baixadas += 1
+                aviso(f"{item}: {len(dados) // 1024} KB em {prefixo}{sufixo}")
+            except (ErroDeImagem, Exception) as erro:
+                aviso(f"aviso: {item}: falha ao baixar ({erro}), pulando...")
     return baixadas, puladas, mudou
 
 

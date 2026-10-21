@@ -147,7 +147,7 @@ class ErroDeConteudo(Exception):
     """Falha de validacao numa tabela, dizendo a linha e a pergunta do problema."""
 
 
-# ------------------------------------------------------------------- utilidades
+# Utilidades
 
 def normalizar(texto: str) -> str:
     """Minuscula, sem acento, sem pontuacao: 'Formação' e 'formacao' sao iguais."""
@@ -282,7 +282,7 @@ def por_extenso(valor: str, lang: str, com_dia: bool) -> str:
     return f"{dia} de {nome} de {ano}" if lang == "pt" else f"{nome} {dia}, {ano}"
 
 
-# ------------------------------------------------------------------ leitura
+# Leitura
 
 def mapa_de_colunas(tabela: str, cabecalhos: list[str]) -> dict[str, str]:
     """De qual cabecalho da planilha sai cada chave do esquema."""
@@ -499,7 +499,7 @@ def texto(linha: dict, chave: str, lang: str) -> str:
 
 
 
-# ---------------------------------------------------------------- linha de comando
+# Linha de comando
 
 def perguntas(tabelas_: list[str]) -> int:
     """Os textos que a planilha tem de usar. Quem monta a planilha copia daqui."""

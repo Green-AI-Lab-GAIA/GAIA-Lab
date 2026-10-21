@@ -128,17 +128,17 @@ toc: false
       <div><div class="stat-num" data-count="359596" data-thousands=".">0</div><div class="stat-label">Talhões mapeados</div></div>
       <div><div class="stat-num" data-count="897">0</div><div class="stat-label">Municípios</div></div>
       <div><div class="stat-num" data-count="5">0</div><div class="stat-label">Estados</div></div>
-      <div><div class="stat-num">2020 a 2025</div><div class="stat-label">Período dos dados</div></div>
+      <div><div class="stat-num">2020 a 2026</div><div class="stat-label">Período dos dados</div></div>
     </div>
 
     <div class="hscroll-wrap reveal">
       <button class="hscroll-btn prev" aria-label="Etapa anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
       <div class="hscroll">
-        <article class="hs-card"><div class="hs-step">01</div><div class="hs-kicker">Etapa</div><div class="hs-title">Segmentação de talhões</div><div class="hs-text">Delimitação de cada área produtiva a partir de imagens de satélite.</div></article>
-        <article class="hs-card"><div class="hs-step">02</div><div class="hs-kicker">Etapa</div><div class="hs-title">Classificação de culturas</div><div class="hs-text">Soja, milho e algodão identificados talhão por talhão, safra por safra.</div></article>
-        <article class="hs-card"><div class="hs-step">03</div><div class="hs-kicker">Etapa</div><div class="hs-title">Séries de satélite e clima</div><div class="hs-text">17 índices de vegetação e 10 séries climáticas somam 1.670 valores por talhão e safra.</div></article>
-        <article class="hs-card"><div class="hs-step">04</div><div class="hs-kicker">Etapa</div><div class="hs-title">Agrupamento por semelhança</div><div class="hs-text">Talhões reunidos por comportamento espectral e climático.</div></article>
-        <article class="hs-card"><div class="hs-step">05</div><div class="hs-kicker">Etapa</div><div class="hs-title">Caracterização de risco</div><div class="hs-text">Cada grupo é descrito por manejo, produtividade e ocorrência de sinistro.</div></article>
+        <article class="hs-card"><div class="hs-step">01</div><div class="hs-kicker">Etapa</div><div class="hs-title">Ingestão multimodal</div><div class="hs-text">Aquisição contínua de constelações orbitais (óptico e radar SAR), reanálises climáticas e acervos documentais.</div></article>
+        <article class="hs-card"><div class="hs-step">02</div><div class="hs-kicker">Etapa</div><div class="hs-title">Harmonização espaço-temporal</div><div class="hs-text">Correção atmosférica, filtragem de nuvens e alinhamento de séries temporais de múltiplos anos em escala territorial.</div></article>
+        <article class="hs-card"><div class="hs-step">03</div><div class="hs-kicker">Etapa</div><div class="hs-title">Modelagem e redes profundas</div><div class="hs-text">Segmentação semântica, modelos de fundação geoespacial e modelos de linguagem para representação de fenômenos complexos.</div></article>
+        <article class="hs-card"><div class="hs-step">04</div><div class="hs-kicker">Etapa</div><div class="hs-title">Auditoria e validação oficial</div><div class="hs-text">Confrontação sistemática com dados de campo do INPE (DETER e PRODES), zoneamento ZARC, MapBiomas e métricas de incerteza.</div></article>
+        <article class="hs-card"><div class="hs-step">05</div><div class="hs-kicker">Etapa</div><div class="hs-title">Diagnósticos acionáveis</div><div class="hs-text">Geração de indicadores de risco, ferramentas de monitoramento e código aberto voltados à tomada de decisão socioambiental.</div></article>
       </div>
       <button class="hscroll-btn next" aria-label="Próxima etapa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 5 7 7-7 7"/></svg></button>
     </div>

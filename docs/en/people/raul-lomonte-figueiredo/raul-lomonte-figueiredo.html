@@ -78,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="icon" type="image/png" href="../../icon/favicon-light.png">
 
 
-<link rel="stylesheet" href="../../styles.css?v=dafbb634">
+<link rel="stylesheet" href="../../styles.css?v=67fc8a9b">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -1394,10 +1394,8 @@ ul.task-list li input[type="checkbox"] {
   });
 </script>
 <script>
-  // Exploradores das paginas de pesquisa, sempre sobre imagens ja renderizadas no
-  // repositorio: nada e calculado nem buscado no navegador, e as imagens carregam
-  // sob demanda. [data-scrub] percorre uma sequencia (trimestres) com um slider;
-  // [data-explorer] troca entre as camadas da mesma cena.
+  // Exploradores das paginas de pesquisa: combinam mapas ja renderizados no
+  // repositorio com graficos SVG interativos de proposito unico intercalados ao texto.
   document.addEventListener("DOMContentLoaded", function () {
     var reduzido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -1405,7 +1403,7 @@ ul.task-list li input[type="checkbox"] {
       if (url) { var im = new Image(); im.src = url; }
     }
 
-    // ---------------------------------------------------------------- scrubber
+    // Scrubber trimestral
     var scrubbers = document.querySelectorAll("[data-scrub]");
     for (var s = 0; s < scrubbers.length; s++) {
       (function (raiz) {
@@ -1466,7 +1464,7 @@ ul.task-list li input[type="checkbox"] {
       })(scrubbers[s]);
     }
 
-    // --------------------------------------------------------------- camadas
+    // Seletor de camadas pre-renderizadas
     var exploradores = document.querySelectorAll("[data-explorer]");
     for (var e = 0; e < exploradores.length; e++) {
       (function (raiz) {
@@ -1500,37 +1498,1128 @@ ul.task-list li input[type="checkbox"] {
       })(exploradores[e]);
     }
 
-    // --------------------------------------------------------------- cinema interativo da floresta
-    var cinemas = document.querySelectorAll(".forest-cinema-wrap");
-    for (var c = 0; c < cinemas.length; c++) {
-      (function (wrap) {
-        var botoes = wrap.querySelectorAll(".cinema-btn");
-        var paineis = wrap.querySelectorAll(".cinema-pane");
-
-        botoes.forEach(function (btn) {
+    // Seletor generico de abas/paineis ([data-tab-group])
+    var tabGroups = document.querySelectorAll("[data-tab-group]");
+    for (var tg = 0; tg < tabGroups.length; tg++) {
+      (function (group) {
+        var btns = group.querySelectorAll("[data-tab-target]");
+        var panes = group.querySelectorAll("[data-tab-pane]");
+        btns.forEach(function (btn) {
           btn.addEventListener("click", function () {
-            var alvo = btn.getAttribute("data-cinema-tab");
-            botoes.forEach(function (b) {
-              var ativo = b === btn;
-              b.classList.toggle("active", ativo);
-              b.setAttribute("aria-selected", ativo ? "true" : "false");
+            var target = btn.getAttribute("data-tab-target");
+            btns.forEach(function (b) {
+              var active = b === btn;
+              b.classList.toggle("is-active", active);
+              b.setAttribute("aria-selected", active ? "true" : "false");
             });
-            paineis.forEach(function (p) {
-              var ativo = p.id === "pane-" + alvo;
-              p.classList.toggle("active", ativo);
-              if (ativo) {
-                p.querySelectorAll("img[data-src]").forEach(function (im) {
-                  im.src = im.getAttribute("data-src");
-                  im.removeAttribute("data-src");
-                });
-              }
+            panes.forEach(function (p) {
+              var active = p.getAttribute("data-tab-pane") === target;
+              p.classList.toggle("is-active", active);
+              p.hidden = !active;
             });
           });
         });
-      })(cinemas[c]);
+      })(tabGroups[tg]);
+    }
+
+    // Grafico 1 (Agricultura): Classificacao de culturas por talhao (GAIA Lab vs referencia)
+    var cropExplorers = document.querySelectorAll("[data-crop-explorer]");
+    for (var ce = 0; ce < cropExplorers.length; ce++) {
+      (function (root) {
+        var lang = root.getAttribute("data-lang") || "pt";
+        var modeBtns = root.querySelectorAll("[data-crop-mode]");
+        var filterBtns = root.querySelectorAll("[data-crop-filter]");
+        var polygons = root.querySelectorAll(".parcel-poly");
+        var detailTitle = root.querySelector("[data-parcel-title]");
+        var detailMeta = root.querySelector("[data-parcel-meta]");
+        var detailSar = root.querySelector("[data-parcel-sar]");
+        var detailRef = root.querySelector("[data-parcel-ref]");
+
+        var currentMode = "gaia";
+        var currentFilter = "all";
+
+        function updatePolygons() {
+          polygons.forEach(function (poly) {
+            var trueCrop = poly.getAttribute("data-true-crop");
+            var refCrop = poly.getAttribute("data-ref-crop");
+            var shownCrop = currentMode === "gaia" ? trueCrop : refCrop;
+            poly.setAttribute("data-shown-crop", shownCrop);
+            var mismatch = currentMode === "ref" && trueCrop !== refCrop;
+            poly.classList.toggle("is-mismatch", mismatch);
+            var dimmed = currentFilter !== "all" && trueCrop !== currentFilter;
+            poly.classList.toggle("is-dimmed", dimmed);
+          });
+        }
+
+        function selectParcel(poly) {
+          polygons.forEach(function (p) { p.classList.remove("is-selected"); });
+          poly.classList.add("is-selected");
+          var id = poly.getAttribute("data-parcel-id");
+          var area = poly.getAttribute("data-area");
+          var cycle = poly.getAttribute("data-cycle") || "";
+          var gaiaLabel = poly.getAttribute("data-gaia-label");
+          var refLabel = poly.getAttribute("data-ref-label");
+          var trueCrop = poly.getAttribute("data-true-crop");
+          var refCrop = poly.getAttribute("data-ref-crop");
+          if (detailTitle) {
+            detailTitle.textContent = (lang === "en" ? "Plot " : "Talhão ") + id + " (" + area + " ha)";
+          }
+          if (detailMeta) detailMeta.textContent = cycle;
+          if (detailSar) detailSar.textContent = gaiaLabel;
+          if (detailRef) {
+            detailRef.textContent = refLabel;
+            detailRef.classList.toggle("is-error", trueCrop !== refCrop);
+          }
+        }
+
+        modeBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            currentMode = btn.getAttribute("data-crop-mode");
+            modeBtns.forEach(function (b) {
+              var active = b === btn;
+              b.classList.toggle("is-active", active);
+              b.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+            updatePolygons();
+          });
+        });
+
+        filterBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            currentFilter = btn.getAttribute("data-crop-filter");
+            filterBtns.forEach(function (b) {
+              var active = b === btn;
+              b.classList.toggle("is-active", active);
+              b.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+            updatePolygons();
+          });
+        });
+
+        polygons.forEach(function (poly) {
+          poly.addEventListener("click", function () { selectParcel(poly); });
+        });
+
+        updatePolygons();
+        var initial = root.querySelector(".parcel-poly.is-selected") || polygons[0];
+        if (initial) selectParcel(initial);
+      })(cropExplorers[ce]);
+    }
+
+    // Grafico 3 (Agricultura): Deteccao de inicio/fim de safra (SOS/POS/EOS) e leitura de risco na vizinhanca
+    var phenoExplorers = document.querySelectorAll("[data-pheno-explorer]");
+    for (var pe = 0; pe < phenoExplorers.length; pe++) {
+      (function (root) {
+        var btns = root.querySelectorAll("[data-pheno-mode]");
+        var targetLine = root.querySelector(".pheno-target-line");
+        var envArea = root.querySelector(".pheno-env-area");
+        var envMean = root.querySelector(".pheno-env-mean");
+        var sosGroup = root.querySelector(".pheno-markers-group");
+        var neighbors = root.querySelectorAll(".neighbor-cell");
+        var targetCell = root.querySelector(".neighbor-target-cell");
+        var badge = root.querySelector("[data-pheno-badge]");
+        var diagnosis = root.querySelector("[data-pheno-diagnosis]");
+        var sosText = root.querySelector("[data-pheno-sos]");
+        var posText = root.querySelector("[data-pheno-pos]");
+        var eosText = root.querySelector("[data-pheno-eos]");
+
+        var states = {
+          safra: {
+            target: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,88 C 246,52 268,32 290,30 C 312,32 330,76 346,108 L 358,116",
+            envArea: "M 30,114 C 52,112 68,96 82,70 C 98,34 118,18 140,16 C 162,18 180,60 196,96 C 206,104 216,100 228,80 C 246,44 268,24 290,22 C 312,24 330,68 346,100 L 358,110 L 358,122 L 346,116 C 330,86 312,42 290,40 C 268,42 246,62 228,96 C 216,114 206,118 196,112 C 180,76 162,34 140,32 C 118,34 98,52 82,86 C 68,108 52,120 30,122 Z",
+            envMean: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,88 C 246,52 268,32 290,30 C 312,32 330,76 346,108 L 358,116",
+            showMarkers: true,
+            targetState: "healthy",
+            neighborState: "healthy",
+            targetColor: "#365902"
+          },
+          operacional: {
+            target: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,95 C 246,84 268,88 290,96 C 312,104 330,112 346,116 L 358,118",
+            envArea: "M 30,114 C 52,112 68,96 82,70 C 98,34 118,18 140,16 C 162,18 180,60 196,96 C 206,104 216,100 228,80 C 246,44 268,24 290,22 C 312,24 330,68 346,100 L 358,110 L 358,122 L 346,116 C 330,86 312,42 290,40 C 268,42 246,62 228,96 C 216,114 206,118 196,112 C 180,76 162,34 140,32 C 118,34 98,52 82,86 C 68,108 52,120 30,122 Z",
+            envMean: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,88 C 246,52 268,32 290,30 C 312,32 330,76 346,108 L 358,116",
+            showMarkers: true,
+            targetState: "stressed",
+            neighborState: "healthy",
+            targetColor: "#c85a32"
+          },
+          sistemico: {
+            target: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,94 C 246,78 268,74 290,82 C 312,92 330,108 346,115 L 358,118",
+            envArea: "M 30,114 C 52,112 68,96 82,70 C 98,34 118,18 140,16 C 162,18 180,60 196,96 C 206,104 216,100 228,86 C 246,70 268,66 290,74 C 312,84 330,100 346,110 L 358,114 L 358,124 L 346,120 C 330,114 312,100 290,90 C 268,82 246,86 228,102 C 216,114 206,118 196,112 C 180,76 162,34 140,32 C 118,34 98,52 82,86 C 68,108 52,120 30,122 Z",
+            envMean: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,94 C 246,78 268,74 290,82 C 312,92 330,108 346,115 L 358,118",
+            showMarkers: true,
+            targetState: "stressed",
+            neighborState: "stressed",
+            targetColor: "#c85a32"
+          }
+        };
+
+        btns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var mode = btn.getAttribute("data-pheno-mode");
+            var st = states[mode];
+            if (!st) return;
+            btns.forEach(function (b) {
+              var active = b === btn;
+              b.classList.toggle("is-active", active);
+              b.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+            if (targetLine) {
+              targetLine.setAttribute("d", st.target);
+              targetLine.setAttribute("stroke", st.targetColor);
+            }
+            if (envArea) envArea.setAttribute("d", st.envArea);
+            if (envMean) envMean.setAttribute("d", st.envMean);
+            if (sosGroup) sosGroup.style.opacity = st.showMarkers ? "1" : "0.35";
+            if (targetCell) targetCell.setAttribute("data-health", st.targetState);
+            neighbors.forEach(function (cell) {
+              cell.setAttribute("data-health", st.neighborState);
+            });
+            if (badge) badge.textContent = btn.getAttribute("data-badge-text") || "";
+            if (diagnosis) diagnosis.textContent = btn.getAttribute("data-diag-text") || "";
+            if (sosText) sosText.textContent = btn.getAttribute("data-sos-label") || "";
+            if (posText) posText.textContent = btn.getAttribute("data-pos-label") || "";
+            if (eosText) eosText.textContent = btn.getAttribute("data-eos-label") || "";
+          });
+        });
+      })(phenoExplorers[pe]);
+    }
+
+    // Grafico 4 (Agricultura): Simulador de estoque de macronutrientes NPK
+    var npkSims = document.querySelectorAll("[data-npk-sim]");
+    for (var ns = 0; ns < npkSims.length; ns++) {
+      (function (root) {
+        var lang = root.getAttribute("data-lang") || "pt";
+        var cropBtns = root.querySelectorAll("[data-npk-crop]");
+        var cutBtns = root.querySelectorAll("[data-npk-cut]");
+        var soilBtns = root.querySelectorAll("[data-npk-soil]");
+        var ruleBtns = root.querySelectorAll("[data-npk-rule]");
+
+        var yieldLine = root.querySelector(".npk-yield-line");
+        var stockLine = root.querySelector(".npk-stock-line");
+        var yieldDots = root.querySelectorAll(".npk-yield-dot");
+        var stockDots = root.querySelectorAll(".npk-stock-dot");
+        var valEndYield = root.querySelector("[data-npk-end-yield]");
+        var valEndStock = root.querySelector("[data-npk-end-stock]");
+        var calloutText = root.querySelector("[data-npk-callout]");
+
+        var state = {
+          crop: "soja",
+          cut: "N",
+          soil: "alto",
+          rule: "defensavel"
+        };
+
+        var baseProfiles = {
+          soja: {
+            N:   { alto: [100, 99, 99, 98, 98], baixo: [100, 98, 97, 96, 95], stockAlto: [100, 96, 93, 90, 88], stockBaixo: [65, 62, 59, 57, 55] },
+            P:   { alto: [100, 99, 95, 88, 79], baixo: [100, 86, 74, 64, 56], stockAlto: [100, 82, 66, 52, 40], stockBaixo: [55, 38, 26, 18, 12] },
+            NPK: { alto: [100, 98, 91, 80, 68], baixo: [100, 81, 65, 52, 43], stockAlto: [100, 78, 59, 44, 32], stockBaixo: [55, 34, 21, 14, 9] }
+          },
+          milho: {
+            N:   { alto: [100, 94, 82, 68, 55], baixo: [100, 76, 58, 45, 36], stockAlto: [100, 74, 53, 38, 27], stockBaixo: [55, 32, 19, 12, 8] },
+            P:   { alto: [100, 98, 92, 83, 73], baixo: [100, 84, 71, 60, 51], stockAlto: [100, 80, 63, 49, 38], stockBaixo: [55, 37, 25, 17, 11] },
+            NPK: { alto: [100, 92, 76, 59, 45], baixo: [100, 70, 50, 36, 27], stockAlto: [100, 70, 48, 32, 21], stockBaixo: [55, 29, 16, 10, 6] }
+          },
+          algodao: {
+            N:   { alto: [100, 95, 85, 73, 61], baixo: [100, 79, 63, 50, 40], stockAlto: [100, 77, 57, 42, 31], stockBaixo: [58, 35, 22, 14, 9] },
+            P:   { alto: [100, 98, 93, 84, 75], baixo: [100, 86, 73, 62, 53], stockAlto: [100, 81, 65, 51, 39], stockBaixo: [58, 39, 27, 18, 12] },
+            NPK: { alto: [100, 93, 79, 63, 49], baixo: [100, 73, 53, 39, 29], stockAlto: [100, 72, 50, 34, 23], stockBaixo: [58, 31, 18, 11, 7] }
+          }
+        };
+
+        var xs = [45, 115, 185, 255, 325];
+        function yCoord(val) {
+          return Math.round(132 - (val / 100) * 110);
+        }
+
+        function explain(c, cut, soil, rule) {
+          if (lang === "en") {
+            if (c === "soja" && cut === "N") {
+              return "Crop biology inside the model: cutting mineral nitrogen barely reduces Brazilian soybean yield because biological nitrogen fixation supplies nearly all the plant's demand. A model treating N, P, and K symmetrically would fail here.";
+            }
+            if (soil === "alto") {
+              return "High-stock soil acts as a buffer: in the first seasons, plants draw on accumulated soil reserves before productivity drops sharply. Under the " + (rule === "pessimista" ? "pessimistic (multiplicative)" : "most defensible") + " combination rule, year-5 yield reaches " + valEndYield.textContent + ".";
+            }
+            return "Low-stock soil responds in the very first crop season: without accumulated reserves in the soil profile, cutting " + cut + " immediately translates into yield loss.";
+          } else {
+            if (c === "soja" && cut === "N") {
+              return "Biologia da cultura no modelo: cortar nitrogênio mineral quase não derruba a produtividade da soja brasileira, pois a fixação biológica supre a maior parte da demanda da planta. Um modelo que tratasse N, P e K como insumos simétricos erraria essa resposta.";
+            }
+            if (soil === "alto") {
+              return "Solo com estoque alto amortece o corte inicial: nas primeiras safras a planta consome a reserva acumulada no perfil antes de a produção cair com força. Pela regra " + (rule === "pessimista" ? "pessimista (multiplicativa)" : "mais defensável") + ", a produtividade no 5º ano chega a " + valEndYield.textContent + ".";
+            }
+            return "Solo pobre responde já na primeira safra: sem reserva acumulada no solo para amortecer a redução de adubo, o corte de " + cut + " derruba a produtividade imediatamente.";
+          }
+        }
+
+        function renderNpk() {
+          var prof = baseProfiles[state.crop][state.cut];
+          var rawYield = state.soil === "alto" ? prof.alto.slice() : prof.baixo.slice();
+          var rawStock = state.soil === "alto" ? prof.stockAlto.slice() : prof.stockBaixo.slice();
+
+          if (state.rule === "pessimista" && state.cut === "NPK") {
+            for (var i = 1; i < rawYield.length; i++) {
+              rawYield[i] = Math.max(18, rawYield[i] - (i * 3));
+            }
+          }
+
+          var yPts = rawYield.map(function (v, idx) { return xs[idx] + "," + yCoord(v); });
+          var sPts = rawStock.map(function (v, idx) { return xs[idx] + "," + yCoord(v); });
+
+          if (yieldLine) yieldLine.setAttribute("points", yPts.join(" "));
+          if (stockLine) stockLine.setAttribute("points", sPts.join(" "));
+
+          yieldDots.forEach(function (d, idx) {
+            d.setAttribute("cx", xs[idx]);
+            d.setAttribute("cy", yCoord(rawYield[idx]));
+          });
+          stockDots.forEach(function (d, idx) {
+            d.setAttribute("cx", xs[idx]);
+            d.setAttribute("cy", yCoord(rawStock[idx]));
+          });
+
+          if (valEndYield) valEndYield.textContent = rawYield[4] + "%";
+          if (valEndStock) valEndStock.textContent = rawStock[4] + "%";
+          if (calloutText) calloutText.textContent = explain(state.crop, state.cut, state.soil, state.rule);
+        }
+
+        function bindGroup(btns, attr, key) {
+          btns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              state[key] = btn.getAttribute(attr);
+              btns.forEach(function (b) {
+                var active = b === btn;
+                b.classList.toggle("is-active", active);
+                b.setAttribute("aria-pressed", active ? "true" : "false");
+              });
+              renderNpk();
+            });
+          });
+        }
+
+        bindGroup(cropBtns, "data-npk-crop", "crop");
+        bindGroup(cutBtns, "data-npk-cut", "cut");
+        bindGroup(soilBtns, "data-npk-soil", "soil");
+        bindGroup(ruleBtns, "data-npk-rule", "rule");
+        renderNpk();
+      })(npkSims[ns]);
+    }
+
+    // Explorador de ameacas climaticas FGV CERI
+    var ceriExplorers = document.querySelectorAll("[data-ceri-explorer]");
+    for (var ce2 = 0; ce2 < ceriExplorers.length; ce2++) {
+      (function (root) {
+        var threatBtns = root.querySelectorAll("[data-ceri-threat]");
+        var scenBtns = root.querySelectorAll("[data-ceri-scen]");
+        var segments = root.querySelectorAll(".grid-seg-bar");
+        var segVals = root.querySelectorAll(".grid-seg-val");
+        var titleEl = root.querySelector("[data-ceri-title]");
+        var methodEl = root.querySelector("[data-ceri-method]");
+        var indicatorEl = root.querySelector("[data-ceri-indicator]");
+
+        var state = { threat: "ventos", scen: "ssp245" };
+
+        var data = {
+          ventos: {
+            hist:   [28, 42, 35, 58, 49, 31],
+            ssp245: [39, 58, 48, 76, 67, 44],
+            ssp585: [52, 74, 63, 92, 84, 59]
+          },
+          tempestades: {
+            hist:   [45, 52, 61, 48, 39, 34],
+            ssp245: [62, 71, 82, 66, 54, 47],
+            ssp585: [78, 88, 96, 81, 69, 61]
+          },
+          temperatura: {
+            hist:   [32, 38, 44, 51, 47, 36],
+            ssp245: [54, 63, 72, 81, 75, 58],
+            ssp585: [76, 85, 93, 98, 91, 79]
+          },
+          incendios: {
+            hist:   [22, 35, 64, 71, 48, 25],
+            ssp245: [36, 54, 83, 89, 66, 38],
+            ssp585: [51, 72, 95, 99, 84, 52]
+          },
+          chuva: {
+            hist:   [48, 55, 39, 33, 58, 62],
+            ssp245: [64, 73, 52, 45, 76, 81],
+            ssp585: [82, 91, 68, 59, 92, 96]
+          }
+        };
+
+        function updateCeri() {
+          var activeBtn = root.querySelector('[data-ceri-threat="' + state.threat + '"]');
+          if (activeBtn) {
+            if (titleEl) titleEl.textContent = activeBtn.getAttribute("data-title") || "";
+            if (methodEl) methodEl.textContent = activeBtn.getAttribute("data-method") || "";
+            if (indicatorEl) indicatorEl.textContent = activeBtn.getAttribute("data-indicator") || "";
+          }
+          var vals = (data[state.threat] && data[state.threat][state.scen]) || [50, 50, 50, 50, 50, 50];
+          segments.forEach(function (bar, idx) {
+            var v = vals[idx] || 40;
+            bar.style.height = v + "%";
+            bar.setAttribute("data-level", v >= 75 ? "high" : (v >= 50 ? "med" : "low"));
+            if (segVals[idx]) segVals[idx].textContent = v + "/100";
+          });
+        }
+
+        threatBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            state.threat = btn.getAttribute("data-ceri-threat");
+            threatBtns.forEach(function (b) {
+              var active = b === btn;
+              b.classList.toggle("is-active", active);
+              b.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+            updateCeri();
+          });
+        });
+
+        scenBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            state.scen = btn.getAttribute("data-ceri-scen");
+            scenBtns.forEach(function (b) {
+              var active = b === btn;
+              b.classList.toggle("is-active", active);
+              b.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+            updateCeri();
+          });
+        });
+
+        updateCeri();
+      })(ceriExplorers[ce2]);
+    }
+
+    // Motor reutilizavel de zoom e arrasto (pan & zoom) sobre imagem de satelite co-registrada
+    function initPanZoomStage(viewport, stage, natW, natH, hudRoot) {
+      var zoom = 1;
+      var tx = 0;
+      var ty = 0;
+      var minZoom = 0.45;
+      var maxZoom = 6.5;
+      var zoomLabel = hudRoot ? hudRoot.querySelector("[data-cv-zoom-val]") : null;
+      var btnIn = hudRoot ? hudRoot.querySelector("[data-cv-zoom-in]") : null;
+      var btnOut = hudRoot ? hudRoot.querySelector("[data-cv-zoom-out]") : null;
+      var btnFit = hudRoot ? hudRoot.querySelector("[data-cv-zoom-fit]") : null;
+
+      function clampPan() {
+        var vw = viewport.clientWidth || 600;
+        var vh = viewport.clientHeight || 410;
+        var sw = natW * zoom;
+        var sh = natH * zoom;
+        if (sw <= vw) {
+          tx = (vw - sw) / 2;
+        } else {
+          tx = Math.min(20, Math.max(vw - sw - 20, tx));
+        }
+        if (sh <= vh) {
+          ty = (vh - sh) / 2;
+        } else {
+          ty = Math.min(20, Math.max(vh - sh - 20, ty));
+        }
+      }
+
+      function applyTransform() {
+        clampPan();
+        stage.style.transform = "translate3d(" + tx.toFixed(1) + "px," + ty.toFixed(1) + "px,0) scale(" + zoom.toFixed(4) + ")";
+        stage.classList.toggle("is-pixelated", zoom >= 2.2);
+        if (zoomLabel) zoomLabel.textContent = Math.round(zoom * 100) + "%";
+      }
+
+      function fitToViewport(initialFocus) {
+        var vw = viewport.clientWidth || 600;
+        var vh = viewport.clientHeight || 410;
+        minZoom = Math.max(vw / natW, vh / natH) * 0.92;
+        if (initialFocus) {
+          zoom = Math.max(minZoom, 0.88);
+          tx = (vw / 2) - (natW * 0.48) * zoom;
+          ty = (vh / 2) - (natH * 0.48) * zoom;
+        } else {
+          zoom = Math.max(vw / natW, vh / natH);
+          tx = (vw - natW * zoom) / 2;
+          ty = (vh - natH * zoom) / 2;
+        }
+        applyTransform();
+      }
+
+      function zoomAt(factor, clientX, clientY) {
+        var rect = viewport.getBoundingClientRect();
+        var px = clientX !== undefined ? (clientX - rect.left) : (rect.width / 2);
+        var py = clientY !== undefined ? (clientY - rect.top) : (rect.height / 2);
+        var wx = (px - tx) / zoom;
+        var wy = (py - ty) / zoom;
+        var nextZoom = Math.min(maxZoom, Math.max(minZoom, zoom * factor));
+        zoom = nextZoom;
+        tx = px - wx * zoom;
+        ty = py - wy * zoom;
+        applyTransform();
+      }
+
+      function centerOnPoint(wx, wy, targetZoom) {
+        var vw = viewport.clientWidth || 600;
+        var vh = viewport.clientHeight || 410;
+        if (targetZoom) zoom = Math.min(maxZoom, Math.max(minZoom, targetZoom));
+        tx = (vw / 2) - wx * zoom;
+        ty = (vh / 2) - wy * zoom;
+        applyTransform();
+      }
+
+      viewport.addEventListener("wheel", function (e) {
+        e.preventDefault();
+        var factor = e.deltaY < 0 ? 1.18 : (1 / 1.18);
+        zoomAt(factor, e.clientX, e.clientY);
+      }, { passive: false });
+
+      var isDown = false;
+      var moved = false;
+      var startX = 0;
+      var startY = 0;
+      var origTx = 0;
+      var origTy = 0;
+      var rafId = null;
+
+      viewport.addEventListener("pointerdown", function (e) {
+        if (e.button !== 0 && e.pointerType === "mouse") return;
+        if (e.target.closest && e.target.closest(".cv-sat-hud")) return;
+        isDown = true;
+        moved = false;
+        startX = e.clientX;
+        startY = e.clientY;
+        origTx = tx;
+        origTy = ty;
+        viewport.classList.add("is-dragging");
+      });
+
+      window.addEventListener("pointermove", function (e) {
+        if (!isDown) return;
+        var dx = e.clientX - startX;
+        var dy = e.clientY - startY;
+        if (Math.abs(dx) > 4 || Math.abs(dy) > 4) moved = true;
+        tx = origTx + dx;
+        ty = origTy + dy;
+        if (!rafId) {
+          rafId = requestAnimationFrame(function () {
+            applyTransform();
+            rafId = null;
+          });
+        }
+      });
+
+      function stopDrag() {
+        if (!isDown) return;
+        isDown = false;
+        viewport.classList.remove("is-dragging");
+      }
+      window.addEventListener("pointerup", stopDrag);
+      window.addEventListener("pointercancel", stopDrag);
+
+      if (btnIn) btnIn.addEventListener("click", function () { zoomAt(1.32); });
+      if (btnOut) btnOut.addEventListener("click", function () { zoomAt(1 / 1.32); });
+      if (btnFit) btnFit.addEventListener("click", function () { fitToViewport(false); });
+
+      window.addEventListener("resize", function () { applyTransform(); });
+      setTimeout(function () { fitToViewport(true); }, 30);
+
+      return {
+        wasDragged: function () { return moved; },
+        centerOn: centerOnPoint,
+        fit: fitToViewport
+      };
+    }
+
+    // Visualizador integrado de Agricultura (Campo Verde, MT): Mapa de satelite (Etapa 1) + Serie temporal de IVs (Etapa 2)
+    var agroViewer = document.querySelector("[data-cv-agro-viewer]");
+    var ivExplorer = document.querySelector("[data-cv-iv-explorer]");
+    if (agroViewer || ivExplorer) {
+      (function () {
+        var lang = (agroViewer && agroViewer.getAttribute("data-lang")) || (ivExplorer && ivExplorer.getAttribute("data-lang")) || "pt";
+        var jsonUrl = (agroViewer && agroViewer.getAttribute("data-json")) || "images/agro/cv-plots-2021.json";
+
+        var cropNames = {
+          pt: { soja: "Soja (1ª safra)", milho: "Milho 2ª safra (sucessão)", algodao: "Algodão 2ª safra (sucessão)" },
+          en: { soja: "Soybean (1st crop)", milho: "2nd-crop corn (succession)", algodao: "2nd-crop cotton (succession)" }
+        };
+        var refNames = {
+          pt: { soja: "Soja / lavoura temporária", milho: "Milho", algodao: "Algodão" },
+          en: { soja: "Soybean / temporary crop", milho: "Corn", algodao: "Cotton" }
+        };
+        var cropColors = {
+          soja: "#5a9a2e",
+          milho: "#d99b26",
+          algodao: "#3b82a6"
+        };
+
+        function ndviToColor(val) {
+          var v = Math.max(0.15, Math.min(0.90, val || 0.5));
+          var t = (v - 0.15) / 0.75;
+          if (t < 0.45) {
+            var u = t / 0.45;
+            var r = Math.round(196 + (220 - 196) * u);
+            var g = Math.round(110 + (186 - 110) * u);
+            var b = Math.round(52 + (62 - 52) * u);
+            return "rgb(" + r + "," + g + "," + b + ")";
+          } else {
+            var u2 = (t - 0.45) / 0.55;
+            var r2 = Math.round(220 + (31 - 220) * u2);
+            var g2 = Math.round(186 + (141 - 186) * u2);
+            var b2 = Math.round(62 + (62 - 62) * u2);
+            return "rgb(" + r2 + "," + g2 + "," + b2 + ")";
+          }
+        }
+
+        var dataset = null;
+        var selectedPlot = null;
+        var mapState = {
+          quarter: "2021q1",
+          colorMode: "gaia",
+          cropFilter: "all",
+          opacity: 0.62
+        };
+        var ivState = {
+          indexName: "NDVI",
+          showSmooth: true,
+          showRaw: true,
+          showDrops: true,
+          showBand: true,
+          hoverIdx: -1
+        };
+
+        var pzInstance = null;
+        var svgGroup = null;
+        var pathElementsById = {};
+
+        // Inicializa mapa da Etapa 1 se existir
+        if (agroViewer) {
+          var viewport = agroViewer.querySelector(".cv-sat-viewport");
+          var stage = agroViewer.querySelector(".cv-sat-stage");
+          svgGroup = agroViewer.querySelector("[data-cv-plots-group]");
+          pzInstance = initPanZoomStage(viewport, stage, 1400, 880, agroViewer);
+
+          var baseImg = agroViewer.querySelector("[data-cv-base-img]");
+          var badgeEl = agroViewer.querySelector("[data-cv-sat-badge]");
+          var qBtns = agroViewer.querySelectorAll("[data-cv-quarter]");
+          var modeBtns = agroViewer.querySelectorAll("[data-cv-colormode]");
+          var filterBtns = agroViewer.querySelectorAll("[data-cv-cropfilter]");
+          var layerToggles = agroViewer.querySelectorAll("[data-cv-layer-toggle]");
+          var opSlider = agroViewer.querySelector("[data-cv-opacity]");
+          var opVal = agroViewer.querySelector("[data-cv-opacity-val]");
+          var jumpBtn = agroViewer.querySelector("[data-cv-jump-iv]");
+
+          qBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              mapState.quarter = btn.getAttribute("data-cv-quarter");
+              qBtns.forEach(function (b) {
+                var act = b === btn;
+                b.classList.toggle("is-active", act);
+                b.setAttribute("aria-pressed", act ? "true" : "false");
+              });
+              if (baseImg) baseImg.src = "images/agro/cv-rgb-" + mapState.quarter + ".webp";
+              if (badgeEl) badgeEl.textContent = btn.getAttribute("data-badge") || mapState.quarter.toUpperCase();
+              updateMapPolygons();
+            });
+          });
+
+          modeBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              mapState.colorMode = btn.getAttribute("data-cv-colormode");
+              modeBtns.forEach(function (b) {
+                var act = b === btn;
+                b.classList.toggle("is-active", act);
+                b.setAttribute("aria-pressed", act ? "true" : "false");
+              });
+              updateMapPolygons();
+            });
+          });
+
+          filterBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              mapState.cropFilter = btn.getAttribute("data-cv-cropfilter");
+              filterBtns.forEach(function (b) {
+                var act = b === btn;
+                b.classList.toggle("is-active", act);
+                b.setAttribute("aria-pressed", act ? "true" : "false");
+              });
+              updateMapPolygons();
+            });
+          });
+
+          layerToggles.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              var lay = btn.getAttribute("data-cv-layer-toggle");
+              var isOn = btn.classList.toggle("is-active");
+              btn.setAttribute("aria-pressed", isOn ? "true" : "false");
+              var imgLay = agroViewer.querySelector('[data-cv-layer="' + lay + '"]');
+              if (imgLay) imgLay.classList.toggle("is-hidden", !isOn);
+            });
+          });
+
+          if (opSlider) {
+            opSlider.addEventListener("input", function () {
+              mapState.opacity = parseInt(opSlider.value, 10) / 100;
+              if (opVal) opVal.textContent = opSlider.value + "%";
+              updateMapPolygons();
+            });
+          }
+
+          if (jumpBtn && ivExplorer) {
+            jumpBtn.addEventListener("click", function () {
+              ivExplorer.scrollIntoView({ behavior: "smooth", block: "center" });
+            });
+          }
+        }
+
+        function updateMapPolygons() {
+          if (!dataset || !svgGroup) return;
+          dataset.plots.forEach(function (p) {
+            var el = pathElementsById[p.fid];
+            if (!el) return;
+            var fill = "transparent";
+            var fillOp = mapState.opacity;
+            var mismatch = false;
+            if (mapState.colorMode === "gaia") {
+              fill = cropColors[p.crop] || "#5a9a2e";
+            } else if (mapState.colorMode === "ref") {
+              fill = cropColors[p.ref_crop] || "#5a9a2e";
+              mismatch = p.crop !== p.ref_crop;
+            } else if (mapState.colorMode === "ndvi") {
+              var qVal = mapState.quarter === "2021q1" ? p.ndvi_q1 : (mapState.quarter === "2021q2" ? p.ndvi_q2 : p.ndvi_q3);
+              fill = ndviToColor(qVal);
+              fillOp = Math.max(0.68, mapState.opacity);
+            } else if (mapState.colorMode === "outline") {
+              fill = "rgba(255,255,255,0.02)";
+              fillOp = 0.05;
+            }
+            var dimmed = mapState.cropFilter !== "all" && p.crop !== mapState.cropFilter;
+            el.style.fill = fill;
+            el.style.fillOpacity = dimmed ? "0.1" : String(fillOp);
+            el.classList.toggle("is-mismatch", mismatch);
+            el.classList.toggle("is-dimmed", dimmed);
+            el.classList.toggle("is-selected", selectedPlot && selectedPlot.fid === p.fid);
+          });
+        }
+
+        function selectPlotByFid(fid, centerMap) {
+          if (!dataset) return;
+          var found = null;
+          for (var i = 0; i < dataset.plots.length; i++) {
+            if (dataset.plots[i].fid === fid) { found = dataset.plots[i]; break; }
+          }
+          if (!found) found = dataset.plots[0];
+          selectedPlot = found;
+          ivState.hoverIdx = -1;
+
+          updateMapPolygons();
+          if (centerMap && pzInstance && selectedPlot) {
+            pzInstance.centerOn(selectedPlot.cx, selectedPlot.cy, 1.35);
+          }
+
+          // Atualiza inspetor da Etapa 1
+          if (agroViewer && selectedPlot) {
+            var titleEl = agroViewer.querySelector("[data-parcel-title]");
+            var metaEl = agroViewer.querySelector("[data-parcel-meta]");
+            var sarEl = agroViewer.querySelector("[data-parcel-sar]");
+            var refEl = agroViewer.querySelector("[data-parcel-ref]");
+            var ndviEl = agroViewer.querySelector("[data-parcel-ndvi]");
+            var dropsEl = agroViewer.querySelector("[data-parcel-drops]");
+
+            var areaFmt = lang === "en" ? selectedPlot.area_ha.toFixed(1) : selectedPlot.area_ha.toFixed(1).replace(".", ",");
+            if (titleEl) {
+              titleEl.textContent = (lang === "en" ? "Plot " : "Talhão ") + selectedPlot.id + " (" + areaFmt + " ha · Campo Verde, MT)";
+            }
+            if (metaEl) {
+              metaEl.textContent = "FID " + selectedPlot.fid + " · Pico NDVI 1ª safra: " + selectedPlot.ndvi_q1.toFixed(2) + " | 2ª safra: " + selectedPlot.ndvi_q2.toFixed(2);
+            }
+            if (sarEl) sarEl.textContent = cropNames[lang][selectedPlot.crop];
+            if (refEl) {
+              var isErr = selectedPlot.crop !== selectedPlot.ref_crop;
+              refEl.textContent = refNames[lang][selectedPlot.ref_crop] + (isErr ? (lang === "en" ? " (mismatch)" : " (divergente)") : (lang === "en" ? " (concordant)" : " (concordante)"));
+              refEl.classList.toggle("is-error", isErr);
+            }
+            if (ndviEl) ndviEl.textContent = selectedPlot.ndvi_peak.toFixed(2);
+            if (dropsEl) {
+              dropsEl.textContent = selectedPlot.drops + (lang === "en" ? " passes filtered" : " passagens filtradas");
+            }
+          }
+
+          // Atualiza preset buttons e grafico da Etapa 2
+          if (ivExplorer && selectedPlot) {
+            var presetBtns = ivExplorer.querySelectorAll("[data-iv-preset]");
+            presetBtns.forEach(function (b) {
+              var act = b.getAttribute("data-iv-preset") === selectedPlot.fid;
+              b.classList.toggle("is-active", act);
+              b.setAttribute("aria-pressed", act ? "true" : "false");
+            });
+            renderIvCurve();
+          }
+        }
+
+        // Inicializa controles da Etapa 2 (Serie de IVs)
+        if (ivExplorer) {
+          var idxBtns = ivExplorer.querySelectorAll("[data-iv-index]");
+          var presetBtns = ivExplorer.querySelectorAll("[data-iv-preset]");
+          var toggleBtns = ivExplorer.querySelectorAll("[data-iv-toggle]");
+          var centerBtn = ivExplorer.querySelector("[data-iv-center-map]");
+
+          idxBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              ivState.indexName = btn.getAttribute("data-iv-index");
+              idxBtns.forEach(function (b) {
+                var act = b === btn;
+                b.classList.toggle("is-active", act);
+                b.setAttribute("aria-pressed", act ? "true" : "false");
+              });
+              renderIvCurve();
+            });
+          });
+
+          presetBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              var fid = btn.getAttribute("data-iv-preset");
+              selectPlotByFid(fid, true);
+            });
+          });
+
+          toggleBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              var key = btn.getAttribute("data-iv-toggle");
+              var act = btn.classList.toggle("is-active");
+              btn.setAttribute("aria-pressed", act ? "true" : "false");
+              if (key === "smooth") ivState.showSmooth = act;
+              if (key === "raw") ivState.showRaw = act;
+              if (key === "drops") ivState.showDrops = act;
+              if (key === "band") ivState.showBand = act;
+              renderIvCurve();
+            });
+          });
+
+          if (centerBtn && agroViewer) {
+            centerBtn.addEventListener("click", function () {
+              agroViewer.scrollIntoView({ behavior: "smooth", block: "center" });
+              if (pzInstance && selectedPlot) {
+                pzInstance.centerOn(selectedPlot.cx, selectedPlot.cy, 1.8);
+              }
+            });
+          }
+        }
+
+        function renderIvCurve() {
+          if (!ivExplorer || !dataset || !selectedPlot) return;
+          var idxName = ivState.indexName;
+          var dates = dataset.dates;
+          var n = dates.length;
+          var ser = selectedPlot.series[idxName] || selectedPlot.series.NDVI;
+          var reg = dataset.regional[idxName] || dataset.regional.NDVI;
+          var clearPct = selectedPlot.clear_pct;
+
+          var yMin = idxName === "NDWI" ? -0.65 : 0.0;
+          var yMax = idxName === "NDWI" ? 0.65 : 1.0;
+
+          var x0 = 42, x1 = 656, y0 = 18, y1 = 198;
+          function xAt(i) { return x0 + (i / (n - 1)) * (x1 - x0); }
+          function yAt(v) {
+            var clamped = Math.max(yMin, Math.min(yMax, v));
+            return y1 - ((clamped - yMin) / (yMax - yMin)) * (y1 - y0);
+          }
+
+          var bandEl = ivExplorer.querySelector("[data-iv-svg-band]");
+          var medEl = ivExplorer.querySelector("[data-iv-svg-median]");
+          var rawEl = ivExplorer.querySelector("[data-iv-svg-raw]");
+          var smoothEl = ivExplorer.querySelector("[data-iv-svg-smooth]");
+          var dropsGroup = ivExplorer.querySelector("[data-iv-svg-drops]");
+          var ptsGroup = ivExplorer.querySelector("[data-iv-svg-points]");
+          var yLabels = ivExplorer.querySelectorAll("[data-iv-ylabel]");
+
+          if (yLabels.length === 3) {
+            if (idxName === "NDWI") {
+              yLabels[0].textContent = "+0.6";
+              yLabels[1].textContent = "0.0";
+              yLabels[2].textContent = "-0.6";
+            } else {
+              yLabels[0].textContent = "1.0";
+              yLabels[1].textContent = "0.5";
+              yLabels[2].textContent = "0.0";
+            }
+          }
+
+          // Regional band P25-P75
+          if (bandEl) {
+            if (ivState.showBand && reg) {
+              var topPts = reg.p75.map(function (v, i) { return xAt(i).toFixed(1) + "," + yAt(v).toFixed(1); });
+              var botPts = reg.p25.slice().reverse().map(function (v, revI) {
+                var i = n - 1 - revI;
+                return xAt(i).toFixed(1) + "," + yAt(v).toFixed(1);
+              });
+              bandEl.setAttribute("d", "M " + topPts.join(" L ") + " L " + botPts.join(" L ") + " Z");
+              bandEl.style.display = "";
+            } else {
+              bandEl.style.display = "none";
+            }
+          }
+
+          if (medEl) {
+            if (ivState.showBand && reg) {
+              var mPts = reg.p50.map(function (v, i) { return xAt(i).toFixed(1) + "," + yAt(v).toFixed(1); });
+              medEl.setAttribute("d", "M " + mPts.join(" L "));
+              medEl.style.display = "";
+            } else {
+              medEl.style.display = "none";
+            }
+          }
+
+          if (rawEl) {
+            if (ivState.showRaw) {
+              var rPts = ser.raw.map(function (v, i) { return xAt(i).toFixed(1) + "," + yAt(v).toFixed(1); });
+              rawEl.setAttribute("d", "M " + rPts.join(" L "));
+              rawEl.style.display = "";
+            } else {
+              rawEl.style.display = "none";
+            }
+          }
+
+          if (smoothEl) {
+            if (ivState.showSmooth) {
+              var sPts = ser.smooth.map(function (v, i) { return xAt(i).toFixed(1) + "," + yAt(v).toFixed(1); });
+              smoothEl.setAttribute("d", "M " + sPts.join(" L "));
+              smoothEl.style.display = "";
+            } else {
+              smoothEl.style.display = "none";
+            }
+          }
+
+          // Render cloud drops and interactive points
+          if (dropsGroup) {
+            dropsGroup.innerHTML = "";
+            if (ivState.showDrops) {
+              for (var i = 0; i < n; i++) {
+                var diff = Math.abs(ser.smooth[i] - ser.raw[i]);
+                var isCloudDrop = (clearPct[i] <= 60 && diff > 0.11) || (ser.smooth[i] - ser.raw[i] > 0.16);
+                if (isCloudDrop) {
+                  var cx = xAt(i).toFixed(1);
+                  var yR = yAt(ser.raw[i]).toFixed(1);
+                  var yS = yAt(ser.smooth[i]).toFixed(1);
+                  var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                  line.setAttribute("x1", cx);
+                  line.setAttribute("y1", yS);
+                  line.setAttribute("x2", cx);
+                  line.setAttribute("y2", yR);
+                  line.setAttribute("stroke", "#d9483b");
+                  line.setAttribute("stroke-width", "2");
+                  line.setAttribute("stroke-dasharray", "3 2");
+                  dropsGroup.appendChild(line);
+
+                  var ring = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                  ring.setAttribute("cx", cx);
+                  ring.setAttribute("cy", yR);
+                  ring.setAttribute("r", "6.5");
+                  ring.setAttribute("fill", "rgba(217, 72, 59, 0.18)");
+                  ring.setAttribute("stroke", "#d9483b");
+                  ring.setAttribute("stroke-width", "1.6");
+                  dropsGroup.appendChild(ring);
+                }
+              }
+            }
+          }
+
+          if (ptsGroup) {
+            ptsGroup.innerHTML = "";
+            for (var j = 0; j < n; j++) {
+              (function (idx) {
+                var cx = xAt(idx).toFixed(1);
+                var valUsed = ivState.showRaw ? ser.raw[idx] : ser.smooth[idx];
+                var cy = yAt(valUsed).toFixed(1);
+                var isCloud = (clearPct[idx] <= 60 && Math.abs(ser.smooth[idx] - ser.raw[idx]) > 0.11) || (ser.smooth[idx] - ser.raw[idx] > 0.16);
+                var c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                c.setAttribute("class", "cv-iv-point");
+                c.setAttribute("cx", cx);
+                c.setAttribute("cy", cy);
+                c.setAttribute("r", idx === ivState.hoverIdx ? "5.5" : "3.8");
+                c.setAttribute("fill", isCloud && ivState.showDrops ? "#d9483b" : "#365902");
+                c.setAttribute("stroke", "#ffffff");
+                c.setAttribute("stroke-width", "1.3");
+                c.addEventListener("mouseenter", function () {
+                  ivState.hoverIdx = idx;
+                  updateIvInspector(idx);
+                });
+                c.addEventListener("click", function () {
+                  ivState.hoverIdx = idx;
+                  updateIvInspector(idx);
+                });
+                ptsGroup.appendChild(c);
+              })(j);
+            }
+          }
+
+          // Update plot header badge in Etapa 2
+          var activePlotLabel = ivExplorer.querySelector("[data-iv-active-plot]");
+          if (activePlotLabel) {
+            var aFmt = lang === "en" ? selectedPlot.area_ha.toFixed(1) : selectedPlot.area_ha.toFixed(1).replace(".", ",");
+            activePlotLabel.textContent = (lang === "en" ? "Plot " : "Talhão ") + selectedPlot.id + " (" + aFmt + " ha · " + cropNames[lang][selectedPlot.crop] + ")";
+          }
+
+          // Pick default focus date (a cloud-drop date if present, else peak date)
+          var defaultIdx = ivState.hoverIdx;
+          if (defaultIdx < 0) {
+            defaultIdx = 4;
+            for (var k = 0; k < n; k++) {
+              if (clearPct[k] <= 50 && (ser.smooth[k] - ser.raw[k] > 0.14)) {
+                defaultIdx = k;
+                break;
+              }
+            }
+          }
+          updateIvInspector(defaultIdx);
+        }
+
+        function updateIvInspector(idx) {
+          if (!ivExplorer || !dataset || !selectedPlot) return;
+          var idxName = ivState.indexName;
+          var ser = selectedPlot.series[idxName] || selectedPlot.series.NDVI;
+          var dStr = dataset.dates[idx] || "";
+          var rawVal = ser.raw[idx];
+          var smVal = ser.smooth[idx];
+          var clr = selectedPlot.clear_pct[idx];
+          var isDrop = (clr <= 60 && Math.abs(smVal - rawVal) > 0.11) || (smVal - rawVal > 0.16);
+
+          var elDate = ivExplorer.querySelector("[data-iv-insp-date]");
+          var elRaw = ivExplorer.querySelector("[data-iv-insp-raw]");
+          var elSmooth = ivExplorer.querySelector("[data-iv-insp-smooth]");
+          var elClear = ivExplorer.querySelector("[data-iv-insp-clear]");
+          var elStatus = ivExplorer.querySelector("[data-iv-insp-status]");
+
+          if (elDate) elDate.textContent = dStr;
+          if (elRaw) elRaw.textContent = rawVal.toFixed(3);
+          if (elSmooth) elSmooth.textContent = smVal.toFixed(3);
+          if (elClear) elClear.textContent = clr + "%";
+          if (elStatus) {
+            if (isDrop) {
+              elStatus.textContent = lang === "en"
+                ? "Residual cloud detected (low clear-sky coverage): spurious drop discarded before reconstructing the continuous curve."
+                : "Nuvem residual detectada (baixa cobertura limpa): queda espúria descartada pelo filtro antes da reconstrução da curva.";
+            } else {
+              elStatus.textContent = lang === "en"
+                ? "Valid satellite pass: clear-sky reflectance preserved in the penalized temporal smoothing."
+                : "Passagem limpa validada: observação preservada na reconstrução contínua do índice espectral.";
+            }
+          }
+        }
+
+        // Carrega os 90 talhoes reais e as series temporais de Campo Verde
+        fetch(jsonUrl)
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            dataset = data;
+            if (svgGroup && dataset.plots) {
+              svgGroup.innerHTML = "";
+              dataset.plots.forEach(function (p) {
+                var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                path.setAttribute("class", "cv-plot-path");
+                path.setAttribute("d", p.path);
+                path.setAttribute("data-fid", p.fid);
+                path.addEventListener("click", function (e) {
+                  if (pzInstance && pzInstance.wasDragged()) return;
+                  e.stopPropagation();
+                  selectPlotByFid(p.fid, false);
+                });
+                svgGroup.appendChild(path);
+                pathElementsById[p.fid] = path;
+              });
+            }
+            selectPlotByFid("3622_5102678", false);
+          })
+          .catch(function () {});
+      })();
+    }
+
+    // Visualizador interativo de Floresta (Campo Verde, MT): Dossel, CAR, Incerteza e Trimestres
+    var forestViewers = document.querySelectorAll("[data-cv-forest-viewer]");
+    for (var fv = 0; fv < forestViewers.length; fv++) {
+      (function (root) {
+        var viewport = root.querySelector(".cv-sat-viewport");
+        var stage = root.querySelector(".cv-sat-stage");
+        if (!viewport || !stage) return;
+        initPanZoomStage(viewport, stage, 1400, 880, root);
+
+        var baseImg = root.querySelector("[data-cv-f-base]");
+        var predImg = root.querySelector('[data-cv-f-layer="pred"]');
+        var badgeEl = root.querySelector("[data-cv-sat-badge]");
+        var qBtns = root.querySelectorAll("[data-cv-f-quarter]");
+        var clipBtns = root.querySelectorAll("[data-cv-f-clip]");
+        var layBtns = root.querySelectorAll("[data-cv-f-toggle]");
+        var opSlider = root.querySelector("[data-cv-f-opacity]");
+        var opVal = root.querySelector("[data-cv-f-opacity-val]");
+
+        var fState = {
+          quarter: "2023q3",
+          clip: "completo",
+          opacity: 0.78
+        };
+
+        function syncForestLayers() {
+          if (baseImg) baseImg.src = "images/floresta/cv-rgb-" + fState.quarter + ".webp";
+          if (predImg) {
+            if (fState.clip === "car" && fState.quarter === "2023q3") {
+              predImg.src = "images/floresta/cv-pred-car-2023q3.webp";
+            } else {
+              predImg.src = "images/floresta/cv-pred-completo-" + fState.quarter + ".webp";
+            }
+            predImg.style.opacity = String(fState.opacity);
+          }
+          var incImg = root.querySelector('[data-cv-f-layer="incerteza"]');
+          if (incImg) incImg.style.opacity = String(fState.opacity);
+          var rotImg = root.querySelector('[data-cv-f-layer="rotulo"]');
+          if (rotImg) rotImg.style.opacity = String(fState.opacity);
+        }
+
+        qBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            fState.quarter = btn.getAttribute("data-cv-f-quarter");
+            qBtns.forEach(function (b) {
+              var act = b === btn;
+              b.classList.toggle("is-active", act);
+              b.setAttribute("aria-pressed", act ? "true" : "false");
+            });
+            if (badgeEl) badgeEl.textContent = btn.getAttribute("data-badge") || fState.quarter.toUpperCase();
+            syncForestLayers();
+          });
+        });
+
+        clipBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            fState.clip = btn.getAttribute("data-cv-f-clip");
+            clipBtns.forEach(function (b) {
+              var act = b === btn;
+              b.classList.toggle("is-active", act);
+              b.setAttribute("aria-pressed", act ? "true" : "false");
+            });
+            syncForestLayers();
+          });
+        });
+
+        layBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var lay = btn.getAttribute("data-cv-f-toggle");
+            var isOn = btn.classList.toggle("is-active");
+            btn.setAttribute("aria-pressed", isOn ? "true" : "false");
+            var imgEl = root.querySelector('[data-cv-f-layer="' + lay + '"]');
+            if (imgEl) imgEl.classList.toggle("is-hidden", !isOn);
+          });
+        });
+
+        if (opSlider) {
+          opSlider.addEventListener("input", function () {
+            fState.opacity = parseInt(opSlider.value, 10) / 100;
+            if (opVal) opVal.textContent = opSlider.value + "%";
+            syncForestLayers();
+          });
+        }
+
+        syncForestLayers();
+      })(forestViewers[fv]);
     }
   });
 </script>
+
 <script>
   // Envio do formulário de contato ("Contato" / "Contact").
   //
@@ -1596,7 +2685,7 @@ ul.task-list li input[type="checkbox"] {
       atualizarContador();
     }
 
-    // --- Lista de opções própria -------------------------------------------
+    // Lista de opções própria
     // O <select> nativo continua no formulário (envio e quem está sem JS), mas
     // fica escondido; aqui ele é trocado por botão + lista, iguais em qualquer
     // sistema. O nativo só é escondido quando este código roda com sucesso.

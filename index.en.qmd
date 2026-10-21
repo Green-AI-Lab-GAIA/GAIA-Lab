@@ -128,17 +128,17 @@ toc: false
       <div><div class="stat-num" data-count="359596" data-thousands=",">0</div><div class="stat-label">Plots mapped</div></div>
       <div><div class="stat-num" data-count="897">0</div><div class="stat-label">Municipalities</div></div>
       <div><div class="stat-num" data-count="5">0</div><div class="stat-label">States</div></div>
-      <div><div class="stat-num">2020 to 2025</div><div class="stat-label">Data period</div></div>
+      <div><div class="stat-num">2020 to 2026</div><div class="stat-label">Data period</div></div>
     </div>
 
     <div class="hscroll-wrap reveal">
       <button class="hscroll-btn prev" aria-label="Previous step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
       <div class="hscroll">
-        <article class="hs-card"><div class="hs-step">01</div><div class="hs-kicker">Step</div><div class="hs-title">Plot segmentation</div><div class="hs-text">Each production area is delimited from satellite imagery.</div></article>
-        <article class="hs-card"><div class="hs-step">02</div><div class="hs-kicker">Step</div><div class="hs-title">Crop classification</div><div class="hs-text">Soybean, maize and cotton identified plot by plot, season by season.</div></article>
-        <article class="hs-card"><div class="hs-step">03</div><div class="hs-kicker">Step</div><div class="hs-title">Satellite and climate series</div><div class="hs-text">17 vegetation indices and 10 climate series add up to 1,670 values per plot and season.</div></article>
-        <article class="hs-card"><div class="hs-step">04</div><div class="hs-kicker">Step</div><div class="hs-title">Grouping by similarity</div><div class="hs-text">Plots gathered by spectral and climate behaviour.</div></article>
-        <article class="hs-card"><div class="hs-step">05</div><div class="hs-kicker">Step</div><div class="hs-title">Risk characterisation</div><div class="hs-text">Each group is described by management, productivity and claim occurrence.</div></article>
+        <article class="hs-card"><div class="hs-step">01</div><div class="hs-kicker">Step</div><div class="hs-title">Multimodal ingestion</div><div class="hs-text">Continuous acquisition of satellite constellations (optical and SAR radar), climate reanalyses, and institutional corpora.</div></article>
+        <article class="hs-card"><div class="hs-step">02</div><div class="hs-kicker">Step</div><div class="hs-title">Spatiotemporal harmonisation</div><div class="hs-text">Atmospheric correction, cloud masking, and multi-year time series alignment at territorial scale.</div></article>
+        <article class="hs-card"><div class="hs-step">03</div><div class="hs-kicker">Step</div><div class="hs-title">Deep learning and foundation models</div><div class="hs-text">Semantic segmentation, geospatial foundation models, and applied language models for complex representations.</div></article>
+        <article class="hs-card"><div class="hs-step">04</div><div class="hs-kicker">Step</div><div class="hs-title">Auditing and official validation</div><div class="hs-text">Systematic benchmarking against INPE field references (DETER and PRODES), ZARC zoning, MapBiomas, and uncertainty metrics.</div></article>
+        <article class="hs-card"><div class="hs-step">05</div><div class="hs-kicker">Step</div><div class="hs-title">Actionable intelligence</div><div class="hs-text">Generation of risk indicators, territorial monitoring tools, and open-source code supporting decision-makers.</div></article>
       </div>
       <button class="hscroll-btn next" aria-label="Next step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 5 7 7-7 7"/></svg></button>
     </div>

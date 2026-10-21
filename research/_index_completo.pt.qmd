@@ -143,7 +143,6 @@ ainda não funciona.</p>
     </div>
 
     <div class="forest-cinema-stage-container">
-      <!-- Camada de badges flutuantes voadores na rolagem -->
       <div class="floating-cards-layer">
         <div class="float-card float-card-top-left fly-item fly-left">
           <span class="float-card-icon">🎯</span>

@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="icon" type="image/png" href="../icon/favicon-light.png">
 
 
-<link rel="stylesheet" href="../styles.css?v=dafbb634">
+<link rel="stylesheet" href="../styles.css?v=67fc8a9b">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -304,7 +304,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content page-columns page-full column-page" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -326,66 +326,1126 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="page-shell">
+<div class="page-shell page-columns page-full">
 <div class="page-main">
 
-<div class="rsec-head reveal" style="margin-bottom: 2.5rem;">
-  <div>
-    <span class="rsec-kicker">Research lines</span>
-    <h2 class="anchored">Research Areas</h2>
-    <p class="rsec-lead" style="margin-top: 0.8rem;">Under construction.</p>
+<div class="research-intro reveal">
+  <span class="rsec-kicker">Research structure</span>
+  <h2 class="anchored">Five application areas and eight methodological lines</h2>
+  <div class="research-intro-grid">
+    <div class="research-intro-prose">
+      <p>The laboratory's research is organized around two complementary axes: <strong>five application areas</strong> (Agriculture, Forests, Climate, Cities, and Technical and institutional documents) and <strong>eight methodological research lines</strong> addressing challenges such as learning with limited labels, domain adaptation, uncertainty modeling, textual data, and networks of specialist models.</p>
+      <p>Members of the group work across these two axes in three complementary ways: some researchers focus exclusively on developing foundational methodology; others develop the method and apply it directly within an application area; and in many cases, a methodological advance created by one researcher is adopted by a colleague and carried into the application areas and partnered projects.</p>
+    </div>
+    <div class="research-axis-note">
+      <strong>How to read this page</strong>
+      Each application area presents our results step by step: the prose describes a stage and the interactive figure right below lets you explore a streamlined version of the data produced at that stage. At the end of each area, we list the institutional partner and the connected methodological lines.
+    </div>
   </div>
 </div>
 
-<section id="agriculture" class="rsec">
-  <span id="agricultura"></span>
+<section id="agricultura" class="rsec">
+  <span id="agriculture"></span>
   <div class="rsec-head reveal">
     <div class="rsec-num">01</div>
     <div>
-      <span class="rsec-kicker">Research line</span>
+      <span class="rsec-kicker">Application area</span>
       <h2 class="anchored">Agriculture</h2>
     </div>
   </div>
-  <p class="rsec-lead reveal">Under construction.</p>
+
+  <p class="rsec-lead reveal">Automated plot boundary delineation, crop classification combining radar and optical imagery, vegetation index time series extraction, start and end of season detection, neighborhood-relative agricultural risk reading, and soil nutrient stock dynamics.</p>
+
+  <div class="proj-block reveal">
+    <div class="proj-header">
+      <h3 class="anchored">Stage 1 · Plot delineation and crop classification</h3>
+    </div>
+    <div class="proj-prose">
+      <p>The agriculture area is explored in the <strong>Territorial AgroIntelligence</strong> project in partnership with <strong>FGV Agro</strong>, in which we build territorial intelligence across large agricultural portfolios to answer what is planted, where it is located, and which plots behave outside expected patterns. The first stage of the workflow delineates productive plot boundaries and identifies the planted crop in each subarea.</p>
+      <p>Over the course of the project, the laboratory built an in-house dataset of <strong>359,596 delineated and classified plots</strong> by planted crop (soybean, corn, and cotton), regenerated every season across <strong>897 municipalities in five Brazilian states</strong> (Bahia, Maranhão, Mato Grosso, Paraná, and Tocantins), covering the 2020 to 2025 crop seasons. The method combines automatic segmentation on optical imagery with crop classification on <strong>synthetic aperture radar (SAR)</strong>, which penetrates clouds and provides continuous observation during rainy months.</p>
+      <p>Validated against INPE field data in Campo Verde (MT), the laboratory's classifier outperforms the public reference (MapBiomas) on second-season crops whose calendar coincides with persistent cloud cover: it achieves <strong>91.5% accuracy versus 82.4% in corn</strong> and <strong>90.0% versus 64.4% in cotton</strong>, while maintaining <strong>98.7% in soybean</strong> (versus 99.3% for the public reference).</p>
+    </div>
+
+    <div class="metrics reveal">
+      <div>
+        <div class="m-val" data-count="359.6" data-decimals="1" data-suffix="k">359.6k</div>
+        <div class="m-lab">delineated plots (2020 to 2025)</div>
+      </div>
+      <div>
+        <div class="m-val" data-count="897">897</div>
+        <div class="m-lab">municipalities across 5 states</div>
+      </div>
+      <div>
+        <div class="m-val" data-count="91.5" data-decimals="1" data-suffix="%">91.5%</div>
+        <div class="m-lab">corn accuracy (vs. 82.4% ref.)</div>
+      </div>
+      <div>
+        <div class="m-val" data-count="90.0" data-decimals="1" data-suffix="%">90.0%</div>
+        <div class="m-lab">cotton accuracy (vs. 64.4% ref.)</div>
+      </div>
+    </div>
+
+    <div class="iviz-card reveal" data-cv-agro-viewer="" data-lang="en" data-json="images/agro/cv-plots-2021.json">
+      <div class="iviz-top">
+        <div>
+          <span class="iviz-kicker">Interactive figure 1 · Campo Verde (MT) satellite viewer</span>
+          <h4 class="iviz-title anchored">Real Sentinel-2 imagery with zoom, pan, and layers for plot segmentation, crop, NDVI, and canopy</h4>
+          <p class="iviz-sub">Drag the map, scroll to zoom, and click any real plot to inspect its area, classification, and automatically update its spectral trajectory in Stage 2 right below.</p>
+        </div>
+        <div class="iviz-controls">
+          <button type="button" class="iviz-btn is-active" data-cv-colormode="gaia" aria-pressed="true">GAIA model (SAR + optical)</button>
+          <button type="button" class="iviz-btn" data-cv-colormode="ref" aria-pressed="false">Public reference (mismatches)</button>
+          <button type="button" class="iviz-btn" data-cv-colormode="ndvi" aria-pressed="false">Vegetation index (NDVI)</button>
+          <button type="button" class="iviz-btn" data-cv-colormode="outline" aria-pressed="false">Outlines only</button>
+        </div>
+      </div>
+
+      <div class="iviz-body">
+        <div class="cv-sat-toolbar">
+          <div class="cv-sat-group">
+            <span class="cv-sat-label">Sentinel-2 image:</span>
+            <button type="button" class="iviz-btn is-active" data-cv-quarter="2021q1" data-badge="Sentinel-2 RGB · 2021 Q1 (1st crop)" aria-pressed="true">2021 Q1 (1st crop)</button>
+            <button type="button" class="iviz-btn" data-cv-quarter="2021q2" data-badge="Sentinel-2 RGB · 2021 Q2 (2nd crop)" aria-pressed="false">2021 Q2 (2nd crop)</button>
+            <button type="button" class="iviz-btn" data-cv-quarter="2021q3" data-badge="Sentinel-2 RGB · 2021 Q3 (Dry off-season)" aria-pressed="false">2021 Q3 (Dry)</button>
+          </div>
+          <div class="cv-sat-group">
+            <span class="cv-sat-label">Layers:</span>
+            <button type="button" class="iviz-btn is-active" data-cv-layer-toggle="talhoes" aria-pressed="true">Plot segmentation</button>
+            <button type="button" class="iviz-btn is-active" data-cv-layer-toggle="floresta" aria-pressed="true">Forest canopy (10 m)</button>
+            <button type="button" class="iviz-btn" data-cv-layer-toggle="car" aria-pressed="false">Rural properties (CAR)</button>
+          </div>
+          <div class="cv-sat-group">
+            <span class="cv-sat-label">Crop:</span>
+            <button type="button" class="iviz-btn is-active" data-cv-cropfilter="all" aria-pressed="true">All</button>
+            <button type="button" class="iviz-btn" data-cv-cropfilter="soja" aria-pressed="false">Soybean</button>
+            <button type="button" class="iviz-btn" data-cv-cropfilter="milho" aria-pressed="false">Corn</button>
+            <button type="button" class="iviz-btn" data-cv-cropfilter="algodao" aria-pressed="false">Cotton</button>
+          </div>
+          <div class="cv-sat-group">
+            <span class="cv-sat-label">Opacity:</span>
+            <input type="range" class="cv-opacity-slider" data-cv-opacity="" min="10" max="95" value="62" aria-label="Plot fill opacity">
+            <span data-cv-opacity-val="" style="font-variant-numeric: tabular-nums; font-weight:700;">62%</span>
+          </div>
+        </div>
+
+        <div class="iviz-grid-2">
+          <div>
+            <div class="cv-sat-viewport" role="region" aria-label="Interactive satellite viewer of Campo Verde with zoom and pan">
+              <div class="cv-sat-stage">
+                <img data-cv-base-img="" src="images/agro/cv-rgb-2021q1.webp" alt="Real Sentinel-2 RGB image of Campo Verde">
+                <img data-cv-layer="floresta" src="images/agro/cv-floresta-2021q1.webp" alt="10-meter predicted forest canopy layer" style="opacity:0.72;">
+                <img data-cv-layer="talhoes" src="images/agro/cv-talhoes-2021.webp" alt="Plot segmentation boundary layer" style="opacity:0.85;">
+                <img data-cv-layer="car" class="is-hidden" src="images/agro/cv-car.webp" alt="CAR rural property boundary layer" style="opacity:0.9;">
+                <svg class="cv-sat-svg" viewbox="0 0 1400 880" aria-label="Interactive agricultural plot polygons in Campo Verde">
+                  <g data-cv-plots-group=""></g>
+                </svg>
+              </div>
+              <div class="cv-sat-hud">
+                <button type="button" class="cv-hud-btn" data-cv-zoom-out="" title="Zoom out">−</button>
+                <span data-cv-zoom-val="" style="min-width:2.7rem; text-align:center; font-variant-numeric:tabular-nums;">100%</span>
+                <button type="button" class="cv-hud-btn" data-cv-zoom-in="" title="Zoom in">+</button>
+                <button type="button" class="cv-hud-btn" data-cv-zoom-fit="" title="Fit to view">Fit</button>
+              </div>
+              <div class="cv-sat-badge" data-cv-sat-badge="">Sentinel-2 RGB · 2021 Q1 (1st crop)</div>
+            </div>
+
+            <div class="parcel-legend" style="margin-top:0.55rem;">
+              <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#5a9a2e"></i> Soybean</span>
+              <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#d99b26"></i> 2nd-crop corn</span>
+              <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#3b82a6"></i> 2nd-crop cotton</span>
+              <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#1f8d49"></i> Forest canopy (10 m)</span>
+              <span class="parcel-legend-item"><i class="parcel-swatch" style="border:2px dashed #ff4d42; background:transparent"></i> Reference mismatch</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="parcel-inspector">
+              <div class="parcel-inspector-head">
+                <span class="parcel-inspector-title" data-parcel-title="">Plot #3622 (401.7 ha · Campo Verde, MT)</span>
+                <span class="parcel-inspector-meta" data-parcel-meta="">FID 3622_5102678 · Peak NDVI 1st crop: 0.73 | 2nd crop: 0.90</span>
+              </div>
+              <div class="parcel-compare-row" style="margin-bottom:0.45rem;">
+                <div class="parcel-compare-cell">
+                  <span>GAIA classification (SAR + optical)</span>
+                  <strong data-parcel-sar="">2nd-crop cotton (succession)</strong>
+                </div>
+                <div class="parcel-compare-cell">
+                  <span>Public reference (MapBiomas)</span>
+                  <strong data-parcel-ref="" class="is-error">Soybean / temporary crop (mismatch)</strong>
+                </div>
+              </div>
+              <div class="parcel-compare-row" style="margin-bottom:0.2rem;">
+                <div class="parcel-compare-cell">
+                  <span>Peak NDVI in crop year</span>
+                  <strong data-parcel-ndvi="">0.90</strong>
+                </div>
+                <div class="parcel-compare-cell">
+                  <span>Cloud filter on time series</span>
+                  <strong data-parcel-drops="">5 passes filtered</strong>
+                </div>
+              </div>
+              <button type="button" class="cv-jump-link" data-cv-jump-iv="">Inspect this plot's spectral curve in Stage 2 ↓</button>
+            </div>
+
+            <div class="acc-bench">
+              <div style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gaia-muted);">Accuracy validated against INPE field data (Campo Verde, MT)</div>
+              <div class="acc-crop-group">
+                <div class="acc-crop-head"><span>Cotton</span><span>+25.6 pp over reference</span></div>
+                <div class="acc-dual-bars">
+                  <div class="acc-bar-row"><span>GAIA Lab</span><div class="acc-bar-track"><div class="acc-bar-fill gaia" style="width:90%"></div></div><span class="acc-bar-pct">90.0%</span></div>
+                  <div class="acc-bar-row"><span>Public ref.</span><div class="acc-bar-track"><div class="acc-bar-fill ref" style="width:64.4%"></div></div><span class="acc-bar-pct">64.4%</span></div>
+                </div>
+              </div>
+              <div class="acc-crop-group">
+                <div class="acc-crop-head"><span>Corn</span><span>+9.1 pp over reference</span></div>
+                <div class="acc-dual-bars">
+                  <div class="acc-bar-row"><span>GAIA Lab</span><div class="acc-bar-track"><div class="acc-bar-fill gaia" style="width:91.5%"></div></div><span class="acc-bar-pct">91.5%</span></div>
+                  <div class="acc-bar-row"><span>Public ref.</span><div class="acc-bar-track"><div class="acc-bar-fill ref" style="width:82.4%"></div></div><span class="acc-bar-pct">82.4%</span></div>
+                </div>
+              </div>
+              <div class="acc-crop-group">
+                <div class="acc-crop-head"><span>Soybean</span><span>98.7% vs. 99.3%</span></div>
+                <div class="acc-dual-bars">
+                  <div class="acc-bar-row"><span>GAIA Lab</span><div class="acc-bar-track"><div class="acc-bar-fill gaia" style="width:98.7%"></div></div><span class="acc-bar-pct">98.7%</span></div>
+                  <div class="acc-bar-row"><span>Public ref.</span><div class="acc-bar-track"><div class="acc-bar-fill ref" style="width:99.3%"></div></div><span class="acc-bar-pct">99.3%</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="proj-block reveal">
+    <div class="proj-header">
+      <h3 class="anchored">Stage 2 · Vegetation index time series and cloud filtering</h3>
+    </div>
+    <div class="proj-prose">
+      <p>Once the plot polygons are delineated, the second stage reconstructs the spectral trajectory of each area across crop seasons. The pipeline extracts <strong>Sentinel-2</strong> surface reflectances over each plot polygon from the <strong>Brazil Data Cube (BDC)</strong> and computes <strong>17 complementary vegetation indices</strong> (including NDVI, EVI, EVI2, NDWI, NDRE, SAVI, MSAVI, and GNDVI), capturing photosynthetic vigor, canopy water content, and red-edge response. The consolidated database totals <strong>499.7k plot-level series</strong> and <strong>11.5 million records</strong>.</p>
+      <p>Even in regular temporal composites, persistent summer cloudiness produces observations contaminated by residual clouds that artificially depress vegetation indices. To prevent atmospheric noise from being misread as crop failure, the system automatically filters out passes with insufficient clear-sky fraction (discarding <strong>5.55%</strong> of compromised observations) and applies penalized temporal smoothing to reconstruct the continuous vigor curve and its monthly statistical aggregations.</p>
+    </div>
+
+    <div class="iviz-card reveal" data-cv-iv-explorer="" data-lang="en">
+      <div class="iviz-top">
+        <div>
+          <span class="iviz-kicker">Interactive figure 2 · Real spectral series of the selected plot (Sentinel-2 / BDC)</span>
+          <h4 class="iviz-title anchored">Seasonality, residual cloud removal, and vigor curve reconstruction</h4>
+          <p class="iviz-sub">The chart below plots the real observations of the plot clicked on the Campo Verde map above. Switch across spectral indices or hover over any satellite pass.</p>
+        </div>
+        <div class="iviz-controls">
+          <button type="button" class="iviz-btn is-active" data-iv-index="NDVI" aria-pressed="true">NDVI (Vigor)</button>
+          <button type="button" class="iviz-btn" data-iv-index="EVI" aria-pressed="false">EVI (Biomass)</button>
+          <button type="button" class="iviz-btn" data-iv-index="NDWI" aria-pressed="false">NDWI (Canopy water)</button>
+          <button type="button" class="iviz-btn" data-iv-index="NDRE" aria-pressed="false">NDRE (Red edge)</button>
+        </div>
+      </div>
+
+      <div class="iviz-body">
+        <div class="cv-sat-toolbar">
+          <div class="cv-sat-group">
+            <span class="cv-sat-label">Active plot:</span>
+            <strong data-iv-active-plot="" style="font-size:0.82rem; color:var(--gaia-accent); margin-right:0.35rem;">Plot #3622 (401.7 ha · 2nd-crop cotton)</strong>
+            <button type="button" class="iviz-btn is-active" data-iv-preset="3622_5102678" aria-pressed="true">#3622 (2nd-crop cotton)</button>
+            <button type="button" class="iviz-btn" data-iv-preset="3424_5102678" aria-pressed="false">#3424 (2nd-crop corn)</button>
+            <button type="button" class="iviz-btn" data-iv-preset="3671_5102678" aria-pressed="false">#3671 (1st-crop soy)</button>
+            <button type="button" class="iviz-btn" data-iv-center-map="">Locate on map ↑</button>
+          </div>
+          <div class="cv-sat-group">
+            <span class="cv-sat-label">Series layers:</span>
+            <button type="button" class="iviz-btn is-active" data-iv-toggle="smooth" aria-pressed="true">Reconstructed curve</button>
+            <button type="button" class="iviz-btn is-active" data-iv-toggle="raw" aria-pressed="true">Raw observation</button>
+            <button type="button" class="iviz-btn is-active" data-iv-toggle="drops" aria-pressed="true">Residual cloud drops</button>
+            <button type="button" class="iviz-btn is-active" data-iv-toggle="band" aria-pressed="true">Regional P25 to P75 band (2,266 plots)</button>
+          </div>
+        </div>
+
+        <div class="iviz-grid-2">
+          <div>
+            <div class="cv-iv-svg-wrap">
+              <svg viewbox="0 0 680 225" style="width:100%; height:auto; display:block;" role="img" aria-label="Interactive vegetation index time series for the selected plot in Campo Verde">
+                <line x1="42" y1="18" x2="656" y2="18" stroke="currentColor" stroke-opacity="0.1" stroke-dasharray="3 3"></line>
+                <line x1="42" y1="108" x2="656" y2="108" stroke="currentColor" stroke-opacity="0.12" stroke-dasharray="3 3"></line>
+                <line x1="42" y1="198" x2="656" y2="198" stroke="currentColor" stroke-opacity="0.24"></line>
+                <text x="8" y="22" font-size="10" fill="currentColor" opacity="0.65" data-iv-ylabel="">1.0</text>
+                <text x="8" y="112" font-size="10" fill="currentColor" opacity="0.65" data-iv-ylabel="">0.5</text>
+                <text x="8" y="202" font-size="10" fill="currentColor" opacity="0.65" data-iv-ylabel="">0.0</text>
+
+                <path data-iv-svg-band="" d="" fill="rgba(79, 138, 34, 0.16)"></path>
+                <path data-iv-svg-median="" d="" fill="none" stroke="#689f38" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.75"></path>
+                <path data-iv-svg-raw="" d="" fill="none" stroke="#8b9488" stroke-width="1.6" stroke-dasharray="3 3"></path>
+                <path data-iv-svg-smooth="" d="" fill="none" stroke="var(--gaia-accent)" stroke-width="3.2"></path>
+                <g data-iv-svg-drops=""></g>
+                <g data-iv-svg-points=""></g>
+
+                <text x="48" y="216" font-size="10" fill="currentColor" opacity="0.7">Jan</text>
+                <text x="155" y="216" font-size="10" fill="currentColor" opacity="0.7">Mar</text>
+                <text x="265" y="216" font-size="10" fill="currentColor" opacity="0.7">May</text>
+                <text x="375" y="216" font-size="10" fill="currentColor" opacity="0.7">Jul (Dry)</text>
+                <text x="495" y="216" font-size="10" fill="currentColor" opacity="0.7">Sep</text>
+                <text x="605" y="216" font-size="10" fill="currentColor" opacity="0.7">Nov/Dec</text>
+              </svg>
+            </div>
+            <div class="parcel-legend" style="margin-top:0.5rem;">
+              <span class="parcel-legend-item"><i class="parcel-swatch" style="background:var(--gaia-accent)"></i> Smoothed curve (reconstructed)</span>
+              <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#8b9488"></i> Raw observation (16-day)</span>
+              <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#d9483b"></i> Filtered cloud drop</span>
+              <span class="parcel-legend-item"><i class="parcel-swatch" style="background:rgba(79, 138, 34, 0.35)"></i> Campo Verde median &amp; interquartile band</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="parcel-inspector" style="margin-bottom:0.75rem;">
+              <div class="parcel-inspector-head">
+                <span class="parcel-inspector-title">Satellite pass inspection</span>
+                <span class="parcel-inspector-meta" data-iv-insp-date="">2021-03-06</span>
+              </div>
+              <div class="parcel-compare-row" style="grid-template-columns: 1fr 1fr 1fr; margin-bottom:0.5rem;">
+                <div class="parcel-compare-cell">
+                  <span>Raw value (BDC)</span>
+                  <strong data-iv-insp-raw="">0.074</strong>
+                </div>
+                <div class="parcel-compare-cell">
+                  <span>Reconstructed curve</span>
+                  <strong data-iv-insp-smooth="">0.467</strong>
+                </div>
+                <div class="parcel-compare-cell">
+                  <span>Clear-sky fraction</span>
+                  <strong data-iv-insp-clear="">0%</strong>
+                </div>
+              </div>
+              <div class="nota" style="margin-top:0;" data-iv-insp-status="">
+                Residual cloud detected (low clear-sky coverage): spurious drop discarded before reconstructing the continuous curve.
+              </div>
+            </div>
+            <div class="nota" style="margin-top:0;">
+              <strong>Why link the map to the spectral chart:</strong> clicking any real plot in the Stage 1 viewer shows how the clear-sky filter removes summer atmospheric noise and recovers both crop cycles (1st and 2nd harvest) across Campo Verde.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="proj-block reveal">
+    <div class="proj-header">
+      <h3 class="anchored">Stage 3 · Detecting start and end of harvest season (SOS and EOS), ZARC window, and neighborhood risk</h3>
+    </div>
+    <div class="proj-prose">
+      <p>From each plot's continuous vigor curve, the third stage automatically detects the phenological milestones of each crop cycle: the <strong>start of season (SOS)</strong> at post-planting emergence, the <strong>peak of season (POS)</strong> at maximum canopy closure, and the <strong>end of season (EOS)</strong> at senescence and harvest, separating the first and second crops of the agricultural year. Cross-referencing satellite-detected planting dates against the official planting window of <strong>ZARC (Agricultural Climate Risk Zoning)</strong> enables municipal-scale auditing of calendar compliance: in Campo Verde (MT), <strong>65.5% of soybean plots</strong> start their cycle within the official ZARC window (ranging between <strong>72.7% and 84.5%</strong> across other evaluated municipalities), whereas second-season crops (cotton at 7.6% and second-crop corn at 3.3%) reflect their direct dependence on when the first crop is harvested.</p>
+      <p>To translate phenological tracking into portfolio risk diagnosis, the product combines the spectral and climatic indicators of each plot-season to group plots into <strong>behavioral profiles</strong> by spectral and climatic similarity. Every plot is read <strong>in relation to its neighborhood</strong>, separating two phenomena that are often conflated:</p>
+      <ul>
+        <li><strong>Operational risk:</strong> management, pests, or producer-specific conditions. One plot performs poorly while neighboring plots perform well.</li>
+        <li><strong>Systemic risk:</strong> regional drought, frost, or dry spells. The entire neighborhood loses vigor simultaneously. Comparing a plot with its immediate surroundings identifies the nature of the problem without requiring on-site inspection at every property.</li>
+      </ul>
+    </div>
+
+    <div class="iviz-card reveal" data-pheno-explorer="">
+      <div class="iviz-top">
+        <div>
+          <span class="iviz-kicker">Interactive figure 3 · Phenology (SOS / POS / EOS), ZARC, and neighborhood risk</span>
+          <h4 class="iviz-title anchored">Crop calendar detection and separation between operational and systemic risk</h4>
+          <p class="iviz-sub">Switch among the three modes below to inspect the start (SOS), peak (POS), and end of season (EOS) milestones and compare the plot curve against its neighborhood.</p>
+        </div>
+        <div class="iviz-controls">
+          <button type="button" class="iviz-btn is-active" data-pheno-mode="safra" aria-pressed="true" data-sos-label="Detected SOS: Oct 18 (1st crop) · Feb 22 (2nd crop)" data-pos-label="Detected POS: Dec 14 (soy) · Apr 28 (2nd-crop corn)" data-eos-label="Detected EOS: Feb 08 (1st harvest) · Jun 19 (2nd harvest)" data-badge-text="Mode 1: Start and end of season detection (normal cycle)" data-diag-text="The reconstructed curve isolates the two successive cycles in the same agricultural year (1st-crop soybean and 2nd-crop corn), automatically marking cycle start (SOS), vegetative peak (POS), and harvest (EOS). First-crop planting falls inside the official ZARC window.">
+            1. Start &amp; end of season (SOS / EOS)
+          </button>
+          <button type="button" class="iviz-btn" data-pheno-mode="operacional" aria-pressed="false" data-sos-label="Detected SOS: Oct 18 (normal 1st crop) · Feb 24 (2nd crop)" data-pos-label="POS reached in 1st crop; early loss of vigor in 2nd crop" data-eos-label="Sharp drop (-34%) during 2nd crop outside neighbor band" data-badge-text="Mode 2: Localized operational risk diagnosis" data-diag-text="After the 2nd-crop SOS, the target plot curve diverges from the neighborhood P10 to P90 envelope while the 8 neighboring plots in the same spectral and climatic profile remain healthy. The anomaly points to localized management or pest issues.">
+            2. Operational risk (local)
+          </button>
+          <button type="button" class="iviz-btn" data-pheno-mode="sistemico" aria-pressed="false" data-sos-label="Detected SOS: Oct 18 (1st crop) · Feb 25 (2nd crop)" data-pos-label="Simultaneous loss of vigor prior to 2nd-crop peak" data-eos-label="Early senescence across the entire neighborhood under drought" data-badge-text="Mode 3: Systemic climate risk diagnosis" data-diag-text="Both the target plot and the entire neighborhood band drop simultaneously during a regional dry spell. Because the surrounding plots respond in the same direction, the system classifies the event as a regional climate shock.">
+            3. Systemic risk (regional)
+          </button>
+        </div>
+      </div>
+
+      <div class="iviz-body">
+        <div class="iviz-grid-2">
+          <div>
+            <div style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gaia-muted); margin-bottom: 0.4rem;">Phenological curve (1st and 2nd crops), SOS/POS/EOS markers, and neighborhood P10 to P90 band</div>
+            <svg viewbox="0 0 380 160" style="width:100%; height:auto; display:block;" role="img" aria-label="Phenological curve showing SOS, POS, EOS detection and neighborhood comparison">
+              <rect x="48" y="14" width="38" height="114" fill="rgba(54, 89, 2, 0.08)" stroke="rgba(54, 89, 2, 0.28)" stroke-dasharray="3 2"></rect>
+              <text x="67" y="25" text-anchor="middle" font-size="8" font-weight="700" fill="var(--gaia-accent)">ZARC Window</text>
+              <line x1="30" y1="128" x2="362" y2="128" stroke="currentColor" stroke-opacity="0.22"></line>
+              <line x1="30" y1="22" x2="362" y2="22" stroke="currentColor" stroke-opacity="0.1" stroke-dasharray="3 3"></line>
+
+              <path class="pheno-env-area" d="M 30,114 C 52,112 68,96 82,70 C 98,34 118,18 140,16 C 162,18 180,60 196,96 C 206,104 216,100 228,80 C 246,44 268,24 290,22 C 312,24 330,68 346,100 L 358,110 L 358,122 L 346,116 C 330,86 312,42 290,40 C 268,42 246,62 228,96 C 216,114 206,118 196,112 C 180,76 162,34 140,32 C 118,34 98,52 82,86 C 68,108 52,120 30,122 Z" fill="rgba(79, 138, 34, 0.20)"></path>
+              <path class="pheno-env-mean" d="M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,88 C 246,52 268,32 290,30 C 312,32 330,76 346,108 L 358,116" fill="none" stroke="#4f8a22" stroke-width="1.8" stroke-dasharray="4 3"></path>
+              <path class="pheno-target-line" d="M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,88 C 246,52 268,32 290,30 C 312,32 330,76 346,108 L 358,116" fill="none" stroke="#365902" stroke-width="3"></path>
+
+              <g class="pheno-markers-group">
+                <circle cx="64" cy="105" r="4.2" fill="#2b6cb0" stroke="#fff" stroke-width="1.4"></circle>
+                <text x="64" y="96" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2b6cb0">SOS 1</text>
+                <circle cx="140" cy="22" r="4.2" fill="#365902" stroke="#fff" stroke-width="1.4"></circle>
+                <text x="140" y="14" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--gaia-accent)">POS 1</text>
+                <circle cx="196" cy="104" r="4.2" fill="#d99b26" stroke="#fff" stroke-width="1.4"></circle>
+                <text x="196" y="121" text-anchor="middle" font-size="8.5" font-weight="700" fill="#b7791f">EOS 1</text>
+
+                <circle cx="222" cy="96" r="4.2" fill="#2b6cb0" stroke="#fff" stroke-width="1.4"></circle>
+                <text x="222" y="85" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2b6cb0">SOS 2</text>
+                <circle cx="290" cy="30" r="4.2" fill="#365902" stroke="#fff" stroke-width="1.4"></circle>
+                <text x="290" y="21" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--gaia-accent)">POS 2</text>
+                <circle cx="346" cy="108" r="4.2" fill="#d99b26" stroke="#fff" stroke-width="1.4"></circle>
+                <text x="346" y="123" text-anchor="middle" font-size="8.5" font-weight="700" fill="#b7791f">EOS 2</text>
+              </g>
+
+              <text x="64" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Oct (Planting)</text>
+              <text x="140" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Dec (1st crop)</text>
+              <text x="208" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Feb (Harvest/2nd)</text>
+              <text x="290" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Apr (2nd crop)</text>
+              <text x="348" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Jun</text>
+            </svg>
+
+            <div class="parcel-compare-row" style="grid-template-columns: 1fr; gap: 0.35rem; margin-top: 0.6rem;">
+              <div class="parcel-compare-cell" style="display:flex; justify-content:space-between; align-items:center;">
+                <span>Start of season (post-planting emergence)</span>
+                <strong data-pheno-sos="" style="font-size:0.8rem;">Detected SOS: Oct 18 (1st crop) · Feb 22 (2nd crop)</strong>
+              </div>
+              <div class="parcel-compare-cell" style="display:flex; justify-content:space-between; align-items:center;">
+                <span>Peak of season (maximum canopy vigor)</span>
+                <strong data-pheno-pos="" style="font-size:0.8rem;">Detected POS: Dec 14 (soy) · Apr 28 (2nd-crop corn)</strong>
+              </div>
+              <div class="parcel-compare-cell" style="display:flex; justify-content:space-between; align-items:center;">
+                <span>End of season (senescence and harvest)</span>
+                <strong data-pheno-eos="" style="font-size:0.8rem;">Detected EOS: Feb 08 (1st harvest) · Jun 19 (2nd harvest)</strong>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div style="display:grid; grid-template-columns: 0.95fr 1.05fr; gap: 0.85rem; align-items: center; margin-bottom: 0.85rem;">
+              <div class="neighbor-stage" style="padding: 0.75rem;">
+                <div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gaia-muted); margin-bottom: 0.45rem; text-align:center;">Spectral neighborhood</div>
+                <svg class="neighbor-grid-svg" viewbox="0 0 180 180" style="max-width: 135px;" role="img" aria-label="Spatial grid comparing the central target plot with eight neighboring plots">
+                  <rect class="neighbor-cell" data-health="healthy" x="12" y="12" width="48" height="48" rx="6"></rect>
+                  <rect class="neighbor-cell" data-health="healthy" x="66" y="12" width="48" height="48" rx="6"></rect>
+                  <rect class="neighbor-cell" data-health="healthy" x="120" y="12" width="48" height="48" rx="6"></rect>
+                  <rect class="neighbor-cell" data-health="healthy" x="12" y="66" width="48" height="48" rx="6"></rect>
+                  <rect class="neighbor-target-cell" data-health="healthy" x="66" y="66" width="48" height="48" rx="6"></rect>
+                  <text x="90" y="94" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="700">TARGET</text>
+                  <rect class="neighbor-cell" data-health="healthy" x="120" y="66" width="48" height="48" rx="6"></rect>
+                  <rect class="neighbor-cell" data-health="healthy" x="12" y="120" width="48" height="48" rx="6"></rect>
+                  <rect class="neighbor-cell" data-health="healthy" x="66" y="120" width="48" height="48" rx="6"></rect>
+                  <rect class="neighbor-cell" data-health="healthy" x="120" y="120" width="48" height="48" rx="6"></rect>
+                </svg>
+              </div>
+
+              <div class="acc-bench" style="gap: 0.55rem;">
+                <div style="font-size: 0.73rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gaia-muted);">Planting (SOS) inside official ZARC window</div>
+                <div class="acc-crop-group">
+                  <div class="acc-crop-head" style="font-size:0.78rem;"><span>Soybean (Campo Verde, MT)</span><span>65.5% (up to 84.5% in other mun.)</span></div>
+                  <div class="acc-bar-track"><div class="acc-bar-fill gaia" style="width:65.5%"></div></div>
+                </div>
+                <div class="acc-crop-group">
+                  <div class="acc-crop-head" style="font-size:0.78rem;"><span>Cotton</span><span>7.6%</span></div>
+                  <div class="acc-bar-track"><div class="acc-bar-fill ref" style="width:7.6%"></div></div>
+                </div>
+                <div class="acc-crop-group">
+                  <div class="acc-crop-head" style="font-size:0.78rem;"><span>2nd-crop corn (safrinha)</span><span>3.3%</span></div>
+                  <div class="acc-bar-track"><div class="acc-bar-fill ref" style="width:3.3%"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="nota" style="margin-top:0;">
+              <strong data-pheno-badge="">Mode 1: Start and end of season detection (normal cycle)</strong>
+              <div data-pheno-diagnosis="" style="margin-top:0.25rem;">The reconstructed curve isolates the two successive cycles in the same agricultural year (1st-crop soybean and 2nd-crop corn), automatically marking cycle start (SOS), vegetative peak (POS), and harvest (EOS). First-crop planting falls inside the official ZARC window.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="proj-block reveal">
+    <div class="proj-header">
+      <h3 class="anchored">Stage 4 · Soil macronutrient stock dynamics and yield response</h3>
+    </div>
+    <div class="proj-prose">
+      <p>The agriculture area is also explored in the <strong>Macronutrients</strong> project in partnership with <strong>FGV Agro</strong>, which answers how much Brazilian agricultural production drops if nitrogen (N), phosphorus (P), and potassium (K) fertilization is reduced, and what that reduction costs over the years. The central object of the model is the <strong>nutrient stock in the soil</strong>, not just single-year fertilizer application: a soil with high accumulated stock absorbs years of cuts before production falls, whereas a depleted soil feels the cut in the very first crop season. The deliverable covers <strong>five crops</strong> (soybean, corn, rice, sugarcane, and cotton) over a baseline of official statistics.</p>
+      <p>Two methodological principles structure the tool. First, <strong>crop biology is built into the model</strong>: cutting nitrogen barely reduces Brazilian soybean yields because the plant fixes nitrogen from the air; a model treating N, P, and K as three symmetric inputs would get this wrong. Second, <strong>every number carries its provenance</strong>: the dashboard labels what comes from official statistics, what is a literature parameter, and what is a project estimate; and where agronomy lacks consensus on how to combine three simultaneous limitations into a single yield loss, both candidate rules remain open to the user's choice, indicating which is the most defensible and which represents the pessimistic bound.</p>
+    </div>
+
+    <div class="iviz-card reveal" data-npk-sim="" data-lang="en">
+      <div class="iviz-top">
+        <div>
+          <span class="iviz-kicker">Interactive figure 4 · Soil nutrient stock (N, P, and K)</span>
+          <h4 class="iviz-title anchored">5-season yield trajectory and soil stock depletion</h4>
+          <p class="iviz-sub">Combine crop, reduced nutrient, initial soil condition, and combination rule to test production sensitivity.</p>
+        </div>
+      </div>
+
+      <div class="iviz-body">
+        <div class="npk-controls-grid">
+          <div class="npk-ctrl-group">
+            <label>1. Crop</label>
+            <div class="iviz-controls">
+              <button type="button" class="iviz-btn is-active" data-npk-crop="soja" aria-pressed="true">Soybean</button>
+              <button type="button" class="iviz-btn" data-npk-crop="milho" aria-pressed="false">Corn</button>
+              <button type="button" class="iviz-btn" data-npk-crop="algodao" aria-pressed="false">Cotton</button>
+            </div>
+          </div>
+          <div class="npk-ctrl-group">
+            <label>2. Fertilizer cut</label>
+            <div class="iviz-controls">
+              <button type="button" class="iviz-btn is-active" data-npk-cut="N" aria-pressed="true">Cut N</button>
+              <button type="button" class="iviz-btn" data-npk-cut="P" aria-pressed="false">Cut P</button>
+              <button type="button" class="iviz-btn" data-npk-cut="NPK" aria-pressed="false">Cut N, P, and K</button>
+            </div>
+          </div>
+          <div class="npk-ctrl-group">
+            <label>3. Initial soil stock</label>
+            <div class="iviz-controls">
+              <button type="button" class="iviz-btn is-active" data-npk-soil="alto" aria-pressed="true">High stock</button>
+              <button type="button" class="iviz-btn" data-npk-soil="baixo" aria-pressed="false">Depleted soil</button>
+            </div>
+          </div>
+          <div class="npk-ctrl-group">
+            <label>4. Multi-limitation rule</label>
+            <div class="iviz-controls">
+              <button type="button" class="iviz-btn is-active" data-npk-rule="defensavel" aria-pressed="true">Most defensible</button>
+              <button type="button" class="iviz-btn" data-npk-rule="pessimista" aria-pressed="false">Pessimistic</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="iviz-grid-2">
+          <div>
+            <svg viewbox="0 0 370 155" style="width:100%; height:auto; display:block;" role="img" aria-label="5-year trajectory chart for relative yield and soil stock">
+              <line x1="35" y1="22" x2="340" y2="22" stroke="currentColor" stroke-opacity="0.12" stroke-dasharray="3 3"></line>
+              <line x1="35" y1="77" x2="340" y2="77" stroke="currentColor" stroke-opacity="0.12" stroke-dasharray="3 3"></line>
+              <line x1="35" y1="132" x2="340" y2="132" stroke="currentColor" stroke-opacity="0.25"></line>
+              <text x="6" y="26" font-size="9.5" fill="currentColor" opacity="0.65">100%</text>
+              <text x="12" y="80" font-size="9.5" fill="currentColor" opacity="0.65">50%</text>
+              <text x="16" y="135" font-size="9.5" fill="currentColor" opacity="0.65">0%</text>
+
+              <polyline class="npk-stock-line" fill="none" stroke="#d99b26" stroke-width="2.5" stroke-dasharray="5 3" points="45,22 115,26 185,30 255,33 325,35"></polyline>
+              <polyline class="npk-yield-line" fill="none" stroke="var(--gaia-accent)" stroke-width="3.2" points="45,22 115,23 185,23 255,24 325,24"></polyline>
+
+              <circle class="npk-stock-dot" cx="45" cy="22" r="3.5" fill="#d99b26"></circle>
+              <circle class="npk-stock-dot" cx="115" cy="26" r="3.5" fill="#d99b26"></circle>
+              <circle class="npk-stock-dot" cx="185" cy="30" r="3.5" fill="#d99b26"></circle>
+              <circle class="npk-stock-dot" cx="255" cy="33" r="3.5" fill="#d99b26"></circle>
+              <circle class="npk-stock-dot" cx="325" cy="35" r="3.5" fill="#d99b26"></circle>
+
+              <circle class="npk-yield-dot" cx="45" cy="22" r="4" fill="var(--gaia-accent)"></circle>
+              <circle class="npk-yield-dot" cx="115" cy="23" r="4" fill="var(--gaia-accent)"></circle>
+              <circle class="npk-yield-dot" cx="185" cy="23" r="4" fill="var(--gaia-accent)"></circle>
+              <circle class="npk-yield-dot" cx="255" cy="24" r="4" fill="var(--gaia-accent)"></circle>
+              <circle class="npk-yield-dot" cx="325" cy="24" r="4" fill="var(--gaia-accent)"></circle>
+
+              <text x="45" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Season 1</text>
+              <text x="115" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Season 2</text>
+              <text x="185" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Season 3</text>
+              <text x="255" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Season 4</text>
+              <text x="325" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Season 5</text>
+            </svg>
+          </div>
+
+          <div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-bottom:0.85rem;">
+              <div class="parcel-compare-cell">
+                <span>Season-5 yield (solid line)</span>
+                <strong data-npk-end-yield="" style="font-size:1.35rem;">98%</strong>
+              </div>
+              <div class="parcel-compare-cell">
+                <span>Remaining soil stock (dashed line)</span>
+                <strong data-npk-end-stock="" style="font-size:1.35rem; color:#d99b26;">88%</strong>
+              </div>
+            </div>
+            <div class="nota" style="margin-top:0;">
+              <strong>Agronomic reading of the scenario</strong>
+              <div data-npk-callout="" style="margin-top:0.25rem;">Crop biology inside the model: cutting mineral nitrogen barely reduces Brazilian soybean yield because biological nitrogen fixation supplies nearly all the plant's demand. A model treating N, P, and K symmetrically would fail here.</div>
+            </div>
+            <div class="npk-provenance-row">
+              <span class="prov-tag"><i class="prov-dot" style="background:#365902"></i> Baseline: Official statistics</span>
+              <span class="prov-tag"><i class="prov-dot" style="background:#d99b26"></i> Response parameters: Literature</span>
+              <span class="prov-tag"><i class="prov-dot" style="background:#3b82a6"></i> Residual stock: Project estimate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="area-meta-box reveal">
+    <div>
+      <div class="meta-col-label">Institutional partner</div>
+      <div class="meta-col-val"><strong>FGV Agro</strong> (Center for Agribusiness Studies at FGV)</div>
+    </div>
+    <div>
+      <div class="meta-col-label">Connected methodological lines</div>
+      <div class="meta-pills">
+        <a class="meta-pill" href="#linhas">Learning with limited labels</a>
+        <a class="meta-pill" href="#linhas">Domain adaptation</a>
+        <a class="meta-pill" href="#linhas">Uncertainty modeling</a>
+        <a class="meta-pill" href="#linhas">Geospatial systems interaction</a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="forests" class="rsec">
-  <span id="floresta"></span>
+<section id="floresta" class="rsec">
+  <span id="forests"></span>
   <div class="rsec-head reveal">
     <div class="rsec-num">02</div>
     <div>
-      <span class="rsec-kicker">Research line</span>
+      <span class="rsec-kicker">Application area</span>
       <h2 class="anchored">Forests</h2>
     </div>
   </div>
-  <p class="rsec-lead reveal">Under construction.</p>
+
+  <p class="rsec-lead reveal">Quarterly forest canopy monitoring with spatiotemporal context, property-level environmental liability quantification across the CAR registry, semantic uncertainty layers, and automated territorial report generation.</p>
+
+  <div class="proj-block reveal">
+    <div class="proj-header">
+      <h3 class="anchored">Stage 1 · Quarterly forest canopy monitoring and intra-annual suppression</h3>
+    </div>
+    <div class="proj-prose">
+      <p>The forest area is explored in the <strong>Territorial AgroIntelligence</strong> project in partnership with <strong>FGV Agro</strong>, aimed at identifying environmental liabilities across large rural portfolios through intra-annual monitoring of forest cover and legally protected areas. Rather than relying solely on annual maps or isolated images subject to seasonal variations, the product operates quarter by quarter by combining consecutive <strong>Sentinel-2</strong> optical observations (10-meter resolution) with multi-sensor annual representations that integrate radar, topography, and climate.</p>
+      <p>Evaluated across 20 test quarters in an independent spatial region in Campo Verde (MT), the model achieves <strong>0.850 mean IoU</strong> (88.0% precision and <strong>96.3% recall</strong> in mapping forest canopy), reducing false positives in pasture areas by <strong>31.6%</strong> and in cropland by <strong>20.9%</strong>. The operational series produced by the laboratory spans <strong>26 continuous quarterly maps (2020 Q1 to 2026 Q2)</strong>.</p>
+    </div>
+
+    <div class="metrics reveal">
+      <div>
+        <div class="m-val" data-count="0.850" data-decimals="3">0.850</div>
+        <div class="m-lab">mean IoU across 20 test quarters</div>
+      </div>
+      <div>
+        <div class="m-val" data-count="96.3" data-decimals="1" data-suffix="%">96.3%</div>
+        <div class="m-lab">forest canopy recall</div>
+      </div>
+      <div>
+        <div class="m-val" data-count="31.6" data-decimals="1" data-prefix="-" data-suffix="%">-31.6%</div>
+        <div class="m-lab">false positives in pasture</div>
+      </div>
+      <div>
+        <div class="m-val" data-count="26">26</div>
+        <div class="m-lab">mapped quarters (2020 Q1 to 2026 Q2)</div>
+      </div>
+    </div>
+
+    <div class="iviz-card reveal" data-tab-group="">
+      <div class="iviz-top">
+        <div>
+          <span class="iviz-kicker">Interactive figure 1 · Quarterly forest canopy evolution</span>
+          <h4 class="iviz-title anchored">Direct comparison (2020 Q1 vs. 2026 Q2) and continuous 26-quarter series</h4>
+          <p class="iviz-sub">Drag the central divider to compare the endpoints of the series or step through all 26 quarterly maps generated by the model in Campo Verde (MT).</p>
+        </div>
+        <div class="iviz-controls" role="tablist">
+          <button type="button" class="iviz-btn is-active" data-tab-target="floresta-compare" role="tab" aria-selected="true">2020 Q1 vs. 2026 Q2 comparison</button>
+          <button type="button" class="iviz-btn" data-tab-target="floresta-scrub" role="tab" aria-selected="false">26-quarter time series</button>
+        </div>
+      </div>
+
+      <div class="iviz-body">
+        <div data-tab-pane="floresta-compare" class="is-active">
+          <div class="compare" style="margin-top:0;">
+            <img src="images/floresta/comparar-2020q1.webp" alt="Forest cover predicted by the model in the first quarter of 2020">
+            <img class="compare-over" src="images/floresta/comparar-2026q2.webp" alt="Forest cover predicted by the model in the second quarter of 2026">
+            <div class="compare-handle"></div>
+            <span class="compare-label left">2020 Q1</span>
+            <span class="compare-label right">2026 Q2</span>
+            <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare forest cover between 2020 Q1 and 2026 Q2">
+          </div>
+          <p class="compare-caption" style="margin-bottom:0;">Drag the central divider: green areas show native forest canopy estimated by the model on Sentinel-2 imagery; dark patches advancing between 2020 Q1 and 2026 Q2 indicate vegetation suppression.</p>
+        </div>
+        <div data-tab-pane="floresta-scrub" hidden="">
+          <div class="scrub" style="margin-top:0;" data-scrub="" data-base="images/floresta/trim-" data-ext=".webp" data-play-label="Play series" data-pause-label="Pause series" data-quarters="2020q1,2020q2,2020q3,2020q4,2021q1,2021q2,2021q3,2021q4,2022q1,2022q2,2022q3,2022q4,2023q1,2023q2,2023q3,2023q4,2024q1,2024q2,2024q3,2024q4,2025q1,2025q2,2025q3,2025q4,2026q1,2026q2">
+            <div class="scrub-stage">
+              <img class="scrub-img" src="images/floresta/trim-2026q2.webp" alt="Quarterly forest cover series from 2020 to 2026">
+              <span class="scrub-badge">2026 Q2</span>
+            </div>
+            <div class="scrub-controls">
+              <button class="scrub-play" type="button" aria-label="Play series">▶</button>
+              <input class="scrub-range" type="range" min="0" max="25" value="25" aria-label="Select quarter between 2020 Q1 and 2026 Q2">
+              <span class="scrub-label">2026 Q2</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="proj-block reveal">
+    <div class="proj-header">
+      <h3 class="anchored">Stage 2 · Property-level environmental liability (CAR) and semantic uncertainty layer</h3>
+    </div>
+    <div class="proj-prose">
+      <p>In the second stage, the quarterly forest cover maps are intersected with rural property boundaries declared in the <strong>Rural Environmental Registry (CAR)</strong> to analyze environmental liabilities (recent suppression and legally protected areas lacking native cover) with the <strong>rural property as the unit of analysis</strong>. Evaluated across <strong>1,432 rural properties</strong> in Campo Verde, the product achieves <strong>0.797 IoU</strong> within registered property boundaries.</p>
+      <p>To support portfolio auditing without triggering false deforestation alerts during the Cerrado dry season, the system quantifies pixel-level predictive uncertainty and organizes the landscape into six operational classes: it separates <em>consolidated forest</em>, <em>transition and edge zones</em>, <em>suppression alerts</em>, <em>seasonal water stress</em> (when deciduous forest loses foliage during drought without clearing), <em>stable non-forest</em>, and <em>probable non-forest</em>, enabling analysts to prioritize verification and cross-check alerts against official databases such as DETER and PRODES.</p>
+    </div>
+
+    <div class="iviz-card reveal" data-cv-forest-viewer="">
+      <div class="iviz-top">
+        <div>
+          <span class="iviz-kicker">Interactive figure 2 · Satellite viewer for property-level CAR audit and uncertainty</span>
+          <h4 class="iviz-title anchored">Interactive zoom and pan inspection: forest canopy, CAR boundaries, semantic uncertainty, and plots</h4>
+          <p class="iviz-sub">Drag the Campo Verde (MT) satellite image, zoom down to the 10-meter pixel scale, and freely combine prediction, property cutout, uncertainty, and neighboring crop layers.</p>
+        </div>
+        <div class="iviz-controls">
+          <button type="button" class="iviz-btn is-active" data-cv-f-clip="completo" aria-pressed="true">Full-scene prediction</button>
+          <button type="button" class="iviz-btn" data-cv-f-clip="car" aria-pressed="false">Clipped to CAR properties (1,432 properties)</button>
+        </div>
+      </div>
+      <div class="iviz-body">
+        <div class="cv-sat-toolbar">
+          <div class="cv-sat-group">
+            <span class="cv-sat-label">Quarter:</span>
+            <button type="button" class="iviz-btn is-active" data-cv-f-quarter="2023q3" data-badge="Sentinel-2 RGB · 2023 Q3 (Dry season)" aria-pressed="true">2023 Q3 (Dry)</button>
+            <button type="button" class="iviz-btn" data-cv-f-quarter="2020q1" data-badge="Sentinel-2 RGB · 2020 Q1 (Series start)" aria-pressed="false">2020 Q1</button>
+            <button type="button" class="iviz-btn" data-cv-f-quarter="2026q2" data-badge="Sentinel-2 RGB · 2026 Q2 (Series end)" aria-pressed="false">2026 Q2</button>
+          </div>
+          <div class="cv-sat-group">
+            <span class="cv-sat-label">Overlay layers:</span>
+            <button type="button" class="iviz-btn is-active" data-cv-f-toggle="pred" aria-pressed="true">Forest canopy (10 m)</button>
+            <button type="button" class="iviz-btn" data-cv-f-toggle="incerteza" aria-pressed="false">Uncertainty &amp; alert classes</button>
+            <button type="button" class="iviz-btn is-active" data-cv-f-toggle="car" aria-pressed="true">CAR boundaries</button>
+            <button type="button" class="iviz-btn" data-cv-f-toggle="talhoes" aria-pressed="false">Agricultural plots</button>
+            <button type="button" class="iviz-btn" data-cv-f-toggle="rotulo" aria-pressed="false">MapBiomas reference</button>
+          </div>
+          <div class="cv-sat-group">
+            <span class="cv-sat-label">Opacity:</span>
+            <input type="range" class="cv-opacity-slider" data-cv-f-opacity="" min="10" max="100" value="78" aria-label="Forest layer opacity">
+            <span data-cv-f-opacity-val="" style="font-variant-numeric: tabular-nums; font-weight:700;">78%</span>
+          </div>
+        </div>
+
+        <div class="cv-sat-viewport" style="height:430px;" role="region" aria-label="Interactive satellite viewer for forest canopy, CAR, and uncertainty in Campo Verde">
+          <div class="cv-sat-stage">
+            <img data-cv-f-base="" src="images/floresta/cv-rgb-2023q3.webp" alt="Sentinel-2 RGB composite of Campo Verde">
+            <img data-cv-f-layer="rotulo" class="is-hidden" src="images/floresta/cv-rotulo-2023.webp" alt="MapBiomas annual reference layer">
+            <img data-cv-f-layer="pred" src="images/floresta/cv-pred-completo-2023q3.webp" alt="Model-predicted forest canopy layer">
+            <img data-cv-f-layer="incerteza" class="is-hidden" src="images/floresta/cv-incerteza-2023q3.webp" alt="Semantic uncertainty and suppression alert layer">
+            <img data-cv-f-layer="talhoes" class="is-hidden" src="images/floresta/cv-talhoes-2023.webp" alt="Neighboring agricultural plot boundaries">
+            <img data-cv-f-layer="car" src="images/floresta/cv-car.webp" alt="CAR declared rural property boundaries">
+          </div>
+          <div class="cv-sat-hud">
+            <button type="button" class="cv-hud-btn" data-cv-zoom-out="" title="Zoom out">−</button>
+            <span data-cv-zoom-val="" style="min-width:2.7rem; text-align:center; font-variant-numeric:tabular-nums;">100%</span>
+            <button type="button" class="cv-hud-btn" data-cv-zoom-in="" title="Zoom in">+</button>
+            <button type="button" class="cv-hud-btn" data-cv-zoom-fit="" title="Fit to view">Fit</button>
+          </div>
+          <div class="cv-sat-badge" data-cv-sat-badge="">Sentinel-2 RGB · 2023 Q3 (Dry season)</div>
+        </div>
+
+        <div class="parcel-legend" style="margin-top:0.6rem;">
+          <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#1b5e20"></i> Consolidated forest / predicted canopy</span>
+          <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#66bb6a"></i> Edge and transition zone</span>
+          <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#fdd835"></i> Dry-season water stress</span>
+          <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#e53935"></i> Suppression alert</span>
+          <span class="parcel-legend-item"><i class="parcel-swatch" style="border:2px solid #f59e0b; background:transparent"></i> CAR property boundaries</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="proj-block reveal">
+    <div class="proj-header">
+      <h3 class="anchored">Stage 3 · Automated territorial report generation and narrative autonomy</h3>
+    </div>
+    <div class="proj-prose">
+      <p>The forest area is also explored in our project with <strong>FGVces</strong> (Center for Sustainability Studies at FGV) and <strong>Coiab</strong> (Coordination of Indigenous Organizations of the Brazilian Amazon), in which we built a <strong>tool for automated generation and editing of territorial reports</strong> from two inputs: official public datasets and explicit narrative structures. The system tracks the status and risks of deforestation, fire, mining, and climate change across the scales of Brazil, states, and Indigenous Lands, producing outputs as PDF reports, media clippings, or observatory pages. It is the only project in the laboratory where a technical counterpart from the partner organization works directly alongside our researchers on geospatial platform integration.</p>
+      <p><strong>Narrative depends on the audience:</strong> the same public data, the same territory, and the same facts require different story structures depending on the reader. A press release must be direct and synthetic; a technical report must expose methodology and uncertainty margins; a formal submission to the Public Prosecutor's Office (Ministério Público) must back every paragraph with traceable evidence linked to the primary source.</p>
+      <p><strong>What gives the product meaning is control over who writes the story:</strong> reports on Indigenous territories have historically been written by third parties. A tool that organizes public data into an explicit, editable narrative structure <strong>transfers authorship</strong>: Coiab operates the editing tool, decides the narrative, and signs the document about its own territory, supported by training and technology transfer carried out by the project.</p>
+    </div>
+
+    <div class="iviz-card reveal" data-tab-group="">
+      <div class="iviz-top">
+        <div>
+          <span class="iviz-kicker">Interactive figure 3 · Audience-adapted narrative structure (FGVces and Coiab)</span>
+          <h4 class="iviz-title anchored">The same official public data organized for three reader profiles</h4>
+          <p class="iviz-sub">Select the target audience below to see how the same territorial indicators of deforestation, fire, mining, and climate reorganize the report structure.</p>
+        </div>
+        <div class="iviz-controls" role="tablist">
+          <button type="button" class="iviz-btn is-active" data-tab-target="aud-midia" role="tab" aria-selected="true">For press and clipping</button>
+          <button type="button" class="iviz-btn" data-tab-target="aud-tecnico" role="tab" aria-selected="false">For technical staff</button>
+          <button type="button" class="iviz-btn" data-tab-target="aud-mp" role="tab" aria-selected="false">For Public Prosecutors</button>
+        </div>
+      </div>
+
+      <div class="iviz-body">
+        <div class="iviz-grid-2">
+          <div>
+            <div style="font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gaia-muted); margin-bottom: 0.55rem;">Monitored axes from official public databases</div>
+            <div class="trend-grid" style="margin-top:0; grid-template-columns: 1fr 1fr;">
+              <div class="trend-card">
+                <div class="trend-name">Deforestation</div>
+                <div class="trend-value" style="font-size:1.25rem;">DETER / PRODES</div>
+                <div class="trend-note">cutout by Indigenous Land, state, and Legal Amazon</div>
+              </div>
+              <div class="trend-card">
+                <div class="trend-name">Fire</div>
+                <div class="trend-value" style="font-size:1.25rem;">Hotspots &amp; scars</div>
+                <div class="trend-note">tracking active fires and surrounding pressure</div>
+              </div>
+              <div class="trend-card">
+                <div class="trend-name">Mining</div>
+                <div class="trend-value" style="font-size:1.25rem;">Illegal mining &amp; claims</div>
+                <div class="trend-note">cross-referencing alerts and official public records</div>
+              </div>
+              <div class="trend-card">
+                <div class="trend-name">Climate change</div>
+                <div class="trend-value" style="font-size:1.25rem;">Drought &amp; temperature</div>
+                <div class="trend-note">climatic anomalies across the territory</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div data-tab-pane="aud-midia" class="coiab-report-pane is-active">
+              <div class="coiab-doc-kicker">Structure 1 · Press and public communication</div>
+              <h5 class="coiab-doc-title anchored">Executive synthesis with key takeaways and immediate territorial context</h5>
+              <p class="coiab-doc-body">Prioritizes rapid reading of the period's facts: highlights recent variations in deforestation and fire within the selected Indigenous Land or state, contextualizes territorial pressure in accessible language, and prepares visual cutouts ready for press bulletins and observatory pages.</p>
+              <div class="coiab-doc-meta">
+                <span>Output: Clipping and outreach bulletin</span>
+                <span>Authorship and final editing: Coiab</span>
+              </div>
+            </div>
+
+            <div data-tab-pane="aud-tecnico" class="coiab-report-pane" hidden="">
+              <div class="coiab-doc-kicker">Structure 2 · Technical staff and territorial management</div>
+              <h5 class="coiab-doc-title anchored">Detailed historical time series, methodology, and cross-threat analysis</h5>
+              <p class="coiab-doc-body">Presents the full evolution of deforestation, fire, mining, and climate time series, detailing the consulted public databases, spatial aggregation criteria (Brazil, state, or Indigenous Land), and methodological notes required for technical monitoring.</p>
+              <div class="coiab-doc-meta">
+                <span>Output: Analytical PDF report and observatory</span>
+                <span>Authorship and final editing: Coiab</span>
+              </div>
+            </div>
+
+            <div data-tab-pane="aud-mp" class="coiab-report-pane" hidden="">
+              <div class="coiab-doc-kicker">Structure 3 · Oversight bodies and Public Prosecutor's Office</div>
+              <h5 class="coiab-doc-title anchored">Formal statement with traceable links to each official public record</h5>
+              <p class="coiab-doc-body">Organizes documented territorial facts with direct, verifiable references to the official public source of each data point (deforestation alerts, fire records, and mining indicators), ensuring every statement in the document is auditable at its origin.</p>
+              <div class="coiab-doc-meta">
+                <span>Output: Evidentiary dossier with cited primary sources</span>
+                <span>Authorship and final editing: Coiab</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="area-meta-box reveal">
+    <div>
+      <div class="meta-col-label">Institutional partners</div>
+      <div class="meta-col-val"><strong>FGVces</strong>, <strong>Coiab</strong> (Coordination of Indigenous Organizations of the Brazilian Amazon), and <strong>FGV Agro</strong></div>
+    </div>
+    <div>
+      <div class="meta-col-label">Connected methodological lines</div>
+      <div class="meta-pills">
+        <a class="meta-pill" href="#linhas">Learning with limited labels</a>
+        <a class="meta-pill" href="#linhas">Textual data modeling</a>
+        <a class="meta-pill" href="#linhas">Open-set and OOD</a>
+        <a class="meta-pill" href="#linhas">Domain adaptation</a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="climate" class="rsec">
-  <span id="clima"></span>
+<section id="clima" class="rsec">
+  <span id="climate"></span>
   <div class="rsec-head reveal">
     <div class="rsec-num">03</div>
     <div>
-      <span class="rsec-kicker">Research line</span>
+      <span class="rsec-kicker">Application area</span>
       <h2 class="anchored">Climate</h2>
     </div>
   </div>
-  <p class="rsec-lead reveal">Under construction.</p>
+
+  <p class="rsec-lead reveal">Extreme events, climate regimes, and physical climate risk, from reanalysis data and global model projections to applied indicators across infrastructure and agriculture.</p>
+
+  <div class="proj-block reveal">
+    <div class="proj-header">
+      <h3 class="anchored">Exposure of electric power infrastructure to extreme climate threats</h3>
+    </div>
+    <div class="proj-prose">
+      <p>The climate area is explored in a project developed in partnership with <strong>FGV CERI</strong> (Center for Regulation and Infrastructure Studies at FGV), focused on modeling the exposure of electric power infrastructure to <strong>extreme climate threats</strong>.</p>
+      <p>The full project covers <strong>seven threats</strong>, each with its own methodology: storms and lightning, wildfires, river flooding, landslides, maximum temperatures, extreme winds, and sea-level rise. Projections combine an ensemble of <strong>six global climate models</strong> across <strong>three emission scenarios</strong> with national and international observational datasets.</p>
+      <p><strong>The laboratory's contribution focuses on modeling five of those threats</strong> (extreme winds, storms, heavy rainfall, wildfires, and maximum temperatures) and building the <strong>interactive dashboard of maps and indicators</strong>.</p>
+    </div>
+
+    <div class="iviz-card reveal" data-ceri-explorer="">
+      <div class="iviz-top">
+        <div>
+          <span class="iviz-kicker">Interactive figure 1 · Scope modeled by the lab with FGV CERI</span>
+          <h4 class="iviz-title anchored">Five climate threats across three emission scenarios over the 6-model ensemble</h4>
+          <p class="iviz-sub">Select one of the five threats modeled by the laboratory and toggle between the observational baseline and emission scenarios to inspect the segment-level exposure layout.</p>
+        </div>
+        <div class="iviz-controls">
+          <button type="button" class="iviz-btn" data-ceri-scen="hist" aria-pressed="false">Observational baseline</button>
+          <button type="button" class="iviz-btn is-active" data-ceri-scen="ssp245" aria-pressed="true">Intermediate scenario</button>
+          <button type="button" class="iviz-btn" data-ceri-scen="ssp585" aria-pressed="false">High-emission scenario</button>
+        </div>
+      </div>
+
+      <div class="iviz-body">
+        <div class="iviz-controls" style="margin-bottom: 1.1rem;">
+          <button type="button" class="iviz-btn is-active" data-ceri-threat="ventos" aria-pressed="true" data-title="1. Extreme winds" data-indicator="Modeled by Green AI Lab · Ensemble of 6 global models across 3 scenarios" data-method="Modeling the exposure of electric power assets to extreme wind events, combining projections from six global climate models across three emission scenarios with national and international observational bases in the interactive dashboard.">
+            1. Extreme winds
+          </button>
+          <button type="button" class="iviz-btn" data-ceri-threat="tempestades" aria-pressed="false" data-title="2. Storms and lightning" data-indicator="Modeled by Green AI Lab · Ensemble of 6 global models across 3 scenarios" data-method="Modeling exposure to storms and atmospheric discharges across the power grid, integrating national and international observational datasets with projections from six global climate models.">
+            2. Storms
+          </button>
+          <button type="button" class="iviz-btn" data-ceri-threat="chuva" aria-pressed="false" data-title="3. Heavy rainfall" data-indicator="Modeled by Green AI Lab · Ensemble of 6 global models across 3 scenarios" data-method="Modeling heavy rainfall events to evaluate physical exposure of electric power infrastructure under three emission scenarios and six global climate models.">
+            3. Heavy rainfall
+          </button>
+          <button type="button" class="iviz-btn" data-ceri-threat="incendios" aria-pressed="false" data-title="4. Wildfires" data-indicator="Modeled by Green AI Lab · Ensemble of 6 global models across 3 scenarios" data-method="Modeling wildfire risk surrounding electric power infrastructure, delivered through interactive maps and indicators in the project dashboard.">
+            4. Wildfires
+          </button>
+          <button type="button" class="iviz-btn" data-ceri-threat="temperatura" aria-pressed="false" data-title="5. Maximum temperatures" data-indicator="Modeled by Green AI Lab · Ensemble of 6 global models across 3 scenarios" data-method="Modeling maximum temperature extremes from observational datasets and the ensemble of six global climate models across three emission scenarios.">
+            5. Maximum temperatures
+          </button>
+        </div>
+
+        <div class="iviz-grid-2">
+          <div>
+            <div style="font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gaia-muted); margin-bottom: 0.5rem;">Schematic representation of relative segment indicator in the dashboard (0 to 100)</div>
+            <div class="ceri-bars-stage">
+              <div class="grid-seg-col"><span class="grid-seg-val">39/100</span><div class="grid-seg-track"><div class="grid-seg-bar" data-level="low" style="height:39%"></div></div><span class="grid-seg-label">Segment 1</span></div>
+              <div class="grid-seg-col"><span class="grid-seg-val">58/100</span><div class="grid-seg-track"><div class="grid-seg-bar" data-level="med" style="height:58%"></div></div><span class="grid-seg-label">Segment 2</span></div>
+              <div class="grid-seg-col"><span class="grid-seg-val">48/100</span><div class="grid-seg-track"><div class="grid-seg-bar" data-level="low" style="height:48%"></div></div><span class="grid-seg-label">Segment 3</span></div>
+              <div class="grid-seg-col"><span class="grid-seg-val">76/100</span><div class="grid-seg-track"><div class="grid-seg-bar" data-level="high" style="height:76%"></div></div><span class="grid-seg-label">Segment 4</span></div>
+              <div class="grid-seg-col"><span class="grid-seg-val">67/100</span><div class="grid-seg-track"><div class="grid-seg-bar" data-level="med" style="height:67%"></div></div><span class="grid-seg-label">Segment 5</span></div>
+              <div class="grid-seg-col"><span class="grid-seg-val">44/100</span><div class="grid-seg-track"><div class="grid-seg-bar" data-level="low" style="height:44%"></div></div><span class="grid-seg-label">Segment 6</span></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="parcel-inspector" style="margin-bottom:0;">
+              <div class="parcel-inspector-title" data-ceri-title="" style="margin-bottom:0.35rem;">1. Extreme winds</div>
+              <div style="font-size:0.82rem; font-weight:600; color:var(--gaia-accent); margin-bottom:0.55rem;" data-ceri-indicator="">Modeled by Green AI Lab · Ensemble of 6 global models across 3 scenarios</div>
+              <p style="font-size:0.88rem; line-height:1.58; margin:0 0 0.7rem;" data-ceri-method="">Modeling the exposure of electric power assets to extreme wind events, combining projections from six global climate models across three emission scenarios with national and international observational bases in the interactive dashboard.</p>
+              <div style="font-size:0.78rem; color:var(--gaia-muted); border-top:1px solid var(--gaia-border); padding-top:0.55rem;">
+                Division across the full project (7 threats): the laboratory models these 5 threats and the interactive dashboard; river flooding, landslides, and sea-level rise are conducted by the other project streams.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="proj-block reveal">
+    <div class="proj-header">
+      <h3 class="anchored">Municipal climate trends and coupling with the agricultural calendar (2011 to 2025)</h3>
+    </div>
+    <div class="proj-prose">
+      <p>At the interface between climate and agriculture within our partnership with <strong>FGV Agro</strong>, the laboratory analyzes historical time series of climate indicators by municipality to quantify warming and the increase in dry days during the agricultural window. The indicators below summarize the change observed over <strong>15 years (2011 to 2025)</strong> in Nova Mutum (MT).</p>
+    </div>
+
+    <div class="trend-grid reveal">
+      <div class="trend-card">
+        <div class="trend-name">Maximum temperature</div>
+        <div class="trend-value" data-count="1.1" data-decimals="1" data-prefix="+" data-suffix=" °C">+1.1 °C</div>
+        <div class="trend-note">+0.76 °C per decade across the 2011 to 2025 series</div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-name">Warm nights (&gt; 22 °C)</div>
+        <div class="trend-value" data-count="108" data-prefix="+">+108</div>
+        <div class="trend-note">nights per year above 22 °C after 15 years</div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-name">Annual precipitation</div>
+        <div class="trend-value" data-count="7.7" data-decimals="1" data-prefix="-" data-suffix="%">-7.7%</div>
+        <div class="trend-note">roughly 151 mm less rainfall per year over the period</div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-name">Dry days in the rainy season</div>
+        <div class="trend-value" data-count="5.3" data-decimals="1" data-prefix="+" data-suffix=" days">+5.3 days</div>
+        <div class="trend-note">of dry spells inside the rainy season</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="area-meta-box reveal">
+    <div>
+      <div class="meta-col-label">Institutional partners</div>
+      <div class="meta-col-val"><strong>FGV CERI</strong> (Center for Regulation and Infrastructure Studies) and <strong>FGV Agro</strong></div>
+    </div>
+    <div>
+      <div class="meta-col-label">Connected methodological lines</div>
+      <div class="meta-pills">
+        <a class="meta-pill" href="#linhas">Climate modeling</a>
+        <a class="meta-pill" href="#linhas">Geospatial systems interaction</a>
+        <a class="meta-pill" href="#linhas">Networks of geolocated specialist models</a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="cities" class="rsec">
-  <span id="cidades"></span>
+<section id="cidades" class="rsec">
+  <span id="cities"></span>
   <div class="rsec-head reveal">
     <div class="rsec-num">04</div>
     <div>
-      <span class="rsec-kicker">Research line</span>
+      <span class="rsec-kicker">Application area</span>
       <h2 class="anchored">Cities</h2>
     </div>
   </div>
-  <p class="rsec-lead reveal">Under construction.</p>
+
+  <p class="rsec-lead reveal">Characterization of urban settlements and socioeconomic reading from satellite imagery.</p>
+
+  <div class="proj-block reveal">
+    <div class="proj-header">
+      <h3 class="anchored">Urban characterization and super-resolution in representation space</h3>
+    </div>
+    <div class="proj-prose">
+      <p>In the cities area, the laboratory investigates the characterization of urban settlements and socioeconomic reading from satellite imagery, developing methods for <strong>super-resolution directly in embedding space</strong> combined with <strong>domain adaptation</strong> techniques to transfer learned representations across distinct urban contexts.</p>
+    </div>
+
+    <div class="area-meta-box reveal">
+      <div>
+        <div class="meta-col-label">Research stream</div>
+        <div class="meta-col-val"><strong>Super-resolution in embedding space</strong> and satellite socioeconomic reading</div>
+      </div>
+      <div>
+        <div class="meta-col-label">Connected methodological lines</div>
+        <div class="meta-pills">
+          <a class="meta-pill" href="#linhas">Domain adaptation</a>
+          <a class="meta-pill" href="#linhas">Learning with limited labels</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="documentos" class="rsec">
+  <span id="documents"></span>
+  <div class="rsec-head reveal">
+    <div class="rsec-num">05</div>
+    <div>
+      <span class="rsec-kicker">Textual data modeling</span>
+      <h2 class="anchored">Technical and institutional documents</h2>
+    </div>
+  </div>
+
+  <p class="rsec-lead reveal">Language models operating on technical documents with traceable evidence and under strict confidentiality constraints: every statement points to the passage that supports it, and the corpus never leaves the institutional environment.</p>
+
+  <div class="proj-block reveal">
+    <div class="proj-header">
+      <h3 class="anchored">Automated analysis of proposals and contracts with cited evidence</h3>
+    </div>
+    <div class="proj-prose">
+      <p>In partnership with <strong>FGV PMO</strong>, we develop a system for automated analysis of proposals and contracts covering the full document chain: OCR text extraction preserving table structures, <strong>two-layer anonymization</strong> (deterministic rules for fixed patterns such as tax IDs and monetary values; a language model for person names, companies, and addresses), classification across the taxonomy of segments and service types, and <strong>identification of contractual risks with cited documentary evidence</strong> via RAG.</p>
+      <p>What sets this work apart is <strong>traceability</strong>: no risk flag is emitted without pointing to the cause, the potential effect, and the exact passage of the document that supports it.</p>
+    </div>
+  </div>
+
+  <div class="proj-block reveal">
+    <div class="proj-header">
+      <h3 class="anchored">Certification question banks and virtual student simulation</h3>
+    </div>
+    <div class="proj-prose">
+      <p>In partnership with <strong>FGV Projetos</strong> (a completed project), we applied natural language processing to certification exam question banks for generating, reviewing, and calibrating multiple-choice items.</p>
+      <p>Two traits define the project. First, <strong>the entire pipeline runs in a 100% closed environment</strong>, using open-weight models on internal servers so that no document ever leaves the institution. Second, the <strong>virtual student cohort simulation</strong> method: agents given partial, controlled access to the reference material answer the generated questions, and their response patterns estimate the difficulty of each item before it is administered to real candidates.</p>
+    </div>
+  </div>
+
+  <div class="area-meta-box reveal">
+    <div>
+      <div class="meta-col-label">Institutional partners</div>
+      <div class="meta-col-val"><strong>FGV PMO</strong> (ongoing) and <strong>FGV Projetos</strong> (completed)</div>
+    </div>
+    <div>
+      <div class="meta-col-label">Core methodological line</div>
+      <div class="meta-pills">
+        <a class="meta-pill" href="#linhas">Textual data modeling</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="linhas" class="rsec">
+  <span id="lines"></span>
+  <div class="rsec-head reveal">
+    <div class="rsec-num">06</div>
+    <div>
+      <span class="rsec-kicker">Research backbone</span>
+      <h2 class="anchored">Methodological lines in four layers</h2>
+    </div>
+  </div>
+
+  <p class="rsec-lead reveal">Methodological research is described by line rather than application area: uncertainty, domain adaptation, and model architecture are methods, and methods cut across domains instead of belonging to a single sector. The lines form layers that feed into one another.</p>
+
+  <div class="layers-stack reveal">
+    <div class="layer-card">
+      <div class="layer-card-head">
+        <h3 class="layer-card-title anchored">Layer 1 · Methodological components</h3>
+        <span class="layer-card-sub">Each line develops a core method in depth</span>
+      </div>
+      <div class="lines-grid">
+        <div class="line-item">
+          <h4 class="anchored">Learning with limited labels</h4>
+          <p>Environmental data almost never comes labeled, and when it does, it arrives only in the aggregate, biased, or for a few samples. This line trades manual annotation for structure: known regional proportions, similarity across samples, and the shape of the vegetation vigor curve.</p>
+        </div>
+        <div class="line-item">
+          <h4 class="anchored">Domain adaptation</h4>
+          <p>Making a model trained in one context work in another: another region, another sensor, or another year.</p>
+        </div>
+        <div class="line-item">
+          <h4 class="anchored">Open-set and OOD</h4>
+          <p>Recognizing what the model has never seen, instead of forcing it to classify everything among known options.</p>
+        </div>
+        <div class="line-item">
+          <h4 class="anchored">Uncertainty modeling</h4>
+          <p>Quantifying and calibrating how much the model does not know across classification, segmentation, and regression.</p>
+        </div>
+        <div class="line-item">
+          <h4 class="anchored">Textual data modeling</h4>
+          <p>Making language models operate on technical documents with traceable evidence and under confidentiality constraints: every claim points to the passage that supports it, and the corpus never leaves the environment.</p>
+        </div>
+      </div>
+    </div>
+    <div class="layer-card">
+      <div class="layer-card-head">
+        <h3 class="layer-card-title anchored">Layer 2 · Substrate</h3>
+        <span class="layer-card-sub">Combines the methodological components into an operable apparatus</span>
+      </div>
+      <div class="lines-grid">
+        <div class="line-item">
+          <h4 class="anchored">Networks of geolocated specialist models</h4>
+          <p>A network of context-specialized models that routes, weights, and generates specialists on demand, using foundation models as a shared reference space.</p>
+        </div>
+      </div>
+    </div>
+    <div class="layer-card">
+      <div class="layer-card-head">
+        <h3 class="layer-card-title anchored">Layer 3 · Coupled systems science</h3>
+        <span class="layer-card-sub">The founding vocation enabled by the model substrate</span>
+      </div>
+      <div class="lines-grid">
+        <div class="line-item">
+          <h4 class="anchored">Geospatial systems interaction</h4>
+          <p>Measuring how climate, forests, and agriculture influence one another in chains, and how the strength of each link varies by biome.</p>
+        </div>
+        <div class="line-item">
+          <h4 class="anchored">Climate modeling (spans layers 1 and 3)</h4>
+          <p>Extreme events, teleconnections, and climate regimes treated as modeling objects in their own right.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 </div>
+
+<aside class="side-toc" data-spy="" aria-label="Contents">
+<div class="side-toc-body">
+  <div class="side-toc-title">Contents</div>
+  <ul>
+    <li><a class="side-toc-link active" href="#agricultura">Agriculture</a></li>
+    <li><a class="side-toc-link" href="#floresta">Forests</a></li>
+    <li><a class="side-toc-link" href="#clima">Climate</a></li>
+    <li><a class="side-toc-link" href="#cidades">Cities</a></li>
+    <li><a class="side-toc-link" href="#documentos">Documents</a></li>
+    <li><a class="side-toc-link" href="#linhas">Research lines</a></li>
+  </ul>
+</div>
+</aside>
+
 </div>
 
 
@@ -1423,10 +2483,8 @@ ul.task-list li input[type="checkbox"] {
   });
 </script>
 <script>
-  // Exploradores das paginas de pesquisa, sempre sobre imagens ja renderizadas no
-  // repositorio: nada e calculado nem buscado no navegador, e as imagens carregam
-  // sob demanda. [data-scrub] percorre uma sequencia (trimestres) com um slider;
-  // [data-explorer] troca entre as camadas da mesma cena.
+  // Exploradores das paginas de pesquisa: combinam mapas ja renderizados no
+  // repositorio com graficos SVG interativos de proposito unico intercalados ao texto.
   document.addEventListener("DOMContentLoaded", function () {
     var reduzido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -1434,7 +2492,7 @@ ul.task-list li input[type="checkbox"] {
       if (url) { var im = new Image(); im.src = url; }
     }
 
-    // ---------------------------------------------------------------- scrubber
+    // Scrubber trimestral
     var scrubbers = document.querySelectorAll("[data-scrub]");
     for (var s = 0; s < scrubbers.length; s++) {
       (function (raiz) {
@@ -1495,7 +2553,7 @@ ul.task-list li input[type="checkbox"] {
       })(scrubbers[s]);
     }
 
-    // --------------------------------------------------------------- camadas
+    // Seletor de camadas pre-renderizadas
     var exploradores = document.querySelectorAll("[data-explorer]");
     for (var e = 0; e < exploradores.length; e++) {
       (function (raiz) {
@@ -1529,37 +2587,1128 @@ ul.task-list li input[type="checkbox"] {
       })(exploradores[e]);
     }
 
-    // --------------------------------------------------------------- cinema interativo da floresta
-    var cinemas = document.querySelectorAll(".forest-cinema-wrap");
-    for (var c = 0; c < cinemas.length; c++) {
-      (function (wrap) {
-        var botoes = wrap.querySelectorAll(".cinema-btn");
-        var paineis = wrap.querySelectorAll(".cinema-pane");
-
-        botoes.forEach(function (btn) {
+    // Seletor generico de abas/paineis ([data-tab-group])
+    var tabGroups = document.querySelectorAll("[data-tab-group]");
+    for (var tg = 0; tg < tabGroups.length; tg++) {
+      (function (group) {
+        var btns = group.querySelectorAll("[data-tab-target]");
+        var panes = group.querySelectorAll("[data-tab-pane]");
+        btns.forEach(function (btn) {
           btn.addEventListener("click", function () {
-            var alvo = btn.getAttribute("data-cinema-tab");
-            botoes.forEach(function (b) {
-              var ativo = b === btn;
-              b.classList.toggle("active", ativo);
-              b.setAttribute("aria-selected", ativo ? "true" : "false");
+            var target = btn.getAttribute("data-tab-target");
+            btns.forEach(function (b) {
+              var active = b === btn;
+              b.classList.toggle("is-active", active);
+              b.setAttribute("aria-selected", active ? "true" : "false");
             });
-            paineis.forEach(function (p) {
-              var ativo = p.id === "pane-" + alvo;
-              p.classList.toggle("active", ativo);
-              if (ativo) {
-                p.querySelectorAll("img[data-src]").forEach(function (im) {
-                  im.src = im.getAttribute("data-src");
-                  im.removeAttribute("data-src");
-                });
-              }
+            panes.forEach(function (p) {
+              var active = p.getAttribute("data-tab-pane") === target;
+              p.classList.toggle("is-active", active);
+              p.hidden = !active;
             });
           });
         });
-      })(cinemas[c]);
+      })(tabGroups[tg]);
+    }
+
+    // Grafico 1 (Agricultura): Classificacao de culturas por talhao (GAIA Lab vs referencia)
+    var cropExplorers = document.querySelectorAll("[data-crop-explorer]");
+    for (var ce = 0; ce < cropExplorers.length; ce++) {
+      (function (root) {
+        var lang = root.getAttribute("data-lang") || "pt";
+        var modeBtns = root.querySelectorAll("[data-crop-mode]");
+        var filterBtns = root.querySelectorAll("[data-crop-filter]");
+        var polygons = root.querySelectorAll(".parcel-poly");
+        var detailTitle = root.querySelector("[data-parcel-title]");
+        var detailMeta = root.querySelector("[data-parcel-meta]");
+        var detailSar = root.querySelector("[data-parcel-sar]");
+        var detailRef = root.querySelector("[data-parcel-ref]");
+
+        var currentMode = "gaia";
+        var currentFilter = "all";
+
+        function updatePolygons() {
+          polygons.forEach(function (poly) {
+            var trueCrop = poly.getAttribute("data-true-crop");
+            var refCrop = poly.getAttribute("data-ref-crop");
+            var shownCrop = currentMode === "gaia" ? trueCrop : refCrop;
+            poly.setAttribute("data-shown-crop", shownCrop);
+            var mismatch = currentMode === "ref" && trueCrop !== refCrop;
+            poly.classList.toggle("is-mismatch", mismatch);
+            var dimmed = currentFilter !== "all" && trueCrop !== currentFilter;
+            poly.classList.toggle("is-dimmed", dimmed);
+          });
+        }
+
+        function selectParcel(poly) {
+          polygons.forEach(function (p) { p.classList.remove("is-selected"); });
+          poly.classList.add("is-selected");
+          var id = poly.getAttribute("data-parcel-id");
+          var area = poly.getAttribute("data-area");
+          var cycle = poly.getAttribute("data-cycle") || "";
+          var gaiaLabel = poly.getAttribute("data-gaia-label");
+          var refLabel = poly.getAttribute("data-ref-label");
+          var trueCrop = poly.getAttribute("data-true-crop");
+          var refCrop = poly.getAttribute("data-ref-crop");
+          if (detailTitle) {
+            detailTitle.textContent = (lang === "en" ? "Plot " : "Talhão ") + id + " (" + area + " ha)";
+          }
+          if (detailMeta) detailMeta.textContent = cycle;
+          if (detailSar) detailSar.textContent = gaiaLabel;
+          if (detailRef) {
+            detailRef.textContent = refLabel;
+            detailRef.classList.toggle("is-error", trueCrop !== refCrop);
+          }
+        }
+
+        modeBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            currentMode = btn.getAttribute("data-crop-mode");
+            modeBtns.forEach(function (b) {
+              var active = b === btn;
+              b.classList.toggle("is-active", active);
+              b.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+            updatePolygons();
+          });
+        });
+
+        filterBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            currentFilter = btn.getAttribute("data-crop-filter");
+            filterBtns.forEach(function (b) {
+              var active = b === btn;
+              b.classList.toggle("is-active", active);
+              b.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+            updatePolygons();
+          });
+        });
+
+        polygons.forEach(function (poly) {
+          poly.addEventListener("click", function () { selectParcel(poly); });
+        });
+
+        updatePolygons();
+        var initial = root.querySelector(".parcel-poly.is-selected") || polygons[0];
+        if (initial) selectParcel(initial);
+      })(cropExplorers[ce]);
+    }
+
+    // Grafico 3 (Agricultura): Deteccao de inicio/fim de safra (SOS/POS/EOS) e leitura de risco na vizinhanca
+    var phenoExplorers = document.querySelectorAll("[data-pheno-explorer]");
+    for (var pe = 0; pe < phenoExplorers.length; pe++) {
+      (function (root) {
+        var btns = root.querySelectorAll("[data-pheno-mode]");
+        var targetLine = root.querySelector(".pheno-target-line");
+        var envArea = root.querySelector(".pheno-env-area");
+        var envMean = root.querySelector(".pheno-env-mean");
+        var sosGroup = root.querySelector(".pheno-markers-group");
+        var neighbors = root.querySelectorAll(".neighbor-cell");
+        var targetCell = root.querySelector(".neighbor-target-cell");
+        var badge = root.querySelector("[data-pheno-badge]");
+        var diagnosis = root.querySelector("[data-pheno-diagnosis]");
+        var sosText = root.querySelector("[data-pheno-sos]");
+        var posText = root.querySelector("[data-pheno-pos]");
+        var eosText = root.querySelector("[data-pheno-eos]");
+
+        var states = {
+          safra: {
+            target: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,88 C 246,52 268,32 290,30 C 312,32 330,76 346,108 L 358,116",
+            envArea: "M 30,114 C 52,112 68,96 82,70 C 98,34 118,18 140,16 C 162,18 180,60 196,96 C 206,104 216,100 228,80 C 246,44 268,24 290,22 C 312,24 330,68 346,100 L 358,110 L 358,122 L 346,116 C 330,86 312,42 290,40 C 268,42 246,62 228,96 C 216,114 206,118 196,112 C 180,76 162,34 140,32 C 118,34 98,52 82,86 C 68,108 52,120 30,122 Z",
+            envMean: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,88 C 246,52 268,32 290,30 C 312,32 330,76 346,108 L 358,116",
+            showMarkers: true,
+            targetState: "healthy",
+            neighborState: "healthy",
+            targetColor: "#365902"
+          },
+          operacional: {
+            target: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,95 C 246,84 268,88 290,96 C 312,104 330,112 346,116 L 358,118",
+            envArea: "M 30,114 C 52,112 68,96 82,70 C 98,34 118,18 140,16 C 162,18 180,60 196,96 C 206,104 216,100 228,80 C 246,44 268,24 290,22 C 312,24 330,68 346,100 L 358,110 L 358,122 L 346,116 C 330,86 312,42 290,40 C 268,42 246,62 228,96 C 216,114 206,118 196,112 C 180,76 162,34 140,32 C 118,34 98,52 82,86 C 68,108 52,120 30,122 Z",
+            envMean: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,88 C 246,52 268,32 290,30 C 312,32 330,76 346,108 L 358,116",
+            showMarkers: true,
+            targetState: "stressed",
+            neighborState: "healthy",
+            targetColor: "#c85a32"
+          },
+          sistemico: {
+            target: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,94 C 246,78 268,74 290,82 C 312,92 330,108 346,115 L 358,118",
+            envArea: "M 30,114 C 52,112 68,96 82,70 C 98,34 118,18 140,16 C 162,18 180,60 196,96 C 206,104 216,100 228,86 C 246,70 268,66 290,74 C 312,84 330,100 346,110 L 358,114 L 358,124 L 346,120 C 330,114 312,100 290,90 C 268,82 246,86 228,102 C 216,114 206,118 196,112 C 180,76 162,34 140,32 C 118,34 98,52 82,86 C 68,108 52,120 30,122 Z",
+            envMean: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,94 C 246,78 268,74 290,82 C 312,92 330,108 346,115 L 358,118",
+            showMarkers: true,
+            targetState: "stressed",
+            neighborState: "stressed",
+            targetColor: "#c85a32"
+          }
+        };
+
+        btns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var mode = btn.getAttribute("data-pheno-mode");
+            var st = states[mode];
+            if (!st) return;
+            btns.forEach(function (b) {
+              var active = b === btn;
+              b.classList.toggle("is-active", active);
+              b.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+            if (targetLine) {
+              targetLine.setAttribute("d", st.target);
+              targetLine.setAttribute("stroke", st.targetColor);
+            }
+            if (envArea) envArea.setAttribute("d", st.envArea);
+            if (envMean) envMean.setAttribute("d", st.envMean);
+            if (sosGroup) sosGroup.style.opacity = st.showMarkers ? "1" : "0.35";
+            if (targetCell) targetCell.setAttribute("data-health", st.targetState);
+            neighbors.forEach(function (cell) {
+              cell.setAttribute("data-health", st.neighborState);
+            });
+            if (badge) badge.textContent = btn.getAttribute("data-badge-text") || "";
+            if (diagnosis) diagnosis.textContent = btn.getAttribute("data-diag-text") || "";
+            if (sosText) sosText.textContent = btn.getAttribute("data-sos-label") || "";
+            if (posText) posText.textContent = btn.getAttribute("data-pos-label") || "";
+            if (eosText) eosText.textContent = btn.getAttribute("data-eos-label") || "";
+          });
+        });
+      })(phenoExplorers[pe]);
+    }
+
+    // Grafico 4 (Agricultura): Simulador de estoque de macronutrientes NPK
+    var npkSims = document.querySelectorAll("[data-npk-sim]");
+    for (var ns = 0; ns < npkSims.length; ns++) {
+      (function (root) {
+        var lang = root.getAttribute("data-lang") || "pt";
+        var cropBtns = root.querySelectorAll("[data-npk-crop]");
+        var cutBtns = root.querySelectorAll("[data-npk-cut]");
+        var soilBtns = root.querySelectorAll("[data-npk-soil]");
+        var ruleBtns = root.querySelectorAll("[data-npk-rule]");
+
+        var yieldLine = root.querySelector(".npk-yield-line");
+        var stockLine = root.querySelector(".npk-stock-line");
+        var yieldDots = root.querySelectorAll(".npk-yield-dot");
+        var stockDots = root.querySelectorAll(".npk-stock-dot");
+        var valEndYield = root.querySelector("[data-npk-end-yield]");
+        var valEndStock = root.querySelector("[data-npk-end-stock]");
+        var calloutText = root.querySelector("[data-npk-callout]");
+
+        var state = {
+          crop: "soja",
+          cut: "N",
+          soil: "alto",
+          rule: "defensavel"
+        };
+
+        var baseProfiles = {
+          soja: {
+            N:   { alto: [100, 99, 99, 98, 98], baixo: [100, 98, 97, 96, 95], stockAlto: [100, 96, 93, 90, 88], stockBaixo: [65, 62, 59, 57, 55] },
+            P:   { alto: [100, 99, 95, 88, 79], baixo: [100, 86, 74, 64, 56], stockAlto: [100, 82, 66, 52, 40], stockBaixo: [55, 38, 26, 18, 12] },
+            NPK: { alto: [100, 98, 91, 80, 68], baixo: [100, 81, 65, 52, 43], stockAlto: [100, 78, 59, 44, 32], stockBaixo: [55, 34, 21, 14, 9] }
+          },
+          milho: {
+            N:   { alto: [100, 94, 82, 68, 55], baixo: [100, 76, 58, 45, 36], stockAlto: [100, 74, 53, 38, 27], stockBaixo: [55, 32, 19, 12, 8] },
+            P:   { alto: [100, 98, 92, 83, 73], baixo: [100, 84, 71, 60, 51], stockAlto: [100, 80, 63, 49, 38], stockBaixo: [55, 37, 25, 17, 11] },
+            NPK: { alto: [100, 92, 76, 59, 45], baixo: [100, 70, 50, 36, 27], stockAlto: [100, 70, 48, 32, 21], stockBaixo: [55, 29, 16, 10, 6] }
+          },
+          algodao: {
+            N:   { alto: [100, 95, 85, 73, 61], baixo: [100, 79, 63, 50, 40], stockAlto: [100, 77, 57, 42, 31], stockBaixo: [58, 35, 22, 14, 9] },
+            P:   { alto: [100, 98, 93, 84, 75], baixo: [100, 86, 73, 62, 53], stockAlto: [100, 81, 65, 51, 39], stockBaixo: [58, 39, 27, 18, 12] },
+            NPK: { alto: [100, 93, 79, 63, 49], baixo: [100, 73, 53, 39, 29], stockAlto: [100, 72, 50, 34, 23], stockBaixo: [58, 31, 18, 11, 7] }
+          }
+        };
+
+        var xs = [45, 115, 185, 255, 325];
+        function yCoord(val) {
+          return Math.round(132 - (val / 100) * 110);
+        }
+
+        function explain(c, cut, soil, rule) {
+          if (lang === "en") {
+            if (c === "soja" && cut === "N") {
+              return "Crop biology inside the model: cutting mineral nitrogen barely reduces Brazilian soybean yield because biological nitrogen fixation supplies nearly all the plant's demand. A model treating N, P, and K symmetrically would fail here.";
+            }
+            if (soil === "alto") {
+              return "High-stock soil acts as a buffer: in the first seasons, plants draw on accumulated soil reserves before productivity drops sharply. Under the " + (rule === "pessimista" ? "pessimistic (multiplicative)" : "most defensible") + " combination rule, year-5 yield reaches " + valEndYield.textContent + ".";
+            }
+            return "Low-stock soil responds in the very first crop season: without accumulated reserves in the soil profile, cutting " + cut + " immediately translates into yield loss.";
+          } else {
+            if (c === "soja" && cut === "N") {
+              return "Biologia da cultura no modelo: cortar nitrogênio mineral quase não derruba a produtividade da soja brasileira, pois a fixação biológica supre a maior parte da demanda da planta. Um modelo que tratasse N, P e K como insumos simétricos erraria essa resposta.";
+            }
+            if (soil === "alto") {
+              return "Solo com estoque alto amortece o corte inicial: nas primeiras safras a planta consome a reserva acumulada no perfil antes de a produção cair com força. Pela regra " + (rule === "pessimista" ? "pessimista (multiplicativa)" : "mais defensável") + ", a produtividade no 5º ano chega a " + valEndYield.textContent + ".";
+            }
+            return "Solo pobre responde já na primeira safra: sem reserva acumulada no solo para amortecer a redução de adubo, o corte de " + cut + " derruba a produtividade imediatamente.";
+          }
+        }
+
+        function renderNpk() {
+          var prof = baseProfiles[state.crop][state.cut];
+          var rawYield = state.soil === "alto" ? prof.alto.slice() : prof.baixo.slice();
+          var rawStock = state.soil === "alto" ? prof.stockAlto.slice() : prof.stockBaixo.slice();
+
+          if (state.rule === "pessimista" && state.cut === "NPK") {
+            for (var i = 1; i < rawYield.length; i++) {
+              rawYield[i] = Math.max(18, rawYield[i] - (i * 3));
+            }
+          }
+
+          var yPts = rawYield.map(function (v, idx) { return xs[idx] + "," + yCoord(v); });
+          var sPts = rawStock.map(function (v, idx) { return xs[idx] + "," + yCoord(v); });
+
+          if (yieldLine) yieldLine.setAttribute("points", yPts.join(" "));
+          if (stockLine) stockLine.setAttribute("points", sPts.join(" "));
+
+          yieldDots.forEach(function (d, idx) {
+            d.setAttribute("cx", xs[idx]);
+            d.setAttribute("cy", yCoord(rawYield[idx]));
+          });
+          stockDots.forEach(function (d, idx) {
+            d.setAttribute("cx", xs[idx]);
+            d.setAttribute("cy", yCoord(rawStock[idx]));
+          });
+
+          if (valEndYield) valEndYield.textContent = rawYield[4] + "%";
+          if (valEndStock) valEndStock.textContent = rawStock[4] + "%";
+          if (calloutText) calloutText.textContent = explain(state.crop, state.cut, state.soil, state.rule);
+        }
+
+        function bindGroup(btns, attr, key) {
+          btns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              state[key] = btn.getAttribute(attr);
+              btns.forEach(function (b) {
+                var active = b === btn;
+                b.classList.toggle("is-active", active);
+                b.setAttribute("aria-pressed", active ? "true" : "false");
+              });
+              renderNpk();
+            });
+          });
+        }
+
+        bindGroup(cropBtns, "data-npk-crop", "crop");
+        bindGroup(cutBtns, "data-npk-cut", "cut");
+        bindGroup(soilBtns, "data-npk-soil", "soil");
+        bindGroup(ruleBtns, "data-npk-rule", "rule");
+        renderNpk();
+      })(npkSims[ns]);
+    }
+
+    // Explorador de ameacas climaticas FGV CERI
+    var ceriExplorers = document.querySelectorAll("[data-ceri-explorer]");
+    for (var ce2 = 0; ce2 < ceriExplorers.length; ce2++) {
+      (function (root) {
+        var threatBtns = root.querySelectorAll("[data-ceri-threat]");
+        var scenBtns = root.querySelectorAll("[data-ceri-scen]");
+        var segments = root.querySelectorAll(".grid-seg-bar");
+        var segVals = root.querySelectorAll(".grid-seg-val");
+        var titleEl = root.querySelector("[data-ceri-title]");
+        var methodEl = root.querySelector("[data-ceri-method]");
+        var indicatorEl = root.querySelector("[data-ceri-indicator]");
+
+        var state = { threat: "ventos", scen: "ssp245" };
+
+        var data = {
+          ventos: {
+            hist:   [28, 42, 35, 58, 49, 31],
+            ssp245: [39, 58, 48, 76, 67, 44],
+            ssp585: [52, 74, 63, 92, 84, 59]
+          },
+          tempestades: {
+            hist:   [45, 52, 61, 48, 39, 34],
+            ssp245: [62, 71, 82, 66, 54, 47],
+            ssp585: [78, 88, 96, 81, 69, 61]
+          },
+          temperatura: {
+            hist:   [32, 38, 44, 51, 47, 36],
+            ssp245: [54, 63, 72, 81, 75, 58],
+            ssp585: [76, 85, 93, 98, 91, 79]
+          },
+          incendios: {
+            hist:   [22, 35, 64, 71, 48, 25],
+            ssp245: [36, 54, 83, 89, 66, 38],
+            ssp585: [51, 72, 95, 99, 84, 52]
+          },
+          chuva: {
+            hist:   [48, 55, 39, 33, 58, 62],
+            ssp245: [64, 73, 52, 45, 76, 81],
+            ssp585: [82, 91, 68, 59, 92, 96]
+          }
+        };
+
+        function updateCeri() {
+          var activeBtn = root.querySelector('[data-ceri-threat="' + state.threat + '"]');
+          if (activeBtn) {
+            if (titleEl) titleEl.textContent = activeBtn.getAttribute("data-title") || "";
+            if (methodEl) methodEl.textContent = activeBtn.getAttribute("data-method") || "";
+            if (indicatorEl) indicatorEl.textContent = activeBtn.getAttribute("data-indicator") || "";
+          }
+          var vals = (data[state.threat] && data[state.threat][state.scen]) || [50, 50, 50, 50, 50, 50];
+          segments.forEach(function (bar, idx) {
+            var v = vals[idx] || 40;
+            bar.style.height = v + "%";
+            bar.setAttribute("data-level", v >= 75 ? "high" : (v >= 50 ? "med" : "low"));
+            if (segVals[idx]) segVals[idx].textContent = v + "/100";
+          });
+        }
+
+        threatBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            state.threat = btn.getAttribute("data-ceri-threat");
+            threatBtns.forEach(function (b) {
+              var active = b === btn;
+              b.classList.toggle("is-active", active);
+              b.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+            updateCeri();
+          });
+        });
+
+        scenBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            state.scen = btn.getAttribute("data-ceri-scen");
+            scenBtns.forEach(function (b) {
+              var active = b === btn;
+              b.classList.toggle("is-active", active);
+              b.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+            updateCeri();
+          });
+        });
+
+        updateCeri();
+      })(ceriExplorers[ce2]);
+    }
+
+    // Motor reutilizavel de zoom e arrasto (pan & zoom) sobre imagem de satelite co-registrada
+    function initPanZoomStage(viewport, stage, natW, natH, hudRoot) {
+      var zoom = 1;
+      var tx = 0;
+      var ty = 0;
+      var minZoom = 0.45;
+      var maxZoom = 6.5;
+      var zoomLabel = hudRoot ? hudRoot.querySelector("[data-cv-zoom-val]") : null;
+      var btnIn = hudRoot ? hudRoot.querySelector("[data-cv-zoom-in]") : null;
+      var btnOut = hudRoot ? hudRoot.querySelector("[data-cv-zoom-out]") : null;
+      var btnFit = hudRoot ? hudRoot.querySelector("[data-cv-zoom-fit]") : null;
+
+      function clampPan() {
+        var vw = viewport.clientWidth || 600;
+        var vh = viewport.clientHeight || 410;
+        var sw = natW * zoom;
+        var sh = natH * zoom;
+        if (sw <= vw) {
+          tx = (vw - sw) / 2;
+        } else {
+          tx = Math.min(20, Math.max(vw - sw - 20, tx));
+        }
+        if (sh <= vh) {
+          ty = (vh - sh) / 2;
+        } else {
+          ty = Math.min(20, Math.max(vh - sh - 20, ty));
+        }
+      }
+
+      function applyTransform() {
+        clampPan();
+        stage.style.transform = "translate3d(" + tx.toFixed(1) + "px," + ty.toFixed(1) + "px,0) scale(" + zoom.toFixed(4) + ")";
+        stage.classList.toggle("is-pixelated", zoom >= 2.2);
+        if (zoomLabel) zoomLabel.textContent = Math.round(zoom * 100) + "%";
+      }
+
+      function fitToViewport(initialFocus) {
+        var vw = viewport.clientWidth || 600;
+        var vh = viewport.clientHeight || 410;
+        minZoom = Math.max(vw / natW, vh / natH) * 0.92;
+        if (initialFocus) {
+          zoom = Math.max(minZoom, 0.88);
+          tx = (vw / 2) - (natW * 0.48) * zoom;
+          ty = (vh / 2) - (natH * 0.48) * zoom;
+        } else {
+          zoom = Math.max(vw / natW, vh / natH);
+          tx = (vw - natW * zoom) / 2;
+          ty = (vh - natH * zoom) / 2;
+        }
+        applyTransform();
+      }
+
+      function zoomAt(factor, clientX, clientY) {
+        var rect = viewport.getBoundingClientRect();
+        var px = clientX !== undefined ? (clientX - rect.left) : (rect.width / 2);
+        var py = clientY !== undefined ? (clientY - rect.top) : (rect.height / 2);
+        var wx = (px - tx) / zoom;
+        var wy = (py - ty) / zoom;
+        var nextZoom = Math.min(maxZoom, Math.max(minZoom, zoom * factor));
+        zoom = nextZoom;
+        tx = px - wx * zoom;
+        ty = py - wy * zoom;
+        applyTransform();
+      }
+
+      function centerOnPoint(wx, wy, targetZoom) {
+        var vw = viewport.clientWidth || 600;
+        var vh = viewport.clientHeight || 410;
+        if (targetZoom) zoom = Math.min(maxZoom, Math.max(minZoom, targetZoom));
+        tx = (vw / 2) - wx * zoom;
+        ty = (vh / 2) - wy * zoom;
+        applyTransform();
+      }
+
+      viewport.addEventListener("wheel", function (e) {
+        e.preventDefault();
+        var factor = e.deltaY < 0 ? 1.18 : (1 / 1.18);
+        zoomAt(factor, e.clientX, e.clientY);
+      }, { passive: false });
+
+      var isDown = false;
+      var moved = false;
+      var startX = 0;
+      var startY = 0;
+      var origTx = 0;
+      var origTy = 0;
+      var rafId = null;
+
+      viewport.addEventListener("pointerdown", function (e) {
+        if (e.button !== 0 && e.pointerType === "mouse") return;
+        if (e.target.closest && e.target.closest(".cv-sat-hud")) return;
+        isDown = true;
+        moved = false;
+        startX = e.clientX;
+        startY = e.clientY;
+        origTx = tx;
+        origTy = ty;
+        viewport.classList.add("is-dragging");
+      });
+
+      window.addEventListener("pointermove", function (e) {
+        if (!isDown) return;
+        var dx = e.clientX - startX;
+        var dy = e.clientY - startY;
+        if (Math.abs(dx) > 4 || Math.abs(dy) > 4) moved = true;
+        tx = origTx + dx;
+        ty = origTy + dy;
+        if (!rafId) {
+          rafId = requestAnimationFrame(function () {
+            applyTransform();
+            rafId = null;
+          });
+        }
+      });
+
+      function stopDrag() {
+        if (!isDown) return;
+        isDown = false;
+        viewport.classList.remove("is-dragging");
+      }
+      window.addEventListener("pointerup", stopDrag);
+      window.addEventListener("pointercancel", stopDrag);
+
+      if (btnIn) btnIn.addEventListener("click", function () { zoomAt(1.32); });
+      if (btnOut) btnOut.addEventListener("click", function () { zoomAt(1 / 1.32); });
+      if (btnFit) btnFit.addEventListener("click", function () { fitToViewport(false); });
+
+      window.addEventListener("resize", function () { applyTransform(); });
+      setTimeout(function () { fitToViewport(true); }, 30);
+
+      return {
+        wasDragged: function () { return moved; },
+        centerOn: centerOnPoint,
+        fit: fitToViewport
+      };
+    }
+
+    // Visualizador integrado de Agricultura (Campo Verde, MT): Mapa de satelite (Etapa 1) + Serie temporal de IVs (Etapa 2)
+    var agroViewer = document.querySelector("[data-cv-agro-viewer]");
+    var ivExplorer = document.querySelector("[data-cv-iv-explorer]");
+    if (agroViewer || ivExplorer) {
+      (function () {
+        var lang = (agroViewer && agroViewer.getAttribute("data-lang")) || (ivExplorer && ivExplorer.getAttribute("data-lang")) || "pt";
+        var jsonUrl = (agroViewer && agroViewer.getAttribute("data-json")) || "images/agro/cv-plots-2021.json";
+
+        var cropNames = {
+          pt: { soja: "Soja (1ª safra)", milho: "Milho 2ª safra (sucessão)", algodao: "Algodão 2ª safra (sucessão)" },
+          en: { soja: "Soybean (1st crop)", milho: "2nd-crop corn (succession)", algodao: "2nd-crop cotton (succession)" }
+        };
+        var refNames = {
+          pt: { soja: "Soja / lavoura temporária", milho: "Milho", algodao: "Algodão" },
+          en: { soja: "Soybean / temporary crop", milho: "Corn", algodao: "Cotton" }
+        };
+        var cropColors = {
+          soja: "#5a9a2e",
+          milho: "#d99b26",
+          algodao: "#3b82a6"
+        };
+
+        function ndviToColor(val) {
+          var v = Math.max(0.15, Math.min(0.90, val || 0.5));
+          var t = (v - 0.15) / 0.75;
+          if (t < 0.45) {
+            var u = t / 0.45;
+            var r = Math.round(196 + (220 - 196) * u);
+            var g = Math.round(110 + (186 - 110) * u);
+            var b = Math.round(52 + (62 - 52) * u);
+            return "rgb(" + r + "," + g + "," + b + ")";
+          } else {
+            var u2 = (t - 0.45) / 0.55;
+            var r2 = Math.round(220 + (31 - 220) * u2);
+            var g2 = Math.round(186 + (141 - 186) * u2);
+            var b2 = Math.round(62 + (62 - 62) * u2);
+            return "rgb(" + r2 + "," + g2 + "," + b2 + ")";
+          }
+        }
+
+        var dataset = null;
+        var selectedPlot = null;
+        var mapState = {
+          quarter: "2021q1",
+          colorMode: "gaia",
+          cropFilter: "all",
+          opacity: 0.62
+        };
+        var ivState = {
+          indexName: "NDVI",
+          showSmooth: true,
+          showRaw: true,
+          showDrops: true,
+          showBand: true,
+          hoverIdx: -1
+        };
+
+        var pzInstance = null;
+        var svgGroup = null;
+        var pathElementsById = {};
+
+        // Inicializa mapa da Etapa 1 se existir
+        if (agroViewer) {
+          var viewport = agroViewer.querySelector(".cv-sat-viewport");
+          var stage = agroViewer.querySelector(".cv-sat-stage");
+          svgGroup = agroViewer.querySelector("[data-cv-plots-group]");
+          pzInstance = initPanZoomStage(viewport, stage, 1400, 880, agroViewer);
+
+          var baseImg = agroViewer.querySelector("[data-cv-base-img]");
+          var badgeEl = agroViewer.querySelector("[data-cv-sat-badge]");
+          var qBtns = agroViewer.querySelectorAll("[data-cv-quarter]");
+          var modeBtns = agroViewer.querySelectorAll("[data-cv-colormode]");
+          var filterBtns = agroViewer.querySelectorAll("[data-cv-cropfilter]");
+          var layerToggles = agroViewer.querySelectorAll("[data-cv-layer-toggle]");
+          var opSlider = agroViewer.querySelector("[data-cv-opacity]");
+          var opVal = agroViewer.querySelector("[data-cv-opacity-val]");
+          var jumpBtn = agroViewer.querySelector("[data-cv-jump-iv]");
+
+          qBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              mapState.quarter = btn.getAttribute("data-cv-quarter");
+              qBtns.forEach(function (b) {
+                var act = b === btn;
+                b.classList.toggle("is-active", act);
+                b.setAttribute("aria-pressed", act ? "true" : "false");
+              });
+              if (baseImg) baseImg.src = "images/agro/cv-rgb-" + mapState.quarter + ".webp";
+              if (badgeEl) badgeEl.textContent = btn.getAttribute("data-badge") || mapState.quarter.toUpperCase();
+              updateMapPolygons();
+            });
+          });
+
+          modeBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              mapState.colorMode = btn.getAttribute("data-cv-colormode");
+              modeBtns.forEach(function (b) {
+                var act = b === btn;
+                b.classList.toggle("is-active", act);
+                b.setAttribute("aria-pressed", act ? "true" : "false");
+              });
+              updateMapPolygons();
+            });
+          });
+
+          filterBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              mapState.cropFilter = btn.getAttribute("data-cv-cropfilter");
+              filterBtns.forEach(function (b) {
+                var act = b === btn;
+                b.classList.toggle("is-active", act);
+                b.setAttribute("aria-pressed", act ? "true" : "false");
+              });
+              updateMapPolygons();
+            });
+          });
+
+          layerToggles.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              var lay = btn.getAttribute("data-cv-layer-toggle");
+              var isOn = btn.classList.toggle("is-active");
+              btn.setAttribute("aria-pressed", isOn ? "true" : "false");
+              var imgLay = agroViewer.querySelector('[data-cv-layer="' + lay + '"]');
+              if (imgLay) imgLay.classList.toggle("is-hidden", !isOn);
+            });
+          });
+
+          if (opSlider) {
+            opSlider.addEventListener("input", function () {
+              mapState.opacity = parseInt(opSlider.value, 10) / 100;
+              if (opVal) opVal.textContent = opSlider.value + "%";
+              updateMapPolygons();
+            });
+          }
+
+          if (jumpBtn && ivExplorer) {
+            jumpBtn.addEventListener("click", function () {
+              ivExplorer.scrollIntoView({ behavior: "smooth", block: "center" });
+            });
+          }
+        }
+
+        function updateMapPolygons() {
+          if (!dataset || !svgGroup) return;
+          dataset.plots.forEach(function (p) {
+            var el = pathElementsById[p.fid];
+            if (!el) return;
+            var fill = "transparent";
+            var fillOp = mapState.opacity;
+            var mismatch = false;
+            if (mapState.colorMode === "gaia") {
+              fill = cropColors[p.crop] || "#5a9a2e";
+            } else if (mapState.colorMode === "ref") {
+              fill = cropColors[p.ref_crop] || "#5a9a2e";
+              mismatch = p.crop !== p.ref_crop;
+            } else if (mapState.colorMode === "ndvi") {
+              var qVal = mapState.quarter === "2021q1" ? p.ndvi_q1 : (mapState.quarter === "2021q2" ? p.ndvi_q2 : p.ndvi_q3);
+              fill = ndviToColor(qVal);
+              fillOp = Math.max(0.68, mapState.opacity);
+            } else if (mapState.colorMode === "outline") {
+              fill = "rgba(255,255,255,0.02)";
+              fillOp = 0.05;
+            }
+            var dimmed = mapState.cropFilter !== "all" && p.crop !== mapState.cropFilter;
+            el.style.fill = fill;
+            el.style.fillOpacity = dimmed ? "0.1" : String(fillOp);
+            el.classList.toggle("is-mismatch", mismatch);
+            el.classList.toggle("is-dimmed", dimmed);
+            el.classList.toggle("is-selected", selectedPlot && selectedPlot.fid === p.fid);
+          });
+        }
+
+        function selectPlotByFid(fid, centerMap) {
+          if (!dataset) return;
+          var found = null;
+          for (var i = 0; i < dataset.plots.length; i++) {
+            if (dataset.plots[i].fid === fid) { found = dataset.plots[i]; break; }
+          }
+          if (!found) found = dataset.plots[0];
+          selectedPlot = found;
+          ivState.hoverIdx = -1;
+
+          updateMapPolygons();
+          if (centerMap && pzInstance && selectedPlot) {
+            pzInstance.centerOn(selectedPlot.cx, selectedPlot.cy, 1.35);
+          }
+
+          // Atualiza inspetor da Etapa 1
+          if (agroViewer && selectedPlot) {
+            var titleEl = agroViewer.querySelector("[data-parcel-title]");
+            var metaEl = agroViewer.querySelector("[data-parcel-meta]");
+            var sarEl = agroViewer.querySelector("[data-parcel-sar]");
+            var refEl = agroViewer.querySelector("[data-parcel-ref]");
+            var ndviEl = agroViewer.querySelector("[data-parcel-ndvi]");
+            var dropsEl = agroViewer.querySelector("[data-parcel-drops]");
+
+            var areaFmt = lang === "en" ? selectedPlot.area_ha.toFixed(1) : selectedPlot.area_ha.toFixed(1).replace(".", ",");
+            if (titleEl) {
+              titleEl.textContent = (lang === "en" ? "Plot " : "Talhão ") + selectedPlot.id + " (" + areaFmt + " ha · Campo Verde, MT)";
+            }
+            if (metaEl) {
+              metaEl.textContent = "FID " + selectedPlot.fid + " · Pico NDVI 1ª safra: " + selectedPlot.ndvi_q1.toFixed(2) + " | 2ª safra: " + selectedPlot.ndvi_q2.toFixed(2);
+            }
+            if (sarEl) sarEl.textContent = cropNames[lang][selectedPlot.crop];
+            if (refEl) {
+              var isErr = selectedPlot.crop !== selectedPlot.ref_crop;
+              refEl.textContent = refNames[lang][selectedPlot.ref_crop] + (isErr ? (lang === "en" ? " (mismatch)" : " (divergente)") : (lang === "en" ? " (concordant)" : " (concordante)"));
+              refEl.classList.toggle("is-error", isErr);
+            }
+            if (ndviEl) ndviEl.textContent = selectedPlot.ndvi_peak.toFixed(2);
+            if (dropsEl) {
+              dropsEl.textContent = selectedPlot.drops + (lang === "en" ? " passes filtered" : " passagens filtradas");
+            }
+          }
+
+          // Atualiza preset buttons e grafico da Etapa 2
+          if (ivExplorer && selectedPlot) {
+            var presetBtns = ivExplorer.querySelectorAll("[data-iv-preset]");
+            presetBtns.forEach(function (b) {
+              var act = b.getAttribute("data-iv-preset") === selectedPlot.fid;
+              b.classList.toggle("is-active", act);
+              b.setAttribute("aria-pressed", act ? "true" : "false");
+            });
+            renderIvCurve();
+          }
+        }
+
+        // Inicializa controles da Etapa 2 (Serie de IVs)
+        if (ivExplorer) {
+          var idxBtns = ivExplorer.querySelectorAll("[data-iv-index]");
+          var presetBtns = ivExplorer.querySelectorAll("[data-iv-preset]");
+          var toggleBtns = ivExplorer.querySelectorAll("[data-iv-toggle]");
+          var centerBtn = ivExplorer.querySelector("[data-iv-center-map]");
+
+          idxBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              ivState.indexName = btn.getAttribute("data-iv-index");
+              idxBtns.forEach(function (b) {
+                var act = b === btn;
+                b.classList.toggle("is-active", act);
+                b.setAttribute("aria-pressed", act ? "true" : "false");
+              });
+              renderIvCurve();
+            });
+          });
+
+          presetBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              var fid = btn.getAttribute("data-iv-preset");
+              selectPlotByFid(fid, true);
+            });
+          });
+
+          toggleBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              var key = btn.getAttribute("data-iv-toggle");
+              var act = btn.classList.toggle("is-active");
+              btn.setAttribute("aria-pressed", act ? "true" : "false");
+              if (key === "smooth") ivState.showSmooth = act;
+              if (key === "raw") ivState.showRaw = act;
+              if (key === "drops") ivState.showDrops = act;
+              if (key === "band") ivState.showBand = act;
+              renderIvCurve();
+            });
+          });
+
+          if (centerBtn && agroViewer) {
+            centerBtn.addEventListener("click", function () {
+              agroViewer.scrollIntoView({ behavior: "smooth", block: "center" });
+              if (pzInstance && selectedPlot) {
+                pzInstance.centerOn(selectedPlot.cx, selectedPlot.cy, 1.8);
+              }
+            });
+          }
+        }
+
+        function renderIvCurve() {
+          if (!ivExplorer || !dataset || !selectedPlot) return;
+          var idxName = ivState.indexName;
+          var dates = dataset.dates;
+          var n = dates.length;
+          var ser = selectedPlot.series[idxName] || selectedPlot.series.NDVI;
+          var reg = dataset.regional[idxName] || dataset.regional.NDVI;
+          var clearPct = selectedPlot.clear_pct;
+
+          var yMin = idxName === "NDWI" ? -0.65 : 0.0;
+          var yMax = idxName === "NDWI" ? 0.65 : 1.0;
+
+          var x0 = 42, x1 = 656, y0 = 18, y1 = 198;
+          function xAt(i) { return x0 + (i / (n - 1)) * (x1 - x0); }
+          function yAt(v) {
+            var clamped = Math.max(yMin, Math.min(yMax, v));
+            return y1 - ((clamped - yMin) / (yMax - yMin)) * (y1 - y0);
+          }
+
+          var bandEl = ivExplorer.querySelector("[data-iv-svg-band]");
+          var medEl = ivExplorer.querySelector("[data-iv-svg-median]");
+          var rawEl = ivExplorer.querySelector("[data-iv-svg-raw]");
+          var smoothEl = ivExplorer.querySelector("[data-iv-svg-smooth]");
+          var dropsGroup = ivExplorer.querySelector("[data-iv-svg-drops]");
+          var ptsGroup = ivExplorer.querySelector("[data-iv-svg-points]");
+          var yLabels = ivExplorer.querySelectorAll("[data-iv-ylabel]");
+
+          if (yLabels.length === 3) {
+            if (idxName === "NDWI") {
+              yLabels[0].textContent = "+0.6";
+              yLabels[1].textContent = "0.0";
+              yLabels[2].textContent = "-0.6";
+            } else {
+              yLabels[0].textContent = "1.0";
+              yLabels[1].textContent = "0.5";
+              yLabels[2].textContent = "0.0";
+            }
+          }
+
+          // Regional band P25-P75
+          if (bandEl) {
+            if (ivState.showBand && reg) {
+              var topPts = reg.p75.map(function (v, i) { return xAt(i).toFixed(1) + "," + yAt(v).toFixed(1); });
+              var botPts = reg.p25.slice().reverse().map(function (v, revI) {
+                var i = n - 1 - revI;
+                return xAt(i).toFixed(1) + "," + yAt(v).toFixed(1);
+              });
+              bandEl.setAttribute("d", "M " + topPts.join(" L ") + " L " + botPts.join(" L ") + " Z");
+              bandEl.style.display = "";
+            } else {
+              bandEl.style.display = "none";
+            }
+          }
+
+          if (medEl) {
+            if (ivState.showBand && reg) {
+              var mPts = reg.p50.map(function (v, i) { return xAt(i).toFixed(1) + "," + yAt(v).toFixed(1); });
+              medEl.setAttribute("d", "M " + mPts.join(" L "));
+              medEl.style.display = "";
+            } else {
+              medEl.style.display = "none";
+            }
+          }
+
+          if (rawEl) {
+            if (ivState.showRaw) {
+              var rPts = ser.raw.map(function (v, i) { return xAt(i).toFixed(1) + "," + yAt(v).toFixed(1); });
+              rawEl.setAttribute("d", "M " + rPts.join(" L "));
+              rawEl.style.display = "";
+            } else {
+              rawEl.style.display = "none";
+            }
+          }
+
+          if (smoothEl) {
+            if (ivState.showSmooth) {
+              var sPts = ser.smooth.map(function (v, i) { return xAt(i).toFixed(1) + "," + yAt(v).toFixed(1); });
+              smoothEl.setAttribute("d", "M " + sPts.join(" L "));
+              smoothEl.style.display = "";
+            } else {
+              smoothEl.style.display = "none";
+            }
+          }
+
+          // Render cloud drops and interactive points
+          if (dropsGroup) {
+            dropsGroup.innerHTML = "";
+            if (ivState.showDrops) {
+              for (var i = 0; i < n; i++) {
+                var diff = Math.abs(ser.smooth[i] - ser.raw[i]);
+                var isCloudDrop = (clearPct[i] <= 60 && diff > 0.11) || (ser.smooth[i] - ser.raw[i] > 0.16);
+                if (isCloudDrop) {
+                  var cx = xAt(i).toFixed(1);
+                  var yR = yAt(ser.raw[i]).toFixed(1);
+                  var yS = yAt(ser.smooth[i]).toFixed(1);
+                  var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                  line.setAttribute("x1", cx);
+                  line.setAttribute("y1", yS);
+                  line.setAttribute("x2", cx);
+                  line.setAttribute("y2", yR);
+                  line.setAttribute("stroke", "#d9483b");
+                  line.setAttribute("stroke-width", "2");
+                  line.setAttribute("stroke-dasharray", "3 2");
+                  dropsGroup.appendChild(line);
+
+                  var ring = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                  ring.setAttribute("cx", cx);
+                  ring.setAttribute("cy", yR);
+                  ring.setAttribute("r", "6.5");
+                  ring.setAttribute("fill", "rgba(217, 72, 59, 0.18)");
+                  ring.setAttribute("stroke", "#d9483b");
+                  ring.setAttribute("stroke-width", "1.6");
+                  dropsGroup.appendChild(ring);
+                }
+              }
+            }
+          }
+
+          if (ptsGroup) {
+            ptsGroup.innerHTML = "";
+            for (var j = 0; j < n; j++) {
+              (function (idx) {
+                var cx = xAt(idx).toFixed(1);
+                var valUsed = ivState.showRaw ? ser.raw[idx] : ser.smooth[idx];
+                var cy = yAt(valUsed).toFixed(1);
+                var isCloud = (clearPct[idx] <= 60 && Math.abs(ser.smooth[idx] - ser.raw[idx]) > 0.11) || (ser.smooth[idx] - ser.raw[idx] > 0.16);
+                var c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                c.setAttribute("class", "cv-iv-point");
+                c.setAttribute("cx", cx);
+                c.setAttribute("cy", cy);
+                c.setAttribute("r", idx === ivState.hoverIdx ? "5.5" : "3.8");
+                c.setAttribute("fill", isCloud && ivState.showDrops ? "#d9483b" : "#365902");
+                c.setAttribute("stroke", "#ffffff");
+                c.setAttribute("stroke-width", "1.3");
+                c.addEventListener("mouseenter", function () {
+                  ivState.hoverIdx = idx;
+                  updateIvInspector(idx);
+                });
+                c.addEventListener("click", function () {
+                  ivState.hoverIdx = idx;
+                  updateIvInspector(idx);
+                });
+                ptsGroup.appendChild(c);
+              })(j);
+            }
+          }
+
+          // Update plot header badge in Etapa 2
+          var activePlotLabel = ivExplorer.querySelector("[data-iv-active-plot]");
+          if (activePlotLabel) {
+            var aFmt = lang === "en" ? selectedPlot.area_ha.toFixed(1) : selectedPlot.area_ha.toFixed(1).replace(".", ",");
+            activePlotLabel.textContent = (lang === "en" ? "Plot " : "Talhão ") + selectedPlot.id + " (" + aFmt + " ha · " + cropNames[lang][selectedPlot.crop] + ")";
+          }
+
+          // Pick default focus date (a cloud-drop date if present, else peak date)
+          var defaultIdx = ivState.hoverIdx;
+          if (defaultIdx < 0) {
+            defaultIdx = 4;
+            for (var k = 0; k < n; k++) {
+              if (clearPct[k] <= 50 && (ser.smooth[k] - ser.raw[k] > 0.14)) {
+                defaultIdx = k;
+                break;
+              }
+            }
+          }
+          updateIvInspector(defaultIdx);
+        }
+
+        function updateIvInspector(idx) {
+          if (!ivExplorer || !dataset || !selectedPlot) return;
+          var idxName = ivState.indexName;
+          var ser = selectedPlot.series[idxName] || selectedPlot.series.NDVI;
+          var dStr = dataset.dates[idx] || "";
+          var rawVal = ser.raw[idx];
+          var smVal = ser.smooth[idx];
+          var clr = selectedPlot.clear_pct[idx];
+          var isDrop = (clr <= 60 && Math.abs(smVal - rawVal) > 0.11) || (smVal - rawVal > 0.16);
+
+          var elDate = ivExplorer.querySelector("[data-iv-insp-date]");
+          var elRaw = ivExplorer.querySelector("[data-iv-insp-raw]");
+          var elSmooth = ivExplorer.querySelector("[data-iv-insp-smooth]");
+          var elClear = ivExplorer.querySelector("[data-iv-insp-clear]");
+          var elStatus = ivExplorer.querySelector("[data-iv-insp-status]");
+
+          if (elDate) elDate.textContent = dStr;
+          if (elRaw) elRaw.textContent = rawVal.toFixed(3);
+          if (elSmooth) elSmooth.textContent = smVal.toFixed(3);
+          if (elClear) elClear.textContent = clr + "%";
+          if (elStatus) {
+            if (isDrop) {
+              elStatus.textContent = lang === "en"
+                ? "Residual cloud detected (low clear-sky coverage): spurious drop discarded before reconstructing the continuous curve."
+                : "Nuvem residual detectada (baixa cobertura limpa): queda espúria descartada pelo filtro antes da reconstrução da curva.";
+            } else {
+              elStatus.textContent = lang === "en"
+                ? "Valid satellite pass: clear-sky reflectance preserved in the penalized temporal smoothing."
+                : "Passagem limpa validada: observação preservada na reconstrução contínua do índice espectral.";
+            }
+          }
+        }
+
+        // Carrega os 90 talhoes reais e as series temporais de Campo Verde
+        fetch(jsonUrl)
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            dataset = data;
+            if (svgGroup && dataset.plots) {
+              svgGroup.innerHTML = "";
+              dataset.plots.forEach(function (p) {
+                var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                path.setAttribute("class", "cv-plot-path");
+                path.setAttribute("d", p.path);
+                path.setAttribute("data-fid", p.fid);
+                path.addEventListener("click", function (e) {
+                  if (pzInstance && pzInstance.wasDragged()) return;
+                  e.stopPropagation();
+                  selectPlotByFid(p.fid, false);
+                });
+                svgGroup.appendChild(path);
+                pathElementsById[p.fid] = path;
+              });
+            }
+            selectPlotByFid("3622_5102678", false);
+          })
+          .catch(function () {});
+      })();
+    }
+
+    // Visualizador interativo de Floresta (Campo Verde, MT): Dossel, CAR, Incerteza e Trimestres
+    var forestViewers = document.querySelectorAll("[data-cv-forest-viewer]");
+    for (var fv = 0; fv < forestViewers.length; fv++) {
+      (function (root) {
+        var viewport = root.querySelector(".cv-sat-viewport");
+        var stage = root.querySelector(".cv-sat-stage");
+        if (!viewport || !stage) return;
+        initPanZoomStage(viewport, stage, 1400, 880, root);
+
+        var baseImg = root.querySelector("[data-cv-f-base]");
+        var predImg = root.querySelector('[data-cv-f-layer="pred"]');
+        var badgeEl = root.querySelector("[data-cv-sat-badge]");
+        var qBtns = root.querySelectorAll("[data-cv-f-quarter]");
+        var clipBtns = root.querySelectorAll("[data-cv-f-clip]");
+        var layBtns = root.querySelectorAll("[data-cv-f-toggle]");
+        var opSlider = root.querySelector("[data-cv-f-opacity]");
+        var opVal = root.querySelector("[data-cv-f-opacity-val]");
+
+        var fState = {
+          quarter: "2023q3",
+          clip: "completo",
+          opacity: 0.78
+        };
+
+        function syncForestLayers() {
+          if (baseImg) baseImg.src = "images/floresta/cv-rgb-" + fState.quarter + ".webp";
+          if (predImg) {
+            if (fState.clip === "car" && fState.quarter === "2023q3") {
+              predImg.src = "images/floresta/cv-pred-car-2023q3.webp";
+            } else {
+              predImg.src = "images/floresta/cv-pred-completo-" + fState.quarter + ".webp";
+            }
+            predImg.style.opacity = String(fState.opacity);
+          }
+          var incImg = root.querySelector('[data-cv-f-layer="incerteza"]');
+          if (incImg) incImg.style.opacity = String(fState.opacity);
+          var rotImg = root.querySelector('[data-cv-f-layer="rotulo"]');
+          if (rotImg) rotImg.style.opacity = String(fState.opacity);
+        }
+
+        qBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            fState.quarter = btn.getAttribute("data-cv-f-quarter");
+            qBtns.forEach(function (b) {
+              var act = b === btn;
+              b.classList.toggle("is-active", act);
+              b.setAttribute("aria-pressed", act ? "true" : "false");
+            });
+            if (badgeEl) badgeEl.textContent = btn.getAttribute("data-badge") || fState.quarter.toUpperCase();
+            syncForestLayers();
+          });
+        });
+
+        clipBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            fState.clip = btn.getAttribute("data-cv-f-clip");
+            clipBtns.forEach(function (b) {
+              var act = b === btn;
+              b.classList.toggle("is-active", act);
+              b.setAttribute("aria-pressed", act ? "true" : "false");
+            });
+            syncForestLayers();
+          });
+        });
+
+        layBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var lay = btn.getAttribute("data-cv-f-toggle");
+            var isOn = btn.classList.toggle("is-active");
+            btn.setAttribute("aria-pressed", isOn ? "true" : "false");
+            var imgEl = root.querySelector('[data-cv-f-layer="' + lay + '"]');
+            if (imgEl) imgEl.classList.toggle("is-hidden", !isOn);
+          });
+        });
+
+        if (opSlider) {
+          opSlider.addEventListener("input", function () {
+            fState.opacity = parseInt(opSlider.value, 10) / 100;
+            if (opVal) opVal.textContent = opSlider.value + "%";
+            syncForestLayers();
+          });
+        }
+
+        syncForestLayers();
+      })(forestViewers[fv]);
     }
   });
 </script>
+
 <script>
   // Envio do formulário de contato ("Contato" / "Contact").
   //
@@ -1625,7 +3774,7 @@ ul.task-list li input[type="checkbox"] {
       atualizarContador();
     }
 
-    // --- Lista de opções própria -------------------------------------------
+    // Lista de opções própria
     // O <select> nativo continua no formulário (envio e quem está sem JS), mas
     // fica escondido; aqui ele é trocado por botão + lista, iguais em qualquer
     // sistema. O nativo só é escondido quando este código roda com sucesso.

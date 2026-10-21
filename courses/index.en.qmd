@@ -16,7 +16,7 @@ toc: false
 <div class="course-list">
 
   <div class="course-card">
-    <img class="course-image" src="https://drive.google.com/open?id=1cKUhFbmSiYTbl2u2v5hKO0oGnvci4As3"
+    <img class="course-image" src="images/redes-neurais-e-aprendizado-profundo.svg"
          alt="Neural Networks and Deep Learning">
     <div class="course-info">
       <span class="course-level">Graduate program in Applied Mathematics and Data Science, EMAp</span>
@@ -32,7 +32,7 @@ toc: false
   </div>
 
   <div class="course-card">
-    <img class="course-image" src="https://drive.google.com/open?id=1tZFKktaMMpY5po1iADBwJQo-GUCJb9GG"
+    <img class="course-image" src="images/aprendizado-profundo.svg"
          alt="Deep Learning">
     <div class="course-info">
       <span class="course-level">Undergraduate program in Data Science and AI, EMAp</span>

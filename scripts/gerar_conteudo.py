@@ -35,7 +35,7 @@ AVISO = ("# Arquivo gerado por scripts/gerar_conteudo.py a partir de {tabela}.\n
 PADRAO = {"people": "avatar-default.svg", "publications": "paper-default.svg", "news": None}
 
 
-# ----------------------------------------------------------------- utilidades
+# Utilidades
 
 def aspas(valor: str) -> str:
     """Valor pronto para entrar como string YAML entre aspas duplas."""
@@ -124,7 +124,7 @@ def primeira_frase(resumo_longo: str, limite: int = 220) -> str:
     return corte.rsplit(" ", 1)[0] + "..."
 
 
-# --------------------------------------------------------------------- pessoas
+# Pessoas
 
 ROTULOS = {
     "pt": {"secao_formacao": "Formação", "secao_interesses": "Interesses",
@@ -199,6 +199,22 @@ about:
 ```"""
 
 
+def atualizar_contador_sobre(linhas: list[dict]) -> None:
+    """Atualiza o contador de pesquisadores ativos nas páginas Sobre."""
+    import re
+    ativos = len([p for p in linhas if p.get("grupo") != "alumni"])
+    padrao = re.compile(
+        r'(<div class="stat-num" data-count=")\d+(">[^<]*</div>\s*<div class="stat-label">(?:Pesquisadores|Researchers)</div>)'
+    )
+    for lang in ("pt", "en"):
+        arq = RAIZ / f"about/index.{lang}.qmd"
+        if arq.exists():
+            conteudo = arq.read_text(encoding="utf-8")
+            novo = padrao.sub(rf'\g<1>{ativos}\g<2>', conteudo)
+            if novo != conteudo:
+                arq.write_text(novo, encoding="utf-8")
+
+
 def gerar_pessoas() -> None:
     linhas = ler_tabela("pessoas", DADOS / "pessoas.csv")
     for linha in linhas:
@@ -206,11 +222,13 @@ def gerar_pessoas() -> None:
             escrever(f"people/{linha['slug']}/{linha['slug']}.{lang}.qmd",
                      pagina_de_pessoa(linha, lang))
     apagados = limpar_antigos("people", {linha["slug"] for linha in linhas})
-    print(f"people: {len(linhas)} pessoas, {len(linhas) * 2} paginas"
+    atualizar_contador_sobre(linhas)
+    ativos = len([p for p in linhas if p.get("grupo") != "alumni"])
+    print(f"people: {len(linhas)} pessoas ({ativos} ativos), {len(linhas) * 2} paginas"
           + (f", {len(apagados)} paginas removidas" if apagados else ""))
 
 
-# ----------------------------------------------------------------- publicacoes
+# Publicações
 
 ROTULOS_PUB = {
     "pt": {"autores": "Autores", "publicacao": "Publicação", "resumo": "Resumo",
@@ -335,7 +353,7 @@ def gerar_publicacoes() -> None:
           + (f", {len(apagados)} paginas removidas" if apagados else ""))
 
 
-# -------------------------------------------------------------------- noticias
+# Notícias
 
 ROTULOS_NOTICIA = {"pt": "Voltar para as notícias", "en": "Back to the news"}
 
@@ -395,7 +413,7 @@ def gerar_noticias() -> None:
           + (f", {len(apagados)} paginas removidas" if apagados else ""))
 
 
-# --------------------------------------------------------------------- cursos
+# Cursos
 
 ROTULOS_CURSOS = {
     "pt": {
@@ -420,20 +438,24 @@ ROTULOS_CURSOS = {
 
 
 def resolver_imagem_curso(linha: dict) -> str:
-    slug = linha.get("slug", "")
+    slug = (linha.get("slug") or "").strip()
     img = (linha.get("imagem") or "").strip()
-    if img:
-        if img.startswith("images/") or img.startswith("http://") or img.startswith("https://"):
-            return img
-        if (RAIZ / "courses" / "images" / img).is_file():
-            return f"images/{img}"
     if slug:
-        achados = sorted(p.name for p in (RAIZ / "courses" / "images").glob(f"{slug}.*") if p.is_file())
+        achados = sorted(
+            p.name for p in (RAIZ / "courses" / "images").glob(f"{slug}.*")
+            if p.is_file() and p.suffix.lower() in (".svg", ".png", ".jpg", ".jpeg", ".webp", ".gif")
+        )
         if achados:
             return f"images/{achados[0]}"
-    if "aprendizado-profundo" in slug:
-        return "images/aprendizado-profundo.svg"
-    return "images/redes-neurais.svg"
+    if img and not img.startswith("http://") and not img.startswith("https://"):
+        if (RAIZ / "courses" / "images" / img).is_file():
+            return f"images/{img}"
+        if img.startswith("images/") and (RAIZ / "courses" / img).is_file():
+            return img
+        nome = Path(img).name
+        if (RAIZ / "courses" / "images" / nome).is_file():
+            return f"images/{nome}"
+    return ""
 
 
 def cartao_de_curso(linha: dict, lang: str) -> str:
@@ -459,10 +481,10 @@ def cartao_de_curso(linha: dict, lang: str) -> str:
     detalhes_html = "\n".join(detalhes)
 
     btn_html = f'\n      <a class="pub-btn" href="{url}">{r["botao"]}</a>' if url else ""
+    alt_txt = aspas(titulo).strip('"')
+    img_html = f'\n    <img class="course-image" src="{imagem}"\n         alt="{alt_txt}">' if imagem else ""
 
-    return f"""  <div class="course-card">
-    <img class="course-image" src="{imagem}"
-         alt="{aspas(titulo).strip('"')}">
+    return f"""  <div class="course-card">{img_html}
     <div class="course-info">
       <span class="course-level">{nivel}</span>
       <div class="course-title">{titulo}</div>
@@ -516,7 +538,7 @@ def gerar_cursos() -> None:
     print(f"courses: {len(linhas)} cursos, 2 paginas compiladas")
 
 
-# ----------------------------------------------------------------- galeria
+# Galeria
 
 PASTA_GALERIA = RAIZ / "about/images/galeria"
 LEGENDAS_GALERIA = PASTA_GALERIA / "legendas.txt"
