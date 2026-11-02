@@ -1,0 +1,53 @@
+---
+title: "Augmenting individual Tree Crowns Dataset with Scarce Labels Information"
+thesis-author: "Tomás Ferranti"
+thesis-kind: "Dissertação"
+thesis-program: "Mestrado em Matemática Aplicada e Ciência de Dados, FGV EMAp"
+thesis-date: "19 de dezembro de 2024"
+date: 2024-12-19
+image: ../../images/paper-default.svg
+snippet: "Segmentação zero-shot, aprendizado de representações e classificação semissupervisionada ampliam de 334 para 2827 as copas de árvores rotuladas em imagens de drone do Cerrado."
+page-layout: full
+toc: false
+---
+
+```{=html}
+<div class="page-shell">
+<div class="page-main">
+```
+
+:::: {.pub-detail}
+
+::: {.pub-detail-thumb}
+[![](../../images/paper-default.svg)](https://hdl.handle.net/10438/36413)
+:::
+
+::: {.pub-detail-meta}
+**Autoria:** Tomás Ferranti
+
+**Dissertação:** Mestrado em Matemática Aplicada e Ciência de Dados, FGV EMAp
+
+**Orientação:** Dário Oliveira
+
+**Defesa:** 19 de dezembro de 2024
+
+[Acessar no repositório](https://hdl.handle.net/10438/36413){.pub-btn}
+:::
+
+::::
+
+## Resumo
+
+A informação sobre a distribuição espacial de espécies arbóreas em biomas tropicais é essencial para a conservação e o manejo sustentável desses ecossistemas. Por causa do difícil acesso a essas regiões de florestas densas e da necessidade de especialistas botânicos, bancos de dados de copas individuais de árvores (ITC) com espécies rotuladas são escassos e pequenos. O objetivo deste trabalho é apresentar um framework de deep learning onde três modelos de diferentes tarefas são combinados para aumentar o tamanho de um banco de dados de ITCs rotuladas. Nossa técnica é autônoma e usa como dados adicionais apenas imagens aéreas de drones na região das anotações. Experimentos em uma região de cerrado mostram que: (i) é possível separar as ITCs presentes em imagens RGB através de um modelo zero-shot de segmentação de objetos, encontrando um total de 36181 possíveis máscaras em 25 hectares; (ii) as segmentações resultantes são agrupadas por um modelo de representation learning, onde os aspectos visuais são aprendidos comparando predições trocadas dos códigos, calculados por transporte ótimo, de transformações de uma mesma imagem. Um encoder robusto para downstream tasks é treinado, juntamente com 128 protótipos representantes de características específicas do conjunto de dados (cores, formatos e texturas); (iii) finalmente, a partir dos pesos anteriormente aprendidos, um modelo de classificação semi-supervisionado gera uma distribuição de probabilidade para cada segmentação ao longo de 9 espécies. Usando um critério de limiar de confiança, 2827 novas amostras são geradas, um aumento significativo comparado aos 334 rótulos iniciais.
+
+```{=html}
+<a class="back-link" href="/publications/#teses">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+  <span>Voltar para as teses e dissertações</span>
+</a>
+```
+
+```{=html}
+</div>
+</div>
+```

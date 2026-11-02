@@ -1,0 +1,53 @@
+---
+title: "Automatic detection of Turma da Mônica characters: deep learning models applied to comic books"
+thesis-author: "João Vinícius Primaki Prado"
+thesis-kind: "Capstone"
+thesis-program: "Bachelor's in Applied Mathematics, FGV EMAp"
+thesis-date: "November 1, 2023"
+date: 2023-11-01
+image: ../../images/paper-default.svg
+snippet: "A YOLOv5s detector trained with a purpose-built annotation methodology reaches 98% mAP_50 for Turma da Mônica's protagonists on comic pages."
+page-layout: full
+toc: false
+---
+
+```{=html}
+<div class="page-shell">
+<div class="page-main">
+```
+
+:::: {.pub-detail}
+
+::: {.pub-detail-thumb}
+[![](../../images/paper-default.svg)](https://hdl.handle.net/10438/35372)
+:::
+
+::: {.pub-detail-meta}
+**Author:** João Vinícius Primaki Prado
+
+**Capstone:** Bachelor's in Applied Mathematics, FGV EMAp
+
+**Advisor:** Dário Oliveira
+
+**Defended:** November 1, 2023
+
+[View in the repository](https://hdl.handle.net/10438/35372){.pub-btn}
+:::
+
+::::
+
+## Abstract
+
+Comic books, often underestimated, turn out to be vehicles for complex narratives rich in meaning. Among Brazilian comics, Turma da Mônica, created by Mauricio de Sousa, stands out as a prolific body of work spanning thousands of issues and characters. Recognizing the importance of this series in Brazil, this undergraduate thesis presents an approach that leverages deep learning models, specifically the YOLOv5s network from the YOLO family, for the automatic detection of characters on Turma da Mônica comic pages. To that end, it introduces theoretical overviews of comics, Turma da Mônica and object detection, and lays solid foundations: detailed manuals on the technical elements of comics, a character categorization, an image annotation methodology with 12 rules, and new performance evaluation metrics. Building on this, two YOLOv5s-based models were trained; the main model achieved notable results, with high precision values such as mAP_50 = 98% for the protagonist group on the test set. Beyond the numerical results, practical inference examples are presented and possible improvements and future applications are discussed.
+
+```{=html}
+<a class="back-link" href="/publications/#theses">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+  <span>Back to theses and dissertations</span>
+</a>
+```
+
+```{=html}
+</div>
+</div>
+```

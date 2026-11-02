@@ -1,0 +1,53 @@
+---
+title: "Explorando técnicas de aprendizado auto-supervisionado em sensoriamento remoto"
+thesis-author: "Danilo Lemos Cardoso"
+thesis-kind: "Dissertação"
+thesis-program: "Mestrado em Matemática Aplicada e Ciência de Dados, FGV EMAp"
+thesis-date: "19 de dezembro de 2024"
+date: 2024-12-19
+image: ../../images/paper-default.svg
+snippet: "Representações autossupervisionadas de imagens aéreas e de satélite de Belo Horizonte e São Paulo estimam densidade populacional e renda média por setor censitário."
+page-layout: full
+toc: false
+---
+
+```{=html}
+<div class="page-shell">
+<div class="page-main">
+```
+
+:::: {.pub-detail}
+
+::: {.pub-detail-thumb}
+[![](../../images/paper-default.svg)](https://hdl.handle.net/10438/36355)
+:::
+
+::: {.pub-detail-meta}
+**Autoria:** Danilo Lemos Cardoso
+
+**Dissertação:** Mestrado em Matemática Aplicada e Ciência de Dados, FGV EMAp
+
+**Orientação:** Dário Oliveira
+
+**Defesa:** 19 de dezembro de 2024
+
+[Acessar no repositório](https://hdl.handle.net/10438/36355){.pub-btn}
+:::
+
+::::
+
+## Resumo
+
+O objetivo deste trabalho é mostrar como técnicas de Deep Learning, como aprendizado auto-supervisionado, podem ser aplicadas em dados de Sensoriamento Remoto. Serão discutidos modelos que geram representações latentes bem informativas a partir de um grande conjunto de imagens sem a necessidade de anotações. Essas representações devem ser boas o suficiente para que tarefas como classificação e regressão sejam feitas com poucas anotações. Este trabalho também apresenta um banco de dados de imagens aéreas e de satélite que abrange toda a área dos municípios de Belo Horizonte e São Paulo. Essas imagens foram obtidas a partir de fontes públicas e tratadas para conterem cerca de 8 mil setores de Belo Horizonte e cerca de 40 mil setores de São Paulo em cada modalidade anotadas com dados de densidade populacional e renda média do Censo Demográfico do IBGE. No final, o conjunto de dados gerado será utilizado para saber se, a partir da representação aprendida pelo modelo, é possível obter uma estimativa de indicadores socioeconômicos como a densidade populacional e da renda média em cada setor dessas cidades. Foi mostrado que o modelo utilizado é capaz de agrupar imagens com dados socioeconômicos semelhantes mesmo sem supervisão, indicando que o modelo consegue aprender representações latentes úteis para tarefas de regressão e classificação.
+
+```{=html}
+<a class="back-link" href="/publications/#teses">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+  <span>Voltar para as teses e dissertações</span>
+</a>
+```
+
+```{=html}
+</div>
+</div>
+```

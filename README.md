@@ -6,7 +6,7 @@ Site institucional do GAIA Lab (Green AI Lab), desenvolvido com [Quarto](https:/
 
 ## 1. Gerenciamento de Conteúdo (Camada CMS)
 
-A maior parte do conteúdo do site (membros, publicações, notícias, cursos e fotos da galeria) é gerenciada de forma descentralizada via Google Forms e Google Sheets, sem necessidade de editar arquivos de código ou Markdown manualmente.
+A maior parte do conteúdo do site (membros, publicações, teses e dissertações, notícias, cursos e fotos da galeria) é gerenciada de forma descentralizada via Google Forms e Google Sheets, sem necessidade de editar arquivos de código ou Markdown manualmente.
 
 ### Formulários de Cadastro
 
@@ -16,6 +16,8 @@ Para adicionar novos itens ao site, utilize os formulários públicos correspond
   *Coleta nome, vínculo, função, formação, minibio, links (Lattes, LinkedIn, GitHub, etc.) e foto quadrada (1:1, mín. 600×600).*
 * **Artigo:** [https://forms.gle/QNTqVWMRj8MXTWkb6](https://forms.gle/QNTqVWMRj8MXTWkb6)  
   *Coleta título, autores, veículo/conferência, data, DOI, resumo, citação LaTeX e até 3 figuras (miniatura, fig 1 e fig 2).*
+* **Tese ou dissertação:** [https://forms.gle/YtQjZcDDXfz4KYoQA](https://forms.gle/YtQjZcDDXfz4KYoQA)  
+  *Coleta título, autor(a), tipo de trabalho, programa, orientador(a), data da defesa, endereço no repositório institucional (o PDF não entra no site), resumos, a imagem da primeira página e até 2 figuras com legendas.*
 * **Notícia:** [https://forms.gle/nENCQL9z6MukRTA38](https://forms.gle/nENCQL9z6MukRTA38)  
   *Coleta título, veículo jornalístico, data, link original, resumo e imagem horizontal (16:9).*
 * **Curso:** [https://forms.gle/3v1ZMRcUi9XoDk5k9](https://forms.gle/3v1ZMRcUi9XoDk5k9)  
@@ -35,10 +37,10 @@ O formulário de contato do site (`/join-us/`) envia mensagens para o backend Go
 O deploy e a atualização do site seguem o pipeline automatizado abaixo:
 
 ```text
-[ 5 Google Forms + Contato ]
+[ 6 Google Forms + Contato ]
             │ (respostas em tempo real)
             ▼
-[ Google Sheets (6 abas) + Pastas de Mídia no Drive ]
+[ Google Sheets (7 abas) + Pastas de Mídia no Drive ]
             │ (disparo agendado no cron: sábado à 00:00)
             ▼
 [ Cron ➔ scripts/atualizar.sh ]
@@ -128,11 +130,12 @@ A galeria de fotos em `about/` é integrada à camada de CMS do laboratório, po
 │   ├── sincronizar.py     Orquestrador do pipeline de sincronização e deploy
 │   ├── tabelas.py         Esquemas e validações das perguntas das planilhas
 │   ├── baixar_imagens.py  Download de fotos do Google Drive para pastas locais
-│   ├── gerar_conteudo.py  Gera arquivos .qmd (pessoas, artigos, notícias, cursos, galeria)
+│   ├── gerar_conteudo.py  Gera arquivos .qmd (pessoas, artigos, teses, notícias, cursos, galeria)
 │   ├── build.sh           Executa o quarto render (pt e en) e limpeza de temporários
 │   └── flatten_lang.py    Pós-processamento: ajusta URLs, mascara e-mails e versiona CSS
 ├── people/                Fichas de membros (geradas automaticamente)
 ├── publications/          Páginas de artigos científicos (geradas automaticamente)
+├── theses/                Páginas de teses, dissertações e TCCs (geradas automaticamente)
 ├── news/                  Notícias e matérias de imprensa (geradas automaticamente)
 ├── courses/               Cursos e disciplinas (geradas automaticamente)
 ├── about/                 Página Sobre e fotos da galeria (about/images/galeria/)

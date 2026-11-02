@@ -1,6 +1,7 @@
 ---
 title: "Publications"
 # Artigos: cada um é uma pasta com a página .pt/.en e a miniatura do PDF.
+# Teses: cada trabalho é uma pasta em theses/ com a página .pt/.en e a miniatura.
 # Notícias: itens declarados direto na listagem abaixo (link externo).
 # A alternância entre vistas, a busca, o filtro de anos e a paginação são
 # feitos pelo _includes/publication-filters.html sobre os cards renderizados.
@@ -11,6 +12,12 @@ listing:
     template: ../_ejs/publication-card.ejs
     sort: "date desc"
     fields: [title, image, date, paper-authors, pub-date, venue, snippet]
+  - id: theses
+    contents:
+      - "../theses/*/*.en.qmd"
+    template: ../_ejs/thesis-card.ejs
+    sort: "date desc"
+    fields: [title, image, date, thesis-author, thesis-kind, thesis-program, thesis-date, snippet]
   - id: news
     contents:
       - "../news/*/*.en.qmd"
@@ -61,6 +68,15 @@ toc: false
 
 ```{=html}
 </div>
+<div class="pub-view" data-view="theses" hidden>
+<span id="theses"></span>
+```
+
+::: {#theses}
+:::
+
+```{=html}
+</div>
 <div class="pub-view" data-view="news" hidden>
 <span id="news"></span>
 ```
@@ -77,6 +93,7 @@ toc: false
   <div class="side-toc-title">Contents</div>
   <ul>
     <li><a class="side-toc-link active" data-view="papers" href="#papers" role="button" tabindex="0">Papers</a></li>
+    <li><a class="side-toc-link" data-view="theses" href="#theses" role="button" tabindex="0">Theses and dissertations</a></li>
     <li><a class="side-toc-link" data-view="news" href="#news" role="button" tabindex="0">News</a></li>
   </ul>
 </div>

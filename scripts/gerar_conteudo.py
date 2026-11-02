@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Gera as paginas de pessoas, publicacoes, noticias e cursos a partir das tabelas em dados/.
+"""Gera as paginas de pessoas, publicacoes, teses, noticias e cursos a partir das tabelas em dados/.
 
 As tabelas sao a fonte da verdade: elas chegam das planilhas do Google pelo
 scripts/sincronizar.py. Toda pagina .pt.qmd e .en.qmd escrita aqui e arquivo
@@ -32,7 +32,8 @@ AVISO = ("# Arquivo gerado por scripts/gerar_conteudo.py a partir de {tabela}.\n
          "# Nao edite aqui: edite a planilha e rode o script.")
 
 # quando o formulario nao manda imagem, a pagina usa o desenho padrao do site
-PADRAO = {"people": "avatar-default.svg", "publications": "paper-default.svg", "news": None}
+PADRAO = {"people": "avatar-default.svg", "publications": "paper-default.svg",
+          "theses": "paper-default.svg", "news": None}
 
 
 # Utilidades
@@ -350,6 +351,103 @@ def gerar_publicacoes() -> None:
                      pagina_de_publicacao(linha, lang))
     apagados = limpar_antigos("publications", {linha["slug"] for linha in linhas})
     print(f"publications: {len(linhas)} artigos, {len(linhas) * 2} paginas"
+          + (f", {len(apagados)} paginas removidas" if apagados else ""))
+
+
+# Teses e dissertações
+
+ROTULOS_TESE = {
+    "pt": {"autoria": "Autoria", "orientacao": "Orientação",
+           "defesa": "Defesa", "resumo": "Resumo", "botao": "Acessar no repositório",
+           "voltar": "Voltar para as teses e dissertações", "ancora": "teses"},
+    "en": {"autoria": "Author", "orientacao": "Advisor",
+           "defesa": "Defended", "resumo": "Abstract", "botao": "View in the repository",
+           "voltar": "Back to theses and dissertations", "ancora": "theses"},
+}
+
+
+def pagina_de_tese(linha: dict, lang: str) -> str:
+    r = ROTULOS_TESE[lang]
+    titulo = limpo(texto(linha, "titulo", lang))
+    resumo = limpo(texto(linha, "resumo", lang))
+    curto = limpo(texto(linha, "resumo_curto", lang)) or primeira_frase(resumo)
+    autor = limpo(linha["autor"])
+    tipo = texto(linha, "tipo", lang)
+    programa = limpo(texto(linha, "programa", lang))
+    orientador = limpo(linha.get("orientador", ""))
+    defesa = por_extenso(linha["data"], lang, com_dia=True)
+    imagem = resolver("theses", linha["slug"], "miniatura", linha.get("imagem", "")) \
+        or padrao("theses")
+    # o tipo e o rotulo da linha do programa: "Dissertacao: Mestrado em..."
+    ficha = [f"**{r['autoria']}:** {autor}",
+             f"**{tipo}:** {programa}"]
+    if orientador:
+        ficha.append(f"**{r['orientacao']}:** {orientador}")
+    ficha.append(f"**{r['defesa']}:** {defesa}")
+    ficha_md = "\n\n".join(ficha)
+    figuras = bloco_de_figuras(linha, lang, "theses")
+    pedacos = [f"## {r['resumo']}\n\n{resumo}"]
+    if figuras:
+        pedacos.append(figuras)
+    corpo_final = "\n\n".join(pedacos)
+    return f"""---
+title: {aspas(titulo)}
+thesis-author: {aspas(autor)}
+thesis-kind: {aspas(tipo)}
+thesis-program: {aspas(programa)}
+thesis-date: {aspas(defesa)}
+date: {linha['data']}
+image: {imagem}
+snippet: {aspas(curto)}
+page-layout: full
+toc: false
+---
+
+```{{=html}}
+<div class="page-shell">
+<div class="page-main">
+```
+
+:::: {{.pub-detail}}
+
+::: {{.pub-detail-thumb}}
+[![]({imagem})]({linha['url']})
+:::
+
+::: {{.pub-detail-meta}}
+{ficha_md}
+
+[{r['botao']}]({linha['url']}){{.pub-btn}}
+:::
+
+::::
+
+{corpo_final}
+
+```{{=html}}
+<a class="back-link" href="/publications/#{r['ancora']}">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+  <span>{r['voltar']}</span>
+</a>
+```
+
+```{{=html}}
+</div>
+</div>
+```"""
+
+
+def gerar_teses() -> None:
+    caminho = DADOS / "teses.csv"
+    if not caminho.exists() and not caminho.with_suffix(".xlsx").exists():
+        return
+    linhas = ler_tabela("teses", caminho)
+    for linha in linhas:
+        for lang in ("pt", "en"):
+            escrever(f"theses/{linha['slug']}/{linha['slug']}.{lang}.qmd",
+                     pagina_de_tese(linha, lang))
+    apagados = limpar_antigos("theses", {linha["slug"] for linha in linhas})
+    print(f"theses: {len(linhas)} trabalhos, {len(linhas) * 2} paginas"
           + (f", {len(apagados)} paginas removidas" if apagados else ""))
 
 
@@ -674,6 +772,7 @@ def main() -> int:
     try:
         gerar_pessoas()
         gerar_publicacoes()
+        gerar_teses()
         gerar_noticias()
         gerar_cursos()
         gerar_galeria()

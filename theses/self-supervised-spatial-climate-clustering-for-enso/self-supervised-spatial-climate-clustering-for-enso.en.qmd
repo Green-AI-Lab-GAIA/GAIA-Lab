@@ -1,0 +1,53 @@
+---
+title: "Self-supervised spatial climate clustering for ENSO Characterization"
+thesis-author: "Lívia Cereja Meinhardt"
+thesis-kind: "Dissertation"
+thesis-program: "Master's in Applied Mathematics and Data Science, FGV EMAp"
+thesis-date: "April 9, 2026"
+date: 2026-04-09
+image: ../../images/paper-default.svg
+snippet: "Climate regimes learned in a self-supervised way from daily temperature fields over the Cerrado, statistically linked to El Niño."
+page-layout: full
+toc: false
+---
+
+```{=html}
+<div class="page-shell">
+<div class="page-main">
+```
+
+:::: {.pub-detail}
+
+::: {.pub-detail-thumb}
+[![](../../images/paper-default.svg)](https://hdl.handle.net/10438/41589)
+:::
+
+::: {.pub-detail-meta}
+**Author:** Lívia Cereja Meinhardt
+
+**Dissertation:** Master's in Applied Mathematics and Data Science, FGV EMAp
+
+**Advisor:** Dário Oliveira
+
+**Defended:** April 9, 2026
+
+[View in the repository](https://hdl.handle.net/10438/41589){.pub-btn}
+:::
+
+::::
+
+## Abstract
+
+The Earth's climate system exhibits complex spatiotemporal variability, making it challenging to identify large-scale patterns such as teleconnections. Studying these patterns is essential because they link large-scale climate drivers to regional impacts. In particular, the El Niño-Southern Oscillation (ENSO), as a well-known example, influences temperature and precipitation variability, with significant consequences for agriculture, water resources, and public health. Rather than focusing on point-wise prediction, this work aims to capture structured and recurrent patterns that characterize regional climate variability. We propose a data-driven framework for identifying climate regimes using self-supervised representation learning, employing Masked Siamese Networks (MSN) with a Vision Transformer backbone to learn latent representations of daily temperature fields over the Brazilian Cerrado. These representations are discretized into a finite set of climate states, capturing dominant spatial configurations without requiring labeled data. The resulting regimes provide a compact and interpretable representation of climate variability, enabling the analysis of their temporal organization and relationship with large-scale drivers such as ENSO. The code is publicly available at https://github.com/Green-AI-Lab-GAIA/climate-clustering-forENSO-teleconnections.
+
+```{=html}
+<a class="back-link" href="/publications/#theses">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+  <span>Back to theses and dissertations</span>
+</a>
+```
+
+```{=html}
+</div>
+</div>
+```

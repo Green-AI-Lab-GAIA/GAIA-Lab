@@ -36,7 +36,7 @@ FONTES = DADOS / "fontes.conf"
 TABELAS = tuple(COLUNAS)
 
 # arquivos que o job pode mexer; qualquer outra alteracao na arvore faz o job parar
-PERMITIDOS = ("dados/", "people/", "publications/", "news/", "courses/", "about/", "docs/")
+PERMITIDOS = ("dados/", "people/", "publications/", "theses/", "news/", "courses/", "about/", "docs/")
 
 
 def aviso(texto: str) -> None:
@@ -306,7 +306,7 @@ def main() -> int:
 
     aviso(f"{agora()} build do site")
     rodar("bash", "scripts/build.sh")
-    rodar("git", "add", "people", "publications", "news", "courses", "about", "docs", "dados")
+    rodar("git", "add", "people", "publications", "theses", "news", "courses", "about", "docs", "dados")
     resumo = ", ".join(mudou) if mudou else "conteudo"
     rodar("git", "commit", "-m", f"conteudo: atualiza {resumo} a partir das planilhas")
     if args.push:

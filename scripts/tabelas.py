@@ -76,6 +76,29 @@ COLUNAS = {
         Coluna("url_en", "Endereço da matéria em inglês", False),
         Coluna("exibir", "Exibir", False),
     ],
+    "teses": [
+        Coluna("titulo", "Título", True),
+        Coluna("titulo_en", "Título em inglês", False),
+        Coluna("autor", "Autor(a)", True),
+        Coluna("tipo", "Tipo de trabalho", True),
+        Coluna("programa", "Programa", True),
+        Coluna("programa_en", "Programa em inglês", False),
+        Coluna("orientador", "Orientador(a)", False),
+        Coluna("data", "Data da defesa", True),
+        Coluna("url", "Endereço no repositório", True),
+        Coluna("resumo", "Resumo", True),
+        Coluna("resumo_en", "Resumo em inglês", False),
+        Coluna("resumo_curto", "Resumo curto", False),
+        Coluna("resumo_curto_en", "Resumo curto em inglês", False),
+        Coluna("imagem", "Imagem de destaque", False),
+        Coluna("figura1", "Figura 1", False),
+        Coluna("legenda1", "Legenda da figura 1", False),
+        Coluna("legenda1_en", "Legenda da figura 1 em inglês", False),
+        Coluna("figura2", "Figura 2", False),
+        Coluna("legenda2", "Legenda da figura 2", False),
+        Coluna("legenda2_en", "Legenda da figura 2 em inglês", False),
+        Coluna("exibir", "Exibir", False),
+    ],
     "cursos": [
         Coluna("titulo", "Nome do curso", True),
         Coluna("titulo_en", "Nome do curso em inglês", False),
@@ -133,6 +156,21 @@ VINCULOS = {
     "colaboradora externa": "colaborador",
     "colaborador": "colaborador",
     "colaboradora": "colaborador",
+}
+
+# o que o formulario de teses oferece em "Tipo de trabalho", e o rotulo curto nos
+# dois idiomas. O nivel (mestrado, doutorado) fica por conta do nome do programa,
+# para a pagina nao repetir "Dissertacao de mestrado, Mestrado em..."
+TIPOS_DE_TRABALHO = {
+    "dissertacao de mestrado": ("Dissertação", "Dissertation"),
+    "dissertacao": ("Dissertação", "Dissertation"),
+    "mestrado": ("Dissertação", "Dissertation"),
+    "tese de doutorado": ("Tese", "Thesis"),
+    "tese": ("Tese", "Thesis"),
+    "doutorado": ("Tese", "Thesis"),
+    "trabalho de conclusao de curso": ("TCC", "Capstone"),
+    "tcc": ("TCC", "Capstone"),
+    "graduacao": ("TCC", "Capstone"),
 }
 
 MESES = {
@@ -478,6 +516,14 @@ def ler_tabela(tabela: str, caminho: Path) -> list[dict]:
                     raise ErroDeConteudo(f"{caminho.name}, linha {numero}: endereco invalido: {item_dado['slug']!r}")
                 linhas.append(item_dado)
         else:
+            if tabela == "teses":
+                par = TIPOS_DE_TRABALHO.get(normalizar(dado["tipo"]))
+                if not par:
+                    raise ErroDeConteudo(
+                        f"{caminho.name}, linha {numero}: tipo de trabalho desconhecido: "
+                        f"{dado['tipo']!r}. Use Dissertação de mestrado, Tese de doutorado "
+                        "ou Trabalho de conclusão de curso")
+                dado["tipo"], dado["tipo_en"] = par
             simples = slugificar(dado["titulo"])
             dado["slug"] = endereco_unico(dado["titulo"], usados)
             if not slug_valido(dado["slug"]):
@@ -539,7 +585,7 @@ def conferir(tabela: str, cabecalhos: list[str]) -> int:
 
 def main(argv: list[str]) -> int:
     uso = ("uso:\n"
-           "  python3 scripts/tabelas.py perguntas [pessoas|publicacoes|noticias|cursos|galeria]\n"
+           "  python3 scripts/tabelas.py perguntas [pessoas|publicacoes|teses|noticias|cursos|galeria]\n"
            "  python3 scripts/tabelas.py conferir <tabela> <arquivo.csv|arquivo.xlsx>\n"
            "  python3 scripts/tabelas.py conferir <tabela> -   (linha de titulo pelo stdin)")
     if len(argv) >= 2 and argv[1] == "perguntas":

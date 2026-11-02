@@ -1,0 +1,53 @@
+---
+title: "Detecção automática de personagens da Turma da Mônica: modelos de aprendizado profundo aplicados em histórias em quadrinhos"
+thesis-author: "João Vinícius Primaki Prado"
+thesis-kind: "TCC"
+thesis-program: "Graduação em Matemática Aplicada, FGV EMAp"
+thesis-date: "1 de novembro de 2023"
+date: 2023-11-01
+image: ../../images/paper-default.svg
+snippet: "Um detector YOLOv5s treinado com metodologia própria de anotação alcança mAP_50 de 98% para os protagonistas da Turma da Mônica nas páginas das HQs."
+page-layout: full
+toc: false
+---
+
+```{=html}
+<div class="page-shell">
+<div class="page-main">
+```
+
+:::: {.pub-detail}
+
+::: {.pub-detail-thumb}
+[![](../../images/paper-default.svg)](https://hdl.handle.net/10438/35372)
+:::
+
+::: {.pub-detail-meta}
+**Autoria:** João Vinícius Primaki Prado
+
+**TCC:** Graduação em Matemática Aplicada, FGV EMAp
+
+**Orientação:** Dário Oliveira
+
+**Defesa:** 1 de novembro de 2023
+
+[Acessar no repositório](https://hdl.handle.net/10438/35372){.pub-btn}
+:::
+
+::::
+
+## Resumo
+
+As Histórias em Quadrinhos (HQs), frequentemente subestimadas, revelam-se como veículos de narrativas complexas e ricas em significados. No contexto das HQs brasileiras, a Turma da Mônica (TdM), criada por Mauricio de Sousa, destaca-se como uma obra prolífica, abrangendo milhares de edições e personagens. Reconhecendo a importância dessa turma no cenário brasileiro e demonstrando um forte interesse nessa área, este Trabalho de Conclusão de Curso apresenta uma abordagem inovadora, aproveitando modelos de aprendizado profundo, especificamente a rede neural YOLOv5s da família YOLO, para a detecção automática de personagens nas páginas das HQs da TdM. Para atingir esse objetivo, foram introduzidos resumos teóricos sobre história em quadrinhos, Turma da Mônica e detecção de objetos. Também foram estabelecidas bases sólidas, incluindo manuais detalhados sobre elementos técnicos das HQs, categorização de personagens, uma metodologia exclusiva de anotação de imagens contendo 12 regras e novas métricas de avaliação de performance. Utilizando esse conhecimento, foram criados dois modelos baseados na YOLOv5s, com o modelo principal alcançando resultados notáveis, obtendo altos valores de precisão, como por exemplo mAP_50 = 98% para o grupo de protagonistas no conjunto de teste. Além dos resultados numéricos, foram apresentados exemplos práticos de inferência e foram discutidos possíveis melhorias e aplicações práticas para o futuro.
+
+```{=html}
+<a class="back-link" href="/publications/#teses">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+  <span>Voltar para as teses e dissertações</span>
+</a>
+```
+
+```{=html}
+</div>
+</div>
+```

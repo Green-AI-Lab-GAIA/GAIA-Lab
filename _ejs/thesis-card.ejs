@@ -1,0 +1,17 @@
+```{=html}
+<div class="pub-list">
+  <% for (const item of items) { %>
+    <a href="<%- item.path %>" class="pub-card-link" data-date="<%= item.date %>">
+      <div class="pub-card">
+        <img class="pub-thumb" src="<%= item.image %>" alt="Primeira página de <%= item.title %>" loading="lazy">
+        <div class="pub-info">
+          <div class="pub-title"><%= item.title %></div>
+          <div class="pub-authors"><%= item['thesis-author'] %></div>
+          <div class="pub-meta"><%= item['thesis-kind'] %> &middot; <%= item['thesis-program'] %> &middot; <%= item['thesis-date'] %></div>
+          <div class="pub-snippet"><%= item.snippet %></div>
+        </div>
+      </div>
+    </a>
+  <% } %>
+</div>
+```

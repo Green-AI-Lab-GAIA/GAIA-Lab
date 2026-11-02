@@ -104,6 +104,34 @@ ul.task-list li input[type="checkbox"] {
   
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-theses .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-image','listing-date','listing-thesis-author','listing-thesis-kind','listing-thesis-program','listing-thesis-date','listing-snippet',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      
+      searchColumns: ["listing-project","listing-pagetitle","listing-website","listing-format","listing-lang","listing-toc-title","listing-language","listing-title","listing-thesis-author","listing-thesis-kind","listing-thesis-program","listing-thesis-date","listing-date","listing-image","listing-snippet","listing-page-layout","listing-toc","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-theses'] = new List('listing-theses', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
     const listingTargetEl = window.document.querySelector('#listing-news .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
@@ -167,7 +195,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles.css?v=67fc8a9b">
+<link rel="stylesheet" href="../styles.css?v=bd55928f">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -486,6 +514,110 @@ window.Quarto = {
 <div class="listing-no-matching d-none">Sem itens correspondentes</div>
 </div>
 </div>
+<div id="teses" class="pub-view" data-view="teses" hidden="">
+<div id="listing-theses" class="quarto-listing quarto-listing-container-custom">
+<div class="pub-list">
+  
+    <a href="../theses/self-supervised-spatial-climate-clustering-for-enso/self-supervised-spatial-climate-clustering-for-enso.html" class="pub-card-link" data-date="9 de abr. de 2026">
+      <div class="pub-card">
+        <img class="pub-thumb" src="../images/paper-default.svg" alt="Primeira página de Self-supervised spatial climate clustering for ENSO Characterization" loading="lazy">
+        <div class="pub-info">
+          <div class="pub-title">Self-supervised spatial climate clustering for ENSO Characterization</div>
+          <div class="pub-authors">Lívia Cereja Meinhardt</div>
+          <div class="pub-meta">Dissertação · Mestrado em Matemática Aplicada e Ciência de Dados, FGV EMAp · 9 de abril de 2026</div>
+          <div class="pub-snippet">Regimes climáticos aprendidos de forma autossupervisionada a partir de campos diários de temperatura do Cerrado, com relação estatística ao El Niño.</div>
+        </div>
+      </div>
+    </a>
+  
+    <a href="../theses/augmenting-individual-tree-crowns-dataset-with-scarce/augmenting-individual-tree-crowns-dataset-with-scarce.html" class="pub-card-link" data-date="19 de dez. de 2024">
+      <div class="pub-card">
+        <img class="pub-thumb" src="../images/paper-default.svg" alt="Primeira página de Augmenting individual Tree Crowns Dataset with Scarce Labels Information" loading="lazy">
+        <div class="pub-info">
+          <div class="pub-title">Augmenting individual Tree Crowns Dataset with Scarce Labels Information</div>
+          <div class="pub-authors">Tomás Ferranti</div>
+          <div class="pub-meta">Dissertação · Mestrado em Matemática Aplicada e Ciência de Dados, FGV EMAp · 19 de dezembro de 2024</div>
+          <div class="pub-snippet">Segmentação zero-shot, aprendizado de representações e classificação semissupervisionada ampliam de 334 para 2827 as copas de árvores rotuladas em imagens de drone do Cerrado.</div>
+        </div>
+      </div>
+    </a>
+  
+    <a href="../theses/explorando-tecnicas-de-aprendizado-auto-supervisionado-em/explorando-tecnicas-de-aprendizado-auto-supervisionado-em.html" class="pub-card-link" data-date="19 de dez. de 2024">
+      <div class="pub-card">
+        <img class="pub-thumb" src="../images/paper-default.svg" alt="Primeira página de Explorando técnicas de aprendizado auto-supervisionado em sensoriamento remoto" loading="lazy">
+        <div class="pub-info">
+          <div class="pub-title">Explorando técnicas de aprendizado auto-supervisionado em sensoriamento remoto</div>
+          <div class="pub-authors">Danilo Lemos Cardoso</div>
+          <div class="pub-meta">Dissertação · Mestrado em Matemática Aplicada e Ciência de Dados, FGV EMAp · 19 de dezembro de 2024</div>
+          <div class="pub-snippet">Representações autossupervisionadas de imagens aéreas e de satélite de Belo Horizonte e São Paulo estimam densidade populacional e renda média por setor censitário.</div>
+        </div>
+      </div>
+    </a>
+  
+    <a href="../theses/a-brief-overview-of-deep-learning-approaches-for-climate/a-brief-overview-of-deep-learning-approaches-for-climate.html" class="pub-card-link" data-date="19 de dez. de 2023">
+      <div class="pub-card">
+        <img class="pub-thumb" src="../images/paper-default.svg" alt="Primeira página de A brief overview of deep learning approaches for climate data" loading="lazy">
+        <div class="pub-info">
+          <div class="pub-title">A brief overview of deep learning approaches for climate data</div>
+          <div class="pub-authors">Juliana Carvalho de Souza</div>
+          <div class="pub-meta">TCC · Graduação em Matemática Aplicada, FGV EMAp · 19 de dezembro de 2023</div>
+          <div class="pub-snippet">Revisão de métodos de aprendizado profundo supervisionados, semissupervisionados e autossupervisionados para dados climáticos rotulados e fracamente rotulados.</div>
+        </div>
+      </div>
+    </a>
+  
+    <a href="../theses/desenvolvimento-de-um-foundation-model-para-pecuaria-bovina/desenvolvimento-de-um-foundation-model-para-pecuaria-bovina.html" class="pub-card-link" data-date="7 de dez. de 2023">
+      <div class="pub-card">
+        <img class="pub-thumb" src="../images/paper-default.svg" alt="Primeira página de Desenvolvimento de um foundation model para pecuária bovina" loading="lazy">
+        <div class="pub-info">
+          <div class="pub-title">Desenvolvimento de um foundation model para pecuária bovina</div>
+          <div class="pub-authors">João Alcindo Ribeiro de Azevedo</div>
+          <div class="pub-meta">TCC · Graduação em Matemática Aplicada, FGV EMAp · 7 de dezembro de 2023</div>
+          <div class="pub-snippet">Proposta de um modelo de fundação para a pecuária bovina, pensado para apoiar o trabalho de campo e simplificar processos.</div>
+        </div>
+      </div>
+    </a>
+  
+    <a href="../theses/deep-active-learning-para-mapeamento-de-arvores-em-floresta/deep-active-learning-para-mapeamento-de-arvores-em-floresta.html" class="pub-card-link" data-date="6 de dez. de 2023">
+      <div class="pub-card">
+        <img class="pub-thumb" src="../images/paper-default.svg" alt="Primeira página de Deep active learning para mapeamento de árvores em floresta densa com baixa rotulagem" loading="lazy">
+        <div class="pub-info">
+          <div class="pub-title">Deep active learning para mapeamento de árvores em floresta densa com baixa rotulagem</div>
+          <div class="pub-authors">Luiz Fernando Souza Luz</div>
+          <div class="pub-meta">TCC · Graduação em Ciência de Dados e Inteligência Artificial, FGV EMAp · 6 de dezembro de 2023</div>
+          <div class="pub-snippet">Active learning com pseudo-rótulos validados pela morfologia das árvores amplia a cobertura de segmentação de espécies de 2,35% para 14% da área, mantendo F1 entre 80% e 90%.</div>
+        </div>
+      </div>
+    </a>
+  
+    <a href="../theses/self-supervised-weather-data-clustering-for-inspecting/self-supervised-weather-data-clustering-for-inspecting.html" class="pub-card-link" data-date="6 de dez. de 2023">
+      <div class="pub-card">
+        <img class="pub-thumb" src="../images/paper-default.svg" alt="Primeira página de Self-supervised weather data clustering for inspecting local climate change" loading="lazy">
+        <div class="pub-info">
+          <div class="pub-title">Self-supervised weather data clustering for inspecting local climate change</div>
+          <div class="pub-authors">Lívia Cereja Meinhardt</div>
+          <div class="pub-meta">TCC · Graduação em Ciência de Dados e Inteligência Artificial, FGV EMAp · 6 de dezembro de 2023</div>
+          <div class="pub-snippet">Agrupamento autossupervisionado (SwAV) de temperatura e precipitação revela tendência de grupos climáticos mais extremos no centro-sul do Brasil, Paraguai e Argentina.</div>
+        </div>
+      </div>
+    </a>
+  
+    <a href="../theses/deteccao-automatica-de-personagens-da-turma-da-monica/deteccao-automatica-de-personagens-da-turma-da-monica.html" class="pub-card-link" data-date="1 de nov. de 2023">
+      <div class="pub-card">
+        <img class="pub-thumb" src="../images/paper-default.svg" alt="Primeira página de Detecção automática de personagens da Turma da Mônica: modelos de aprendizado profundo aplicados em histórias em quadrinhos" loading="lazy">
+        <div class="pub-info">
+          <div class="pub-title">Detecção automática de personagens da Turma da Mônica: modelos de aprendizado profundo aplicados em histórias em quadrinhos</div>
+          <div class="pub-authors">João Vinícius Primaki Prado</div>
+          <div class="pub-meta">TCC · Graduação em Matemática Aplicada, FGV EMAp · 1 de novembro de 2023</div>
+          <div class="pub-snippet">Um detector YOLOv5s treinado com metodologia própria de anotação alcança mAP_50 de 98% para os protagonistas da Turma da Mônica nas páginas das HQs.</div>
+        </div>
+      </div>
+    </a>
+  
+</div>
+<div class="listing-no-matching d-none">Sem itens correspondentes</div>
+</div>
+</div>
 <div id="noticias" class="pub-view" data-view="noticias" hidden="">
 <div id="listing-news" class="quarto-listing quarto-listing-container-custom">
 <div class="news-list">
@@ -534,6 +666,7 @@ window.Quarto = {
   <div class="side-toc-title">Sumário</div>
   <ul>
     <li><a class="side-toc-link active" data-view="artigos" href="#artigos" role="button" tabindex="0">Artigos</a></li>
+    <li><a class="side-toc-link" data-view="teses" href="#teses" role="button" tabindex="0">Teses e dissertações</a></li>
     <li><a class="side-toc-link" data-view="noticias" href="#noticias" role="button" tabindex="0">Notícias</a></li>
   </ul>
 </div>
@@ -605,7 +738,7 @@ window.Quarto = {
       }
     } catch (erro) { /* sem sessionStorage; segue a partir do topo */ }
 
-    var secoes = ["about", "research", "publications", "courses", "people", "join-us", "news", "index.html"];
+    var secoes = ["about", "research", "publications", "theses", "courses", "people", "join-us", "news", "index.html"];
 
     function analisarUrl() {
       var p = window.location.pathname;
@@ -1122,6 +1255,44 @@ window.Quarto = {
           trilho.scrollBy({ left: passo(), behavior: reduzido ? "auto" : "smooth" });
         });
       })(carrosseis[k]);
+    }
+
+    // Sistema em gaveta de lâminas sanfonadas (.principles-blades, .partner-blades)
+    var bladeContainers = document.querySelectorAll(".principles-blades, .accordion-blades, .partner-blades");
+    for (var bcIdx = 0; bcIdx < bladeContainers.length; bcIdx++) {
+      (function (container) {
+        var blades = container.querySelectorAll(".blade-card");
+        function ativarLamina(alvo) {
+          for (var i = 0; i < blades.length; i++) {
+            var b = blades[i];
+            if (b === alvo) {
+              b.classList.add("is-active");
+              b.setAttribute("aria-expanded", "true");
+            } else {
+              b.classList.remove("is-active");
+              b.setAttribute("aria-expanded", "false");
+            }
+          }
+        }
+        for (var j = 0; j < blades.length; j++) {
+          (function (blade) {
+            blade.addEventListener("mouseenter", function () {
+              if (window.matchMedia("(min-width: 900px)").matches) {
+                ativarLamina(blade);
+              }
+            });
+            blade.addEventListener("click", function () {
+              ativarLamina(blade);
+            });
+            blade.addEventListener("keydown", function (e) {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                ativarLamina(blade);
+              }
+            });
+          })(blades[j]);
+        }
+      })(bladeContainers[bcIdx]);
     }
 
     // Sumário lateral com espião de rolagem: destaca no sumário a seção
@@ -1704,7 +1875,7 @@ window.Quarto = {
       })(tabGroups[tg]);
     }
 
-    // Grafico 1 (Agricultura): Classificacao de culturas por talhao (GAIA Lab vs referencia)
+    // Classificação de culturas por talhão (GAIA Lab vs referência)
     var cropExplorers = document.querySelectorAll("[data-crop-explorer]");
     for (var ce = 0; ce < cropExplorers.length; ce++) {
       (function (root) {
@@ -1788,7 +1959,7 @@ window.Quarto = {
       })(cropExplorers[ce]);
     }
 
-    // Grafico 3 (Agricultura): Deteccao de inicio/fim de safra (SOS/POS/EOS) e leitura de risco na vizinhanca
+    // Detecção de fenologia e leitura de risco na vizinhança
     var phenoExplorers = document.querySelectorAll("[data-pheno-explorer]");
     for (var pe = 0; pe < phenoExplorers.length; pe++) {
       (function (root) {
@@ -1866,7 +2037,7 @@ window.Quarto = {
       })(phenoExplorers[pe]);
     }
 
-    // Grafico 4 (Agricultura): Simulador de estoque de macronutrientes NPK
+    // Simulador de estoque de macronutrientes NPK
     var npkSims = document.querySelectorAll("[data-npk-sim]");
     for (var ns = 0; ns < npkSims.length; ns++) {
       (function (root) {
@@ -1987,7 +2158,7 @@ window.Quarto = {
       })(npkSims[ns]);
     }
 
-    // Explorador de ameacas climaticas FGV CERI
+    // Ameaças climáticas por trecho de linha (FGV CERI)
     var ceriExplorers = document.querySelectorAll("[data-ceri-explorer]");
     for (var ce2 = 0; ce2 < ceriExplorers.length; ce2++) {
       (function (root) {
@@ -2073,7 +2244,7 @@ window.Quarto = {
       })(ceriExplorers[ce2]);
     }
 
-    // Motor reutilizavel de zoom e arrasto (pan & zoom) sobre imagem de satelite co-registrada
+    // Controle de zoom e arrasto (pan e zoom) para satélite
     function initPanZoomStage(viewport, stage, natW, natH, hudRoot) {
       var zoom = 1;
       var tx = 0;
@@ -2210,7 +2381,7 @@ window.Quarto = {
       };
     }
 
-    // Visualizador integrado de Agricultura (Campo Verde, MT): Mapa de satelite (Etapa 1) + Serie temporal de IVs (Etapa 2)
+    // Visualizador de Agricultura (Campo Verde, MT)
     var agroViewer = document.querySelector("[data-cv-agro-viewer]");
     var ivExplorer = document.querySelector("[data-cv-iv-explorer]");
     if (agroViewer || ivExplorer) {
@@ -2271,7 +2442,7 @@ window.Quarto = {
         var svgGroup = null;
         var pathElementsById = {};
 
-        // Inicializa mapa da Etapa 1 se existir
+        // Inicializa mapa se existir
         if (agroViewer) {
           var viewport = agroViewer.querySelector(".cv-sat-viewport");
           var stage = agroViewer.querySelector(".cv-sat-stage");
@@ -2396,7 +2567,7 @@ window.Quarto = {
             pzInstance.centerOn(selectedPlot.cx, selectedPlot.cy, 1.35);
           }
 
-          // Atualiza inspetor da Etapa 1
+          // Atualiza detalhes do talhão
           if (agroViewer && selectedPlot) {
             var titleEl = agroViewer.querySelector("[data-parcel-title]");
             var metaEl = agroViewer.querySelector("[data-parcel-meta]");
@@ -2424,7 +2595,7 @@ window.Quarto = {
             }
           }
 
-          // Atualiza preset buttons e grafico da Etapa 2
+          // Atualiza botões de preset e gráfico
           if (ivExplorer && selectedPlot) {
             var presetBtns = ivExplorer.querySelectorAll("[data-iv-preset]");
             presetBtns.forEach(function (b) {
@@ -2436,7 +2607,7 @@ window.Quarto = {
           }
         }
 
-        // Inicializa controles da Etapa 2 (Serie de IVs)
+        // Controles da série temporal de índices de vegetação
         if (ivExplorer) {
           var idxBtns = ivExplorer.querySelectorAll("[data-iv-index]");
           var presetBtns = ivExplorer.querySelectorAll("[data-iv-preset]");
@@ -2524,7 +2695,7 @@ window.Quarto = {
             }
           }
 
-          // Regional band P25-P75
+          // Faixa regional P25 a P75
           if (bandEl) {
             if (ivState.showBand && reg) {
               var topPts = reg.p75.map(function (v, i) { return xAt(i).toFixed(1) + "," + yAt(v).toFixed(1); });
@@ -2569,7 +2740,7 @@ window.Quarto = {
             }
           }
 
-          // Render cloud drops and interactive points
+          // Pontos interativos e descartes por nuvem
           if (dropsGroup) {
             dropsGroup.innerHTML = "";
             if (ivState.showDrops) {
@@ -2632,14 +2803,14 @@ window.Quarto = {
             }
           }
 
-          // Update plot header badge in Etapa 2
+          // Cabeçalho do talhão selecionado
           var activePlotLabel = ivExplorer.querySelector("[data-iv-active-plot]");
           if (activePlotLabel) {
             var aFmt = lang === "en" ? selectedPlot.area_ha.toFixed(1) : selectedPlot.area_ha.toFixed(1).replace(".", ",");
             activePlotLabel.textContent = (lang === "en" ? "Plot " : "Talhão ") + selectedPlot.id + " (" + aFmt + " ha · " + cropNames[lang][selectedPlot.crop] + ")";
           }
 
-          // Pick default focus date (a cloud-drop date if present, else peak date)
+          // Data de foco padrão
           var defaultIdx = ivState.hoverIdx;
           if (defaultIdx < 0) {
             defaultIdx = 4;
@@ -2686,7 +2857,7 @@ window.Quarto = {
           }
         }
 
-        // Carrega os 90 talhoes reais e as series temporais de Campo Verde
+        // Carrega dados de talhões e séries temporais de Campo Verde
         fetch(jsonUrl)
           .then(function (r) { return r.json(); })
           .then(function (data) {
@@ -2713,7 +2884,7 @@ window.Quarto = {
       })();
     }
 
-    // Visualizador interativo de Floresta (Campo Verde, MT): Dossel, CAR, Incerteza e Trimestres
+    // Visualizador de Floresta (Campo Verde, MT)
     var forestViewers = document.querySelectorAll("[data-cv-forest-viewer]");
     for (var fv = 0; fv < forestViewers.length; fv++) {
       (function (root) {

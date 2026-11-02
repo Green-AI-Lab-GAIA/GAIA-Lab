@@ -1,0 +1,53 @@
+---
+title: "Developing a foundation model for cattle farming"
+thesis-author: "João Alcindo Ribeiro de Azevedo"
+thesis-kind: "Capstone"
+thesis-program: "Bachelor's in Applied Mathematics, FGV EMAp"
+thesis-date: "December 7, 2023"
+date: 2023-12-07
+image: ../../images/paper-default.svg
+snippet: "A foundation model for cattle farming, designed to support field work and streamline processes."
+page-layout: full
+toc: false
+---
+
+```{=html}
+<div class="page-shell">
+<div class="page-main">
+```
+
+:::: {.pub-detail}
+
+::: {.pub-detail-thumb}
+[![](../../images/paper-default.svg)](https://hdl.handle.net/10438/35381)
+:::
+
+::: {.pub-detail-meta}
+**Author:** João Alcindo Ribeiro de Azevedo
+
+**Capstone:** Bachelor's in Applied Mathematics, FGV EMAp
+
+**Advisor:** Dário Oliveira
+
+**Defended:** December 7, 2023
+
+[View in the repository](https://hdl.handle.net/10438/35381){.pub-btn}
+:::
+
+::::
+
+## Abstract
+
+Livestock farming plays a fundamental role as a source of income for numerous Brazilian families. In the context of advances in deep learning techniques, a significant evolution is evident across all sectors of the economy, with the increasing incorporation of algorithms and techniques of this nature into daily activities. The purpose of this work is to propose a foundational model tailored to livestock farming, with the potential to assist workers in their day-to-day activities and streamline processes.
+
+```{=html}
+<a class="back-link" href="/publications/#theses">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+  <span>Back to theses and dissertations</span>
+</a>
+```
+
+```{=html}
+</div>
+</div>
+```

@@ -4,7 +4,7 @@
 O formulario de upload grava na celula o endereco do arquivo no Drive. Este script
 pega esse endereco, baixa o arquivo e salva na pasta do item, com o nome que o site
 espera (people/<pessoa>/avatar.jpg, publications/<artigo>/miniatura.png,
-news/<noticia>/imagem.jpg). Quem escreveu a planilha nao precisa saber nome de
+theses/<tese>/miniatura.png, news/<noticia>/imagem.jpg). Quem escreveu a planilha nao precisa saber nome de
 arquivo nem caminho.
 
 Para o download funcionar sem senha, a pasta de respostas precisa estar
@@ -39,6 +39,9 @@ DESTINOS = {
     "publicacoes": [("publications", "miniatura", "imagem"),
                     ("publications", "figura1", "figura1"),
                     ("publications", "figura2", "figura2")],
+    "teses": [("theses", "miniatura", "imagem"),
+              ("theses", "figura1", "figura1"),
+              ("theses", "figura2", "figura2")],
     "noticias": [("news", "imagem", "imagem")],
     "cursos": [("courses/images", "", "imagem")],
     "galeria": [("about/images/galeria", "", "imagem")],
