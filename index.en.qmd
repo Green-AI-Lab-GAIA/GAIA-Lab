@@ -7,8 +7,47 @@ resources:
   - "icon/"
   - "images/hero/"
   - "images/areas/"
+  - "images/home/"
   - "images/avatar-default.svg"
   - "images/paper-default.svg"
+# Cards da equipe: até quatro avatares reais de cada grupo, via listagem.
+listing:
+  - id: home-docentes
+    contents:
+      - "people/*/*.en.qmd"
+    include:
+      people_group: ["professor", "postdoc"]
+    template: _ejs/avatar-stack.ejs
+    sort: title
+    max-items: 4
+    fields: [title, image]
+  - id: home-pos
+    contents:
+      - "people/*/*.en.qmd"
+    include:
+      people_group: ["phd", "masters"]
+    template: _ejs/avatar-stack.ejs
+    sort: title
+    max-items: 4
+    fields: [title, image]
+  - id: home-graduacao
+    contents:
+      - "people/*/*.en.qmd"
+    include:
+      people_group: "undergrad"
+    template: _ejs/avatar-stack.ejs
+    sort: title
+    max-items: 4
+    fields: [title, image]
+  - id: home-rede
+    contents:
+      - "people/*/*.en.qmd"
+    include:
+      people_group: ["colaborador", "alumni"]
+    template: _ejs/avatar-stack.ejs
+    sort: title
+    max-items: 4
+    fields: [title, image]
 page-layout: custom
 body-classes: "home"
 toc: false
@@ -150,30 +189,26 @@ toc: false
   <section class="home-section jogral-section reveal">
     <div class="jogral-grid">
       <div class="jogral-text">
-        <h2 class="section-title">Scientific production, academic theses and public outreach</h2>
+        <h2 class="section-title">Scientific output and outreach</h2>
         <p class="section-lead">
-          Scientific inquiries led by GAIA Lab generate impact across multiple formats
-          and avenues. Our contributions are published in premier international journals
-          and presented at major machine learning, computer vision, and Earth observation conferences.
+          Our contributions are submitted to leading international journals and presented
+          at the main conferences in artificial intelligence, computer vision and remote sensing.
         </p>
         <p>
-          In academia, the lab is an active hub of student mentorship, yielding PhD
-          dissertations, Master's theses, and undergraduate capstone research centered
-          on concrete socio-environmental questions. In the public sphere, our open models
-          and data inform journalistic coverage, podcasts, and public reports on environmental
-          preservation and green transition.
+          The lab also trains researchers through theses, dissertations and capstone projects
+          on concrete socio-environmental problems. Our methods and data reach the public
+          through news reports, podcasts and press coverage.
         </p>
       </div>
 
       <div class="jogral-visual">
         <div class="jogral-cards">
           <a class="jogral-card jogral-card-link reveal" href="publications/#papers">
-            <div class="jogral-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10M6 14h6"/></svg>
+            <div class="jogral-card-figure">
+              <img src="images/home/artigos.webp" alt="" loading="lazy">
             </div>
             <div class="jogral-card-body">
-              <h3>Journal articles and conferences</h3>
-              <p>Peer-reviewed deep learning architectures, computer vision benchmarks, and orbital data fusion.</p>
+              <h3>Journal and conference papers</h3>
             </div>
             <div class="jogral-card-arrow" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -182,12 +217,11 @@ toc: false
             </div>
           </a>
           <a class="jogral-card jogral-card-link reveal" href="publications/#theses">
-            <div class="jogral-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            <div class="jogral-card-figure">
+              <img src="images/home/teses.webp" alt="" loading="lazy">
             </div>
             <div class="jogral-card-body">
               <h3>Theses, dissertations and capstones</h3>
-              <p>Academic research with rigorous mathematical grounding dedicated to real-world ecological challenges.</p>
             </div>
             <div class="jogral-card-arrow" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -196,12 +230,11 @@ toc: false
             </div>
           </a>
           <a class="jogral-card jogral-card-link reveal" href="publications/#news">
-            <div class="jogral-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg>
+            <div class="jogral-card-figure">
+              <img src="images/home/noticias.webp" alt="" loading="lazy">
             </div>
             <div class="jogral-card-body">
-              <h3>News and media presence</h3>
-              <p>Science communication, journalistic press coverage, and transparent engagement with society.</p>
+              <h3>News and press</h3>
             </div>
             <div class="jogral-card-arrow" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -218,62 +251,91 @@ toc: false
     <div class="jogral-grid reverse">
       <div class="jogral-visual">
         <div class="jogral-cards">
-          <div class="jogral-card reveal">
-            <div class="jogral-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <a class="jogral-card jogral-card-link reveal" href="people/#professor">
+            <div class="avatar-stack" aria-hidden="true">
+```
+
+::: {#home-docentes}
+:::
+
+```{=html}
             </div>
             <div class="jogral-card-body">
-              <h3>Principal investigators and postdocs</h3>
-              <p>Scientific leaders coordinating advanced computational modeling and real-world technology transfer.</p>
+              <h3>Faculty and postdocs</h3>
             </div>
-          </div>
-          <div class="jogral-card reveal">
-            <div class="jogral-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 14c4 0 7-3 7-7s-3-7-7-7-7 3-7 7 3 7 7 7Z"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg>
+            <div class="jogral-card-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
             </div>
-            <div class="jogral-card-body">
-              <h3>PhD and master's researchers</h3>
-              <p>Graduate students pioneering novel algorithms in spatial artificial intelligence and biophysical sensing.</p>
-            </div>
-          </div>
-          <div class="jogral-card reveal">
-            <div class="jogral-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-            </div>
-            <div class="jogral-card-body">
-              <h3>Undergraduate research fellows</h3>
-              <p>Early-career talent actively contributing to data engineering, experimentation, and open code.</p>
-            </div>
-          </div>
-          <div class="jogral-card reveal">
-            <div class="jogral-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20M12 2a14.5 14.5 0 0 1 0 20M2 12h20"/></svg>
+          </a>
+          <a class="jogral-card jogral-card-link reveal" href="people/#phd">
+            <div class="avatar-stack" aria-hidden="true">
+```
+
+::: {#home-pos}
+:::
+
+```{=html}
             </div>
             <div class="jogral-card-body">
-              <h3>National and global network</h3>
-              <p>Collaborators from top universities and research centers across Brazil and worldwide.</p>
+              <h3>PhD and master's students</h3>
             </div>
-          </div>
+            <div class="jogral-card-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </a>
+          <a class="jogral-card jogral-card-link reveal" href="people/#undergrad">
+            <div class="avatar-stack" aria-hidden="true">
+```
+
+::: {#home-graduacao}
+:::
+
+```{=html}
+            </div>
+            <div class="jogral-card-body">
+              <h3>Undergraduates</h3>
+            </div>
+            <div class="jogral-card-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </a>
+          <a class="jogral-card jogral-card-link reveal" href="people/#colaborador">
+            <div class="avatar-stack" aria-hidden="true">
+```
+
+::: {#home-rede}
+:::
+
+```{=html}
+            </div>
+            <div class="jogral-card-body">
+              <h3>Collaborators and alumni</h3>
+            </div>
+            <div class="jogral-card-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </a>
         </div>
       </div>
 
       <div class="jogral-text">
-        <h2 class="section-title">A highly skilled, multidisciplinary team</h2>
+        <h2 class="section-title">A multidisciplinary group</h2>
         <p class="section-lead">
-          The fundamental engine of GAIA Lab is the depth and versatility of our team.
-          We bring together talent with diverse expertise in computer science, applied
-          mathematics, environmental engineering, and economics.
+          GAIA Lab brings together researchers from computer science, applied mathematics,
+          data science, engineering and economics.
         </p>
         <p>
-          Our community unites senior faculty, postdoctoral fellows, doctoral candidates,
-          master's students, and undergraduate researchers working side by side.
-          This multilevel dynamic fosters active mentorship and international academic
-          mobility, turning the lab into an incubator for the next generation of
-          scientific leaders in green artificial intelligence.
+          Faculty, postdocs, PhD and master's students and undergraduates work side by side,
+          and the exchange between fields happens day to day and in the group's meetings.
         </p>
-        <div class="jogral-actions">
-          <a class="pub-btn" href="people/">Meet our full team</a>
-        </div>
       </div>
     </div>
   </section>

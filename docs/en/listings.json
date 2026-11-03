@@ -27,6 +27,33 @@
     ]
   },
   {
+    "listing": "/index.en.html",
+    "items": [
+      "/people/dario-oliveira/dario-oliveira.en.html",
+      "/people/danilo-lemos-cardoso/danilo-lemos-cardoso.en.html",
+      "/people/erick-brito/erick-brito.en.html",
+      "/people/gabriel-jacinto-pereira/gabriel-jacinto-pereira.en.html",
+      "/people/hanna-ferreira/hanna-ferreira.en.html",
+      "/people/heitor-trielli/heitor-trielli.en.html",
+      "/people/janaina-neres-evangelista/janaina-neres-evangelista.en.html",
+      "/people/lucas-westfal/lucas-westfal.en.html",
+      "/people/livia-cereja-meinhardt/livia-cereja-meinhardt.en.html",
+      "/people/pedro-thomaz-conzatti-martins/pedro-thomaz-conzatti-martins.en.html",
+      "/people/raul-lomonte-figueiredo/raul-lomonte-figueiredo.en.html",
+      "/people/rodrigo-gomes-hutz-pintucci/rodrigo-gomes-hutz-pintucci.en.html",
+      "/people/thiago-franke-melchiors/thiago-franke-melchiors.en.html",
+      "/people/tomas-ferranti/tomas-ferranti.en.html",
+      "/people/antonio-joaquim-brych-mendes-de-souza/antonio-joaquim-brych-mendes-de-souza.en.html",
+      "/people/sillas-da-rocha-costa/sillas-da-rocha-costa.en.html",
+      "/people/eduardo-vianna-de-l-f-guimaraes/eduardo-vianna-de-l-f-guimaraes.en.html",
+      "/people/elias-rodrigues/elias-rodrigues.en.html",
+      "/people/joao-alcindo/joao-alcindo.en.html",
+      "/people/juliana-carvalho/juliana-carvalho.en.html",
+      "/people/luiz-luz/luiz-luz.en.html",
+      "/people/pedro-soto/pedro-soto.en.html"
+    ]
+  },
+  {
     "listing": "/publications/index.en.html",
     "items": [
       "/publications/deep-clustering-for-climate-analyzing-teleconnections/deep-clustering-for-climate-analyzing-teleconnections.en.html",

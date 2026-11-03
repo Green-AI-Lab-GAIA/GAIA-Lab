@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -71,6 +73,119 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-home-docentes .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      
+      searchColumns: ["listing-project","listing-pagetitle","listing-website","listing-format","listing-lang","listing-toc-title","listing-language","listing-title","listing-last","listing-first","listing-people_group","listing-subtitle","listing-education","listing-image","listing-page-layout","listing-toc","listing-about","listing-path","listing-outputHref","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-home-docentes'] = new List('listing-home-docentes', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-home-pos .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      
+      searchColumns: ["listing-project","listing-pagetitle","listing-website","listing-format","listing-lang","listing-toc-title","listing-language","listing-title","listing-last","listing-first","listing-people_group","listing-subtitle","listing-education","listing-image","listing-page-layout","listing-toc","listing-about","listing-path","listing-outputHref","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-home-pos'] = new List('listing-home-pos', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-home-graduacao .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      
+      searchColumns: ["listing-project","listing-pagetitle","listing-website","listing-format","listing-lang","listing-toc-title","listing-language","listing-title","listing-last","listing-first","listing-people_group","listing-subtitle","listing-education","listing-image","listing-page-layout","listing-toc","listing-about","listing-path","listing-outputHref","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-home-graduacao'] = new List('listing-home-graduacao', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-home-rede .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      
+      searchColumns: ["listing-project","listing-pagetitle","listing-website","listing-format","listing-lang","listing-toc-title","listing-language","listing-title","listing-last","listing-first","listing-people_group","listing-subtitle","listing-education","listing-image","listing-page-layout","listing-toc","listing-about","listing-path","listing-outputHref","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-home-rede'] = new List('listing-home-rede', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <!-- Favicon em duas versões: a original para abas claras e, para abas
      escuras, a logo sobre um disco claro que preserva o contraste.
      Navegadores sem suporte ao atributo media usam a última linha. -->
@@ -78,8 +193,37 @@ ul.task-list li input[type="checkbox"] {
 <link rel="icon" type="image/png" href="./icon/favicon-dark.png" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/png" href="./icon/favicon-light.png">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css?v=8a5c9c9f">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css?v=541a807b">
 </head>
 
 <body class="nav-fixed home fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -459,30 +603,26 @@ ul.task-list li input[type="checkbox"] {
   <section class="home-section jogral-section reveal">
     <div class="jogral-grid">
       <div class="jogral-text">
-        <h2 class="section-title">Scientific production, academic theses and public outreach</h2>
+        <h2 class="section-title">Scientific output and outreach</h2>
         <p class="section-lead">
-          Scientific inquiries led by GAIA Lab generate impact across multiple formats
-          and avenues. Our contributions are published in premier international journals
-          and presented at major machine learning, computer vision, and Earth observation conferences.
+          Our contributions are submitted to leading international journals and presented
+          at the main conferences in artificial intelligence, computer vision and remote sensing.
         </p>
         <p>
-          In academia, the lab is an active hub of student mentorship, yielding PhD
-          dissertations, Master's theses, and undergraduate capstone research centered
-          on concrete socio-environmental questions. In the public sphere, our open models
-          and data inform journalistic coverage, podcasts, and public reports on environmental
-          preservation and green transition.
+          The lab also trains researchers through theses, dissertations and capstone projects
+          on concrete socio-environmental problems. Our methods and data reach the public
+          through news reports, podcasts and press coverage.
         </p>
       </div>
 
       <div class="jogral-visual">
         <div class="jogral-cards">
           <a class="jogral-card jogral-card-link reveal" href="publications/#papers">
-            <div class="jogral-card-icon">
-              <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path><path d="M6 6h10M6 10h10M6 14h6"></path></svg>
+            <div class="jogral-card-figure">
+              <img src="images/home/artigos.webp" alt="" loading="lazy">
             </div>
             <div class="jogral-card-body">
-              <h3>Journal articles and conferences</h3>
-              <p>Peer-reviewed deep learning architectures, computer vision benchmarks, and orbital data fusion.</p>
+              <h3>Journal and conference papers</h3>
             </div>
             <div class="jogral-card-arrow" aria-hidden="true">
               <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -491,12 +631,11 @@ ul.task-list li input[type="checkbox"] {
             </div>
           </a>
           <a class="jogral-card jogral-card-link reveal" href="publications/#theses">
-            <div class="jogral-card-icon">
-              <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+            <div class="jogral-card-figure">
+              <img src="images/home/teses.webp" alt="" loading="lazy">
             </div>
             <div class="jogral-card-body">
               <h3>Theses, dissertations and capstones</h3>
-              <p>Academic research with rigorous mathematical grounding dedicated to real-world ecological challenges.</p>
             </div>
             <div class="jogral-card-arrow" aria-hidden="true">
               <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -505,12 +644,11 @@ ul.task-list li input[type="checkbox"] {
             </div>
           </a>
           <a class="jogral-card jogral-card-link reveal" href="publications/#news">
-            <div class="jogral-card-icon">
-              <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"></path></svg>
+            <div class="jogral-card-figure">
+              <img src="images/home/noticias.webp" alt="" loading="lazy">
             </div>
             <div class="jogral-card-body">
-              <h3>News and media presence</h3>
-              <p>Science communication, journalistic press coverage, and transparent engagement with society.</p>
+              <h3>News and press</h3>
             </div>
             <div class="jogral-card-arrow" aria-hidden="true">
               <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -527,66 +665,88 @@ ul.task-list li input[type="checkbox"] {
     <div class="jogral-grid reverse">
       <div class="jogral-visual">
         <div class="jogral-cards">
-          <div class="jogral-card reveal">
-            <div class="jogral-card-icon">
-              <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <a class="jogral-card jogral-card-link reveal" href="people/#professor">
+            <div class="avatar-stack" aria-hidden="true">
+<div id="listing-home-docentes" class="quarto-listing quarto-listing-container-custom">
+<img class="avatar-stack-img" src="./people/dario-oliveira/avatar.jpg" alt="" loading="lazy">
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
             </div>
             <div class="jogral-card-body">
-              <h3>Principal investigators and postdocs</h3>
-              <p>Scientific leaders coordinating advanced computational modeling and real-world technology transfer.</p>
+              <h3>Faculty and postdocs</h3>
             </div>
-          </div>
-          <div class="jogral-card reveal">
-            <div class="jogral-card-icon">
-              <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 14c4 0 7-3 7-7s-3-7-7-7-7 3-7 7 3 7 7 7Z"></path><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"></path></svg>
+            <div class="jogral-card-arrow" aria-hidden="true">
+              <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
             </div>
-            <div class="jogral-card-body">
-              <h3>PhD and master's researchers</h3>
-              <p>Graduate students pioneering novel algorithms in spatial artificial intelligence and biophysical sensing.</p>
-            </div>
-          </div>
-          <div class="jogral-card reveal">
-            <div class="jogral-card-icon">
-              <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          </a>
+          <a class="jogral-card jogral-card-link reveal" href="people/#phd">
+            <div class="avatar-stack" aria-hidden="true">
+<div id="listing-home-pos" class="quarto-listing quarto-listing-container-custom">
+<img class="avatar-stack-img" src="./people/danilo-lemos-cardoso/avatar.jpeg" alt="" loading="lazy"><img class="avatar-stack-img" src="./people/erick-brito/avatar.jpeg" alt="" loading="lazy"><img class="avatar-stack-img" src="./people/gabriel-jacinto-pereira/avatar.jpeg" alt="" loading="lazy"><img class="avatar-stack-img" src="./people/hanna-ferreira/avatar.jpeg" alt="" loading="lazy">
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
             </div>
             <div class="jogral-card-body">
-              <h3>Undergraduate research fellows</h3>
-              <p>Early-career talent actively contributing to data engineering, experimentation, and open code.</p>
+              <h3>PhD and master's students</h3>
             </div>
-          </div>
-          <div class="jogral-card reveal">
-            <div class="jogral-card-icon">
-              <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20M12 2a14.5 14.5 0 0 1 0 20M2 12h20"></path></svg>
+            <div class="jogral-card-arrow" aria-hidden="true">
+              <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </a>
+          <a class="jogral-card jogral-card-link reveal" href="people/#undergrad">
+            <div class="avatar-stack" aria-hidden="true">
+<div id="listing-home-graduacao" class="quarto-listing quarto-listing-container-custom">
+<img class="avatar-stack-img" src="./people/antonio-joaquim-brych-mendes-de-souza/avatar.jpeg" alt="" loading="lazy"><img class="avatar-stack-img" src="./people/sillas-da-rocha-costa/avatar.jpeg" alt="" loading="lazy">
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
             </div>
             <div class="jogral-card-body">
-              <h3>National and global network</h3>
-              <p>Collaborators from top universities and research centers across Brazil and worldwide.</p>
+              <h3>Undergraduates</h3>
             </div>
-          </div>
+            <div class="jogral-card-arrow" aria-hidden="true">
+              <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </a>
+          <a class="jogral-card jogral-card-link reveal" href="people/#colaborador">
+            <div class="avatar-stack" aria-hidden="true">
+<div id="listing-home-rede" class="quarto-listing quarto-listing-container-custom">
+<img class="avatar-stack-img" src="./people/eduardo-vianna-de-l-f-guimaraes/avatar.jpeg" alt="" loading="lazy"><img class="avatar-stack-img" src="./people/elias-rodrigues/avatar.png" alt="" loading="lazy"><img class="avatar-stack-img" src="./people/joao-alcindo/avatar.jpeg" alt="" loading="lazy"><img class="avatar-stack-img" src="./people/juliana-carvalho/avatar.jpg" alt="" loading="lazy">
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+            </div>
+            <div class="jogral-card-body">
+              <h3>Collaborators and alumni</h3>
+            </div>
+            <div class="jogral-card-arrow" aria-hidden="true">
+              <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </a>
         </div>
       </div>
 
       <div class="jogral-text">
-        <h2 class="section-title">A highly skilled, multidisciplinary team</h2>
+        <h2 class="section-title">A multidisciplinary group</h2>
         <p class="section-lead">
-          The fundamental engine of GAIA Lab is the depth and versatility of our team.
-          We bring together talent with diverse expertise in computer science, applied
-          mathematics, environmental engineering, and economics.
+          GAIA Lab brings together researchers from computer science, applied mathematics,
+          data science, engineering and economics.
         </p>
         <p>
-          Our community unites senior faculty, postdoctoral fellows, doctoral candidates,
-          master's students, and undergraduate researchers working side by side.
-          This multilevel dynamic fosters active mentorship and international academic
-          mobility, turning the lab into an incubator for the next generation of
-          scientific leaders in green artificial intelligence.
+          Faculty, postdocs, PhD and master's students and undergraduates work side by side,
+          and the exchange between fields happens day to day and in the group's meetings.
         </p>
-        <div class="jogral-actions">
-          <a class="pub-btn" href="people/">Meet our full team</a>
-        </div>
       </div>
     </div>
   </section>
 </div>
+
 
 
 

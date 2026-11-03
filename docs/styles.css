@@ -554,13 +554,6 @@ body.quarto-dark .jogral-text p {
   color: #c5cbd2;
 }
 
-.jogral-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  margin-top: 1rem;
-}
-
 .jogral-cards {
   display: flex;
   flex-direction: column;
@@ -570,8 +563,8 @@ body.quarto-dark .jogral-text p {
 .jogral-card {
   display: flex;
   gap: 1.15rem;
-  align-items: flex-start;
-  padding: 1.25rem 1.4rem;
+  align-items: center;
+  padding: 1.1rem 1.4rem;
   border-radius: 14px;
   border: 1px solid var(--gaia-border);
   background: var(--gaia-surface);
@@ -606,26 +599,49 @@ a.jogral-card:focus-visible {
   outline-offset: 3px;
 }
 
-.jogral-card-icon {
+/* Figura do card: miniatura real (página de artigo, foto de defesa, foto
+   de notícia) em vez de ícone */
+.jogral-card-figure {
   flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  overflow: hidden;
   background: rgba(54, 89, 2, 0.08);
+}
+
+.jogral-card-figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Empilhado de avatares: os membros do grupo, vindos de uma listagem do
+   Quarto; os invólucros da listagem somem para os retratos se sobreporem */
+.avatar-stack {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
-  justify-content: center;
-  color: var(--gaia-accent);
+  width: 132px;
 }
 
-body.quarto-dark .jogral-card-icon {
-  background: rgba(167, 209, 119, 0.12);
-  color: #a7d177;
+.avatar-stack div {
+  display: contents;
 }
 
-.jogral-card-icon svg {
-  width: 22px;
-  height: 22px;
+.avatar-stack-img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gaia-surface);
+  background: var(--gaia-surface);
+  margin-left: -12px;
+}
+
+.avatar-stack-img:first-child {
+  margin-left: 0;
 }
 
 .jogral-card-body {
@@ -637,7 +653,7 @@ body.quarto-dark .jogral-card-icon {
   font-size: 1.05rem;
   font-weight: 700;
   color: #222;
-  margin: 0 0 0.35rem 0;
+  margin: 0;
   transition: color 0.25s ease;
 }
 
@@ -647,17 +663,6 @@ body.quarto-dark .jogral-card-body h3 {
 
 a.jogral-card:hover .jogral-card-body h3 {
   color: var(--gaia-accent);
-}
-
-.jogral-card-body p {
-  font-size: 0.88rem;
-  line-height: 1.5;
-  color: #666;
-  margin: 0;
-}
-
-body.quarto-dark .jogral-card-body p {
-  color: #9ca3af;
 }
 
 .jogral-card-arrow {
