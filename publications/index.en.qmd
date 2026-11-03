@@ -56,7 +56,7 @@ toc: false
       <span class="year-label" data-role="max"></span>
     </div>
     <div class="pub-sort">
-      <select class="pub-sort-native" data-role="ordem" aria-label="Sort">
+      <select class="pub-sort-native" id="pub-sort" data-role="ordem" aria-label="Sort">
         <option value="desc">Newest first</option>
         <option value="asc">Oldest first</option>
       </select>
