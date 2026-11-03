@@ -649,6 +649,11 @@ a.jogral-card:focus-visible {
   min-width: 0;
 }
 
+/* Palavra com hífen que não deve quebrar no meio (pós-doutorandos) */
+.nowrap {
+  white-space: nowrap;
+}
+
 .jogral-card-body h3 {
   font-size: 1.05rem;
   font-weight: 700;
