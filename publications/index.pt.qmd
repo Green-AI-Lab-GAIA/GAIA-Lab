@@ -55,10 +55,12 @@ toc: false
       </div>
       <span class="year-label" data-role="max"></span>
     </div>
-    <select class="pub-sort" data-role="ordem" aria-label="Ordenar">
-      <option value="desc">Mais recentes</option>
-      <option value="asc">Mais antigos</option>
-    </select>
+    <div class="pub-sort">
+      <select class="pub-sort-native" data-role="ordem" aria-label="Ordenar">
+        <option value="desc">Mais recentes</option>
+        <option value="asc">Mais antigos</option>
+      </select>
+    </div>
   </div>
 
   <div class="pub-count"></div>

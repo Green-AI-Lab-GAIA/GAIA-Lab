@@ -179,6 +179,7 @@
       aplicar();
     }
     ordem.addEventListener("change", pesquisar);
+    if (window.gaiaCombo) window.gaiaCombo(ordem);
     lupa.addEventListener("click", pesquisar);
     campo.addEventListener("keydown", function (evento) {
       if (evento.key === "Enter") {

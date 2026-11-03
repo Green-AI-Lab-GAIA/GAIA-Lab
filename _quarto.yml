@@ -37,6 +37,7 @@ format:
     # Scripts de comportamento: troca de idioma por página, links externos em
     # nova aba, cópia de e-mail e efeitos de rolagem (reveal, carrossel,
     # contadores, comparador de imagens, exploradores e envio da inscrição).
+    # combo vem antes de form-inscricao e publication-filters, que o usam.
     # listing-empty vem antes de scroll-effects: tira da página a seção de
     # listagem sem ninguém antes de o sumário lateral ser montado.
     include-after-body:
@@ -46,6 +47,7 @@ format:
       - _includes/link-behavior.html
       - _includes/scroll-effects.html
       - _includes/explorers.html
+      - _includes/combo.html
       - _includes/form-inscricao.html
       - _includes/image-fallback.html
       - _includes/publication-filters.html

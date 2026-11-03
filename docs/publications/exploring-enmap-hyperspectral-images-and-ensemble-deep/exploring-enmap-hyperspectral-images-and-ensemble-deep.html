@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="icon" type="image/png" href="../../icon/favicon-light.png">
 
 
-<link rel="stylesheet" href="../../styles.css?v=dde8be80">
+<link rel="stylesheet" href="../../styles.css?v=04408944">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -2724,6 +2724,123 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </script>
 
 <script>
+  // Lista de opções própria, usada no formulário de contato e no ordenador
+  // das publicações. O <select> nativo continua na página (envio, leitores de
+  // tela e quem está sem JS), mas fica escondido; aqui ele é trocado por
+  // botão + lista com o visual do site, iguais em qualquer sistema. O nativo
+  // só é escondido quando este código roda com sucesso. Escolher um item
+  // dispara "change" no <select>, então quem o escuta não precisa saber do
+  // combo.
+  window.gaiaCombo = function (select) {
+    var combo = select.parentElement;
+    combo.classList.add("combo");
+    select.classList.add("combo-native");
+
+    var rotulo = document.querySelector('label[for="' + select.id + '"]');
+    if (rotulo && !rotulo.id) rotulo.id = select.id + "-rotulo";
+
+    var botao = document.createElement("button");
+    botao.type = "button";
+    botao.className = "combo-btn";
+    botao.id = select.id + "-botao";
+    botao.setAttribute("aria-haspopup", "listbox");
+    botao.setAttribute("aria-expanded", "false");
+    if (rotulo) botao.setAttribute("aria-labelledby", rotulo.id);
+    else if (select.getAttribute("aria-label")) botao.setAttribute("aria-label", select.getAttribute("aria-label"));
+
+    var valor = document.createElement("span");
+    valor.className = "combo-valor";
+    var seta = document.createElement("span");
+    seta.className = "combo-arrow";
+    seta.setAttribute("aria-hidden", "true");
+    botao.appendChild(valor);
+    botao.appendChild(seta);
+
+    var lista = document.createElement("ul");
+    lista.className = "combo-list";
+    lista.setAttribute("role", "listbox");
+    lista.id = select.id + "-lista";
+    lista.hidden = true;
+    botao.setAttribute("aria-controls", lista.id);
+
+    function sincronizar() {
+      var opcao = select.options[select.selectedIndex];
+      valor.textContent = opcao ? opcao.textContent.trim() : "";
+      Array.prototype.forEach.call(lista.children, function (item) {
+        var escolhido = item.dataset.indice === String(select.selectedIndex);
+        item.setAttribute("aria-selected", escolhido ? "true" : "false");
+      });
+    }
+
+    Array.prototype.forEach.call(select.options, function (opcao, indice) {
+      var item = document.createElement("li");
+      item.setAttribute("role", "option");
+      item.tabIndex = -1;
+      item.dataset.indice = String(indice);
+      item.textContent = opcao.textContent.trim();
+      item.addEventListener("click", function () { escolher(indice); });
+      lista.appendChild(item);
+    });
+
+    combo.appendChild(botao);
+    combo.appendChild(lista);
+
+    function abrir() {
+      lista.hidden = false;
+      combo.classList.add("is-open");
+      botao.setAttribute("aria-expanded", "true");
+    }
+    function fechar() {
+      lista.hidden = true;
+      combo.classList.remove("is-open");
+      botao.setAttribute("aria-expanded", "false");
+    }
+    function focarItem(indice) {
+      var item = lista.children[indice];
+      if (item) item.focus();
+    }
+    function escolher(indice) {
+      select.selectedIndex = indice;
+      select.dispatchEvent(new Event("change", { bubbles: true }));
+      sincronizar();
+      fechar();
+      botao.focus();
+    }
+
+    botao.addEventListener("click", function () {
+      if (lista.hidden) { abrir(); focarItem(select.selectedIndex); } else { fechar(); }
+    });
+    botao.addEventListener("keydown", function (evento) {
+      if (evento.key === "ArrowDown" || evento.key === "Enter" || evento.key === " ") {
+        evento.preventDefault();
+        abrir();
+        focarItem(select.selectedIndex);
+      } else if (evento.key === "ArrowUp") {
+        evento.preventDefault();
+        abrir();
+        focarItem(lista.children.length - 1);
+      }
+    });
+    lista.addEventListener("keydown", function (evento) {
+      var indice = Array.prototype.indexOf.call(lista.children, document.activeElement);
+      if (evento.key === "ArrowDown") { evento.preventDefault(); focarItem(Math.min(indice + 1, lista.children.length - 1)); }
+      else if (evento.key === "ArrowUp") { evento.preventDefault(); focarItem(Math.max(indice - 1, 0)); }
+      else if (evento.key === "Enter" || evento.key === " ") { evento.preventDefault(); if (indice >= 0) escolher(indice); }
+      else if (evento.key === "Escape") { evento.preventDefault(); fechar(); botao.focus(); }
+    });
+    if (rotulo) rotulo.addEventListener("click", function (evento) {
+      evento.preventDefault();
+      botao.focus();
+      abrir();
+    });
+    document.addEventListener("click", function (evento) {
+      if (!combo.contains(evento.target)) fechar();
+    });
+
+    sincronizar();
+  };
+</script>
+<script>
   // Envio do formulário de contato ("Contato" / "Contact").
   //
   // O site é estático, então quem recebe o POST é o aplicativo da web do Apps
@@ -2788,119 +2905,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       atualizarContador();
     }
 
-    // Lista de opções própria
-    // O <select> nativo continua no formulário (envio e quem está sem JS), mas
-    // fica escondido; aqui ele é trocado por botão + lista, iguais em qualquer
-    // sistema. O nativo só é escondido quando este código roda com sucesso.
-    function construirCombo(select) {
-      var combo = select.parentElement;
-      combo.classList.add("combo");
-      select.classList.add("combo-native");
-
-      var rotulo = form.querySelector('label[for="' + select.id + '"]');
-      if (rotulo && !rotulo.id) rotulo.id = select.id + "-rotulo";
-
-      var botao = document.createElement("button");
-      botao.type = "button";
-      botao.className = "combo-btn";
-      botao.id = select.id + "-botao";
-      botao.setAttribute("aria-haspopup", "listbox");
-      botao.setAttribute("aria-expanded", "false");
-      if (rotulo) botao.setAttribute("aria-labelledby", rotulo.id);
-
-      var valor = document.createElement("span");
-      valor.className = "combo-valor";
-      var seta = document.createElement("span");
-      seta.className = "combo-arrow";
-      seta.setAttribute("aria-hidden", "true");
-      botao.appendChild(valor);
-      botao.appendChild(seta);
-
-      var lista = document.createElement("ul");
-      lista.className = "combo-list";
-      lista.setAttribute("role", "listbox");
-      lista.id = select.id + "-lista";
-      lista.hidden = true;
-      botao.setAttribute("aria-controls", lista.id);
-
-      function sincronizar() {
-        var opcao = select.options[select.selectedIndex];
-        valor.textContent = opcao ? opcao.textContent.trim() : "";
-        Array.prototype.forEach.call(lista.children, function (item) {
-          var escolhido = item.dataset.indice === String(select.selectedIndex);
-          item.setAttribute("aria-selected", escolhido ? "true" : "false");
-        });
-      }
-
-      Array.prototype.forEach.call(select.options, function (opcao, indice) {
-        var item = document.createElement("li");
-        item.setAttribute("role", "option");
-        item.tabIndex = -1;
-        item.dataset.indice = String(indice);
-        item.textContent = opcao.textContent.trim();
-        item.addEventListener("click", function () { escolher(indice); });
-        lista.appendChild(item);
-      });
-
-      combo.appendChild(botao);
-      combo.appendChild(lista);
-
-      function abrir() {
-        lista.hidden = false;
-        combo.classList.add("is-open");
-        botao.setAttribute("aria-expanded", "true");
-      }
-      function fechar() {
-        lista.hidden = true;
-        combo.classList.remove("is-open");
-        botao.setAttribute("aria-expanded", "false");
-      }
-      function focarItem(indice) {
-        var item = lista.children[indice];
-        if (item) item.focus();
-      }
-      function escolher(indice) {
-        select.selectedIndex = indice;
-        select.dispatchEvent(new Event("change", { bubbles: true }));
-        sincronizar();
-        fechar();
-        botao.focus();
-      }
-
-      botao.addEventListener("click", function () {
-        if (lista.hidden) { abrir(); focarItem(select.selectedIndex); } else { fechar(); }
-      });
-      botao.addEventListener("keydown", function (evento) {
-        if (evento.key === "ArrowDown" || evento.key === "Enter" || evento.key === " ") {
-          evento.preventDefault();
-          abrir();
-          focarItem(select.selectedIndex);
-        } else if (evento.key === "ArrowUp") {
-          evento.preventDefault();
-          abrir();
-          focarItem(lista.children.length - 1);
-        }
-      });
-      lista.addEventListener("keydown", function (evento) {
-        var indice = Array.prototype.indexOf.call(lista.children, document.activeElement);
-        if (evento.key === "ArrowDown") { evento.preventDefault(); focarItem(Math.min(indice + 1, lista.children.length - 1)); }
-        else if (evento.key === "ArrowUp") { evento.preventDefault(); focarItem(Math.max(indice - 1, 0)); }
-        else if (evento.key === "Enter" || evento.key === " ") { evento.preventDefault(); if (indice >= 0) escolher(indice); }
-        else if (evento.key === "Escape") { evento.preventDefault(); fechar(); botao.focus(); }
-      });
-      if (rotulo) rotulo.addEventListener("click", function (evento) {
-        evento.preventDefault();
-        botao.focus();
-        abrir();
-      });
-      document.addEventListener("click", function (evento) {
-        if (!combo.contains(evento.target)) fechar();
-      });
-
-      sincronizar();
-    }
-
-    if (motivo) construirCombo(motivo);
+    if (motivo && window.gaiaCombo) window.gaiaCombo(motivo);
     if (motivo) {
       motivo.addEventListener("change", atualizarOutro);
       atualizarOutro();
@@ -3203,6 +3208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       aplicar();
     }
     ordem.addEventListener("change", pesquisar);
+    if (window.gaiaCombo) window.gaiaCombo(ordem);
     lupa.addEventListener("click", pesquisar);
     campo.addEventListener("keydown", function (evento) {
       if (evento.key === "Enter") {
