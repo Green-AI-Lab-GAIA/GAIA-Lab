@@ -468,6 +468,22 @@ body.quarto-dark .area-kpi span {
   margin-top: 3.5rem;
 }
 
+/* Alvo do "Saber mais" do hero. O quarto-nav.js põe antes de toda section:target
+   um pseudo-elemento vazio da altura da navbar (61 px, margem negativa igual),
+   que colapsa com a margem da seção: o título fica 61 px abaixo do topo da
+   caixa. Como a navbar some ao rolar para baixo (headroom), a caixa precisa
+   ficar quase colada ao topo para o hero sumir; ao rolar de volta, a navbar
+   cobre só o pseudo-elemento e o título fica logo abaixo dela. A animação de
+   entrada não pode deslocar a seção, senão o navegador calcula o destino do
+   scroll com a seção 26 px mais baixa do que ela termina. */
+#home-pesquisa {
+  scroll-margin-top: 0.5rem;
+}
+
+html.has-js #home-pesquisa.reveal {
+  transform: none;
+}
+
 .section-badge {
   display: inline-flex;
   align-items: center;
