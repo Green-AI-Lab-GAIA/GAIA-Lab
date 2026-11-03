@@ -3,8 +3,8 @@ title: "Publicações"
 # Artigos: cada um é uma pasta com a página .pt/.en e a miniatura do PDF.
 # Teses: cada trabalho é uma pasta em theses/ com a página .pt/.en e a miniatura.
 # Notícias: itens declarados direto na listagem abaixo (link externo).
-# A alternância entre vistas, a busca, o filtro de anos e a paginação são
-# feitos pelo _includes/publication-filters.html sobre os cards renderizados.
+# A alternância entre vistas, a busca, o filtro de anos, a ordenação e a
+# paginação são feitos pelo _includes/publication-filters.html sobre os cards renderizados.
 listing:
   - id: papers
     contents:
@@ -44,15 +44,21 @@ toc: false
     </button>
   </div>
 
-  <div class="year-filter">
-    <span class="year-label" data-role="min"></span>
-    <div class="year-slider">
-      <div class="year-track"></div>
-      <div class="year-range"></div>
-      <input type="range" data-role="ano-min" step="1" aria-label="Ano inicial">
-      <input type="range" data-role="ano-max" step="1" aria-label="Ano final">
+  <div class="pub-toolbar">
+    <div class="year-filter">
+      <span class="year-label" data-role="min"></span>
+      <div class="year-slider">
+        <div class="year-track"></div>
+        <div class="year-range"></div>
+        <input type="range" data-role="ano-min" step="1" aria-label="Ano inicial">
+        <input type="range" data-role="ano-max" step="1" aria-label="Ano final">
+      </div>
+      <span class="year-label" data-role="max"></span>
     </div>
-    <span class="year-label" data-role="max"></span>
+    <select class="pub-sort" data-role="ordem" aria-label="Ordenar">
+      <option value="desc">Mais recentes</option>
+      <option value="asc">Mais antigos</option>
+    </select>
   </div>
 
   <div class="pub-count"></div>

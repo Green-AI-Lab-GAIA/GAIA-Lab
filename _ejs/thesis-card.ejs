@@ -1,7 +1,7 @@
 ```{=html}
 <div class="pub-list">
   <% for (const item of items) { %>
-    <a href="<%- item.path %>" class="pub-card-link" data-date="<%= item.date %>">
+    <a href="<%- item.path %>" class="pub-card-link" data-date="<%= item.date %>" data-sort="<%= item.sortableValues.date %>">
       <div class="pub-card">
         <img class="pub-thumb" src="<%= item.image %>" alt="Primeira página de <%= item.title %>" loading="lazy">
         <div class="pub-info">

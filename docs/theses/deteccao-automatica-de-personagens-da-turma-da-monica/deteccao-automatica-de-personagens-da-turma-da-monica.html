@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="icon" type="image/png" href="../../icon/favicon-light.png">
 
 
-<link rel="stylesheet" href="../../styles.css?v=bd55928f">
+<link rel="stylesheet" href="../../styles.css?v=dde8be80">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -2956,10 +2956,10 @@ ul.task-list li input[type="checkbox"] {
   });
 </script>
 <script>
-  // Pagina de publicacoes: alterna entre as vistas de artigos e noticias,
-  // filtra por texto (busca) e por periodo (slider de anos) e pagina os
-  // resultados no navegador. Como o site e estatico, todo o trabalho e
-  // feito sobre os cards ja renderizados na pagina.
+  // Pagina de publicacoes: alterna entre as vistas (artigos, teses, noticias),
+  // filtra por texto (busca) e por periodo (slider de anos), ordena por data
+  // e pagina os resultados no navegador. Como o site e estatico, todo o
+  // trabalho e feito sobre os cards ja renderizados na pagina.
   document.addEventListener("DOMContentLoaded", function () {
     var raiz = document.getElementById("pub-views");
     if (!raiz) return;
@@ -2979,6 +2979,8 @@ ul.task-list li input[type="checkbox"] {
     var rotuloMin = raiz.querySelector('.year-label[data-role="min"]');
     var rotuloMax = raiz.querySelector('.year-label[data-role="max"]');
     var faixa = raiz.querySelector(".year-range");
+    var filtroAnos = raiz.querySelector(".year-filter");
+    var ordem = raiz.querySelector('[data-role="ordem"]');
 
     var estado = { vista: vistas[0].getAttribute("data-view"), pagina: 1 };
 
@@ -2995,20 +2997,51 @@ ul.task-list li input[type="checkbox"] {
       return vista.querySelectorAll(".pub-card-link, .news-card");
     }
 
-    // limites do slider a partir dos anos presentes nos cards
-    var anos = [];
-    for (var v = 0; v < vistas.length; v++) {
-      itensDe(vistas[v]).forEach(function (item) {
+    function vistaAtiva() {
+      for (var v = 0; v < vistas.length; v++) {
+        if (vistas[v].getAttribute("data-view") === estado.vista) return vistas[v];
+      }
+      return vistas[0];
+    }
+
+    // limites do slider a partir dos anos presentes nos cards da vista ativa;
+    // ao trocar de vista o intervalo volta a cobrir tudo, e com um ano só
+    // o slider nem aparece
+    var menor, maior;
+    function definirLimites() {
+      var anos = [];
+      itensDe(vistaAtiva()).forEach(function (item) {
         var ano = anoDe(item);
         if (ano) anos.push(ano);
       });
+      menor = anos.length ? Math.min.apply(null, anos) : 0;
+      maior = anos.length ? Math.max.apply(null, anos) : 0;
+      anoMin.min = anoMax.min = menor;
+      anoMin.max = anoMax.max = maior;
+      anoMin.value = menor;
+      anoMax.value = maior;
+      filtroAnos.hidden = menor === maior;
     }
-    var menor = Math.min.apply(null, anos);
-    var maior = Math.max.apply(null, anos);
-    anoMin.min = anoMax.min = menor;
-    anoMin.max = anoMax.max = maior;
-    anoMin.value = menor;
-    anoMax.value = maior;
+
+    // reordena os cards da vista ativa no DOM pela data, usando o timestamp
+    // que o Quarto grava em data-sort; cards sem data ficam no fim
+    function ordenar(vista) {
+      var itens = Array.prototype.slice.call(itensDe(vista));
+      var sinal = ordem.value === "asc" ? 1 : -1;
+      function instante(el) {
+        var n = parseInt(el.getAttribute("data-sort"), 10);
+        return isNaN(n) ? null : n;
+      }
+      itens.sort(function (a, b) {
+        var da = instante(a);
+        var db = instante(b);
+        if (da === db) return 0;
+        if (da === null) return 1;
+        if (db === null) return -1;
+        return (da - db) * sinal;
+      });
+      itens.forEach(function (item) { item.parentNode.appendChild(item); });
+    }
 
     function atualizarSlider() {
       // as bolinhas não podem se cruzar
@@ -3032,6 +3065,7 @@ ul.task-list li input[type="checkbox"] {
       for (var v = 0; v < vistas.length; v++) {
         var ativa = vistas[v].getAttribute("data-view") === estado.vista;
         vistas[v].hidden = !ativa;
+        if (ativa) ordenar(vistas[v]);
         itensDe(vistas[v]).forEach(function (item) {
           if (!ativa) return;
           var ano = anoDe(item);
@@ -3085,17 +3119,23 @@ ul.task-list li input[type="checkbox"] {
     for (var t = 0; t < abas.length; t++) {
       abas[t].addEventListener("click", function (evento) {
         if (evento) evento.preventDefault();
-        estado.vista = this.getAttribute("data-view");
-        estado.pagina = 1;
+        trocarVista(this.getAttribute("data-view"));
         history.replaceState(null, "", "#" + estado.vista);
-        aplicar();
       });
+    }
+
+    function trocarVista(nome) {
+      estado.vista = nome;
+      estado.pagina = 1;
+      definirLimites();
+      aplicar();
     }
 
     function pesquisar() {
       estado.pagina = 1;
       aplicar();
     }
+    ordem.addEventListener("change", pesquisar);
     lupa.addEventListener("click", pesquisar);
     campo.addEventListener("keydown", function (evento) {
       if (evento.key === "Enter") {
@@ -3129,7 +3169,7 @@ ul.task-list li input[type="checkbox"] {
         }
       }
     }
-    aplicar();
+    trocarVista(estado.vista);
     if (alvoInicial) {
       rolarParaAlvo(alvoInicial);
     }
@@ -3139,9 +3179,7 @@ ul.task-list li input[type="checkbox"] {
       if (!novoAlvo) return;
       for (var h = 0; h < vistas.length; h++) {
         if (vistas[h].getAttribute("data-view") === novoAlvo) {
-          estado.vista = novoAlvo;
-          estado.pagina = 1;
-          aplicar();
+          trocarVista(novoAlvo);
           rolarParaAlvo(novoAlvo);
           break;
         }
