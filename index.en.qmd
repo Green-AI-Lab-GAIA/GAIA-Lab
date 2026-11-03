@@ -191,13 +191,13 @@ toc: false
       <div class="jogral-text">
         <h2 class="section-title">Scientific output and outreach</h2>
         <p class="section-lead">
-          Our contributions are submitted to leading international journals and presented
+          Scientific contributions are submitted to leading international journals and presented
           at the main conferences in artificial intelligence, computer vision and remote sensing.
         </p>
         <p>
           The lab also trains researchers through theses, dissertations and capstone projects
-          on concrete socio-environmental problems. Our methods and data reach the public
-          through news reports, podcasts and press coverage.
+          on concrete socio-environmental problems. The resulting methods and data reach the
+          public through news reports, podcasts and press coverage.
         </p>
       </div>
 
