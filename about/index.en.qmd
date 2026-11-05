@@ -291,7 +291,7 @@ to technical, institutional, and regulatory documents, supporting policy evaluat
       <span class="tl-node" aria-hidden="true"></span>
       <div class="tl-body">
         <h3 class="tl-heading">Foundation models and research consolidation</h3>
-        <p class="tl-text">Professor Dario Oliveira's co-authorship in developing Prithvi, an open-source geospatial foundation model arising from his collaboration at IBM Research alongside NASA, brought a rich exchange of experience and mindset. This background inspired an internal shift in perspective, fostering the consolidation of the laboratory and the structuring of research lines.</p>
+        <p class="tl-text">Professor Dario Oliveira's collaboration in developing <em>Prithvi</em>, an open geospatial foundation model born from a partnership between universities, IBM Research and NASA, brought a rich exchange of experience and mindset. This experience prompted an internal shift in perspective, driving the consolidation of the laboratory and the structuring of research lines.</p>
       </div>
     </li>
     <li class="tl-item">
@@ -306,7 +306,7 @@ to technical, institutional, and regulatory documents, supporting policy evaluat
       <span class="tl-year">2026</span>
       <span class="tl-node" aria-hidden="true"></span>
       <div class="tl-body">
-        <h3 class="tl-heading">Project expansion and natural language processing</h3>
+        <h3 class="tl-heading">Project expansion</h3>
         <p class="tl-text">The laboratory's projects achieve broad coverage across entire states and the country, driven by new research partnerships and the launch of new investigative avenues such as natural language processing.</p>
       </div>
     </li>

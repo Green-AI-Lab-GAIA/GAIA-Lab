@@ -291,7 +291,7 @@ a documentos técnicos, institucionais e regulatórios, em projetos de análise 
       <span class="tl-node" aria-hidden="true"></span>
       <div class="tl-body">
         <h3 class="tl-heading">Modelos fundacionais e consolidação da pesquisa</h3>
-        <p class="tl-text">A coautoria do professor Dario Oliveira no desenvolvimento do Prithvi, modelo fundacional geoespacial aberto fruto de sua colaboração na IBM Research com a NASA, trouxe uma rica troca de experiências e mentalidade. Essa vivência motivou uma mudança de visão interna, impulsionando a consolidação do laboratório e a estruturação de linhas de pesquisa.</p>
+        <p class="tl-text">A colaboração do professor Dario Oliveira no desenvolvimento do <em>Prithvi</em>, modelo fundacional geoespacial aberto, consequência da parceria entre universidades, IBM Research e NASA, trouxe uma rica troca de experiências e mentalidade. Essa vivência motivou uma mudança de visão interna, impulsionando a consolidação do laboratório e a estruturação de linhas de pesquisa.</p>
       </div>
     </li>
     <li class="tl-item">
@@ -306,7 +306,7 @@ a documentos técnicos, institucionais e regulatórios, em projetos de análise 
       <span class="tl-year">2026</span>
       <span class="tl-node" aria-hidden="true"></span>
       <div class="tl-body">
-        <h3 class="tl-heading">Expansão de projetos e processamento de linguagem natural</h3>
+        <h3 class="tl-heading">Expansão de projetos</h3>
         <p class="tl-text">Os projetos do laboratório alcançam ampla cobertura de territórios estaduais e do país inteiro, impulsionados pela criação de novas parcerias de pesquisa e pelo início de frentes investigativas como a de processamento de linguagem natural.</p>
       </div>
     </li>
