@@ -1,26 +1,25 @@
 ---
 title: "Publicações"
-# Artigos: cada um é uma pasta com a página .pt/.en e a miniatura do PDF.
-# Teses: cada trabalho é uma pasta em theses/ com a página .pt/.en e a miniatura.
-# Notícias: itens declarados direto na listagem abaixo (link externo).
+# Artigos, teses e notícias: uma pasta por item em articles/, theses/ e news/,
+# cada uma com a página .pt/.en e as imagens que vieram da planilha.
 # A alternância entre vistas, a busca, o filtro de anos, a ordenação e a
 # paginação são feitos pelo _includes/publication-filters.html sobre os cards renderizados.
 listing:
   - id: papers
     contents:
-      - "*/*.pt.qmd"
+      - "articles/*/*.pt.qmd"
     template: ../_ejs/publication-card.ejs
     sort: "date desc"
     fields: [title, image, date, paper-authors, pub-date, venue, snippet]
   - id: theses
     contents:
-      - "../theses/*/*.pt.qmd"
+      - "theses/*/*.pt.qmd"
     template: ../_ejs/thesis-card.ejs
     sort: "date desc"
     fields: [title, image, date, thesis-author, thesis-kind, thesis-program, thesis-date, snippet]
   - id: news
     contents:
-      - "../news/*/*.pt.qmd"
+      - "news/*/*.pt.qmd"
     template: ../_ejs/news-card.ejs
     sort: "date desc"
     fields: [title, image, date, news-source, news-date, news-url, summary]

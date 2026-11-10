@@ -5,14 +5,14 @@ first: "Heitor"
 people_group: "phd"
 subtitle: "Research Assistant"
 education: "PhD Candidate in Applied Mathematics and Data Science, FGV EMAp"
-image: avatar.jpeg
+image: avatar.jpg
 page-layout: full
 toc: false
 about:
   id: perfil
   template: trestles
   image-shape: round
-  image: avatar.jpeg
+  image: avatar.jpg
   links:
     - icon: linkedin
       text: LinkedIn

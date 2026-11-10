@@ -75,7 +75,7 @@ If you're on the fence about writing to us, we suggest you fill out the form bel
   <p class="join-status" role="status" aria-live="polite"></p>
 </form>
 
-<a class="back-link" href="/en/">
+<a class="back-link" href="/">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
   <span>Back to home</span>
 </a>

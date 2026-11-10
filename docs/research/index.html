@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="icon" type="image/png" href="../icon/favicon-light.png">
 
 
-<link rel="stylesheet" href="../styles.css?v=51323454">
+<link rel="stylesheet" href="../styles.css?v=840bb970">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -1001,7 +1001,6 @@ ul.task-list li input[type="checkbox"] {
             <span class="cv-sat-label">Camadas sobrepostas:</span>
             <button type="button" class="iviz-btn is-active" data-cv-f-toggle="pred" aria-pressed="true">Dossel florestal (10 m)</button>
             <button type="button" class="iviz-btn" data-cv-f-toggle="incerteza" aria-pressed="false">Classes de incerteza e alerta</button>
-            <button type="button" class="iviz-btn is-active" data-cv-f-toggle="car" aria-pressed="true">Perímetros do CAR</button>
             <button type="button" class="iviz-btn" data-cv-f-toggle="talhoes" aria-pressed="false">Talhões agrícolas</button>
             <button type="button" class="iviz-btn" data-cv-f-toggle="rotulo" aria-pressed="false">Referência MapBiomas</button>
           </div>
@@ -1019,7 +1018,6 @@ ul.task-list li input[type="checkbox"] {
             <img data-cv-f-layer="pred" src="images/floresta/cv-pred-completo-2023q3.webp" alt="Camada de dossel florestal predito pelo modelo">
             <img data-cv-f-layer="incerteza" class="is-hidden" src="images/floresta/cv-incerteza-2023q3.webp" alt="Camada semântica de incerteza e alerta de supressão">
             <img data-cv-f-layer="talhoes" class="is-hidden" src="images/floresta/cv-talhoes-2023.webp" alt="Contornos dos talhões agrícolas vizinhos">
-            <img data-cv-f-layer="car" src="images/floresta/cv-car.webp" alt="Perímetros dos imóveis rurais declarados no CAR">
           </div>
           <div class="cv-sat-hud">
             <button type="button" class="cv-hud-btn" data-cv-zoom-out="" title="Reduzir zoom">−</button>
@@ -1035,7 +1033,6 @@ ul.task-list li input[type="checkbox"] {
           <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#66bb6a"></i> Zona de borda e transição</span>
           <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#fdd835"></i> Estresse hídrico sazonal na seca</span>
           <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#e53935"></i> Alerta de supressão</span>
-          <span class="parcel-legend-item"><i class="parcel-swatch" style="border:2px solid #f59e0b; background:transparent"></i> Limites de imóveis do CAR</span>
         </div>
       </div>
     </div>
@@ -1894,13 +1891,14 @@ ul.task-list li input[type="checkbox"] {
       }
     }
 
+    // A entrada é única: revelado, o bloco sai do observador. Se ele voltasse
+    // a esconder ao sair da tela, o próprio deslocamento da animação mudaria a
+    // área visível que o observador mede e o bloco piscaria na borda inferior
     var observador = new IntersectionObserver(function (entradas) {
       for (var i = 0; i < entradas.length; i++) {
-        if (entradas[i].isIntersecting) {
-          revelar(entradas[i].target);
-        } else {
-          entradas[i].target.classList.remove("revealed");
-        }
+        if (!entradas[i].isIntersecting) continue;
+        revelar(entradas[i].target);
+        observador.unobserve(entradas[i].target);
       }
     }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
 
@@ -1914,11 +1912,9 @@ ul.task-list li input[type="checkbox"] {
       } else {
         var observadorVoadores = new IntersectionObserver(function (entradasV) {
           for (var v = 0; v < entradasV.length; v++) {
-            if (entradasV[v].isIntersecting) {
-              entradasV[v].target.classList.add("in-view");
-            } else {
-              entradasV[v].target.classList.remove("in-view");
-            }
+            if (!entradasV[v].isIntersecting) continue;
+            entradasV[v].target.classList.add("in-view");
+            observadorVoadores.unobserve(entradasV[v].target);
           }
         }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
 

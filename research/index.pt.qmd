@@ -700,7 +700,6 @@ toc: false
             <span class="cv-sat-label">Camadas sobrepostas:</span>
             <button type="button" class="iviz-btn is-active" data-cv-f-toggle="pred" aria-pressed="true">Dossel florestal (10 m)</button>
             <button type="button" class="iviz-btn" data-cv-f-toggle="incerteza" aria-pressed="false">Classes de incerteza e alerta</button>
-            <button type="button" class="iviz-btn is-active" data-cv-f-toggle="car" aria-pressed="true">Perímetros do CAR</button>
             <button type="button" class="iviz-btn" data-cv-f-toggle="talhoes" aria-pressed="false">Talhões agrícolas</button>
             <button type="button" class="iviz-btn" data-cv-f-toggle="rotulo" aria-pressed="false">Referência MapBiomas</button>
           </div>
@@ -718,7 +717,6 @@ toc: false
             <img data-cv-f-layer="pred" src="images/floresta/cv-pred-completo-2023q3.webp" alt="Camada de dossel florestal predito pelo modelo">
             <img data-cv-f-layer="incerteza" class="is-hidden" src="images/floresta/cv-incerteza-2023q3.webp" alt="Camada semântica de incerteza e alerta de supressão">
             <img data-cv-f-layer="talhoes" class="is-hidden" src="images/floresta/cv-talhoes-2023.webp" alt="Contornos dos talhões agrícolas vizinhos">
-            <img data-cv-f-layer="car" src="images/floresta/cv-car.webp" alt="Perímetros dos imóveis rurais declarados no CAR">
           </div>
           <div class="cv-sat-hud">
             <button type="button" class="cv-hud-btn" data-cv-zoom-out title="Reduzir zoom">−</button>
@@ -734,7 +732,6 @@ toc: false
           <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#66bb6a"></i> Zona de borda e transição</span>
           <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#fdd835"></i> Estresse hídrico sazonal na seca</span>
           <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#e53935"></i> Alerta de supressão</span>
-          <span class="parcel-legend-item"><i class="parcel-swatch" style="border:2px solid #f59e0b; background:transparent"></i> Limites de imóveis do CAR</span>
         </div>
       </div>
     </div>

@@ -17,11 +17,6 @@ import html
 import sys
 from pathlib import Path
 
-try:
-    from PIL import Image
-except ImportError:
-    Image = None
-
 from tabelas import (COLUNAS, ErroDeConteudo, eh_endereco, itens, ler_tabela,
                      por_extenso, sem_travessao, texto)
 
@@ -32,8 +27,9 @@ AVISO = ("# Arquivo gerado por scripts/gerar_conteudo.py a partir de {tabela}.\n
          "# Nao edite aqui: edite a planilha e rode o script.")
 
 # quando o formulario nao manda imagem, a pagina usa o desenho padrao do site
-PADRAO = {"people": "avatar-default.svg", "publications": "paper-default.svg",
-          "theses": "paper-default.svg", "news": None}
+ARTIGOS, TESES, NOTICIAS = "publications/articles", "publications/theses", "publications/news"
+PADRAO = {"people": "avatar-default.svg", ARTIGOS: "paper-default.svg",
+          TESES: "paper-default.svg", NOTICIAS: None}
 
 
 # Utilidades
@@ -93,7 +89,8 @@ def padrao(pasta: str) -> str | None:
     nome = PADRAO[pasta]
     if not nome:
         return None
-    return f"../../images/{nome}"
+    subida = "../" * (pasta.count("/") + 2)
+    return f"{subida}images/{nome}"
 
 
 def resolver(pasta: str, slug: str, base: str, valor: str) -> str | None:
@@ -110,6 +107,12 @@ def resolver(pasta: str, slug: str, base: str, valor: str) -> str | None:
 def limpo(valor: str) -> str:
     """Texto que vai para o site, ja sem travessao (regra do site)."""
     return sem_travessao((valor or "").strip())
+
+
+def paragrafos(valor: str) -> str:
+    """Cada Enter dado na planilha vira um paragrafo na pagina."""
+    linhas = [l.strip() for l in valor.splitlines()]
+    return "\n\n".join(l for l in linhas if l)
 
 
 def primeira_frase(resumo_longo: str, limite: int = 220) -> str:
@@ -282,12 +285,12 @@ def pagina_de_publicacao(linha: dict, lang: str) -> str:
     veiculo = limpo(texto(linha, "veiculo", lang))
     autores = limpo(linha["autores"])
     publicado = por_extenso(linha["data"], lang, com_dia=False)
-    imagem = resolver("publications", linha["slug"], "miniatura", linha.get("imagem", "")) \
-        or padrao("publications")
+    imagem = resolver(ARTIGOS, linha["slug"], "miniatura", linha.get("imagem", "")) \
+        or padrao(ARTIGOS)
     meta = ", ".join(p for p in (publicado, local) if p)
-    figuras = bloco_de_figuras(linha, lang, "publications")
+    figuras = bloco_de_figuras(linha, lang, ARTIGOS)
     citacao = bloco_de_citacao(linha, lang)
-    pedacos = [f"## {r['resumo']}\n\n{resumo}"]
+    pedacos = [f"## {r['resumo']}\n\n{paragrafos(resumo)}"]
     if corpo:
         pedacos.append(corpo)
     if figuras:
@@ -347,9 +350,9 @@ def gerar_publicacoes() -> None:
     linhas = ler_tabela("publicacoes", DADOS / "publicacoes.csv")
     for linha in linhas:
         for lang in ("pt", "en"):
-            escrever(f"publications/{linha['slug']}/{linha['slug']}.{lang}.qmd",
+            escrever(f"{ARTIGOS}/{linha['slug']}/{linha['slug']}.{lang}.qmd",
                      pagina_de_publicacao(linha, lang))
-    apagados = limpar_antigos("publications", {linha["slug"] for linha in linhas})
+    apagados = limpar_antigos(ARTIGOS, {linha["slug"] for linha in linhas})
     print(f"publications: {len(linhas)} artigos, {len(linhas) * 2} paginas"
           + (f", {len(apagados)} paginas removidas" if apagados else ""))
 
@@ -357,12 +360,18 @@ def gerar_publicacoes() -> None:
 # Teses e dissertações
 
 ROTULOS_TESE = {
-    "pt": {"autoria": "Autoria", "orientacao": "Orientação",
-           "defesa": "Defesa", "resumo": "Resumo", "botao": "Acessar no repositório",
-           "voltar": "Voltar para as teses e dissertações", "ancora": "teses"},
-    "en": {"autoria": "Author", "orientacao": "Advisor",
-           "defesa": "Defended", "resumo": "Abstract", "botao": "View in the repository",
-           "voltar": "Back to theses and dissertations", "ancora": "theses"},
+    "pt": {"autoria": "Autoria", 
+           "orientacao": "Orientação",
+           "resumo": "Resumo", 
+           "botao": "Acessar no repositório",
+           "voltar": "Voltar para as teses e dissertações", 
+           "ancora": "teses"},
+    "en": {"autoria": "Author", 
+           "orientacao": "Advisor",
+           "resumo": "Abstract", 
+           "botao": "View in the repository",
+           "voltar": "Back to theses and dissertations", 
+           "ancora": "theses"},
 }
 
 
@@ -376,17 +385,16 @@ def pagina_de_tese(linha: dict, lang: str) -> str:
     programa = limpo(texto(linha, "programa", lang))
     orientador = limpo(linha.get("orientador", ""))
     defesa = por_extenso(linha["data"], lang, com_dia=True)
-    imagem = resolver("theses", linha["slug"], "miniatura", linha.get("imagem", "")) \
-        or padrao("theses")
+    imagem = resolver(TESES, linha["slug"], "miniatura", linha.get("imagem", "")) \
+        or padrao(TESES)
     # o tipo e o rotulo da linha do programa: "Dissertacao: Mestrado em..."
     ficha = [f"**{r['autoria']}:** {autor}",
              f"**{tipo}:** {programa}"]
     if orientador:
         ficha.append(f"**{r['orientacao']}:** {orientador}")
-    ficha.append(f"**{r['defesa']}:** {defesa}")
     ficha_md = "\n\n".join(ficha)
-    figuras = bloco_de_figuras(linha, lang, "theses")
-    pedacos = [f"## {r['resumo']}\n\n{resumo}"]
+    figuras = bloco_de_figuras(linha, lang, TESES)
+    pedacos = [f"## {r['resumo']}\n\n{paragrafos(resumo)}"]
     if figuras:
         pedacos.append(figuras)
     corpo_final = "\n\n".join(pedacos)
@@ -444,9 +452,9 @@ def gerar_teses() -> None:
     linhas = ler_tabela("teses", caminho)
     for linha in linhas:
         for lang in ("pt", "en"):
-            escrever(f"theses/{linha['slug']}/{linha['slug']}.{lang}.qmd",
+            escrever(f"{TESES}/{linha['slug']}/{linha['slug']}.{lang}.qmd",
                      pagina_de_tese(linha, lang))
-    apagados = limpar_antigos("theses", {linha["slug"] for linha in linhas})
+    apagados = limpar_antigos(TESES, {linha["slug"] for linha in linhas})
     print(f"theses: {len(linhas)} trabalhos, {len(linhas) * 2} paginas"
           + (f", {len(apagados)} paginas removidas" if apagados else ""))
 
@@ -461,7 +469,7 @@ def pagina_de_noticia(linha: dict, lang: str) -> str:
     resumo = limpo(texto(linha, "resumo", lang))
     veiculo = limpo(texto(linha, "veiculo", lang))
     url = texto(linha, "url", lang)
-    imagem = resolver("news", linha["slug"], "imagem", linha.get("imagem", ""))
+    imagem = resolver(NOTICIAS, linha["slug"], "imagem", linha.get("imagem", ""))
     data_texto = por_extenso(linha["data"], lang, com_dia=True)
     imagem_yml = aspas(imagem) if imagem else '""'
     return f"""---
@@ -481,7 +489,7 @@ summary: {aspas(resumo)}
 
 ::: {{#noticia}}
 
-{resumo}
+{paragrafos(resumo)}
 
 [{'Ler a notícia na íntegra' if lang == 'pt' else 'Read the full story'}]({url}){{.pub-btn}}
 
@@ -504,9 +512,9 @@ def gerar_noticias() -> None:
     linhas = ler_tabela("noticias", DADOS / "noticias.csv")
     for linha in linhas:
         for lang in ("pt", "en"):
-            escrever(f"news/{linha['slug']}/{linha['slug']}.{lang}.qmd",
+            escrever(f"{NOTICIAS}/{linha['slug']}/{linha['slug']}.{lang}.qmd",
                      pagina_de_noticia(linha, lang))
-    apagados = limpar_antigos("news", {linha["slug"] for linha in linhas})
+    apagados = limpar_antigos(NOTICIAS, {linha["slug"] for linha in linhas})
     print(f"news: {len(linhas)} noticias, {len(linhas) * 2} paginas"
           + (f", {len(apagados)} paginas removidas" if apagados else ""))
 
@@ -639,41 +647,7 @@ def gerar_cursos() -> None:
 # Galeria
 
 PASTA_GALERIA = RAIZ / "about/images/galeria"
-LEGENDAS_GALERIA = PASTA_GALERIA / "legendas.txt"
 EXTENSOES_GALERIA = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg", ".avif"}
-WEB_GALERIA = PASTA_GALERIA / "web"
-LARGURA_MAXIMA_GALERIA = 1600
-QUALIDADE_GALERIA = 78
-
-
-def caminho_miniatura_galeria(arquivo: Path) -> str:
-    """Caminho relativo usado no src, em WebP quando dá para converter."""
-    if Image is None or arquivo.suffix.lower() not in {".jpg", ".jpeg", ".png"}:
-        return f"images/galeria/{arquivo.name}"
-    WEB_GALERIA.mkdir(parents=True, exist_ok=True)
-    destino = WEB_GALERIA / f"{arquivo.stem}.webp"
-    if not destino.exists() or destino.stat().st_mtime < arquivo.stat().st_mtime:
-        with Image.open(arquivo) as imagem:
-            imagem = imagem.convert("RGB")
-            if imagem.width > LARGURA_MAXIMA_GALERIA:
-                altura = round(imagem.height * LARGURA_MAXIMA_GALERIA / imagem.width)
-                imagem = imagem.resize((LARGURA_MAXIMA_GALERIA, altura), Image.LANCZOS)
-            imagem.save(destino, "WEBP", quality=QUALIDADE_GALERIA, method=6)
-    return f"images/galeria/web/{destino.name}"
-
-
-def ler_legendas_galeria() -> dict[str, tuple[str, str]]:
-    mapa = {}
-    if not LEGENDAS_GALERIA.exists():
-        return mapa
-    for linha in LEGENDAS_GALERIA.read_text(encoding="utf-8").splitlines():
-        linha = linha.strip()
-        if not linha or linha.startswith("#"):
-            continue
-        partes = [p.strip() for p in linha.split("|")]
-        if len(partes) >= 3:
-            mapa[partes[0]] = (partes[1], partes[2])
-    return mapa
 
 
 def encontrar_arquivo_foto_galeria(linha: dict) -> Path | None:
@@ -689,7 +663,7 @@ def encontrar_arquivo_foto_galeria(linha: dict) -> Path | None:
     slug = linha.get("slug")
     if slug:
         candidatos = list(PASTA_GALERIA.glob(f"{slug}.*"))
-        candidatos = [c for c in candidatos if c.suffix.lower() in EXTENSOES_GALERIA and c.parent != WEB_GALERIA]
+        candidatos = [c for c in candidatos if c.suffix.lower() in EXTENSOES_GALERIA]
         if candidatos:
             return candidatos[0]
     return None
@@ -706,11 +680,6 @@ def gerar_galeria() -> None:
         caminho = caminho_csv if caminho_csv.exists() else caminho_xlsx
         linhas = ler_tabela("galeria", caminho)
         itens_galeria = []
-        linhas_legendas = [
-            "# Legendas das fotos da galeria: geradas a partir de dados/galeria.csv",
-            "# nome-do-arquivo | legenda em português | caption in English",
-            "",
-        ]
         for linha in linhas:
             arquivo = encontrar_arquivo_foto_galeria(linha)
             if not arquivo:
@@ -719,11 +688,7 @@ def gerar_galeria() -> None:
                 continue
             leg_pt = texto(linha, "legenda", "pt")
             leg_en = texto(linha, "legenda", "en")
-            linhas_legendas.append(f"{arquivo.name} | {leg_pt} | {leg_en}")
             itens_galeria.append((arquivo, leg_pt, leg_en))
-
-        # Atualiza legendas.txt para documentação e integridade histórica
-        LEGENDAS_GALERIA.write_text("\n".join(linhas_legendas) + "\n", encoding="utf-8")
 
         for lang in ("pt", "en"):
             linhas_html = ["```{=html}"]
@@ -731,7 +696,7 @@ def gerar_galeria() -> None:
                 legenda = html.escape(leg_pt if lang == "pt" else leg_en)
                 linhas_html.append(
                     f'<button class="gallery-thumb" type="button" data-caption="{legenda}">'
-                    f'<img src="{caminho_miniatura_galeria(arquivo)}" alt="{legenda}" loading="lazy">'
+                    f'<img src="images/galeria/{arquivo.name}" alt="{legenda}" loading="lazy">'
                     f"</button>"
                 )
             linhas_html.append("```")
@@ -742,8 +707,7 @@ def gerar_galeria() -> None:
         print(f"galeria: {len(itens_galeria)} fotos processadas, 2 paginas compiladas")
         return
 
-    # Fallback se a planilha nao existir
-    legendas = ler_legendas_galeria()
+    # Fallback se a planilha nao existir: legenda derivada do nome do arquivo
     total_fotos = 0
     for lang in ("pt", "en"):
         linhas = ["```{=html}"]
@@ -752,12 +716,10 @@ def gerar_galeria() -> None:
                 continue
             if lang == "pt":
                 total_fotos += 1
-            padrao = arquivo.stem.replace("-", " ").replace("_", " ")
-            par = legendas.get(arquivo.name, (padrao, padrao))
-            legenda = html.escape(par[0] if lang == "pt" else par[1])
+            legenda = html.escape(arquivo.stem.replace("-", " ").replace("_", " "))
             linhas.append(
                 f'<button class="gallery-thumb" type="button" data-caption="{legenda}">'
-                f'<img src="{caminho_miniatura_galeria(arquivo)}" alt="{legenda}" loading="lazy">'
+                f'<img src="images/galeria/{arquivo.name}" alt="{legenda}" loading="lazy">'
                 f"</button>"
             )
         linhas.append("```")

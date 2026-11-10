@@ -5,14 +5,14 @@ first: "Eduardo"
 people_group: "alumni"
 subtitle: "Data Scientist, BNDES"
 education: "BSc in Applied Mathematics, FGV EMAp"
-image: avatar.jpeg
+image: avatar.jpg
 page-layout: full
 toc: false
 about:
   id: perfil
   template: trestles
   image-shape: round
-  image: avatar.jpeg
+  image: avatar.jpg
   links:
     - icon: linkedin
       text: LinkedIn

@@ -5,14 +5,14 @@ first: "Sillas"
 people_group: "undergrad"
 subtitle: "Undergraduate Researcher"
 education: "BSc Student in Data Science and AI, FGV EMAp"
-image: avatar.jpeg
+image: avatar.jpg
 page-layout: full
 toc: false
 about:
   id: perfil
   template: trestles
   image-shape: round
-  image: avatar.jpeg
+  image: avatar.jpg
   links:
     - icon: linkedin
       text: LinkedIn

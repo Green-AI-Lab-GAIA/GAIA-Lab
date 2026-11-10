@@ -633,6 +633,39 @@ a.jogral-card:focus-visible {
   object-fit: cover;
 }
 
+/* Marca do laboratório no lugar da miniatura: "GAIA" em cima e "Lab" em
+   verde embaixo, no mesmo quadrado das figuras */
+.jogral-wordmark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #222;
+}
+
+.jogral-wordmark span:first-child {
+  font-size: 1rem;
+}
+
+.jogral-wordmark span:last-child {
+  margin-top: 2px;
+  font-size: 0.8rem;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  color: var(--gaia-accent);
+}
+
+body.quarto-dark .jogral-wordmark {
+  color: #e5e7eb;
+}
+
+body.quarto-dark .jogral-wordmark span:last-child {
+  color: #a7d177;
+}
+
 /* Empilhado de avatares: os membros do grupo, vindos de uma listagem do
    Quarto; os invólucros da listagem somem para os retratos se sobreporem */
 .avatar-stack {
@@ -684,6 +717,107 @@ body.quarto-dark .jogral-card-body h3 {
 
 a.jogral-card:hover .jogral-card-body h3 {
   color: var(--gaia-accent);
+}
+
+/* Sequência de trabalho da landing: quatro etapas em linha, cada uma com
+   o número no mesmo círculo da seta dos cards, ligadas por uma linha, com o
+   nome e a frase embaixo. Estática: tudo visível de uma vez */
+.process-steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin: 2.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.process-steps::before {
+  content: "";
+  position: absolute;
+  left: 12.5%;
+  right: 12.5%;
+  top: 16px;
+  height: 1px;
+  background: var(--gaia-border);
+}
+
+.process-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.55rem;
+}
+
+.process-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--gaia-border);
+  background: var(--gaia-surface);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--gaia-accent);
+}
+
+.process-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.process-desc {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #555;
+}
+
+body.quarto-dark .process-num {
+  color: #a7d177;
+}
+
+body.quarto-dark .process-name {
+  color: #e5e7eb;
+}
+
+body.quarto-dark .process-desc {
+  color: #b5bcc4;
+}
+
+@media (max-width: 760px) {
+  .process-steps {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+    padding-left: 0;
+  }
+
+  .process-steps::before {
+    left: 15px;
+    right: auto;
+    top: 16px;
+    bottom: 16px;
+    width: 1px;
+    height: auto;
+  }
+
+  .process-step {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    column-gap: 0.9rem;
+    row-gap: 0.2rem;
+    align-items: start;
+    text-align: left;
+  }
+
+  .process-step .process-num {
+    grid-row: 1 / span 2;
+  }
 }
 
 .jogral-card-arrow {
@@ -997,6 +1131,107 @@ body.quarto-dark .blade-desc {
 .blade-card.is-active .blade-desc {
   opacity: 1;
   max-height: 220px;
+}
+
+/* Sanfona de princípios: foto real de fundo (recortes da pesquisa, fotos do
+   grupo) escurecida por um gradiente; o card aberto deixa a foto respirar.
+   Os cards são escuros nos dois temas, como os de área da landing. */
+.principles-blades .blade-card {
+  background: #121a15;
+  border-color: rgba(255, 255, 255, 0.09);
+}
+
+.blade-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.68;
+  filter: saturate(0.9);
+  transition: opacity 0.45s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.principles-blades .blade-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+    rgba(12, 18, 14, 0.86) 0%,
+    rgba(12, 18, 14, 0.3) 100%);
+}
+
+.principles-blades .blade-card.is-active .blade-photo {
+  opacity: 0.9;
+  transform: scale(1.04);
+}
+
+.principles-blades .blade-kicker,
+.principles-blades .blade-card.is-active .blade-title {
+  color: #bfe08f;
+}
+
+.principles-blades .blade-title {
+  color: #eef2ea;
+}
+
+.principles-blades .blade-desc {
+  color: #e6ebe2;
+}
+
+/* Sombra como a do texto do hero, mais forte, para o texto se destacar das partes claras da foto. */
+.principles-blades .blade-kicker,
+.principles-blades .blade-title,
+.principles-blades .blade-desc {
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.95);
+}
+
+/* Sanfona de parcerias: fechada, cada lâmina vira uma lombada com o nome do
+   parceiro na vertical, em caixa alta espaçada como os rótulos do site;
+   aberta, o nome volta ao topo como título. Só no layout em linha. */
+.blade-spine {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .partner-blades .blade-spine {
+    display: block;
+    position: absolute;
+    left: 0.85rem;
+    bottom: 1.1rem;
+    z-index: 2;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--gaia-accent);
+    opacity: 1;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+  }
+
+  .partner-blades .blade-card.is-active .blade-spine {
+    opacity: 0;
+  }
+
+  .partner-blades .blade-card:not(.is-active) .blade-title,
+  .partner-blades .blade-card:not(.is-active) .blade-desc {
+    opacity: 0;
+  }
+
+  .partner-blades .blade-card:not(.is-active) .blade-watermark {
+    right: 0.6rem;
+    bottom: 0.6rem;
+    width: 44px;
+    height: 44px;
+  }
 }
 
 .blade-watermark {
@@ -2882,6 +3117,11 @@ section.level2.secao-vazia,
 }
 
 /* Página de detalhe de uma publicação */
+
+.pub-detail ~ section.level2 p,
+#noticia p {
+  text-align: justify;
+}
 
 .pub-detail {
   display: grid;

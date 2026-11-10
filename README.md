@@ -84,7 +84,7 @@ A galeria de fotos em `about/` é integrada à camada de CMS do laboratório, po
 * **Via Formulário e Planilha (Recomendado):**
   Envie a foto pelo formulário público ou adicione diretamente na aba `galeria` da planilha central informando o link do Drive (ou nome do arquivo local), a legenda em português e opcionalmente a legenda em inglês.
 * **Armazenamento e sincronização local:**
-  As fotos são baixadas para `about/images/galeria/` e otimizadas automaticamente em WebP na pasta `about/images/galeria/web/`. O arquivo `about/images/galeria/legendas.txt` é mantido sincronizado automaticamente com as legendas bilíngues.
+  As fotos são baixadas para `about/images/galeria/` e publicadas como chegam do Drive.
 * **Regeneração manual (se necessário):**
   ```bash
   python3 scripts/gerar_conteudo.py
@@ -134,9 +134,10 @@ A galeria de fotos em `about/` é integrada à camada de CMS do laboratório, po
 │   ├── build.sh           Executa o quarto render (pt e en) e limpeza de temporários
 │   └── flatten_lang.py    Pós-processamento: ajusta URLs, mascara e-mails e versiona CSS
 ├── people/                Fichas de membros (geradas automaticamente)
-├── publications/          Páginas de artigos científicos (geradas automaticamente)
-├── theses/                Páginas de teses, dissertações e TCCs (geradas automaticamente)
-├── news/                  Notícias e matérias de imprensa (geradas automaticamente)
+├── publications/          Produção científica (páginas geradas automaticamente)
+│   ├── articles/          Artigos científicos
+│   ├── theses/            Teses, dissertações e TCCs
+│   └── news/              Notícias e matérias de imprensa
 ├── courses/               Cursos e disciplinas (geradas automaticamente)
 ├── about/                 Página Sobre e fotos da galeria (about/images/galeria/)
 ├── research/              Linhas de pesquisa

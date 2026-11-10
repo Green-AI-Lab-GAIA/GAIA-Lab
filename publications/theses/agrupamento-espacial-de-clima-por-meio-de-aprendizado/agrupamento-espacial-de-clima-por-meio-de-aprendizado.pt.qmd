@@ -1,0 +1,51 @@
+---
+title: "Agrupamento espacial de clima por meio de aprendizado autossupervisionado para a caracterização do ENOS"
+thesis-author: "Lívia Cereja Meinhardt"
+thesis-kind: "Dissertação"
+thesis-program: "Mestrado em Matemática Aplicada e Ciência de Dados, FGV EMAp"
+thesis-date: "9 de abril de 2026"
+date: 2026-04-09
+image: miniatura.png
+snippet: "Regimes climáticos aprendidos de forma autossupervisionada a partir de campos diários de temperatura do Cerrado, com relação estatística ao El Niño."
+page-layout: full
+toc: false
+---
+
+```{=html}
+<div class="page-shell">
+<div class="page-main">
+```
+
+:::: {.pub-detail}
+
+::: {.pub-detail-thumb}
+[![](miniatura.png)](https://hdl.handle.net/10438/41589)
+:::
+
+::: {.pub-detail-meta}
+**Autoria:** Lívia Cereja Meinhardt
+
+**Dissertação:** Mestrado em Matemática Aplicada e Ciência de Dados, FGV EMAp
+
+**Orientação:** Dário Oliveira
+
+[Acessar no repositório](https://hdl.handle.net/10438/41589){.pub-btn}
+:::
+
+::::
+
+## Resumo
+
+O sistema climático da Terra apresenta variabilidade espaço-temporal complexa, o que dificulta a identificação de padrões de larga escala como as teleconexões. Estudar esses padrões é essencial porque eles ligam forçantes climáticas de larga escala a impactos regionais. Em particular, o El Niño-Oscilação Sul (ENOS), exemplo bem conhecido, influencia a variabilidade de temperatura e precipitação, com consequências significativas para a agricultura, os recursos hídricos e a saúde pública. Em vez de se concentrar na previsão ponto a ponto, este trabalho busca capturar padrões estruturados e recorrentes que caracterizam a variabilidade climática regional. Propomos um arcabouço orientado a dados para identificar regimes climáticos por meio de aprendizado de representações autossupervisionado, empregando Redes Siamesas Mascaradas (MSN) com um Vision Transformer como base para aprender representações latentes de campos diários de temperatura sobre o Cerrado brasileiro. Essas representações são discretizadas em um conjunto finito de estados climáticos, capturando as configurações espaciais dominantes sem exigir dados rotulados. Os regimes resultantes oferecem uma representação compacta e interpretável da variabilidade climática, permitindo analisar sua organização temporal e sua relação com forçantes de larga escala como o ENOS. O código está disponível publicamente no [repositório do projeto](https://github.com/Green-AI-Lab-GAIA/climate-clustering-for-ENSO-teleconnections)
+
+```{=html}
+<a class="back-link" href="/publications/#teses">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+  <span>Voltar para as teses e dissertações</span>
+</a>
+```
+
+```{=html}
+</div>
+</div>
+```

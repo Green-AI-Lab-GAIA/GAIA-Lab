@@ -1,0 +1,53 @@
+---
+title: "Uma breve visão geral de abordagens de aprendizado profundo para dados climáticos"
+thesis-author: "Juliana Carvalho de Souza"
+thesis-kind: "Capstone"
+thesis-program: "Bachelor's in Applied Mathematics, FGV EMAp"
+thesis-date: "December 19, 2023"
+date: 2023-12-19
+image: miniatura.png
+snippet: "A review of supervised, semi-supervised and self-supervised deep learning methods for labeled and weakly labeled climate data."
+page-layout: full
+toc: false
+---
+
+```{=html}
+<div class="page-shell">
+<div class="page-main">
+```
+
+:::: {.pub-detail}
+
+::: {.pub-detail-thumb}
+[![](miniatura.png)](https://hdl.handle.net/10438/35403)
+:::
+
+::: {.pub-detail-meta}
+**Author:** Juliana Carvalho de Souza
+
+**Capstone:** Bachelor's in Applied Mathematics, FGV EMAp
+
+**Advisor:** Dário Oliveira
+
+[View in the repository](https://hdl.handle.net/10438/35403){.pub-btn}
+:::
+
+::::
+
+## Abstract
+
+The frequency, duration, and intensity of different extreme weather events have increased as the climate system warms. For instance, climate change leads to more evaporation, which can exacerbate droughts and increase the frequency of heavy rains and snowfalls. These extreme weather events often result in extreme conditions or impacts, either by crossing a critical threshold in a social, ecological, or physical system or by coinciding with other events. Remote sensing enables us to understand better, predict, and quantify climatic events across vast regions of the Earth. Meteorological forecasts traditionally rely on Numerical Weather Prediction (NWP), which consists of the formulation of precise physics equations, subsequently translated into algorithms executed on supercomputers, but numerical weather prediction requires substantial expertise and computational resources. Machine learning offers an innovative approach, leveraging data to either complement hybrid approaches or entirely substitute traditional physics-based equations. Specifically, supervised learning relying on the ERA5 reanalysis dataset has been used in the prediction of atmospheric dynamics. However, the spatio-temporal patterns observed in this data are highly complex, which is why unsupervised and weakly supervised machine learning methods have been widely used for the classification or clustering of those complex events.
+
+This work aims to present a review of deep learning supervised, semi-supervised, and self-supervised tools for the analysis of labeled, and weakly labeled climate data. Firstly, we present the basic learning taxonomy for supervised, weakly supervised, semi-supervised, self-supervised, and unsupervised methods. Then, we introduce the physics behind the climate data, as well as numerical and machine learning solutions present in the literature. Next, we address the challenge of dealing with weakly large-volume, weakly labeled climate data. Finally, we direct attention toward research papers regarding machine learning for climate events, presenting related research, findings, and contributions to the field. In conclusion, this undergraduate final thesis provides a synthesis of the findings and points out future research perspectives.
+
+```{=html}
+<a class="back-link" href="/publications/#theses">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+  <span>Back to theses and dissertations</span>
+</a>
+```
+
+```{=html}
+</div>
+</div>
+```

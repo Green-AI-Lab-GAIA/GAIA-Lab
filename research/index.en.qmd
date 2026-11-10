@@ -700,7 +700,6 @@ toc: false
             <span class="cv-sat-label">Overlay layers:</span>
             <button type="button" class="iviz-btn is-active" data-cv-f-toggle="pred" aria-pressed="true">Forest canopy (10 m)</button>
             <button type="button" class="iviz-btn" data-cv-f-toggle="incerteza" aria-pressed="false">Uncertainty &amp; alert classes</button>
-            <button type="button" class="iviz-btn is-active" data-cv-f-toggle="car" aria-pressed="true">CAR boundaries</button>
             <button type="button" class="iviz-btn" data-cv-f-toggle="talhoes" aria-pressed="false">Agricultural plots</button>
             <button type="button" class="iviz-btn" data-cv-f-toggle="rotulo" aria-pressed="false">MapBiomas reference</button>
           </div>
@@ -718,7 +717,6 @@ toc: false
             <img data-cv-f-layer="pred" src="images/floresta/cv-pred-completo-2023q3.webp" alt="Model-predicted forest canopy layer">
             <img data-cv-f-layer="incerteza" class="is-hidden" src="images/floresta/cv-incerteza-2023q3.webp" alt="Semantic uncertainty and suppression alert layer">
             <img data-cv-f-layer="talhoes" class="is-hidden" src="images/floresta/cv-talhoes-2023.webp" alt="Neighboring agricultural plot boundaries">
-            <img data-cv-f-layer="car" src="images/floresta/cv-car.webp" alt="CAR declared rural property boundaries">
           </div>
           <div class="cv-sat-hud">
             <button type="button" class="cv-hud-btn" data-cv-zoom-out title="Zoom out">−</button>
@@ -734,7 +732,6 @@ toc: false
           <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#66bb6a"></i> Edge and transition zone</span>
           <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#fdd835"></i> Dry-season water stress</span>
           <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#e53935"></i> Suppression alert</span>
-          <span class="parcel-legend-item"><i class="parcel-swatch" style="border:2px solid #f59e0b; background:transparent"></i> CAR property boundaries</span>
         </div>
       </div>
     </div>

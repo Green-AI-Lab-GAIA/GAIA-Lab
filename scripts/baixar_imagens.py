@@ -3,8 +3,8 @@
 
 O formulario de upload grava na celula o endereco do arquivo no Drive. Este script
 pega esse endereco, baixa o arquivo e salva na pasta do item, com o nome que o site
-espera (people/<pessoa>/avatar.jpg, publications/<artigo>/miniatura.png,
-theses/<tese>/miniatura.png, news/<noticia>/imagem.jpg). Quem escreveu a planilha nao precisa saber nome de
+espera (people/<pessoa>/avatar.jpg, publications/articles/<artigo>/miniatura.png,
+publications/theses/<tese>/miniatura.png, publications/news/<noticia>/imagem.jpg). Quem escreveu a planilha nao precisa saber nome de
 arquivo nem caminho.
 
 Para o download funcionar sem senha, a pasta de respostas precisa estar
@@ -36,13 +36,13 @@ REGISTRO = DADOS / "imagens.json"
 # onde cada imagem de cada tabela mora, e com que nome
 DESTINOS = {
     "pessoas": [("people", "avatar", "foto")],
-    "publicacoes": [("publications", "miniatura", "imagem"),
-                    ("publications", "figura1", "figura1"),
-                    ("publications", "figura2", "figura2")],
-    "teses": [("theses", "miniatura", "imagem"),
-              ("theses", "figura1", "figura1"),
-              ("theses", "figura2", "figura2")],
-    "noticias": [("news", "imagem", "imagem")],
+    "publicacoes": [("publications/articles", "miniatura", "imagem"),
+                    ("publications/articles", "figura1", "figura1"),
+                    ("publications/articles", "figura2", "figura2")],
+    "teses": [("publications/theses", "miniatura", "imagem"),
+              ("publications/theses", "figura1", "figura1"),
+              ("publications/theses", "figura2", "figura2")],
+    "noticias": [("publications/news", "imagem", "imagem")],
     "cursos": [("courses/images", "", "imagem")],
     "galeria": [("about/images/galeria", "", "imagem")],
 }
@@ -214,6 +214,10 @@ def main() -> int:
     except (ErroDeConteudo, ErroDeImagem) as erro:
         aviso(f"erro: {erro}")
         return 1
+
+    for caminho in [c for c in registro if not (RAIZ / c).exists()]:
+        registro.pop(caminho)
+        mudou = True
 
     if mudou and not args.seco:
         gravar_registro(registro)

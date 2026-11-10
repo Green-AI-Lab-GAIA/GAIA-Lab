@@ -155,52 +155,66 @@ toc: false
     </div>
   </section>
 
-  <section class="home-section reveal">
-    <h2 class="section-title">How we work: from orbit to actionable intelligence</h2>
-    <p class="section-lead">
-      Our methodological pipeline connects multimodal satellite constellations,
-      meteorological reanalyses, and deep learning architectures into an end-to-end
-      framework, validated against official records and committed to reproducible science.
-    </p>
-
-    <div class="stats reveal">
-      <div><div class="stat-num" data-count="359596" data-thousands=",">0</div><div class="stat-label">Plots mapped</div></div>
-      <div><div class="stat-num" data-count="897">0</div><div class="stat-label">Municipalities</div></div>
-      <div><div class="stat-num" data-count="5">0</div><div class="stat-label">States</div></div>
-      <div><div class="stat-num">2020 to 2026</div><div class="stat-label">Data period</div></div>
-    </div>
-
-    <div class="hscroll-wrap reveal">
-      <button class="hscroll-btn prev" aria-label="Previous step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <div class="hscroll">
-        <article class="hs-card"><div class="hs-step">01</div><div class="hs-kicker">Step</div><div class="hs-title">Multimodal ingestion</div><div class="hs-text">Continuous acquisition of satellite constellations (optical and SAR radar), climate reanalyses, and institutional corpora.</div></article>
-        <article class="hs-card"><div class="hs-step">02</div><div class="hs-kicker">Step</div><div class="hs-title">Spatiotemporal harmonisation</div><div class="hs-text">Atmospheric correction, cloud masking, and multi-year time series alignment at territorial scale.</div></article>
-        <article class="hs-card"><div class="hs-step">03</div><div class="hs-kicker">Step</div><div class="hs-title">Deep learning and foundation models</div><div class="hs-text">Semantic segmentation, geospatial foundation models, and applied language models for complex representations.</div></article>
-        <article class="hs-card"><div class="hs-step">04</div><div class="hs-kicker">Step</div><div class="hs-title">Auditing and official validation</div><div class="hs-text">Systematic benchmarking against INPE field references (DETER and PRODES), ZARC zoning, MapBiomas, and uncertainty metrics.</div></article>
-        <article class="hs-card"><div class="hs-step">05</div><div class="hs-kicker">Step</div><div class="hs-title">Actionable intelligence</div><div class="hs-text">Generation of risk indicators, territorial monitoring tools, and open-source code supporting decision-makers.</div></article>
-      </div>
-      <button class="hscroll-btn next" aria-label="Next step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 5 7 7-7 7"/></svg></button>
-    </div>
-    <div class="section-cta">
-      <a class="pub-btn" href="about/">Learn more about our approach</a>
-    </div>
-  </section>
-
   <section class="home-section jogral-section reveal">
     <div class="jogral-grid">
       <div class="jogral-text">
-        <h2 class="section-title">Scientific output and outreach</h2>
+        <h2 class="section-title">How we work</h2>
         <p class="section-lead">
-          Scientific contributions are submitted to leading international journals and presented
-          at the main conferences in artificial intelligence, computer vision and remote sensing.
+          Every piece of research follows the same path, from question to result, whether applied or
+          methodological.
         </p>
         <p>
-          The lab also trains researchers through theses, dissertations and capstone projects
-          on concrete socio-environmental problems. The resulting methods and data reach the
-          public through news reports, podcasts and press coverage.
+          To learn where this way of working comes from, what supports it and who takes part in it,
+          get to know the lab.
         </p>
       </div>
 
+      <div class="jogral-visual">
+        <div class="jogral-cards">
+          <a class="jogral-card jogral-card-link reveal" href="about/">
+            <div class="jogral-card-figure jogral-wordmark" aria-hidden="true">
+              <span>GAIA</span>
+              <span>Lab</span>
+            </div>
+            <div class="jogral-card-body">
+              <h3>About the lab</h3>
+            </div>
+            <div class="jogral-card-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <ol class="process-steps reveal">
+      <li class="process-step">
+        <span class="process-num" aria-hidden="true">01</span>
+        <span class="process-name">Question</span>
+        <p class="process-desc">The problem comes from a partner, from a gap in the literature or from a discussion within the group.</p>
+      </li>
+      <li class="process-step">
+        <span class="process-num" aria-hidden="true">02</span>
+        <span class="process-name">Data</span>
+        <p class="process-desc">Optical and radar imagery, climate series and documents are organised into datasets spanning years and whole territories.</p>
+      </li>
+      <li class="process-step">
+        <span class="process-num" aria-hidden="true">03</span>
+        <span class="process-name">Method</span>
+        <p class="process-desc">New or adapted models are trained and checked against public references and the state of the art before any result counts.</p>
+      </li>
+      <li class="process-step">
+        <span class="process-num" aria-hidden="true">04</span>
+        <span class="process-name">Delivery</span>
+        <p class="process-desc">The result becomes a map, dashboard or report for the partner, or an open paper and code when the advance is methodological.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="home-section jogral-section reveal">
+    <div class="jogral-grid reverse">
       <div class="jogral-visual">
         <div class="jogral-cards">
           <a class="jogral-card jogral-card-link reveal" href="publications/#papers">
@@ -244,11 +258,37 @@ toc: false
           </a>
         </div>
       </div>
+
+      <div class="jogral-text">
+        <h2 class="section-title">Scientific output and outreach</h2>
+        <p class="section-lead">
+          Scientific contributions are submitted to international journals and conferences in
+          artificial intelligence, computer vision and remote sensing.
+        </p>
+        <p>
+          Research by undergraduate and graduate students results in theses, dissertations
+          and capstone projects, with methodological advances and applications to real
+          socio-environmental problems. The resulting methods and data reach the public
+          through dashboards, articles and press coverage.
+        </p>
+      </div>
     </div>
   </section>
 
   <section class="home-section jogral-section reveal">
-    <div class="jogral-grid reverse">
+    <div class="jogral-grid">
+      <div class="jogral-text">
+        <h2 class="section-title">A multidisciplinary group</h2>
+        <p class="section-lead">
+          GAIA Lab brings together researchers from computer science, applied mathematics,
+          data science, engineering and economics.
+        </p>
+        <p>
+          Faculty, postdocs, PhD and master's students and undergraduates work side by side,
+          and the exchange between fields happens day to day and in the group's meetings.
+        </p>
+      </div>
+
       <div class="jogral-visual">
         <div class="jogral-cards">
           <a class="jogral-card jogral-card-link reveal" href="people/#professor">
@@ -324,18 +364,6 @@ toc: false
             </div>
           </a>
         </div>
-      </div>
-
-      <div class="jogral-text">
-        <h2 class="section-title">A multidisciplinary group</h2>
-        <p class="section-lead">
-          GAIA Lab brings together researchers from computer science, applied mathematics,
-          data science, engineering and economics.
-        </p>
-        <p>
-          Faculty, postdocs, PhD and master's students and undergraduates work side by side,
-          and the exchange between fields happens day to day and in the group's meetings.
-        </p>
       </div>
     </div>
   </section>

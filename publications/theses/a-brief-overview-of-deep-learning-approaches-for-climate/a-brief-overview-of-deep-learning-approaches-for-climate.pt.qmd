@@ -1,0 +1,53 @@
+---
+title: "A brief overview of deep learning approaches for climate data"
+thesis-author: "Juliana Carvalho de Souza"
+thesis-kind: "TCC"
+thesis-program: "Graduação em Matemática Aplicada, FGV EMAp"
+thesis-date: "19 de dezembro de 2023"
+date: 2023-12-19
+image: miniatura.png
+snippet: "Revisão de métodos de aprendizado profundo supervisionados, semissupervisionados e autossupervisionados para dados climáticos rotulados e fracamente rotulados."
+page-layout: full
+toc: false
+---
+
+```{=html}
+<div class="page-shell">
+<div class="page-main">
+```
+
+:::: {.pub-detail}
+
+::: {.pub-detail-thumb}
+[![](miniatura.png)](https://hdl.handle.net/10438/35403)
+:::
+
+::: {.pub-detail-meta}
+**Autoria:** Juliana Carvalho de Souza
+
+**TCC:** Graduação em Matemática Aplicada, FGV EMAp
+
+**Orientação:** Dário Oliveira
+
+[Acessar no repositório](https://hdl.handle.net/10438/35403){.pub-btn}
+:::
+
+::::
+
+## Resumo
+
+A frequência, duração e intensidade de diferentes eventos climáticos extremos têm aumentado à medida que o sistema climático se aquece. Por exemplo, as mudanças climáticas levam a uma maior evaporação, o que pode agravar secas e aumentar a frequência de chuvas intensas e nevascas. Esses eventos climáticos extremos frequentemente resultam em condições ou impactos extremos, seja ultrapassando um limiar crítico em um sistema social, ecológico ou físico, ou coincidindo com outros eventos. O sensoriamento remoto nos permite compreender melhor, prever e quantificar eventos climáticos em vastas regiões da Terra. Previsões meteorológicas tradicionalmente dependem da Previsão Numérica do Tempo (NWP), que envolve a formulação de equações precisas de física, posteriormente traduzidas em algoritmos executados em supercomputadores, mas a previsão numérica do tempo requer conhecimento substancial e recursos computacionais. A aprendizagem de máquina oferece uma abordagem inovadora, aproveitando dados para complementar abordagens híbridas ou substituir completamente equações tradicionais baseadas em física. Especificamente, a aprendizagem supervisionada com base no conjunto de dados de reanálise ERA5 tem sido usada na previsão de dinâmicas atmosféricas. No entanto, os padrões espaço-temporais observados nesses dados são altamente complexos, razão pela qual métodos de aprendizagem de máquina não supervisionada e fracamente supervisionada têm sido amplamente utilizados para a classificação ou agrupamento desses eventos complexos.
+
+Este trabalho tem como objetivo apresentar uma revisão de ferramentas de aprendizagem profunda supervisionadas, semi-supervisionadas e auto-supervisionadas para a análise de dados climáticos rotulados e fracamente rotulados. Primeiramente, apresentamos a taxonomia básica de aprendizagem para métodos supervisionados, fracamente supervisionados, semi-supervisionados, auto-supervisionados e não supervisionados. Em seguida, introduzimos a física por trás dos dados climáticos, assim como soluções numéricas e de aprendizagem de máquina presentes na literatura. Depois, abordamos o desafio de lidar com grandes volumes de dados climáticos fracamente rotulados. Por fim, direcionamos a atenção para artigos de pesquisa sobre aprendizado de máquina para eventos climáticos, apresentando pesquisas relacionadas, descobertas e contribuições para o campo. Em conclusão, este trabalho de conclusão de curso fornece uma síntese das descobertas e destaca perspectivas de pesquisa futuras.
+
+```{=html}
+<a class="back-link" href="/publications/#teses">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+  <span>Voltar para as teses e dissertações</span>
+</a>
+```
+
+```{=html}
+</div>
+</div>
+```

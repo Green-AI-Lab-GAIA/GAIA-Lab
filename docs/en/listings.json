@@ -56,20 +56,19 @@
   {
     "listing": "/publications/index.en.html",
     "items": [
-      "/publications/deep-clustering-for-climate-analyzing-teleconnections/deep-clustering-for-climate-analyzing-teleconnections.en.html",
-      "/publications/exploring-enmap-hyperspectral-images-and-ensemble-deep/exploring-enmap-hyperspectral-images-and-ensemble-deep.en.html",
-      "/publications/finding-the-underlying-viscoelastic-constitutive-equation/finding-the-underlying-viscoelastic-constitutive-equation.en.html",
-      "/theses/self-supervised-spatial-climate-clustering-for-enso/self-supervised-spatial-climate-clustering-for-enso.en.html",
-      "/theses/augmenting-individual-tree-crowns-dataset-with-scarce/augmenting-individual-tree-crowns-dataset-with-scarce.en.html",
-      "/theses/explorando-tecnicas-de-aprendizado-auto-supervisionado-em/explorando-tecnicas-de-aprendizado-auto-supervisionado-em.en.html",
-      "/theses/a-brief-overview-of-deep-learning-approaches-for-climate/a-brief-overview-of-deep-learning-approaches-for-climate.en.html",
-      "/theses/desenvolvimento-de-um-foundation-model-para-pecuaria-bovina/desenvolvimento-de-um-foundation-model-para-pecuaria-bovina.en.html",
-      "/theses/deep-active-learning-para-mapeamento-de-arvores-em-floresta/deep-active-learning-para-mapeamento-de-arvores-em-floresta.en.html",
-      "/theses/self-supervised-weather-data-clustering-for-inspecting/self-supervised-weather-data-clustering-for-inspecting.en.html",
-      "/theses/deteccao-automatica-de-personagens-da-turma-da-monica/deteccao-automatica-de-personagens-da-turma-da-monica.en.html",
-      "/news/pesquisa-utiliza-sistema-baseado-em-ia-para-prever/pesquisa-utiliza-sistema-baseado-em-ia-para-prever.en.html",
-      "/news/estudo-monitora-desmatamento-e-identifica-especies-vegetais/estudo-monitora-desmatamento-e-identifica-especies-vegetais.en.html",
-      "/news/pesquisadores-criam-algoritmo-que-realiza-classificacao/pesquisadores-criam-algoritmo-que-realiza-classificacao.en.html"
+      "/publications/articles/deep-clustering-for-climate-analyzing-teleconnections/deep-clustering-for-climate-analyzing-teleconnections.en.html",
+      "/publications/articles/exploring-enmap-hyperspectral-images-and-ensemble-deep/exploring-enmap-hyperspectral-images-and-ensemble-deep.en.html",
+      "/publications/articles/finding-the-underlying-viscoelastic-constitutive-equation/finding-the-underlying-viscoelastic-constitutive-equation.en.html",
+      "/publications/theses/agrupamento-espacial-de-clima-por-meio-de-aprendizado/agrupamento-espacial-de-clima-por-meio-de-aprendizado.en.html",
+      "/publications/theses/aumento-de-um-conjunto-de-dados-de-copas-de-arvores/aumento-de-um-conjunto-de-dados-de-copas-de-arvores.en.html",
+      "/publications/theses/explorando-tecnicas-de-aprendizado-auto-supervisionado-em/explorando-tecnicas-de-aprendizado-auto-supervisionado-em.en.html",
+      "/publications/theses/a-brief-overview-of-deep-learning-approaches-for-climate/a-brief-overview-of-deep-learning-approaches-for-climate.en.html",
+      "/publications/theses/desenvolvimento-de-um-foundation-model-para-pecuaria-bovina/desenvolvimento-de-um-foundation-model-para-pecuaria-bovina.en.html",
+      "/publications/theses/agrupamento-de-dados-meteorologicos-por-meio-de-aprendizado/agrupamento-de-dados-meteorologicos-por-meio-de-aprendizado.en.html",
+      "/publications/theses/deep-active-learning-para-mapeamento-de-arvores-em-floresta/deep-active-learning-para-mapeamento-de-arvores-em-floresta.en.html",
+      "/publications/news/pesquisa-utiliza-sistema-baseado-em-ia-para-prever/pesquisa-utiliza-sistema-baseado-em-ia-para-prever.en.html",
+      "/publications/news/estudo-monitora-desmatamento-e-identifica-especies-vegetais/estudo-monitora-desmatamento-e-identifica-especies-vegetais.en.html",
+      "/publications/news/pesquisadores-criam-algoritmo-que-realiza-classificacao/pesquisadores-criam-algoritmo-que-realiza-classificacao.en.html"
     ]
   }
 ]
