@@ -223,7 +223,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css?v=840bb970">
+<link rel="stylesheet" href="styles.css?v=0574c332">
 </head>
 
 <body class="nav-fixed home fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -498,8 +498,19 @@ window.Quarto = {
 
 <div class="home-body">
   <section id="home-pesquisa" class="home-section reveal">
-    <h2 class="section-title">Research applied to socio-environmental challenges</h2>
+    <h2 class="section-title">Research</h2>
     <p class="section-lead">
+      The lab's research moves on two fronts that feed each other: applications to
+      socio-environmental challenges and the development of the techniques that make
+      them possible.
+    </p>
+
+    <div class="track-head reveal">
+      <div>
+        <h3 class="track-title">Application to socio-environmental challenges</h3>
+      </div>
+    </div>
+    <p class="track-text">
       We combine massive satellite streams and deep learning to tackle critical
       ecological and production bottlenecks across four priority axes. From agricultural
       plot scale to urban dynamics, we turn complex satellite pixels into actionable
@@ -567,6 +578,44 @@ window.Quarto = {
         </div>
       </a>
     </div>
+
+    <div class="track-head reveal">
+      <div>
+        <h3 class="track-title">Methodological advances</h3>
+      </div>
+    </div>
+    <p class="track-text">
+      The research lines develop techniques that belong to no single problem: what
+      is learned mapping forests carries over to crops, cities or any other territory.
+      Each line advances as research in its own right, with deliverables of its own:
+      a thesis, a paper, code or a model.
+    </p>
+    <a class="area-card area-card-wide reveal" href="research/#lines">
+      <img class="area-card-bg" src="images/areas/metodos-largo.webp" alt="" loading="lazy">
+      <div class="area-card-top">
+        <span class="card-arrow" aria-hidden="true">
+          <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+        </span>
+      </div>
+      <div class="area-card-overlay">
+        <div class="area-card-wide-head">
+          <div class="area-title">Research lines</div>
+          <div class="area-text">Eight lines in three layers, from building blocks to coupled systems.</div>
+        </div>
+        <ul class="method-lines">
+          <li>Climate modeling</li>
+          <li>Coupled systems</li>
+          <li>Domain adaptation</li>
+          <li>Learning with limited labels</li>
+          <li>Networks of geolocated specialists</li>
+          <li>Open-set and OOD</li>
+          <li>Textual data modeling</li>
+          <li>Uncertainty modeling</li>
+        </ul>
+      </div>
+    </a>
   </section>
 
   <section class="home-section jogral-section reveal">
@@ -1820,22 +1869,24 @@ window.Quarto = {
       }
     }
 
-    // Equaliza a altura de todos os .area-card-overlay para manter alinhamento uniforme
+    // Equaliza a altura dos .area-card-overlay dentro de cada grid .home-areas
     function equalizarAreaOverlays() {
-      var overlays = document.querySelectorAll(".area-card-overlay");
-      if (!overlays.length) return;
-      for (var k = 0; k < overlays.length; k++) {
-        overlays[k].style.minHeight = "";
-      }
-      var maxH = 0;
-      for (var k = 0; k < overlays.length; k++) {
-        var h = overlays[k].getBoundingClientRect().height;
-        if (h > maxH) maxH = h;
-      }
-      if (maxH > 0) {
-        var rounded = Math.ceil(maxH) + "px";
+      var grids = document.querySelectorAll(".home-areas");
+      for (var g = 0; g < grids.length; g++) {
+        var overlays = grids[g].querySelectorAll(".area-card-overlay");
         for (var k = 0; k < overlays.length; k++) {
-          overlays[k].style.minHeight = rounded;
+          overlays[k].style.minHeight = "";
+        }
+        var maxH = 0;
+        for (var k = 0; k < overlays.length; k++) {
+          var h = overlays[k].getBoundingClientRect().height;
+          if (h > maxH) maxH = h;
+        }
+        if (maxH > 0) {
+          var rounded = Math.ceil(maxH) + "px";
+          for (var k = 0; k < overlays.length; k++) {
+            overlays[k].style.minHeight = rounded;
+          }
         }
       }
     }

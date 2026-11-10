@@ -84,10 +84,20 @@ toc: false
 
 <div class="home-body">
   <section id="home-pesquisa" class="home-section reveal">
-    <h2 class="section-title">Pesquisa aplicada a desafios socioambientais</h2>
+    <h2 class="section-title">Pesquisa</h2>
     <p class="section-lead">
+      A pesquisa do laboratório avança em duas frentes que se alimentam: aplicações a
+      desafios socioambientais e o desenvolvimento das técnicas que as tornam possíveis.
+    </p>
+
+    <div class="track-head reveal">
+      <div>
+        <h3 class="track-title">Aplicação a desafios socioambientais</h3>
+      </div>
+    </div>
+    <p class="track-text">
       Combinamos dados orbitais e aprendizado profundo para enfrentar gargalos
-      ecológicos e produtivos em quatro frentes prioritárias. Da escala do talhão
+      ecológicos e produtivos em quatro áreas prioritárias. Da escala do talhão
       agrícola ao tecido urbano, convertemos fluxos complexos de satélite em diagnósticos
       territoriais acionáveis.
     </p>
@@ -153,6 +163,43 @@ toc: false
         </div>
       </a>
     </div>
+    <div class="track-head reveal">
+      <div>
+        <h3 class="track-title">Evolução metodológica</h3>
+      </div>
+    </div>
+    <p class="track-text">
+      As linhas de pesquisa desenvolvem técnicas que não pertencem a um único
+      problema: o que se aprende mapeando floresta vale para lavoura, cidade ou
+      qualquer outro território. Cada linha avança como pesquisa própria e gera
+      entregas próprias: tese, artigo, código ou modelo.
+    </p>
+    <a class="area-card area-card-wide reveal" href="research/#linhas">
+      <img class="area-card-bg" src="images/areas/metodos-largo.webp" alt="" loading="lazy">
+      <div class="area-card-top">
+        <span class="card-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </span>
+      </div>
+      <div class="area-card-overlay">
+        <div class="area-card-wide-head">
+          <div class="area-title">Linhas de pesquisa</div>
+          <div class="area-text">Oito linhas em três camadas, dos componentes aos sistemas acoplados.</div>
+        </div>
+        <ul class="method-lines">
+          <li>Adaptação de domínio</li>
+          <li>Aprendizado com baixa rotulagem</li>
+          <li>Modelagem climática</li>
+          <li>Modelagem de dados textuais</li>
+          <li>Modelagem de incerteza</li>
+          <li>Open-set e OOD</li>
+          <li>Redes de especialistas geolocalizados</li>
+          <li>Sistemas acoplados</li>
+        </ul>
+      </div>
+    </a>
   </section>
 
   <section class="home-section jogral-section reveal">

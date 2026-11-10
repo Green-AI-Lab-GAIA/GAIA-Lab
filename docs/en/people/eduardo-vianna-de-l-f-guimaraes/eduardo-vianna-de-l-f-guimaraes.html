@@ -78,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="icon" type="image/png" href="../../icon/favicon-light.png">
 
 
-<link rel="stylesheet" href="../../styles.css?v=840bb970">
+<link rel="stylesheet" href="../../styles.css?v=0574c332">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -1397,22 +1397,24 @@ ul.task-list li input[type="checkbox"] {
       }
     }
 
-    // Equaliza a altura de todos os .area-card-overlay para manter alinhamento uniforme
+    // Equaliza a altura dos .area-card-overlay dentro de cada grid .home-areas
     function equalizarAreaOverlays() {
-      var overlays = document.querySelectorAll(".area-card-overlay");
-      if (!overlays.length) return;
-      for (var k = 0; k < overlays.length; k++) {
-        overlays[k].style.minHeight = "";
-      }
-      var maxH = 0;
-      for (var k = 0; k < overlays.length; k++) {
-        var h = overlays[k].getBoundingClientRect().height;
-        if (h > maxH) maxH = h;
-      }
-      if (maxH > 0) {
-        var rounded = Math.ceil(maxH) + "px";
+      var grids = document.querySelectorAll(".home-areas");
+      for (var g = 0; g < grids.length; g++) {
+        var overlays = grids[g].querySelectorAll(".area-card-overlay");
         for (var k = 0; k < overlays.length; k++) {
-          overlays[k].style.minHeight = rounded;
+          overlays[k].style.minHeight = "";
+        }
+        var maxH = 0;
+        for (var k = 0; k < overlays.length; k++) {
+          var h = overlays[k].getBoundingClientRect().height;
+          if (h > maxH) maxH = h;
+        }
+        if (maxH > 0) {
+          var rounded = Math.ceil(maxH) + "px";
+          for (var k = 0; k < overlays.length; k++) {
+            overlays[k].style.minHeight = rounded;
+          }
         }
       }
     }
