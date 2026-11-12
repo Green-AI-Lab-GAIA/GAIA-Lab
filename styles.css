@@ -1678,7 +1678,9 @@ body.quarto-dark .mark {
 
 .gallery-stage {
   position: relative;
-  height: min(520px, 62vh);
+  /* Palco na proporção 3:2 das fotos; a altura acompanha a largura da coluna */
+  aspect-ratio: 3 / 2;
+  max-height: 78vh;
   background: #111;
   border-radius: 12px;
   overflow: hidden;
@@ -5050,11 +5052,8 @@ body.quarto-dark .flow-step {
   border-bottom: 1px solid var(--gaia-border);
 }
 
-.research-intro-grid {
-  display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 2.4rem;
-  align-items: start;
+.research-intro-prose {
+  max-width: 820px;
   margin-top: 1.1rem;
 }
 
@@ -5067,31 +5066,6 @@ body.quarto-dark .flow-step {
 
 .research-intro-prose p:last-child {
   margin-bottom: 0;
-}
-
-.research-axis-note {
-  padding: 1.25rem 1.35rem;
-  background: var(--gaia-soft);
-  border: 1px solid var(--gaia-border);
-  border-left: 3px solid var(--gaia-accent);
-  border-radius: 10px;
-  font-size: 0.92rem;
-  line-height: 1.58;
-  color: var(--gaia-muted);
-}
-
-.research-axis-note strong {
-  color: var(--bs-body-color, #222);
-  display: block;
-  margin-bottom: 0.35rem;
-  font-size: 0.95rem;
-}
-
-@media (max-width: 900px) {
-  .research-intro-grid {
-    grid-template-columns: 1fr;
-    gap: 1.4rem;
-  }
 }
 
 /* Blocos de projeto dentro de cada area de aplicacao */
@@ -5141,65 +5115,10 @@ body.quarto-dark .proj-partner-tag {
 }
 
 .proj-prose p {
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.68;
   margin: 0 0 1rem;
-  max-width: 78ch;
-}
-
-/* Rodape relacional de cada area/projeto (Parceiro institucional e Linhas conectadas) */
-.area-meta-box {
-  margin-top: 1.8rem;
-  padding: 1.1rem 1.35rem;
-  background: var(--gaia-soft);
-  border: 1px solid var(--gaia-border);
-  border-radius: 12px;
-  display: grid;
-  grid-template-columns: 1fr 1.25fr;
-  gap: 1rem 1.8rem;
-}
-
-@media (max-width: 680px) {
-  .area-meta-box {
-    grid-template-columns: 1fr;
-  }
-}
-
-.meta-col-label {
-  font-size: 0.73rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--gaia-muted);
-  margin-bottom: 0.35rem;
-}
-
-.meta-col-val {
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: var(--bs-body-color, #222);
-}
-
-.meta-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-}
-
-.meta-pill {
-  display: inline-block;
-  padding: 0.18rem 0.6rem;
-  font-size: 0.8rem;
-  border-radius: 6px;
-  background: var(--gaia-surface);
-  border: 1px solid var(--gaia-border);
-  color: var(--bs-body-color, #222);
-  text-decoration: none;
-}
-
-a.meta-pill:hover {
-  border-color: var(--gaia-accent);
-  color: var(--gaia-accent);
+  max-width: 88ch;
 }
 
 /* Moldura editorial unica para graficos e simuladores interativos */
@@ -5227,26 +5146,10 @@ body.quarto-dark .iviz-card {
   gap: 0.8rem 1.2rem;
 }
 
-.iviz-kicker {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-  color: var(--gaia-accent);
-  margin-bottom: 0.2rem;
-}
-
 .iviz-title {
   margin: 0;
   font-size: 1.08rem;
   font-weight: 700;
-}
-
-.iviz-sub {
-  margin: 0.2rem 0 0;
-  font-size: 0.86rem;
-  color: var(--gaia-muted);
 }
 
 .iviz-controls {
@@ -5292,15 +5195,44 @@ body.quarto-dark .iviz-btn[aria-pressed="true"] {
   padding: 1.35rem;
 }
 
-.iviz-grid-2 {
+/* Figuras empilhadas: gráfico em largura total e painel de leitura abaixo */
+.iviz-stack {
+  display: block;
+}
+
+.iviz-stage {
+  width: 100%;
+}
+
+.iviz-below {
   display: grid;
-  grid-template-columns: 1.08fr 0.92fr;
-  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.1rem;
   align-items: start;
 }
 
+.iviz-below-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.iviz-below > :only-child,
+.iviz-below > [data-tab-pane],
+.iviz-below > .npk-provenance-row {
+  grid-column: 1 / -1;
+}
+
+.iviz-below .parcel-inspector {
+  margin-bottom: 0;
+}
+
+.iviz-below .nota {
+  margin-top: 0;
+}
+
 @media (max-width: 860px) {
-  .iviz-grid-2 {
+  .iviz-below,
+  .iviz-below-3 {
     grid-template-columns: 1fr;
   }
 }
@@ -5749,6 +5681,177 @@ body.quarto-dark .neighbor-target-cell {
 .line-item-who {
   font-size: 0.78rem;
   color: var(--gaia-muted);
+}
+
+/* Mapa das conexões: matriz linhas metodológicas x áreas de aplicação, com
+   os parceiros de cada área na última linha. O realce por hover é feito no JS
+   da página, que marca .is-on nos itens ligados e .is-hover na matriz. */
+.matrix-wrap {
+  margin-top: 1.8rem;
+  padding: 1.25rem 1.4rem 1.4rem;
+  background: var(--gaia-surface);
+  border: 1px solid var(--gaia-border);
+  border-radius: 12px;
+}
+
+.matrix-lead {
+  margin: 0.2rem 0 1.1rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--gaia-muted);
+  max-width: 760px;
+}
+
+.matrix {
+  display: grid;
+  grid-template-columns: minmax(200px, 1.6fr) repeat(5, minmax(92px, 1fr));
+  align-items: center;
+  column-gap: 0.4rem;
+  row-gap: 0.15rem;
+}
+
+.matrix-corner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gaia-muted);
+  padding-bottom: 0.5rem;
+}
+
+.matrix-corner span:last-child::before {
+  content: "\2192  ";
+}
+
+.matrix-col {
+  text-align: center;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--gaia-accent);
+  text-decoration: none;
+  padding: 0.3rem 0.2rem 0.55rem;
+  border-bottom: 2px solid var(--gaia-border);
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.matrix-group {
+  grid-column: 1 / -1;
+  margin-top: 0.75rem;
+  padding: 0.15rem 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gaia-muted);
+}
+
+.matrix-row {
+  font-size: 0.88rem;
+  line-height: 1.3;
+  color: var(--bs-body-color, #222);
+  text-decoration: none;
+  padding: 0.38rem 0.5rem 0.38rem 0;
+  border-radius: 6px;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.matrix-cell {
+  justify-self: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gaia-border);
+  opacity: 0.55;
+  transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+}
+
+.matrix-cell.is-link {
+  background: var(--gaia-accent);
+  opacity: 1;
+  cursor: default;
+}
+
+.matrix-group-partners {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--gaia-border);
+}
+
+.matrix-row-partners {
+  font-size: 0.82rem;
+  color: var(--gaia-muted);
+}
+
+.matrix-partners {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem;
+  align-self: start;
+  transition: opacity 0.2s ease;
+}
+
+.matrix-partners span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--gaia-accent-faint);
+  color: var(--gaia-accent);
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.matrix-partners em {
+  color: var(--gaia-muted);
+  font-style: normal;
+}
+
+/* Hover: o que não está ligado esmaece; o que está, ganha cor */
+.matrix.is-hover .matrix-row,
+.matrix.is-hover .matrix-col,
+.matrix.is-hover .matrix-cell.is-link,
+.matrix.is-hover .matrix-partners {
+  opacity: 0.28;
+}
+
+.matrix.is-hover .matrix-row.is-on,
+.matrix.is-hover .matrix-col.is-on,
+.matrix.is-hover .matrix-cell.is-on,
+.matrix.is-hover .matrix-partners.is-on {
+  opacity: 1;
+}
+
+.matrix.is-hover .matrix-row.is-on {
+  color: var(--gaia-accent);
+  font-weight: 700;
+}
+
+.matrix.is-hover .matrix-col.is-on {
+  border-bottom-color: var(--gaia-accent);
+}
+
+.matrix.is-hover .matrix-cell.is-link.is-on {
+  transform: scale(1.45);
+}
+
+.matrix.is-hover .matrix-cell:not(.is-link) {
+  opacity: 0.25;
+}
+
+@media (max-width: 760px) {
+  .matrix-wrap {
+    overflow-x: auto;
+    padding: 1rem;
+  }
+
+  .matrix {
+    min-width: 640px;
+    grid-template-columns: minmax(170px, 1.4fr) repeat(5, minmax(80px, 1fr));
+  }
 }
 
 /* Visualizador de satélite (Campo Verde, MT) */

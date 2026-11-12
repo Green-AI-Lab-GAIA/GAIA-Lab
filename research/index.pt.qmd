@@ -9,18 +9,118 @@ toc: false
 <div class="page-main">
 
 <div class="research-intro reveal">
-  <span class="rsec-kicker">Estrutura da pesquisa</span>
   <h2>Cinco áreas de aplicação e oito linhas metodológicas</h2>
-  <div class="research-intro-grid">
-    <div class="research-intro-prose">
-      <p>A pesquisa do laboratório se organiza em dois eixos complementares: <strong>cinco áreas de aplicação</strong> (Agricultura, Floresta, Clima, Cidades e Documentos técnicos e institucionais) e <strong>oito linhas de pesquisa metodológicas</strong>, voltadas a problemas como aprendizado com baixa rotulagem, adaptação de domínio, modelagem de incerteza, dados textuais e redes de especialistas.</p>
-      <p>Os membros do grupo transitam entre esses dois eixos de três formas complementares: há pesquisadores dedicados exclusivamente ao desenvolvimento metodológico fundamental; outros que desenvolvem o método e o aplicam diretamente nos problemas de uma área; e casos em que um método formulado por um pesquisador do grupo é incorporado por outro colega e levado às áreas de aplicação e aos projetos em parceria.</p>
-    </div>
-    <div class="research-axis-note">
-      <strong>Como ler esta página</strong>
-      Cada área de aplicação apresenta os resultados passo a passo: o texto descreve uma etapa e a figura interativa logo abaixo permite explorar uma versão enxuta dos dados produzidos naquela etapa. Ao final de cada área, indicamos o parceiro institucional e as linhas metodológicas conectadas.
-    </div>
+  <div class="research-intro-prose">
+    <p>A pesquisa do laboratório se organiza em dois eixos complementares: <strong>cinco áreas de aplicação</strong> (Agricultura, Floresta, Clima, Cidades e Documentos técnicos e institucionais) e <strong>oito linhas de pesquisa metodológicas</strong>, voltadas a problemas como aprendizado com baixa rotulagem, adaptação de domínio, modelagem de incerteza, dados textuais e redes de especialistas.</p>
+    <p>Os membros do grupo transitam entre esses dois eixos de três formas complementares: há pesquisadores dedicados exclusivamente ao desenvolvimento metodológico fundamental; outros que desenvolvem o método e o aplicam diretamente nos problemas de uma área; e casos em que um método formulado por um pesquisador do grupo é incorporado por outro colega e levado às áreas de aplicação e aos projetos em parceria.</p>
   </div>
+<div class="matrix-wrap reveal">
+  <div class="matrix-head">
+    <span class="rsec-kicker">Mapa das conexões</span>
+    <p class="matrix-lead">Cada ponto liga uma linha metodológica a uma área onde ela é aplicada. Passe o mouse sobre uma linha ou uma área para ver suas conexões e os parceiros envolvidos.</p>
+  </div>
+  <div class="matrix" role="table" aria-label="Linhas metodológicas por área de aplicação">
+    <div class="matrix-corner" role="columnheader"><span>Linhas</span><span>Áreas</span></div>
+    <a class="matrix-col" role="columnheader" data-c="agricultura" href="#agricultura">Agricultura</a>
+    <a class="matrix-col" role="columnheader" data-c="floresta" href="#floresta">Floresta</a>
+    <a class="matrix-col" role="columnheader" data-c="clima" href="#clima">Clima</a>
+    <a class="matrix-col" role="columnheader" data-c="cidades" href="#cidades">Cidades</a>
+    <a class="matrix-col" role="columnheader" data-c="documentos" href="#documentos">Documentos</a>
+    <div class="matrix-group" role="rowheader">Componentes</div>
+    <a class="matrix-row" role="rowheader" data-r="rotulagem" data-cols="agricultura cidades floresta" href="#linhas">Aprendizado com baixa rotulagem</a>
+    <span class="matrix-cell is-link" role="cell" data-r="rotulagem" data-c="agricultura"></span>
+    <span class="matrix-cell is-link" role="cell" data-r="rotulagem" data-c="floresta"></span>
+    <span class="matrix-cell" role="cell" data-r="rotulagem" data-c="clima"></span>
+    <span class="matrix-cell is-link" role="cell" data-r="rotulagem" data-c="cidades"></span>
+    <span class="matrix-cell" role="cell" data-r="rotulagem" data-c="documentos"></span>
+    <a class="matrix-row" role="rowheader" data-r="dominio" data-cols="agricultura cidades floresta" href="#linhas">Adaptação de domínio</a>
+    <span class="matrix-cell is-link" role="cell" data-r="dominio" data-c="agricultura"></span>
+    <span class="matrix-cell is-link" role="cell" data-r="dominio" data-c="floresta"></span>
+    <span class="matrix-cell" role="cell" data-r="dominio" data-c="clima"></span>
+    <span class="matrix-cell is-link" role="cell" data-r="dominio" data-c="cidades"></span>
+    <span class="matrix-cell" role="cell" data-r="dominio" data-c="documentos"></span>
+    <a class="matrix-row" role="rowheader" data-r="openset" data-cols="floresta" href="#linhas">Open-set e OOD</a>
+    <span class="matrix-cell" role="cell" data-r="openset" data-c="agricultura"></span>
+    <span class="matrix-cell is-link" role="cell" data-r="openset" data-c="floresta"></span>
+    <span class="matrix-cell" role="cell" data-r="openset" data-c="clima"></span>
+    <span class="matrix-cell" role="cell" data-r="openset" data-c="cidades"></span>
+    <span class="matrix-cell" role="cell" data-r="openset" data-c="documentos"></span>
+    <a class="matrix-row" role="rowheader" data-r="incerteza" data-cols="agricultura" href="#linhas">Modelagem de incerteza</a>
+    <span class="matrix-cell is-link" role="cell" data-r="incerteza" data-c="agricultura"></span>
+    <span class="matrix-cell" role="cell" data-r="incerteza" data-c="floresta"></span>
+    <span class="matrix-cell" role="cell" data-r="incerteza" data-c="clima"></span>
+    <span class="matrix-cell" role="cell" data-r="incerteza" data-c="cidades"></span>
+    <span class="matrix-cell" role="cell" data-r="incerteza" data-c="documentos"></span>
+    <a class="matrix-row" role="rowheader" data-r="textual" data-cols="documentos floresta" href="#linhas">Modelagem de dados textuais</a>
+    <span class="matrix-cell" role="cell" data-r="textual" data-c="agricultura"></span>
+    <span class="matrix-cell is-link" role="cell" data-r="textual" data-c="floresta"></span>
+    <span class="matrix-cell" role="cell" data-r="textual" data-c="clima"></span>
+    <span class="matrix-cell" role="cell" data-r="textual" data-c="cidades"></span>
+    <span class="matrix-cell is-link" role="cell" data-r="textual" data-c="documentos"></span>
+    <div class="matrix-group" role="rowheader">Substrato</div>
+    <a class="matrix-row" role="rowheader" data-r="redes" data-cols="clima" href="#linhas">Redes de modelos especialistas geolocalizados</a>
+    <span class="matrix-cell" role="cell" data-r="redes" data-c="agricultura"></span>
+    <span class="matrix-cell" role="cell" data-r="redes" data-c="floresta"></span>
+    <span class="matrix-cell is-link" role="cell" data-r="redes" data-c="clima"></span>
+    <span class="matrix-cell" role="cell" data-r="redes" data-c="cidades"></span>
+    <span class="matrix-cell" role="cell" data-r="redes" data-c="documentos"></span>
+    <div class="matrix-group" role="rowheader">Sistemas acoplados</div>
+    <a class="matrix-row" role="rowheader" data-r="sistemas" data-cols="agricultura clima" href="#linhas">Interação de sistemas geoespaciais</a>
+    <span class="matrix-cell is-link" role="cell" data-r="sistemas" data-c="agricultura"></span>
+    <span class="matrix-cell" role="cell" data-r="sistemas" data-c="floresta"></span>
+    <span class="matrix-cell is-link" role="cell" data-r="sistemas" data-c="clima"></span>
+    <span class="matrix-cell" role="cell" data-r="sistemas" data-c="cidades"></span>
+    <span class="matrix-cell" role="cell" data-r="sistemas" data-c="documentos"></span>
+    <a class="matrix-row" role="rowheader" data-r="climatica" data-cols="clima" href="#linhas">Modelagem climática</a>
+    <span class="matrix-cell" role="cell" data-r="climatica" data-c="agricultura"></span>
+    <span class="matrix-cell" role="cell" data-r="climatica" data-c="floresta"></span>
+    <span class="matrix-cell is-link" role="cell" data-r="climatica" data-c="clima"></span>
+    <span class="matrix-cell" role="cell" data-r="climatica" data-c="cidades"></span>
+    <span class="matrix-cell" role="cell" data-r="climatica" data-c="documentos"></span>
+    <div class="matrix-group matrix-group-partners" role="rowheader">Parceiros</div>
+    <div class="matrix-row matrix-row-partners" role="rowheader">Instituições por área</div>
+    <div class="matrix-partners" role="cell" data-c="agricultura"><span>FGV Agro</span></div>
+    <div class="matrix-partners" role="cell" data-c="floresta"><span>FGVces</span><span>Coiab</span><span>FGV Agro</span></div>
+    <div class="matrix-partners" role="cell" data-c="clima"><span>FGV CERI</span><span>FGV Agro</span></div>
+    <div class="matrix-partners" role="cell" data-c="cidades"><em>—</em></div>
+    <div class="matrix-partners" role="cell" data-c="documentos"><span>FGV PMO</span><span>FGV Projetos</span></div>
+  </div>
+</div>
+<script>
+  // Mapa das conexões: realce da linha ou da área sob o mouse e do que se liga a ela.
+  (function () {
+    var m = document.querySelector(".matrix");
+    if (!m) return;
+    var todos = m.querySelectorAll("[data-r], [data-c]");
+    function limpar() {
+      m.classList.remove("is-hover");
+      for (var i = 0; i < todos.length; i++) todos[i].classList.remove("is-on");
+    }
+    function marcar(sel) {
+      var el = m.querySelectorAll(sel);
+      for (var i = 0; i < el.length; i++) el[i].classList.add("is-on");
+    }
+    m.addEventListener("mouseover", function (e) {
+      var row = e.target.closest(".matrix-row[data-r]");
+      var col = e.target.closest(".matrix-col[data-c]");
+      var cell = e.target.closest(".matrix-cell.is-link");
+      if (cell) { row = m.querySelector('.matrix-row[data-r="' + cell.dataset.r + '"]'); }
+      if (!row && !col) return;
+      limpar();
+      m.classList.add("is-hover");
+      if (row) {
+        marcar('[data-r="' + row.dataset.r + '"]');
+        var cols = row.dataset.cols.split(" ");
+        for (var i = 0; i < cols.length; i++) if (cols[i]) marcar('.matrix-col[data-c="' + cols[i] + '"], .matrix-partners[data-c="' + cols[i] + '"]');
+      } else {
+        marcar('[data-c="' + col.dataset.c + '"]');
+        var cells = m.querySelectorAll('.matrix-cell.is-link[data-c="' + col.dataset.c + '"]');
+        for (var j = 0; j < cells.length; j++) marcar('.matrix-row[data-r="' + cells[j].dataset.r + '"]');
+      }
+    });
+    m.addEventListener("mouseleave", limpar);
+  })();
+</script>
 </div>
 
 <section id="agricultura" class="rsec">
@@ -28,7 +128,6 @@ toc: false
   <div class="rsec-head reveal">
     <div class="rsec-num">01</div>
     <div>
-      <span class="rsec-kicker">Área de aplicação</span>
       <h2>Agricultura</h2>
     </div>
   </div>
@@ -37,7 +136,7 @@ toc: false
 
   <div class="proj-block reveal">
     <div class="proj-header">
-      <h3>Etapa 1 · Delimitação de talhões e classificação de cultivo</h3>
+      <h3>Etapa 1: Delimitação de talhões e classificação de cultivo</h3>
     </div>
     <div class="proj-prose">
       <p>A área de agricultura é explorada no projeto <strong>AgroInteligência Territorial</strong> em parceria com o <strong>FGV Agro</strong>, no qual construímos inteligência territorial sobre grandes carteiras agrícolas para responder o que está plantado, onde está localizado e o que se comporta fora do padrão. A primeira etapa do fluxo consiste em delimitar automaticamente os contornos produtivos e identificar a cultura plantada em cada subárea.</p>
@@ -67,9 +166,7 @@ toc: false
     <div class="iviz-card reveal" data-cv-agro-viewer data-lang="pt" data-json="images/agro/cv-plots-2021.json">
       <div class="iviz-top">
         <div>
-          <span class="iviz-kicker">Figura interativa 1 · Visualizador de satélite de Campo Verde (MT)</span>
-          <h4 class="iviz-title">Imagem real Sentinel-2 com zoom, arrasto e camadas de segmentação, cultura, NDVI e dossel</h4>
-          <p class="iviz-sub">Arraste o mapa, use a roda do mouse para dar zoom e clique em qualquer talhão real para inspecionar sua área, classificação e atualizar automaticamente sua curva espectral na Etapa 2 logo abaixo.</p>
+          <h4 class="iviz-title">Imagem Sentinel-2 de Campo Verde (MT) com talhões, cultura e dossel florestal</h4>
         </div>
         <div class="iviz-controls">
           <button type="button" class="iviz-btn is-active" data-cv-colormode="gaia" aria-pressed="true">Modelo GAIA (SAR + óptico)</button>
@@ -107,8 +204,8 @@ toc: false
           </div>
         </div>
 
-        <div class="iviz-grid-2">
-          <div>
+        <div class="iviz-stack">
+          <div class="iviz-stage">
             <div class="cv-sat-viewport" role="region" aria-label="Visualizador interativo de satélite de Campo Verde com zoom e arrasto">
               <div class="cv-sat-stage">
                 <img data-cv-base-img src="images/agro/cv-rgb-2021q1.webp" alt="Imagem real Sentinel-2 RGB de Campo Verde">
@@ -137,7 +234,7 @@ toc: false
             </div>
           </div>
 
-          <div>
+          <div class="iviz-below">
             <div class="parcel-inspector">
               <div class="parcel-inspector-head">
                 <span class="parcel-inspector-title" data-parcel-title>Talhão #3622 (401,7 ha · Campo Verde, MT)</span>
@@ -198,7 +295,7 @@ toc: false
 
   <div class="proj-block reveal">
     <div class="proj-header">
-      <h3>Etapa 2 · Séries temporais de índices de vegetação e filtragem de nebulosidade</h3>
+      <h3>Etapa 2: Séries temporais de índices de vegetação e filtragem de nebulosidade</h3>
     </div>
     <div class="proj-prose">
       <p>Com os polígonos dos talhões delimitados, a segunda etapa reconstrói a evolução espectral de cada área ao longo das safras. O pipeline extrai as refletâncias do satélite <strong>Sentinel-2</strong> sobre cada polígono a partir dos cubos de dados do <strong>Brazil Data Cube (BDC)</strong> e calcula <strong>17 índices de vegetação complementares</strong> (incluindo NDVI, EVI, EVI2, NDWI, NDRE, SAVI, MSAVI e GNDVI), cobrindo vigor fotossintético, conteúdo de água no dossel e borda vermelha. A base consolidada soma <strong>499,7 mil séries por talhão</strong> e <strong>11,5 milhões de registros</strong>.</p>
@@ -208,9 +305,7 @@ toc: false
     <div class="iviz-card reveal" data-cv-iv-explorer data-lang="pt">
       <div class="iviz-top">
         <div>
-          <span class="iviz-kicker">Figura interativa 2 · Série espectral real do talhão selecionado (Sentinel-2 / BDC)</span>
-          <h4 class="iviz-title">Sazonalidade, remoção de nuvem residual e reconstrução da curva de vigor</h4>
-          <p class="iviz-sub">A curva abaixo exibe os dados reais do talhão clicado no mapa de Campo Verde acima. Alterne entre os índices espectrais ou passe o cursor sobre cada passagem de satélite.</p>
+          <h4 class="iviz-title">Série espectral do talhão selecionado (Sentinel-2, Brazil Data Cube)</h4>
         </div>
         <div class="iviz-controls">
           <button type="button" class="iviz-btn is-active" data-iv-index="NDVI" aria-pressed="true">NDVI (Vigor)</button>
@@ -239,13 +334,13 @@ toc: false
           </div>
         </div>
 
-        <div class="iviz-grid-2">
-          <div>
+        <div class="iviz-stack">
+          <div class="iviz-stage">
             <div class="cv-iv-svg-wrap">
-              <svg viewBox="0 0 680 225" style="width:100%; height:auto; display:block;" role="img" aria-label="Série temporal interativa de índices de vegetação do talhão selecionado em Campo Verde">
-                <line x1="42" y1="18" x2="656" y2="18" stroke="currentColor" stroke-opacity="0.1" stroke-dasharray="3 3" />
-                <line x1="42" y1="108" x2="656" y2="108" stroke="currentColor" stroke-opacity="0.12" stroke-dasharray="3 3" />
-                <line x1="42" y1="198" x2="656" y2="198" stroke="currentColor" stroke-opacity="0.24" />
+              <svg viewBox="0 0 1000 225" style="width:100%; height:auto; display:block;" role="img" aria-label="Série temporal interativa de índices de vegetação do talhão selecionado em Campo Verde">
+                <line x1="42" y1="18" x2="976" y2="18" stroke="currentColor" stroke-opacity="0.1" stroke-dasharray="3 3" />
+                <line x1="42" y1="108" x2="976" y2="108" stroke="currentColor" stroke-opacity="0.12" stroke-dasharray="3 3" />
+                <line x1="42" y1="198" x2="976" y2="198" stroke="currentColor" stroke-opacity="0.24" />
                 <text x="8" y="22" font-size="10" fill="currentColor" opacity="0.65" data-iv-ylabel>1.0</text>
                 <text x="8" y="112" font-size="10" fill="currentColor" opacity="0.65" data-iv-ylabel>0.5</text>
                 <text x="8" y="202" font-size="10" fill="currentColor" opacity="0.65" data-iv-ylabel>0.0</text>
@@ -257,12 +352,12 @@ toc: false
                 <g data-iv-svg-drops></g>
                 <g data-iv-svg-points></g>
 
-                <text x="48" y="216" font-size="10" fill="currentColor" opacity="0.7">Jan</text>
-                <text x="155" y="216" font-size="10" fill="currentColor" opacity="0.7">Mar</text>
-                <text x="265" y="216" font-size="10" fill="currentColor" opacity="0.7">Mai</text>
-                <text x="375" y="216" font-size="10" fill="currentColor" opacity="0.7">Jul (Seca)</text>
-                <text x="495" y="216" font-size="10" fill="currentColor" opacity="0.7">Set</text>
-                <text x="605" y="216" font-size="10" fill="currentColor" opacity="0.7">Nov/Dez</text>
+                <text x="51.127" y="216" font-size="10" fill="currentColor" opacity="0.7">Jan</text>
+                <text x="213.893" y="216" font-size="10" fill="currentColor" opacity="0.7">Mar</text>
+                <text x="381.221" y="216" font-size="10" fill="currentColor" opacity="0.7">Mai</text>
+                <text x="548.55" y="216" font-size="10" fill="currentColor" opacity="0.7">Jul (Seca)</text>
+                <text x="731.091" y="216" font-size="10" fill="currentColor" opacity="0.7">Set</text>
+                <text x="898.42" y="216" font-size="10" fill="currentColor" opacity="0.7">Nov/Dez</text>
               </svg>
             </div>
             <div class="parcel-legend" style="margin-top:0.5rem;">
@@ -273,7 +368,7 @@ toc: false
             </div>
           </div>
 
-          <div>
+          <div class="iviz-below">
             <div class="parcel-inspector" style="margin-bottom:0.75rem;">
               <div class="parcel-inspector-head">
                 <span class="parcel-inspector-title">Inspeção da passagem de satélite</span>
@@ -308,7 +403,7 @@ toc: false
 
   <div class="proj-block reveal">
     <div class="proj-header">
-      <h3>Etapa 3 · Detecção de início e fim de safra (SOS e EOS), janela do ZARC e risco na vizinhança</h3>
+      <h3>Etapa 3: Detecção de início e fim de safra (SOS e EOS), janela do ZARC e risco na vizinhança</h3>
     </div>
     <div class="proj-prose">
       <p>Sobre a curva contínua de vigor de cada talhão, a terceira etapa identifica automaticamente os marcos fenológicos de cada ciclo produtivo: o <strong>início da safra (SOS)</strong> na inflexão de emergência pós-plantio, o <strong>pico vegetativo (POS)</strong> no fechamento máximo do dossel e o <strong>fim da safra (EOS)</strong> na senescência e colheita, separando o primeiro e o segundo cultivo do ano agrícola. O cruzamento das datas de início de safra detectadas por satélite com a janela oficial de plantio do <strong>ZARC (Zoneamento Agrícola de Risco Climático)</strong> permite auditar a aderência ao calendário agrícola em escala municipal: em Campo Verde (MT), <strong>65,5% dos talhões de soja</strong> iniciam a safra dentro da janela oficial do ZARC (variando entre <strong>72,7% e 84,5%</strong> em outros municípios avaliados), enquanto as culturas de segunda safra (algodão com 7,6% e milho safrinha com 3,3%) refletem a dependência direta do momento de colheita da primeira safra.</p>
@@ -322,9 +417,7 @@ toc: false
     <div class="iviz-card reveal" data-pheno-explorer>
       <div class="iviz-top">
         <div>
-          <span class="iviz-kicker">Figura interativa 3 · Fenologia (SOS / POS / EOS), ZARC e risco na vizinhança</span>
-          <h4 class="iviz-title">Detecção do calendário de safra e separação entre risco operacional e risco sistêmico</h4>
-          <p class="iviz-sub">Alterne entre os três modos abaixo para inspecionar os marcos de início (SOS), pico (POS) e fim de safra (EOS) e comparar o comportamento do talhão com a sua vizinhança.</p>
+          <h4 class="iviz-title">Calendário de safra do talhão (SOS, POS e EOS) e comparação com a vizinhança</h4>
         </div>
         <div class="iviz-controls">
           <button type="button" class="iviz-btn is-active" data-pheno-mode="safra" aria-pressed="true"
@@ -355,60 +448,60 @@ toc: false
       </div>
 
       <div class="iviz-body">
-        <div class="iviz-grid-2">
-          <div>
+        <div class="iviz-stack">
+          <div class="iviz-stage">
             <div style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gaia-muted); margin-bottom: 0.4rem;">Curva fenológica (1ª e 2ª safra), marcos SOS/POS/EOS e faixa P10 a P90 da vizinhança</div>
-            <svg viewBox="0 0 380 160" style="width:100%; height:auto; display:block;" role="img" aria-label="Curva fenológica com detecção de início de safra SOS, pico POS, fim de safra EOS e comparação com vizinhança">
-              <rect x="48" y="14" width="38" height="114" fill="rgba(54, 89, 2, 0.08)" stroke="rgba(54, 89, 2, 0.28)" stroke-dasharray="3 2" />
-              <text x="67" y="25" text-anchor="middle" font-size="8" font-weight="700" fill="var(--gaia-accent)">Janela ZARC</text>
-              <line x1="30" y1="128" x2="362" y2="128" stroke="currentColor" stroke-opacity="0.22" />
-              <line x1="30" y1="22" x2="362" y2="22" stroke="currentColor" stroke-opacity="0.1" stroke-dasharray="3 3" />
+            <svg viewBox="0 0 760 160" style="width:100%; height:auto; display:block;" role="img" aria-label="Curva fenológica com detecção de início de safra SOS, pico POS, fim de safra EOS e comparação com vizinhança">
+              <rect x="96" y="14" width="76" height="114" fill="rgba(54, 89, 2, 0.08)" stroke="rgba(54, 89, 2, 0.28)" stroke-dasharray="3 2" />
+              <text x="134" y="25" text-anchor="middle" font-size="8" font-weight="700" fill="var(--gaia-accent)">Janela ZARC</text>
+              <line x1="60" y1="128" x2="724" y2="128" stroke="currentColor" stroke-opacity="0.22" />
+              <line x1="60" y1="22" x2="724" y2="22" stroke="currentColor" stroke-opacity="0.1" stroke-dasharray="3 3" />
 
-              <path class="pheno-env-area" d="M 30,114 C 52,112 68,96 82,70 C 98,34 118,18 140,16 C 162,18 180,60 196,96 C 206,104 216,100 228,80 C 246,44 268,24 290,22 C 312,24 330,68 346,100 L 358,110 L 358,122 L 346,116 C 330,86 312,42 290,40 C 268,42 246,62 228,96 C 216,114 206,118 196,112 C 180,76 162,34 140,32 C 118,34 98,52 82,86 C 68,108 52,120 30,122 Z" fill="rgba(79, 138, 34, 0.20)" />
-              <path class="pheno-env-mean" d="M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,88 C 246,52 268,32 290,30 C 312,32 330,76 346,108 L 358,116" fill="none" stroke="#4f8a22" stroke-width="1.8" stroke-dasharray="4 3" />
-              <path class="pheno-target-line" d="M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,88 C 246,52 268,32 290,30 C 312,32 330,76 346,108 L 358,116" fill="none" stroke="#365902" stroke-width="3" />
+              <path class="pheno-env-area" d="M 60,114 C 104,112 136,96 164,70 C 196,34 236,18 280,16 C 324,18 360,60 392,96 C 412,104 432,100 456,80 C 492,44 536,24 580,22 C 624,24 660,68 692,100 L 716,110 L 716,122 L 692,116 C 660,86 624,42 580,40 C 536,42 492,62 456,96 C 432,114 412,118 392,112 C 360,76 324,34 280,32 C 236,34 196,52 164,86 C 136,108 104,120 60,122 Z" fill="rgba(79, 138, 34, 0.20)" />
+              <path class="pheno-env-mean" d="M 60,118 C 104,116 136,102 164,78 C 196,42 236,24 280,22 C 324,24 360,68 392,104 C 412,112 432,108 456,88 C 492,52 536,32 580,30 C 624,32 660,76 692,108 L 716,116" fill="none" stroke="#4f8a22" stroke-width="1.8" stroke-dasharray="4 3" />
+              <path class="pheno-target-line" d="M 60,118 C 104,116 136,102 164,78 C 196,42 236,24 280,22 C 324,24 360,68 392,104 C 412,112 432,108 456,88 C 492,52 536,32 580,30 C 624,32 660,76 692,108 L 716,116" fill="none" stroke="#365902" stroke-width="3" />
 
               <g class="pheno-markers-group">
-                <circle cx="64" cy="105" r="4.2" fill="#2b6cb0" stroke="#fff" stroke-width="1.4" />
-                <text x="64" y="96" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2b6cb0">SOS 1</text>
-                <circle cx="140" cy="22" r="4.2" fill="#365902" stroke="#fff" stroke-width="1.4" />
-                <text x="140" y="14" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--gaia-accent)">POS 1</text>
-                <circle cx="196" cy="104" r="4.2" fill="#d99b26" stroke="#fff" stroke-width="1.4" />
-                <text x="196" y="121" text-anchor="middle" font-size="8.5" font-weight="700" fill="#b7791f">EOS 1</text>
+                <circle cx="128" cy="105" r="4.2" fill="#2b6cb0" stroke="#fff" stroke-width="1.4" />
+                <text x="128" y="96" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2b6cb0">SOS 1</text>
+                <circle cx="280" cy="22" r="4.2" fill="#365902" stroke="#fff" stroke-width="1.4" />
+                <text x="280" y="14" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--gaia-accent)">POS 1</text>
+                <circle cx="392" cy="104" r="4.2" fill="#d99b26" stroke="#fff" stroke-width="1.4" />
+                <text x="392" y="121" text-anchor="middle" font-size="8.5" font-weight="700" fill="#b7791f">EOS 1</text>
 
-                <circle cx="222" cy="96" r="4.2" fill="#2b6cb0" stroke="#fff" stroke-width="1.4" />
-                <text x="222" y="85" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2b6cb0">SOS 2</text>
-                <circle cx="290" cy="30" r="4.2" fill="#365902" stroke="#fff" stroke-width="1.4" />
-                <text x="290" y="21" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--gaia-accent)">POS 2</text>
-                <circle cx="346" cy="108" r="4.2" fill="#d99b26" stroke="#fff" stroke-width="1.4" />
-                <text x="346" y="123" text-anchor="middle" font-size="8.5" font-weight="700" fill="#b7791f">EOS 2</text>
+                <circle cx="444" cy="96" r="4.2" fill="#2b6cb0" stroke="#fff" stroke-width="1.4" />
+                <text x="444" y="85" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2b6cb0">SOS 2</text>
+                <circle cx="580" cy="30" r="4.2" fill="#365902" stroke="#fff" stroke-width="1.4" />
+                <text x="580" y="21" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--gaia-accent)">POS 2</text>
+                <circle cx="692" cy="108" r="4.2" fill="#d99b26" stroke="#fff" stroke-width="1.4" />
+                <text x="692" y="123" text-anchor="middle" font-size="8.5" font-weight="700" fill="#b7791f">EOS 2</text>
               </g>
 
-              <text x="64" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Out (Plantio)</text>
-              <text x="140" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Dez (1ª safra)</text>
-              <text x="208" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Fev (Colheita/2ª)</text>
-              <text x="290" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Abr (2ª safra)</text>
-              <text x="348" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Jun</text>
+              <text x="128" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Out (Plantio)</text>
+              <text x="280" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Dez (1ª safra)</text>
+              <text x="416" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Fev (Colheita/2ª)</text>
+              <text x="580" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Abr (2ª safra)</text>
+              <text x="696" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Jun</text>
             </svg>
 
-            <div class="parcel-compare-row" style="grid-template-columns: 1fr; gap: 0.35rem; margin-top: 0.6rem;">
-              <div class="parcel-compare-cell" style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="parcel-compare-row" style="grid-template-columns: repeat(3, 1fr); margin-top: 0.6rem;">
+              <div class="parcel-compare-cell">
                 <span>Início da safra (emergência pós-plantio)</span>
                 <strong data-pheno-sos style="font-size:0.8rem;">SOS detectado: 18 out (1ª safra) · 22 fev (2ª safra)</strong>
               </div>
-              <div class="parcel-compare-cell" style="display:flex; justify-content:space-between; align-items:center;">
+              <div class="parcel-compare-cell">
                 <span>Pico vegetativo (máximo vigor do dossel)</span>
                 <strong data-pheno-pos style="font-size:0.8rem;">POS detectado: 14 dez (soja) · 28 abr (milho 2ª safra)</strong>
               </div>
-              <div class="parcel-compare-cell" style="display:flex; justify-content:space-between; align-items:center;">
+              <div class="parcel-compare-cell">
                 <span>Fim da safra (senescência e colheita)</span>
                 <strong data-pheno-eos style="font-size:0.8rem;">EOS detectado: 08 fev (colheita 1ª safra) · 19 jun (colheita 2ª safra)</strong>
               </div>
             </div>
           </div>
 
-          <div>
-            <div style="display:grid; grid-template-columns: 0.95fr 1.05fr; gap: 0.85rem; align-items: center; margin-bottom: 0.85rem;">
+          <div class="iviz-below iviz-below-3">
+            <div style="display:contents;">
               <div class="neighbor-stage" style="padding: 0.75rem;">
                 <div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gaia-muted); margin-bottom: 0.45rem; text-align:center;">Vizinhança espectral</div>
                 <svg class="neighbor-grid-svg" viewBox="0 0 180 180" style="max-width: 135px;" role="img" aria-label="Grade espacial comparando o talhão-alvo central com oito talhões vizinhos">
@@ -454,7 +547,7 @@ toc: false
 
   <div class="proj-block reveal">
     <div class="proj-header">
-      <h3>Etapa 4 · Dinâmica de estoque de macronutrientes no solo e resposta produtiva</h3>
+      <h3>Etapa 4: Dinâmica de estoque de macronutrientes no solo e resposta produtiva</h3>
     </div>
     <div class="proj-prose">
       <p>A área de agricultura também é explorada no projeto <strong>Macronutrientes</strong> em parceria com o <strong>FGV Agro</strong>, que responde de quanto cai a produção agrícola brasileira se a adubação de nitrogênio (N), fósforo (P) e potássio (K) for reduzida, e quanto essa redução custa ao longo dos anos. O objeto central do modelo é o <strong>estoque de nutriente no solo</strong>, e não apenas a aplicação do ano: um solo com estoque alto absorve anos de corte antes de a produção cair, enquanto um solo pobre sente o corte já na primeira safra. A entrega cobre <strong>cinco culturas</strong> (soja, milho, arroz, cana e algodão) sobre uma linha de base de estatística oficial.</p>
@@ -464,9 +557,7 @@ toc: false
     <div class="iviz-card reveal" data-npk-sim data-lang="pt">
       <div class="iviz-top">
         <div>
-          <span class="iviz-kicker">Figura interativa 4 · Estoque de nutrientes no solo (N, P e K)</span>
-          <h4 class="iviz-title">Trajetória de produtividade e depleção de estoque em 5 safras</h4>
-          <p class="iviz-sub">Combine cultura, nutriente cortado, condição inicial do solo e regra de combinação para testar a sensibilidade da produção.</p>
+          <h4 class="iviz-title">Produtividade e estoque de nutrientes no solo ao longo de cinco safras</h4>
         </div>
       </div>
 
@@ -504,40 +595,40 @@ toc: false
           </div>
         </div>
 
-        <div class="iviz-grid-2">
-          <div>
-            <svg viewBox="0 0 370 155" style="width:100%; height:auto; display:block;" role="img" aria-label="Gráfico de trajetória de 5 anos para produtividade relativa e estoque no solo">
-              <line x1="35" y1="22" x2="340" y2="22" stroke="currentColor" stroke-opacity="0.12" stroke-dasharray="3 3" />
-              <line x1="35" y1="77" x2="340" y2="77" stroke="currentColor" stroke-opacity="0.12" stroke-dasharray="3 3" />
-              <line x1="35" y1="132" x2="340" y2="132" stroke="currentColor" stroke-opacity="0.25" />
-              <text x="6" y="26" font-size="9.5" fill="currentColor" opacity="0.65">100%</text>
-              <text x="12" y="80" font-size="9.5" fill="currentColor" opacity="0.65">50%</text>
-              <text x="16" y="135" font-size="9.5" fill="currentColor" opacity="0.65">0%</text>
+        <div class="iviz-stack">
+          <div class="iviz-stage">
+            <svg viewBox="0 0 740 155" style="width:100%; height:auto; display:block;" role="img" aria-label="Gráfico de trajetória de 5 anos para produtividade relativa e estoque no solo">
+              <line x1="70" y1="22" x2="680" y2="22" stroke="currentColor" stroke-opacity="0.12" stroke-dasharray="3 3" />
+              <line x1="70" y1="77" x2="680" y2="77" stroke="currentColor" stroke-opacity="0.12" stroke-dasharray="3 3" />
+              <line x1="70" y1="132" x2="680" y2="132" stroke="currentColor" stroke-opacity="0.25" />
+              <text x="12" y="26" font-size="9.5" fill="currentColor" opacity="0.65">100%</text>
+              <text x="24" y="80" font-size="9.5" fill="currentColor" opacity="0.65">50%</text>
+              <text x="32" y="135" font-size="9.5" fill="currentColor" opacity="0.65">0%</text>
 
-              <polyline class="npk-stock-line" fill="none" stroke="#d99b26" stroke-width="2.5" stroke-dasharray="5 3" points="45,22 115,26 185,30 255,33 325,35" />
-              <polyline class="npk-yield-line" fill="none" stroke="var(--gaia-accent)" stroke-width="3.2" points="45,22 115,23 185,23 255,24 325,24" />
+              <polyline class="npk-stock-line" fill="none" stroke="#d99b26" stroke-width="2.5" stroke-dasharray="5 3" points="90,22 230,26 370,30 510,33 650,35" />
+              <polyline class="npk-yield-line" fill="none" stroke="var(--gaia-accent)" stroke-width="3.2" points="90,22 230,23 370,23 510,24 650,24" />
 
-              <circle class="npk-stock-dot" cx="45" cy="22" r="3.5" fill="#d99b26" />
-              <circle class="npk-stock-dot" cx="115" cy="26" r="3.5" fill="#d99b26" />
-              <circle class="npk-stock-dot" cx="185" cy="30" r="3.5" fill="#d99b26" />
-              <circle class="npk-stock-dot" cx="255" cy="33" r="3.5" fill="#d99b26" />
-              <circle class="npk-stock-dot" cx="325" cy="35" r="3.5" fill="#d99b26" />
+              <circle class="npk-stock-dot" cx="90" cy="22" r="3.5" fill="#d99b26" />
+              <circle class="npk-stock-dot" cx="230" cy="26" r="3.5" fill="#d99b26" />
+              <circle class="npk-stock-dot" cx="370" cy="30" r="3.5" fill="#d99b26" />
+              <circle class="npk-stock-dot" cx="510" cy="33" r="3.5" fill="#d99b26" />
+              <circle class="npk-stock-dot" cx="650" cy="35" r="3.5" fill="#d99b26" />
 
-              <circle class="npk-yield-dot" cx="45" cy="22" r="4" fill="var(--gaia-accent)" />
-              <circle class="npk-yield-dot" cx="115" cy="23" r="4" fill="var(--gaia-accent)" />
-              <circle class="npk-yield-dot" cx="185" cy="23" r="4" fill="var(--gaia-accent)" />
-              <circle class="npk-yield-dot" cx="255" cy="24" r="4" fill="var(--gaia-accent)" />
-              <circle class="npk-yield-dot" cx="325" cy="24" r="4" fill="var(--gaia-accent)" />
+              <circle class="npk-yield-dot" cx="90" cy="22" r="4" fill="var(--gaia-accent)" />
+              <circle class="npk-yield-dot" cx="230" cy="23" r="4" fill="var(--gaia-accent)" />
+              <circle class="npk-yield-dot" cx="370" cy="23" r="4" fill="var(--gaia-accent)" />
+              <circle class="npk-yield-dot" cx="510" cy="24" r="4" fill="var(--gaia-accent)" />
+              <circle class="npk-yield-dot" cx="650" cy="24" r="4" fill="var(--gaia-accent)" />
 
-              <text x="45" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Safra 1</text>
-              <text x="115" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Safra 2</text>
-              <text x="185" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Safra 3</text>
-              <text x="255" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Safra 4</text>
-              <text x="325" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Safra 5</text>
+              <text x="90" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Safra 1</text>
+              <text x="230" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Safra 2</text>
+              <text x="370" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Safra 3</text>
+              <text x="510" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Safra 4</text>
+              <text x="650" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Safra 5</text>
             </svg>
           </div>
 
-          <div>
+          <div class="iviz-below">
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-bottom:0.85rem;">
               <div class="parcel-compare-cell">
                 <span>Produtividade na 5ª safra (linha contínua)</span>
@@ -563,21 +654,6 @@ toc: false
     </div>
   </div>
 
-  <div class="area-meta-box reveal">
-    <div>
-      <div class="meta-col-label">Parceiro institucional</div>
-      <div class="meta-col-val"><strong>FGV Agro</strong> (Centro de Estudos do Agronegócio da FGV)</div>
-    </div>
-    <div>
-      <div class="meta-col-label">Linhas metodológicas conectadas</div>
-      <div class="meta-pills">
-        <a class="meta-pill" href="#linhas">Aprendizado com baixa rotulagem</a>
-        <a class="meta-pill" href="#linhas">Adaptação de domínio</a>
-        <a class="meta-pill" href="#linhas">Modelagem de incerteza</a>
-        <a class="meta-pill" href="#linhas">Interação de sistemas geoespaciais</a>
-      </div>
-    </div>
-  </div>
 </section>
 
 <section id="floresta" class="rsec">
@@ -585,7 +661,6 @@ toc: false
   <div class="rsec-head reveal">
     <div class="rsec-num">02</div>
     <div>
-      <span class="rsec-kicker">Área de aplicação</span>
       <h2>Floresta</h2>
     </div>
   </div>
@@ -594,7 +669,7 @@ toc: false
 
   <div class="proj-block reveal">
     <div class="proj-header">
-      <h3>Etapa 1 · Monitoramento trimestral de dossel florestal e supressão intra-anual</h3>
+      <h3>Etapa 1: Monitoramento trimestral de dossel florestal e supressão intra-anual</h3>
     </div>
     <div class="proj-prose">
       <p>A área de floresta é explorada no projeto <strong>AgroInteligência Territorial</strong> em parceria com o <strong>FGV Agro</strong>, voltado a identificar onde há passivo ambiental sobre grandes carteiras rurais por meio do monitoramento intra-anual de cobertura florestal e de áreas protegidas por lei. Em vez de depender apenas de mapas anuais ou de imagens isoladas sujeitas a variações sazonais, o produto opera trimestre a trimestre combinando observações ópticas consecutivas do satélite <strong>Sentinel-2</strong> (10 metros de resolução) a representações anuais multissensor que integram radar, relevo e clima.</p>
@@ -623,9 +698,7 @@ toc: false
     <div class="iviz-card reveal" data-tab-group>
       <div class="iviz-top">
         <div>
-          <span class="iviz-kicker">Figura interativa 1 · Evolução trimestral do dossel florestal</span>
-          <h4 class="iviz-title">Comparação direta (2020 Q1 vs. 2026 Q2) e série contínua de 26 trimestres</h4>
-          <p class="iviz-sub">Arraste o divisor para comparar os extremos da série ou percorra os 26 mapas trimestrais gerados pelo modelo em Campo Verde (MT).</p>
+          <h4 class="iviz-title">Cobertura florestal em Campo Verde (MT), 26 trimestres de 2020 a 2026</h4>
         </div>
         <div class="iviz-controls" role="tablist">
           <button type="button" class="iviz-btn is-active" data-tab-target="floresta-compare" role="tab" aria-selected="true">Comparador 2020 Q1 vs. 2026 Q2</button>
@@ -669,7 +742,7 @@ toc: false
 
   <div class="proj-block reveal">
     <div class="proj-header">
-      <h3>Etapa 2 · Passivo ambiental por imóvel rural (CAR) e camada semântica de incerteza</h3>
+      <h3>Etapa 2: Passivo ambiental por imóvel rural (CAR) e camada semântica de incerteza</h3>
     </div>
     <div class="proj-prose">
       <p>Na segunda etapa, os mapas trimestrais de cobertura florestal são cruzados com os perímetros declarados no <strong>Cadastro Ambiental Rural (CAR)</strong> para analisar o passivo ambiental (supressão recente e áreas protegidas por lei sem cobertura nativa) tendo o <strong>imóvel rural como unidade de análise</strong>. Avaliado sobre <strong>1.432 imóveis rurais</strong> em Campo Verde, o produto alcança <strong>0,797 de IoU</strong> dentro dos limites das propriedades cadastradas.</p>
@@ -679,9 +752,7 @@ toc: false
     <div class="iviz-card reveal" data-cv-forest-viewer>
       <div class="iviz-top">
         <div>
-          <span class="iviz-kicker">Figura interativa 2 · Visualizador de satélite para auditoria por imóvel (CAR) e incerteza</span>
-          <h4 class="iviz-title">Inspeção interativa com zoom e arrasto: dossel florestal, perímetros do CAR, incerteza semântica e talhões</h4>
-          <p class="iviz-sub">Arraste a imagem de satélite de Campo Verde (MT), dê zoom até a escala de 10 metros e combine livremente as camadas de predição, recorte por imóvel, incerteza e lavouras vizinhas.</p>
+          <h4 class="iviz-title">Dossel florestal, perímetros do CAR e incerteza por imóvel em Campo Verde (MT)</h4>
         </div>
         <div class="iviz-controls">
           <button type="button" class="iviz-btn is-active" data-cv-f-clip="completo" aria-pressed="true">Predição em toda a cena</button>
@@ -739,7 +810,7 @@ toc: false
 
   <div class="proj-block reveal">
     <div class="proj-header">
-      <h3>Etapa 3 · Geração automática de relatórios territoriais e autonomia narrativa</h3>
+      <h3>Etapa 3: Geração automática de relatórios territoriais e autonomia narrativa</h3>
     </div>
     <div class="proj-prose">
       <p>A área de floresta também é explorada no projeto desenvolvido em parceria com o <strong>FGVces</strong> (Centro de Estudos em Sustentabilidade da FGV) e a <strong>Coiab</strong> (Coordenação das Organizações Indígenas da Amazônia Brasileira), no qual construímos uma <strong>ferramenta de geração automática e edição de relatórios territoriais</strong> a partir de dois insumos: dados públicos oficiais e estruturas explícitas de narrativa. O sistema acompanha status e riscos de desmatamento, fogo, mineração e mudança climática nas escalas do Brasil, dos estados e das terras indígenas, gerando saídas em PDF, clipping ou página de observatório. É o único projeto do laboratório com contraparte técnica do parceiro trabalhando diretamente ao lado dos pesquisadores na integração com a plataforma geoespacial.</p>
@@ -750,9 +821,7 @@ toc: false
     <div class="iviz-card reveal" data-tab-group>
       <div class="iviz-top">
         <div>
-          <span class="iviz-kicker">Figura interativa 3 · Estrutura narrativa por audiência (FGVces e Coiab)</span>
-          <h4 class="iviz-title">Os mesmos dados públicos organizados para três perfis de leitor</h4>
-          <p class="iviz-sub">Selecione o destinatário abaixo para observar como os mesmos indicadores territoriais de desmatamento, fogo, mineração e clima reorganizam a estrutura do relatório.</p>
+          <h4 class="iviz-title">Um mesmo conjunto de indicadores, três estruturas de relatório (FGVces e Coiab)</h4>
         </div>
         <div class="iviz-controls" role="tablist">
           <button type="button" class="iviz-btn is-active" data-tab-target="aud-midia" role="tab" aria-selected="true">Para imprensa e clipping</button>
@@ -762,10 +831,10 @@ toc: false
       </div>
 
       <div class="iviz-body">
-        <div class="iviz-grid-2">
-          <div>
+        <div class="iviz-stack">
+          <div class="iviz-stage">
             <div style="font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gaia-muted); margin-bottom: 0.55rem;">Eixos monitorados a partir de bases públicas oficiais</div>
-            <div class="trend-grid" style="margin-top:0; grid-template-columns: 1fr 1fr;">
+            <div class="trend-grid" style="margin-top:0;">
               <div class="trend-card">
                 <div class="trend-name">Desmatamento</div>
                 <div class="trend-value" style="font-size:1.25rem;">DETER / PRODES</div>
@@ -788,7 +857,7 @@ toc: false
               </div>
             </div>
           </div>
-          <div>
+          <div class="iviz-below">
             <div data-tab-pane="aud-midia" class="coiab-report-pane is-active">
               <div class="coiab-doc-kicker">Estrutura 1 · Imprensa e comunicação pública</div>
               <h5 class="coiab-doc-title">Síntese executiva com mensagens-chave e recorte territorial imediato</h5>
@@ -824,21 +893,6 @@ toc: false
     </div>
   </div>
 
-  <div class="area-meta-box reveal">
-    <div>
-      <div class="meta-col-label">Parceiros institucionais</div>
-      <div class="meta-col-val"><strong>FGVces</strong>, <strong>Coiab</strong> (Coordenação das Organizações Indígenas da Amazônia Brasileira) e <strong>FGV Agro</strong></div>
-    </div>
-    <div>
-      <div class="meta-col-label">Linhas metodológicas conectadas</div>
-      <div class="meta-pills">
-        <a class="meta-pill" href="#linhas">Aprendizado com baixa rotulagem</a>
-        <a class="meta-pill" href="#linhas">Modelagem de dados textuais</a>
-        <a class="meta-pill" href="#linhas">Open-set e OOD</a>
-        <a class="meta-pill" href="#linhas">Adaptação de domínio</a>
-      </div>
-    </div>
-  </div>
 </section>
 
 <section id="clima" class="rsec">
@@ -846,7 +900,6 @@ toc: false
   <div class="rsec-head reveal">
     <div class="rsec-num">03</div>
     <div>
-      <span class="rsec-kicker">Área de aplicação</span>
       <h2>Clima</h2>
     </div>
   </div>
@@ -866,9 +919,7 @@ toc: false
     <div class="iviz-card reveal" data-ceri-explorer>
       <div class="iviz-top">
         <div>
-          <span class="iviz-kicker">Figura interativa 1 · Escopo modelado pelo laboratório junto ao FGV CERI</span>
-          <h4 class="iviz-title">Cinco ameaças climáticas em três cenários de emissão sobre o conjunto de 6 modelos globais</h4>
-          <p class="iviz-sub">Selecione uma das cinco ameaças modeladas pelo laboratório e alterne entre o histórico observacional e os cenários de emissão para visualizar a estrutura do painel de exposição por trecho.</p>
+          <h4 class="iviz-title">Cinco ameaças climáticas em três cenários de emissão, por trecho de rede (FGV CERI)</h4>
         </div>
         <div class="iviz-controls">
           <button type="button" class="iviz-btn" data-ceri-scen="hist" aria-pressed="false">Base observacional</button>
@@ -911,8 +962,8 @@ toc: false
           </button>
         </div>
 
-        <div class="iviz-grid-2">
-          <div>
+        <div class="iviz-stack">
+          <div class="iviz-stage">
             <div style="font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gaia-muted); margin-bottom: 0.5rem;">Representação esquemática de indicador relativo por trecho no painel (0 a 100)</div>
             <div class="ceri-bars-stage">
               <div class="grid-seg-col"><span class="grid-seg-val">39/100</span><div class="grid-seg-track"><div class="grid-seg-bar" data-level="low" style="height:39%"></div></div><span class="grid-seg-label">Trecho 1</span></div>
@@ -924,7 +975,7 @@ toc: false
             </div>
           </div>
 
-          <div>
+          <div class="iviz-below">
             <div class="parcel-inspector" style="margin-bottom:0;">
               <div class="parcel-inspector-title" data-ceri-title style="margin-bottom:0.35rem;">1. Ventos extremos</div>
               <div style="font-size:0.82rem; font-weight:600; color:var(--gaia-accent); margin-bottom:0.55rem;" data-ceri-indicator>Frente modelada pelo Green AI Lab · Conjunto de 6 modelos globais em 3 cenários</div>
@@ -970,19 +1021,15 @@ toc: false
       </div>
     </div>
   </div>
-
-  <div class="area-meta-box reveal">
-    <div>
-      <div class="meta-col-label">Parceiros institucionais</div>
-      <div class="meta-col-val"><strong>FGV CERI</strong> (Centro de Estudos em Regulação e Infraestrutura) e <strong>FGV Agro</strong></div>
+  <div class="proj-block reveal">
+    <div class="proj-header">
+      <h3>Regimes climáticos aprendidos sem rótulos e teleconexões com o ENOS</h3>
     </div>
-    <div>
-      <div class="meta-col-label">Linhas metodológicas conectadas</div>
-      <div class="meta-pills">
-        <a class="meta-pill" href="#linhas">Modelagem climática</a>
-        <a class="meta-pill" href="#linhas">Interação de sistemas geoespaciais</a>
-        <a class="meta-pill" href="#linhas">Redes de modelos especialistas geolocalizados</a>
-      </div>
+    <div class="proj-prose">
+      <p>Variáveis climáticas brutas são ruidosas e se relacionam de forma não linear, o que dificulta extrair delas regimes recorrentes. Em vez de prever ponto a ponto, o laboratório discretiza campos diários de temperatura mínima e máxima em um conjunto finito de <strong>estados climáticos</strong>, aprendidos sem nenhum rótulo. O modelo é uma <strong>Rede Siamesa Mascarada</strong> (MSN) com um Vision Transformer como base, treinada sobre o Cerrado brasileiro: cada dia recebe um estado, e a sequência de estados vira uma representação compacta e interpretável da variabilidade regional.</p>
+      <p>Os estados são consistentes entre si, permitem amostrar cenários específicos e carregam uma <strong>associação estatística com o El Niño</strong>, embora nenhum índice do fenômeno tenha entrado no treinamento. A análise de probabilidade com defasagem de 12 meses para cada lado do Índice Niño Oceânico separa regimes precursores, mais frequentes antes do pico do ENOS, de regimes de resposta, que só aparecem depois dele. A teleconexão emerge do dado.</p>
+      <p>A linha começou em 2023 com o método SwAV sobre temperatura e precipitação em uma região que cobre o Sul, o Sudeste e o Centro-Oeste do Brasil e partes do Paraguai e da Argentina, onde os grupos mais extremos ganham frequência ao longo da série, evidência local do aquecimento. Os estados discretos alimentam as duas frentes acima: a modelagem de ameaças extremas e o acoplamento com o calendário agrícola.</p>
+      <p><strong>Entregas:</strong> <a href="../publications/articles/deep-clustering-for-climate-analyzing-teleconnections/deep-clustering-for-climate-analyzing-teleconnections.html">preprint no arXiv</a> (2026), <a href="../publications/theses/agrupamento-espacial-de-clima-por-meio-de-aprendizado/agrupamento-espacial-de-clima-por-meio-de-aprendizado.html">dissertação de mestrado</a> (2026), <a href="../publications/theses/agrupamento-de-dados-meteorologicos-por-meio-de-aprendizado/agrupamento-de-dados-meteorologicos-por-meio-de-aprendizado.html">TCC</a> (2023) e <a href="https://github.com/Green-AI-Lab-GAIA/climate-clustering-for-ENSO-teleconnections">código aberto</a>.</p>
     </div>
   </div>
 </section>
@@ -992,7 +1039,6 @@ toc: false
   <div class="rsec-head reveal">
     <div class="rsec-num">04</div>
     <div>
-      <span class="rsec-kicker">Área de aplicação</span>
       <h2>Cidades</h2>
     </div>
   </div>
@@ -1007,19 +1053,6 @@ toc: false
       <p>Na área de cidades, o laboratório investiga a caracterização de assentamentos urbanos e a leitura socioeconômica por imagem orbital, desenvolvendo métodos de <strong>super-resolução diretamente no espaço de embedding</strong> combinados a técnicas de <strong>adaptação de domínio</strong> para transferir representações aprendidas entre contextos urbanos distintos.</p>
     </div>
 
-    <div class="area-meta-box reveal">
-      <div>
-        <div class="meta-col-label">Frente de pesquisa</div>
-        <div class="meta-col-val"><strong>Super-resolução no espaço de embedding</strong> e leitura socioeconômica por imagem</div>
-      </div>
-      <div>
-        <div class="meta-col-label">Linhas metodológicas conectadas</div>
-        <div class="meta-pills">
-          <a class="meta-pill" href="#linhas">Adaptação de domínio</a>
-          <a class="meta-pill" href="#linhas">Aprendizado com baixa rotulagem</a>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1028,7 +1061,6 @@ toc: false
   <div class="rsec-head reveal">
     <div class="rsec-num">05</div>
     <div>
-      <span class="rsec-kicker">Modelagem de dados textuais</span>
       <h2>Documentos técnicos e institucionais</h2>
     </div>
   </div>
@@ -1055,18 +1087,6 @@ toc: false
     </div>
   </div>
 
-  <div class="area-meta-box reveal">
-    <div>
-      <div class="meta-col-label">Parceiros institucionais</div>
-      <div class="meta-col-val"><strong>FGV PMO</strong> (em andamento) e <strong>FGV Projetos</strong> (concluído)</div>
-    </div>
-    <div>
-      <div class="meta-col-label">Linha metodológica central</div>
-      <div class="meta-pills">
-        <a class="meta-pill" href="#linhas">Modelagem de dados textuais</a>
-      </div>
-    </div>
-  </div>
 </section>
 
 <section id="linhas" class="rsec">
@@ -1074,7 +1094,6 @@ toc: false
   <div class="rsec-head reveal">
     <div class="rsec-num">06</div>
     <div>
-      <span class="rsec-kicker">Espinha dorsal da pesquisa</span>
       <h2>Linhas metodológicas em quatro camadas</h2>
     </div>
   </div>

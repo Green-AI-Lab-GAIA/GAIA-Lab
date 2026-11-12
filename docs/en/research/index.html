@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="icon" type="image/png" href="../icon/favicon-light.png">
 
 
-<link rel="stylesheet" href="../styles.css?v=0574c332">
+<link rel="stylesheet" href="../styles.css?v=9cb4092e">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -330,18 +330,118 @@ ul.task-list li input[type="checkbox"] {
 <div class="page-main">
 
 <div class="research-intro reveal">
-  <span class="rsec-kicker">Research structure</span>
   <h2 class="anchored">Five application areas and eight methodological lines</h2>
-  <div class="research-intro-grid">
-    <div class="research-intro-prose">
-      <p>The laboratory's research is organized around two complementary axes: <strong>five application areas</strong> (Agriculture, Forests, Climate, Cities, and Technical and institutional documents) and <strong>eight methodological research lines</strong> addressing challenges such as learning with limited labels, domain adaptation, uncertainty modeling, textual data, and networks of specialist models.</p>
-      <p>Members of the group work across these two axes in three complementary ways: some researchers focus exclusively on developing foundational methodology; others develop the method and apply it directly within an application area; and in many cases, a methodological advance created by one researcher is adopted by a colleague and carried into the application areas and partnered projects.</p>
-    </div>
-    <div class="research-axis-note">
-      <strong>How to read this page</strong>
-      Each application area presents our results step by step: the prose describes a stage and the interactive figure right below lets you explore a streamlined version of the data produced at that stage. At the end of each area, we list the institutional partner and the connected methodological lines.
-    </div>
+  <div class="research-intro-prose">
+    <p>The laboratory's research is organized around two complementary axes: <strong>five application areas</strong> (Agriculture, Forests, Climate, Cities, and Technical and institutional documents) and <strong>eight methodological research lines</strong> addressing challenges such as learning with limited labels, domain adaptation, uncertainty modeling, textual data, and networks of specialist models.</p>
+    <p>Members of the group work across these two axes in three complementary ways: some researchers focus exclusively on developing foundational methodology; others develop the method and apply it directly within an application area; and in many cases, a methodological advance created by one researcher is adopted by a colleague and carried into the application areas and partnered projects.</p>
   </div>
+<div class="matrix-wrap reveal">
+  <div class="matrix-head">
+    <span class="rsec-kicker">Map of connections</span>
+    <p class="matrix-lead">Each dot links a methodological line to an area where it is applied. Hover over a line or an area to see its connections and the partners involved.</p>
+  </div>
+  <div class="matrix" role="table" aria-label="Methodological lines by application area">
+    <div class="matrix-corner" role="columnheader"><span>Lines</span><span>Areas</span></div>
+    <a class="matrix-col" role="columnheader" data-c="agricultura" href="#agriculture">Agriculture</a>
+    <a class="matrix-col" role="columnheader" data-c="floresta" href="#forests">Forests</a>
+    <a class="matrix-col" role="columnheader" data-c="clima" href="#climate">Climate</a>
+    <a class="matrix-col" role="columnheader" data-c="cidades" href="#cities">Cities</a>
+    <a class="matrix-col" role="columnheader" data-c="documentos" href="#documents">Documents</a>
+    <div class="matrix-group" role="rowheader">Building blocks</div>
+    <a class="matrix-row" role="rowheader" data-r="rotulagem" data-cols="agricultura cidades floresta" href="#lines">Learning with limited labels</a>
+    <span class="matrix-cell is-link" role="cell" data-r="rotulagem" data-c="agricultura"></span>
+    <span class="matrix-cell is-link" role="cell" data-r="rotulagem" data-c="floresta"></span>
+    <span class="matrix-cell" role="cell" data-r="rotulagem" data-c="clima"></span>
+    <span class="matrix-cell is-link" role="cell" data-r="rotulagem" data-c="cidades"></span>
+    <span class="matrix-cell" role="cell" data-r="rotulagem" data-c="documentos"></span>
+    <a class="matrix-row" role="rowheader" data-r="dominio" data-cols="agricultura cidades floresta" href="#lines">Domain adaptation</a>
+    <span class="matrix-cell is-link" role="cell" data-r="dominio" data-c="agricultura"></span>
+    <span class="matrix-cell is-link" role="cell" data-r="dominio" data-c="floresta"></span>
+    <span class="matrix-cell" role="cell" data-r="dominio" data-c="clima"></span>
+    <span class="matrix-cell is-link" role="cell" data-r="dominio" data-c="cidades"></span>
+    <span class="matrix-cell" role="cell" data-r="dominio" data-c="documentos"></span>
+    <a class="matrix-row" role="rowheader" data-r="openset" data-cols="floresta" href="#lines">Open-set and OOD</a>
+    <span class="matrix-cell" role="cell" data-r="openset" data-c="agricultura"></span>
+    <span class="matrix-cell is-link" role="cell" data-r="openset" data-c="floresta"></span>
+    <span class="matrix-cell" role="cell" data-r="openset" data-c="clima"></span>
+    <span class="matrix-cell" role="cell" data-r="openset" data-c="cidades"></span>
+    <span class="matrix-cell" role="cell" data-r="openset" data-c="documentos"></span>
+    <a class="matrix-row" role="rowheader" data-r="incerteza" data-cols="agricultura" href="#lines">Uncertainty modeling</a>
+    <span class="matrix-cell is-link" role="cell" data-r="incerteza" data-c="agricultura"></span>
+    <span class="matrix-cell" role="cell" data-r="incerteza" data-c="floresta"></span>
+    <span class="matrix-cell" role="cell" data-r="incerteza" data-c="clima"></span>
+    <span class="matrix-cell" role="cell" data-r="incerteza" data-c="cidades"></span>
+    <span class="matrix-cell" role="cell" data-r="incerteza" data-c="documentos"></span>
+    <a class="matrix-row" role="rowheader" data-r="textual" data-cols="documentos floresta" href="#lines">Textual data modeling</a>
+    <span class="matrix-cell" role="cell" data-r="textual" data-c="agricultura"></span>
+    <span class="matrix-cell is-link" role="cell" data-r="textual" data-c="floresta"></span>
+    <span class="matrix-cell" role="cell" data-r="textual" data-c="clima"></span>
+    <span class="matrix-cell" role="cell" data-r="textual" data-c="cidades"></span>
+    <span class="matrix-cell is-link" role="cell" data-r="textual" data-c="documentos"></span>
+    <div class="matrix-group" role="rowheader">Substrate</div>
+    <a class="matrix-row" role="rowheader" data-r="redes" data-cols="clima" href="#lines">Networks of geolocated specialist models</a>
+    <span class="matrix-cell" role="cell" data-r="redes" data-c="agricultura"></span>
+    <span class="matrix-cell" role="cell" data-r="redes" data-c="floresta"></span>
+    <span class="matrix-cell is-link" role="cell" data-r="redes" data-c="clima"></span>
+    <span class="matrix-cell" role="cell" data-r="redes" data-c="cidades"></span>
+    <span class="matrix-cell" role="cell" data-r="redes" data-c="documentos"></span>
+    <div class="matrix-group" role="rowheader">Coupled systems</div>
+    <a class="matrix-row" role="rowheader" data-r="sistemas" data-cols="agricultura clima" href="#lines">Geospatial systems interaction</a>
+    <span class="matrix-cell is-link" role="cell" data-r="sistemas" data-c="agricultura"></span>
+    <span class="matrix-cell" role="cell" data-r="sistemas" data-c="floresta"></span>
+    <span class="matrix-cell is-link" role="cell" data-r="sistemas" data-c="clima"></span>
+    <span class="matrix-cell" role="cell" data-r="sistemas" data-c="cidades"></span>
+    <span class="matrix-cell" role="cell" data-r="sistemas" data-c="documentos"></span>
+    <a class="matrix-row" role="rowheader" data-r="climatica" data-cols="clima" href="#lines">Climate modeling</a>
+    <span class="matrix-cell" role="cell" data-r="climatica" data-c="agricultura"></span>
+    <span class="matrix-cell" role="cell" data-r="climatica" data-c="floresta"></span>
+    <span class="matrix-cell is-link" role="cell" data-r="climatica" data-c="clima"></span>
+    <span class="matrix-cell" role="cell" data-r="climatica" data-c="cidades"></span>
+    <span class="matrix-cell" role="cell" data-r="climatica" data-c="documentos"></span>
+    <div class="matrix-group matrix-group-partners" role="rowheader">Partners</div>
+    <div class="matrix-row matrix-row-partners" role="rowheader">Institutions by area</div>
+    <div class="matrix-partners" role="cell" data-c="agricultura"><span>FGV Agro</span></div>
+    <div class="matrix-partners" role="cell" data-c="floresta"><span>FGVces</span><span>Coiab</span><span>FGV Agro</span></div>
+    <div class="matrix-partners" role="cell" data-c="clima"><span>FGV CERI</span><span>FGV Agro</span></div>
+    <div class="matrix-partners" role="cell" data-c="cidades"><em>—</em></div>
+    <div class="matrix-partners" role="cell" data-c="documentos"><span>FGV PMO</span><span>FGV Projetos</span></div>
+  </div>
+</div>
+<script>
+  // Map of connections: highlights the hovered line or area and whatever links to it.
+  (function () {
+    var m = document.querySelector(".matrix");
+    if (!m) return;
+    var todos = m.querySelectorAll("[data-r], [data-c]");
+    function limpar() {
+      m.classList.remove("is-hover");
+      for (var i = 0; i < todos.length; i++) todos[i].classList.remove("is-on");
+    }
+    function marcar(sel) {
+      var el = m.querySelectorAll(sel);
+      for (var i = 0; i < el.length; i++) el[i].classList.add("is-on");
+    }
+    m.addEventListener("mouseover", function (e) {
+      var row = e.target.closest(".matrix-row[data-r]");
+      var col = e.target.closest(".matrix-col[data-c]");
+      var cell = e.target.closest(".matrix-cell.is-link");
+      if (cell) { row = m.querySelector('.matrix-row[data-r="' + cell.dataset.r + '"]'); }
+      if (!row && !col) return;
+      limpar();
+      m.classList.add("is-hover");
+      if (row) {
+        marcar('[data-r="' + row.dataset.r + '"]');
+        var cols = row.dataset.cols.split(" ");
+        for (var i = 0; i < cols.length; i++) if (cols[i]) marcar('.matrix-col[data-c="' + cols[i] + '"], .matrix-partners[data-c="' + cols[i] + '"]');
+      } else {
+        marcar('[data-c="' + col.dataset.c + '"]');
+        var cells = m.querySelectorAll('.matrix-cell.is-link[data-c="' + col.dataset.c + '"]');
+        for (var j = 0; j < cells.length; j++) marcar('.matrix-row[data-r="' + cells[j].dataset.r + '"]');
+      }
+    });
+    m.addEventListener("mouseleave", limpar);
+  })();
+</script>
 </div>
 
 <section id="agricultura" class="rsec">
@@ -349,7 +449,6 @@ ul.task-list li input[type="checkbox"] {
   <div class="rsec-head reveal">
     <div class="rsec-num">01</div>
     <div>
-      <span class="rsec-kicker">Application area</span>
       <h2 class="anchored">Agriculture</h2>
     </div>
   </div>
@@ -358,7 +457,7 @@ ul.task-list li input[type="checkbox"] {
 
   <div class="proj-block reveal">
     <div class="proj-header">
-      <h3 class="anchored">Stage 1 · Plot delineation and crop classification</h3>
+      <h3 class="anchored">Stage 1: Plot delineation and crop classification</h3>
     </div>
     <div class="proj-prose">
       <p>The agriculture area is explored in the <strong>Territorial AgroIntelligence</strong> project in partnership with <strong>FGV Agro</strong>, in which we build territorial intelligence across large agricultural portfolios to answer what is planted, where it is located, and which plots behave outside expected patterns. The first stage of the workflow delineates productive plot boundaries and identifies the planted crop in each subarea.</p>
@@ -388,9 +487,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="iviz-card reveal" data-cv-agro-viewer="" data-lang="en" data-json="images/agro/cv-plots-2021.json">
       <div class="iviz-top">
         <div>
-          <span class="iviz-kicker">Interactive figure 1 · Campo Verde (MT) satellite viewer</span>
-          <h4 class="iviz-title anchored">Real Sentinel-2 imagery with zoom, pan, and layers for plot segmentation, crop, NDVI, and canopy</h4>
-          <p class="iviz-sub">Drag the map, scroll to zoom, and click any real plot to inspect its area, classification, and automatically update its spectral trajectory in Stage 2 right below.</p>
+          <h4 class="iviz-title anchored">Sentinel-2 image of Campo Verde (MT) with plots, crop and forest canopy</h4>
         </div>
         <div class="iviz-controls">
           <button type="button" class="iviz-btn is-active" data-cv-colormode="gaia" aria-pressed="true">GAIA model (SAR + optical)</button>
@@ -428,8 +525,8 @@ ul.task-list li input[type="checkbox"] {
           </div>
         </div>
 
-        <div class="iviz-grid-2">
-          <div>
+        <div class="iviz-stack">
+          <div class="iviz-stage">
             <div class="cv-sat-viewport" role="region" aria-label="Interactive satellite viewer of Campo Verde with zoom and pan">
               <div class="cv-sat-stage">
                 <img data-cv-base-img="" src="images/agro/cv-rgb-2021q1.webp" alt="Real Sentinel-2 RGB image of Campo Verde">
@@ -458,7 +555,7 @@ ul.task-list li input[type="checkbox"] {
             </div>
           </div>
 
-          <div>
+          <div class="iviz-below">
             <div class="parcel-inspector">
               <div class="parcel-inspector-head">
                 <span class="parcel-inspector-title" data-parcel-title="">Plot #3622 (401.7 ha · Campo Verde, MT)</span>
@@ -519,7 +616,7 @@ ul.task-list li input[type="checkbox"] {
 
   <div class="proj-block reveal">
     <div class="proj-header">
-      <h3 class="anchored">Stage 2 · Vegetation index time series and cloud filtering</h3>
+      <h3 class="anchored">Stage 2: Vegetation index time series and cloud filtering</h3>
     </div>
     <div class="proj-prose">
       <p>Once the plot polygons are delineated, the second stage reconstructs the spectral trajectory of each area across crop seasons. The pipeline extracts <strong>Sentinel-2</strong> surface reflectances over each plot polygon from the <strong>Brazil Data Cube (BDC)</strong> and computes <strong>17 complementary vegetation indices</strong> (including NDVI, EVI, EVI2, NDWI, NDRE, SAVI, MSAVI, and GNDVI), capturing photosynthetic vigor, canopy water content, and red-edge response. The consolidated database totals <strong>499.7k plot-level series</strong> and <strong>11.5 million records</strong>.</p>
@@ -529,9 +626,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="iviz-card reveal" data-cv-iv-explorer="" data-lang="en">
       <div class="iviz-top">
         <div>
-          <span class="iviz-kicker">Interactive figure 2 · Real spectral series of the selected plot (Sentinel-2 / BDC)</span>
-          <h4 class="iviz-title anchored">Seasonality, residual cloud removal, and vigor curve reconstruction</h4>
-          <p class="iviz-sub">The chart below plots the real observations of the plot clicked on the Campo Verde map above. Switch across spectral indices or hover over any satellite pass.</p>
+          <h4 class="iviz-title anchored">Spectral series of the selected plot (Sentinel-2, Brazil Data Cube)</h4>
         </div>
         <div class="iviz-controls">
           <button type="button" class="iviz-btn is-active" data-iv-index="NDVI" aria-pressed="true">NDVI (Vigor)</button>
@@ -560,13 +655,13 @@ ul.task-list li input[type="checkbox"] {
           </div>
         </div>
 
-        <div class="iviz-grid-2">
-          <div>
+        <div class="iviz-stack">
+          <div class="iviz-stage">
             <div class="cv-iv-svg-wrap">
-              <svg viewbox="0 0 680 225" style="width:100%; height:auto; display:block;" role="img" aria-label="Interactive vegetation index time series for the selected plot in Campo Verde">
-                <line x1="42" y1="18" x2="656" y2="18" stroke="currentColor" stroke-opacity="0.1" stroke-dasharray="3 3"></line>
-                <line x1="42" y1="108" x2="656" y2="108" stroke="currentColor" stroke-opacity="0.12" stroke-dasharray="3 3"></line>
-                <line x1="42" y1="198" x2="656" y2="198" stroke="currentColor" stroke-opacity="0.24"></line>
+              <svg viewbox="0 0 1000 225" style="width:100%; height:auto; display:block;" role="img" aria-label="Interactive vegetation index time series for the selected plot in Campo Verde">
+                <line x1="42" y1="18" x2="976" y2="18" stroke="currentColor" stroke-opacity="0.1" stroke-dasharray="3 3"></line>
+                <line x1="42" y1="108" x2="976" y2="108" stroke="currentColor" stroke-opacity="0.12" stroke-dasharray="3 3"></line>
+                <line x1="42" y1="198" x2="976" y2="198" stroke="currentColor" stroke-opacity="0.24"></line>
                 <text x="8" y="22" font-size="10" fill="currentColor" opacity="0.65" data-iv-ylabel="">1.0</text>
                 <text x="8" y="112" font-size="10" fill="currentColor" opacity="0.65" data-iv-ylabel="">0.5</text>
                 <text x="8" y="202" font-size="10" fill="currentColor" opacity="0.65" data-iv-ylabel="">0.0</text>
@@ -578,12 +673,12 @@ ul.task-list li input[type="checkbox"] {
                 <g data-iv-svg-drops=""></g>
                 <g data-iv-svg-points=""></g>
 
-                <text x="48" y="216" font-size="10" fill="currentColor" opacity="0.7">Jan</text>
-                <text x="155" y="216" font-size="10" fill="currentColor" opacity="0.7">Mar</text>
-                <text x="265" y="216" font-size="10" fill="currentColor" opacity="0.7">May</text>
-                <text x="375" y="216" font-size="10" fill="currentColor" opacity="0.7">Jul (Dry)</text>
-                <text x="495" y="216" font-size="10" fill="currentColor" opacity="0.7">Sep</text>
-                <text x="605" y="216" font-size="10" fill="currentColor" opacity="0.7">Nov/Dec</text>
+                <text x="51.127" y="216" font-size="10" fill="currentColor" opacity="0.7">Jan</text>
+                <text x="213.893" y="216" font-size="10" fill="currentColor" opacity="0.7">Mar</text>
+                <text x="381.221" y="216" font-size="10" fill="currentColor" opacity="0.7">May</text>
+                <text x="548.55" y="216" font-size="10" fill="currentColor" opacity="0.7">Jul (Dry)</text>
+                <text x="731.091" y="216" font-size="10" fill="currentColor" opacity="0.7">Sep</text>
+                <text x="898.42" y="216" font-size="10" fill="currentColor" opacity="0.7">Nov/Dec</text>
               </svg>
             </div>
             <div class="parcel-legend" style="margin-top:0.5rem;">
@@ -594,7 +689,7 @@ ul.task-list li input[type="checkbox"] {
             </div>
           </div>
 
-          <div>
+          <div class="iviz-below">
             <div class="parcel-inspector" style="margin-bottom:0.75rem;">
               <div class="parcel-inspector-head">
                 <span class="parcel-inspector-title">Satellite pass inspection</span>
@@ -629,7 +724,7 @@ ul.task-list li input[type="checkbox"] {
 
   <div class="proj-block reveal">
     <div class="proj-header">
-      <h3 class="anchored">Stage 3 · Detecting start and end of harvest season (SOS and EOS), ZARC window, and neighborhood risk</h3>
+      <h3 class="anchored">Stage 3: Detecting start and end of harvest season (SOS and EOS), ZARC window, and neighborhood risk</h3>
     </div>
     <div class="proj-prose">
       <p>From each plot's continuous vigor curve, the third stage automatically detects the phenological milestones of each crop cycle: the <strong>start of season (SOS)</strong> at post-planting emergence, the <strong>peak of season (POS)</strong> at maximum canopy closure, and the <strong>end of season (EOS)</strong> at senescence and harvest, separating the first and second crops of the agricultural year. Cross-referencing satellite-detected planting dates against the official planting window of <strong>ZARC (Agricultural Climate Risk Zoning)</strong> enables municipal-scale auditing of calendar compliance: in Campo Verde (MT), <strong>65.5% of soybean plots</strong> start their cycle within the official ZARC window (ranging between <strong>72.7% and 84.5%</strong> across other evaluated municipalities), whereas second-season crops (cotton at 7.6% and second-crop corn at 3.3%) reflect their direct dependence on when the first crop is harvested.</p>
@@ -643,9 +738,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="iviz-card reveal" data-pheno-explorer="">
       <div class="iviz-top">
         <div>
-          <span class="iviz-kicker">Interactive figure 3 · Phenology (SOS / POS / EOS), ZARC, and neighborhood risk</span>
-          <h4 class="iviz-title anchored">Crop calendar detection and separation between operational and systemic risk</h4>
-          <p class="iviz-sub">Switch among the three modes below to inspect the start (SOS), peak (POS), and end of season (EOS) milestones and compare the plot curve against its neighborhood.</p>
+          <h4 class="iviz-title anchored">Plot crop calendar (SOS, POS and EOS) and comparison with its neighbourhood</h4>
         </div>
         <div class="iviz-controls">
           <button type="button" class="iviz-btn is-active" data-pheno-mode="safra" aria-pressed="true" data-sos-label="Detected SOS: Oct 18 (1st crop) · Feb 22 (2nd crop)" data-pos-label="Detected POS: Dec 14 (soy) · Apr 28 (2nd-crop corn)" data-eos-label="Detected EOS: Feb 08 (1st harvest) · Jun 19 (2nd harvest)" data-badge-text="Mode 1: Start and end of season detection (normal cycle)" data-diag-text="The reconstructed curve isolates the two successive cycles in the same agricultural year (1st-crop soybean and 2nd-crop corn), automatically marking cycle start (SOS), vegetative peak (POS), and harvest (EOS). First-crop planting falls inside the official ZARC window.">
@@ -661,60 +754,60 @@ ul.task-list li input[type="checkbox"] {
       </div>
 
       <div class="iviz-body">
-        <div class="iviz-grid-2">
-          <div>
+        <div class="iviz-stack">
+          <div class="iviz-stage">
             <div style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gaia-muted); margin-bottom: 0.4rem;">Phenological curve (1st and 2nd crops), SOS/POS/EOS markers, and neighborhood P10 to P90 band</div>
-            <svg viewbox="0 0 380 160" style="width:100%; height:auto; display:block;" role="img" aria-label="Phenological curve showing SOS, POS, EOS detection and neighborhood comparison">
-              <rect x="48" y="14" width="38" height="114" fill="rgba(54, 89, 2, 0.08)" stroke="rgba(54, 89, 2, 0.28)" stroke-dasharray="3 2"></rect>
-              <text x="67" y="25" text-anchor="middle" font-size="8" font-weight="700" fill="var(--gaia-accent)">ZARC Window</text>
-              <line x1="30" y1="128" x2="362" y2="128" stroke="currentColor" stroke-opacity="0.22"></line>
-              <line x1="30" y1="22" x2="362" y2="22" stroke="currentColor" stroke-opacity="0.1" stroke-dasharray="3 3"></line>
+            <svg viewbox="0 0 760 160" style="width:100%; height:auto; display:block;" role="img" aria-label="Phenological curve showing SOS, POS, EOS detection and neighborhood comparison">
+              <rect x="96" y="14" width="76" height="114" fill="rgba(54, 89, 2, 0.08)" stroke="rgba(54, 89, 2, 0.28)" stroke-dasharray="3 2"></rect>
+              <text x="134" y="25" text-anchor="middle" font-size="8" font-weight="700" fill="var(--gaia-accent)">ZARC Window</text>
+              <line x1="60" y1="128" x2="724" y2="128" stroke="currentColor" stroke-opacity="0.22"></line>
+              <line x1="60" y1="22" x2="724" y2="22" stroke="currentColor" stroke-opacity="0.1" stroke-dasharray="3 3"></line>
 
-              <path class="pheno-env-area" d="M 30,114 C 52,112 68,96 82,70 C 98,34 118,18 140,16 C 162,18 180,60 196,96 C 206,104 216,100 228,80 C 246,44 268,24 290,22 C 312,24 330,68 346,100 L 358,110 L 358,122 L 346,116 C 330,86 312,42 290,40 C 268,42 246,62 228,96 C 216,114 206,118 196,112 C 180,76 162,34 140,32 C 118,34 98,52 82,86 C 68,108 52,120 30,122 Z" fill="rgba(79, 138, 34, 0.20)"></path>
-              <path class="pheno-env-mean" d="M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,88 C 246,52 268,32 290,30 C 312,32 330,76 346,108 L 358,116" fill="none" stroke="#4f8a22" stroke-width="1.8" stroke-dasharray="4 3"></path>
-              <path class="pheno-target-line" d="M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,88 C 246,52 268,32 290,30 C 312,32 330,76 346,108 L 358,116" fill="none" stroke="#365902" stroke-width="3"></path>
+              <path class="pheno-env-area" d="M 60,114 C 104,112 136,96 164,70 C 196,34 236,18 280,16 C 324,18 360,60 392,96 C 412,104 432,100 456,80 C 492,44 536,24 580,22 C 624,24 660,68 692,100 L 716,110 L 716,122 L 692,116 C 660,86 624,42 580,40 C 536,42 492,62 456,96 C 432,114 412,118 392,112 C 360,76 324,34 280,32 C 236,34 196,52 164,86 C 136,108 104,120 60,122 Z" fill="rgba(79, 138, 34, 0.20)"></path>
+              <path class="pheno-env-mean" d="M 60,118 C 104,116 136,102 164,78 C 196,42 236,24 280,22 C 324,24 360,68 392,104 C 412,112 432,108 456,88 C 492,52 536,32 580,30 C 624,32 660,76 692,108 L 716,116" fill="none" stroke="#4f8a22" stroke-width="1.8" stroke-dasharray="4 3"></path>
+              <path class="pheno-target-line" d="M 60,118 C 104,116 136,102 164,78 C 196,42 236,24 280,22 C 324,24 360,68 392,104 C 412,112 432,108 456,88 C 492,52 536,32 580,30 C 624,32 660,76 692,108 L 716,116" fill="none" stroke="#365902" stroke-width="3"></path>
 
               <g class="pheno-markers-group">
-                <circle cx="64" cy="105" r="4.2" fill="#2b6cb0" stroke="#fff" stroke-width="1.4"></circle>
-                <text x="64" y="96" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2b6cb0">SOS 1</text>
-                <circle cx="140" cy="22" r="4.2" fill="#365902" stroke="#fff" stroke-width="1.4"></circle>
-                <text x="140" y="14" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--gaia-accent)">POS 1</text>
-                <circle cx="196" cy="104" r="4.2" fill="#d99b26" stroke="#fff" stroke-width="1.4"></circle>
-                <text x="196" y="121" text-anchor="middle" font-size="8.5" font-weight="700" fill="#b7791f">EOS 1</text>
+                <circle cx="128" cy="105" r="4.2" fill="#2b6cb0" stroke="#fff" stroke-width="1.4"></circle>
+                <text x="128" y="96" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2b6cb0">SOS 1</text>
+                <circle cx="280" cy="22" r="4.2" fill="#365902" stroke="#fff" stroke-width="1.4"></circle>
+                <text x="280" y="14" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--gaia-accent)">POS 1</text>
+                <circle cx="392" cy="104" r="4.2" fill="#d99b26" stroke="#fff" stroke-width="1.4"></circle>
+                <text x="392" y="121" text-anchor="middle" font-size="8.5" font-weight="700" fill="#b7791f">EOS 1</text>
 
-                <circle cx="222" cy="96" r="4.2" fill="#2b6cb0" stroke="#fff" stroke-width="1.4"></circle>
-                <text x="222" y="85" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2b6cb0">SOS 2</text>
-                <circle cx="290" cy="30" r="4.2" fill="#365902" stroke="#fff" stroke-width="1.4"></circle>
-                <text x="290" y="21" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--gaia-accent)">POS 2</text>
-                <circle cx="346" cy="108" r="4.2" fill="#d99b26" stroke="#fff" stroke-width="1.4"></circle>
-                <text x="346" y="123" text-anchor="middle" font-size="8.5" font-weight="700" fill="#b7791f">EOS 2</text>
+                <circle cx="444" cy="96" r="4.2" fill="#2b6cb0" stroke="#fff" stroke-width="1.4"></circle>
+                <text x="444" y="85" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2b6cb0">SOS 2</text>
+                <circle cx="580" cy="30" r="4.2" fill="#365902" stroke="#fff" stroke-width="1.4"></circle>
+                <text x="580" y="21" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--gaia-accent)">POS 2</text>
+                <circle cx="692" cy="108" r="4.2" fill="#d99b26" stroke="#fff" stroke-width="1.4"></circle>
+                <text x="692" y="123" text-anchor="middle" font-size="8.5" font-weight="700" fill="#b7791f">EOS 2</text>
               </g>
 
-              <text x="64" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Oct (Planting)</text>
-              <text x="140" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Dec (1st crop)</text>
-              <text x="208" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Feb (Harvest/2nd)</text>
-              <text x="290" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Apr (2nd crop)</text>
-              <text x="348" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Jun</text>
+              <text x="128" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Oct (Planting)</text>
+              <text x="280" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Dec (1st crop)</text>
+              <text x="416" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Feb (Harvest/2nd)</text>
+              <text x="580" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Apr (2nd crop)</text>
+              <text x="696" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Jun</text>
             </svg>
 
-            <div class="parcel-compare-row" style="grid-template-columns: 1fr; gap: 0.35rem; margin-top: 0.6rem;">
-              <div class="parcel-compare-cell" style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="parcel-compare-row" style="grid-template-columns: repeat(3, 1fr); margin-top: 0.6rem;">
+              <div class="parcel-compare-cell">
                 <span>Start of season (post-planting emergence)</span>
                 <strong data-pheno-sos="" style="font-size:0.8rem;">Detected SOS: Oct 18 (1st crop) · Feb 22 (2nd crop)</strong>
               </div>
-              <div class="parcel-compare-cell" style="display:flex; justify-content:space-between; align-items:center;">
+              <div class="parcel-compare-cell">
                 <span>Peak of season (maximum canopy vigor)</span>
                 <strong data-pheno-pos="" style="font-size:0.8rem;">Detected POS: Dec 14 (soy) · Apr 28 (2nd-crop corn)</strong>
               </div>
-              <div class="parcel-compare-cell" style="display:flex; justify-content:space-between; align-items:center;">
+              <div class="parcel-compare-cell">
                 <span>End of season (senescence and harvest)</span>
                 <strong data-pheno-eos="" style="font-size:0.8rem;">Detected EOS: Feb 08 (1st harvest) · Jun 19 (2nd harvest)</strong>
               </div>
             </div>
           </div>
 
-          <div>
-            <div style="display:grid; grid-template-columns: 0.95fr 1.05fr; gap: 0.85rem; align-items: center; margin-bottom: 0.85rem;">
+          <div class="iviz-below iviz-below-3">
+            <div style="display:contents;">
               <div class="neighbor-stage" style="padding: 0.75rem;">
                 <div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gaia-muted); margin-bottom: 0.45rem; text-align:center;">Spectral neighborhood</div>
                 <svg class="neighbor-grid-svg" viewbox="0 0 180 180" style="max-width: 135px;" role="img" aria-label="Spatial grid comparing the central target plot with eight neighboring plots">
@@ -760,7 +853,7 @@ ul.task-list li input[type="checkbox"] {
 
   <div class="proj-block reveal">
     <div class="proj-header">
-      <h3 class="anchored">Stage 4 · Soil macronutrient stock dynamics and yield response</h3>
+      <h3 class="anchored">Stage 4: Soil macronutrient stock dynamics and yield response</h3>
     </div>
     <div class="proj-prose">
       <p>The agriculture area is also explored in the <strong>Macronutrients</strong> project in partnership with <strong>FGV Agro</strong>, which answers how much Brazilian agricultural production drops if nitrogen (N), phosphorus (P), and potassium (K) fertilization is reduced, and what that reduction costs over the years. The central object of the model is the <strong>nutrient stock in the soil</strong>, not just single-year fertilizer application: a soil with high accumulated stock absorbs years of cuts before production falls, whereas a depleted soil feels the cut in the very first crop season. The deliverable covers <strong>five crops</strong> (soybean, corn, rice, sugarcane, and cotton) over a baseline of official statistics.</p>
@@ -770,9 +863,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="iviz-card reveal" data-npk-sim="" data-lang="en">
       <div class="iviz-top">
         <div>
-          <span class="iviz-kicker">Interactive figure 4 · Soil nutrient stock (N, P, and K)</span>
-          <h4 class="iviz-title anchored">5-season yield trajectory and soil stock depletion</h4>
-          <p class="iviz-sub">Combine crop, reduced nutrient, initial soil condition, and combination rule to test production sensitivity.</p>
+          <h4 class="iviz-title anchored">Yield and soil nutrient stock over five harvests</h4>
         </div>
       </div>
 
@@ -810,40 +901,40 @@ ul.task-list li input[type="checkbox"] {
           </div>
         </div>
 
-        <div class="iviz-grid-2">
-          <div>
-            <svg viewbox="0 0 370 155" style="width:100%; height:auto; display:block;" role="img" aria-label="5-year trajectory chart for relative yield and soil stock">
-              <line x1="35" y1="22" x2="340" y2="22" stroke="currentColor" stroke-opacity="0.12" stroke-dasharray="3 3"></line>
-              <line x1="35" y1="77" x2="340" y2="77" stroke="currentColor" stroke-opacity="0.12" stroke-dasharray="3 3"></line>
-              <line x1="35" y1="132" x2="340" y2="132" stroke="currentColor" stroke-opacity="0.25"></line>
-              <text x="6" y="26" font-size="9.5" fill="currentColor" opacity="0.65">100%</text>
-              <text x="12" y="80" font-size="9.5" fill="currentColor" opacity="0.65">50%</text>
-              <text x="16" y="135" font-size="9.5" fill="currentColor" opacity="0.65">0%</text>
+        <div class="iviz-stack">
+          <div class="iviz-stage">
+            <svg viewbox="0 0 740 155" style="width:100%; height:auto; display:block;" role="img" aria-label="5-year trajectory chart for relative yield and soil stock">
+              <line x1="70" y1="22" x2="680" y2="22" stroke="currentColor" stroke-opacity="0.12" stroke-dasharray="3 3"></line>
+              <line x1="70" y1="77" x2="680" y2="77" stroke="currentColor" stroke-opacity="0.12" stroke-dasharray="3 3"></line>
+              <line x1="70" y1="132" x2="680" y2="132" stroke="currentColor" stroke-opacity="0.25"></line>
+              <text x="12" y="26" font-size="9.5" fill="currentColor" opacity="0.65">100%</text>
+              <text x="24" y="80" font-size="9.5" fill="currentColor" opacity="0.65">50%</text>
+              <text x="32" y="135" font-size="9.5" fill="currentColor" opacity="0.65">0%</text>
 
-              <polyline class="npk-stock-line" fill="none" stroke="#d99b26" stroke-width="2.5" stroke-dasharray="5 3" points="45,22 115,26 185,30 255,33 325,35"></polyline>
-              <polyline class="npk-yield-line" fill="none" stroke="var(--gaia-accent)" stroke-width="3.2" points="45,22 115,23 185,23 255,24 325,24"></polyline>
+              <polyline class="npk-stock-line" fill="none" stroke="#d99b26" stroke-width="2.5" stroke-dasharray="5 3" points="90,22 230,26 370,30 510,33 650,35"></polyline>
+              <polyline class="npk-yield-line" fill="none" stroke="var(--gaia-accent)" stroke-width="3.2" points="90,22 230,23 370,23 510,24 650,24"></polyline>
 
-              <circle class="npk-stock-dot" cx="45" cy="22" r="3.5" fill="#d99b26"></circle>
-              <circle class="npk-stock-dot" cx="115" cy="26" r="3.5" fill="#d99b26"></circle>
-              <circle class="npk-stock-dot" cx="185" cy="30" r="3.5" fill="#d99b26"></circle>
-              <circle class="npk-stock-dot" cx="255" cy="33" r="3.5" fill="#d99b26"></circle>
-              <circle class="npk-stock-dot" cx="325" cy="35" r="3.5" fill="#d99b26"></circle>
+              <circle class="npk-stock-dot" cx="90" cy="22" r="3.5" fill="#d99b26"></circle>
+              <circle class="npk-stock-dot" cx="230" cy="26" r="3.5" fill="#d99b26"></circle>
+              <circle class="npk-stock-dot" cx="370" cy="30" r="3.5" fill="#d99b26"></circle>
+              <circle class="npk-stock-dot" cx="510" cy="33" r="3.5" fill="#d99b26"></circle>
+              <circle class="npk-stock-dot" cx="650" cy="35" r="3.5" fill="#d99b26"></circle>
 
-              <circle class="npk-yield-dot" cx="45" cy="22" r="4" fill="var(--gaia-accent)"></circle>
-              <circle class="npk-yield-dot" cx="115" cy="23" r="4" fill="var(--gaia-accent)"></circle>
-              <circle class="npk-yield-dot" cx="185" cy="23" r="4" fill="var(--gaia-accent)"></circle>
-              <circle class="npk-yield-dot" cx="255" cy="24" r="4" fill="var(--gaia-accent)"></circle>
-              <circle class="npk-yield-dot" cx="325" cy="24" r="4" fill="var(--gaia-accent)"></circle>
+              <circle class="npk-yield-dot" cx="90" cy="22" r="4" fill="var(--gaia-accent)"></circle>
+              <circle class="npk-yield-dot" cx="230" cy="23" r="4" fill="var(--gaia-accent)"></circle>
+              <circle class="npk-yield-dot" cx="370" cy="23" r="4" fill="var(--gaia-accent)"></circle>
+              <circle class="npk-yield-dot" cx="510" cy="24" r="4" fill="var(--gaia-accent)"></circle>
+              <circle class="npk-yield-dot" cx="650" cy="24" r="4" fill="var(--gaia-accent)"></circle>
 
-              <text x="45" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Season 1</text>
-              <text x="115" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Season 2</text>
-              <text x="185" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Season 3</text>
-              <text x="255" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Season 4</text>
-              <text x="325" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Season 5</text>
+              <text x="90" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Season 1</text>
+              <text x="230" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Season 2</text>
+              <text x="370" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Season 3</text>
+              <text x="510" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Season 4</text>
+              <text x="650" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Season 5</text>
             </svg>
           </div>
 
-          <div>
+          <div class="iviz-below">
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-bottom:0.85rem;">
               <div class="parcel-compare-cell">
                 <span>Season-5 yield (solid line)</span>
@@ -869,21 +960,6 @@ ul.task-list li input[type="checkbox"] {
     </div>
   </div>
 
-  <div class="area-meta-box reveal">
-    <div>
-      <div class="meta-col-label">Institutional partner</div>
-      <div class="meta-col-val"><strong>FGV Agro</strong> (Center for Agribusiness Studies at FGV)</div>
-    </div>
-    <div>
-      <div class="meta-col-label">Connected methodological lines</div>
-      <div class="meta-pills">
-        <a class="meta-pill" href="#linhas">Learning with limited labels</a>
-        <a class="meta-pill" href="#linhas">Domain adaptation</a>
-        <a class="meta-pill" href="#linhas">Uncertainty modeling</a>
-        <a class="meta-pill" href="#linhas">Geospatial systems interaction</a>
-      </div>
-    </div>
-  </div>
 </section>
 
 <section id="floresta" class="rsec">
@@ -891,7 +967,6 @@ ul.task-list li input[type="checkbox"] {
   <div class="rsec-head reveal">
     <div class="rsec-num">02</div>
     <div>
-      <span class="rsec-kicker">Application area</span>
       <h2 class="anchored">Forests</h2>
     </div>
   </div>
@@ -900,7 +975,7 @@ ul.task-list li input[type="checkbox"] {
 
   <div class="proj-block reveal">
     <div class="proj-header">
-      <h3 class="anchored">Stage 1 · Quarterly forest canopy monitoring and intra-annual suppression</h3>
+      <h3 class="anchored">Stage 1: Quarterly forest canopy monitoring and intra-annual suppression</h3>
     </div>
     <div class="proj-prose">
       <p>The forest area is explored in the <strong>Territorial AgroIntelligence</strong> project in partnership with <strong>FGV Agro</strong>, aimed at identifying environmental liabilities across large rural portfolios through intra-annual monitoring of forest cover and legally protected areas. Rather than relying solely on annual maps or isolated images subject to seasonal variations, the product operates quarter by quarter by combining consecutive <strong>Sentinel-2</strong> optical observations (10-meter resolution) with multi-sensor annual representations that integrate radar, topography, and climate.</p>
@@ -929,9 +1004,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="iviz-card reveal" data-tab-group="">
       <div class="iviz-top">
         <div>
-          <span class="iviz-kicker">Interactive figure 1 · Quarterly forest canopy evolution</span>
-          <h4 class="iviz-title anchored">Direct comparison (2020 Q1 vs. 2026 Q2) and continuous 26-quarter series</h4>
-          <p class="iviz-sub">Drag the central divider to compare the endpoints of the series or step through all 26 quarterly maps generated by the model in Campo Verde (MT).</p>
+          <h4 class="iviz-title anchored">Forest cover in Campo Verde (MT), 26 quarters from 2020 to 2026</h4>
         </div>
         <div class="iviz-controls" role="tablist">
           <button type="button" class="iviz-btn is-active" data-tab-target="floresta-compare" role="tab" aria-selected="true">2020 Q1 vs. 2026 Q2 comparison</button>
@@ -970,7 +1043,7 @@ ul.task-list li input[type="checkbox"] {
 
   <div class="proj-block reveal">
     <div class="proj-header">
-      <h3 class="anchored">Stage 2 · Property-level environmental liability (CAR) and semantic uncertainty layer</h3>
+      <h3 class="anchored">Stage 2: Property-level environmental liability (CAR) and semantic uncertainty layer</h3>
     </div>
     <div class="proj-prose">
       <p>In the second stage, the quarterly forest cover maps are intersected with rural property boundaries declared in the <strong>Rural Environmental Registry (CAR)</strong> to analyze environmental liabilities (recent suppression and legally protected areas lacking native cover) with the <strong>rural property as the unit of analysis</strong>. Evaluated across <strong>1,432 rural properties</strong> in Campo Verde, the product achieves <strong>0.797 IoU</strong> within registered property boundaries.</p>
@@ -980,9 +1053,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="iviz-card reveal" data-cv-forest-viewer="">
       <div class="iviz-top">
         <div>
-          <span class="iviz-kicker">Interactive figure 2 · Satellite viewer for property-level CAR audit and uncertainty</span>
-          <h4 class="iviz-title anchored">Interactive zoom and pan inspection: forest canopy, CAR boundaries, semantic uncertainty, and plots</h4>
-          <p class="iviz-sub">Drag the Campo Verde (MT) satellite image, zoom down to the 10-meter pixel scale, and freely combine prediction, property cutout, uncertainty, and neighboring crop layers.</p>
+          <h4 class="iviz-title anchored">Forest canopy, CAR boundaries and per-property uncertainty in Campo Verde (MT)</h4>
         </div>
         <div class="iviz-controls">
           <button type="button" class="iviz-btn is-active" data-cv-f-clip="completo" aria-pressed="true">Full-scene prediction</button>
@@ -1040,7 +1111,7 @@ ul.task-list li input[type="checkbox"] {
 
   <div class="proj-block reveal">
     <div class="proj-header">
-      <h3 class="anchored">Stage 3 · Automated territorial report generation and narrative autonomy</h3>
+      <h3 class="anchored">Stage 3: Automated territorial report generation and narrative autonomy</h3>
     </div>
     <div class="proj-prose">
       <p>The forest area is also explored in our project with <strong>FGVces</strong> (Center for Sustainability Studies at FGV) and <strong>Coiab</strong> (Coordination of Indigenous Organizations of the Brazilian Amazon), in which we built a <strong>tool for automated generation and editing of territorial reports</strong> from two inputs: official public datasets and explicit narrative structures. The system tracks the status and risks of deforestation, fire, mining, and climate change across the scales of Brazil, states, and Indigenous Lands, producing outputs as PDF reports, media clippings, or observatory pages. It is the only project in the laboratory where a technical counterpart from the partner organization works directly alongside our researchers on geospatial platform integration.</p>
@@ -1051,9 +1122,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="iviz-card reveal" data-tab-group="">
       <div class="iviz-top">
         <div>
-          <span class="iviz-kicker">Interactive figure 3 · Audience-adapted narrative structure (FGVces and Coiab)</span>
-          <h4 class="iviz-title anchored">The same official public data organized for three reader profiles</h4>
-          <p class="iviz-sub">Select the target audience below to see how the same territorial indicators of deforestation, fire, mining, and climate reorganize the report structure.</p>
+          <h4 class="iviz-title anchored">One set of indicators, three report structures (FGVces and Coiab)</h4>
         </div>
         <div class="iviz-controls" role="tablist">
           <button type="button" class="iviz-btn is-active" data-tab-target="aud-midia" role="tab" aria-selected="true">For press and clipping</button>
@@ -1063,10 +1132,10 @@ ul.task-list li input[type="checkbox"] {
       </div>
 
       <div class="iviz-body">
-        <div class="iviz-grid-2">
-          <div>
+        <div class="iviz-stack">
+          <div class="iviz-stage">
             <div style="font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gaia-muted); margin-bottom: 0.55rem;">Monitored axes from official public databases</div>
-            <div class="trend-grid" style="margin-top:0; grid-template-columns: 1fr 1fr;">
+            <div class="trend-grid" style="margin-top:0;">
               <div class="trend-card">
                 <div class="trend-name">Deforestation</div>
                 <div class="trend-value" style="font-size:1.25rem;">DETER / PRODES</div>
@@ -1089,7 +1158,7 @@ ul.task-list li input[type="checkbox"] {
               </div>
             </div>
           </div>
-          <div>
+          <div class="iviz-below">
             <div data-tab-pane="aud-midia" class="coiab-report-pane is-active">
               <div class="coiab-doc-kicker">Structure 1 · Press and public communication</div>
               <h5 class="coiab-doc-title anchored">Executive synthesis with key takeaways and immediate territorial context</h5>
@@ -1125,21 +1194,6 @@ ul.task-list li input[type="checkbox"] {
     </div>
   </div>
 
-  <div class="area-meta-box reveal">
-    <div>
-      <div class="meta-col-label">Institutional partners</div>
-      <div class="meta-col-val"><strong>FGVces</strong>, <strong>Coiab</strong> (Coordination of Indigenous Organizations of the Brazilian Amazon), and <strong>FGV Agro</strong></div>
-    </div>
-    <div>
-      <div class="meta-col-label">Connected methodological lines</div>
-      <div class="meta-pills">
-        <a class="meta-pill" href="#linhas">Learning with limited labels</a>
-        <a class="meta-pill" href="#linhas">Textual data modeling</a>
-        <a class="meta-pill" href="#linhas">Open-set and OOD</a>
-        <a class="meta-pill" href="#linhas">Domain adaptation</a>
-      </div>
-    </div>
-  </div>
 </section>
 
 <section id="clima" class="rsec">
@@ -1147,7 +1201,6 @@ ul.task-list li input[type="checkbox"] {
   <div class="rsec-head reveal">
     <div class="rsec-num">03</div>
     <div>
-      <span class="rsec-kicker">Application area</span>
       <h2 class="anchored">Climate</h2>
     </div>
   </div>
@@ -1167,9 +1220,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="iviz-card reveal" data-ceri-explorer="">
       <div class="iviz-top">
         <div>
-          <span class="iviz-kicker">Interactive figure 1 · Scope modeled by the lab with FGV CERI</span>
-          <h4 class="iviz-title anchored">Five climate threats across three emission scenarios over the 6-model ensemble</h4>
-          <p class="iviz-sub">Select one of the five threats modeled by the laboratory and toggle between the observational baseline and emission scenarios to inspect the segment-level exposure layout.</p>
+          <h4 class="iviz-title anchored">Five climate threats in three emission scenarios, by grid segment (FGV CERI)</h4>
         </div>
         <div class="iviz-controls">
           <button type="button" class="iviz-btn" data-ceri-scen="hist" aria-pressed="false">Observational baseline</button>
@@ -1197,8 +1248,8 @@ ul.task-list li input[type="checkbox"] {
           </button>
         </div>
 
-        <div class="iviz-grid-2">
-          <div>
+        <div class="iviz-stack">
+          <div class="iviz-stage">
             <div style="font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gaia-muted); margin-bottom: 0.5rem;">Schematic representation of relative segment indicator in the dashboard (0 to 100)</div>
             <div class="ceri-bars-stage">
               <div class="grid-seg-col"><span class="grid-seg-val">39/100</span><div class="grid-seg-track"><div class="grid-seg-bar" data-level="low" style="height:39%"></div></div><span class="grid-seg-label">Segment 1</span></div>
@@ -1210,7 +1261,7 @@ ul.task-list li input[type="checkbox"] {
             </div>
           </div>
 
-          <div>
+          <div class="iviz-below">
             <div class="parcel-inspector" style="margin-bottom:0;">
               <div class="parcel-inspector-title" data-ceri-title="" style="margin-bottom:0.35rem;">1. Extreme winds</div>
               <div style="font-size:0.82rem; font-weight:600; color:var(--gaia-accent); margin-bottom:0.55rem;" data-ceri-indicator="">Modeled by Green AI Lab · Ensemble of 6 global models across 3 scenarios</div>
@@ -1256,19 +1307,15 @@ ul.task-list li input[type="checkbox"] {
       </div>
     </div>
   </div>
-
-  <div class="area-meta-box reveal">
-    <div>
-      <div class="meta-col-label">Institutional partners</div>
-      <div class="meta-col-val"><strong>FGV CERI</strong> (Center for Regulation and Infrastructure Studies) and <strong>FGV Agro</strong></div>
+  <div class="proj-block reveal">
+    <div class="proj-header">
+      <h3 class="anchored">Climate regimes learned without labels and ENSO teleconnections</h3>
     </div>
-    <div>
-      <div class="meta-col-label">Connected methodological lines</div>
-      <div class="meta-pills">
-        <a class="meta-pill" href="#linhas">Climate modeling</a>
-        <a class="meta-pill" href="#linhas">Geospatial systems interaction</a>
-        <a class="meta-pill" href="#linhas">Networks of geolocated specialist models</a>
-      </div>
+    <div class="proj-prose">
+      <p>Raw climate variables are noisy and related in non-linear ways, which makes recurring regimes hard to extract from them. Instead of predicting point by point, the lab discretizes daily fields of minimum and maximum temperature into a finite set of <strong>climate states</strong>, learned without any labels. The model is a <strong>Masked Siamese Network</strong> (MSN) with a Vision Transformer backbone, trained over the Brazilian Cerrado: each day is assigned a state, and the sequence of states becomes a compact, interpretable representation of regional variability.</p>
+      <p>The states are mutually consistent, allow specific scenarios to be sampled and carry a <strong>statistical association with El Niño</strong>, even though no index of the phenomenon entered the training. A lagged probability analysis, 12 months to either side of the Oceanic Niño Index, separates precursor regimes, more frequent before the ENSO peak, from response regimes, which only appear after it. The teleconnection emerges from the data.</p>
+      <p>The line began in 2023 with the SwAV method over temperature and precipitation across a region covering Brazil's South, Southeast and Centre-West and parts of Paraguay and Argentina, where the most extreme groups grow more frequent along the series, local evidence of warming. The discrete states feed the two fronts above: the modelling of extreme threats and the coupling with the agricultural calendar.</p>
+      <p><strong>Deliverables:</strong> <a href="../publications/articles/deep-clustering-for-climate-analyzing-teleconnections/deep-clustering-for-climate-analyzing-teleconnections.html">arXiv preprint</a> (2026), <a href="../publications/theses/agrupamento-espacial-de-clima-por-meio-de-aprendizado/agrupamento-espacial-de-clima-por-meio-de-aprendizado.html">master's dissertation</a> (2026), <a href="../publications/theses/agrupamento-de-dados-meteorologicos-por-meio-de-aprendizado/agrupamento-de-dados-meteorologicos-por-meio-de-aprendizado.html">undergraduate thesis</a> (2023) and <a href="https://github.com/Green-AI-Lab-GAIA/climate-clustering-for-ENSO-teleconnections">open code</a>.</p>
     </div>
   </div>
 </section>
@@ -1278,7 +1325,6 @@ ul.task-list li input[type="checkbox"] {
   <div class="rsec-head reveal">
     <div class="rsec-num">04</div>
     <div>
-      <span class="rsec-kicker">Application area</span>
       <h2 class="anchored">Cities</h2>
     </div>
   </div>
@@ -1293,19 +1339,6 @@ ul.task-list li input[type="checkbox"] {
       <p>In the cities area, the laboratory investigates the characterization of urban settlements and socioeconomic reading from satellite imagery, developing methods for <strong>super-resolution directly in embedding space</strong> combined with <strong>domain adaptation</strong> techniques to transfer learned representations across distinct urban contexts.</p>
     </div>
 
-    <div class="area-meta-box reveal">
-      <div>
-        <div class="meta-col-label">Research stream</div>
-        <div class="meta-col-val"><strong>Super-resolution in embedding space</strong> and satellite socioeconomic reading</div>
-      </div>
-      <div>
-        <div class="meta-col-label">Connected methodological lines</div>
-        <div class="meta-pills">
-          <a class="meta-pill" href="#linhas">Domain adaptation</a>
-          <a class="meta-pill" href="#linhas">Learning with limited labels</a>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1314,7 +1347,6 @@ ul.task-list li input[type="checkbox"] {
   <div class="rsec-head reveal">
     <div class="rsec-num">05</div>
     <div>
-      <span class="rsec-kicker">Textual data modeling</span>
       <h2 class="anchored">Technical and institutional documents</h2>
     </div>
   </div>
@@ -1341,18 +1373,6 @@ ul.task-list li input[type="checkbox"] {
     </div>
   </div>
 
-  <div class="area-meta-box reveal">
-    <div>
-      <div class="meta-col-label">Institutional partners</div>
-      <div class="meta-col-val"><strong>FGV PMO</strong> (ongoing) and <strong>FGV Projetos</strong> (completed)</div>
-    </div>
-    <div>
-      <div class="meta-col-label">Core methodological line</div>
-      <div class="meta-pills">
-        <a class="meta-pill" href="#linhas">Textual data modeling</a>
-      </div>
-    </div>
-  </div>
 </section>
 
 <section id="linhas" class="rsec">
@@ -1360,7 +1380,6 @@ ul.task-list li input[type="checkbox"] {
   <div class="rsec-head reveal">
     <div class="rsec-num">06</div>
     <div>
-      <span class="rsec-kicker">Research backbone</span>
       <h2 class="anchored">Methodological lines in four layers</h2>
     </div>
   </div>
@@ -2750,27 +2769,27 @@ ul.task-list li input[type="checkbox"] {
 
         var states = {
           safra: {
-            target: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,88 C 246,52 268,32 290,30 C 312,32 330,76 346,108 L 358,116",
-            envArea: "M 30,114 C 52,112 68,96 82,70 C 98,34 118,18 140,16 C 162,18 180,60 196,96 C 206,104 216,100 228,80 C 246,44 268,24 290,22 C 312,24 330,68 346,100 L 358,110 L 358,122 L 346,116 C 330,86 312,42 290,40 C 268,42 246,62 228,96 C 216,114 206,118 196,112 C 180,76 162,34 140,32 C 118,34 98,52 82,86 C 68,108 52,120 30,122 Z",
-            envMean: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,88 C 246,52 268,32 290,30 C 312,32 330,76 346,108 L 358,116",
+            target: "M 60,118 C 104,116 136,102 164,78 C 196,42 236,24 280,22 C 324,24 360,68 392,104 C 412,112 432,108 456,88 C 492,52 536,32 580,30 C 624,32 660,76 692,108 L 716,116",
+            envArea: "M 60,114 C 104,112 136,96 164,70 C 196,34 236,18 280,16 C 324,18 360,60 392,96 C 412,104 432,100 456,80 C 492,44 536,24 580,22 C 624,24 660,68 692,100 L 716,110 L 716,122 L 692,116 C 660,86 624,42 580,40 C 536,42 492,62 456,96 C 432,114 412,118 392,112 C 360,76 324,34 280,32 C 236,34 196,52 164,86 C 136,108 104,120 60,122 Z",
+            envMean: "M 60,118 C 104,116 136,102 164,78 C 196,42 236,24 280,22 C 324,24 360,68 392,104 C 412,112 432,108 456,88 C 492,52 536,32 580,30 C 624,32 660,76 692,108 L 716,116",
             showMarkers: true,
             targetState: "healthy",
             neighborState: "healthy",
             targetColor: "#365902"
           },
           operacional: {
-            target: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,95 C 246,84 268,88 290,96 C 312,104 330,112 346,116 L 358,118",
-            envArea: "M 30,114 C 52,112 68,96 82,70 C 98,34 118,18 140,16 C 162,18 180,60 196,96 C 206,104 216,100 228,80 C 246,44 268,24 290,22 C 312,24 330,68 346,100 L 358,110 L 358,122 L 346,116 C 330,86 312,42 290,40 C 268,42 246,62 228,96 C 216,114 206,118 196,112 C 180,76 162,34 140,32 C 118,34 98,52 82,86 C 68,108 52,120 30,122 Z",
-            envMean: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,88 C 246,52 268,32 290,30 C 312,32 330,76 346,108 L 358,116",
+            target: "M 60,118 C 104,116 136,102 164,78 C 196,42 236,24 280,22 C 324,24 360,68 392,104 C 412,112 432,108 456,95 C 492,84 536,88 580,96 C 624,104 660,112 692,116 L 716,118",
+            envArea: "M 60,114 C 104,112 136,96 164,70 C 196,34 236,18 280,16 C 324,18 360,60 392,96 C 412,104 432,100 456,80 C 492,44 536,24 580,22 C 624,24 660,68 692,100 L 716,110 L 716,122 L 692,116 C 660,86 624,42 580,40 C 536,42 492,62 456,96 C 432,114 412,118 392,112 C 360,76 324,34 280,32 C 236,34 196,52 164,86 C 136,108 104,120 60,122 Z",
+            envMean: "M 60,118 C 104,116 136,102 164,78 C 196,42 236,24 280,22 C 324,24 360,68 392,104 C 412,112 432,108 456,88 C 492,52 536,32 580,30 C 624,32 660,76 692,108 L 716,116",
             showMarkers: true,
             targetState: "stressed",
             neighborState: "healthy",
             targetColor: "#c85a32"
           },
           sistemico: {
-            target: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,94 C 246,78 268,74 290,82 C 312,92 330,108 346,115 L 358,118",
-            envArea: "M 30,114 C 52,112 68,96 82,70 C 98,34 118,18 140,16 C 162,18 180,60 196,96 C 206,104 216,100 228,86 C 246,70 268,66 290,74 C 312,84 330,100 346,110 L 358,114 L 358,124 L 346,120 C 330,114 312,100 290,90 C 268,82 246,86 228,102 C 216,114 206,118 196,112 C 180,76 162,34 140,32 C 118,34 98,52 82,86 C 68,108 52,120 30,122 Z",
-            envMean: "M 30,118 C 52,116 68,102 82,78 C 98,42 118,24 140,22 C 162,24 180,68 196,104 C 206,112 216,108 228,94 C 246,78 268,74 290,82 C 312,92 330,108 346,115 L 358,118",
+            target: "M 60,118 C 104,116 136,102 164,78 C 196,42 236,24 280,22 C 324,24 360,68 392,104 C 412,112 432,108 456,94 C 492,78 536,74 580,82 C 624,92 660,108 692,115 L 716,118",
+            envArea: "M 60,114 C 104,112 136,96 164,70 C 196,34 236,18 280,16 C 324,18 360,60 392,96 C 412,104 432,100 456,86 C 492,70 536,66 580,74 C 624,84 660,100 692,110 L 716,114 L 716,124 L 692,120 C 660,114 624,100 580,90 C 536,82 492,86 456,102 C 432,114 412,118 392,112 C 360,76 324,34 280,32 C 236,34 196,52 164,86 C 136,108 104,120 60,122 Z",
+            envMean: "M 60,118 C 104,116 136,102 164,78 C 196,42 236,24 280,22 C 324,24 360,68 392,104 C 412,112 432,108 456,94 C 492,78 536,74 580,82 C 624,92 660,108 692,115 L 716,118",
             showMarkers: true,
             targetState: "stressed",
             neighborState: "stressed",
@@ -2852,7 +2871,7 @@ ul.task-list li input[type="checkbox"] {
           }
         };
 
-        var xs = [45, 115, 185, 255, 325];
+        var xs = [90, 230, 370, 510, 650];
         function yCoord(val) {
           return Math.round(132 - (val / 100) * 110);
         }
@@ -3440,7 +3459,7 @@ ul.task-list li input[type="checkbox"] {
           var yMin = idxName === "NDWI" ? -0.65 : 0.0;
           var yMax = idxName === "NDWI" ? 0.65 : 1.0;
 
-          var x0 = 42, x1 = 656, y0 = 18, y1 = 198;
+          var x0 = 42, x1 = 976, y0 = 18, y1 = 198;
           function xAt(i) { return x0 + (i / (n - 1)) * (x1 - x0); }
           function yAt(v) {
             var clamped = Math.max(yMin, Math.min(yMax, v));

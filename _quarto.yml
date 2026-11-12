@@ -6,6 +6,9 @@ project:
   type: website
   # Remove o sufixo de idioma dos arquivos gerados (index.pt.html -> index.html)
   post-render: scripts/flatten_lang.py
+  # Imagens e dados lidos pelos exploradores via JavaScript, que o Quarto não detecta sozinho
+  resources:
+    - research/images/**
 
 # Sem --profile, "quarto render" e "quarto preview" usam o português
 profile:
