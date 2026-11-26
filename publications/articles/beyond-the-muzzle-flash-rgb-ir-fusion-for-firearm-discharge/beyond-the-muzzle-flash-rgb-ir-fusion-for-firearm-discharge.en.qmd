@@ -1,0 +1,61 @@
+---
+title: "Beyond the Muzzle Flash: RGB, IR Fusion for Firearm Discharge Analytics"
+paper-authors: "Lucas Westfal, Sofia Monteiro, Dário Oliveira, Rafael Pinho"
+venue: "18th Quantitative InfraRed Thermography Conference (QIRT 2026)"
+pub-date: "June 2026"
+date: 2026-06-29
+image: ../../../images/paper-default.svg
+snippet: "Newton’s Law of Cooling and thermal, RGB image fusion estimate the time elapsed since a firearm discharge."
+page-layout: full
+toc: false
+---
+
+```{=html}
+<div class="page-shell">
+<div class="page-main">
+```
+
+:::: {.pub-detail}
+
+::: {.pub-detail-thumb}
+[![](../../../images/paper-default.svg)](https://qirt2026.unina.it/event/1/contributions/153/)
+:::
+
+::: {.pub-detail-meta}
+**Authors:** Lucas Westfal, Sofia Monteiro, Dário Oliveira, Rafael Pinho
+
+**Published:** June 2026, QIRT 2026, University of Naples Federico II, Naples, Italy
+
+[Read the article](https://qirt2026.unina.it/event/1/contributions/153/){.pub-btn}
+:::
+
+::::
+
+## Abstract
+
+Estimating time-since-discharge from passive sensing is valuable in low-visibility operations, where misidentification carries a high cost. We model post-discharge thermal decay in firearm components through Newton’s Law of Cooling, enabling threat assessment without active illumination or contact. Using an MSX-enhanced homography to align thermal and RGB domains, we fit decay profiles for two structurally distinct platforms. The Glock 17 satisfies the Lumped Capacitance assumption and yields consistent exponential fits, whereas the Rossi Puma violates it, delimiting the method’s domain of validity. A probabilistic hypothesis test then converts a single temperature measurement into a statistically grounded lower bound on shot count.
+
+## How to cite
+
+```bibtex
+@inproceedings{westfal2026muzzle,
+  title     = {Beyond the Muzzle Flash: RGB--IR Fusion for Firearm Discharge Analytics},
+  author    = {Westfal, Lucas and Monteiro, Sofia and Oliveira, Dário and Pinho, Rafael},
+  booktitle = {18th Quantitative InfraRed Thermography Conference (QIRT 2026)},
+  address   = {Naples, Italy},
+  year      = {2026},
+  url       = {https://qirt2026.unina.it/event/1/contributions/153/}
+}
+```
+
+```{=html}
+<a class="back-link" href="/publications/">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+  <span>Back to publications</span>
+</a>
+```
+
+```{=html}
+</div>
+</div>
+```

@@ -882,12 +882,7 @@ body.quarto-dark .process-desc {
   }
 
   .process-steps::before {
-    left: 15px;
-    right: auto;
-    top: 16px;
-    bottom: 16px;
-    width: 1px;
-    height: auto;
+    display: none;
   }
 
   .process-step {
@@ -899,7 +894,20 @@ body.quarto-dark .process-desc {
     text-align: left;
   }
 
+  /* Cada etapa de "como trabalhamos" liga o centro do seu círculo ao centro do círculo seguinte;
+     a última não tem trecho de linha */
+  .process-step:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 15px;
+    top: 16px;
+    bottom: calc(-1.1rem - 16px);
+    width: 1px;
+    background: var(--gaia-border);
+  }
+
   .process-step .process-num {
+    position: relative;
     grid-row: 1 / span 2;
   }
 }
@@ -5053,7 +5061,7 @@ body.quarto-dark .flow-step {
 }
 
 .research-intro-prose {
-  max-width: 820px;
+  max-width: 900px;
   margin-top: 1.1rem;
 }
 
@@ -5217,13 +5225,17 @@ body.quarto-dark .iviz-btn[aria-pressed="true"] {
 }
 
 .iviz-below > :only-child,
-.iviz-below > [data-tab-pane],
-.iviz-below > .npk-provenance-row {
+.iviz-below > [data-tab-pane] {
   grid-column: 1 / -1;
 }
 
 .iviz-below .parcel-inspector {
   margin-bottom: 0;
+}
+
+/* Inspetor sozinho, mas ocupando só uma coluna */
+.iviz-below-half > :only-child {
+  grid-column: auto;
 }
 
 .iviz-below .nota {
@@ -5467,51 +5479,6 @@ body.quarto-dark .neighbor-target-cell {
   stroke: #fff;
 }
 
-/* Simulador de estoque NPK */
-.npk-controls-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 0.85rem;
-  margin-bottom: 1.15rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--gaia-border);
-}
-
-.npk-ctrl-group label {
-  display: block;
-  font-size: 0.74rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--gaia-muted);
-  margin-bottom: 0.35rem;
-}
-
-.npk-provenance-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.85rem;
-  font-size: 0.77rem;
-}
-
-.prov-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.2rem 0.6rem;
-  border-radius: 6px;
-  background: var(--gaia-soft);
-  border: 1px solid var(--gaia-border);
-  color: var(--gaia-muted);
-}
-
-.prov-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-}
-
 /* Relatório territorial por audiência */
 .coiab-report-pane {
   padding: 1.25rem;
@@ -5687,19 +5654,8 @@ body.quarto-dark .neighbor-target-cell {
    os parceiros de cada área na última linha. O realce por hover é feito no JS
    da página, que marca .is-on nos itens ligados e .is-hover na matriz. */
 .matrix-wrap {
-  margin-top: 1.8rem;
-  padding: 1.25rem 1.4rem 1.4rem;
-  background: var(--gaia-surface);
-  border: 1px solid var(--gaia-border);
-  border-radius: 12px;
-}
-
-.matrix-lead {
-  margin: 0.2rem 0 1.1rem;
-  font-size: 0.92rem;
-  line-height: 1.55;
-  color: var(--gaia-muted);
-  max-width: 760px;
+  max-width: 900px;
+  margin-top: 1.2rem;
 }
 
 .matrix {
@@ -5710,23 +5666,34 @@ body.quarto-dark .neighbor-target-cell {
   row-gap: 0.15rem;
 }
 
+/* Canto dividido por uma diagonal: "Áreas" no triângulo de cima, voltado
+   para as colunas, e "Linhas" no de baixo, voltado para as linhas */
 .matrix-corner {
+  align-self: stretch;
   display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  min-height: 3.6rem;
+  padding: 0.3rem 0.5rem;
   font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--gaia-muted);
-  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--gaia-border);
+  background: linear-gradient(to top right,
+    transparent calc(50% - 0.5px),
+    var(--gaia-border) calc(50% - 0.5px),
+    var(--gaia-border) calc(50% + 0.5px),
+    transparent calc(50% + 0.5px));
 }
 
-.matrix-corner span:last-child::before {
-  content: "\2192  ";
+.matrix-corner span:last-child {
+  align-self: flex-end;
 }
 
 .matrix-col {
+  align-self: end;
   text-align: center;
   font-size: 0.86rem;
   font-weight: 700;
@@ -5787,21 +5754,18 @@ body.quarto-dark .neighbor-target-cell {
 
 .matrix-partners {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.25rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
   align-self: start;
   transition: opacity 0.2s ease;
 }
 
 .matrix-partners span {
-  font-size: 0.7rem;
+  font-size: 0.76rem;
   font-weight: 600;
-  padding: 0.15rem 0.5rem;
-  border-radius: 999px;
-  background: var(--gaia-accent-faint);
+  line-height: 1.35;
   color: var(--gaia-accent);
-  border: 1px solid transparent;
   white-space: nowrap;
 }
 
@@ -5845,7 +5809,6 @@ body.quarto-dark .neighbor-target-cell {
 @media (max-width: 760px) {
   .matrix-wrap {
     overflow-x: auto;
-    padding: 1rem;
   }
 
   .matrix {
@@ -6043,6 +6006,136 @@ body.quarto-dark .neighbor-target-cell {
   text-decoration: underline;
 }
 
+/* Mapa MapLibre dos talhões (Campo Verde, MT) */
+.cv-map-wrap {
+  position: relative;
+}
+
+.cv-map {
+  width: 100%;
+  height: clamp(380px, 58vh, 640px);
+  background: #10170e;
+  border: 1px solid var(--gaia-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.cv-map .maplibregl-canvas {
+  outline: none;
+}
+
+.cv-map .maplibregl-ctrl-attrib {
+  font-size: 0.66rem;
+}
+
+.cv-map-popup .maplibregl-popup-content {
+  background: rgba(15, 22, 13, 0.9);
+  color: #f1f5ef;
+  font-size: 0.76rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+.cv-map-popup .maplibregl-popup-tip {
+  border-top-color: rgba(15, 22, 13, 0.9);
+}
+
+.cv-stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--gaia-border);
+  border-radius: 999px;
+  background: var(--gaia-surface);
+  overflow: hidden;
+}
+
+.cv-step-btn {
+  font: inherit;
+  font-size: 1.05rem;
+  line-height: 1;
+  padding: 0.22rem 0.6rem;
+  border: none;
+  background: transparent;
+  color: var(--gaia-muted);
+  cursor: pointer;
+}
+
+.cv-step-btn:hover:not(:disabled) {
+  color: var(--gaia-accent);
+  background: var(--gaia-soft);
+}
+
+.cv-step-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.cv-step-val {
+  min-width: 3.2rem;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--gaia-text);
+}
+
+.cv-select-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+.cv-select {
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--gaia-border);
+  border-radius: 999px;
+  background: var(--gaia-surface);
+  color: var(--gaia-text);
+  cursor: pointer;
+}
+
+.cv-iv-gradient {
+  display: inline-block;
+  width: 90px;
+  height: 10px;
+  margin: 0 0.3rem;
+  border-radius: 3px;
+  vertical-align: middle;
+  background: linear-gradient(90deg, #c46e34, #dcba3e, #1f8d3e);
+}
+
+.cv-iv-panel + .cv-iv-panel {
+  margin-top: 0.4rem;
+  padding-top: 0.4rem;
+  border-top: 1px dashed var(--gaia-border);
+}
+
+.cv-iv-panel-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gaia-muted);
+  margin: 0 0 0.1rem 0.4rem;
+}
+
+.cv-iv-chip-name {
+  font-weight: 700;
+  color: var(--gaia-accent);
+}
+
+.cv-iv-empty {
+  padding: 2.4rem 1rem;
+  text-align: center;
+  color: var(--gaia-muted);
+  font-size: 0.86rem;
+}
+
 .cv-iv-svg-wrap {
   background: var(--gaia-soft);
   border: 1px solid var(--gaia-border);
@@ -6060,3 +6153,400 @@ body.quarto-dark .neighbor-target-cell {
 }
 
 
+
+/* Narrativa guiada da agricultura: passos à esquerda e palco fixo à direita.
+   O último passo fica fora da grade e recebe o palco em largura total */
+.cv-story-block {
+  margin: 1.4rem 0 2.8rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid var(--gaia-border);
+}
+
+.cv-story {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: 0 2rem;
+  align-items: start;
+}
+
+.cv-story-steps {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.cv-story-stage-col {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  align-self: stretch;
+}
+
+.cv-story-stage-col > .iviz-card {
+  position: sticky;
+  top: 4.6rem;
+  margin: 0;
+}
+
+.cv-story .cv-story-step {
+  padding: 0 0 1.6rem 1rem;
+  margin: 0 0 2rem;
+  border-left: 3px solid var(--gaia-border);
+  transition: border-color 0.35s ease;
+}
+
+.cv-story .cv-story-step.is-active {
+  border-left-color: var(--gaia-accent);
+}
+
+/* O último passo da grade ocupa ao menos uma tela, para o palco seguir
+   fixo enquanto ele é lido */
+.cv-story .cv-story-step:last-child {
+  min-height: calc(100vh - 9rem);
+}
+
+.cv-story-step .proj-header {
+  margin-bottom: 0.6rem;
+}
+
+.cv-story-step .proj-header h3 {
+  font-size: 1.18rem;
+}
+
+.cv-story-step .proj-prose p,
+.cv-story-step .proj-prose li {
+  font-size: 0.98rem;
+  line-height: 1.62;
+  max-width: none;
+}
+
+.cv-story-step .acc-bench {
+  margin: 0.4rem 0 1.1rem;
+}
+
+.acc-bench-title {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gaia-muted);
+}
+
+.cv-story-free {
+  margin-top: 0.5rem;
+}
+
+.cv-story-free .proj-prose {
+  max-width: 900px;
+}
+
+.cv-story-slot > .iviz-card {
+  margin: 0.6rem 0 1.5rem;
+}
+
+/* Lacunas do texto a preencher: visíveis até serem substituídas */
+.story-blank {
+  padding: 0 0.25em;
+  border-bottom: 2px dashed #c93b2b;
+  background: rgba(201, 59, 43, 0.07);
+  color: #a33224;
+  font-style: italic;
+}
+
+body.quarto-dark .story-blank {
+  border-color: #ff8073;
+  background: rgba(255, 128, 115, 0.1);
+  color: #ff8073;
+}
+
+/* Palco travado nas cenas: só mapa, legenda e série, sem controles */
+.cv-stage.is-locked .cv-main-controls,
+.cv-stage.is-locked .cv-sat-toolbar,
+.cv-stage.is-locked .cv-series-controls,
+.cv-stage.is-locked .iviz-below {
+  display: none;
+}
+
+.cv-stage:not(.has-series) .cv-series-wrap {
+  display: none;
+}
+
+.cv-stage.is-locked .iviz-top {
+  padding: 0.8rem 0.95rem 0.7rem;
+}
+
+.cv-stage.is-locked .iviz-title {
+  font-size: 0.98rem;
+}
+
+.cv-stage.is-locked .iviz-body {
+  padding: 0.9rem;
+}
+
+.cv-stage.is-locked .cv-map {
+  height: clamp(300px, calc(100vh - 250px), 720px);
+}
+
+.cv-stage.is-locked.has-series .cv-map {
+  height: clamp(220px, calc(100vh - 540px), 420px);
+}
+
+.cv-stage.is-locked .cv-series-wrap {
+  margin-top: 0.6rem;
+}
+
+.cv-stage:not(.is-locked) .cv-caption {
+  display: none;
+}
+
+/* Tela cheia do painel livre: mapa à esquerda, séries e leitura do talhão à direita */
+.cv-stage.is-locked [data-cv-max] {
+  display: none;
+}
+
+.cv-max-btn {
+  margin-left: auto;
+}
+
+html.cv-max-open {
+  overflow: hidden;
+}
+
+.cv-stage.is-max {
+  position: fixed;
+  inset: 0;
+  z-index: 4000;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.cv-stage.is-max .iviz-top {
+  padding: 0.7rem 1rem;
+}
+
+.cv-stage.is-max .iviz-body {
+  flex: 1;
+  min-height: 0;
+  padding: 0.9rem 1rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 0.75rem 1rem;
+}
+
+.cv-stage.is-max .iviz-body > .cv-sat-toolbar {
+  grid-column: 1;
+  grid-row: 1;
+  margin-bottom: 0;
+}
+
+.cv-stage.is-max .cv-map-wrap {
+  grid-column: 1;
+  grid-row: 2 / span 2;
+  min-height: 0;
+}
+
+.cv-stage.is-max .cv-map {
+  height: 100%;
+}
+
+.cv-stage.is-max .cv-series-wrap {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  min-height: 0;
+  margin-top: 0;
+  overflow-y: auto;
+}
+
+.cv-stage.is-max .iviz-below {
+  grid-column: 2;
+  grid-row: 3;
+  max-height: 26vh;
+  margin-top: 0;
+  overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+  .cv-stage.is-max .iviz-body {
+    display: block;
+    overflow-y: auto;
+  }
+
+  .cv-stage.is-max .cv-map {
+    height: 48vh;
+  }
+
+  .cv-stage.is-max .cv-series-wrap,
+  .cv-stage.is-max .iviz-below {
+    max-height: none;
+    margin-top: 1rem;
+    overflow: visible;
+  }
+}
+
+.cv-caption {
+  margin-top: 0.55rem;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--gaia-muted);
+}
+
+.cv-series-wrap {
+  margin-top: 1rem;
+}
+
+.cv-index-chips {
+  margin: 0.2rem 0 0.75rem;
+}
+
+.cv-plot-chips {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.cv-plot-chip {
+  border: 1.5px solid var(--chip, var(--gaia-accent));
+  color: var(--chip, var(--gaia-accent));
+  background: transparent;
+  border-radius: 999px;
+  padding: 0.14rem 0.6rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1.3;
+  cursor: pointer;
+}
+
+.cv-plot-chip:hover {
+  background: color-mix(in srgb, var(--chip, var(--gaia-accent)) 14%, transparent);
+}
+
+/* Inspetor em largura total: classes em uma linha, leitura da data abaixo */
+.cv-insp-classes {
+  grid-template-columns: repeat(6, 1fr);
+  margin: 0 0 0.7rem;
+}
+
+.cv-insp-reading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 0.2rem 0 0.35rem;
+}
+
+.cv-insp-row {
+  grid-template-columns: 0.7fr 1fr 1fr 1.3fr;
+  margin: 0 0 0.45rem;
+}
+
+.cv-insp-row-5 {
+  grid-template-columns: 0.6fr 1.1fr 0.9fr 0.9fr 1.3fr;
+}
+
+.cv-insp-row .cv-iv-chip-name {
+  color: var(--chip, var(--gaia-accent));
+}
+
+/* Legenda sobre o mapa, no canto inferior esquerdo; o selo do fundo vai para cima */
+.cv-sat-badge {
+  top: 0.65rem;
+  bottom: auto;
+}
+
+.cv-map-legend {
+  position: absolute;
+  bottom: 0.65rem;
+  left: 0.65rem;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.5rem 0.7rem;
+  max-width: calc(100% - 1.3rem);
+  background: rgba(15, 22, 13, 0.86);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  color: #f1f5ef;
+  font-size: 0.8rem;
+  pointer-events: none;
+}
+
+.cv-map-legend-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.85rem;
+}
+
+.cv-map-legend-row[hidden] {
+  display: none;
+}
+
+.cv-map-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.cv-map-swatch {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-block;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+/* Abaixo de 1200px o sumário vira uma barra fixa de 48px sob a navbar */
+@media (max-width: 1199px) {
+  .cv-story-stage-col > .iviz-card {
+    top: 6.75rem;
+  }
+}
+
+/* Telas estreitas: palco preso no topo e passos rolando por baixo */
+@media (max-width: 900px) {
+  .cv-story {
+    display: block;
+  }
+
+  .cv-story-stage-col {
+    position: sticky;
+    top: 6.75rem;
+    z-index: 20;
+  }
+
+  .cv-story-stage-col > .iviz-card {
+    position: static;
+  }
+
+  .cv-story-steps {
+    padding-top: 1.2rem;
+  }
+
+  .cv-stage.is-locked .cv-map {
+    height: clamp(200px, 34vh, 360px);
+  }
+
+  .cv-stage.is-locked.has-series .cv-map {
+    height: clamp(150px, 22vh, 240px);
+  }
+
+  .cv-stage.is-locked .cv-caption {
+    display: none;
+  }
+
+  .cv-insp-classes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cv-insp-row,
+  .cv-insp-row-5 {
+    grid-template-columns: 1fr 1fr;
+  }
+}

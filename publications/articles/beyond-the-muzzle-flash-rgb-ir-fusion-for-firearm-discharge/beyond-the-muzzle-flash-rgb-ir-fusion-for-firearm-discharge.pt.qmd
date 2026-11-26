@@ -1,0 +1,61 @@
+---
+title: "Beyond the Muzzle Flash: RGB, IR Fusion for Firearm Discharge Analytics"
+paper-authors: "Lucas Westfal, Sofia Monteiro, Dário Oliveira, Rafael Pinho"
+venue: "18th Quantitative InfraRed Thermography Conference (QIRT 2026)"
+pub-date: "Junho de 2026"
+date: 2026-06-29
+image: ../../../images/paper-default.svg
+snippet: "Lei do Resfriamento de Newton e fusão de imagens térmicas e RGB estimam o tempo decorrido desde o disparo de armas de fogo."
+page-layout: full
+toc: false
+---
+
+```{=html}
+<div class="page-shell">
+<div class="page-main">
+```
+
+:::: {.pub-detail}
+
+::: {.pub-detail-thumb}
+[![](../../../images/paper-default.svg)](https://qirt2026.unina.it/event/1/contributions/153/)
+:::
+
+::: {.pub-detail-meta}
+**Autores:** Lucas Westfal, Sofia Monteiro, Dário Oliveira, Rafael Pinho
+
+**Publicação:** Junho de 2026, QIRT 2026, University of Naples Federico II, Naples, Italy
+
+[Acessar o artigo](https://qirt2026.unina.it/event/1/contributions/153/){.pub-btn}
+:::
+
+::::
+
+## Resumo
+
+Estimar o tempo decorrido desde o disparo a partir de sensoriamento passivo é útil em operações de baixa visibilidade, nas quais um erro de identificação tem custo alto. Modelamos o decaimento térmico pós-disparo em componentes de armas de fogo pela Lei do Resfriamento de Newton, o que permite avaliar ameaças sem iluminação ativa nem contato. Com uma homografia aprimorada por MSX para alinhar os domínios térmico e RGB, ajustamos perfis de decaimento para duas plataformas estruturalmente distintas. A Glock 17 satisfaz a hipótese de capacitância concentrada e produz ajustes exponenciais consistentes, enquanto a Rossi Puma a viola, o que delimita o domínio de validade do método. Um teste de hipótese probabilístico converte então uma única medição de temperatura em um limite inferior, estatisticamente fundamentado, para o número de disparos.
+
+## Como citar
+
+```bibtex
+@inproceedings{westfal2026muzzle,
+  title     = {Beyond the Muzzle Flash: RGB--IR Fusion for Firearm Discharge Analytics},
+  author    = {Westfal, Lucas and Monteiro, Sofia and Oliveira, Dário and Pinho, Rafael},
+  booktitle = {18th Quantitative InfraRed Thermography Conference (QIRT 2026)},
+  address   = {Naples, Italy},
+  year      = {2026},
+  url       = {https://qirt2026.unina.it/event/1/contributions/153/}
+}
+```
+
+```{=html}
+<a class="back-link" href="/publications/">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>
+  <span>Voltar para as publicações</span>
+</a>
+```
+
+```{=html}
+</div>
+</div>
+```

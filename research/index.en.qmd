@@ -9,16 +9,11 @@ toc: false
 <div class="page-main">
 
 <div class="research-intro reveal">
-  <h2>Five application areas and eight methodological lines</h2>
   <div class="research-intro-prose">
-    <p>The laboratory's research is organized around two complementary axes: <strong>five application areas</strong> (Agriculture, Forests, Climate, Cities, and Technical and institutional documents) and <strong>eight methodological research lines</strong> addressing challenges such as learning with limited labels, domain adaptation, uncertainty modeling, textual data, and networks of specialist models.</p>
+    <p>The laboratory's research is organized around two complementary axes: <em class="mark">five application areas</em> (Agriculture, Forests, Climate, Cities, and Technical and institutional documents) and <em class="mark">eight methodological research lines</em> addressing challenges such as learning with limited labels, domain adaptation, uncertainty modeling, textual data, and networks of specialist models.</p>
     <p>Members of the group work across these two axes in three complementary ways: some researchers focus exclusively on developing foundational methodology; others develop the method and apply it directly within an application area; and in many cases, a methodological advance created by one researcher is adopted by a colleague and carried into the application areas and partnered projects.</p>
   </div>
 <div class="matrix-wrap reveal">
-  <div class="matrix-head">
-    <span class="rsec-kicker">Map of connections</span>
-    <p class="matrix-lead">Each dot links a methodological line to an area where it is applied. Hover over a line or an area to see its connections and the partners involved.</p>
-  </div>
   <div class="matrix" role="table" aria-label="Methodological lines by application area">
     <div class="matrix-corner" role="columnheader"><span>Lines</span><span>Areas</span></div>
     <a class="matrix-col" role="columnheader" data-c="agricultura" href="#agriculture">Agriculture</a>
@@ -132,526 +127,262 @@ toc: false
     </div>
   </div>
 
-  <p class="rsec-lead reveal">Automated plot boundary delineation, crop classification combining radar and optical imagery, vegetation index time series extraction, start and end of season detection, neighborhood-relative agricultural risk reading, and soil nutrient stock dynamics.</p>
+  <p class="rsec-lead reveal">Automated plot boundary delineation, crop classification combining radar and optical imagery, vegetation index time series extraction, start and end of season detection, and neighborhood-relative agricultural risk reading.</p>
 
-  <div class="proj-block reveal">
-    <div class="proj-header">
-      <h3>Stage 1: Plot delineation and crop classification</h3>
-    </div>
-    <div class="proj-prose">
-      <p>The agriculture area is explored in the <strong>Territorial AgroIntelligence</strong> project in partnership with <strong>FGV Agro</strong>, in which we build territorial intelligence across large agricultural portfolios to answer what is planted, where it is located, and which plots behave outside expected patterns. The first stage of the workflow delineates productive plot boundaries and identifies the planted crop in each subarea.</p>
-      <p>Over the course of the project, the laboratory built an in-house dataset of <strong>359,596 delineated and classified plots</strong> by planted crop (soybean, corn, and cotton), regenerated every season across <strong>897 municipalities in five Brazilian states</strong> (Bahia, Maranhão, Mato Grosso, Paraná, and Tocantins), covering the 2020 to 2025 crop seasons. The method combines automatic segmentation on optical imagery with crop classification on <strong>synthetic aperture radar (SAR)</strong>, which penetrates clouds and provides continuous observation during rainy months.</p>
-      <p>Validated against INPE field data in Campo Verde (MT), the laboratory's classifier outperforms the public reference (MapBiomas) on second-season crops whose calendar coincides with persistent cloud cover: it achieves <strong>91.5% accuracy versus 82.4% in corn</strong> and <strong>90.0% versus 64.4% in cotton</strong>, while maintaining <strong>98.7% in soybean</strong> (versus 99.3% for the public reference).</p>
-    </div>
-
-    <div class="metrics reveal">
-      <div>
-        <div class="m-val" data-count="359.6" data-decimals="1" data-suffix="k">359.6k</div>
-        <div class="m-lab">delineated plots (2020 to 2025)</div>
-      </div>
-      <div>
-        <div class="m-val" data-count="897">897</div>
-        <div class="m-lab">municipalities across 5 states</div>
-      </div>
-      <div>
-        <div class="m-val" data-count="91.5" data-decimals="1" data-suffix="%">91.5%</div>
-        <div class="m-lab">corn accuracy (vs. 82.4% ref.)</div>
-      </div>
-      <div>
-        <div class="m-val" data-count="90.0" data-decimals="1" data-suffix="%">90.0%</div>
-        <div class="m-lab">cotton accuracy (vs. 64.4% ref.)</div>
-      </div>
-    </div>
-
-    <div class="iviz-card reveal" data-cv-agro-viewer data-lang="en" data-json="images/agro/cv-plots-2021.json">
+  <div class="proj-block cv-story-block" data-cv-story>
+  <div class="cv-story">
+  <div class="cv-story-stage-col">
+    <div class="iviz-card cv-stage is-locked" data-cv-agro-viewer data-lang="en" data-base="data/agro">
       <div class="iviz-top">
         <div>
-          <h4 class="iviz-title">Sentinel-2 image of Campo Verde (MT) with plots, crop and forest canopy</h4>
+          <h4 class="iviz-title">Campo Verde (MT): plots, inferred crops and vegetation index series</h4>
         </div>
-        <div class="iviz-controls">
+        <div class="iviz-controls cv-main-controls">
           <button type="button" class="iviz-btn is-active" data-cv-colormode="gaia" aria-pressed="true">GAIA model (SAR + optical)</button>
-          <button type="button" class="iviz-btn" data-cv-colormode="ref" aria-pressed="false">Public reference (mismatches)</button>
-          <button type="button" class="iviz-btn" data-cv-colormode="ndvi" aria-pressed="false">Vegetation index (NDVI)</button>
+          <button type="button" class="iviz-btn" data-cv-colormode="ref" aria-pressed="false">Reference (MapBiomas)</button>
+          <button type="button" class="iviz-btn" data-cv-colormode="diverg" aria-pressed="false">Mismatches</button>
+          <button type="button" class="iviz-btn" data-cv-colormode="indice" aria-pressed="false">Index peak</button>
           <button type="button" class="iviz-btn" data-cv-colormode="outline" aria-pressed="false">Outlines only</button>
         </div>
+        <button type="button" class="iviz-btn cv-max-btn" data-cv-max data-label-on="Full screen" data-label-off="Exit full screen" aria-pressed="false">Full screen</button>
       </div>
 
       <div class="iviz-body">
         <div class="cv-sat-toolbar">
           <div class="cv-sat-group">
-            <span class="cv-sat-label">Sentinel-2 image:</span>
-            <button type="button" class="iviz-btn is-active" data-cv-quarter="2021q1" data-badge="Sentinel-2 RGB · 2021 Q1 (1st crop)" aria-pressed="true">2021 Q1 (1st crop)</button>
-            <button type="button" class="iviz-btn" data-cv-quarter="2021q2" data-badge="Sentinel-2 RGB · 2021 Q2 (2nd crop)" aria-pressed="false">2021 Q2 (2nd crop)</button>
-            <button type="button" class="iviz-btn" data-cv-quarter="2021q3" data-badge="Sentinel-2 RGB · 2021 Q3 (Dry off-season)" aria-pressed="false">2021 Q3 (Dry)</button>
+            <span class="cv-sat-label">Year:</span>
+            <div class="cv-stepper">
+              <button type="button" class="cv-step-btn" data-cv-year-prev aria-label="Previous year">‹</button>
+              <span class="cv-step-val" data-cv-year-val>2021</span>
+              <button type="button" class="cv-step-btn" data-cv-year-next aria-label="Next year">›</button>
+            </div>
           </div>
           <div class="cv-sat-group">
-            <span class="cv-sat-label">Layers:</span>
-            <button type="button" class="iviz-btn is-active" data-cv-layer-toggle="talhoes" aria-pressed="true">Plot segmentation</button>
-            <button type="button" class="iviz-btn is-active" data-cv-layer-toggle="floresta" aria-pressed="true">Forest canopy (10 m)</button>
-            <button type="button" class="iviz-btn" data-cv-layer-toggle="car" aria-pressed="false">Rural properties (CAR)</button>
+            <span class="cv-sat-label">Season:</span>
+            <button type="button" class="iviz-btn is-active" data-cv-season="1" aria-pressed="true">1st season</button>
+            <button type="button" class="iviz-btn" data-cv-season="2" aria-pressed="false">2nd season</button>
           </div>
           <div class="cv-sat-group">
             <span class="cv-sat-label">Crop:</span>
             <button type="button" class="iviz-btn is-active" data-cv-cropfilter="all" aria-pressed="true">All</button>
-            <button type="button" class="iviz-btn" data-cv-cropfilter="soja" aria-pressed="false">Soybean</button>
-            <button type="button" class="iviz-btn" data-cv-cropfilter="milho" aria-pressed="false">Corn</button>
-            <button type="button" class="iviz-btn" data-cv-cropfilter="algodao" aria-pressed="false">Cotton</button>
+            <button type="button" class="iviz-btn" data-cv-cropfilter="0" aria-pressed="false">Soybean</button>
+            <button type="button" class="iviz-btn" data-cv-cropfilter="1" aria-pressed="false">Corn</button>
+            <button type="button" class="iviz-btn" data-cv-cropfilter="2" aria-pressed="false">Cotton</button>
+            <button type="button" class="iviz-btn" data-cv-cropfilter="3" aria-pressed="false">Other</button>
+          </div>
+          <div class="cv-sat-group">
+            <span class="cv-sat-label">Basemap:</span>
+            <button type="button" class="iviz-btn is-active" data-cv-basemap="s2" aria-pressed="true">Sentinel-2 of the year (10 m)</button>
+            <button type="button" class="iviz-btn" data-cv-basemap="esri" aria-pressed="false">High-resolution imagery</button>
           </div>
           <div class="cv-sat-group">
             <span class="cv-sat-label">Opacity:</span>
-            <input type="range" class="cv-opacity-slider" data-cv-opacity min="10" max="95" value="62" aria-label="Plot fill opacity">
+            <input type="range" class="cv-opacity-slider" data-cv-opacity min="10" max="95" value="62" aria-label="Opacity of the plot fill">
             <span data-cv-opacity-val style="font-variant-numeric: tabular-nums; font-weight:700;">62%</span>
           </div>
         </div>
 
-        <div class="iviz-stack">
-          <div class="iviz-stage">
-            <div class="cv-sat-viewport" role="region" aria-label="Interactive satellite viewer of Campo Verde with zoom and pan">
-              <div class="cv-sat-stage">
-                <img data-cv-base-img src="images/agro/cv-rgb-2021q1.webp" alt="Real Sentinel-2 RGB image of Campo Verde">
-                <img data-cv-layer="floresta" src="images/agro/cv-floresta-2021q1.webp" alt="10-meter predicted forest canopy layer" style="opacity:0.72;">
-                <img data-cv-layer="talhoes" src="images/agro/cv-talhoes-2021.webp" alt="Plot segmentation boundary layer" style="opacity:0.85;">
-                <img data-cv-layer="car" class="is-hidden" src="images/agro/cv-car.webp" alt="CAR rural property boundary layer" style="opacity:0.9;">
-                <svg class="cv-sat-svg" viewBox="0 0 1400 880" aria-label="Interactive agricultural plot polygons in Campo Verde">
-                  <g data-cv-plots-group></g>
-                </svg>
-              </div>
-              <div class="cv-sat-hud">
-                <button type="button" class="cv-hud-btn" data-cv-zoom-out title="Zoom out">−</button>
-                <span data-cv-zoom-val style="min-width:2.7rem; text-align:center; font-variant-numeric:tabular-nums;">100%</span>
-                <button type="button" class="cv-hud-btn" data-cv-zoom-in title="Zoom in">+</button>
-                <button type="button" class="cv-hud-btn" data-cv-zoom-fit title="Fit to view">Fit</button>
-              </div>
-              <div class="cv-sat-badge" data-cv-sat-badge>Sentinel-2 RGB · 2021 Q1 (1st crop)</div>
+        <div class="cv-map-wrap">
+          <div class="cv-map" data-cv-map role="region" aria-label="Interactive map of Campo Verde plots with zoom and pan"></div>
+          <div class="cv-sat-hud">
+            <button type="button" class="cv-hud-btn" data-cv-zoom-out title="Zoom out">−</button>
+            <button type="button" class="cv-hud-btn" data-cv-zoom-in title="Zoom in">+</button>
+            <button type="button" class="cv-hud-btn" data-cv-zoom-fit>Municipality</button>
+          </div>
+          <div class="cv-sat-badge" data-cv-sat-badge>Sentinel-2 cloudless 2021</div>
+          <div class="cv-map-legend" data-cv-legend>
+            <div class="cv-map-legend-row" data-cv-legend-classes>
+              <span class="cv-map-legend-item"><i class="cv-map-swatch" style="background:#e4432f"></i>Soybean</span>
+              <span class="cv-map-legend-item"><i class="cv-map-swatch" style="background:#f26fa8"></i>Corn</span>
+              <span class="cv-map-legend-item"><i class="cv-map-swatch" style="background:#3fbf4f"></i>Cotton</span>
+              <span class="cv-map-legend-item"><i class="cv-map-swatch" style="background:#8e5fd0"></i>Other</span>
+              <span class="cv-map-legend-item"><i class="cv-map-swatch" style="background:#9fd6ef"></i>Unclassified</span>
+              <span class="cv-map-legend-item" data-cv-legend-div hidden><i class="cv-map-swatch" style="border:2px dashed #ff4d42; background:transparent"></i>Model and reference disagree</span>
             </div>
+            <div class="cv-map-legend-row" data-cv-legend-outline hidden>
+              <span class="cv-map-legend-item"><i class="cv-map-swatch" style="border:2px solid #fff; background:transparent"></i>Outlines of the delineated plots</span>
+            </div>
+            <div class="cv-map-legend-row" data-cv-legend-index hidden>
+              <span class="cv-map-legend-item"><span data-cv-legend-index-name>NDVI</span>: <span data-cv-legend-index-lo>0,2</span> <i class="cv-iv-gradient"></i> <span data-cv-legend-index-hi>0,9</span></span>
+            </div>
+            <div class="cv-map-legend-row" data-cv-legend-plots hidden></div>
+          </div>
+        </div>
+        <div class="cv-caption" data-cv-caption></div>
 
-            <div class="parcel-legend" style="margin-top:0.55rem;">
-              <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#5a9a2e"></i> Soybean</span>
-              <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#d99b26"></i> 2nd-crop corn</span>
-              <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#3b82a6"></i> 2nd-crop cotton</span>
-              <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#1f8d49"></i> Forest canopy (10 m)</span>
-              <span class="parcel-legend-item"><i class="parcel-swatch" style="border:2px dashed #ff4d42; background:transparent"></i> Reference mismatch</span>
+        <div class="cv-series-wrap">
+          <div class="cv-sat-toolbar cv-series-controls">
+            <div class="cv-sat-group">
+              <span class="cv-sat-label">Compare:</span>
+              <button type="button" class="iviz-btn is-active" data-cv-compare="indices" aria-pressed="true">Indices of one plot</button>
+              <button type="button" class="iviz-btn" data-cv-compare="plots" aria-pressed="false">One index across plots</button>
+            </div>
+            <div class="cv-sat-group">
+              <span class="cv-sat-label">Plots:</span>
+              <span class="cv-plot-chips" data-cv-plot-chips></span>
+              <button type="button" class="iviz-btn" data-iv-random>Another plot</button>
+            </div>
+            <div class="cv-sat-group">
+              <span class="cv-sat-label">Show:</span>
+              <button type="button" class="iviz-btn is-active" data-iv-toggle="band" aria-pressed="true">Municipal P25 to P75 band</button>
+              <button type="button" class="iviz-btn is-active" data-iv-toggle="median" aria-pressed="true">Municipal median</button>
+              <button type="button" class="iviz-btn" data-iv-toggle="markers" aria-pressed="false">SOS, POS and EOS markers</button>
             </div>
           </div>
+          <div class="iviz-controls cv-series-controls cv-index-chips" data-iv-index-group role="group" aria-label="Vegetation indices">
+            <button type="button" class="iviz-btn" data-iv-index="ARVI" aria-pressed="false" title="ARVI">ARVI</button>
+            <button type="button" class="iviz-btn" data-iv-index="CIRE" aria-pressed="false" title="CIRE (chlorophyll, red edge)">CIRE</button>
+            <button type="button" class="iviz-btn" data-iv-index="CVI" aria-pressed="false" title="CVI (chlorophyll)">CVI</button>
+            <button type="button" class="iviz-btn" data-iv-index="EVI" aria-pressed="false" title="EVI (biomass)">EVI</button>
+            <button type="button" class="iviz-btn" data-iv-index="EVI2" aria-pressed="false" title="EVI2">EVI2</button>
+            <button type="button" class="iviz-btn" data-iv-index="GNDVI" aria-pressed="false" title="GNDVI (green)">GNDVI</button>
+            <button type="button" class="iviz-btn" data-iv-index="GARI" aria-pressed="false" title="GARI">GARI</button>
+            <button type="button" class="iviz-btn" data-iv-index="GCVI" aria-pressed="false" title="GCVI (chlorophyll)">GCVI</button>
+            <button type="button" class="iviz-btn" data-iv-index="GRVI" aria-pressed="false" title="GRVI">GRVI</button>
+            <button type="button" class="iviz-btn" data-iv-index="MSAVI" aria-pressed="false" title="MSAVI (soil adjusted)">MSAVI</button>
+            <button type="button" class="iviz-btn" data-iv-index="NBR" aria-pressed="false" title="NBR (burn)">NBR</button>
+            <button type="button" class="iviz-btn" data-iv-index="NDRE" aria-pressed="false" title="NDRE (red edge)">NDRE</button>
+            <button type="button" class="iviz-btn is-active" data-iv-index="NDVI" aria-pressed="true" title="NDVI (vigour)">NDVI</button>
+            <button type="button" class="iviz-btn" data-iv-index="NDWI" aria-pressed="false" title="NDWI (canopy water)">NDWI</button>
+            <button type="button" class="iviz-btn" data-iv-index="RBNDVI" aria-pressed="false" title="RBNDVI">RBNDVI</button>
+            <button type="button" class="iviz-btn" data-iv-index="SAVI" aria-pressed="false" title="SAVI (soil adjusted)">SAVI</button>
+            <button type="button" class="iviz-btn" data-iv-index="VARIgreen" aria-pressed="false" title="VARI (visible)">VARIgreen</button>
+          </div>
+          <div class="cv-iv-svg-wrap">
+            <div data-iv-panels></div>
+            <div class="cv-iv-empty" data-iv-empty hidden></div>
+          </div>
+        </div>
 
-          <div class="iviz-below">
-            <div class="parcel-inspector">
-              <div class="parcel-inspector-head">
-                <span class="parcel-inspector-title" data-parcel-title>Plot #3622 (401.7 ha · Campo Verde, MT)</span>
-                <span class="parcel-inspector-meta" data-parcel-meta>FID 3622_5102678 · Peak NDVI 1st crop: 0.73 | 2nd crop: 0.90</span>
-              </div>
-              <div class="parcel-compare-row" style="margin-bottom:0.45rem;">
-                <div class="parcel-compare-cell">
-                  <span>GAIA classification (SAR + optical)</span>
-                  <strong data-parcel-sar>2nd-crop cotton (succession)</strong>
-                </div>
-                <div class="parcel-compare-cell">
-                  <span>Public reference (MapBiomas)</span>
-                  <strong data-parcel-ref class="is-error">Soybean / temporary crop (mismatch)</strong>
-                </div>
-              </div>
-              <div class="parcel-compare-row" style="margin-bottom:0.2rem;">
-                <div class="parcel-compare-cell">
-                  <span>Peak NDVI in crop year</span>
-                  <strong data-parcel-ndvi>0.90</strong>
-                </div>
-                <div class="parcel-compare-cell">
-                  <span>Cloud filter on time series</span>
-                  <strong data-parcel-drops>5 passes filtered</strong>
-                </div>
-              </div>
-              <button type="button" class="cv-jump-link" data-cv-jump-iv>Inspect this plot's spectral curve in Stage 2 ↓</button>
+        <div class="iviz-below">
+          <div class="parcel-inspector">
+            <div class="parcel-inspector-head">
+              <span class="parcel-inspector-title" data-parcel-title>Plot</span>
+              <span class="parcel-inspector-meta" data-parcel-meta></span>
             </div>
-
-            <div class="acc-bench">
-              <div style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gaia-muted);">Accuracy validated against INPE field data (Campo Verde, MT)</div>
-              <div class="acc-crop-group">
-                <div class="acc-crop-head"><span>Cotton</span><span>+25.6 pp over reference</span></div>
-                <div class="acc-dual-bars">
-                  <div class="acc-bar-row"><span>GAIA Lab</span><div class="acc-bar-track"><div class="acc-bar-fill gaia" style="width:90%"></div></div><span class="acc-bar-pct">90.0%</span></div>
-                  <div class="acc-bar-row"><span>Public ref.</span><div class="acc-bar-track"><div class="acc-bar-fill ref" style="width:64.4%"></div></div><span class="acc-bar-pct">64.4%</span></div>
-                </div>
-              </div>
-              <div class="acc-crop-group">
-                <div class="acc-crop-head"><span>Corn</span><span>+9.1 pp over reference</span></div>
-                <div class="acc-dual-bars">
-                  <div class="acc-bar-row"><span>GAIA Lab</span><div class="acc-bar-track"><div class="acc-bar-fill gaia" style="width:91.5%"></div></div><span class="acc-bar-pct">91.5%</span></div>
-                  <div class="acc-bar-row"><span>Public ref.</span><div class="acc-bar-track"><div class="acc-bar-fill ref" style="width:82.4%"></div></div><span class="acc-bar-pct">82.4%</span></div>
-                </div>
-              </div>
-              <div class="acc-crop-group">
-                <div class="acc-crop-head"><span>Soybean</span><span>98.7% vs. 99.3%</span></div>
-                <div class="acc-dual-bars">
-                  <div class="acc-bar-row"><span>GAIA Lab</span><div class="acc-bar-track"><div class="acc-bar-fill gaia" style="width:98.7%"></div></div><span class="acc-bar-pct">98.7%</span></div>
-                  <div class="acc-bar-row"><span>Public ref.</span><div class="acc-bar-track"><div class="acc-bar-fill ref" style="width:99.3%"></div></div><span class="acc-bar-pct">99.3%</span></div>
-                </div>
-              </div>
+            <div class="parcel-compare-row cv-insp-classes" data-cv-insp-classes>
+              <div class="parcel-compare-cell"><span>1st season, GAIA model</span><strong data-parcel-s1></strong></div>
+              <div class="parcel-compare-cell"><span>1st season, MapBiomas</span><strong data-parcel-mb1></strong></div>
+              <div class="parcel-compare-cell"><span>2nd season, GAIA model</span><strong data-parcel-s2></strong></div>
+              <div class="parcel-compare-cell"><span>2nd season, MapBiomas</span><strong data-parcel-mb2></strong></div>
+              <div class="parcel-compare-cell"><span data-parcel-peak-label>Index peak in the year</span><strong data-parcel-peak></strong></div>
+              <div class="parcel-compare-cell"><span>Peak date</span><strong data-parcel-peakdate></strong></div>
             </div>
+            <div class="cv-insp-reading">
+              <span class="parcel-inspector-title" style="font-size:0.84rem;">Reading for the date</span>
+              <span class="parcel-inspector-meta" data-iv-insp-date></span>
+            </div>
+            <div data-iv-insp-rows></div>
+            <div class="nota" style="margin-top:0;" data-iv-insp-status></div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="proj-block reveal">
-    <div class="proj-header">
-      <h3>Stage 2: Vegetation index time series and cloud filtering</h3>
-    </div>
+  <div class="cv-story-steps">
+  <section class="cv-story-step reveal" data-scene="delim">
+    <div class="proj-header"><h3>Stage 1: Automatic plot delineation</h3></div>
     <div class="proj-prose">
-      <p>Once the plot polygons are delineated, the second stage reconstructs the spectral trajectory of each area across crop seasons. The pipeline extracts <strong>Sentinel-2</strong> surface reflectances over each plot polygon from the <strong>Brazil Data Cube (BDC)</strong> and computes <strong>17 complementary vegetation indices</strong> (including NDVI, EVI, EVI2, NDWI, NDRE, SAVI, MSAVI, and GNDVI), capturing photosynthetic vigor, canopy water content, and red-edge response. The consolidated database totals <strong>499.7k plot-level series</strong> and <strong>11.5 million records</strong>.</p>
-      <p>Even in regular temporal composites, persistent summer cloudiness produces observations contaminated by residual clouds that artificially depress vegetation indices. To prevent atmospheric noise from being misread as crop failure, the system automatically filters out passes with insufficient clear-sky fraction (discarding <strong>5.55%</strong> of compromised observations) and applies penalized temporal smoothing to reconstruct the continuous vigor curve and its monthly statistical aggregations.</p>
+      <p>The agriculture area is explored in the <em class="mark">Territorial AgroIntelligence</em> project, in partnership with <em class="mark">FGV Agro</em>, in which the laboratory builds territorial intelligence over large agricultural portfolios to answer what is planted, where it is and what behaves outside the pattern. Everything starts with drawing the units of analysis: the plots.</p>
+      <p>The starting point is optical imagery. For each municipality of interest, the pipeline gathers the season's <em class="mark">Sentinel-2</em> scenes (10 m), <span class="story-blank">[how scenes are selected and combined: period, cloud criterion]</span>, and a segmentation model traces the outlines of the subareas that behave as one management unit: same crop, same calendar and same spectral response. The result is one polygon per plot, with area, municipality and an identifier that allows following it from one season to the next.</p>
+      <p>The in-house dataset adds up to <em class="mark">359,596 plots</em> across <em class="mark">897 municipalities in five states</em> (Bahia, Maranhão, Mato Grosso, Paraná and Tocantins), regenerated every season from 2020 to 2025. The outlines were validated <span class="story-blank">[how: against hand-drawn plots, field data, metric used]</span>, with <span class="story-blank">[validation result]</span>. Processing a whole municipality takes <span class="story-blank">[time and infrastructure]</span>.</p>
     </div>
-
-    <div class="iviz-card reveal" data-cv-iv-explorer data-lang="en">
-      <div class="iviz-top">
-        <div>
-          <h4 class="iviz-title">Spectral series of the selected plot (Sentinel-2, Brazil Data Cube)</h4>
-        </div>
-        <div class="iviz-controls">
-          <button type="button" class="iviz-btn is-active" data-iv-index="NDVI" aria-pressed="true">NDVI (Vigor)</button>
-          <button type="button" class="iviz-btn" data-iv-index="EVI" aria-pressed="false">EVI (Biomass)</button>
-          <button type="button" class="iviz-btn" data-iv-index="NDWI" aria-pressed="false">NDWI (Canopy water)</button>
-          <button type="button" class="iviz-btn" data-iv-index="NDRE" aria-pressed="false">NDRE (Red edge)</button>
+    <div data-cv-caption-text hidden>Outlines of the 2,132 Campo Verde (MT) plots in the 2021 season (223.5 thousand ha), over the cloudless Sentinel-2 mosaic of the same year. Hover a plot to see its area.</div>
+  </section>
+  <section class="cv-story-step reveal" data-scene="classe">
+    <div class="proj-header"><h3>Stage 2: Crop classification with radar and optical imagery</h3></div>
+    <div class="proj-prose">
+      <p>On each polygon, a classifier assigns the crop planted in each of the two seasons of the agricultural year: soybean, corn, cotton or other uses. The main input is Sentinel-1 <em class="mark">synthetic aperture radar (SAR)</em>, which penetrates clouds and guarantees regular observation during the rainy months, combined with the Sentinel-2 optical response whenever the sky is clear. <span class="story-blank">[revisit period, polarisations or bands used and the time window of each season]</span>.</p>
+      <p>The model was trained with <span class="story-blank">[source and size of the reference data]</span> and runs municipality by municipality, which allows regenerating the classification every season without new field work. In Campo Verde (MT), the 2021 season has 2,132 plots classified in the first season and 2,130 in both; the most common combination is soybean followed by corn (836 plots), then soybean followed by cotton (439).</p>
+    </div>
+    <div data-cv-caption-text hidden>Crop inferred by the model in the first season of 2021: red soybean, pink corn, green cotton, purple other uses and light blue unclassified. Click a plot to see both seasons.</div>
+  </section>
+  <section class="cv-story-step reveal" data-scene="diverg">
+    <div class="proj-header"><h3>Stage 3: Comparison with the public reference</h3></div>
+    <div class="proj-prose">
+      <p>Validated against INPE field data in Campo Verde (MT), the classifier <em class="mark">outperforms the public reference (MapBiomas) on second-season crops</em>, whose calendar coincides with persistent cloud cover, and ties on soybean. The bars show the accuracy per crop.</p>
+    <div class="acc-bench">
+      <div class="acc-bench-title">Accuracy validated against INPE field data (Campo Verde, MT)</div>
+      <div class="acc-crop-group">
+        <div class="acc-crop-head"><span>Cotton</span><span>+25.6 p.p. over the reference</span></div>
+        <div class="acc-dual-bars">
+          <div class="acc-bar-row"><span>GAIA Lab</span><div class="acc-bar-track"><div class="acc-bar-fill gaia" style="width:90.0%"></div></div><span class="acc-bar-pct">90.0%</span></div>
+          <div class="acc-bar-row"><span>Public ref.</span><div class="acc-bar-track"><div class="acc-bar-fill ref" style="width:64.4%"></div></div><span class="acc-bar-pct">64.4%</span></div>
         </div>
       </div>
-
-      <div class="iviz-body">
-        <div class="cv-sat-toolbar">
-          <div class="cv-sat-group">
-            <span class="cv-sat-label">Active plot:</span>
-            <strong data-iv-active-plot style="font-size:0.82rem; color:var(--gaia-accent); margin-right:0.35rem;">Plot #3622 (401.7 ha · 2nd-crop cotton)</strong>
-            <button type="button" class="iviz-btn is-active" data-iv-preset="3622_5102678" aria-pressed="true">#3622 (2nd-crop cotton)</button>
-            <button type="button" class="iviz-btn" data-iv-preset="3424_5102678" aria-pressed="false">#3424 (2nd-crop corn)</button>
-            <button type="button" class="iviz-btn" data-iv-preset="3671_5102678" aria-pressed="false">#3671 (1st-crop soy)</button>
-            <button type="button" class="iviz-btn" data-iv-center-map>Locate on map ↑</button>
-          </div>
-          <div class="cv-sat-group">
-            <span class="cv-sat-label">Series layers:</span>
-            <button type="button" class="iviz-btn is-active" data-iv-toggle="smooth" aria-pressed="true">Reconstructed curve</button>
-            <button type="button" class="iviz-btn is-active" data-iv-toggle="raw" aria-pressed="true">Raw observation</button>
-            <button type="button" class="iviz-btn is-active" data-iv-toggle="drops" aria-pressed="true">Residual cloud drops</button>
-            <button type="button" class="iviz-btn is-active" data-iv-toggle="band" aria-pressed="true">Regional P25 to P75 band (2,266 plots)</button>
-          </div>
+      <div class="acc-crop-group">
+        <div class="acc-crop-head"><span>Corn</span><span>+9.1 p.p. over the reference</span></div>
+        <div class="acc-dual-bars">
+          <div class="acc-bar-row"><span>GAIA Lab</span><div class="acc-bar-track"><div class="acc-bar-fill gaia" style="width:91.5%"></div></div><span class="acc-bar-pct">91.5%</span></div>
+          <div class="acc-bar-row"><span>Public ref.</span><div class="acc-bar-track"><div class="acc-bar-fill ref" style="width:82.4%"></div></div><span class="acc-bar-pct">82.4%</span></div>
         </div>
-
-        <div class="iviz-stack">
-          <div class="iviz-stage">
-            <div class="cv-iv-svg-wrap">
-              <svg viewBox="0 0 1000 225" style="width:100%; height:auto; display:block;" role="img" aria-label="Interactive vegetation index time series for the selected plot in Campo Verde">
-                <line x1="42" y1="18" x2="976" y2="18" stroke="currentColor" stroke-opacity="0.1" stroke-dasharray="3 3" />
-                <line x1="42" y1="108" x2="976" y2="108" stroke="currentColor" stroke-opacity="0.12" stroke-dasharray="3 3" />
-                <line x1="42" y1="198" x2="976" y2="198" stroke="currentColor" stroke-opacity="0.24" />
-                <text x="8" y="22" font-size="10" fill="currentColor" opacity="0.65" data-iv-ylabel>1.0</text>
-                <text x="8" y="112" font-size="10" fill="currentColor" opacity="0.65" data-iv-ylabel>0.5</text>
-                <text x="8" y="202" font-size="10" fill="currentColor" opacity="0.65" data-iv-ylabel>0.0</text>
-
-                <path data-iv-svg-band d="" fill="rgba(79, 138, 34, 0.16)" />
-                <path data-iv-svg-median d="" fill="none" stroke="#689f38" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.75" />
-                <path data-iv-svg-raw d="" fill="none" stroke="#8b9488" stroke-width="1.6" stroke-dasharray="3 3" />
-                <path data-iv-svg-smooth d="" fill="none" stroke="var(--gaia-accent)" stroke-width="3.2" />
-                <g data-iv-svg-drops></g>
-                <g data-iv-svg-points></g>
-
-                <text x="51.127" y="216" font-size="10" fill="currentColor" opacity="0.7">Jan</text>
-                <text x="213.893" y="216" font-size="10" fill="currentColor" opacity="0.7">Mar</text>
-                <text x="381.221" y="216" font-size="10" fill="currentColor" opacity="0.7">May</text>
-                <text x="548.55" y="216" font-size="10" fill="currentColor" opacity="0.7">Jul (Dry)</text>
-                <text x="731.091" y="216" font-size="10" fill="currentColor" opacity="0.7">Sep</text>
-                <text x="898.42" y="216" font-size="10" fill="currentColor" opacity="0.7">Nov/Dec</text>
-              </svg>
-            </div>
-            <div class="parcel-legend" style="margin-top:0.5rem;">
-              <span class="parcel-legend-item"><i class="parcel-swatch" style="background:var(--gaia-accent)"></i> Smoothed curve (reconstructed)</span>
-              <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#8b9488"></i> Raw observation (16-day)</span>
-              <span class="parcel-legend-item"><i class="parcel-swatch" style="background:#d9483b"></i> Filtered cloud drop</span>
-              <span class="parcel-legend-item"><i class="parcel-swatch" style="background:rgba(79, 138, 34, 0.35)"></i> Campo Verde median &amp; interquartile band</span>
-            </div>
-          </div>
-
-          <div class="iviz-below">
-            <div class="parcel-inspector" style="margin-bottom:0.75rem;">
-              <div class="parcel-inspector-head">
-                <span class="parcel-inspector-title">Satellite pass inspection</span>
-                <span class="parcel-inspector-meta" data-iv-insp-date>2021-03-06</span>
-              </div>
-              <div class="parcel-compare-row" style="grid-template-columns: 1fr 1fr 1fr; margin-bottom:0.5rem;">
-                <div class="parcel-compare-cell">
-                  <span>Raw value (BDC)</span>
-                  <strong data-iv-insp-raw>0.074</strong>
-                </div>
-                <div class="parcel-compare-cell">
-                  <span>Reconstructed curve</span>
-                  <strong data-iv-insp-smooth>0.467</strong>
-                </div>
-                <div class="parcel-compare-cell">
-                  <span>Clear-sky fraction</span>
-                  <strong data-iv-insp-clear>0%</strong>
-                </div>
-              </div>
-              <div class="nota" style="margin-top:0;" data-iv-insp-status>
-                Residual cloud detected (low clear-sky coverage): spurious drop discarded before reconstructing the continuous curve.
-              </div>
-            </div>
-            <div class="nota" style="margin-top:0;">
-              <strong>Why link the map to the spectral chart:</strong> clicking any real plot in the Stage 1 viewer shows how the clear-sky filter removes summer atmospheric noise and recovers both crop cycles (1st and 2nd harvest) across Campo Verde.
-            </div>
-          </div>
+      </div>
+      <div class="acc-crop-group">
+        <div class="acc-crop-head"><span>Soybean</span><span>98.7% vs. 99.3%</span></div>
+        <div class="acc-dual-bars">
+          <div class="acc-bar-row"><span>GAIA Lab</span><div class="acc-bar-track"><div class="acc-bar-fill gaia" style="width:98.7%"></div></div><span class="acc-bar-pct">98.7%</span></div>
+          <div class="acc-bar-row"><span>Public ref.</span><div class="acc-bar-track"><div class="acc-bar-fill ref" style="width:99.3%"></div></div><span class="acc-bar-pct">99.3%</span></div>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="proj-block reveal">
-    <div class="proj-header">
-      <h3>Stage 3: Detecting start and end of harvest season (SOS and EOS), ZARC window, and neighborhood risk</h3>
+      <p>On the map, plots where the model and the reference disagree in the second season get a dashed red outline and are filled with the model's class. Mismatches concentrate in <span class="story-blank">[where and why: corn and cotton, small plots, edges, calendar]</span>.</p>
     </div>
+    <div data-cv-caption-text hidden>Mismatches between the model and MapBiomas in the second season of 2021. The fill shows the model's class; concordant plots are left uncoloured.</div>
+  </section>
+  <section class="cv-story-step reveal" data-scene="series">
+    <div class="proj-header"><h3>Stage 4: Vegetation index time series</h3></div>
     <div class="proj-prose">
-      <p>From each plot's continuous vigor curve, the third stage automatically detects the phenological milestones of each crop cycle: the <strong>start of season (SOS)</strong> at post-planting emergence, the <strong>peak of season (POS)</strong> at maximum canopy closure, and the <strong>end of season (EOS)</strong> at senescence and harvest, separating the first and second crops of the agricultural year. Cross-referencing satellite-detected planting dates against the official planting window of <strong>ZARC (Agricultural Climate Risk Zoning)</strong> enables municipal-scale auditing of calendar compliance: in Campo Verde (MT), <strong>65.5% of soybean plots</strong> start their cycle within the official ZARC window (ranging between <strong>72.7% and 84.5%</strong> across other evaluated municipalities), whereas second-season crops (cotton at 7.6% and second-crop corn at 3.3%) reflect their direct dependence on when the first crop is harvested.</p>
-      <p>To translate phenological tracking into portfolio risk diagnosis, the product combines the spectral and climatic indicators of each plot-season to group plots into <strong>behavioral profiles</strong> by spectral and climatic similarity. Every plot is read <strong>in relation to its neighborhood</strong>, separating two phenomena that are often conflated:</p>
+      <p>With the polygons delineated, the pipeline reconstructs the spectral evolution of each plot across seasons. <em class="mark">Sentinel-2</em> reflectances are extracted over each polygon from the <em class="mark">Brazil Data Cube (BDC)</em>, in 16-day composites, and converted into <em class="mark">17 complementary vegetation indices</em> (among them NDVI, EVI, EVI2, NDWI, NDRE, SAVI, MSAVI and GNDVI), covering photosynthetic vigour, canopy water content and the red edge. The consolidated dataset holds <em class="mark">499.7 thousand per-plot series</em> and <em class="mark">11.5 million records</em>.</p>
+      <p>Even in regular composites, the persistent summer cloudiness leaves observations contaminated by residual clouds that artificially depress the indices. So that atmospheric noise is not read as crop loss, the system discards passes with insufficient clear coverage (<em class="mark">5.55%</em> of the observations) and applies penalised temporal smoothing to reconstruct the continuous vigour curve. Each curve is read against the band between the municipality's 25th and 75th percentiles on the same date, which tells whether the plot tracks, exceeds or falls below the central half of its neighbours.</p>
+    </div>
+    <div data-cv-caption-text hidden>2021 NDVI series of the plot highlighted on the map (dark line), P25 to P75 band (green area) and median (dashed) of the {n} Campo Verde plots with a series. Hover the points to read the dates.</div>
+  </section>
+  <section class="cv-story-step reveal" data-scene="fenol">
+    <div class="proj-header"><h3>Stage 5: Start and end of season and the ZARC window</h3></div>
+    <div class="proj-prose">
+      <p>On each plot's continuous curve, the detector identifies the phenological milestones of each cycle: the <em class="mark">start of season (SOS)</em> at post-planting emergence, the <em class="mark">peak of season (POS)</em> at maximum canopy closure and the <em class="mark">end of season (EOS)</em> at senescence and harvest, separating the first and second crops of the agricultural year. <span class="story-blank">[detector criterion in one sentence, without the recipe]</span>.</p>
+      <p>Cross-referencing the start-of-season dates with the official planting window of <em class="mark">ZARC (Agricultural Climate Risk Zoning)</em> enables municipal-scale auditing of calendar compliance: in Campo Verde (MT), <em class="mark">65.5% of soybean plots</em> start the season within the official window (between <em class="mark">72.7% and 84.5%</em> in other evaluated municipalities), whereas second-season crops (cotton at 7.6% and second-crop corn at 3.3%) reflect their direct dependence on when the first crop is harvested.</p>
+    </div>
+    <div class="acc-bench" style="gap: 0.55rem;">
+      <div class="acc-bench-title">Planting (SOS) within the official ZARC window</div>
+      <div class="acc-crop-group">
+        <div class="acc-crop-head" style="font-size:0.78rem;"><span>Soybean (Campo Verde, MT)</span><span>65.5% (up to 84.5% in other mun.)</span></div>
+        <div class="acc-bar-track"><div class="acc-bar-fill gaia" style="width:65.5%"></div></div>
+      </div>
+      <div class="acc-crop-group">
+        <div class="acc-crop-head" style="font-size:0.78rem;"><span>Cotton</span><span>7.6%</span></div>
+        <div class="acc-bar-track"><div class="acc-bar-fill ref" style="width:7.6%"></div></div>
+      </div>
+      <div class="acc-crop-group">
+        <div class="acc-crop-head" style="font-size:0.78rem;"><span>Second-crop corn</span><span>3.3%</span></div>
+        <div class="acc-bar-track"><div class="acc-bar-fill ref" style="width:3.3%"></div></div>
+      </div>
+    </div>
+    <div data-cv-caption-text hidden>Markers of each cycle on the same series, computed by the project's detector from NDVI: SOS in blue, POS in green and EOS in amber.</div>
+  </section>
+  <section class="cv-story-step reveal" data-scene="viz">
+    <div class="proj-header"><h3>Stage 6: Reading a plot against its neighbourhood</h3></div>
+    <div class="proj-prose">
+      <p>To turn phenological tracking into portfolio risk diagnosis, the product combines the spectral and climatic indicators of each plot-season and groups plots into <em class="mark">behavioural profiles</em> by spectral and climatic similarity. Every plot is read <em class="mark">in relation to its neighbourhood</em>, which separates two phenomena that are often conflated:</p>
       <ul>
-        <li><strong>Operational risk:</strong> management, pests, or producer-specific conditions. One plot performs poorly while neighboring plots perform well.</li>
-        <li><strong>Systemic risk:</strong> regional drought, frost, or dry spells. The entire neighborhood loses vigor simultaneously. Comparing a plot with its immediate surroundings identifies the nature of the problem without requiring on-site inspection at every property.</li>
+        <li><em class="mark">Operational risk:</em> management, pests or producer-specific conditions. One plot does poorly while its neighbours do well.</li>
+        <li><em class="mark">Systemic risk:</em> regional drought, frost or dry spell. The whole neighbourhood loses vigour at the same time. Comparing with the surroundings tells whose problem it is, without on-site inspection of every area.</li>
       </ul>
+      <p>The stage compares two Campo Verde plots in the second season of 2021: one that tracks the municipal band and one that drops below the 25th percentile while the band stays high. Since the neighbourhood does not follow the drop, the deviation is local. <span class="story-blank">[what explains the case, if verified: inspection, producer, high-resolution imagery]</span>.</p>
     </div>
-
-    <div class="iviz-card reveal" data-pheno-explorer>
-      <div class="iviz-top">
-        <div>
-          <h4 class="iviz-title">Plot crop calendar (SOS, POS and EOS) and comparison with its neighbourhood</h4>
-        </div>
-        <div class="iviz-controls">
-          <button type="button" class="iviz-btn is-active" data-pheno-mode="safra" aria-pressed="true"
-            data-sos-label="Detected SOS: Oct 18 (1st crop) · Feb 22 (2nd crop)"
-            data-pos-label="Detected POS: Dec 14 (soy) · Apr 28 (2nd-crop corn)"
-            data-eos-label="Detected EOS: Feb 08 (1st harvest) · Jun 19 (2nd harvest)"
-            data-badge-text="Mode 1: Start and end of season detection (normal cycle)"
-            data-diag-text="The reconstructed curve isolates the two successive cycles in the same agricultural year (1st-crop soybean and 2nd-crop corn), automatically marking cycle start (SOS), vegetative peak (POS), and harvest (EOS). First-crop planting falls inside the official ZARC window.">
-            1. Start &amp; end of season (SOS / EOS)
-          </button>
-          <button type="button" class="iviz-btn" data-pheno-mode="operacional" aria-pressed="false"
-            data-sos-label="Detected SOS: Oct 18 (normal 1st crop) · Feb 24 (2nd crop)"
-            data-pos-label="POS reached in 1st crop; early loss of vigor in 2nd crop"
-            data-eos-label="Sharp drop (-34%) during 2nd crop outside neighbor band"
-            data-badge-text="Mode 2: Localized operational risk diagnosis"
-            data-diag-text="After the 2nd-crop SOS, the target plot curve diverges from the neighborhood P10 to P90 envelope while the 8 neighboring plots in the same spectral and climatic profile remain healthy. The anomaly points to localized management or pest issues.">
-            2. Operational risk (local)
-          </button>
-          <button type="button" class="iviz-btn" data-pheno-mode="sistemico" aria-pressed="false"
-            data-sos-label="Detected SOS: Oct 18 (1st crop) · Feb 25 (2nd crop)"
-            data-pos-label="Simultaneous loss of vigor prior to 2nd-crop peak"
-            data-eos-label="Early senescence across the entire neighborhood under drought"
-            data-badge-text="Mode 3: Systemic climate risk diagnosis"
-            data-diag-text="Both the target plot and the entire neighborhood band drop simultaneously during a regional dry spell. Because the surrounding plots respond in the same direction, the system classifies the event as a regional climate shock.">
-            3. Systemic risk (regional)
-          </button>
-        </div>
-      </div>
-
-      <div class="iviz-body">
-        <div class="iviz-stack">
-          <div class="iviz-stage">
-            <div style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gaia-muted); margin-bottom: 0.4rem;">Phenological curve (1st and 2nd crops), SOS/POS/EOS markers, and neighborhood P10 to P90 band</div>
-            <svg viewBox="0 0 760 160" style="width:100%; height:auto; display:block;" role="img" aria-label="Phenological curve showing SOS, POS, EOS detection and neighborhood comparison">
-              <rect x="96" y="14" width="76" height="114" fill="rgba(54, 89, 2, 0.08)" stroke="rgba(54, 89, 2, 0.28)" stroke-dasharray="3 2" />
-              <text x="134" y="25" text-anchor="middle" font-size="8" font-weight="700" fill="var(--gaia-accent)">ZARC Window</text>
-              <line x1="60" y1="128" x2="724" y2="128" stroke="currentColor" stroke-opacity="0.22" />
-              <line x1="60" y1="22" x2="724" y2="22" stroke="currentColor" stroke-opacity="0.1" stroke-dasharray="3 3" />
-
-              <path class="pheno-env-area" d="M 60,114 C 104,112 136,96 164,70 C 196,34 236,18 280,16 C 324,18 360,60 392,96 C 412,104 432,100 456,80 C 492,44 536,24 580,22 C 624,24 660,68 692,100 L 716,110 L 716,122 L 692,116 C 660,86 624,42 580,40 C 536,42 492,62 456,96 C 432,114 412,118 392,112 C 360,76 324,34 280,32 C 236,34 196,52 164,86 C 136,108 104,120 60,122 Z" fill="rgba(79, 138, 34, 0.20)" />
-              <path class="pheno-env-mean" d="M 60,118 C 104,116 136,102 164,78 C 196,42 236,24 280,22 C 324,24 360,68 392,104 C 412,112 432,108 456,88 C 492,52 536,32 580,30 C 624,32 660,76 692,108 L 716,116" fill="none" stroke="#4f8a22" stroke-width="1.8" stroke-dasharray="4 3" />
-              <path class="pheno-target-line" d="M 60,118 C 104,116 136,102 164,78 C 196,42 236,24 280,22 C 324,24 360,68 392,104 C 412,112 432,108 456,88 C 492,52 536,32 580,30 C 624,32 660,76 692,108 L 716,116" fill="none" stroke="#365902" stroke-width="3" />
-
-              <g class="pheno-markers-group">
-                <circle cx="128" cy="105" r="4.2" fill="#2b6cb0" stroke="#fff" stroke-width="1.4" />
-                <text x="128" y="96" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2b6cb0">SOS 1</text>
-                <circle cx="280" cy="22" r="4.2" fill="#365902" stroke="#fff" stroke-width="1.4" />
-                <text x="280" y="14" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--gaia-accent)">POS 1</text>
-                <circle cx="392" cy="104" r="4.2" fill="#d99b26" stroke="#fff" stroke-width="1.4" />
-                <text x="392" y="121" text-anchor="middle" font-size="8.5" font-weight="700" fill="#b7791f">EOS 1</text>
-
-                <circle cx="444" cy="96" r="4.2" fill="#2b6cb0" stroke="#fff" stroke-width="1.4" />
-                <text x="444" y="85" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2b6cb0">SOS 2</text>
-                <circle cx="580" cy="30" r="4.2" fill="#365902" stroke="#fff" stroke-width="1.4" />
-                <text x="580" y="21" text-anchor="middle" font-size="8.5" font-weight="700" fill="var(--gaia-accent)">POS 2</text>
-                <circle cx="692" cy="108" r="4.2" fill="#d99b26" stroke="#fff" stroke-width="1.4" />
-                <text x="692" y="123" text-anchor="middle" font-size="8.5" font-weight="700" fill="#b7791f">EOS 2</text>
-              </g>
-
-              <text x="128" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Oct (Planting)</text>
-              <text x="280" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Dec (1st crop)</text>
-              <text x="416" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Feb (Harvest/2nd)</text>
-              <text x="580" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Apr (2nd crop)</text>
-              <text x="696" y="144" text-anchor="middle" font-size="9" fill="currentColor" opacity="0.7">Jun</text>
-            </svg>
-
-            <div class="parcel-compare-row" style="grid-template-columns: repeat(3, 1fr); margin-top: 0.6rem;">
-              <div class="parcel-compare-cell">
-                <span>Start of season (post-planting emergence)</span>
-                <strong data-pheno-sos style="font-size:0.8rem;">Detected SOS: Oct 18 (1st crop) · Feb 22 (2nd crop)</strong>
-              </div>
-              <div class="parcel-compare-cell">
-                <span>Peak of season (maximum canopy vigor)</span>
-                <strong data-pheno-pos style="font-size:0.8rem;">Detected POS: Dec 14 (soy) · Apr 28 (2nd-crop corn)</strong>
-              </div>
-              <div class="parcel-compare-cell">
-                <span>End of season (senescence and harvest)</span>
-                <strong data-pheno-eos style="font-size:0.8rem;">Detected EOS: Feb 08 (1st harvest) · Jun 19 (2nd harvest)</strong>
-              </div>
-            </div>
-          </div>
-
-          <div class="iviz-below iviz-below-3">
-            <div style="display:contents;">
-              <div class="neighbor-stage" style="padding: 0.75rem;">
-                <div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gaia-muted); margin-bottom: 0.45rem; text-align:center;">Spectral neighborhood</div>
-                <svg class="neighbor-grid-svg" viewBox="0 0 180 180" style="max-width: 135px;" role="img" aria-label="Spatial grid comparing the central target plot with eight neighboring plots">
-                  <rect class="neighbor-cell" data-health="healthy" x="12" y="12" width="48" height="48" rx="6" />
-                  <rect class="neighbor-cell" data-health="healthy" x="66" y="12" width="48" height="48" rx="6" />
-                  <rect class="neighbor-cell" data-health="healthy" x="120" y="12" width="48" height="48" rx="6" />
-                  <rect class="neighbor-cell" data-health="healthy" x="12" y="66" width="48" height="48" rx="6" />
-                  <rect class="neighbor-target-cell" data-health="healthy" x="66" y="66" width="48" height="48" rx="6" />
-                  <text x="90" y="94" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="700">TARGET</text>
-                  <rect class="neighbor-cell" data-health="healthy" x="120" y="66" width="48" height="48" rx="6" />
-                  <rect class="neighbor-cell" data-health="healthy" x="12" y="120" width="48" height="48" rx="6" />
-                  <rect class="neighbor-cell" data-health="healthy" x="66" y="120" width="48" height="48" rx="6" />
-                  <rect class="neighbor-cell" data-health="healthy" x="120" y="120" width="48" height="48" rx="6" />
-                </svg>
-              </div>
-
-              <div class="acc-bench" style="gap: 0.55rem;">
-                <div style="font-size: 0.73rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gaia-muted);">Planting (SOS) inside official ZARC window</div>
-                <div class="acc-crop-group">
-                  <div class="acc-crop-head" style="font-size:0.78rem;"><span>Soybean (Campo Verde, MT)</span><span>65.5% (up to 84.5% in other mun.)</span></div>
-                  <div class="acc-bar-track"><div class="acc-bar-fill gaia" style="width:65.5%"></div></div>
-                </div>
-                <div class="acc-crop-group">
-                  <div class="acc-crop-head" style="font-size:0.78rem;"><span>Cotton</span><span>7.6%</span></div>
-                  <div class="acc-bar-track"><div class="acc-bar-fill ref" style="width:7.6%"></div></div>
-                </div>
-                <div class="acc-crop-group">
-                  <div class="acc-crop-head" style="font-size:0.78rem;"><span>2nd-crop corn (safrinha)</span><span>3.3%</span></div>
-                  <div class="acc-bar-track"><div class="acc-bar-fill ref" style="width:3.3%"></div></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="nota" style="margin-top:0;">
-              <strong data-pheno-badge>Mode 1: Start and end of season detection (normal cycle)</strong>
-              <div data-pheno-diagnosis style="margin-top:0.25rem;">The reconstructed curve isolates the two successive cycles in the same agricultural year (1st-crop soybean and 2nd-crop corn), automatically marking cycle start (SOS), vegetative peak (POS), and harvest (EOS). First-crop planting falls inside the official ZARC window.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div data-cv-caption-text hidden>2021 NDVI of two plots on the same axis, with the municipal P25 to P75 band behind them. Plot {a} follows the band; plot {b} falls below it during the second season.</div>
+  </section>
   </div>
-
-  <div class="proj-block reveal">
-    <div class="proj-header">
-      <h3>Stage 4: Soil macronutrient stock dynamics and yield response</h3>
-    </div>
+  </div>
+  <section class="cv-story-step cv-story-free reveal" data-scene="explore">
+    <div class="proj-header"><h3>Explore the data</h3></div>
     <div class="proj-prose">
-      <p>The agriculture area is also explored in the <strong>Macronutrients</strong> project in partnership with <strong>FGV Agro</strong>, which answers how much Brazilian agricultural production drops if nitrogen (N), phosphorus (P), and potassium (K) fertilization is reduced, and what that reduction costs over the years. The central object of the model is the <strong>nutrient stock in the soil</strong>, not just single-year fertilizer application: a soil with high accumulated stock absorbs years of cuts before production falls, whereas a depleted soil feels the cut in the very first crop season. The deliverable covers <strong>five crops</strong> (soybean, corn, rice, sugarcane, and cotton) over a baseline of official statistics.</p>
-      <p>Two methodological principles structure the tool. First, <strong>crop biology is built into the model</strong>: cutting nitrogen barely reduces Brazilian soybean yields because the plant fixes nitrogen from the air; a model treating N, P, and K as three symmetric inputs would get this wrong. Second, <strong>every number carries its provenance</strong>: the dashboard labels what comes from official statistics, what is a literature parameter, and what is a project estimate; and where agronomy lacks consensus on how to combine three simultaneous limitations into a single yield loss, both candidate rules remain open to the user's choice, indicating which is the most defensible and which represents the pessimistic bound.</p>
+      <p>The panel below unlocks every control over the same data: the six seasons from 2020 to 2025, the two seasons of each year, the model's or the reference's class, the mismatches, each index's peak on the map and the Sentinel-2 basemap of the year or high-resolution imagery. The series can be compared in two ways: up to three indices of the same plot, in stacked panels, or the same index across up to three plots, on one axis. Click plots on the map to select them.</p>
+      <p>Index series available for the 2020 to 2025 seasons. <span class="story-blank">[note on coverage and limits of the subset]</span>.</p>
     </div>
-
-    <div class="iviz-card reveal" data-npk-sim data-lang="en">
-      <div class="iviz-top">
-        <div>
-          <h4 class="iviz-title">Yield and soil nutrient stock over five harvests</h4>
-        </div>
-      </div>
-
-      <div class="iviz-body">
-        <div class="npk-controls-grid">
-          <div class="npk-ctrl-group">
-            <label>1. Crop</label>
-            <div class="iviz-controls">
-              <button type="button" class="iviz-btn is-active" data-npk-crop="soja" aria-pressed="true">Soybean</button>
-              <button type="button" class="iviz-btn" data-npk-crop="milho" aria-pressed="false">Corn</button>
-              <button type="button" class="iviz-btn" data-npk-crop="algodao" aria-pressed="false">Cotton</button>
-            </div>
-          </div>
-          <div class="npk-ctrl-group">
-            <label>2. Fertilizer cut</label>
-            <div class="iviz-controls">
-              <button type="button" class="iviz-btn is-active" data-npk-cut="N" aria-pressed="true">Cut N</button>
-              <button type="button" class="iviz-btn" data-npk-cut="P" aria-pressed="false">Cut P</button>
-              <button type="button" class="iviz-btn" data-npk-cut="NPK" aria-pressed="false">Cut N, P, and K</button>
-            </div>
-          </div>
-          <div class="npk-ctrl-group">
-            <label>3. Initial soil stock</label>
-            <div class="iviz-controls">
-              <button type="button" class="iviz-btn is-active" data-npk-soil="alto" aria-pressed="true">High stock</button>
-              <button type="button" class="iviz-btn" data-npk-soil="baixo" aria-pressed="false">Depleted soil</button>
-            </div>
-          </div>
-          <div class="npk-ctrl-group">
-            <label>4. Multi-limitation rule</label>
-            <div class="iviz-controls">
-              <button type="button" class="iviz-btn is-active" data-npk-rule="defensavel" aria-pressed="true">Most defensible</button>
-              <button type="button" class="iviz-btn" data-npk-rule="pessimista" aria-pressed="false">Pessimistic</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="iviz-stack">
-          <div class="iviz-stage">
-            <svg viewBox="0 0 740 155" style="width:100%; height:auto; display:block;" role="img" aria-label="5-year trajectory chart for relative yield and soil stock">
-              <line x1="70" y1="22" x2="680" y2="22" stroke="currentColor" stroke-opacity="0.12" stroke-dasharray="3 3" />
-              <line x1="70" y1="77" x2="680" y2="77" stroke="currentColor" stroke-opacity="0.12" stroke-dasharray="3 3" />
-              <line x1="70" y1="132" x2="680" y2="132" stroke="currentColor" stroke-opacity="0.25" />
-              <text x="12" y="26" font-size="9.5" fill="currentColor" opacity="0.65">100%</text>
-              <text x="24" y="80" font-size="9.5" fill="currentColor" opacity="0.65">50%</text>
-              <text x="32" y="135" font-size="9.5" fill="currentColor" opacity="0.65">0%</text>
-
-              <polyline class="npk-stock-line" fill="none" stroke="#d99b26" stroke-width="2.5" stroke-dasharray="5 3" points="90,22 230,26 370,30 510,33 650,35" />
-              <polyline class="npk-yield-line" fill="none" stroke="var(--gaia-accent)" stroke-width="3.2" points="90,22 230,23 370,23 510,24 650,24" />
-
-              <circle class="npk-stock-dot" cx="90" cy="22" r="3.5" fill="#d99b26" />
-              <circle class="npk-stock-dot" cx="230" cy="26" r="3.5" fill="#d99b26" />
-              <circle class="npk-stock-dot" cx="370" cy="30" r="3.5" fill="#d99b26" />
-              <circle class="npk-stock-dot" cx="510" cy="33" r="3.5" fill="#d99b26" />
-              <circle class="npk-stock-dot" cx="650" cy="35" r="3.5" fill="#d99b26" />
-
-              <circle class="npk-yield-dot" cx="90" cy="22" r="4" fill="var(--gaia-accent)" />
-              <circle class="npk-yield-dot" cx="230" cy="23" r="4" fill="var(--gaia-accent)" />
-              <circle class="npk-yield-dot" cx="370" cy="23" r="4" fill="var(--gaia-accent)" />
-              <circle class="npk-yield-dot" cx="510" cy="24" r="4" fill="var(--gaia-accent)" />
-              <circle class="npk-yield-dot" cx="650" cy="24" r="4" fill="var(--gaia-accent)" />
-
-              <text x="90" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Season 1</text>
-              <text x="230" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Season 2</text>
-              <text x="370" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Season 3</text>
-              <text x="510" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Season 4</text>
-              <text x="650" y="148" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">Season 5</text>
-            </svg>
-          </div>
-
-          <div class="iviz-below">
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-bottom:0.85rem;">
-              <div class="parcel-compare-cell">
-                <span>Season-5 yield (solid line)</span>
-                <strong data-npk-end-yield style="font-size:1.35rem;">98%</strong>
-              </div>
-              <div class="parcel-compare-cell">
-                <span>Remaining soil stock (dashed line)</span>
-                <strong data-npk-end-stock style="font-size:1.35rem; color:#d99b26;">88%</strong>
-              </div>
-            </div>
-            <div class="nota" style="margin-top:0;">
-              <strong>Agronomic reading of the scenario</strong>
-              <div data-npk-callout style="margin-top:0.25rem;">Crop biology inside the model: cutting mineral nitrogen barely reduces Brazilian soybean yield because biological nitrogen fixation supplies nearly all the plant's demand. A model treating N, P, and K symmetrically would fail here.</div>
-            </div>
-            <div class="npk-provenance-row">
-              <span class="prov-tag"><i class="prov-dot" style="background:#365902"></i> Baseline: Official statistics</span>
-              <span class="prov-tag"><i class="prov-dot" style="background:#d99b26"></i> Response parameters: Literature</span>
-              <span class="prov-tag"><i class="prov-dot" style="background:#3b82a6"></i> Residual stock: Project estimate</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div data-cv-caption-text hidden></div>
+  </section>
+  <div class="cv-story-slot" data-cv-stage-slot></div>
   </div>
 
 </section>
@@ -672,8 +403,8 @@ toc: false
       <h3>Stage 1: Quarterly forest canopy monitoring and intra-annual suppression</h3>
     </div>
     <div class="proj-prose">
-      <p>The forest area is explored in the <strong>Territorial AgroIntelligence</strong> project in partnership with <strong>FGV Agro</strong>, aimed at identifying environmental liabilities across large rural portfolios through intra-annual monitoring of forest cover and legally protected areas. Rather than relying solely on annual maps or isolated images subject to seasonal variations, the product operates quarter by quarter by combining consecutive <strong>Sentinel-2</strong> optical observations (10-meter resolution) with multi-sensor annual representations that integrate radar, topography, and climate.</p>
-      <p>Evaluated across 20 test quarters in an independent spatial region in Campo Verde (MT), the model achieves <strong>0.850 mean IoU</strong> (88.0% precision and <strong>96.3% recall</strong> in mapping forest canopy), reducing false positives in pasture areas by <strong>31.6%</strong> and in cropland by <strong>20.9%</strong>. The operational series produced by the laboratory spans <strong>26 continuous quarterly maps (2020 Q1 to 2026 Q2)</strong>.</p>
+      <p>The forest area is explored in the <em class="mark">Territorial AgroIntelligence</em> project in partnership with <em class="mark">FGV Agro</em>, aimed at identifying environmental liabilities across large rural portfolios through intra-annual monitoring of forest cover and legally protected areas. Rather than relying solely on annual maps or isolated images subject to seasonal variations, the product operates quarter by quarter by combining consecutive <em class="mark">Sentinel-2</em> optical observations (10-meter resolution) with multi-sensor annual representations that integrate radar, topography, and climate.</p>
+      <p>Evaluated across 20 test quarters in an independent spatial region in Campo Verde (MT), the model achieves <em class="mark">0.850 mean IoU</em> (88.0% precision and <em class="mark">96.3% recall</em> in mapping forest canopy), reducing false positives in pasture areas by <em class="mark">31.6%</em> and in cropland by <em class="mark">20.9%</em>. The operational series produced by the laboratory spans <em class="mark">26 continuous quarterly maps (2020 Q1 to 2026 Q2)</em>.</p>
     </div>
 
     <div class="metrics reveal">
@@ -745,7 +476,7 @@ toc: false
       <h3>Stage 2: Property-level environmental liability (CAR) and semantic uncertainty layer</h3>
     </div>
     <div class="proj-prose">
-      <p>In the second stage, the quarterly forest cover maps are intersected with rural property boundaries declared in the <strong>Rural Environmental Registry (CAR)</strong> to analyze environmental liabilities (recent suppression and legally protected areas lacking native cover) with the <strong>rural property as the unit of analysis</strong>. Evaluated across <strong>1,432 rural properties</strong> in Campo Verde, the product achieves <strong>0.797 IoU</strong> within registered property boundaries.</p>
+      <p>In the second stage, the quarterly forest cover maps are intersected with rural property boundaries declared in the <em class="mark">Rural Environmental Registry (CAR)</em> to analyze environmental liabilities (recent suppression and legally protected areas lacking native cover) with the <em class="mark">rural property as the unit of analysis</em>. Evaluated across <em class="mark">1,432 rural properties</em> in Campo Verde, the product achieves <em class="mark">0.797 IoU</em> within registered property boundaries.</p>
       <p>To support portfolio auditing without triggering false deforestation alerts during the Cerrado dry season, the system quantifies pixel-level predictive uncertainty and organizes the landscape into six operational classes: it separates <em>consolidated forest</em>, <em>transition and edge zones</em>, <em>suppression alerts</em>, <em>seasonal water stress</em> (when deciduous forest loses foliage during drought without clearing), <em>stable non-forest</em>, and <em>probable non-forest</em>, enabling analysts to prioritize verification and cross-check alerts against official databases such as DETER and PRODES.</p>
     </div>
 
@@ -813,9 +544,9 @@ toc: false
       <h3>Stage 3: Automated territorial report generation and narrative autonomy</h3>
     </div>
     <div class="proj-prose">
-      <p>The forest area is also explored in our project with <strong>FGVces</strong> (Center for Sustainability Studies at FGV) and <strong>Coiab</strong> (Coordination of Indigenous Organizations of the Brazilian Amazon), in which we built a <strong>tool for automated generation and editing of territorial reports</strong> from two inputs: official public datasets and explicit narrative structures. The system tracks the status and risks of deforestation, fire, mining, and climate change across the scales of Brazil, states, and Indigenous Lands, producing outputs as PDF reports, media clippings, or observatory pages. It is the only project in the laboratory where a technical counterpart from the partner organization works directly alongside our researchers on geospatial platform integration.</p>
-      <p><strong>Narrative depends on the audience:</strong> the same public data, the same territory, and the same facts require different story structures depending on the reader. A press release must be direct and synthetic; a technical report must expose methodology and uncertainty margins; a formal submission to the Public Prosecutor's Office (Ministério Público) must back every paragraph with traceable evidence linked to the primary source.</p>
-      <p><strong>What gives the product meaning is control over who writes the story:</strong> reports on Indigenous territories have historically been written by third parties. A tool that organizes public data into an explicit, editable narrative structure <strong>transfers authorship</strong>: Coiab operates the editing tool, decides the narrative, and signs the document about its own territory, supported by training and technology transfer carried out by the project.</p>
+      <p>The forest area is also explored in our project with <em class="mark">FGVces</em> (Center for Sustainability Studies at FGV) and <em class="mark">Coiab</em> (Coordination of Indigenous Organizations of the Brazilian Amazon), in which we built a <em class="mark">tool for automated generation and editing of territorial reports</em> from two inputs: official public datasets and explicit narrative structures. The system tracks the status and risks of deforestation, fire, mining, and climate change across the scales of Brazil, states, and Indigenous Lands, producing outputs as PDF reports, media clippings, or observatory pages. It is the only project in the laboratory where a technical counterpart from the partner organization works directly alongside our researchers on geospatial platform integration.</p>
+      <p><em class="mark">Narrative depends on the audience:</em> the same public data, the same territory, and the same facts require different story structures depending on the reader. A press release must be direct and synthetic; a technical report must expose methodology and uncertainty margins; a formal submission to the Public Prosecutor's Office (Ministério Público) must back every paragraph with traceable evidence linked to the primary source.</p>
+      <p><em class="mark">What gives the product meaning is control over who writes the story:</em> reports on Indigenous territories have historically been written by third parties. A tool that organizes public data into an explicit, editable narrative structure <em class="mark">transfers authorship</em>: Coiab operates the editing tool, decides the narrative, and signs the document about its own territory, supported by training and technology transfer carried out by the project.</p>
     </div>
 
     <div class="iviz-card reveal" data-tab-group>
@@ -911,9 +642,9 @@ toc: false
       <h3>Exposure of electric power infrastructure to extreme climate threats</h3>
     </div>
     <div class="proj-prose">
-      <p>The climate area is explored in a project developed in partnership with <strong>FGV CERI</strong> (Center for Regulation and Infrastructure Studies at FGV), focused on modeling the exposure of electric power infrastructure to <strong>extreme climate threats</strong>.</p>
-      <p>The full project covers <strong>seven threats</strong>, each with its own methodology: storms and lightning, wildfires, river flooding, landslides, maximum temperatures, extreme winds, and sea-level rise. Projections combine an ensemble of <strong>six global climate models</strong> across <strong>three emission scenarios</strong> with national and international observational datasets.</p>
-      <p><strong>The laboratory's contribution focuses on modeling five of those threats</strong> (extreme winds, storms, heavy rainfall, wildfires, and maximum temperatures) and building the <strong>interactive dashboard of maps and indicators</strong>.</p>
+      <p>The climate area is explored in a project developed in partnership with <em class="mark">FGV CERI</em> (Center for Regulation and Infrastructure Studies at FGV), focused on modeling the exposure of electric power infrastructure to <em class="mark">extreme climate threats</em>.</p>
+      <p>The full project covers <em class="mark">seven threats</em>, each with its own methodology: storms and lightning, wildfires, river flooding, landslides, maximum temperatures, extreme winds, and sea-level rise. Projections combine an ensemble of <em class="mark">six global climate models</em> across <em class="mark">three emission scenarios</em> with national and international observational datasets.</p>
+      <p><em class="mark">The laboratory's contribution focuses on modeling five of those threats</em> (extreme winds, storms, heavy rainfall, wildfires, and maximum temperatures) and building the <em class="mark">interactive dashboard of maps and indicators</em>.</p>
     </div>
 
     <div class="iviz-card reveal" data-ceri-explorer>
@@ -995,7 +726,7 @@ toc: false
       <h3>Municipal climate trends and coupling with the agricultural calendar (2011 to 2025)</h3>
     </div>
     <div class="proj-prose">
-      <p>At the interface between climate and agriculture within our partnership with <strong>FGV Agro</strong>, the laboratory analyzes historical time series of climate indicators by municipality to quantify warming and the increase in dry days during the agricultural window. The indicators below summarize the change observed over <strong>15 years (2011 to 2025)</strong> in Nova Mutum (MT).</p>
+      <p>At the interface between climate and agriculture within our partnership with <em class="mark">FGV Agro</em>, the laboratory analyzes historical time series of climate indicators by municipality to quantify warming and the increase in dry days during the agricultural window. The indicators below summarize the change observed over <em class="mark">15 years (2011 to 2025)</em> in Nova Mutum (MT).</p>
     </div>
 
     <div class="trend-grid reveal">
@@ -1026,10 +757,10 @@ toc: false
       <h3>Climate regimes learned without labels and ENSO teleconnections</h3>
     </div>
     <div class="proj-prose">
-      <p>Raw climate variables are noisy and related in non-linear ways, which makes recurring regimes hard to extract from them. Instead of predicting point by point, the lab discretizes daily fields of minimum and maximum temperature into a finite set of <strong>climate states</strong>, learned without any labels. The model is a <strong>Masked Siamese Network</strong> (MSN) with a Vision Transformer backbone, trained over the Brazilian Cerrado: each day is assigned a state, and the sequence of states becomes a compact, interpretable representation of regional variability.</p>
-      <p>The states are mutually consistent, allow specific scenarios to be sampled and carry a <strong>statistical association with El Niño</strong>, even though no index of the phenomenon entered the training. A lagged probability analysis, 12 months to either side of the Oceanic Niño Index, separates precursor regimes, more frequent before the ENSO peak, from response regimes, which only appear after it. The teleconnection emerges from the data.</p>
+      <p>Raw climate variables are noisy and related in non-linear ways, which makes recurring regimes hard to extract from them. Instead of predicting point by point, the lab discretizes daily fields of minimum and maximum temperature into a finite set of <em class="mark">climate states</em>, learned without any labels. The model is a <em class="mark">Masked Siamese Network</em> (MSN) with a Vision Transformer backbone, trained over the Brazilian Cerrado: each day is assigned a state, and the sequence of states becomes a compact, interpretable representation of regional variability.</p>
+      <p>The states are mutually consistent, allow specific scenarios to be sampled and carry a <em class="mark">statistical association with El Niño</em>, even though no index of the phenomenon entered the training. A lagged probability analysis, 12 months to either side of the Oceanic Niño Index, separates precursor regimes, more frequent before the ENSO peak, from response regimes, which only appear after it. The teleconnection emerges from the data.</p>
       <p>The line began in 2023 with the SwAV method over temperature and precipitation across a region covering Brazil's South, Southeast and Centre-West and parts of Paraguay and Argentina, where the most extreme groups grow more frequent along the series, local evidence of warming. The discrete states feed the two fronts above: the modelling of extreme threats and the coupling with the agricultural calendar.</p>
-      <p><strong>Deliverables:</strong> <a href="../publications/articles/deep-clustering-for-climate-analyzing-teleconnections/deep-clustering-for-climate-analyzing-teleconnections.html">arXiv preprint</a> (2026), <a href="../publications/theses/agrupamento-espacial-de-clima-por-meio-de-aprendizado/agrupamento-espacial-de-clima-por-meio-de-aprendizado.html">master's dissertation</a> (2026), <a href="../publications/theses/agrupamento-de-dados-meteorologicos-por-meio-de-aprendizado/agrupamento-de-dados-meteorologicos-por-meio-de-aprendizado.html">undergraduate thesis</a> (2023) and <a href="https://github.com/Green-AI-Lab-GAIA/climate-clustering-for-ENSO-teleconnections">open code</a>.</p>
+      <p><em class="mark">Deliverables:</em> <a href="../publications/articles/deep-clustering-for-climate-analyzing-teleconnections/deep-clustering-for-climate-analyzing-teleconnections.html">arXiv preprint</a> (2026), <a href="../publications/theses/agrupamento-espacial-de-clima-por-meio-de-aprendizado/agrupamento-espacial-de-clima-por-meio-de-aprendizado.html">master's dissertation</a> (2026), <a href="../publications/theses/agrupamento-de-dados-meteorologicos-por-meio-de-aprendizado/agrupamento-de-dados-meteorologicos-por-meio-de-aprendizado.html">undergraduate thesis</a> (2023) and <a href="https://github.com/Green-AI-Lab-GAIA/climate-clustering-for-ENSO-teleconnections">open code</a>.</p>
     </div>
   </div>
 </section>
@@ -1050,7 +781,7 @@ toc: false
       <h3>Urban characterization and super-resolution in representation space</h3>
     </div>
     <div class="proj-prose">
-      <p>In the cities area, the laboratory investigates the characterization of urban settlements and socioeconomic reading from satellite imagery, developing methods for <strong>super-resolution directly in embedding space</strong> combined with <strong>domain adaptation</strong> techniques to transfer learned representations across distinct urban contexts.</p>
+      <p>In the cities area, the laboratory investigates the characterization of urban settlements and socioeconomic reading from satellite imagery, developing methods for <em class="mark">super-resolution directly in embedding space</em> combined with <em class="mark">domain adaptation</em> techniques to transfer learned representations across distinct urban contexts.</p>
     </div>
 
   </div>
@@ -1072,8 +803,8 @@ toc: false
       <h3>Automated analysis of proposals and contracts with cited evidence</h3>
     </div>
     <div class="proj-prose">
-      <p>In partnership with <strong>FGV PMO</strong>, we develop a system for automated analysis of proposals and contracts covering the full document chain: OCR text extraction preserving table structures, <strong>two-layer anonymization</strong> (deterministic rules for fixed patterns such as tax IDs and monetary values; a language model for person names, companies, and addresses), classification across the taxonomy of segments and service types, and <strong>identification of contractual risks with cited documentary evidence</strong> via RAG.</p>
-      <p>What sets this work apart is <strong>traceability</strong>: no risk flag is emitted without pointing to the cause, the potential effect, and the exact passage of the document that supports it.</p>
+      <p>In partnership with <em class="mark">FGV PMO</em>, we develop a system for automated analysis of proposals and contracts covering the full document chain: OCR text extraction preserving table structures, <em class="mark">two-layer anonymization</em> (deterministic rules for fixed patterns such as tax IDs and monetary values; a language model for person names, companies, and addresses), classification across the taxonomy of segments and service types, and <em class="mark">identification of contractual risks with cited documentary evidence</em> via RAG.</p>
+      <p>What sets this work apart is <em class="mark">traceability</em>: no risk flag is emitted without pointing to the cause, the potential effect, and the exact passage of the document that supports it.</p>
     </div>
   </div>
 
@@ -1082,8 +813,8 @@ toc: false
       <h3>Certification question banks and virtual student simulation</h3>
     </div>
     <div class="proj-prose">
-      <p>In partnership with <strong>FGV Projetos</strong> (a completed project), we applied natural language processing to certification exam question banks for generating, reviewing, and calibrating multiple-choice items.</p>
-      <p>Two traits define the project. First, <strong>the entire pipeline runs in a 100% closed environment</strong>, using open-weight models on internal servers so that no document ever leaves the institution. Second, the <strong>virtual student cohort simulation</strong> method: agents given partial, controlled access to the reference material answer the generated questions, and their response patterns estimate the difficulty of each item before it is administered to real candidates.</p>
+      <p>In partnership with <em class="mark">FGV Projetos</em> (a completed project), we applied natural language processing to certification exam question banks for generating, reviewing, and calibrating multiple-choice items.</p>
+      <p>Two traits define the project. First, <em class="mark">the entire pipeline runs in a 100% closed environment</em>, using open-weight models on internal servers so that no document ever leaves the institution. Second, the <em class="mark">virtual student cohort simulation</em> method: agents given partial, controlled access to the reference material answer the generated questions, and their response patterns estimate the difficulty of each item before it is administered to real candidates.</p>
     </div>
   </div>
 

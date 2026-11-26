@@ -9,6 +9,7 @@ project:
   # Imagens e dados lidos pelos exploradores via JavaScript, que o Quarto não detecta sozinho
   resources:
     - research/images/**
+    - research/data/**
 
 # Sem --profile, "quarto render" e "quarto preview" usam o português
 profile:
